@@ -25,10 +25,6 @@ public final class JobNewClusterInitScript {
      */
     @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable JobNewClusterInitScriptDbfs dbfs;
-    /**
-     * @return block consisting of single string fields:
-     * 
-     */
     private @Nullable JobNewClusterInitScriptFile file;
     private @Nullable JobNewClusterInitScriptGcs gcs;
     private @Nullable JobNewClusterInitScriptS3 s3;
@@ -48,10 +44,6 @@ public final class JobNewClusterInitScript {
     public Optional<JobNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
-    /**
-     * @return block consisting of single string fields:
-     * 
-     */
     public Optional<JobNewClusterInitScriptFile> file() {
         return Optional.ofNullable(this.file);
     }

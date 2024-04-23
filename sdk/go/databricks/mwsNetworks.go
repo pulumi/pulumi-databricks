@@ -105,7 +105,7 @@ type MwsNetworks struct {
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsOutput `pulumi:"vpcEndpoints"`
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	// aws_vpc id
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringOutput `pulumi:"vpcStatus"`
@@ -172,7 +172,7 @@ type mwsNetworksState struct {
 	SubnetIds []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	// aws_vpc id
 	VpcId *string `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
@@ -197,7 +197,7 @@ type MwsNetworksState struct {
 	SubnetIds pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	// aws_vpc id
 	VpcId pulumi.StringPtrInput
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
@@ -226,7 +226,7 @@ type mwsNetworksArgs struct {
 	SubnetIds []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	// aws_vpc id
 	VpcId *string `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
@@ -252,7 +252,7 @@ type MwsNetworksArgs struct {
 	SubnetIds pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
-	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	// aws_vpc id
 	VpcId pulumi.StringPtrInput
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
@@ -390,7 +390,7 @@ func (o MwsNetworksOutput) VpcEndpoints() MwsNetworksVpcEndpointsOutput {
 	return o.ApplyT(func(v *MwsNetworks) MwsNetworksVpcEndpointsOutput { return v.VpcEndpoints }).(MwsNetworksVpcEndpointsOutput)
 }
 
-// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+// aws_vpc id
 func (o MwsNetworksOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

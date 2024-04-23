@@ -15,7 +15,6 @@ import (
 //
 // Listing all schemas in a _sandbox_ databricks_catalog:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

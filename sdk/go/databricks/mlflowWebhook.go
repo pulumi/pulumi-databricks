@@ -18,7 +18,6 @@ import (
 //
 // ### Triggering Databricks job
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,11 +113,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### POSTing to URL
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -148,7 +145,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Access Control
 //

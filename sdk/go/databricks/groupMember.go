@@ -20,7 +20,6 @@ import (
 //
 // After the following example, Bradley would have direct membership in group B and transitive membership in group A.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +69,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

@@ -15,7 +15,6 @@ import (
 //
 // Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

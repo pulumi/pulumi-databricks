@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? MinTimeBetweenTriggersSeconds { get; set; }
 
         /// <summary>
-        /// URL of the Git repository to use.
+        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

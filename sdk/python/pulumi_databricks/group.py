@@ -333,7 +333,6 @@ class Group(pulumi.CustomResource):
 
         Creating some group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -343,11 +342,9 @@ class Group(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Adding User as GroupMember of some group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -361,29 +358,24 @@ class Group(pulumi.CustomResource):
             group_id=this.id,
             member_id=this_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating group in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.Group("this", display_name="Some Group")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating group in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.Group("this", display_name="Some Group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -430,7 +422,6 @@ class Group(pulumi.CustomResource):
 
         Creating some group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -440,11 +431,9 @@ class Group(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Adding User as GroupMember of some group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -458,29 +447,24 @@ class Group(pulumi.CustomResource):
             group_id=this.id,
             member_id=this_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating group in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.Group("this", display_name="Some Group")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating group in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.Group("this", display_name="Some Group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

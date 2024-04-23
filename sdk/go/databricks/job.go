@@ -52,8 +52,6 @@ type Job struct {
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrOutput `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	MaxRetries pulumi.IntPtrOutput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -61,8 +59,7 @@ type Job struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	MinRetryIntervalMillis pulumi.IntPtrOutput `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Same set of parameters as for Cluster resource.
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NewCluster JobNewClusterPtrOutput `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
@@ -74,8 +71,6 @@ type Job struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrOutput `pulumi:"pythonWheelTask"`
 	Queue           JobQueuePtrOutput           `pulumi:"queue"`
-	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
 	RunAs          JobRunAsOutput       `pulumi:"runAs"`
@@ -90,12 +85,11 @@ type Job struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrOutput `pulumi:"sparkSubmitTask"`
 	Tags            pulumi.MapOutput            `pulumi:"tags"`
-	// Task to run against the `inputs` list.
-	Tasks JobTaskArrayOutput `pulumi:"tasks"`
+	Tasks           JobTaskArrayOutput          `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
 	Trigger        JobTriggerPtrOutput `pulumi:"trigger"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringOutput `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrOutput `pulumi:"webhookNotifications"`
@@ -160,8 +154,6 @@ type jobState struct {
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -169,8 +161,7 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
-	Name *string `pulumi:"name"`
-	// Same set of parameters as for Cluster resource.
+	Name       *string        `pulumi:"name"`
 	NewCluster *JobNewCluster `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
@@ -182,8 +173,6 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	Queue           *JobQueue           `pulumi:"queue"`
-	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
 	RunAs          *JobRunAs `pulumi:"runAs"`
@@ -198,12 +187,11 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
 	Tags            map[string]interface{} `pulumi:"tags"`
-	// Task to run against the `inputs` list.
-	Tasks []JobTask `pulumi:"tasks"`
+	Tasks           []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url *string `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
@@ -239,8 +227,6 @@ type JobState struct {
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -248,8 +234,7 @@ type JobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	MinRetryIntervalMillis pulumi.IntPtrInput
 	// An optional name for the job. The default value is Untitled.
-	Name pulumi.StringPtrInput
-	// Same set of parameters as for Cluster resource.
+	Name       pulumi.StringPtrInput
 	NewCluster JobNewClusterPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrInput
@@ -261,8 +246,6 @@ type JobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
 	Queue           JobQueuePtrInput
-	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
 	RunAs          JobRunAsPtrInput
@@ -277,12 +260,11 @@ type JobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	Tags            pulumi.MapInput
-	// Task to run against the `inputs` list.
-	Tasks JobTaskArrayInput
+	Tasks           JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
@@ -322,8 +304,6 @@ type jobArgs struct {
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -331,8 +311,7 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
-	Name *string `pulumi:"name"`
-	// Same set of parameters as for Cluster resource.
+	Name       *string        `pulumi:"name"`
 	NewCluster *JobNewCluster `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
@@ -344,8 +323,6 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	Queue           *JobQueue           `pulumi:"queue"`
-	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
 	RunAs          *JobRunAs `pulumi:"runAs"`
@@ -360,8 +337,7 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
 	Tags            map[string]interface{} `pulumi:"tags"`
-	// Task to run against the `inputs` list.
-	Tasks []JobTask `pulumi:"tasks"`
+	Tasks           []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
@@ -400,8 +376,6 @@ type JobArgs struct {
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -409,8 +383,7 @@ type JobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	MinRetryIntervalMillis pulumi.IntPtrInput
 	// An optional name for the job. The default value is Untitled.
-	Name pulumi.StringPtrInput
-	// Same set of parameters as for Cluster resource.
+	Name       pulumi.StringPtrInput
 	NewCluster JobNewClusterPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrInput
@@ -422,8 +395,6 @@ type JobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
 	Queue           JobQueuePtrInput
-	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	//
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
 	RunAs          JobRunAsPtrInput
@@ -438,8 +409,7 @@ type JobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	Tags            pulumi.MapInput
-	// Task to run against the `inputs` list.
-	Tasks JobTaskArrayInput
+	Tasks           JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
@@ -611,8 +581,6 @@ func (o JobOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
 }
 
-// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-//
 // Deprecated: should be used inside a task block and not inside a job block
 func (o JobOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxRetries }).(pulumi.IntPtrOutput)
@@ -630,7 +598,6 @@ func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Same set of parameters as for Cluster resource.
 func (o JobOutput) NewCluster() JobNewClusterPtrOutput {
 	return o.ApplyT(func(v *Job) JobNewClusterPtrOutput { return v.NewCluster }).(JobNewClusterPtrOutput)
 }
@@ -663,8 +630,6 @@ func (o JobOutput) Queue() JobQueuePtrOutput {
 	return o.ApplyT(func(v *Job) JobQueuePtrOutput { return v.Queue }).(JobQueuePtrOutput)
 }
 
-// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-//
 // Deprecated: should be used inside a task block and not inside a job block
 func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
@@ -703,7 +668,6 @@ func (o JobOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// Task to run against the `inputs` list.
 func (o JobOutput) Tasks() JobTaskArrayOutput {
 	return o.ApplyT(func(v *Job) JobTaskArrayOutput { return v.Tasks }).(JobTaskArrayOutput)
 }
@@ -717,7 +681,7 @@ func (o JobOutput) Trigger() JobTriggerPtrOutput {
 	return o.ApplyT(func(v *Job) JobTriggerPtrOutput { return v.Trigger }).(JobTriggerPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

@@ -19,7 +19,6 @@ import (
 //
 // For more detailed usage please see getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

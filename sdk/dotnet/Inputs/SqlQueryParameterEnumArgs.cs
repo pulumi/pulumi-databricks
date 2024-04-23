@@ -23,9 +23,6 @@ namespace Pulumi.Databricks.Inputs
             set => _options = value;
         }
 
-        /// <summary>
-        /// The default value for this parameter.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

@@ -208,14 +208,14 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.vpcEndpoints;
     }
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * aws_vpc id
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * @return aws_vpc id
      * 
      */
     public Output<Optional<String>> vpcId() {

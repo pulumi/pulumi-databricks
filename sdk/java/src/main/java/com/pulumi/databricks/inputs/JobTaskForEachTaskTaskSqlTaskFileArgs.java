@@ -176,14 +176,14 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
     }
 
     /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -381,7 +381,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.
          * 
          * @return builder
          * 

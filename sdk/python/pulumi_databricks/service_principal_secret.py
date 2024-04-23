@@ -128,14 +128,12 @@ class ServicePrincipalSecret(pulumi.CustomResource):
 
         Create service principal secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -159,14 +157,12 @@ class ServicePrincipalSecret(pulumi.CustomResource):
 
         Create service principal secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

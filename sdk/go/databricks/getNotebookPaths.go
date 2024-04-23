@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNotebookPaths(ctx *pulumi.Context, args *GetNotebookPathsArgs, opts ...pulumi.InvokeOption) (*GetNotebookPathsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotebookPathsResult

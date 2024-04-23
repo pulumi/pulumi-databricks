@@ -26,10 +26,6 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("embeddingVectorColumns")]
         private InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnGetArgs>? _embeddingVectorColumns;
-
-        /// <summary>
-        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
-        /// </summary>
         public InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnGetArgs> EmbeddingVectorColumns
         {
             get => _embeddingVectorColumns ?? (_embeddingVectorColumns = new InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnGetArgs>());

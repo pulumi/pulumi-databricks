@@ -377,7 +377,6 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -431,11 +430,9 @@ class SqlQuery(pulumi.CustomResource):
                 "t2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Example permission to share query with all users:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -453,7 +450,6 @@ class SqlQuery(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Troubleshooting
 
@@ -506,7 +502,6 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -560,11 +555,9 @@ class SqlQuery(pulumi.CustomResource):
                 "t2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Example permission to share query with all users:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -582,7 +575,6 @@ class SqlQuery(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Troubleshooting
 

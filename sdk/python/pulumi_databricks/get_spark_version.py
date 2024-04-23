@@ -160,7 +160,6 @@ def get_spark_version(beta: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -181,7 +180,6 @@ def get_spark_version(beta: Optional[bool] = None,
             max_workers=50,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -254,7 +252,6 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -275,7 +272,6 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
             max_workers=50,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

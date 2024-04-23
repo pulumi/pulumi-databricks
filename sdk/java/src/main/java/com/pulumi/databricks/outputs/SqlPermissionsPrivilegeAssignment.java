@@ -20,6 +20,7 @@ public final class SqlPermissionsPrivilegeAssignment {
      * @return set of available privilege names in upper case.
      * 
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * 
      */
     private List<String> privileges;
@@ -35,6 +36,7 @@ public final class SqlPermissionsPrivilegeAssignment {
     /**
      * @return set of available privilege names in upper case.
      * 
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * 
      */

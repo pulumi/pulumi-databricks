@@ -106,7 +106,6 @@ class GroupMember(pulumi.CustomResource):
 
         After the following example, Bradley would have direct membership in group B and transitive membership in group A.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -121,7 +120,6 @@ class GroupMember(pulumi.CustomResource):
             group_id=b.id,
             member_id=bradley.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -167,7 +165,6 @@ class GroupMember(pulumi.CustomResource):
 
         After the following example, Bradley would have direct membership in group B and transitive membership in group A.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -182,7 +179,6 @@ class GroupMember(pulumi.CustomResource):
             group_id=b.id,
             member_id=bradley.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

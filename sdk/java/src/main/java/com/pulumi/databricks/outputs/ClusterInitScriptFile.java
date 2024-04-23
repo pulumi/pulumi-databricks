@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterInitScriptFile {
-    /**
-     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     private String destination;
 
     private ClusterInitScriptFile() {}
-    /**
-     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     public String destination() {
         return this.destination;
     }

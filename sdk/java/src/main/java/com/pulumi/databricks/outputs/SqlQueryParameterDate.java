@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterDate {
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     private String value;
 
     private SqlQueryParameterDate() {}
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     public String value() {
         return this.value;
     }

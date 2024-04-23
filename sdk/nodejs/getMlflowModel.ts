@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -37,9 +36,7 @@ import * as utilities from "./utilities";
  * });
  * export const model = _this;
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -60,7 +57,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowModelResult> {
 
@@ -145,7 +141,6 @@ export interface GetMlflowModelResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -169,9 +164,7 @@ export interface GetMlflowModelResult {
  * });
  * export const model = _this;
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -192,7 +185,6 @@ export interface GetMlflowModelResult {
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowModelResult> {
     return pulumi.output(args).apply((a: any) => getMlflowModel(a, opts))

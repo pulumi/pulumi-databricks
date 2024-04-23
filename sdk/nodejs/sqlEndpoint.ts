@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -29,7 +28,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Access control
  *
@@ -134,7 +132,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      */
     public readonly minNumClusters!: pulumi.Output<number | undefined>;
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse. Must be unique.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -284,7 +282,7 @@ export interface SqlEndpointState {
      */
     minNumClusters?: pulumi.Input<number>;
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse. Must be unique.
      */
     name?: pulumi.Input<string>;
     /**
@@ -359,7 +357,7 @@ export interface SqlEndpointArgs {
      */
     minNumClusters?: pulumi.Input<number>;
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse. Must be unique.
      */
     name?: pulumi.Input<string>;
     /**

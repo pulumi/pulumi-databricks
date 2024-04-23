@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelCohereConfig {
-    /**
-     * @return The Databricks secret key reference for a Cohere API key.
-     * 
-     */
     private String cohereApiKey;
 
     private ModelServingConfigServedEntityExternalModelCohereConfig() {}
-    /**
-     * @return The Databricks secret key reference for a Cohere API key.
-     * 
-     */
     public String cohereApiKey() {
         return this.cohereApiKey;
     }

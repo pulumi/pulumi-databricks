@@ -132,7 +132,6 @@ def get_mlflow_model(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -153,9 +152,7 @@ def get_mlflow_model(description: Optional[str] = None,
     this = databricks.get_mlflow_model(name="My MLflow Model")
     pulumi.export("model", this)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -173,7 +170,6 @@ def get_mlflow_model(description: Optional[str] = None,
             )],
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: User-specified description for the object.
@@ -218,7 +214,6 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -239,9 +234,7 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
     this = databricks.get_mlflow_model(name="My MLflow Model")
     pulumi.export("model", this)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -259,7 +252,6 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
             )],
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: User-specified description for the object.

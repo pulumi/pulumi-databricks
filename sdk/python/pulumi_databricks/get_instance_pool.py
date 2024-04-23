@@ -79,7 +79,6 @@ def get_instance_pool(name: Optional[str] = None,
 
     Referring to an instance pool by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -87,7 +86,6 @@ def get_instance_pool(name: Optional[str] = None,
     pool = databricks.get_instance_pool(name="All spot")
     my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool_databricks_instance_pool["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
@@ -118,7 +116,6 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
 
     Referring to an instance pool by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -126,7 +123,6 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
     pool = databricks.get_instance_pool(name="All spot")
     my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool_databricks_instance_pool["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.

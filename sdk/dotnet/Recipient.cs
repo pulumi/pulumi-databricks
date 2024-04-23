@@ -25,7 +25,6 @@ namespace Pulumi.Databricks
     /// Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
     /// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,7 +56,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [DatabricksResourceType("databricks:index/recipient:Recipient")]
     public partial class Recipient : global::Pulumi.CustomResource

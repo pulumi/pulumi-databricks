@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobTaskNewClusterDockerImageBasicAuth? BasicAuth;
         /// <summary>
-        /// URL of the Git repository to use.
+        /// URL of the job on the given workspace
         /// </summary>
         public readonly string Url;
 

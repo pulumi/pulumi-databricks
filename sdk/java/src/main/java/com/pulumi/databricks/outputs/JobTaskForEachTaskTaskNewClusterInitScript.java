@@ -19,10 +19,6 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskNewClusterInitScript {
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptAbfss abfss;
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptDbfs dbfs;
-    /**
-     * @return block consisting of single string fields:
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptFile file;
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptGcs gcs;
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptS3 s3;
@@ -36,10 +32,6 @@ public final class JobTaskForEachTaskTaskNewClusterInitScript {
     public Optional<JobTaskForEachTaskTaskNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
-    /**
-     * @return block consisting of single string fields:
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskNewClusterInitScriptFile> file() {
         return Optional.ofNullable(this.file);
     }

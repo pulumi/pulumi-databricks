@@ -11,18 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-     * 
-     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * @return ID of the job
      * 
      */
     private String id;
 
     private JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded() {}
     /**
-     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-     * 
-     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * @return ID of the job
      * 
      */
     public String id() {

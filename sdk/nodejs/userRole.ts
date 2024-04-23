@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * Adding AWS instance profile to a user
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,11 +22,9 @@ import * as utilities from "./utilities";
  *     role: instanceProfile.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Adding user as administrator to Databricks Account
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -38,7 +35,6 @@ import * as utilities from "./utilities";
  *     role: "account_admin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

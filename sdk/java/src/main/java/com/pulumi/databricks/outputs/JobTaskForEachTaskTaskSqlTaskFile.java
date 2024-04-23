@@ -90,7 +90,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
      */
     private String path;
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.
      * 
      */
     private @Nullable String source;
@@ -176,7 +176,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
         return this.path;
     }
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.
      * 
      */
     public Optional<String> source() {

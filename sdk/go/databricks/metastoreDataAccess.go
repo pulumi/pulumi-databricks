@@ -19,7 +19,6 @@ import (
 //
 // # For AWS
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,7 +59,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // For Azure using managed identity as credential (recommended)
 //

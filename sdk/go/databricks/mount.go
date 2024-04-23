@@ -34,7 +34,6 @@ import (
 //
 // ### Example mounting ADLS Gen2 using uri and extraConfigs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Example mounting ADLS Gen2 with AAD passthrough
 //
@@ -85,7 +83,6 @@ import (
 //
 // To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -164,7 +161,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## s3 block
 //
@@ -175,7 +171,6 @@ import (
 //
 // ### Example of mounting S3
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,7 +199,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## abfs block
 //
@@ -223,7 +217,6 @@ import (
 //
 // In this example, we're using Azure authentication, so we can omit some parameters (`tenantId`, `storageAccountName`, and `containerName`) that will be detected automatically.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -301,7 +294,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## gs block
 //
@@ -312,7 +304,6 @@ import (
 //
 // ### Example mounting Google Cloud Storage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -340,7 +331,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## adl block
 //
@@ -357,7 +347,6 @@ import (
 //
 // ### Example mounting ADLS Gen1
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -389,7 +378,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## wasb block
 //
@@ -404,7 +392,6 @@ import (
 //
 // ### Example mounting Azure Blob Storage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -472,7 +459,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Migration from other mount resources
 //

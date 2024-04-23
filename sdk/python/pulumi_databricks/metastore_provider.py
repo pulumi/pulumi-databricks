@@ -174,7 +174,6 @@ class MetastoreProvider(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -191,7 +190,6 @@ class MetastoreProvider(pulumi.CustomResource):
                 "expirationTime": "expiration-time",
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -225,7 +223,6 @@ class MetastoreProvider(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -242,7 +239,6 @@ class MetastoreProvider(pulumi.CustomResource):
                 "expirationTime": "expiration-time",
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

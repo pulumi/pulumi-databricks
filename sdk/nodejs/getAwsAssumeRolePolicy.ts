@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,7 +43,6 @@ import * as utilities from "./utilities";
  *     roleArn: crossAccount.arn,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -102,7 +100,6 @@ export interface GetAwsAssumeRolePolicyResult {
  *
  * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -135,7 +132,6 @@ export interface GetAwsAssumeRolePolicyResult {
  *     roleArn: crossAccount.arn,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

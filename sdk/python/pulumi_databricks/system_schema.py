@@ -122,14 +122,12 @@ class SystemSchema(pulumi.CustomResource):
 
         Enable the system schema `access`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SystemSchema("this", schema="access")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -163,14 +161,12 @@ class SystemSchema(pulumi.CustomResource):
 
         Enable the system schema `access`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SystemSchema("this", schema="access")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

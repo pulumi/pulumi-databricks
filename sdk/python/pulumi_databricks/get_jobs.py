@@ -63,7 +63,6 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
 
     Granting view Permissions to all Job within the workspace:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -78,11 +77,9 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
                 permission_level="CAN_VIEW",
             )]))
     ```
-    <!--End PulumiCodeChooser -->
 
     Getting ID of specific Job by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -90,7 +87,6 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
     this = databricks.get_jobs()
     pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -119,7 +115,6 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = N
 
     Granting view Permissions to all Job within the workspace:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -134,11 +129,9 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = N
                 permission_level="CAN_VIEW",
             )]))
     ```
-    <!--End PulumiCodeChooser -->
 
     Getting ID of specific Job by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -146,7 +139,6 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = N
     this = databricks.get_jobs()
     pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

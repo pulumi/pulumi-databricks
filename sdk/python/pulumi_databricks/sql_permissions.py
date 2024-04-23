@@ -293,7 +293,6 @@ class SqlPermissions(pulumi.CustomResource):
         * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
         * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -314,7 +313,6 @@ class SqlPermissions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -373,7 +371,6 @@ class SqlPermissions(pulumi.CustomResource):
         * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
         * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -394,7 +391,6 @@ class SqlPermissions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

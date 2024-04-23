@@ -63,7 +63,6 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
 
     List all storage credentials in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -71,7 +70,6 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
     all = databricks.get_storage_credentials()
     pulumi.export("allStorageCredentials", all.names)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -101,7 +99,6 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
 
     List all storage credentials in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -109,7 +106,6 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
     all = databricks.get_storage_credentials()
     pulumi.export("allStorageCredentials", all.names)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

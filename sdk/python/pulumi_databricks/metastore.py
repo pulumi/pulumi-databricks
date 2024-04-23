@@ -535,7 +535,6 @@ class Metastore(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -550,7 +549,6 @@ class Metastore(pulumi.CustomResource):
             metastore_id=this.id,
             workspace_id=workspace_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 
@@ -594,7 +592,6 @@ class Metastore(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -609,7 +606,6 @@ class Metastore(pulumi.CustomResource):
             metastore_id=this.id,
             workspace_id=workspace_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 

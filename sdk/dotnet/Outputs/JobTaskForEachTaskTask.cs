@@ -33,9 +33,6 @@ namespace Pulumi.Databricks.Outputs
         /// block described below that specifies health conditions for a given task.
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskHealth? Health;
-        /// <summary>
-        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        /// </summary>
         public readonly string? JobClusterKey;
         /// <summary>
         /// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -49,9 +46,6 @@ namespace Pulumi.Databricks.Outputs
         /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         /// </summary>
         public readonly int? MinRetryIntervalMillis;
-        /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
-        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskForEachTaskTaskNotebookTask? NotebookTask;
         /// <summary>

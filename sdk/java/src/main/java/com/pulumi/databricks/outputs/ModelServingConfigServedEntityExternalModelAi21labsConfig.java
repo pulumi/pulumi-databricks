@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAi21labsConfig {
-    /**
-     * @return The Databricks secret key reference for an AI21Labs API key.
-     * 
-     */
     private String ai21labsApiKey;
 
     private ModelServingConfigServedEntityExternalModelAi21labsConfig() {}
-    /**
-     * @return The Databricks secret key reference for an AI21Labs API key.
-     * 
-     */
     public String ai21labsApiKey() {
         return this.ai21labsApiKey;
     }

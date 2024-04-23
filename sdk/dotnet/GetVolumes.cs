@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 
@@ -55,7 +53,6 @@ namespace Pulumi.Databricks
         /// 
         /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 

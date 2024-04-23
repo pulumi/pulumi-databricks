@@ -52,46 +52,27 @@ import (
 type Permissions struct {
 	pulumi.CustomResourceState
 
-	AccessControls PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
-	// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-	Authorization pulumi.StringPtrOutput `pulumi:"authorization"`
-	// cluster id
-	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
-	// cluster policy id
-	ClusterPolicyId pulumi.StringPtrOutput `pulumi:"clusterPolicyId"`
-	// directory id
-	DirectoryId pulumi.StringPtrOutput `pulumi:"directoryId"`
-	// path of directory
-	DirectoryPath pulumi.StringPtrOutput `pulumi:"directoryPath"`
-	// MLflow experiment id
-	ExperimentId pulumi.StringPtrOutput `pulumi:"experimentId"`
-	// instance pool id
-	InstancePoolId pulumi.StringPtrOutput `pulumi:"instancePoolId"`
-	// job id
-	JobId pulumi.StringPtrOutput `pulumi:"jobId"`
-	// ID of notebook within workspace
-	NotebookId pulumi.StringPtrOutput `pulumi:"notebookId"`
-	// path of notebook
-	NotebookPath pulumi.StringPtrOutput `pulumi:"notebookPath"`
+	AccessControls  PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
+	Authorization   pulumi.StringPtrOutput              `pulumi:"authorization"`
+	ClusterId       pulumi.StringPtrOutput              `pulumi:"clusterId"`
+	ClusterPolicyId pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
+	DirectoryId     pulumi.StringPtrOutput              `pulumi:"directoryId"`
+	DirectoryPath   pulumi.StringPtrOutput              `pulumi:"directoryPath"`
+	ExperimentId    pulumi.StringPtrOutput              `pulumi:"experimentId"`
+	InstancePoolId  pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
+	JobId           pulumi.StringPtrOutput              `pulumi:"jobId"`
+	NotebookId      pulumi.StringPtrOutput              `pulumi:"notebookId"`
+	NotebookPath    pulumi.StringPtrOutput              `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType pulumi.StringOutput `pulumi:"objectType"`
-	// pipeline id
-	PipelineId pulumi.StringPtrOutput `pulumi:"pipelineId"`
-	// MLflow registered model id
+	ObjectType        pulumi.StringOutput    `pulumi:"objectType"`
+	PipelineId        pulumi.StringPtrOutput `pulumi:"pipelineId"`
 	RegisteredModelId pulumi.StringPtrOutput `pulumi:"registeredModelId"`
-	// repo id
-	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
-	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath pulumi.StringPtrOutput `pulumi:"repoPath"`
-	// Model Serving endpoint id.
+	RepoId            pulumi.StringPtrOutput `pulumi:"repoId"`
+	RepoPath          pulumi.StringPtrOutput `pulumi:"repoPath"`
 	ServingEndpointId pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
-	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-	SqlAlertId pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
-	// SQL dashboard id
-	SqlDashboardId pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	// SQL warehouse id
-	SqlEndpointId pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
-	// SQL query id
+	SqlAlertId        pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
+	SqlDashboardId    pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
+	SqlEndpointId     pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
 	SqlQueryId        pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
 	WorkspaceFileId   pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
 	WorkspaceFilePath pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
@@ -130,92 +111,54 @@ func GetPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Permissions resources.
 type permissionsState struct {
-	AccessControls []PermissionsAccessControl `pulumi:"accessControls"`
-	// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-	Authorization *string `pulumi:"authorization"`
-	// cluster id
-	ClusterId *string `pulumi:"clusterId"`
-	// cluster policy id
-	ClusterPolicyId *string `pulumi:"clusterPolicyId"`
-	// directory id
-	DirectoryId *string `pulumi:"directoryId"`
-	// path of directory
-	DirectoryPath *string `pulumi:"directoryPath"`
-	// MLflow experiment id
-	ExperimentId *string `pulumi:"experimentId"`
-	// instance pool id
-	InstancePoolId *string `pulumi:"instancePoolId"`
-	// job id
-	JobId *string `pulumi:"jobId"`
-	// ID of notebook within workspace
-	NotebookId *string `pulumi:"notebookId"`
-	// path of notebook
-	NotebookPath *string `pulumi:"notebookPath"`
+	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
+	Authorization   *string                    `pulumi:"authorization"`
+	ClusterId       *string                    `pulumi:"clusterId"`
+	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
+	DirectoryId     *string                    `pulumi:"directoryId"`
+	DirectoryPath   *string                    `pulumi:"directoryPath"`
+	ExperimentId    *string                    `pulumi:"experimentId"`
+	InstancePoolId  *string                    `pulumi:"instancePoolId"`
+	JobId           *string                    `pulumi:"jobId"`
+	NotebookId      *string                    `pulumi:"notebookId"`
+	NotebookPath    *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType *string `pulumi:"objectType"`
-	// pipeline id
-	PipelineId *string `pulumi:"pipelineId"`
-	// MLflow registered model id
+	ObjectType        *string `pulumi:"objectType"`
+	PipelineId        *string `pulumi:"pipelineId"`
 	RegisteredModelId *string `pulumi:"registeredModelId"`
-	// repo id
-	RepoId *string `pulumi:"repoId"`
-	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath *string `pulumi:"repoPath"`
-	// Model Serving endpoint id.
+	RepoId            *string `pulumi:"repoId"`
+	RepoPath          *string `pulumi:"repoPath"`
 	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-	SqlAlertId *string `pulumi:"sqlAlertId"`
-	// SQL dashboard id
-	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	// SQL warehouse id
-	SqlEndpointId *string `pulumi:"sqlEndpointId"`
-	// SQL query id
+	SqlAlertId        *string `pulumi:"sqlAlertId"`
+	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
+	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
 	SqlQueryId        *string `pulumi:"sqlQueryId"`
 	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
 	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
 }
 
 type PermissionsState struct {
-	AccessControls PermissionsAccessControlArrayInput
-	// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-	Authorization pulumi.StringPtrInput
-	// cluster id
-	ClusterId pulumi.StringPtrInput
-	// cluster policy id
+	AccessControls  PermissionsAccessControlArrayInput
+	Authorization   pulumi.StringPtrInput
+	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
-	// directory id
-	DirectoryId pulumi.StringPtrInput
-	// path of directory
-	DirectoryPath pulumi.StringPtrInput
-	// MLflow experiment id
-	ExperimentId pulumi.StringPtrInput
-	// instance pool id
-	InstancePoolId pulumi.StringPtrInput
-	// job id
-	JobId pulumi.StringPtrInput
-	// ID of notebook within workspace
-	NotebookId pulumi.StringPtrInput
-	// path of notebook
-	NotebookPath pulumi.StringPtrInput
+	DirectoryId     pulumi.StringPtrInput
+	DirectoryPath   pulumi.StringPtrInput
+	ExperimentId    pulumi.StringPtrInput
+	InstancePoolId  pulumi.StringPtrInput
+	JobId           pulumi.StringPtrInput
+	NotebookId      pulumi.StringPtrInput
+	NotebookPath    pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType pulumi.StringPtrInput
-	// pipeline id
-	PipelineId pulumi.StringPtrInput
-	// MLflow registered model id
+	ObjectType        pulumi.StringPtrInput
+	PipelineId        pulumi.StringPtrInput
 	RegisteredModelId pulumi.StringPtrInput
-	// repo id
-	RepoId pulumi.StringPtrInput
-	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath pulumi.StringPtrInput
-	// Model Serving endpoint id.
+	RepoId            pulumi.StringPtrInput
+	RepoPath          pulumi.StringPtrInput
 	ServingEndpointId pulumi.StringPtrInput
-	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-	SqlAlertId pulumi.StringPtrInput
-	// SQL dashboard id
-	SqlDashboardId pulumi.StringPtrInput
-	// SQL warehouse id
-	SqlEndpointId pulumi.StringPtrInput
-	// SQL query id
+	SqlAlertId        pulumi.StringPtrInput
+	SqlDashboardId    pulumi.StringPtrInput
+	SqlEndpointId     pulumi.StringPtrInput
 	SqlQueryId        pulumi.StringPtrInput
 	WorkspaceFileId   pulumi.StringPtrInput
 	WorkspaceFilePath pulumi.StringPtrInput
@@ -226,46 +169,27 @@ func (PermissionsState) ElementType() reflect.Type {
 }
 
 type permissionsArgs struct {
-	AccessControls []PermissionsAccessControl `pulumi:"accessControls"`
-	// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-	Authorization *string `pulumi:"authorization"`
-	// cluster id
-	ClusterId *string `pulumi:"clusterId"`
-	// cluster policy id
-	ClusterPolicyId *string `pulumi:"clusterPolicyId"`
-	// directory id
-	DirectoryId *string `pulumi:"directoryId"`
-	// path of directory
-	DirectoryPath *string `pulumi:"directoryPath"`
-	// MLflow experiment id
-	ExperimentId *string `pulumi:"experimentId"`
-	// instance pool id
-	InstancePoolId *string `pulumi:"instancePoolId"`
-	// job id
-	JobId *string `pulumi:"jobId"`
-	// ID of notebook within workspace
-	NotebookId *string `pulumi:"notebookId"`
-	// path of notebook
-	NotebookPath *string `pulumi:"notebookPath"`
+	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
+	Authorization   *string                    `pulumi:"authorization"`
+	ClusterId       *string                    `pulumi:"clusterId"`
+	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
+	DirectoryId     *string                    `pulumi:"directoryId"`
+	DirectoryPath   *string                    `pulumi:"directoryPath"`
+	ExperimentId    *string                    `pulumi:"experimentId"`
+	InstancePoolId  *string                    `pulumi:"instancePoolId"`
+	JobId           *string                    `pulumi:"jobId"`
+	NotebookId      *string                    `pulumi:"notebookId"`
+	NotebookPath    *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType *string `pulumi:"objectType"`
-	// pipeline id
-	PipelineId *string `pulumi:"pipelineId"`
-	// MLflow registered model id
+	ObjectType        *string `pulumi:"objectType"`
+	PipelineId        *string `pulumi:"pipelineId"`
 	RegisteredModelId *string `pulumi:"registeredModelId"`
-	// repo id
-	RepoId *string `pulumi:"repoId"`
-	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath *string `pulumi:"repoPath"`
-	// Model Serving endpoint id.
+	RepoId            *string `pulumi:"repoId"`
+	RepoPath          *string `pulumi:"repoPath"`
 	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-	SqlAlertId *string `pulumi:"sqlAlertId"`
-	// SQL dashboard id
-	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	// SQL warehouse id
-	SqlEndpointId *string `pulumi:"sqlEndpointId"`
-	// SQL query id
+	SqlAlertId        *string `pulumi:"sqlAlertId"`
+	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
+	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
 	SqlQueryId        *string `pulumi:"sqlQueryId"`
 	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
 	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
@@ -273,46 +197,27 @@ type permissionsArgs struct {
 
 // The set of arguments for constructing a Permissions resource.
 type PermissionsArgs struct {
-	AccessControls PermissionsAccessControlArrayInput
-	// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-	Authorization pulumi.StringPtrInput
-	// cluster id
-	ClusterId pulumi.StringPtrInput
-	// cluster policy id
+	AccessControls  PermissionsAccessControlArrayInput
+	Authorization   pulumi.StringPtrInput
+	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
-	// directory id
-	DirectoryId pulumi.StringPtrInput
-	// path of directory
-	DirectoryPath pulumi.StringPtrInput
-	// MLflow experiment id
-	ExperimentId pulumi.StringPtrInput
-	// instance pool id
-	InstancePoolId pulumi.StringPtrInput
-	// job id
-	JobId pulumi.StringPtrInput
-	// ID of notebook within workspace
-	NotebookId pulumi.StringPtrInput
-	// path of notebook
-	NotebookPath pulumi.StringPtrInput
+	DirectoryId     pulumi.StringPtrInput
+	DirectoryPath   pulumi.StringPtrInput
+	ExperimentId    pulumi.StringPtrInput
+	InstancePoolId  pulumi.StringPtrInput
+	JobId           pulumi.StringPtrInput
+	NotebookId      pulumi.StringPtrInput
+	NotebookPath    pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType pulumi.StringPtrInput
-	// pipeline id
-	PipelineId pulumi.StringPtrInput
-	// MLflow registered model id
+	ObjectType        pulumi.StringPtrInput
+	PipelineId        pulumi.StringPtrInput
 	RegisteredModelId pulumi.StringPtrInput
-	// repo id
-	RepoId pulumi.StringPtrInput
-	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath pulumi.StringPtrInput
-	// Model Serving endpoint id.
+	RepoId            pulumi.StringPtrInput
+	RepoPath          pulumi.StringPtrInput
 	ServingEndpointId pulumi.StringPtrInput
-	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-	SqlAlertId pulumi.StringPtrInput
-	// SQL dashboard id
-	SqlDashboardId pulumi.StringPtrInput
-	// SQL warehouse id
-	SqlEndpointId pulumi.StringPtrInput
-	// SQL query id
+	SqlAlertId        pulumi.StringPtrInput
+	SqlDashboardId    pulumi.StringPtrInput
+	SqlEndpointId     pulumi.StringPtrInput
 	SqlQueryId        pulumi.StringPtrInput
 	WorkspaceFileId   pulumi.StringPtrInput
 	WorkspaceFilePath pulumi.StringPtrInput
@@ -409,52 +314,42 @@ func (o PermissionsOutput) AccessControls() PermissionsAccessControlArrayOutput 
 	return o.ApplyT(func(v *Permissions) PermissionsAccessControlArrayOutput { return v.AccessControls }).(PermissionsAccessControlArrayOutput)
 }
 
-// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
 func (o PermissionsOutput) Authorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.Authorization }).(pulumi.StringPtrOutput)
 }
 
-// cluster id
 func (o PermissionsOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
-// cluster policy id
 func (o PermissionsOutput) ClusterPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ClusterPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// directory id
 func (o PermissionsOutput) DirectoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DirectoryId }).(pulumi.StringPtrOutput)
 }
 
-// path of directory
 func (o PermissionsOutput) DirectoryPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DirectoryPath }).(pulumi.StringPtrOutput)
 }
 
-// MLflow experiment id
 func (o PermissionsOutput) ExperimentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ExperimentId }).(pulumi.StringPtrOutput)
 }
 
-// instance pool id
 func (o PermissionsOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
-// job id
 func (o PermissionsOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.JobId }).(pulumi.StringPtrOutput)
 }
 
-// ID of notebook within workspace
 func (o PermissionsOutput) NotebookId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.NotebookId }).(pulumi.StringPtrOutput)
 }
 
-// path of notebook
 func (o PermissionsOutput) NotebookPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.NotebookPath }).(pulumi.StringPtrOutput)
 }
@@ -464,47 +359,38 @@ func (o PermissionsOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// pipeline id
 func (o PermissionsOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.PipelineId }).(pulumi.StringPtrOutput)
 }
 
-// MLflow registered model id
 func (o PermissionsOutput) RegisteredModelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RegisteredModelId }).(pulumi.StringPtrOutput)
 }
 
-// repo id
 func (o PermissionsOutput) RepoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RepoId }).(pulumi.StringPtrOutput)
 }
 
-// path of databricks repo directory(`/Repos/<username>/...`)
 func (o PermissionsOutput) RepoPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RepoPath }).(pulumi.StringPtrOutput)
 }
 
-// Model Serving endpoint id.
 func (o PermissionsOutput) ServingEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ServingEndpointId }).(pulumi.StringPtrOutput)
 }
 
-// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 func (o PermissionsOutput) SqlAlertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlAlertId }).(pulumi.StringPtrOutput)
 }
 
-// SQL dashboard id
 func (o PermissionsOutput) SqlDashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlDashboardId }).(pulumi.StringPtrOutput)
 }
 
-// SQL warehouse id
 func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlEndpointId }).(pulumi.StringPtrOutput)
 }
 
-// SQL query id
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
 }

@@ -37,7 +37,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -77,7 +76,6 @@ import * as utilities from "./utilities";
  *     comment: "this volume is managed by terraform",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

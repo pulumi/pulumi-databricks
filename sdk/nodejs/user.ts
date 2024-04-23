@@ -19,18 +19,15 @@ import * as utilities from "./utilities";
  *
  * Creating regular user:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const me = new databricks.User("me", {userName: "me@example.com"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -44,11 +41,9 @@ import * as utilities from "./utilities";
  *     memberId: me.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating user with cluster create permissions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -59,11 +54,9 @@ import * as utilities from "./utilities";
  *     allowClusterCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating user in AWS Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -73,11 +66,9 @@ import * as utilities from "./utilities";
  *     displayName: "Example user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating user in Azure Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -87,7 +78,6 @@ import * as utilities from "./utilities";
  *     displayName: "Example user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

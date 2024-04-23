@@ -260,7 +260,6 @@ type ClusterAutoscale struct {
 	//
 	// The following example demonstrates how to create an single node cluster:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -303,7 +302,6 @@ type ClusterAutoscale struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers *int `pulumi:"minWorkers"`
@@ -334,7 +332,6 @@ type ClusterAutoscaleArgs struct {
 	//
 	// The following example demonstrates how to create an single node cluster:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -377,7 +374,6 @@ type ClusterAutoscaleArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
 	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
@@ -473,7 +469,6 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //
 // The following example demonstrates how to create an single node cluster:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -519,7 +514,6 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterAutoscaleOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutoscale) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
 }
@@ -566,7 +560,6 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //
 // The following example demonstrates how to create an single node cluster:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -612,7 +605,6 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAutoscale) *int {
 		if v == nil {
@@ -1548,7 +1540,6 @@ func (o ClusterClusterLogConfPtrOutput) S3() ClusterClusterLogConfS3PtrOutput {
 }
 
 type ClusterClusterLogConfDbfs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -1564,7 +1555,6 @@ type ClusterClusterLogConfDbfsInput interface {
 }
 
 type ClusterClusterLogConfDbfsArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -1645,7 +1635,6 @@ func (o ClusterClusterLogConfDbfsOutput) ToClusterClusterLogConfDbfsPtrOutputWit
 	}).(ClusterClusterLogConfDbfsPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfDbfsOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfDbfs) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -1674,7 +1663,6 @@ func (o ClusterClusterLogConfDbfsPtrOutput) Elem() ClusterClusterLogConfDbfsOutp
 	}).(ClusterClusterLogConfDbfsOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfDbfs) *string {
 		if v == nil {
@@ -1685,20 +1673,13 @@ func (o ClusterClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput
 }
 
 type ClusterClusterLogConfS3 struct {
-	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-	CannedAcl *string `pulumi:"cannedAcl"`
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination string `pulumi:"destination"`
-	// Enable server-side encryption, false by default.
-	EnableEncryption *bool `pulumi:"enableEncryption"`
-	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-	EncryptionType *string `pulumi:"encryptionType"`
-	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-	Endpoint *string `pulumi:"endpoint"`
-	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-	KmsKey *string `pulumi:"kmsKey"`
-	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-	Region *string `pulumi:"region"`
+	CannedAcl        *string `pulumi:"cannedAcl"`
+	Destination      string  `pulumi:"destination"`
+	EnableEncryption *bool   `pulumi:"enableEncryption"`
+	EncryptionType   *string `pulumi:"encryptionType"`
+	Endpoint         *string `pulumi:"endpoint"`
+	KmsKey           *string `pulumi:"kmsKey"`
+	Region           *string `pulumi:"region"`
 }
 
 // ClusterClusterLogConfS3Input is an input type that accepts ClusterClusterLogConfS3Args and ClusterClusterLogConfS3Output values.
@@ -1713,20 +1694,13 @@ type ClusterClusterLogConfS3Input interface {
 }
 
 type ClusterClusterLogConfS3Args struct {
-	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-	CannedAcl pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringInput `pulumi:"destination"`
-	// Enable server-side encryption, false by default.
-	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
-	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
-	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
-	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	Destination      pulumi.StringInput    `pulumi:"destination"`
+	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
+	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ClusterClusterLogConfS3Args) ElementType() reflect.Type {
@@ -1806,37 +1780,30 @@ func (o ClusterClusterLogConfS3Output) ToClusterClusterLogConfS3PtrOutputWithCon
 	}).(ClusterClusterLogConfS3PtrOutput)
 }
 
-// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterClusterLogConfS3Output) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfS3Output) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Enable server-side encryption, false by default.
 func (o ClusterClusterLogConfS3Output) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterClusterLogConfS3Output) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
-// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3Output) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterClusterLogConfS3Output) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
-// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3Output) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -1865,7 +1832,6 @@ func (o ClusterClusterLogConfS3PtrOutput) Elem() ClusterClusterLogConfS3Output {
 	}).(ClusterClusterLogConfS3Output)
 }
 
-// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1875,7 +1841,6 @@ func (o ClusterClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1885,7 +1850,6 @@ func (o ClusterClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable server-side encryption, false by default.
 func (o ClusterClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *bool {
 		if v == nil {
@@ -1895,7 +1859,6 @@ func (o ClusterClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1905,7 +1868,6 @@ func (o ClusterClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1915,7 +1877,6 @@ func (o ClusterClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1925,7 +1886,6 @@ func (o ClusterClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1940,7 +1900,6 @@ type ClusterClusterMountInfo struct {
 	//
 	// For example, you can mount Azure Data Lake Storage container using the following code:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1974,7 +1933,6 @@ type ClusterClusterMountInfo struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	LocalMountDirPath string `pulumi:"localMountDirPath"`
 	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfo `pulumi:"networkFilesystemInfo"`
@@ -1998,7 +1956,6 @@ type ClusterClusterMountInfoArgs struct {
 	//
 	// For example, you can mount Azure Data Lake Storage container using the following code:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2032,7 +1989,6 @@ type ClusterClusterMountInfoArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	LocalMountDirPath pulumi.StringInput `pulumi:"localMountDirPath"`
 	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfoInput `pulumi:"networkFilesystemInfo"`
@@ -2095,7 +2051,6 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //
 // For example, you can mount Azure Data Lake Storage container using the following code:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2132,7 +2087,6 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterClusterMountInfoOutput) LocalMountDirPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfo) string { return v.LocalMountDirPath }).(pulumi.StringOutput)
 }
@@ -2235,7 +2189,6 @@ type ClusterDockerImage struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2274,7 +2227,6 @@ type ClusterDockerImage struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth *ClusterDockerImageBasicAuth `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url string `pulumi:"url"`
@@ -2296,7 +2248,6 @@ type ClusterDockerImageArgs struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2335,7 +2286,6 @@ type ClusterDockerImageArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth ClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url pulumi.StringInput `pulumi:"url"`
@@ -2422,7 +2372,6 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2464,7 +2413,6 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterDockerImageOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v ClusterDockerImage) *ClusterDockerImageBasicAuth { return v.BasicAuth }).(ClusterDockerImageBasicAuthPtrOutput)
 }
@@ -2502,7 +2450,6 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2544,7 +2491,6 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterDockerImagePtrOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v *ClusterDockerImage) *ClusterDockerImageBasicAuth {
 		if v == nil {
@@ -3078,7 +3024,6 @@ func (o ClusterInitScriptArrayOutput) Index(i pulumi.IntInput) ClusterInitScript
 }
 
 type ClusterInitScriptAbfss struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -3094,7 +3039,6 @@ type ClusterInitScriptAbfssInput interface {
 }
 
 type ClusterInitScriptAbfssArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -3175,7 +3119,6 @@ func (o ClusterInitScriptAbfssOutput) ToClusterInitScriptAbfssPtrOutputWithConte
 	}).(ClusterInitScriptAbfssPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -3204,7 +3147,6 @@ func (o ClusterInitScriptAbfssPtrOutput) Elem() ClusterInitScriptAbfssOutput {
 	}).(ClusterInitScriptAbfssOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptAbfss) *string {
 		if v == nil {
@@ -3215,7 +3157,6 @@ func (o ClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptDbfs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -3231,7 +3172,6 @@ type ClusterInitScriptDbfsInput interface {
 }
 
 type ClusterInitScriptDbfsArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -3312,7 +3252,6 @@ func (o ClusterInitScriptDbfsOutput) ToClusterInitScriptDbfsPtrOutputWithContext
 	}).(ClusterInitScriptDbfsPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptDbfsOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptDbfs) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -3341,7 +3280,6 @@ func (o ClusterInitScriptDbfsPtrOutput) Elem() ClusterInitScriptDbfsOutput {
 	}).(ClusterInitScriptDbfsOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptDbfs) *string {
 		if v == nil {
@@ -3352,7 +3290,6 @@ func (o ClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptFile struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -3368,7 +3305,6 @@ type ClusterInitScriptFileInput interface {
 }
 
 type ClusterInitScriptFileArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -3449,7 +3385,6 @@ func (o ClusterInitScriptFileOutput) ToClusterInitScriptFilePtrOutputWithContext
 	}).(ClusterInitScriptFilePtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -3478,7 +3413,6 @@ func (o ClusterInitScriptFilePtrOutput) Elem() ClusterInitScriptFileOutput {
 	}).(ClusterInitScriptFileOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptFile) *string {
 		if v == nil {
@@ -3489,7 +3423,6 @@ func (o ClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptGcs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -3505,7 +3438,6 @@ type ClusterInitScriptGcsInput interface {
 }
 
 type ClusterInitScriptGcsArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -3586,7 +3518,6 @@ func (o ClusterInitScriptGcsOutput) ToClusterInitScriptGcsPtrOutputWithContext(c
 	}).(ClusterInitScriptGcsPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -3615,7 +3546,6 @@ func (o ClusterInitScriptGcsPtrOutput) Elem() ClusterInitScriptGcsOutput {
 	}).(ClusterInitScriptGcsOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptGcs) *string {
 		if v == nil {
@@ -3626,20 +3556,13 @@ func (o ClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptS3 struct {
-	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-	CannedAcl *string `pulumi:"cannedAcl"`
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination string `pulumi:"destination"`
-	// Enable server-side encryption, false by default.
-	EnableEncryption *bool `pulumi:"enableEncryption"`
-	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-	EncryptionType *string `pulumi:"encryptionType"`
-	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-	Endpoint *string `pulumi:"endpoint"`
-	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-	KmsKey *string `pulumi:"kmsKey"`
-	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-	Region *string `pulumi:"region"`
+	CannedAcl        *string `pulumi:"cannedAcl"`
+	Destination      string  `pulumi:"destination"`
+	EnableEncryption *bool   `pulumi:"enableEncryption"`
+	EncryptionType   *string `pulumi:"encryptionType"`
+	Endpoint         *string `pulumi:"endpoint"`
+	KmsKey           *string `pulumi:"kmsKey"`
+	Region           *string `pulumi:"region"`
 }
 
 // ClusterInitScriptS3Input is an input type that accepts ClusterInitScriptS3Args and ClusterInitScriptS3Output values.
@@ -3654,20 +3577,13 @@ type ClusterInitScriptS3Input interface {
 }
 
 type ClusterInitScriptS3Args struct {
-	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-	CannedAcl pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringInput `pulumi:"destination"`
-	// Enable server-side encryption, false by default.
-	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
-	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
-	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
-	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	Destination      pulumi.StringInput    `pulumi:"destination"`
+	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
+	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ClusterInitScriptS3Args) ElementType() reflect.Type {
@@ -3747,37 +3663,30 @@ func (o ClusterInitScriptS3Output) ToClusterInitScriptS3PtrOutputWithContext(ctx
 	}).(ClusterInitScriptS3PtrOutput)
 }
 
-// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterInitScriptS3Output) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptS3Output) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Enable server-side encryption, false by default.
 func (o ClusterInitScriptS3Output) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterInitScriptS3Output) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
-// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3Output) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterInitScriptS3Output) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
-// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3Output) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -3806,7 +3715,6 @@ func (o ClusterInitScriptS3PtrOutput) Elem() ClusterInitScriptS3Output {
 	}).(ClusterInitScriptS3Output)
 }
 
-// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3816,7 +3724,6 @@ func (o ClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3826,7 +3733,6 @@ func (o ClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable server-side encryption, false by default.
 func (o ClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *bool {
 		if v == nil {
@@ -3836,7 +3742,6 @@ func (o ClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3846,7 +3751,6 @@ func (o ClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3856,7 +3760,6 @@ func (o ClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3866,7 +3769,6 @@ func (o ClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -3877,7 +3779,6 @@ func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptVolumes struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -3893,7 +3794,6 @@ type ClusterInitScriptVolumesInput interface {
 }
 
 type ClusterInitScriptVolumesArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -3974,7 +3874,6 @@ func (o ClusterInitScriptVolumesOutput) ToClusterInitScriptVolumesPtrOutputWithC
 	}).(ClusterInitScriptVolumesPtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptVolumesOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptVolumes) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -4003,7 +3902,6 @@ func (o ClusterInitScriptVolumesPtrOutput) Elem() ClusterInitScriptVolumesOutput
 	}).(ClusterInitScriptVolumesOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptVolumes) *string {
 		if v == nil {
@@ -4014,7 +3912,6 @@ func (o ClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput 
 }
 
 type ClusterInitScriptWorkspace struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -4030,7 +3927,6 @@ type ClusterInitScriptWorkspaceInput interface {
 }
 
 type ClusterInitScriptWorkspaceArgs struct {
-	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -4111,7 +4007,6 @@ func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspacePtrOutputW
 	}).(ClusterInitScriptWorkspacePtrOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -4140,7 +4035,6 @@ func (o ClusterInitScriptWorkspacePtrOutput) Elem() ClusterInitScriptWorkspaceOu
 	}).(ClusterInitScriptWorkspaceOutput)
 }
 
-// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptWorkspace) *string {
 		if v == nil {
@@ -5452,7 +5346,6 @@ func (o ClusterWorkloadTypePtrOutput) Clients() ClusterWorkloadTypeClientsPtrOut
 type ClusterWorkloadTypeClients struct {
 	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -5478,7 +5371,6 @@ type ClusterWorkloadTypeClients struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Jobs *bool `pulumi:"jobs"`
 	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks *bool `pulumi:"notebooks"`
@@ -5498,7 +5390,6 @@ type ClusterWorkloadTypeClientsInput interface {
 type ClusterWorkloadTypeClientsArgs struct {
 	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -5524,7 +5415,6 @@ type ClusterWorkloadTypeClientsArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Jobs pulumi.BoolPtrInput `pulumi:"jobs"`
 	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
@@ -5609,7 +5499,6 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 
 // boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5638,7 +5527,6 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
 }
@@ -5674,7 +5562,6 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 
 // boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5703,7 +5590,6 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadTypeClients) *bool {
 		if v == nil {
@@ -7642,7 +7528,6 @@ type InstancePoolPreloadedDockerImage struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -7683,7 +7568,6 @@ type InstancePoolPreloadedDockerImage struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth *InstancePoolPreloadedDockerImageBasicAuth `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url string `pulumi:"url"`
@@ -7705,7 +7589,6 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -7746,7 +7629,6 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth InstancePoolPreloadedDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url pulumi.StringInput `pulumi:"url"`
@@ -7807,7 +7689,6 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -7851,7 +7732,6 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o InstancePoolPreloadedDockerImageOutput) BasicAuth() InstancePoolPreloadedDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v InstancePoolPreloadedDockerImage) *InstancePoolPreloadedDockerImageBasicAuth {
 		return v.BasicAuth
@@ -8584,16 +8464,11 @@ func (o JobDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
 }
 
 type JobEmailNotifications struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures []string `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts []string `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses []string `pulumi:"onSuccesses"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
 // JobEmailNotificationsInput is an input type that accepts JobEmailNotificationsArgs and JobEmailNotificationsOutput values.
@@ -8608,16 +8483,11 @@ type JobEmailNotificationsInput interface {
 }
 
 type JobEmailNotificationsArgs struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobEmailNotificationsArgs) ElementType() reflect.Type {
@@ -8697,27 +8567,22 @@ func (o JobEmailNotificationsOutput) ToJobEmailNotificationsPtrOutputWithContext
 	}).(JobEmailNotificationsPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -8746,7 +8611,6 @@ func (o JobEmailNotificationsPtrOutput) Elem() JobEmailNotificationsOutput {
 	}).(JobEmailNotificationsOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) *bool {
 		if v == nil {
@@ -8756,7 +8620,6 @@ func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8766,7 +8629,6 @@ func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pu
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8776,7 +8638,6 @@ func (o JobEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8786,7 +8647,6 @@ func (o JobEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -9575,9 +9435,7 @@ func (o JobHealthPtrOutput) Rules() JobHealthRuleArrayOutput {
 type JobHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric *string `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op *string `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value *int `pulumi:"value"`
@@ -9597,9 +9455,7 @@ type JobHealthRuleInput interface {
 type JobHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringPtrInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value pulumi.IntPtrInput `pulumi:"value"`
@@ -9661,9 +9517,7 @@ func (o JobHealthRuleOutput) Metric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
-// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-//
-// This task does not require a cluster to execute and does not support retries or notifications.
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 func (o JobHealthRuleOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -11587,7 +11441,7 @@ func (o JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoOutput) Serv
 
 type JobJobClusterNewClusterDockerImage struct {
 	BasicAuth *JobJobClusterNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -11604,7 +11458,7 @@ type JobJobClusterNewClusterDockerImageInput interface {
 
 type JobJobClusterNewClusterDockerImageArgs struct {
 	BasicAuth JobJobClusterNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -11691,7 +11545,7 @@ func (o JobJobClusterNewClusterDockerImageOutput) BasicAuth() JobJobClusterNewCl
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobJobClusterNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -11729,7 +11583,7 @@ func (o JobJobClusterNewClusterDockerImagePtrOutput) BasicAuth() JobJobClusterNe
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobJobClusterNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterDockerImage) *string {
 		if v == nil {
@@ -12098,8 +11952,7 @@ func (o JobJobClusterNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtr
 type JobJobClusterNewClusterInitScript struct {
 	Abfss *JobJobClusterNewClusterInitScriptAbfss `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs *JobJobClusterNewClusterInitScriptDbfs `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      *JobJobClusterNewClusterInitScriptDbfs      `pulumi:"dbfs"`
 	File      *JobJobClusterNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobJobClusterNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobJobClusterNewClusterInitScriptS3        `pulumi:"s3"`
@@ -12121,8 +11974,7 @@ type JobJobClusterNewClusterInitScriptInput interface {
 type JobJobClusterNewClusterInitScriptArgs struct {
 	Abfss JobJobClusterNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs JobJobClusterNewClusterInitScriptDbfsPtrInput `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      JobJobClusterNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
 	File      JobJobClusterNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobJobClusterNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobJobClusterNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -12190,7 +12042,6 @@ func (o JobJobClusterNewClusterInitScriptOutput) Dbfs() JobJobClusterNewClusterI
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptDbfs { return v.Dbfs }).(JobJobClusterNewClusterInitScriptDbfsPtrOutput)
 }
 
-// block consisting of single string fields:
 func (o JobJobClusterNewClusterInitScriptOutput) File() JobJobClusterNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptFile { return v.File }).(JobJobClusterNewClusterInitScriptFilePtrOutput)
 }
@@ -15906,7 +15757,7 @@ func (o JobNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress(
 
 type JobNewClusterDockerImage struct {
 	BasicAuth *JobNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -15923,7 +15774,7 @@ type JobNewClusterDockerImageInput interface {
 
 type JobNewClusterDockerImageArgs struct {
 	BasicAuth JobNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -16008,7 +15859,7 @@ func (o JobNewClusterDockerImageOutput) BasicAuth() JobNewClusterDockerImageBasi
 	return o.ApplyT(func(v JobNewClusterDockerImage) *JobNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -16046,7 +15897,7 @@ func (o JobNewClusterDockerImagePtrOutput) BasicAuth() JobNewClusterDockerImageB
 	}).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobNewClusterDockerImage) *string {
 		if v == nil {
@@ -16415,8 +16266,7 @@ func (o JobNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 type JobNewClusterInitScript struct {
 	Abfss *JobNewClusterInitScriptAbfss `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs *JobNewClusterInitScriptDbfs `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      *JobNewClusterInitScriptDbfs      `pulumi:"dbfs"`
 	File      *JobNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobNewClusterInitScriptS3        `pulumi:"s3"`
@@ -16438,8 +16288,7 @@ type JobNewClusterInitScriptInput interface {
 type JobNewClusterInitScriptArgs struct {
 	Abfss JobNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs JobNewClusterInitScriptDbfsPtrInput `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      JobNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
 	File      JobNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -16507,7 +16356,6 @@ func (o JobNewClusterInitScriptOutput) Dbfs() JobNewClusterInitScriptDbfsPtrOutp
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptDbfs { return v.Dbfs }).(JobNewClusterInitScriptDbfsPtrOutput)
 }
 
-// block consisting of single string fields:
 func (o JobNewClusterInitScriptOutput) File() JobNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptFile { return v.File }).(JobNewClusterInitScriptFilePtrOutput)
 }
@@ -18806,7 +18654,6 @@ type JobRunAs struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -18829,7 +18676,6 @@ type JobRunAs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
 	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `pulumi:"userName"`
@@ -18851,7 +18697,6 @@ type JobRunAsArgs struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -18874,7 +18719,6 @@ type JobRunAsArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
 	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
@@ -18961,7 +18805,6 @@ func (o JobRunAsOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobR
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -18987,7 +18830,6 @@ func (o JobRunAsOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobR
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
 }
@@ -19025,7 +18867,6 @@ func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -19051,7 +18892,6 @@ func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobRunAs) *string {
 		if v == nil {
@@ -19898,18 +19738,16 @@ type JobTask struct {
 	ExistingClusterId  *string                    `pulumi:"existingClusterId"`
 	ForEachTask        *JobTaskForEachTask        `pulumi:"forEachTask"`
 	// block described below that specifies health conditions for a given task.
-	Health *JobTaskHealth `pulumi:"health"`
-	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-	JobClusterKey *string `pulumi:"jobClusterKey"`
+	Health        *JobTaskHealth `pulumi:"health"`
+	JobClusterKey *string        `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries []JobTaskLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
-	// Same set of parameters as for Cluster resource.
-	NewCluster   *JobTaskNewCluster   `pulumi:"newCluster"`
-	NotebookTask *JobTaskNotebookTask `pulumi:"notebookTask"`
+	MinRetryIntervalMillis *int                 `pulumi:"minRetryIntervalMillis"`
+	NewCluster             *JobTaskNewCluster   `pulumi:"newCluster"`
+	NotebookTask           *JobTaskNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskPipelineTask         `pulumi:"pipelineTask"`
@@ -19956,18 +19794,16 @@ type JobTaskArgs struct {
 	ExistingClusterId  pulumi.StringPtrInput             `pulumi:"existingClusterId"`
 	ForEachTask        JobTaskForEachTaskPtrInput        `pulumi:"forEachTask"`
 	// block described below that specifies health conditions for a given task.
-	Health JobTaskHealthPtrInput `pulumi:"health"`
-	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+	Health        JobTaskHealthPtrInput `pulumi:"health"`
 	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries JobTaskLibraryArrayInput `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
-	// Same set of parameters as for Cluster resource.
-	NewCluster   JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
-	NotebookTask JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
+	MinRetryIntervalMillis pulumi.IntPtrInput          `pulumi:"minRetryIntervalMillis"`
+	NewCluster             JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
+	NotebookTask           JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
@@ -20081,7 +19917,6 @@ func (o JobTaskOutput) Health() JobTaskHealthPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskHealth { return v.Health }).(JobTaskHealthPtrOutput)
 }
 
-// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 func (o JobTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
 }
@@ -20101,7 +19936,6 @@ func (o JobTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
-// Same set of parameters as for Cluster resource.
 func (o JobTaskOutput) NewCluster() JobTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNewCluster { return v.NewCluster }).(JobTaskNewClusterPtrOutput)
 }
@@ -20746,16 +20580,11 @@ func (o JobTaskDependsOnArrayOutput) Index(i pulumi.IntInput) JobTaskDependsOnOu
 }
 
 type JobTaskEmailNotifications struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures []string `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts []string `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses []string `pulumi:"onSuccesses"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
 // JobTaskEmailNotificationsInput is an input type that accepts JobTaskEmailNotificationsArgs and JobTaskEmailNotificationsOutput values.
@@ -20770,16 +20599,11 @@ type JobTaskEmailNotificationsInput interface {
 }
 
 type JobTaskEmailNotificationsArgs struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobTaskEmailNotificationsArgs) ElementType() reflect.Type {
@@ -20859,27 +20683,22 @@ func (o JobTaskEmailNotificationsOutput) ToJobTaskEmailNotificationsPtrOutputWit
 	}).(JobTaskEmailNotificationsPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -20908,7 +20727,6 @@ func (o JobTaskEmailNotificationsPtrOutput) Elem() JobTaskEmailNotificationsOutp
 	}).(JobTaskEmailNotificationsOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
 		if v == nil {
@@ -20918,7 +20736,6 @@ func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20928,7 +20745,6 @@ func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs(
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20938,7 +20754,6 @@ func (o JobTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20948,7 +20763,6 @@ func (o JobTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -21145,18 +20959,16 @@ type JobTaskForEachTaskTask struct {
 	EnvironmentKey     *string                                   `pulumi:"environmentKey"`
 	ExistingClusterId  *string                                   `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
-	Health *JobTaskForEachTaskTaskHealth `pulumi:"health"`
-	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-	JobClusterKey *string `pulumi:"jobClusterKey"`
+	Health        *JobTaskForEachTaskTaskHealth `pulumi:"health"`
+	JobClusterKey *string                       `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries []JobTaskForEachTaskTaskLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
-	// Same set of parameters as for Cluster resource.
-	NewCluster   *JobTaskForEachTaskTaskNewCluster   `pulumi:"newCluster"`
-	NotebookTask *JobTaskForEachTaskTaskNotebookTask `pulumi:"notebookTask"`
+	MinRetryIntervalMillis *int                                `pulumi:"minRetryIntervalMillis"`
+	NewCluster             *JobTaskForEachTaskTaskNewCluster   `pulumi:"newCluster"`
+	NotebookTask           *JobTaskForEachTaskTaskNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobTaskForEachTaskTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskForEachTaskTaskPipelineTask         `pulumi:"pipelineTask"`
@@ -21202,18 +21014,16 @@ type JobTaskForEachTaskTaskArgs struct {
 	EnvironmentKey     pulumi.StringPtrInput                            `pulumi:"environmentKey"`
 	ExistingClusterId  pulumi.StringPtrInput                            `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
-	Health JobTaskForEachTaskTaskHealthPtrInput `pulumi:"health"`
-	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
+	Health        JobTaskForEachTaskTaskHealthPtrInput `pulumi:"health"`
+	JobClusterKey pulumi.StringPtrInput                `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries JobTaskForEachTaskTaskLibraryArrayInput `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
-	// Same set of parameters as for Cluster resource.
-	NewCluster   JobTaskForEachTaskTaskNewClusterPtrInput   `pulumi:"newCluster"`
-	NotebookTask JobTaskForEachTaskTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
+	MinRetryIntervalMillis pulumi.IntPtrInput                         `pulumi:"minRetryIntervalMillis"`
+	NewCluster             JobTaskForEachTaskTaskNewClusterPtrInput   `pulumi:"newCluster"`
+	NotebookTask           JobTaskForEachTaskTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobTaskForEachTaskTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskForEachTaskTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
@@ -21349,7 +21159,6 @@ func (o JobTaskForEachTaskTaskOutput) Health() JobTaskForEachTaskTaskHealthPtrOu
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskHealth { return v.Health }).(JobTaskForEachTaskTaskHealthPtrOutput)
 }
 
-// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 func (o JobTaskForEachTaskTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
 }
@@ -21369,7 +21178,6 @@ func (o JobTaskForEachTaskTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutp
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
-// Same set of parameters as for Cluster resource.
 func (o JobTaskForEachTaskTaskOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster { return v.NewCluster }).(JobTaskForEachTaskTaskNewClusterPtrOutput)
 }
@@ -21541,7 +21349,6 @@ func (o JobTaskForEachTaskTaskPtrOutput) Health() JobTaskForEachTaskTaskHealthPt
 	}).(JobTaskForEachTaskTaskHealthPtrOutput)
 }
 
-// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 func (o JobTaskForEachTaskTaskPtrOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *string {
 		if v == nil {
@@ -21581,7 +21388,6 @@ func (o JobTaskForEachTaskTaskPtrOutput) MinRetryIntervalMillis() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Same set of parameters as for Cluster resource.
 func (o JobTaskForEachTaskTaskPtrOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster {
 		if v == nil {
@@ -22281,16 +22087,11 @@ func (o JobTaskForEachTaskTaskDependsOnArrayOutput) Index(i pulumi.IntInput) Job
 }
 
 type JobTaskForEachTaskTaskEmailNotifications struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures []string `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts []string `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses []string `pulumi:"onSuccesses"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
 // JobTaskForEachTaskTaskEmailNotificationsInput is an input type that accepts JobTaskForEachTaskTaskEmailNotificationsArgs and JobTaskForEachTaskTaskEmailNotificationsOutput values.
@@ -22305,16 +22106,11 @@ type JobTaskForEachTaskTaskEmailNotificationsInput interface {
 }
 
 type JobTaskForEachTaskTaskEmailNotificationsArgs struct {
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
-	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	// (List) list of emails to notify when the run fails.
-	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
-	// (List) list of emails to notify when the run starts.
-	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
-	// (List) list of emails to notify when the run completes successfully.
-	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobTaskForEachTaskTaskEmailNotificationsArgs) ElementType() reflect.Type {
@@ -22394,29 +22190,24 @@ func (o JobTaskForEachTaskTaskEmailNotificationsOutput) ToJobTaskForEachTaskTask
 	}).(JobTaskForEachTaskTaskEmailNotificationsPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string {
 		return v.OnDurationWarningThresholdExceededs
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -22445,7 +22236,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) Elem() JobTaskForEach
 	}).(JobTaskForEachTaskTaskEmailNotificationsOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) *bool {
 		if v == nil {
@@ -22455,7 +22245,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22465,7 +22254,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThre
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run fails.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22475,7 +22263,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnFailures() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run starts.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22485,7 +22272,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
-// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22635,9 +22421,7 @@ func (o JobTaskForEachTaskTaskHealthPtrOutput) Rules() JobTaskForEachTaskTaskHea
 type JobTaskForEachTaskTaskHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric *string `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op *string `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value *int `pulumi:"value"`
@@ -22657,9 +22441,7 @@ type JobTaskForEachTaskTaskHealthRuleInput interface {
 type JobTaskForEachTaskTaskHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringPtrInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value pulumi.IntPtrInput `pulumi:"value"`
@@ -22721,9 +22503,7 @@ func (o JobTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
-// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-//
-// This task does not require a cluster to execute and does not support retries or notifications.
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 func (o JobTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -25148,7 +24928,7 @@ func (o JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoOut
 
 type JobTaskForEachTaskTaskNewClusterDockerImage struct {
 	BasicAuth *JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -25165,7 +24945,7 @@ type JobTaskForEachTaskTaskNewClusterDockerImageInput interface {
 
 type JobTaskForEachTaskTaskNewClusterDockerImageArgs struct {
 	BasicAuth JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -25252,7 +25032,7 @@ func (o JobTaskForEachTaskTaskNewClusterDockerImageOutput) BasicAuth() JobTaskFo
 	}).(JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobTaskForEachTaskTaskNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -25290,7 +25070,7 @@ func (o JobTaskForEachTaskTaskNewClusterDockerImagePtrOutput) BasicAuth() JobTas
 	}).(JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobTaskForEachTaskTaskNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterDockerImage) *string {
 		if v == nil {
@@ -25657,9 +25437,8 @@ func (o JobTaskForEachTaskTaskNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.
 }
 
 type JobTaskForEachTaskTaskNewClusterInitScript struct {
-	Abfss *JobTaskForEachTaskTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *JobTaskForEachTaskTaskNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Abfss     *JobTaskForEachTaskTaskNewClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *JobTaskForEachTaskTaskNewClusterInitScriptDbfs      `pulumi:"dbfs"`
 	File      *JobTaskForEachTaskTaskNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobTaskForEachTaskTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobTaskForEachTaskTaskNewClusterInitScriptS3        `pulumi:"s3"`
@@ -25679,9 +25458,8 @@ type JobTaskForEachTaskTaskNewClusterInitScriptInput interface {
 }
 
 type JobTaskForEachTaskTaskNewClusterInitScriptArgs struct {
-	Abfss JobTaskForEachTaskTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  JobTaskForEachTaskTaskNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Abfss     JobTaskForEachTaskTaskNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      JobTaskForEachTaskTaskNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
 	File      JobTaskForEachTaskTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobTaskForEachTaskTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobTaskForEachTaskTaskNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -25752,7 +25530,6 @@ func (o JobTaskForEachTaskTaskNewClusterInitScriptOutput) Dbfs() JobTaskForEachT
 	}).(JobTaskForEachTaskTaskNewClusterInitScriptDbfsPtrOutput)
 }
 
-// block consisting of single string fields:
 func (o JobTaskForEachTaskTaskNewClusterInitScriptOutput) File() JobTaskForEachTaskTaskNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterInitScript) *JobTaskForEachTaskTaskNewClusterInitScriptFile {
 		return v.File
@@ -28884,8 +28661,7 @@ func (o JobTaskForEachTaskTaskSqlTaskAlertPtrOutput) Subscriptions() JobTaskForE
 
 type JobTaskForEachTaskTaskSqlTaskAlertSubscription struct {
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskForEachTaskTaskSqlTaskAlertSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs and JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput values.
@@ -28901,8 +28677,7 @@ type JobTaskForEachTaskTaskSqlTaskAlertSubscriptionInput interface {
 
 type JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs struct {
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
@@ -28960,7 +28735,6 @@ func (o JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput) DestinationId() pu
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -29183,8 +28957,7 @@ func (o JobTaskForEachTaskTaskSqlTaskDashboardPtrOutput) Subscriptions() JobTask
 
 type JobTaskForEachTaskTaskSqlTaskDashboardSubscription struct {
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs and JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput values.
@@ -29200,8 +28973,7 @@ type JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput interface {
 
 type JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs struct {
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
@@ -29259,7 +29031,6 @@ func (o JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) DestinationId(
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -29289,7 +29060,6 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -29349,9 +29119,8 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path string `pulumi:"path"`
-	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+	// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 	Source *string `pulumi:"source"`
 }
 
@@ -29371,7 +29140,6 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -29431,9 +29199,8 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path pulumi.StringInput `pulumi:"path"`
-	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+	// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -29518,7 +29285,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29581,12 +29347,11 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskForEachTaskTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 func (o JobTaskForEachTaskTaskSqlTaskFileOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskFile) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -29619,7 +29384,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29682,7 +29446,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskSqlTaskFile) *string {
 		if v == nil {
@@ -29692,7 +29455,7 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskSqlTaskFile) *string {
 		if v == nil {
@@ -30054,9 +29817,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnSuccesses() JobTa
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30072,9 +29833,7 @@ type JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceede
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30129,9 +29888,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExce
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded) string {
 		return v.Id
@@ -30159,9 +29916,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExce
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnFailure struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30177,9 +29932,7 @@ type JobTaskForEachTaskTaskWebhookNotificationsOnFailureInput interface {
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30234,9 +29987,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnFailureOutput) ToJobTaskForE
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskForEachTaskTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30262,9 +30013,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnFailureArrayOutput) Index(i 
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnStart struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30280,9 +30029,7 @@ type JobTaskForEachTaskTaskWebhookNotificationsOnStartInput interface {
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30337,9 +30084,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnStartOutput) ToJobTaskForEac
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskForEachTaskTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30365,9 +30110,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput) Index(i pu
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnSuccess struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30383,9 +30126,7 @@ type JobTaskForEachTaskTaskWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30440,9 +30181,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput) ToJobTaskForE
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30607,9 +30346,7 @@ func (o JobTaskHealthPtrOutput) Rules() JobTaskHealthRuleArrayOutput {
 type JobTaskHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric *string `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op *string `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value *int `pulumi:"value"`
@@ -30629,9 +30366,7 @@ type JobTaskHealthRuleInput interface {
 type JobTaskHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	//
-	// This task does not require a cluster to execute and does not support retries or notifications.
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringPtrInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value pulumi.IntPtrInput `pulumi:"value"`
@@ -30693,9 +30428,7 @@ func (o JobTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
-// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-//
-// This task does not require a cluster to execute and does not support retries or notifications.
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 func (o JobTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -33094,7 +32827,7 @@ func (o JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddr
 
 type JobTaskNewClusterDockerImage struct {
 	BasicAuth *JobTaskNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -33111,7 +32844,7 @@ type JobTaskNewClusterDockerImageInput interface {
 
 type JobTaskNewClusterDockerImageArgs struct {
 	BasicAuth JobTaskNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -33196,7 +32929,7 @@ func (o JobTaskNewClusterDockerImageOutput) BasicAuth() JobTaskNewClusterDockerI
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) *JobTaskNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobTaskNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -33234,7 +32967,7 @@ func (o JobTaskNewClusterDockerImagePtrOutput) BasicAuth() JobTaskNewClusterDock
 	}).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// URL of the job on the given workspace
 func (o JobTaskNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterDockerImage) *string {
 		if v == nil {
@@ -33603,8 +33336,7 @@ func (o JobTaskNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput
 type JobTaskNewClusterInitScript struct {
 	Abfss *JobTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs *JobTaskNewClusterInitScriptDbfs `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      *JobTaskNewClusterInitScriptDbfs      `pulumi:"dbfs"`
 	File      *JobTaskNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobTaskNewClusterInitScriptS3        `pulumi:"s3"`
@@ -33626,8 +33358,7 @@ type JobTaskNewClusterInitScriptInput interface {
 type JobTaskNewClusterInitScriptArgs struct {
 	Abfss JobTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
-	Dbfs JobTaskNewClusterInitScriptDbfsPtrInput `pulumi:"dbfs"`
-	// block consisting of single string fields:
+	Dbfs      JobTaskNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
 	File      JobTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobTaskNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -33695,7 +33426,6 @@ func (o JobTaskNewClusterInitScriptOutput) Dbfs() JobTaskNewClusterInitScriptDbf
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptDbfs { return v.Dbfs }).(JobTaskNewClusterInitScriptDbfsPtrOutput)
 }
 
-// block consisting of single string fields:
 func (o JobTaskNewClusterInitScriptOutput) File() JobTaskNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptFile { return v.File }).(JobTaskNewClusterInitScriptFilePtrOutput)
 }
@@ -36813,8 +36543,7 @@ func (o JobTaskSqlTaskAlertPtrOutput) Subscriptions() JobTaskSqlTaskAlertSubscri
 
 type JobTaskSqlTaskAlertSubscription struct {
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskSqlTaskAlertSubscriptionInput is an input type that accepts JobTaskSqlTaskAlertSubscriptionArgs and JobTaskSqlTaskAlertSubscriptionOutput values.
@@ -36830,8 +36559,7 @@ type JobTaskSqlTaskAlertSubscriptionInput interface {
 
 type JobTaskSqlTaskAlertSubscriptionArgs struct {
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
@@ -36889,7 +36617,6 @@ func (o JobTaskSqlTaskAlertSubscriptionOutput) DestinationId() pulumi.StringPtrO
 	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -37110,8 +36837,7 @@ func (o JobTaskSqlTaskDashboardPtrOutput) Subscriptions() JobTaskSqlTaskDashboar
 
 type JobTaskSqlTaskDashboardSubscription struct {
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskSqlTaskDashboardSubscriptionInput is an input type that accepts JobTaskSqlTaskDashboardSubscriptionArgs and JobTaskSqlTaskDashboardSubscriptionOutput values.
@@ -37127,8 +36853,7 @@ type JobTaskSqlTaskDashboardSubscriptionInput interface {
 
 type JobTaskSqlTaskDashboardSubscriptionArgs struct {
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
@@ -37186,7 +36911,6 @@ func (o JobTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.String
 	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -37216,7 +36940,6 @@ type JobTaskSqlTaskFile struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -37276,9 +36999,8 @@ type JobTaskSqlTaskFile struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path string `pulumi:"path"`
-	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+	// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 	Source *string `pulumi:"source"`
 }
 
@@ -37298,7 +37020,6 @@ type JobTaskSqlTaskFileArgs struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -37358,9 +37079,8 @@ type JobTaskSqlTaskFileArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path pulumi.StringInput `pulumi:"path"`
-	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+	// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -37445,7 +37165,6 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37508,12 +37227,11 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 func (o JobTaskSqlTaskFileOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskFile) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -37546,7 +37264,6 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37609,7 +37326,6 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTaskFile) *string {
 		if v == nil {
@@ -37619,7 +37335,7 @@ func (o JobTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+// The source of the project. Possible values are `WORKSPACE` and `GIT`.
 func (o JobTaskSqlTaskFilePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTaskFile) *string {
 		if v == nil {
@@ -37975,9 +37691,7 @@ func (o JobTaskWebhookNotificationsPtrOutput) OnSuccesses() JobTaskWebhookNotifi
 }
 
 type JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -37993,9 +37707,7 @@ type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput interfac
 }
 
 type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -38050,9 +37762,7 @@ func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJ
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -38078,9 +37788,7 @@ func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
 }
 
 type JobTaskWebhookNotificationsOnFailure struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -38096,9 +37804,7 @@ type JobTaskWebhookNotificationsOnFailureInput interface {
 }
 
 type JobTaskWebhookNotificationsOnFailureArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -38153,9 +37859,7 @@ func (o JobTaskWebhookNotificationsOnFailureOutput) ToJobTaskWebhookNotification
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -38181,9 +37885,7 @@ func (o JobTaskWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput
 }
 
 type JobTaskWebhookNotificationsOnStart struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -38199,9 +37901,7 @@ type JobTaskWebhookNotificationsOnStartInput interface {
 }
 
 type JobTaskWebhookNotificationsOnStartArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -38256,9 +37956,7 @@ func (o JobTaskWebhookNotificationsOnStartOutput) ToJobTaskWebhookNotificationsO
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -38284,9 +37982,7 @@ func (o JobTaskWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type JobTaskWebhookNotificationsOnSuccess struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -38302,9 +37998,7 @@ type JobTaskWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobTaskWebhookNotificationsOnSuccessArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -38359,9 +38053,7 @@ func (o JobTaskWebhookNotificationsOnSuccessOutput) ToJobTaskWebhookNotification
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -38564,7 +38256,7 @@ func (o JobTriggerPtrOutput) TableUpdate() JobTriggerTableUpdatePtrOutput {
 type JobTriggerFileArrival struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
@@ -38584,7 +38276,7 @@ type JobTriggerFileArrivalInput interface {
 type JobTriggerFileArrivalArgs struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
@@ -38672,7 +38364,7 @@ func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntP
 	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobTriggerFileArrivalOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -38716,7 +38408,7 @@ func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *string {
 		if v == nil {
@@ -39143,9 +38835,7 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -39161,9 +38851,7 @@ type JobWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39218,9 +38906,7 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobWe
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39246,9 +38932,7 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) In
 }
 
 type JobWebhookNotificationsOnFailure struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -39264,9 +38948,7 @@ type JobWebhookNotificationsOnFailureInput interface {
 }
 
 type JobWebhookNotificationsOnFailureArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39321,9 +39003,7 @@ func (o JobWebhookNotificationsOnFailureOutput) ToJobWebhookNotificationsOnFailu
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39349,9 +39029,7 @@ func (o JobWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobWebhookNotificationsOnStart struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -39367,9 +39045,7 @@ type JobWebhookNotificationsOnStartInput interface {
 }
 
 type JobWebhookNotificationsOnStartArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39424,9 +39100,7 @@ func (o JobWebhookNotificationsOnStartOutput) ToJobWebhookNotificationsOnStartOu
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39452,9 +39126,7 @@ func (o JobWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobW
 }
 
 type JobWebhookNotificationsOnSuccess struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -39470,9 +39142,7 @@ type JobWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobWebhookNotificationsOnSuccessArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39527,9 +39197,7 @@ func (o JobWebhookNotificationsOnSuccessOutput) ToJobWebhookNotificationsOnSucce
 	return o
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -43083,7 +42751,7 @@ type ModelServingConfigServedEntity struct {
 	MaxProvisionedThroughput *int `pulumi:"maxProvisionedThroughput"`
 	// The minimum tokens per second that the endpoint can scale down to.
 	MinProvisionedThroughput *int `pulumi:"minProvisionedThroughput"`
-	// The name of the external model.
+	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
 	Name *string `pulumi:"name"`
 	// Whether the compute resources for the served entity should scale down to zero.
 	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
@@ -43119,7 +42787,7 @@ type ModelServingConfigServedEntityArgs struct {
 	MaxProvisionedThroughput pulumi.IntPtrInput `pulumi:"maxProvisionedThroughput"`
 	// The minimum tokens per second that the endpoint can scale down to.
 	MinProvisionedThroughput pulumi.IntPtrInput `pulumi:"minProvisionedThroughput"`
-	// The name of the external model.
+	// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Whether the compute resources for the served entity should scale down to zero.
 	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
@@ -43217,7 +42885,7 @@ func (o ModelServingConfigServedEntityOutput) MinProvisionedThroughput() pulumi.
 	return o.ApplyT(func(v ModelServingConfigServedEntity) *int { return v.MinProvisionedThroughput }).(pulumi.IntPtrOutput)
 }
 
-// The name of the external model.
+// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
 func (o ModelServingConfigServedEntityOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -43268,7 +42936,7 @@ type ModelServingConfigServedEntityExternalModel struct {
 	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the external model.
 	Name string `pulumi:"name"`
 	// OpenAI Config
 	OpenaiConfig *ModelServingConfigServedEntityExternalModelOpenaiConfig `pulumi:"openaiConfig"`
@@ -43302,7 +42970,7 @@ type ModelServingConfigServedEntityExternalModelArgs struct {
 	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the external model.
 	Name pulumi.StringInput `pulumi:"name"`
 	// OpenAI Config
 	OpenaiConfig ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput `pulumi:"openaiConfig"`
@@ -43426,7 +43094,7 @@ func (o ModelServingConfigServedEntityExternalModelOutput) DatabricksModelServin
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
 }
 
-// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+// The name of the external model.
 func (o ModelServingConfigServedEntityExternalModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -43529,7 +43197,7 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) DatabricksModelSer
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
 }
 
-// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+// The name of the external model.
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *string {
 		if v == nil {
@@ -43580,7 +43248,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) Task() pulumi.Stri
 }
 
 type ModelServingConfigServedEntityExternalModelAi21labsConfig struct {
-	// The Databricks secret key reference for an AI21Labs API key.
 	Ai21labsApiKey string `pulumi:"ai21labsApiKey"`
 }
 
@@ -43596,7 +43263,6 @@ type ModelServingConfigServedEntityExternalModelAi21labsConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelAi21labsConfigArgs struct {
-	// The Databricks secret key reference for an AI21Labs API key.
 	Ai21labsApiKey pulumi.StringInput `pulumi:"ai21labsApiKey"`
 }
 
@@ -43677,7 +43343,6 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) ToModel
 	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
 }
 
-// The Databricks secret key reference for an AI21Labs API key.
 func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) Ai21labsApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAi21labsConfig) string { return v.Ai21labsApiKey }).(pulumi.StringOutput)
 }
@@ -43706,7 +43371,6 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Elem
 	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigOutput)
 }
 
-// The Databricks secret key reference for an AI21Labs API key.
 func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21labsApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
 		if v == nil {
@@ -43717,14 +43381,10 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21
 }
 
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfig struct {
-	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId string `pulumi:"awsAccessKeyId"`
-	// The AWS region to use. Bedrock has to be enabled there.
-	AwsRegion string `pulumi:"awsRegion"`
-	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+	AwsAccessKeyId     string `pulumi:"awsAccessKeyId"`
+	AwsRegion          string `pulumi:"awsRegion"`
 	AwsSecretAccessKey string `pulumi:"awsSecretAccessKey"`
-	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider string `pulumi:"bedrockProvider"`
+	BedrockProvider    string `pulumi:"bedrockProvider"`
 }
 
 // ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs and ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput values.
@@ -43739,14 +43399,10 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput interfa
 }
 
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs struct {
-	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId pulumi.StringInput `pulumi:"awsAccessKeyId"`
-	// The AWS region to use. Bedrock has to be enabled there.
-	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
-	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+	AwsAccessKeyId     pulumi.StringInput `pulumi:"awsAccessKeyId"`
+	AwsRegion          pulumi.StringInput `pulumi:"awsRegion"`
 	AwsSecretAccessKey pulumi.StringInput `pulumi:"awsSecretAccessKey"`
-	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider pulumi.StringInput `pulumi:"bedrockProvider"`
+	BedrockProvider    pulumi.StringInput `pulumi:"bedrockProvider"`
 }
 
 func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ElementType() reflect.Type {
@@ -43826,24 +43482,20 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) To
 	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 }
 
-// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsAccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string { return v.AwsAccessKeyId }).(pulumi.StringOutput)
 }
 
-// The AWS region to use. Bedrock has to be enabled there.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
-// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsSecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string {
 		return v.AwsSecretAccessKey
 	}).(pulumi.StringOutput)
 }
 
-// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) BedrockProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) string {
 		return v.BedrockProvider
@@ -43874,7 +43526,6 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput)
 }
 
-// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -43884,7 +43535,6 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// The AWS region to use. Bedrock has to be enabled there.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -43894,7 +43544,6 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -43904,7 +43553,6 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) BedrockProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -43915,8 +43563,6 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 }
 
 type ModelServingConfigServedEntityExternalModelAnthropicConfig struct {
-	// The Databricks secret key reference for an Anthropic API key.
-	// The Databricks secret key reference for an Anthropic API key.
 	AnthropicApiKey string `pulumi:"anthropicApiKey"`
 }
 
@@ -43932,8 +43578,6 @@ type ModelServingConfigServedEntityExternalModelAnthropicConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelAnthropicConfigArgs struct {
-	// The Databricks secret key reference for an Anthropic API key.
-	// The Databricks secret key reference for an Anthropic API key.
 	AnthropicApiKey pulumi.StringInput `pulumi:"anthropicApiKey"`
 }
 
@@ -44014,8 +43658,6 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToMode
 	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
 }
 
-// The Databricks secret key reference for an Anthropic API key.
-// The Databricks secret key reference for an Anthropic API key.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) AnthropicApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAnthropicConfig) string { return v.AnthropicApiKey }).(pulumi.StringOutput)
 }
@@ -44044,8 +43686,6 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Ele
 	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigOutput)
 }
 
-// The Databricks secret key reference for an Anthropic API key.
-// The Databricks secret key reference for an Anthropic API key.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) AnthropicApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
 		if v == nil {
@@ -44056,7 +43696,6 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Ant
 }
 
 type ModelServingConfigServedEntityExternalModelCohereConfig struct {
-	// The Databricks secret key reference for a Cohere API key.
 	CohereApiKey string `pulumi:"cohereApiKey"`
 }
 
@@ -44072,7 +43711,6 @@ type ModelServingConfigServedEntityExternalModelCohereConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelCohereConfigArgs struct {
-	// The Databricks secret key reference for a Cohere API key.
 	CohereApiKey pulumi.StringInput `pulumi:"cohereApiKey"`
 }
 
@@ -44153,7 +43791,6 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) ToModelSe
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
-// The Databricks secret key reference for a Cohere API key.
 func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) string { return v.CohereApiKey }).(pulumi.StringOutput)
 }
@@ -44182,7 +43819,6 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Elem()
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigOutput)
 }
 
-// The Databricks secret key reference for a Cohere API key.
 func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) CohereApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) *string {
 		if v == nil {
@@ -44193,9 +43829,7 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Cohere
 }
 
 type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig struct {
-	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken string `pulumi:"databricksApiToken"`
-	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+	DatabricksApiToken     string `pulumi:"databricksApiToken"`
 	DatabricksWorkspaceUrl string `pulumi:"databricksWorkspaceUrl"`
 }
 
@@ -44211,9 +43845,7 @@ type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInpu
 }
 
 type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs struct {
-	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken pulumi.StringInput `pulumi:"databricksApiToken"`
-	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+	DatabricksApiToken     pulumi.StringInput `pulumi:"databricksApiToken"`
 	DatabricksWorkspaceUrl pulumi.StringInput `pulumi:"databricksWorkspaceUrl"`
 }
 
@@ -44294,14 +43926,12 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigO
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
 }
 
-// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksApiToken() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) string {
 		return v.DatabricksApiToken
 	}).(pulumi.StringOutput)
 }
 
-// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksWorkspaceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) string {
 		return v.DatabricksWorkspaceUrl
@@ -44332,7 +43962,6 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigP
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput)
 }
 
-// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
 		if v == nil {
@@ -44342,7 +43971,6 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksWorkspaceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
 		if v == nil {
@@ -44353,18 +43981,12 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigP
 }
 
 type ModelServingConfigServedEntityExternalModelOpenaiConfig struct {
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-	OpenaiApiBase *string `pulumi:"openaiApiBase"`
-	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey string `pulumi:"openaiApiKey"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-	OpenaiApiType *string `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-	OpenaiApiVersion *string `pulumi:"openaiApiVersion"`
-	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+	OpenaiApiBase        *string `pulumi:"openaiApiBase"`
+	OpenaiApiKey         string  `pulumi:"openaiApiKey"`
+	OpenaiApiType        *string `pulumi:"openaiApiType"`
+	OpenaiApiVersion     *string `pulumi:"openaiApiVersion"`
 	OpenaiDeploymentName *string `pulumi:"openaiDeploymentName"`
-	// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-	OpenaiOrganization *string `pulumi:"openaiOrganization"`
+	OpenaiOrganization   *string `pulumi:"openaiOrganization"`
 }
 
 // ModelServingConfigServedEntityExternalModelOpenaiConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelOpenaiConfigArgs and ModelServingConfigServedEntityExternalModelOpenaiConfigOutput values.
@@ -44379,18 +44001,12 @@ type ModelServingConfigServedEntityExternalModelOpenaiConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelOpenaiConfigArgs struct {
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-	OpenaiApiBase pulumi.StringPtrInput `pulumi:"openaiApiBase"`
-	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey pulumi.StringInput `pulumi:"openaiApiKey"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-	OpenaiApiType pulumi.StringPtrInput `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-	OpenaiApiVersion pulumi.StringPtrInput `pulumi:"openaiApiVersion"`
-	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+	OpenaiApiBase        pulumi.StringPtrInput `pulumi:"openaiApiBase"`
+	OpenaiApiKey         pulumi.StringInput    `pulumi:"openaiApiKey"`
+	OpenaiApiType        pulumi.StringPtrInput `pulumi:"openaiApiType"`
+	OpenaiApiVersion     pulumi.StringPtrInput `pulumi:"openaiApiVersion"`
 	OpenaiDeploymentName pulumi.StringPtrInput `pulumi:"openaiDeploymentName"`
-	// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-	OpenaiOrganization pulumi.StringPtrInput `pulumi:"openaiOrganization"`
+	OpenaiOrganization   pulumi.StringPtrInput `pulumi:"openaiOrganization"`
 }
 
 func (ModelServingConfigServedEntityExternalModelOpenaiConfigArgs) ElementType() reflect.Type {
@@ -44470,32 +44086,26 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelSe
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiBase }).(pulumi.StringPtrOutput)
 }
 
-// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) string { return v.OpenaiApiKey }).(pulumi.StringOutput)
 }
 
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiType }).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiVersion }).(pulumi.StringPtrOutput)
 }
 
-// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiDeploymentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiDeploymentName }).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiOrganization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiOrganization }).(pulumi.StringPtrOutput)
 }
@@ -44524,7 +44134,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Elem()
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44534,7 +44143,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44544,7 +44152,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44554,7 +44161,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44564,7 +44170,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiDeploymentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44574,7 +44179,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiOrganization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -44585,7 +44189,6 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 }
 
 type ModelServingConfigServedEntityExternalModelPalmConfig struct {
-	// The Databricks secret key reference for a PaLM API key.
 	PalmApiKey string `pulumi:"palmApiKey"`
 }
 
@@ -44601,7 +44204,6 @@ type ModelServingConfigServedEntityExternalModelPalmConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelPalmConfigArgs struct {
-	// The Databricks secret key reference for a PaLM API key.
 	PalmApiKey pulumi.StringInput `pulumi:"palmApiKey"`
 }
 
@@ -44682,7 +44284,6 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) ToModelServ
 	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
 }
 
-// The Databricks secret key reference for a PaLM API key.
 func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) PalmApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelPalmConfig) string { return v.PalmApiKey }).(pulumi.StringOutput)
 }
@@ -44711,7 +44312,6 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) Elem() M
 	}).(ModelServingConfigServedEntityExternalModelPalmConfigOutput)
 }
 
-// The Databricks secret key reference for a PaLM API key.
 func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelPalmConfig) *string {
 		if v == nil {
@@ -47450,7 +47050,6 @@ func (o MwsWorkspacesCloudResourceContainerPtrOutput) Gcp() MwsWorkspacesCloudRe
 }
 
 type MwsWorkspacesCloudResourceContainerGcp struct {
-	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -47466,7 +47065,6 @@ type MwsWorkspacesCloudResourceContainerGcpInput interface {
 }
 
 type MwsWorkspacesCloudResourceContainerGcpArgs struct {
-	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -47547,7 +47145,6 @@ func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResour
 	}).(MwsWorkspacesCloudResourceContainerGcpPtrOutput)
 }
 
-// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 func (o MwsWorkspacesCloudResourceContainerGcpOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsWorkspacesCloudResourceContainerGcp) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -47576,7 +47173,6 @@ func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) Elem() MwsWorkspacesClo
 	}).(MwsWorkspacesCloudResourceContainerGcpOutput)
 }
 
-// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainerGcp) *string {
 		if v == nil {
@@ -50082,16 +49678,10 @@ func (o OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressPtrOutput) 
 }
 
 type PermissionsAccessControl struct {
-	// name of the group. We recommend setting permissions on groups.
-	GroupName *string `pulumi:"groupName"`
-	// permission level according to specific resource. See examples above for the reference.
-	//
-	// Exactly one of the below arguments is required:
-	PermissionLevel string `pulumi:"permissionLevel"`
-	// Application ID of the service_principal.
+	GroupName            *string `pulumi:"groupName"`
+	PermissionLevel      string  `pulumi:"permissionLevel"`
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	// name of the user.
-	UserName *string `pulumi:"userName"`
+	UserName             *string `pulumi:"userName"`
 }
 
 // PermissionsAccessControlInput is an input type that accepts PermissionsAccessControlArgs and PermissionsAccessControlOutput values.
@@ -50106,16 +49696,10 @@ type PermissionsAccessControlInput interface {
 }
 
 type PermissionsAccessControlArgs struct {
-	// name of the group. We recommend setting permissions on groups.
-	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	// permission level according to specific resource. See examples above for the reference.
-	//
-	// Exactly one of the below arguments is required:
-	PermissionLevel pulumi.StringInput `pulumi:"permissionLevel"`
-	// Application ID of the service_principal.
+	GroupName            pulumi.StringPtrInput `pulumi:"groupName"`
+	PermissionLevel      pulumi.StringInput    `pulumi:"permissionLevel"`
 	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
-	// name of the user.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName             pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (PermissionsAccessControlArgs) ElementType() reflect.Type {
@@ -50169,24 +49753,18 @@ func (o PermissionsAccessControlOutput) ToPermissionsAccessControlOutputWithCont
 	return o
 }
 
-// name of the group. We recommend setting permissions on groups.
 func (o PermissionsAccessControlOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
-// permission level according to specific resource. See examples above for the reference.
-//
-// Exactly one of the below arguments is required:
 func (o PermissionsAccessControlOutput) PermissionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) string { return v.PermissionLevel }).(pulumi.StringOutput)
 }
 
-// Application ID of the service_principal.
 func (o PermissionsAccessControlOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
 }
 
-// name of the user.
 func (o PermissionsAccessControlOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -53775,7 +53353,6 @@ func (o PipelineNotificationArrayOutput) Index(i pulumi.IntInput) PipelineNotifi
 }
 
 type RecipientIpAccessList struct {
-	// Allowed IP Addresses in CIDR notation. Limit of 100.
 	AllowedIpAddresses []string `pulumi:"allowedIpAddresses"`
 }
 
@@ -53791,7 +53368,6 @@ type RecipientIpAccessListInput interface {
 }
 
 type RecipientIpAccessListArgs struct {
-	// Allowed IP Addresses in CIDR notation. Limit of 100.
 	AllowedIpAddresses pulumi.StringArrayInput `pulumi:"allowedIpAddresses"`
 }
 
@@ -53872,7 +53448,6 @@ func (o RecipientIpAccessListOutput) ToRecipientIpAccessListPtrOutputWithContext
 	}).(RecipientIpAccessListPtrOutput)
 }
 
-// Allowed IP Addresses in CIDR notation. Limit of 100.
 func (o RecipientIpAccessListOutput) AllowedIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RecipientIpAccessList) []string { return v.AllowedIpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -53901,7 +53476,6 @@ func (o RecipientIpAccessListPtrOutput) Elem() RecipientIpAccessListOutput {
 	}).(RecipientIpAccessListOutput)
 }
 
-// Allowed IP Addresses in CIDR notation. Limit of 100.
 func (o RecipientIpAccessListPtrOutput) AllowedIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RecipientIpAccessList) []string {
 		if v == nil {
@@ -54814,7 +54388,6 @@ func (o ShareObjectArrayOutput) Index(i pulumi.IntInput) ShareObjectOutput {
 }
 
 type ShareObjectPartition struct {
-	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 	Values []ShareObjectPartitionValue `pulumi:"values"`
 }
 
@@ -54830,7 +54403,6 @@ type ShareObjectPartitionInput interface {
 }
 
 type ShareObjectPartitionArgs struct {
-	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 	Values ShareObjectPartitionValueArrayInput `pulumi:"values"`
 }
 
@@ -54885,7 +54457,6 @@ func (o ShareObjectPartitionOutput) ToShareObjectPartitionOutputWithContext(ctx 
 	return o
 }
 
-// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 func (o ShareObjectPartitionOutput) Values() ShareObjectPartitionValueArrayOutput {
 	return o.ApplyT(func(v ShareObjectPartition) []ShareObjectPartitionValue { return v.Values }).(ShareObjectPartitionValueArrayOutput)
 }
@@ -56135,6 +55706,7 @@ type SqlPermissionsPrivilegeAssignment struct {
 	// set of available privilege names in upper case.
 	//
 	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 	Privileges []string `pulumi:"privileges"`
 }
 
@@ -56154,6 +55726,7 @@ type SqlPermissionsPrivilegeAssignmentArgs struct {
 	Principal pulumi.StringInput `pulumi:"principal"`
 	// set of available privilege names in upper case.
 	//
+	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
 }
@@ -56216,6 +55789,7 @@ func (o SqlPermissionsPrivilegeAssignmentOutput) Principal() pulumi.StringOutput
 
 // set of available privilege names in upper case.
 //
+// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 // [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 func (o SqlPermissionsPrivilegeAssignmentOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) []string { return v.Privileges }).(pulumi.StringArrayOutput)
@@ -56420,7 +55994,6 @@ func (o SqlQueryParameterArrayOutput) Index(i pulumi.IntInput) SqlQueryParameter
 }
 
 type SqlQueryParameterDate struct {
-	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -56436,7 +56009,6 @@ type SqlQueryParameterDateInput interface {
 }
 
 type SqlQueryParameterDateArgs struct {
-	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -56517,7 +56089,6 @@ func (o SqlQueryParameterDateOutput) ToSqlQueryParameterDatePtrOutputWithContext
 	}).(SqlQueryParameterDatePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDateOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDate) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -56546,7 +56117,6 @@ func (o SqlQueryParameterDatePtrOutput) Elem() SqlQueryParameterDateOutput {
 	}).(SqlQueryParameterDateOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDate) *string {
 		if v == nil {
@@ -56558,8 +56128,7 @@ func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDateRange struct {
 	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
+	Value *string                          `pulumi:"value"`
 }
 
 // SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
@@ -56575,8 +56144,7 @@ type SqlQueryParameterDateRangeInput interface {
 
 type SqlQueryParameterDateRangeArgs struct {
 	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value pulumi.StringPtrInput                   `pulumi:"value"`
 }
 
 func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
@@ -56660,7 +56228,6 @@ func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRang
 	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -56698,7 +56265,6 @@ func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeR
 	}).(SqlQueryParameterDateRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
 		if v == nil {
@@ -56857,7 +56423,6 @@ func (o SqlQueryParameterDateRangeRangePtrOutput) Start() pulumi.StringPtrOutput
 }
 
 type SqlQueryParameterDatetime struct {
-	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -56873,7 +56438,6 @@ type SqlQueryParameterDatetimeInput interface {
 }
 
 type SqlQueryParameterDatetimeArgs struct {
-	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -56954,7 +56518,6 @@ func (o SqlQueryParameterDatetimeOutput) ToSqlQueryParameterDatetimePtrOutputWit
 	}).(SqlQueryParameterDatetimePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetime) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -56983,7 +56546,6 @@ func (o SqlQueryParameterDatetimePtrOutput) Elem() SqlQueryParameterDatetimeOutp
 	}).(SqlQueryParameterDatetimeOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetime) *string {
 		if v == nil {
@@ -56995,8 +56557,7 @@ func (o SqlQueryParameterDatetimePtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDatetimeRange struct {
 	Range *SqlQueryParameterDatetimeRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
+	Value *string                              `pulumi:"value"`
 }
 
 // SqlQueryParameterDatetimeRangeInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs and SqlQueryParameterDatetimeRangeOutput values.
@@ -57012,8 +56573,7 @@ type SqlQueryParameterDatetimeRangeInput interface {
 
 type SqlQueryParameterDatetimeRangeArgs struct {
 	Range SqlQueryParameterDatetimeRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value pulumi.StringPtrInput                       `pulumi:"value"`
 }
 
 func (SqlQueryParameterDatetimeRangeArgs) ElementType() reflect.Type {
@@ -57097,7 +56657,6 @@ func (o SqlQueryParameterDatetimeRangeOutput) Range() SqlQueryParameterDatetimeR
 	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *SqlQueryParameterDatetimeRangeRange { return v.Range }).(SqlQueryParameterDatetimeRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimeRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -57135,7 +56694,6 @@ func (o SqlQueryParameterDatetimeRangePtrOutput) Range() SqlQueryParameterDateti
 	}).(SqlQueryParameterDatetimeRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimeRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimeRange) *string {
 		if v == nil {
@@ -57294,7 +56852,6 @@ func (o SqlQueryParameterDatetimeRangeRangePtrOutput) Start() pulumi.StringPtrOu
 }
 
 type SqlQueryParameterDatetimesec struct {
-	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -57310,7 +56867,6 @@ type SqlQueryParameterDatetimesecInput interface {
 }
 
 type SqlQueryParameterDatetimesecArgs struct {
-	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -57391,7 +56947,6 @@ func (o SqlQueryParameterDatetimesecOutput) ToSqlQueryParameterDatetimesecPtrOut
 	}).(SqlQueryParameterDatetimesecPtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimesec) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -57420,7 +56975,6 @@ func (o SqlQueryParameterDatetimesecPtrOutput) Elem() SqlQueryParameterDatetimes
 	}).(SqlQueryParameterDatetimesecOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimesec) *string {
 		if v == nil {
@@ -57432,8 +56986,7 @@ func (o SqlQueryParameterDatetimesecPtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDatetimesecRange struct {
 	Range *SqlQueryParameterDatetimesecRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
+	Value *string                                 `pulumi:"value"`
 }
 
 // SqlQueryParameterDatetimesecRangeInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs and SqlQueryParameterDatetimesecRangeOutput values.
@@ -57449,8 +57002,7 @@ type SqlQueryParameterDatetimesecRangeInput interface {
 
 type SqlQueryParameterDatetimesecRangeArgs struct {
 	Range SqlQueryParameterDatetimesecRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value pulumi.StringPtrInput                          `pulumi:"value"`
 }
 
 func (SqlQueryParameterDatetimesecRangeArgs) ElementType() reflect.Type {
@@ -57534,7 +57086,6 @@ func (o SqlQueryParameterDatetimesecRangeOutput) Range() SqlQueryParameterDateti
 	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *SqlQueryParameterDatetimesecRangeRange { return v.Range }).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -57572,7 +57123,6 @@ func (o SqlQueryParameterDatetimesecRangePtrOutput) Range() SqlQueryParameterDat
 	}).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRange) *string {
 		if v == nil {
@@ -57733,9 +57283,8 @@ func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) Start() pulumi.StringPt
 type SqlQueryParameterEnum struct {
 	Multiple *SqlQueryParameterEnumMultiple `pulumi:"multiple"`
 	Options  []string                       `pulumi:"options"`
-	// The default value for this parameter.
-	Value  *string  `pulumi:"value"`
-	Values []string `pulumi:"values"`
+	Value    *string                        `pulumi:"value"`
+	Values   []string                       `pulumi:"values"`
 }
 
 // SqlQueryParameterEnumInput is an input type that accepts SqlQueryParameterEnumArgs and SqlQueryParameterEnumOutput values.
@@ -57752,9 +57301,8 @@ type SqlQueryParameterEnumInput interface {
 type SqlQueryParameterEnumArgs struct {
 	Multiple SqlQueryParameterEnumMultiplePtrInput `pulumi:"multiple"`
 	Options  pulumi.StringArrayInput               `pulumi:"options"`
-	// The default value for this parameter.
-	Value  pulumi.StringPtrInput   `pulumi:"value"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Value    pulumi.StringPtrInput                 `pulumi:"value"`
+	Values   pulumi.StringArrayInput               `pulumi:"values"`
 }
 
 func (SqlQueryParameterEnumArgs) ElementType() reflect.Type {
@@ -57842,7 +57390,6 @@ func (o SqlQueryParameterEnumOutput) Options() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlQueryParameterEnum) []string { return v.Options }).(pulumi.StringArrayOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterEnumOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterEnum) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -57893,7 +57440,6 @@ func (o SqlQueryParameterEnumPtrOutput) Options() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterEnumPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterEnum) *string {
 		if v == nil {
@@ -58076,7 +57622,6 @@ func (o SqlQueryParameterEnumMultiplePtrOutput) Suffix() pulumi.StringPtrOutput 
 }
 
 type SqlQueryParameterNumber struct {
-	// The default value for this parameter.
 	Value float64 `pulumi:"value"`
 }
 
@@ -58092,7 +57637,6 @@ type SqlQueryParameterNumberInput interface {
 }
 
 type SqlQueryParameterNumberArgs struct {
-	// The default value for this parameter.
 	Value pulumi.Float64Input `pulumi:"value"`
 }
 
@@ -58173,7 +57717,6 @@ func (o SqlQueryParameterNumberOutput) ToSqlQueryParameterNumberPtrOutputWithCon
 	}).(SqlQueryParameterNumberPtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterNumberOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v SqlQueryParameterNumber) float64 { return v.Value }).(pulumi.Float64Output)
 }
@@ -58202,7 +57745,6 @@ func (o SqlQueryParameterNumberPtrOutput) Elem() SqlQueryParameterNumberOutput {
 	}).(SqlQueryParameterNumberOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterNumberPtrOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterNumber) *float64 {
 		if v == nil {
@@ -58215,9 +57757,8 @@ func (o SqlQueryParameterNumberPtrOutput) Value() pulumi.Float64PtrOutput {
 type SqlQueryParameterQuery struct {
 	Multiple *SqlQueryParameterQueryMultiple `pulumi:"multiple"`
 	QueryId  string                          `pulumi:"queryId"`
-	// The default value for this parameter.
-	Value  *string  `pulumi:"value"`
-	Values []string `pulumi:"values"`
+	Value    *string                         `pulumi:"value"`
+	Values   []string                        `pulumi:"values"`
 }
 
 // SqlQueryParameterQueryInput is an input type that accepts SqlQueryParameterQueryArgs and SqlQueryParameterQueryOutput values.
@@ -58234,9 +57775,8 @@ type SqlQueryParameterQueryInput interface {
 type SqlQueryParameterQueryArgs struct {
 	Multiple SqlQueryParameterQueryMultiplePtrInput `pulumi:"multiple"`
 	QueryId  pulumi.StringInput                     `pulumi:"queryId"`
-	// The default value for this parameter.
-	Value  pulumi.StringPtrInput   `pulumi:"value"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Value    pulumi.StringPtrInput                  `pulumi:"value"`
+	Values   pulumi.StringArrayInput                `pulumi:"values"`
 }
 
 func (SqlQueryParameterQueryArgs) ElementType() reflect.Type {
@@ -58324,7 +57864,6 @@ func (o SqlQueryParameterQueryOutput) QueryId() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterQuery) string { return v.QueryId }).(pulumi.StringOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterQueryOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -58375,7 +57914,6 @@ func (o SqlQueryParameterQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterQueryPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterQuery) *string {
 		if v == nil {
@@ -58558,7 +58096,6 @@ func (o SqlQueryParameterQueryMultiplePtrOutput) Suffix() pulumi.StringPtrOutput
 }
 
 type SqlQueryParameterText struct {
-	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -58574,7 +58111,6 @@ type SqlQueryParameterTextInput interface {
 }
 
 type SqlQueryParameterTextArgs struct {
-	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -58655,7 +58191,6 @@ func (o SqlQueryParameterTextOutput) ToSqlQueryParameterTextPtrOutputWithContext
 	}).(SqlQueryParameterTextPtrOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterTextOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterText) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -58684,7 +58219,6 @@ func (o SqlQueryParameterTextPtrOutput) Elem() SqlQueryParameterTextOutput {
 	}).(SqlQueryParameterTextOutput)
 }
 
-// The default value for this parameter.
 func (o SqlQueryParameterTextPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterText) *string {
 		if v == nil {
@@ -60914,11 +60448,9 @@ func (o VectorSearchEndpointEndpointStatusArrayOutput) Index(i pulumi.IntInput) 
 type VectorSearchIndexDeltaSyncIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
-	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
 	// ID of the associated Delta Live Table pipeline.
-	PipelineId *string `pulumi:"pipelineId"`
-	// Pipeline execution mode. Possible values are:
+	PipelineId   *string `pulumi:"pipelineId"`
 	PipelineType *string `pulumi:"pipelineType"`
 	// The name of the source table.
 	SourceTable *string `pulumi:"sourceTable"`
@@ -60938,11 +60470,9 @@ type VectorSearchIndexDeltaSyncIndexSpecInput interface {
 type VectorSearchIndexDeltaSyncIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
-	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
 	// ID of the associated Delta Live Table pipeline.
-	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
-	// Pipeline execution mode. Possible values are:
+	PipelineId   pulumi.StringPtrInput `pulumi:"pipelineId"`
 	PipelineType pulumi.StringPtrInput `pulumi:"pipelineType"`
 	// The name of the source table.
 	SourceTable pulumi.StringPtrInput `pulumi:"sourceTable"`
@@ -61032,7 +60562,6 @@ func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingSourceColumns() Vect
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
-// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
@@ -61044,7 +60573,6 @@ func (o VectorSearchIndexDeltaSyncIndexSpecOutput) PipelineId() pulumi.StringPtr
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
 }
 
-// Pipeline execution mode. Possible values are:
 func (o VectorSearchIndexDeltaSyncIndexSpecOutput) PipelineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.PipelineType }).(pulumi.StringPtrOutput)
 }
@@ -61088,7 +60616,6 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
-// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		if v == nil {
@@ -61108,7 +60635,6 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) PipelineId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Pipeline execution mode. Possible values are:
 func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) PipelineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
 		if v == nil {
@@ -61345,7 +60871,6 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) Ind
 type VectorSearchIndexDirectAccessIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
-	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson *string `pulumi:"schemaJson"`
@@ -61365,7 +60890,6 @@ type VectorSearchIndexDirectAccessIndexSpecInput interface {
 type VectorSearchIndexDirectAccessIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
-	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson pulumi.StringPtrInput `pulumi:"schemaJson"`
@@ -61455,7 +60979,6 @@ func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
-// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
@@ -61501,7 +61024,6 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingSourceColumns(
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
-// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		if v == nil {

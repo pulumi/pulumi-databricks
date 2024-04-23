@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * List all external locations in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * const all = databricks.getExternalLocations({});
  * export const allExternalLocations = all.then(all => all.names);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -63,7 +61,6 @@ export interface GetExternalLocationsResult {
  *
  * List all external locations in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -71,7 +68,6 @@ export interface GetExternalLocationsResult {
  * const all = databricks.getExternalLocations({});
  * export const allExternalLocations = all.then(all => all.names);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

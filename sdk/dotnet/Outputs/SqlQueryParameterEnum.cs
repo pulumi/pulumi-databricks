@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.SqlQueryParameterEnumMultiple? Multiple;
         public readonly ImmutableArray<string> Options;
-        /// <summary>
-        /// The default value for this parameter.
-        /// </summary>
         public readonly string? Value;
         public readonly ImmutableArray<string> Values;
 
