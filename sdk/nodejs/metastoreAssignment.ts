@@ -77,7 +77,7 @@ export class MetastoreAssignment extends pulumi.CustomResource {
     /**
      * id of the workspace for the assignment
      */
-    public readonly workspaceId!: pulumi.Output<number>;
+    public readonly workspaceId!: pulumi.Output<string>;
 
     /**
      * Create a MetastoreAssignment resource with the given unique name, arguments, and options.
@@ -127,7 +127,7 @@ export interface MetastoreAssignmentState {
     /**
      * id of the workspace for the assignment
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -145,5 +145,5 @@ export interface MetastoreAssignmentArgs {
     /**
      * id of the workspace for the assignment
      */
-    workspaceId: pulumi.Input<number>;
+    workspaceId: pulumi.Input<string>;
 }

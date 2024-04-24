@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,13 +50,13 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="workspaceId")
-    private @Nullable Output<Integer> workspaceId;
+    private @Nullable Output<String> workspaceId;
 
     /**
      * @return id of the workspace for the assignment
      * 
      */
-    public Optional<Output<Integer>> workspaceId() {
+    public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
 
@@ -135,7 +134,7 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<Integer> workspaceId) {
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -146,7 +145,7 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder workspaceId(Integer workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 

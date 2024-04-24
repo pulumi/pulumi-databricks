@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         /// id of the workspace for the assignment
         /// </summary>
         [Output("workspaceId")]
-        public Output<int> WorkspaceId { get; private set; } = null!;
+        public Output<string> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Pulumi.Databricks
         /// id of the workspace for the assignment
         /// </summary>
         [Input("workspaceId", required: true)]
-        public Input<int> WorkspaceId { get; set; } = null!;
+        public Input<string> WorkspaceId { get; set; } = null!;
 
         public MetastoreAssignmentArgs()
         {
@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
         /// id of the workspace for the assignment
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public MetastoreAssignmentState()
         {

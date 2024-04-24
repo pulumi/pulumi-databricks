@@ -368,7 +368,7 @@ type MwsWorkspaces struct {
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
 	Token                       MwsWorkspacesTokenPtrOutput `pulumi:"token"`
 	// (String) workspace id
-	WorkspaceId pulumi.IntOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringOutput `pulumi:"workspaceName"`
 	// (String) workspace status
@@ -459,7 +459,7 @@ type mwsWorkspacesState struct {
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	// (String) workspace id
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 	// name of the workspace, will appear on UI.
 	WorkspaceName *string `pulumi:"workspaceName"`
 	// (String) workspace status
@@ -508,7 +508,7 @@ type MwsWorkspacesState struct {
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	// (String) workspace id
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringPtrInput
 	// (String) workspace status
@@ -561,7 +561,7 @@ type mwsWorkspacesArgs struct {
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	// (String) workspace id
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 	// name of the workspace, will appear on UI.
 	WorkspaceName string `pulumi:"workspaceName"`
 	// (String) workspace status
@@ -611,7 +611,7 @@ type MwsWorkspacesArgs struct {
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	// (String) workspace id
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringInput
 	// (String) workspace status
@@ -809,8 +809,8 @@ func (o MwsWorkspacesOutput) Token() MwsWorkspacesTokenPtrOutput {
 }
 
 // (String) workspace id
-func (o MwsWorkspacesOutput) WorkspaceId() pulumi.IntOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) pulumi.IntOutput { return v.WorkspaceId }).(pulumi.IntOutput)
+func (o MwsWorkspacesOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 // name of the workspace, will appear on UI.

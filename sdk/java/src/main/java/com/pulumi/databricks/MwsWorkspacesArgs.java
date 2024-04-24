@@ -301,13 +301,13 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="workspaceId")
-    private @Nullable Output<Integer> workspaceId;
+    private @Nullable Output<String> workspaceId;
 
     /**
      * @return (String) workspace id
      * 
      */
-    public Optional<Output<Integer>> workspaceId() {
+    public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
 
@@ -799,7 +799,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<Integer> workspaceId) {
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -810,7 +810,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder workspaceId(Integer workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 

@@ -152,7 +152,7 @@ type MwsPermissionAssignment struct {
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.IntOutput `pulumi:"principalId"`
 	// Databricks workspace ID.
-	WorkspaceId pulumi.IntOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewMwsPermissionAssignment registers a new resource with the given unique name, arguments, and options.
@@ -201,7 +201,7 @@ type mwsPermissionAssignmentState struct {
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId *int `pulumi:"principalId"`
 	// Databricks workspace ID.
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MwsPermissionAssignmentState struct {
@@ -212,7 +212,7 @@ type MwsPermissionAssignmentState struct {
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.IntPtrInput
 	// Databricks workspace ID.
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MwsPermissionAssignmentState) ElementType() reflect.Type {
@@ -227,7 +227,7 @@ type mwsPermissionAssignmentArgs struct {
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId int `pulumi:"principalId"`
 	// Databricks workspace ID.
-	WorkspaceId int `pulumi:"workspaceId"`
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MwsPermissionAssignment resource.
@@ -239,7 +239,7 @@ type MwsPermissionAssignmentArgs struct {
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.IntInput
 	// Databricks workspace ID.
-	WorkspaceId pulumi.IntInput
+	WorkspaceId pulumi.StringInput
 }
 
 func (MwsPermissionAssignmentArgs) ElementType() reflect.Type {
@@ -342,8 +342,8 @@ func (o MwsPermissionAssignmentOutput) PrincipalId() pulumi.IntOutput {
 }
 
 // Databricks workspace ID.
-func (o MwsPermissionAssignmentOutput) WorkspaceId() pulumi.IntOutput {
-	return o.ApplyT(func(v *MwsPermissionAssignment) pulumi.IntOutput { return v.WorkspaceId }).(pulumi.IntOutput)
+func (o MwsPermissionAssignmentOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsPermissionAssignment) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 type MwsPermissionAssignmentArrayOutput struct{ *pulumi.OutputState }

@@ -64,7 +64,7 @@ type CatalogWorkspaceBinding struct {
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.IntPtrOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewCatalogWorkspaceBinding registers a new resource with the given unique name, arguments, and options.
@@ -106,7 +106,7 @@ type catalogWorkspaceBindingState struct {
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type CatalogWorkspaceBindingState struct {
@@ -119,7 +119,7 @@ type CatalogWorkspaceBindingState struct {
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CatalogWorkspaceBindingState) ElementType() reflect.Type {
@@ -136,7 +136,7 @@ type catalogWorkspaceBindingArgs struct {
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a CatalogWorkspaceBinding resource.
@@ -150,7 +150,7 @@ type CatalogWorkspaceBindingArgs struct {
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CatalogWorkspaceBindingArgs) ElementType() reflect.Type {
@@ -261,8 +261,8 @@ func (o CatalogWorkspaceBindingOutput) SecurableType() pulumi.StringPtrOutput {
 }
 
 // ID of the workspace. Change forces creation of a new resource.
-func (o CatalogWorkspaceBindingOutput) WorkspaceId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.IntPtrOutput { return v.WorkspaceId }).(pulumi.IntPtrOutput)
+func (o CatalogWorkspaceBindingOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type CatalogWorkspaceBindingArrayOutput struct{ *pulumi.OutputState }

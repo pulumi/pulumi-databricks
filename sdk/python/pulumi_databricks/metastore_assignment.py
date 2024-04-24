@@ -15,12 +15,12 @@ __all__ = ['MetastoreAssignmentArgs', 'MetastoreAssignment']
 class MetastoreAssignmentArgs:
     def __init__(__self__, *,
                  metastore_id: pulumi.Input[str],
-                 workspace_id: pulumi.Input[int],
+                 workspace_id: pulumi.Input[str],
                  default_catalog_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreAssignment resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
-        :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
+        :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
         """
         pulumi.set(__self__, "metastore_id", metastore_id)
@@ -42,14 +42,14 @@ class MetastoreAssignmentArgs:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Input[int]:
+    def workspace_id(self) -> pulumi.Input[str]:
         """
         id of the workspace for the assignment
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: pulumi.Input[int]):
+    def workspace_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workspace_id", value)
 
     @property
@@ -70,12 +70,12 @@ class _MetastoreAssignmentState:
     def __init__(__self__, *,
                  default_catalog_name: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None):
+                 workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreAssignment resources.
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
-        :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
+        :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
         if default_catalog_name is not None:
             pulumi.set(__self__, "default_catalog_name", default_catalog_name)
@@ -110,14 +110,14 @@ class _MetastoreAssignmentState:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[int]]:
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
         """
         id of the workspace for the assignment
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[int]]):
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -128,7 +128,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_catalog_name: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > **Note** This resource could be only used with account-level provider!
@@ -166,7 +166,7 @@ class MetastoreAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
-        :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
+        :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
         ...
     @overload
@@ -223,7 +223,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_catalog_name: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,7 +252,7 @@ class MetastoreAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             default_catalog_name: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
-            workspace_id: Optional[pulumi.Input[int]] = None) -> 'MetastoreAssignment':
+            workspace_id: Optional[pulumi.Input[str]] = None) -> 'MetastoreAssignment':
         """
         Get an existing MetastoreAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -262,7 +262,7 @@ class MetastoreAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
-        :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
+        :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,7 +291,7 @@ class MetastoreAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[int]:
+    def workspace_id(self) -> pulumi.Output[str]:
         """
         id of the workspace for the assignment
         """

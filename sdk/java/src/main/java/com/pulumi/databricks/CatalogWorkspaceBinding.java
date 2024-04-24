@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.CatalogWorkspaceBindingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogWorkspaceBindingState;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -126,14 +125,14 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> workspaceId;
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
 
     /**
      * @return ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    public Output<Optional<Integer>> workspaceId() {
+    public Output<Optional<String>> workspaceId() {
         return Codegen.optional(this.workspaceId);
     }
 

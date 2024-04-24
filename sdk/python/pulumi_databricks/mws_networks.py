@@ -27,7 +27,7 @@ class MwsNetworksArgs:
                  vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_status: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None):
+                 workspace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsNetworks resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -39,7 +39,7 @@ class MwsNetworksArgs:
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
+        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "network_name", network_name)
@@ -192,14 +192,14 @@ class MwsNetworksArgs:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[int]]:
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
         """
         (Integer) id of associated workspace
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[int]]):
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -217,7 +217,7 @@ class _MwsNetworksState:
                  vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_status: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None):
+                 workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsNetworks resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -229,7 +229,7 @@ class _MwsNetworksState:
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
+        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -384,14 +384,14 @@ class _MwsNetworksState:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[int]]:
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
         """
         (Integer) id of associated workspace
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[int]]):
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -411,7 +411,7 @@ class MwsNetworks(pulumi.CustomResource):
                  vpc_endpoints: Optional[pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_status: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Databricks on AWS usage
@@ -499,7 +499,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
+        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         ...
     @overload
@@ -608,7 +608,7 @@ class MwsNetworks(pulumi.CustomResource):
                  vpc_endpoints: Optional[pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_status: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -657,7 +657,7 @@ class MwsNetworks(pulumi.CustomResource):
             vpc_endpoints: Optional[pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vpc_status: Optional[pulumi.Input[str]] = None,
-            workspace_id: Optional[pulumi.Input[int]] = None) -> 'MwsNetworks':
+            workspace_id: Optional[pulumi.Input[str]] = None) -> 'MwsNetworks':
         """
         Get an existing MwsNetworks resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -674,7 +674,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
+        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -778,7 +778,7 @@ class MwsNetworks(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[int]:
+    def workspace_id(self) -> pulumi.Output[str]:
         """
         (Integer) id of associated workspace
         """

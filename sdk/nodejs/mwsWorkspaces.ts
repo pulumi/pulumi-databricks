@@ -306,7 +306,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     /**
      * (String) workspace id
      */
-    public readonly workspaceId!: pulumi.Output<number>;
+    public readonly workspaceId!: pulumi.Output<string>;
     /**
      * name of the workspace, will appear on UI.
      */
@@ -478,7 +478,7 @@ export interface MwsWorkspacesState {
     /**
      * (String) workspace id
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
     /**
      * name of the workspace, will appear on UI.
      */
@@ -570,7 +570,7 @@ export interface MwsWorkspacesArgs {
     /**
      * (String) workspace id
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
     /**
      * name of the workspace, will appear on UI.
      */

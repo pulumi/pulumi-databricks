@@ -150,7 +150,7 @@ export class MwsNetworks extends pulumi.CustomResource {
     /**
      * (Integer) id of associated workspace
      */
-    public readonly workspaceId!: pulumi.Output<number>;
+    public readonly workspaceId!: pulumi.Output<string>;
 
     /**
      * Create a MwsNetworks resource with the given unique name, arguments, and options.
@@ -250,7 +250,7 @@ export interface MwsNetworksState {
     /**
      * (Integer) id of associated workspace
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -298,5 +298,5 @@ export interface MwsNetworksArgs {
     /**
      * (Integer) id of associated workspace
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }

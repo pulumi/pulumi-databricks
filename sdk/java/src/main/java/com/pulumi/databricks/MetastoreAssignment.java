@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MetastoreAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MetastoreAssignmentState;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -109,14 +108,14 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
      * id of the workspace for the assignment
      * 
      */
-    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> workspaceId;
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output<String> workspaceId;
 
     /**
      * @return id of the workspace for the assignment
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 
