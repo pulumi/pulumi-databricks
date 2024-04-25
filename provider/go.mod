@@ -6,7 +6,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/databricks/databricks-sdk-go v0.38.0
-	github.com/databricks/terraform-provider-databricks v1.40.0
+	github.com/databricks/terraform-provider-databricks v1.41.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.81.0
 )
 
@@ -226,7 +226,7 @@ require (
 	golang.org/x/crypto v0.21.0 // indirect
 	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // indirect
 	golang.org/x/mod v0.17.0 // indirect
-	golang.org/x/net v0.22.0 // indirect
+	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
