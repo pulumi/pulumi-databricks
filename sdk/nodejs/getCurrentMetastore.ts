@@ -49,7 +49,7 @@ export function getCurrentMetastore(args?: GetCurrentMetastoreArgs, opts?: pulum
  */
 export interface GetCurrentMetastoreArgs {
     /**
-     * metastore ID.
+     * metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      */
     id?: string;
     /**
@@ -63,7 +63,7 @@ export interface GetCurrentMetastoreArgs {
  */
 export interface GetCurrentMetastoreResult {
     /**
-     * metastore ID.
+     * metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      */
     readonly id: string;
     /**
@@ -108,7 +108,7 @@ export function getCurrentMetastoreOutput(args?: GetCurrentMetastoreOutputArgs, 
  */
 export interface GetCurrentMetastoreOutputArgs {
     /**
-     * metastore ID.
+     * metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      */
     id?: pulumi.Input<string>;
     /**

@@ -425,6 +425,21 @@ export type MwsLogDelivery = import("./mwsLogDelivery").MwsLogDelivery;
 export const MwsLogDelivery: typeof import("./mwsLogDelivery").MwsLogDelivery = null as any;
 utilities.lazyLoad(exports, ["MwsLogDelivery"], () => require("./mwsLogDelivery"));
 
+export { MwsNccBindingArgs, MwsNccBindingState } from "./mwsNccBinding";
+export type MwsNccBinding = import("./mwsNccBinding").MwsNccBinding;
+export const MwsNccBinding: typeof import("./mwsNccBinding").MwsNccBinding = null as any;
+utilities.lazyLoad(exports, ["MwsNccBinding"], () => require("./mwsNccBinding"));
+
+export { MwsNccPrivateEndpointRuleArgs, MwsNccPrivateEndpointRuleState } from "./mwsNccPrivateEndpointRule";
+export type MwsNccPrivateEndpointRule = import("./mwsNccPrivateEndpointRule").MwsNccPrivateEndpointRule;
+export const MwsNccPrivateEndpointRule: typeof import("./mwsNccPrivateEndpointRule").MwsNccPrivateEndpointRule = null as any;
+utilities.lazyLoad(exports, ["MwsNccPrivateEndpointRule"], () => require("./mwsNccPrivateEndpointRule"));
+
+export { MwsNetworkConnectivityConfigArgs, MwsNetworkConnectivityConfigState } from "./mwsNetworkConnectivityConfig";
+export type MwsNetworkConnectivityConfig = import("./mwsNetworkConnectivityConfig").MwsNetworkConnectivityConfig;
+export const MwsNetworkConnectivityConfig: typeof import("./mwsNetworkConnectivityConfig").MwsNetworkConnectivityConfig = null as any;
+utilities.lazyLoad(exports, ["MwsNetworkConnectivityConfig"], () => require("./mwsNetworkConnectivityConfig"));
+
 export { MwsNetworksArgs, MwsNetworksState } from "./mwsNetworks";
 export type MwsNetworks = import("./mwsNetworks").MwsNetworks;
 export const MwsNetworks: typeof import("./mwsNetworks").MwsNetworks = null as any;
@@ -747,6 +762,12 @@ const _module = {
                 return new MwsCustomerManagedKeys(name, <any>undefined, { urn })
             case "databricks:index/mwsLogDelivery:MwsLogDelivery":
                 return new MwsLogDelivery(name, <any>undefined, { urn })
+            case "databricks:index/mwsNccBinding:MwsNccBinding":
+                return new MwsNccBinding(name, <any>undefined, { urn })
+            case "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule":
+                return new MwsNccPrivateEndpointRule(name, <any>undefined, { urn })
+            case "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig":
+                return new MwsNetworkConnectivityConfig(name, <any>undefined, { urn })
             case "databricks:index/mwsNetworks:MwsNetworks":
                 return new MwsNetworks(name, <any>undefined, { urn })
             case "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment":
@@ -881,6 +902,9 @@ pulumi.runtime.registerResourceModule("databricks", "index/mount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCredentials", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCustomerManagedKeys", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsLogDelivery", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/mwsNccBinding", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/mwsNccPrivateEndpointRule", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/mwsNetworkConnectivityConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsNetworks", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsPermissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsPrivateAccessSettings", _module)

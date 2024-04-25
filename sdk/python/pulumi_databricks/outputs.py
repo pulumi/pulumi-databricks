@@ -288,6 +288,12 @@ __all__ = [
     'MountWasb',
     'MwsCustomerManagedKeysAwsKeyInfo',
     'MwsCustomerManagedKeysGcpKeyInfo',
+    'MwsNetworkConnectivityConfigEgressConfig',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRules',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule',
+    'MwsNetworkConnectivityConfigEgressConfigTargetRules',
+    'MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule',
     'MwsNetworksErrorMessage',
     'MwsNetworksGcpNetworkInfo',
     'MwsNetworksVpcEndpoints',
@@ -14994,6 +15000,324 @@ class MwsCustomerManagedKeysGcpKeyInfo(dict):
         The GCP KMS key's resource name.
         """
         return pulumi.get(self, "kms_key_id")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRules":
+            suggest = "default_rules"
+        elif key == "targetRules":
+            suggest = "target_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_rules: Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules'] = None,
+                 target_rules: Optional['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRules'] = None):
+        if default_rules is not None:
+            pulumi.set(__self__, "default_rules", default_rules)
+        if target_rules is not None:
+            pulumi.set(__self__, "target_rules", target_rules)
+
+    @property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules']:
+        return pulumi.get(self, "default_rules")
+
+    @property
+    @pulumi.getter(name="targetRules")
+    def target_rules(self) -> Optional['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRules']:
+        return pulumi.get(self, "target_rules")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigDefaultRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsStableIpRule":
+            suggest = "aws_stable_ip_rule"
+        elif key == "azureServiceEndpointRule":
+            suggest = "azure_service_endpoint_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigDefaultRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_stable_ip_rule: Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule'] = None,
+                 azure_service_endpoint_rule: Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule'] = None):
+        """
+        :param 'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs' azure_service_endpoint_rule: This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+        """
+        if aws_stable_ip_rule is not None:
+            pulumi.set(__self__, "aws_stable_ip_rule", aws_stable_ip_rule)
+        if azure_service_endpoint_rule is not None:
+            pulumi.set(__self__, "azure_service_endpoint_rule", azure_service_endpoint_rule)
+
+    @property
+    @pulumi.getter(name="awsStableIpRule")
+    def aws_stable_ip_rule(self) -> Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule']:
+        return pulumi.get(self, "aws_stable_ip_rule")
+
+    @property
+    @pulumi.getter(name="azureServiceEndpointRule")
+    def azure_service_endpoint_rule(self) -> Optional['outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule']:
+        """
+        This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+        """
+        return pulumi.get(self, "azure_service_endpoint_rule")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlocks":
+            suggest = "cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_blocks: Optional[Sequence[str]] = None):
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "cidr_blocks")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetRegion":
+            suggest = "target_region"
+        elif key == "targetServices":
+            suggest = "target_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnets: Optional[Sequence[str]] = None,
+                 target_region: Optional[str] = None,
+                 target_services: Optional[Sequence[str]] = None):
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+        if target_region is not None:
+            pulumi.set(__self__, "target_region", target_region)
+        if target_services is not None:
+            pulumi.set(__self__, "target_services", target_services)
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter(name="targetRegion")
+    def target_region(self) -> Optional[str]:
+        return pulumi.get(self, "target_region")
+
+    @property
+    @pulumi.getter(name="targetServices")
+    def target_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "target_services")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azurePrivateEndpointRules":
+            suggest = "azure_private_endpoint_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigTargetRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 azure_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule']] = None):
+        if azure_private_endpoint_rules is not None:
+            pulumi.set(__self__, "azure_private_endpoint_rules", azure_private_endpoint_rules)
+
+    @property
+    @pulumi.getter(name="azurePrivateEndpointRules")
+    def azure_private_endpoint_rules(self) -> Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule']]:
+        return pulumi.get(self, "azure_private_endpoint_rules")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionState":
+            suggest = "connection_state"
+        elif key == "creationTime":
+            suggest = "creation_time"
+        elif key == "deactivatedAt":
+            suggest = "deactivated_at"
+        elif key == "endpointName":
+            suggest = "endpoint_name"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "networkConnectivityConfigId":
+            suggest = "network_connectivity_config_id"
+        elif key == "resourceId":
+            suggest = "resource_id"
+        elif key == "ruleId":
+            suggest = "rule_id"
+        elif key == "updatedTime":
+            suggest = "updated_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_state: Optional[str] = None,
+                 creation_time: Optional[int] = None,
+                 deactivated: Optional[bool] = None,
+                 deactivated_at: Optional[int] = None,
+                 endpoint_name: Optional[str] = None,
+                 group_id: Optional[str] = None,
+                 network_connectivity_config_id: Optional[str] = None,
+                 resource_id: Optional[str] = None,
+                 rule_id: Optional[str] = None,
+                 updated_time: Optional[int] = None):
+        """
+        :param str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        """
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if deactivated is not None:
+            pulumi.set(__self__, "deactivated", deactivated)
+        if deactivated_at is not None:
+            pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if endpoint_name is not None:
+            pulumi.set(__self__, "endpoint_name", endpoint_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if network_connectivity_config_id is not None:
+            pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if updated_time is not None:
+            pulumi.set(__self__, "updated_time", updated_time)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[str]:
+        return pulumi.get(self, "connection_state")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[int]:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def deactivated(self) -> Optional[bool]:
+        return pulumi.get(self, "deactivated")
+
+    @property
+    @pulumi.getter(name="deactivatedAt")
+    def deactivated_at(self) -> Optional[int]:
+        return pulumi.get(self, "deactivated_at")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="networkConnectivityConfigId")
+    def network_connectivity_config_id(self) -> Optional[str]:
+        """
+        Canonical unique identifier of Network Connectivity Config in Databricks Account
+        """
+        return pulumi.get(self, "network_connectivity_config_id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[str]:
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> Optional[int]:
+        return pulumi.get(self, "updated_time")
 
 
 @pulumi.output_type

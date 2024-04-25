@@ -7155,6 +7155,49 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
     kmsKeyId: pulumi.Input<string>;
 }
 
+export interface MwsNetworkConnectivityConfigEgressConfig {
+    defaultRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules>;
+    targetRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRules>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    awsStableIpRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule>;
+    /**
+     * This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     */
+    azureServiceEndpointRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    targetRegion?: pulumi.Input<string>;
+    targetServices?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[]>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    connectionState?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<number>;
+    deactivated?: pulumi.Input<boolean>;
+    deactivatedAt?: pulumi.Input<number>;
+    endpointName?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     */
+    networkConnectivityConfigId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<number>;
+}
+
 export interface MwsNetworksErrorMessage {
     errorMessage?: pulumi.Input<string>;
     errorType?: pulumi.Input<string>;

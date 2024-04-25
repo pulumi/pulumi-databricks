@@ -5126,6 +5126,49 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
     kmsKeyId: string;
 }
 
+export interface MwsNetworkConnectivityConfigEgressConfig {
+    defaultRules?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules;
+    targetRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRules;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    awsStableIpRule?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule;
+    /**
+     * This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     */
+    azureServiceEndpointRule?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    cidrBlocks?: string[];
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    subnets?: string[];
+    targetRegion?: string;
+    targetServices?: string[];
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    azurePrivateEndpointRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    connectionState?: string;
+    creationTime?: number;
+    deactivated?: boolean;
+    deactivatedAt?: number;
+    endpointName?: string;
+    groupId?: string;
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     */
+    networkConnectivityConfigId?: string;
+    resourceId?: string;
+    ruleId?: string;
+    updatedTime?: number;
+}
+
 export interface MwsNetworksErrorMessage {
     errorMessage?: string;
     errorType?: string;

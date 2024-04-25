@@ -64,7 +64,7 @@ func GetCurrentMetastore(ctx *pulumi.Context, args *GetCurrentMetastoreArgs, opt
 
 // A collection of arguments for invoking getCurrentMetastore.
 type GetCurrentMetastoreArgs struct {
-	// metastore ID.
+	// metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
 	Id *string `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 	MetastoreInfo *GetCurrentMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
@@ -72,7 +72,7 @@ type GetCurrentMetastoreArgs struct {
 
 // A collection of values returned by getCurrentMetastore.
 type GetCurrentMetastoreResult struct {
-	// metastore ID.
+	// metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
 	Id string `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 	MetastoreInfo GetCurrentMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
@@ -93,7 +93,7 @@ func GetCurrentMetastoreOutput(ctx *pulumi.Context, args GetCurrentMetastoreOutp
 
 // A collection of arguments for invoking getCurrentMetastore.
 type GetCurrentMetastoreOutputArgs struct {
-	// metastore ID.
+	// metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 	MetastoreInfo GetCurrentMetastoreMetastoreInfoPtrInput `pulumi:"metastoreInfo"`
@@ -118,7 +118,7 @@ func (o GetCurrentMetastoreResultOutput) ToGetCurrentMetastoreResultOutputWithCo
 	return o
 }
 
-// metastore ID.
+// metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
 func (o GetCurrentMetastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }

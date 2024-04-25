@@ -89,6 +89,9 @@ from .mount import *
 from .mws_credentials import *
 from .mws_customer_managed_keys import *
 from .mws_log_delivery import *
+from .mws_ncc_binding import *
+from .mws_ncc_private_endpoint_rule import *
+from .mws_network_connectivity_config import *
 from .mws_networks import *
 from .mws_permission_assignment import *
 from .mws_private_access_settings import *
@@ -458,6 +461,30 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/mwsLogDelivery:MwsLogDelivery": "MwsLogDelivery"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/mwsNccBinding",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/mwsNccBinding:MwsNccBinding": "MwsNccBinding"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/mwsNccPrivateEndpointRule",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule": "MwsNccPrivateEndpointRule"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/mwsNetworkConnectivityConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig": "MwsNetworkConnectivityConfig"
   }
  },
  {

@@ -35,7 +35,7 @@ class GetCurrentMetastoreResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        metastore ID.
+        metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
         """
         return pulumi.get(self, "id")
 
@@ -90,7 +90,7 @@ def get_current_metastore(id: Optional[str] = None,
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param str id: metastore ID.
+    :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
     :param pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
     """
     __args__ = dict()
@@ -137,7 +137,7 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param str id: metastore ID.
+    :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
     :param pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
     """
     ...
