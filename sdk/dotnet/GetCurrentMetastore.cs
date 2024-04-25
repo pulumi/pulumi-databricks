@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
     public sealed class GetCurrentMetastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// metastore ID.
+        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
     public sealed class GetCurrentMetastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// metastore ID.
+        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
     public sealed class GetCurrentMetastoreResult
     {
         /// <summary>
-        /// metastore ID.
+        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
         /// </summary>
         public readonly string Id;
         /// <summary>

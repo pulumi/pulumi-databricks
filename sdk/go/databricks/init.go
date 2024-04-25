@@ -99,6 +99,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MwsCustomerManagedKeys{}
 	case "databricks:index/mwsLogDelivery:MwsLogDelivery":
 		r = &MwsLogDelivery{}
+	case "databricks:index/mwsNccBinding:MwsNccBinding":
+		r = &MwsNccBinding{}
+	case "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule":
+		r = &MwsNccPrivateEndpointRule{}
+	case "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig":
+		r = &MwsNetworkConnectivityConfig{}
 	case "databricks:index/mwsNetworks:MwsNetworks":
 		r = &MwsNetworks{}
 	case "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment":
@@ -413,6 +419,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/mwsLogDelivery",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/mwsNccBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/mwsNccPrivateEndpointRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/mwsNetworkConnectivityConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

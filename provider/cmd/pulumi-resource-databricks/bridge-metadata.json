@@ -1570,6 +1570,67 @@
                     }
                 }
             },
+            "databricks_mws_ncc_binding": {
+                "current": "databricks:index/mwsNccBinding:MwsNccBinding",
+                "majorVersion": 1
+            },
+            "databricks_mws_ncc_private_endpoint_rule": {
+                "current": "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule",
+                "majorVersion": 1
+            },
+            "databricks_mws_network_connectivity_config": {
+                "current": "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "egress_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "default_rules": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aws_stable_ip_rule": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidr_blocks": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "azure_service_endpoint_rule": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subnets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "target_services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "target_rules": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "azure_private_endpoint_rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_mws_networks": {
                 "current": "databricks:index/mwsNetworks:MwsNetworks",
                 "majorVersion": 1,

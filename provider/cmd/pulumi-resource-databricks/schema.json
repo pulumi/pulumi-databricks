@@ -5914,6 +5914,107 @@
                 "kmsKeyId"
             ]
         },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfig:MwsNetworkConnectivityConfigEgressConfig": {
+            "properties": {
+                "defaultRules": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRules:MwsNetworkConnectivityConfigEgressConfigDefaultRules"
+                },
+                "targetRules": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRules:MwsNetworkConnectivityConfigEgressConfigTargetRules"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRules:MwsNetworkConnectivityConfigEgressConfigDefaultRules": {
+            "properties": {
+                "awsStableIpRule": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule"
+                },
+                "azureServiceEndpointRule": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule",
+                    "description": "This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule": {
+            "properties": {
+                "cidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule": {
+            "properties": {
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "targetRegion": {
+                    "type": "string"
+                },
+                "targetServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRules:MwsNetworkConnectivityConfigEgressConfigTargetRules": {
+            "properties": {
+                "azurePrivateEndpointRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule:MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule:MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule": {
+            "properties": {
+                "connectionState": {
+                    "type": "string"
+                },
+                "creationTime": {
+                    "type": "integer"
+                },
+                "deactivated": {
+                    "type": "boolean"
+                },
+                "deactivatedAt": {
+                    "type": "integer"
+                },
+                "endpointName": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "string"
+                },
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account\n"
+                },
+                "resourceId": {
+                    "type": "string"
+                },
+                "ruleId": {
+                    "type": "string"
+                },
+                "updatedTime": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/MwsNetworksErrorMessage:MwsNetworksErrorMessage": {
             "properties": {
                 "errorMessage": {
@@ -18709,6 +18810,312 @@
                 "type": "object"
             }
         },
+        "databricks:index/mwsNccBinding:MwsNccBinding": {
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to attach a Network Connectivity Config object to a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).\n\nThe NCC and workspace must be in the same region.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()        \n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()        \n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n",
+            "properties": {
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
+                },
+                "workspaceId": {
+                    "type": "integer",
+                    "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n"
+                }
+            },
+            "required": [
+                "networkConnectivityConfigId",
+                "workspaceId"
+            ],
+            "inputProperties": {
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
+                },
+                "workspaceId": {
+                    "type": "integer",
+                    "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "networkConnectivityConfigId",
+                "workspaceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MwsNccBinding resources.\n",
+                "properties": {
+                    "networkConnectivityConfigId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
+                    },
+                    "workspaceId": {
+                        "type": "integer",
+                        "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule": {
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Note** This feature is only available in Azure.\n\nAllows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst storage = new databricks.MwsNccPrivateEndpointRule(\"storage\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    resourceId: \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    groupId: \"blob\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nstorage = databricks.MwsNccPrivateEndpointRule(\"storage\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    resource_id=\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    group_id=\"blob\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var storage = new Databricks.MwsNccPrivateEndpointRule(\"storage\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        ResourceId = \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n        GroupId = \"blob\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccPrivateEndpointRule(ctx, \"storage\", \u0026databricks.MwsNccPrivateEndpointRuleArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tResourceId:                  pulumi.String(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\"),\n\t\t\tGroupId:                     pulumi.String(\"blob\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRule;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()        \n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var storage = new MwsNccPrivateEndpointRule(\"storage\", MwsNccPrivateEndpointRuleArgs.builder()        \n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .resourceId(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\")\n            .groupId(\"blob\")\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  storage:\n    type: databricks:MwsNccPrivateEndpointRule\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      resourceId: /subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\n      groupId: blob\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule \u003cnetwork_connectivity_config_id\u003e/\u003crule_id\u003e\n```\n\n",
+            "properties": {
+                "connectionState": {
+                    "type": "string",
+                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                },
+                "creationTime": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was created.\n"
+                },
+                "deactivated": {
+                    "type": "boolean",
+                    "description": "Whether this private endpoint is deactivated.\n"
+                },
+                "deactivatedAt": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was deactivated.\n"
+                },
+                "endpointName": {
+                    "type": "string",
+                    "description": "The name of the Azure private endpoint resource, e.g. \"databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234\"\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.\n"
+                },
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The Azure resource ID of the target resource. Change forces creation of a new resource.\n"
+                },
+                "ruleId": {
+                    "type": "string",
+                    "description": "the ID of a private endpoint rule.\n"
+                },
+                "updatedTime": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was updated.\n"
+                }
+            },
+            "required": [
+                "connectionState",
+                "creationTime",
+                "endpointName",
+                "groupId",
+                "networkConnectivityConfigId",
+                "resourceId",
+                "ruleId",
+                "updatedTime"
+            ],
+            "inputProperties": {
+                "connectionState": {
+                    "type": "string",
+                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                },
+                "creationTime": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was created.\n"
+                },
+                "deactivated": {
+                    "type": "boolean",
+                    "description": "Whether this private endpoint is deactivated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "deactivatedAt": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was deactivated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "endpointName": {
+                    "type": "string",
+                    "description": "The name of the Azure private endpoint resource, e.g. \"databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234\"\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The Azure resource ID of the target resource. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "ruleId": {
+                    "type": "string",
+                    "description": "the ID of a private endpoint rule.\n"
+                },
+                "updatedTime": {
+                    "type": "integer",
+                    "description": "Time in epoch milliseconds when this object was updated.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "networkConnectivityConfigId",
+                "resourceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.\n",
+                "properties": {
+                    "connectionState": {
+                        "type": "string",
+                        "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                    },
+                    "creationTime": {
+                        "type": "integer",
+                        "description": "Time in epoch milliseconds when this object was created.\n"
+                    },
+                    "deactivated": {
+                        "type": "boolean",
+                        "description": "Whether this private endpoint is deactivated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "deactivatedAt": {
+                        "type": "integer",
+                        "description": "Time in epoch milliseconds when this object was deactivated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "endpointName": {
+                        "type": "string",
+                        "description": "The name of the Azure private endpoint resource, e.g. \"databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234\"\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "networkConnectivityConfigId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The Azure resource ID of the target resource. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ruleId": {
+                        "type": "string",
+                        "description": "the ID of a private endpoint rule.\n"
+                    },
+                    "updatedTime": {
+                        "type": "integer",
+                        "description": "Time in epoch milliseconds when this object was updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig": {
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to create a [Network Connectivity Config] that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()        \n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()        \n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n* databricks.MwsNccPrivateEndpointRule to create a private endpoint rule.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc \u003caccount_id\u003e/\u003cnetwork_connectivity_config_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "creationTime": {
+                    "type": "integer"
+                },
+                "egressConfig": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfig:MwsNetworkConnectivityConfigEgressConfig"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n"
+                },
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.\n"
+                },
+                "updatedTime": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "accountId",
+                "creationTime",
+                "egressConfig",
+                "name",
+                "networkConnectivityConfigId",
+                "region",
+                "updatedTime"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "creationTime": {
+                    "type": "integer"
+                },
+                "egressConfig": {
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfig:MwsNetworkConnectivityConfigEgressConfig"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networkConnectivityConfigId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "updatedTime": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "creationTime": {
+                        "type": "integer"
+                    },
+                    "egressConfig": {
+                        "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfig:MwsNetworkConnectivityConfigEgressConfig"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "networkConnectivityConfigId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "updatedTime": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "databricks:index/mwsNetworks:MwsNetworks": {
             "description": "## Databricks on AWS usage\n\n\u003e **Note** Initialize provider with `alias = \"mws\"`, `host  = \"https://accounts.cloud.databricks.com\"` and use `provider = databricks.mws`\n\nUse this resource to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to at least two subnets for each workspace, with each subnet in a different Availability Zone. You cannot specify more than one Databricks workspace subnet per Availability Zone in the Create network configuration API call. You can have more than one subnet per Availability Zone as part of your network setup, but you can choose only one subnet per Availability Zone for the Databricks workspace.\n* Databricks assigns two IP addresses per node, one for management traffic and one for Spark applications. The total number of instances for each subnet is equal to half of the available IP addresses.\n* Each subnet must have a netmask between /17 and /25.\n* Subnets must be private.\n* Subnets must have outbound access to the public network using a aws_nat_gateway, or other similar customer-managed appliance infrastructure.\n* The NAT gateway must be set up in its subnet (public_subnets in the example below) that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure.\n\n\u003e **Note** The NAT gateway needs only one IP address per AZ. Hence, the public subnet only needs two IP addresses. In order to limit the number of IP addresses in the public subnet, you can specify a secondary CIDR block (cidr_block_public) using the argument secondary_cidr_blocks then pass it to the public_subnets argument. Please review the [IPv4 CIDR block association restrictions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) when choosing the secondary cidr block.\n\nPlease follow this complete runnable example \u0026 subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace’s GKE cluster nodes.\n* The subnet must have a netmask between /29 and /9.\n* Databricks must have access to 2 secondary IP ranges, one between /21 to /9 for workspace’s GKE cluster pods, and one between /27 to /16 for workspace’s GKE cluster services.\n* Subnet must have outbound access to the public network using a gcp_compute_router_nat or other similar customer-managed appliance infrastructure.\n\nPlease follow this complete runnable example]\n  private_subnets = [cidrsubnet(var.cidr_block, 3, 1),\n  cidrsubnet(var.cidr_block, 3, 2)]\n\n  default_security_group_egress = [{\n    cidr_blocks = \"0.0.0.0/0\"\n  }]\n\n  default_security_group_ingress = [{\n    description = \"Allow all internal TCP and UDP\"\n    self        = true\n  }]\n}\n\nresource \"databricks.MwsNetworks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n}\n```\n\nIn order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from [mws_vpc_endpoint](mws_vpc_endpoint.md) resources into the [databricks_mws_networks](databricks_mws_networks.md) resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n  depends_on = [aws_vpc_endpoint.workspace, aws_vpc_endpoint.relay]\n}\n```\n\n### Creating a Databricks on GCP workspace\n\n```hcl\nvariable \"databricks_account_id\" {\n  description = \"Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/\"\n}\n\nresource \"google_compute_network\" \"dbx_private_vpc\" {\n  project                 = var.google_project\n  name                    = \"tf-network-${random_string.suffix.result}\"\n  auto_create_subnetworks = false\n}\n\nresource \"google_compute_subnetwork\" \"network-with-private-secondary-ip-ranges\" {\n  name          = \"test-dbx-${random_string.suffix.result}\"\n  ip_cidr_range = \"10.0.0.0/16\"\n  region        = \"us-central1\"\n  network       = google_compute_network.dbx_private_vpc.id\n  secondary_ip_range {\n    range_name    = \"pods\"\n    ip_cidr_range = \"10.1.0.0/16\"\n  }\n  secondary_ip_range {\n    range_name    = \"svc\"\n    ip_cidr_range = \"10.2.0.0/20\"\n  }\n  private_ip_google_access = true\n}\n\nresource \"google_compute_router\" \"router\" {\n  name    = \"my-router-${random_string.suffix.result}\"\n  region  = google_compute_subnetwork.network-with-private-secondary-ip-ranges.region\n  network = google_compute_network.dbx_private_vpc.id\n}\n\nresource \"google_compute_router_nat\" \"nat\" {\n  name                               = \"my-router-nat-${random_string.suffix.result}\"\n  router                             = google_compute_router.router.name\n  region                             = google_compute_router.router.region\n  nat_ip_allocate_option             = \"AUTO_ONLY\"\n  source_subnetwork_ip_ranges_to_nat = \"ALL_SUBNETWORKS_ALL_IP_RANGES\"\n}\n\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n}\n```\n\nIn order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n}\n```\n\n## Modifying networks on running workspaces (AWS only)\n\nDue to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted \u0026 added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:\n\n1. Create a new `databricks.MwsNetworks` resource.\n2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.\n3. Delete the old `databricks.MwsNetworks` resource.\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* Provisioning Databricks on AWS with PrivateLink guide.\n* Provisioning AWS Databricks E2 with a Hub \u0026 Spoke firewall for data exfiltration protection guide.\n* Provisioning Databricks on GCP guide.\n* Provisioning Databricks workspaces on GCP with Private Service Connect guide.\n* databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.\n* databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported.\n\n",
             "properties": {
@@ -24897,7 +25304,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "metastore ID.\n"
+                        "description": "metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace\n"
                     },
                     "metastoreInfo": {
                         "$ref": "#/types/databricks:index/getCurrentMetastoreMetastoreInfo:getCurrentMetastoreMetastoreInfo",
@@ -24910,7 +25317,7 @@
                 "description": "A collection of values returned by getCurrentMetastore.\n",
                 "properties": {
                     "id": {
-                        "description": "metastore ID.\n",
+                        "description": "metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace\n",
                         "type": "string"
                     },
                     "metastoreInfo": {
