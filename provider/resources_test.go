@@ -45,7 +45,7 @@ func TestWithUserAgent(t *testing.T) {
 	}
 
 	for _, v := range testCases {
-		t.Run(v.name, func(t *testing.T) {
+		t.Run(v.name, func(*testing.T) {
 			// This function panics when the user agent does not conform to a regular expression checks.
 			useragent.WithUserAgentExtra("pulumi", userAgentValue(v.version))
 			// No error return value to check.

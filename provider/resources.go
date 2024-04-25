@@ -57,7 +57,7 @@ func userAgentValue(version string) string {
 // string.
 //
 // The bridge converts it back to an int at runtime.
-func setWorkspaceIdToString(p tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+func setWorkspaceIDToString(p tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
 	path := p.SchemaPath()
 	attr, ok := path[len(path)-1].(walk.GetAttrStep)
 	if !ok || attr.Name != "workspace_id" {
@@ -180,7 +180,7 @@ func Provider() tfbridge.ProviderInfo {
 		mainMod, tokens.MakeStandard(mainPkg)))
 
 	prov.SetAutonaming(255, "-")
-	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIdToString)
+	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIDToString)
 
 	prov.MustApplyAutoAliases()
 
