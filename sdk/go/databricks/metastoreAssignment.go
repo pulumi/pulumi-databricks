@@ -72,7 +72,7 @@ type MetastoreAssignment struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// id of the workspace for the assignment
-	WorkspaceId pulumi.IntOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewMetastoreAssignment registers a new resource with the given unique name, arguments, and options.
@@ -116,7 +116,7 @@ type metastoreAssignmentState struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// id of the workspace for the assignment
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MetastoreAssignmentState struct {
@@ -125,7 +125,7 @@ type MetastoreAssignmentState struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
 	// id of the workspace for the assignment
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MetastoreAssignmentState) ElementType() reflect.Type {
@@ -138,7 +138,7 @@ type metastoreAssignmentArgs struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
 	// id of the workspace for the assignment
-	WorkspaceId int `pulumi:"workspaceId"`
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MetastoreAssignment resource.
@@ -148,7 +148,7 @@ type MetastoreAssignmentArgs struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
 	// id of the workspace for the assignment
-	WorkspaceId pulumi.IntInput
+	WorkspaceId pulumi.StringInput
 }
 
 func (MetastoreAssignmentArgs) ElementType() reflect.Type {
@@ -249,8 +249,8 @@ func (o MetastoreAssignmentOutput) MetastoreId() pulumi.StringOutput {
 }
 
 // id of the workspace for the assignment
-func (o MetastoreAssignmentOutput) WorkspaceId() pulumi.IntOutput {
-	return o.ApplyT(func(v *MetastoreAssignment) pulumi.IntOutput { return v.WorkspaceId }).(pulumi.IntOutput)
+func (o MetastoreAssignmentOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 type MetastoreAssignmentArrayOutput struct{ *pulumi.OutputState }

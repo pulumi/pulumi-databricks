@@ -55,13 +55,13 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="workspaceId", required=true)
-    private Output<Integer> workspaceId;
+    private Output<String> workspaceId;
 
     /**
      * @return Databricks workspace ID.
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 
@@ -155,7 +155,7 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<Integer> workspaceId) {
+        public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -166,7 +166,7 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder workspaceId(Integer workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 

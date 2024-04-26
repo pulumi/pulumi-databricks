@@ -76,7 +76,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<number | undefined>;
+    public readonly workspaceId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CatalogWorkspaceBinding resource with the given unique name, arguments, and options.
@@ -132,7 +132,7 @@ export interface CatalogWorkspaceBindingState {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -158,5 +158,5 @@ export interface CatalogWorkspaceBindingArgs {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }

@@ -201,14 +201,14 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * Databricks workspace ID.
      * 
      */
-    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> workspaceId;
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output<String> workspaceId;
 
     /**
      * @return Databricks workspace ID.
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 

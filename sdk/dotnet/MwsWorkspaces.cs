@@ -410,7 +410,7 @@ namespace Pulumi.Databricks
         /// (String) workspace id
         /// </summary>
         [Output("workspaceId")]
-        public Output<int> WorkspaceId { get; private set; } = null!;
+        public Output<string> WorkspaceId { get; private set; } = null!;
 
         /// <summary>
         /// name of the workspace, will appear on UI.
@@ -611,7 +611,7 @@ namespace Pulumi.Databricks
         /// (String) workspace id
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         /// <summary>
         /// name of the workspace, will appear on UI.
@@ -770,7 +770,7 @@ namespace Pulumi.Databricks
         /// (String) workspace id
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         /// <summary>
         /// name of the workspace, will appear on UI.

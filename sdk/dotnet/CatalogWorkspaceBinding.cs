@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Output("workspaceId")]
-        public Output<int?> WorkspaceId { get; private set; } = null!;
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Databricks
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public CatalogWorkspaceBindingArgs()
         {
@@ -179,7 +179,7 @@ namespace Pulumi.Databricks
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public CatalogWorkspaceBindingState()
         {

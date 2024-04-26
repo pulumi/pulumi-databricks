@@ -110,7 +110,7 @@ type MwsNetworks struct {
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringOutput `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
-	WorkspaceId pulumi.IntOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewMwsNetworks registers a new resource with the given unique name, arguments, and options.
@@ -177,7 +177,7 @@ type mwsNetworksState struct {
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MwsNetworksState struct {
@@ -202,7 +202,7 @@ type MwsNetworksState struct {
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
 	// (Integer) id of associated workspace
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MwsNetworksState) ElementType() reflect.Type {
@@ -231,7 +231,7 @@ type mwsNetworksArgs struct {
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
-	WorkspaceId *int `pulumi:"workspaceId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MwsNetworks resource.
@@ -257,7 +257,7 @@ type MwsNetworksArgs struct {
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
 	// (Integer) id of associated workspace
-	WorkspaceId pulumi.IntPtrInput
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MwsNetworksArgs) ElementType() reflect.Type {
@@ -401,8 +401,8 @@ func (o MwsNetworksOutput) VpcStatus() pulumi.StringOutput {
 }
 
 // (Integer) id of associated workspace
-func (o MwsNetworksOutput) WorkspaceId() pulumi.IntOutput {
-	return o.ApplyT(func(v *MwsNetworks) pulumi.IntOutput { return v.WorkspaceId }).(pulumi.IntOutput)
+func (o MwsNetworksOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 type MwsNetworksArrayOutput struct{ *pulumi.OutputState }

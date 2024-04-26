@@ -6813,5 +6813,24 @@
             "skipVerify": "skip_verify",
             "warehouseId": "warehouse_id"
         }
+    },
+    "workspace-id": {
+        "resources": {
+            "databricks_catalog_workspace_binding": [
+                "workspace_id"
+            ],
+            "databricks_metastore_assignment": [
+                "workspace_id"
+            ],
+            "databricks_mws_networks": [
+                "workspace_id"
+            ],
+            "databricks_mws_permission_assignment": [
+                "workspace_id"
+            ],
+            "databricks_mws_workspaces": [
+                "workspace_id"
+            ]
+        }
     }
 }

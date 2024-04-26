@@ -239,14 +239,14 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * (Integer) id of associated workspace
      * 
      */
-    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> workspaceId;
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output<String> workspaceId;
 
     /**
      * @return (Integer) id of associated workspace
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 

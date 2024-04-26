@@ -151,7 +151,7 @@ namespace Pulumi.Databricks
         /// (Integer) id of associated workspace
         /// </summary>
         [Output("workspaceId")]
-        public Output<int> WorkspaceId { get; private set; } = null!;
+        public Output<string> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Pulumi.Databricks
         /// (Integer) id of associated workspace
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public MwsNetworksArgs()
         {
@@ -395,7 +395,7 @@ namespace Pulumi.Databricks
         /// (Integer) id of associated workspace
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public MwsNetworksState()
         {

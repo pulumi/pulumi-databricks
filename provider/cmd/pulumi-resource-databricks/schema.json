@@ -13979,7 +13979,7 @@
                     "description": "Type of securable. Default to `catalog`. Change forces creation of a new resource.\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "ID of the workspace. Change forces creation of a new resource.\n"
                 }
             },
@@ -14005,7 +14005,7 @@
                     "willReplaceOnChanges": true
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "ID of the workspace. Change forces creation of a new resource.\n",
                     "willReplaceOnChanges": true
                 }
@@ -14034,7 +14034,7 @@
                         "willReplaceOnChanges": true
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "ID of the workspace. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     }
@@ -17609,7 +17609,7 @@
                     "description": "Unique identifier of the parent Metastore\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "id of the workspace for the assignment\n"
                 }
             },
@@ -17628,7 +17628,7 @@
                     "willReplaceOnChanges": true
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "id of the workspace for the assignment\n",
                     "willReplaceOnChanges": true
                 }
@@ -17650,7 +17650,7 @@
                         "willReplaceOnChanges": true
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "id of the workspace for the assignment\n",
                         "willReplaceOnChanges": true
                     }
@@ -19172,7 +19172,7 @@
                     "description": "(String) VPC attachment status\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "(Integer) id of associated workspace\n"
                 }
             },
@@ -19247,7 +19247,7 @@
                     "description": "(String) VPC attachment status\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "(Integer) id of associated workspace\n"
                 }
             },
@@ -19318,7 +19318,7 @@
                         "description": "(String) VPC attachment status\n"
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "(Integer) id of associated workspace\n"
                     }
                 },
@@ -19340,7 +19340,7 @@
                     "description": "Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Databricks workspace ID.\n"
                 }
             },
@@ -19364,7 +19364,7 @@
                     "willReplaceOnChanges": true
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Databricks workspace ID.\n",
                     "willReplaceOnChanges": true
                 }
@@ -19391,7 +19391,7 @@
                         "willReplaceOnChanges": true
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Databricks workspace ID.\n",
                         "willReplaceOnChanges": true
                     }
@@ -19824,7 +19824,7 @@
                     "$ref": "#/types/databricks:index/MwsWorkspacesToken:MwsWorkspacesToken"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "(String) workspace id\n"
                 },
                 "workspaceName": {
@@ -19950,7 +19950,7 @@
                     "$ref": "#/types/databricks:index/MwsWorkspacesToken:MwsWorkspacesToken"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "(String) workspace id\n"
                 },
                 "workspaceName": {
@@ -20072,7 +20072,7 @@
                         "$ref": "#/types/databricks:index/MwsWorkspacesToken:MwsWorkspacesToken"
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "(String) workspace id\n"
                     },
                     "workspaceName": {

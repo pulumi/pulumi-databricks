@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,13 +51,13 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="workspaceId", required=true)
-    private Output<Integer> workspaceId;
+    private Output<String> workspaceId;
 
     /**
      * @return id of the workspace for the assignment
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 
@@ -136,7 +135,7 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<Integer> workspaceId) {
+        public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -147,7 +146,7 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder workspaceId(Integer workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 

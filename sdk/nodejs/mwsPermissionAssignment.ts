@@ -111,7 +111,7 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
     /**
      * Databricks workspace ID.
      */
-    public readonly workspaceId!: pulumi.Output<number>;
+    public readonly workspaceId!: pulumi.Output<string>;
 
     /**
      * Create a MwsPermissionAssignment resource with the given unique name, arguments, and options.
@@ -166,7 +166,7 @@ export interface MwsPermissionAssignmentState {
     /**
      * Databricks workspace ID.
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -186,5 +186,5 @@ export interface MwsPermissionAssignmentArgs {
     /**
      * Databricks workspace ID.
      */
-    workspaceId: pulumi.Input<number>;
+    workspaceId: pulumi.Input<string>;
 }
