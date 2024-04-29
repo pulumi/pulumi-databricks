@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MwsNccBindingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsNccBindingState;
-import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -95,14 +94,14 @@ public class MwsNccBinding extends com.pulumi.resources.CustomResource {
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      * 
      */
-    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> workspaceId;
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output<String> workspaceId;
 
     /**
      * @return Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 

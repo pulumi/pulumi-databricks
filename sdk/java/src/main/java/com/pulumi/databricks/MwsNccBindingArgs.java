@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -35,13 +34,13 @@ public final class MwsNccBindingArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="workspaceId", required=true)
-    private Output<Integer> workspaceId;
+    private Output<String> workspaceId;
 
     /**
      * @return Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      * 
      */
-    public Output<Integer> workspaceId() {
+    public Output<String> workspaceId() {
         return this.workspaceId;
     }
 
@@ -97,7 +96,7 @@ public final class MwsNccBindingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<Integer> workspaceId) {
+        public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -108,7 +107,7 @@ public final class MwsNccBindingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder workspaceId(Integer workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 

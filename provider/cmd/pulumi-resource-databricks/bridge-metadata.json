@@ -6822,6 +6822,9 @@
             "databricks_metastore_assignment": [
                 "workspace_id"
             ],
+            "databricks_mws_ncc_binding": [
+                "workspace_id"
+            ],
             "databricks_mws_networks": [
                 "workspace_id"
             ],
