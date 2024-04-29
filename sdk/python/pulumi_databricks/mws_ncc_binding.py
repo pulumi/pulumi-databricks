@@ -15,11 +15,11 @@ __all__ = ['MwsNccBindingArgs', 'MwsNccBinding']
 class MwsNccBindingArgs:
     def __init__(__self__, *,
                  network_connectivity_config_id: pulumi.Input[str],
-                 workspace_id: pulumi.Input[int]):
+                 workspace_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a MwsNccBinding resource.
         :param pulumi.Input[str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
-        :param pulumi.Input[int] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        :param pulumi.Input[str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
         pulumi.set(__self__, "workspace_id", workspace_id)
@@ -38,14 +38,14 @@ class MwsNccBindingArgs:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Input[int]:
+    def workspace_id(self) -> pulumi.Input[str]:
         """
         Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: pulumi.Input[int]):
+    def workspace_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -53,11 +53,11 @@ class MwsNccBindingArgs:
 class _MwsNccBindingState:
     def __init__(__self__, *,
                  network_connectivity_config_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None):
+                 workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsNccBinding resources.
         :param pulumi.Input[str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
-        :param pulumi.Input[int] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        :param pulumi.Input[str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         if network_connectivity_config_id is not None:
             pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
@@ -78,14 +78,14 @@ class _MwsNccBindingState:
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[int]]:
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[int]]):
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -95,7 +95,7 @@ class MwsNccBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > **Note** Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
@@ -133,7 +133,7 @@ class MwsNccBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
-        :param pulumi.Input[int] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        :param pulumi.Input[str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -190,7 +190,7 @@ class MwsNccBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[int]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -217,7 +217,7 @@ class MwsNccBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             network_connectivity_config_id: Optional[pulumi.Input[str]] = None,
-            workspace_id: Optional[pulumi.Input[int]] = None) -> 'MwsNccBinding':
+            workspace_id: Optional[pulumi.Input[str]] = None) -> 'MwsNccBinding':
         """
         Get an existing MwsNccBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -226,7 +226,7 @@ class MwsNccBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
-        :param pulumi.Input[int] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        :param pulumi.Input[str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,7 +246,7 @@ class MwsNccBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[int]:
+    def workspace_id(self) -> pulumi.Output[str]:
         """
         Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """

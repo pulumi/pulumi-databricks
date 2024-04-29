@@ -74,7 +74,7 @@ export class MwsNccBinding extends pulumi.CustomResource {
     /**
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<number>;
+    public readonly workspaceId!: pulumi.Output<string>;
 
     /**
      * Create a MwsNccBinding resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ export interface MwsNccBindingState {
     /**
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<number>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -132,5 +132,5 @@ export interface MwsNccBindingArgs {
     /**
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      */
-    workspaceId: pulumi.Input<number>;
+    workspaceId: pulumi.Input<string>;
 }

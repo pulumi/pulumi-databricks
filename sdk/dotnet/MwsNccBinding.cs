@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
         /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         /// </summary>
         [Output("workspaceId")]
-        public Output<int> WorkspaceId { get; private set; } = null!;
+        public Output<string> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Pulumi.Databricks
         /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         /// </summary>
         [Input("workspaceId", required: true)]
-        public Input<int> WorkspaceId { get; set; } = null!;
+        public Input<string> WorkspaceId { get; set; } = null!;
 
         public MwsNccBindingArgs()
         {
@@ -144,7 +144,7 @@ namespace Pulumi.Databricks
         /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         /// </summary>
         [Input("workspaceId")]
-        public Input<int>? WorkspaceId { get; set; }
+        public Input<string>? WorkspaceId { get; set; }
 
         public MwsNccBindingState()
         {

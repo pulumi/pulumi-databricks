@@ -18818,7 +18818,7 @@
                     "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n"
                 }
             },
@@ -18832,7 +18832,7 @@
                     "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
                 },
                 "workspaceId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n",
                     "willReplaceOnChanges": true
                 }
@@ -18849,7 +18849,7 @@
                         "description": "Canonical unique identifier of Network Connectivity Config in Databricks Account.\n"
                     },
                     "workspaceId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     }
