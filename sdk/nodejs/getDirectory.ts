@@ -24,8 +24,10 @@ export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDirectory:getDirectory", {
+        "id": args.id,
         "objectId": args.objectId,
         "path": args.path,
+        "workspacePath": args.workspacePath,
     }, opts);
 }
 
@@ -33,6 +35,7 @@ export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getDirectory.
  */
 export interface GetDirectoryArgs {
+    id?: string;
     /**
      * directory object ID
      */
@@ -41,15 +44,16 @@ export interface GetDirectoryArgs {
      * Path to a directory in the workspace
      */
     path: string;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    workspacePath?: string;
 }
 
 /**
  * A collection of values returned by getDirectory.
  */
 export interface GetDirectoryResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * directory object ID
@@ -85,6 +89,7 @@ export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDirectory.
  */
 export interface GetDirectoryOutputArgs {
+    id?: pulumi.Input<string>;
     /**
      * directory object ID
      */
@@ -93,4 +98,8 @@ export interface GetDirectoryOutputArgs {
      * Path to a directory in the workspace
      */
     path: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    workspacePath?: pulumi.Input<string>;
 }

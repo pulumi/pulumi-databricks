@@ -45,6 +45,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("environmentKey")]
         public Input<string>? EnvironmentKey { get; set; }
 
+        /// <summary>
+        /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        /// </summary>
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
@@ -53,10 +56,15 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// block described below that specifies health conditions for a given task.
+        /// 
+        /// &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         /// </summary>
         [Input("health")]
         public Input<Inputs.JobTaskHealthArgs>? Health { get; set; }
 
+        /// <summary>
+        /// Identifier of the Job cluster specified in the `job_cluster` block.
+        /// </summary>
         [Input("jobClusterKey")]
         public Input<string>? JobClusterKey { get; set; }
 
@@ -84,6 +92,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("minRetryIntervalMillis")]
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
+        /// <summary>
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+        /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobTaskNewClusterArgs>? NewCluster { get; set; }
 
@@ -91,7 +102,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskNotebookTaskArgs>? NotebookTask { get; set; }
 
         /// <summary>
-        /// An optional block controlling the notification settings on the job level (described below).
+        /// An optional block controlling the notification settings on the job level documented below.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobTaskNotificationSettingsArgs>? NotificationSettings { get; set; }

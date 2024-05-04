@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// ## Example Usage
         /// 
-        /// Retrieve all SQL warehouses on this workspace on AWS or GCP:
+        /// Retrieve IDs for all SQL warehouses:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+        /// Retrieve IDs for all clusters having "Shared" in the warehouse name:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// ## Example Usage
         /// 
-        /// Retrieve all SQL warehouses on this workspace on AWS or GCP:
+        /// Retrieve IDs for all SQL warehouses:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+        /// Retrieve IDs for all clusters having "Shared" in the warehouse name:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

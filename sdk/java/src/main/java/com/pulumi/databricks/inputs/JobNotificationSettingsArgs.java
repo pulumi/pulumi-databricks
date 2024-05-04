@@ -18,12 +18,16 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
     /**
      * (Bool) don&#39;t send alert for cancelled runs.
      * 
+     * The following parameter is only available on task level.
+     * 
      */
     @Import(name="noAlertForCanceledRuns")
     private @Nullable Output<Boolean> noAlertForCanceledRuns;
 
     /**
      * @return (Bool) don&#39;t send alert for cancelled runs.
+     * 
+     * The following parameter is only available on task level.
      * 
      */
     public Optional<Output<Boolean>> noAlertForCanceledRuns() {
@@ -73,6 +77,8 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
         /**
          * @param noAlertForCanceledRuns (Bool) don&#39;t send alert for cancelled runs.
          * 
+         * The following parameter is only available on task level.
+         * 
          * @return builder
          * 
          */
@@ -83,6 +89,8 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param noAlertForCanceledRuns (Bool) don&#39;t send alert for cancelled runs.
+         * 
+         * The following parameter is only available on task level.
          * 
          * @return builder
          * 

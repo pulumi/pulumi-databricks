@@ -2140,7 +2140,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2171,7 +2171,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2223,7 +2223,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2254,7 +2254,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2306,7 +2306,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2337,7 +2337,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2389,7 +2389,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2420,7 +2420,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2472,7 +2472,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2503,7 +2503,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2555,7 +2555,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all clusters on this workspace on AWS or GCP:
+     * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2586,7 +2586,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -2868,7 +2868,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -2922,7 +2922,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -2976,7 +2976,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -3030,7 +3030,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -3084,7 +3084,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -3138,7 +3138,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
      *     }
      * }
      * ```
@@ -11020,7 +11020,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11051,7 +11051,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11101,7 +11101,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11132,7 +11132,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11182,7 +11182,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11213,7 +11213,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11263,7 +11263,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11294,7 +11294,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11344,7 +11344,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11375,7 +11375,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11425,7 +11425,7 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
-     * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
@@ -11456,7 +11456,7 @@ public final class DatabricksFunctions {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java

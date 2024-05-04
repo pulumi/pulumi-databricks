@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * Retrieve all clusters on this workspace on AWS or GCP:
+ * Retrieve cluster IDs for all clusters:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getClusters({});
  * ```
  *
- * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ * Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +75,7 @@ export interface GetClustersResult {
 /**
  * ## Example Usage
  *
- * Retrieve all clusters on this workspace on AWS or GCP:
+ * Retrieve cluster IDs for all clusters:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -84,7 +84,7 @@ export interface GetClustersResult {
  * const all = databricks.getClusters({});
  * ```
  *
- * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ * Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

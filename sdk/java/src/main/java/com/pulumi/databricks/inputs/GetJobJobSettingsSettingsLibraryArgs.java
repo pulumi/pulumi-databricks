@@ -53,6 +53,13 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         return Optional.ofNullable(this.pypi);
     }
 
+    @Import(name="requirements")
+    private @Nullable Output<String> requirements;
+
+    public Optional<Output<String>> requirements() {
+        return Optional.ofNullable(this.requirements);
+    }
+
     @Import(name="whl")
     private @Nullable Output<String> whl;
 
@@ -68,6 +75,7 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         this.jar = $.jar;
         this.maven = $.maven;
         this.pypi = $.pypi;
+        this.requirements = $.requirements;
         this.whl = $.whl;
     }
 
@@ -132,6 +140,15 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
 
         public Builder pypi(GetJobJobSettingsSettingsLibraryPypiArgs pypi) {
             return pypi(Output.of(pypi));
+        }
+
+        public Builder requirements(@Nullable Output<String> requirements) {
+            $.requirements = requirements;
+            return this;
+        }
+
+        public Builder requirements(String requirements) {
+            return requirements(Output.of(requirements));
         }
 
         public Builder whl(@Nullable Output<String> whl) {

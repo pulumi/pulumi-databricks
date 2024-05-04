@@ -13,7 +13,7 @@ import (
 
 // ## Example Usage
 //
-// Retrieve all SQL warehouses on this workspace on AWS or GCP:
+// Retrieve IDs for all SQL warehouses:
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 //
 // ```
 //
-// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+// Retrieve IDs for all clusters having "Shared" in the warehouse name:
 //
 // ```go
 // package main

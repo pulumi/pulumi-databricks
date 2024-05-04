@@ -70,7 +70,7 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
     """
     ## Example Usage
 
-    Retrieve all clusters on this workspace on AWS or GCP:
+    Retrieve cluster IDs for all clusters:
 
     ```python
     import pulumi
@@ -79,7 +79,7 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
     all = databricks.get_clusters()
     ```
 
-    Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+    Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
 
     ```python
     import pulumi
@@ -120,7 +120,7 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
     """
     ## Example Usage
 
-    Retrieve all clusters on this workspace on AWS or GCP:
+    Retrieve cluster IDs for all clusters:
 
     ```python
     import pulumi
@@ -129,7 +129,7 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
     all = databricks.get_clusters()
     ```
 
-    Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+    Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
 
     ```python
     import pulumi

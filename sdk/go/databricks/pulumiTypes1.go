@@ -2178,12 +2178,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput) Index
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary struct {
-	Cran  *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran  `pulumi:"cran"`
-	Egg   *string                                                   `pulumi:"egg"`
-	Jar   *string                                                   `pulumi:"jar"`
-	Maven *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven `pulumi:"maven"`
-	Pypi  *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi  `pulumi:"pypi"`
-	Whl   *string                                                   `pulumi:"whl"`
+	Cran         *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran  `pulumi:"cran"`
+	Egg          *string                                                   `pulumi:"egg"`
+	Jar          *string                                                   `pulumi:"jar"`
+	Maven        *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven `pulumi:"maven"`
+	Pypi         *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                                                   `pulumi:"requirements"`
+	Whl          *string                                                   `pulumi:"whl"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput values.
@@ -2198,12 +2199,13 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs struct {
-	Cran  GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput                                            `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput                                            `pulumi:"jar"`
-	Maven GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput                                            `pulumi:"whl"`
+	Cran         GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                                            `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                                            `pulumi:"jar"`
+	Maven        GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                                            `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                                            `pulumi:"whl"`
 }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs) ElementType() reflect.Type {
@@ -2281,6 +2283,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Pypi() GetJob
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
 		return v.Pypi
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -9770,12 +9776,13 @@ func (o GetJobJobSettingsSettingsTaskHealthRuleArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetJobJobSettingsSettingsTaskLibrary struct {
-	Cran  *GetJobJobSettingsSettingsTaskLibraryCran  `pulumi:"cran"`
-	Egg   *string                                    `pulumi:"egg"`
-	Jar   *string                                    `pulumi:"jar"`
-	Maven *GetJobJobSettingsSettingsTaskLibraryMaven `pulumi:"maven"`
-	Pypi  *GetJobJobSettingsSettingsTaskLibraryPypi  `pulumi:"pypi"`
-	Whl   *string                                    `pulumi:"whl"`
+	Cran         *GetJobJobSettingsSettingsTaskLibraryCran  `pulumi:"cran"`
+	Egg          *string                                    `pulumi:"egg"`
+	Jar          *string                                    `pulumi:"jar"`
+	Maven        *GetJobJobSettingsSettingsTaskLibraryMaven `pulumi:"maven"`
+	Pypi         *GetJobJobSettingsSettingsTaskLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                                    `pulumi:"requirements"`
+	Whl          *string                                    `pulumi:"whl"`
 }
 
 // GetJobJobSettingsSettingsTaskLibraryInput is an input type that accepts GetJobJobSettingsSettingsTaskLibraryArgs and GetJobJobSettingsSettingsTaskLibraryOutput values.
@@ -9790,12 +9797,13 @@ type GetJobJobSettingsSettingsTaskLibraryInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskLibraryArgs struct {
-	Cran  GetJobJobSettingsSettingsTaskLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput                             `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput                             `pulumi:"jar"`
-	Maven GetJobJobSettingsSettingsTaskLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  GetJobJobSettingsSettingsTaskLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput                             `pulumi:"whl"`
+	Cran         GetJobJobSettingsSettingsTaskLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                             `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                             `pulumi:"jar"`
+	Maven        GetJobJobSettingsSettingsTaskLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         GetJobJobSettingsSettingsTaskLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                             `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                             `pulumi:"whl"`
 }
 
 func (GetJobJobSettingsSettingsTaskLibraryArgs) ElementType() reflect.Type {
@@ -9869,6 +9877,10 @@ func (o GetJobJobSettingsSettingsTaskLibraryOutput) Maven() GetJobJobSettingsSet
 
 func (o GetJobJobSettingsSettingsTaskLibraryOutput) Pypi() GetJobJobSettingsSettingsTaskLibraryPypiPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskLibrary) *GetJobJobSettingsSettingsTaskLibraryPypi { return v.Pypi }).(GetJobJobSettingsSettingsTaskLibraryPypiPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -18104,7 +18116,7 @@ type GetMetastoreMetastoreInfo struct {
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
-	// Id of the metastore
+	// ID of the metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of the metastore
 	Name *string `pulumi:"name"`
@@ -18144,7 +18156,7 @@ type GetMetastoreMetastoreInfoArgs struct {
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
-	// Id of the metastore
+	// ID of the metastore
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
 	// Name of the metastore
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -18273,7 +18285,7 @@ func (o GetMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Id of the metastore
+// ID of the metastore
 func (o GetMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
@@ -18417,7 +18429,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Id of the metastore
+// ID of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {

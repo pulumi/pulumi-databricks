@@ -38,9 +38,6 @@ class GetDirectoryResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -77,8 +74,10 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             workspace_path=self.workspace_path)
 
 
-def get_directory(object_id: Optional[int] = None,
+def get_directory(id: Optional[str] = None,
+                  object_id: Optional[int] = None,
                   path: Optional[str] = None,
+                  workspace_path: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -97,10 +96,13 @@ def get_directory(object_id: Optional[int] = None,
 
     :param int object_id: directory object ID
     :param str path: Path to a directory in the workspace
+    :param str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['objectId'] = object_id
     __args__['path'] = path
+    __args__['workspacePath'] = workspace_path
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDirectory:getDirectory', __args__, opts=opts, typ=GetDirectoryResult).value
 
@@ -112,8 +114,10 @@ def get_directory(object_id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_directory)
-def get_directory_output(object_id: Optional[pulumi.Input[Optional[int]]] = None,
+def get_directory_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                         object_id: Optional[pulumi.Input[Optional[int]]] = None,
                          path: Optional[pulumi.Input[str]] = None,
+                         workspace_path: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -132,5 +136,6 @@ def get_directory_output(object_id: Optional[pulumi.Input[Optional[int]]] = None
 
     :param int object_id: directory object ID
     :param str path: Path to a directory in the workspace
+    :param str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     ...

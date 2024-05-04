@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMetastoreResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return ID of the metastore
      * 
      */
     private String id;
@@ -31,7 +31,7 @@ public final class GetMetastoreResult {
 
     private GetMetastoreResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return ID of the metastore
      * 
      */
     public String id() {

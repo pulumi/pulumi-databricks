@@ -33,11 +33,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetCurrentMetastore(ctx, nil, nil)
+//			this, err := databricks.GetCurrentMetastore(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("someMetastore", thisDatabricksMetastore.MetastoreInfo[0])
+//			ctx.Export("someMetastore", this.MetastoreInfo)
 //			return nil
 //		})
 //	}

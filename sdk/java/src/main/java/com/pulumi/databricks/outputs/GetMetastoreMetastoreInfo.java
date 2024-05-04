@@ -33,7 +33,7 @@ public final class GetMetastoreMetastoreInfo {
     private @Nullable String deltaSharingScope;
     private @Nullable String globalMetastoreId;
     /**
-     * @return Id of the metastore
+     * @return ID of the metastore
      * 
      */
     private @Nullable String metastoreId;
@@ -101,7 +101,7 @@ public final class GetMetastoreMetastoreInfo {
         return Optional.ofNullable(this.globalMetastoreId);
     }
     /**
-     * @return Id of the metastore
+     * @return ID of the metastore
      * 
      */
     public Optional<String> metastoreId() {

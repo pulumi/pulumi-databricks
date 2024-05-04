@@ -164,6 +164,9 @@ namespace Pulumi.Databricks
         [Output("pypi")]
         public Output<Outputs.LibraryPypi?> Pypi { get; private set; } = null!;
 
+        [Output("requirements")]
+        public Output<string?> Requirements { get; private set; } = null!;
+
         [Output("whl")]
         public Output<string?> Whl { get; private set; } = null!;
 
@@ -231,6 +234,9 @@ namespace Pulumi.Databricks
         [Input("pypi")]
         public Input<Inputs.LibraryPypiArgs>? Pypi { get; set; }
 
+        [Input("requirements")]
+        public Input<string>? Requirements { get; set; }
+
         [Input("whl")]
         public Input<string>? Whl { get; set; }
 
@@ -259,6 +265,9 @@ namespace Pulumi.Databricks
 
         [Input("pypi")]
         public Input<Inputs.LibraryPypiGetArgs>? Pypi { get; set; }
+
+        [Input("requirements")]
+        public Input<string>? Requirements { get; set; }
 
         [Input("whl")]
         public Input<string>? Whl { get; set; }

@@ -52,6 +52,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
         return Optional.ofNullable(this.pypi);
     }
 
+    @Import(name="requirements")
+    private @Nullable String requirements;
+
+    public Optional<String> requirements() {
+        return Optional.ofNullable(this.requirements);
+    }
+
     @Import(name="whl")
     private @Nullable String whl;
 
@@ -67,6 +74,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
         this.jar = $.jar;
         this.maven = $.maven;
         this.pypi = $.pypi;
+        this.requirements = $.requirements;
         this.whl = $.whl;
     }
 
@@ -110,6 +118,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
 
         public Builder pypi(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi pypi) {
             $.pypi = pypi;
+            return this;
+        }
+
+        public Builder requirements(@Nullable String requirements) {
+            $.requirements = requirements;
             return this;
         }
 

@@ -52,15 +52,17 @@ func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pul
 
 // A collection of arguments for invoking getDirectory.
 type LookupDirectoryArgs struct {
+	Id *string `pulumi:"id"`
 	// directory object ID
 	ObjectId *int `pulumi:"objectId"`
 	// Path to a directory in the workspace
 	Path string `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 // A collection of values returned by getDirectory.
 type LookupDirectoryResult struct {
-	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// directory object ID
 	ObjectId int    `pulumi:"objectId"`
@@ -84,10 +86,13 @@ func LookupDirectoryOutput(ctx *pulumi.Context, args LookupDirectoryOutputArgs, 
 
 // A collection of arguments for invoking getDirectory.
 type LookupDirectoryOutputArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// directory object ID
 	ObjectId pulumi.IntPtrInput `pulumi:"objectId"`
 	// Path to a directory in the workspace
 	Path pulumi.StringInput `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringPtrInput `pulumi:"workspacePath"`
 }
 
 func (LookupDirectoryOutputArgs) ElementType() reflect.Type {
@@ -109,7 +114,6 @@ func (o LookupDirectoryResultOutput) ToLookupDirectoryResultOutputWithContext(ct
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupDirectoryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Id }).(pulumi.StringOutput)
 }

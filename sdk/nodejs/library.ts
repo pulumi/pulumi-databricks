@@ -139,6 +139,7 @@ export class Library extends pulumi.CustomResource {
     public readonly jar!: pulumi.Output<string | undefined>;
     public readonly maven!: pulumi.Output<outputs.LibraryMaven | undefined>;
     public readonly pypi!: pulumi.Output<outputs.LibraryPypi | undefined>;
+    public readonly requirements!: pulumi.Output<string | undefined>;
     public readonly whl!: pulumi.Output<string | undefined>;
 
     /**
@@ -160,6 +161,7 @@ export class Library extends pulumi.CustomResource {
             resourceInputs["jar"] = state ? state.jar : undefined;
             resourceInputs["maven"] = state ? state.maven : undefined;
             resourceInputs["pypi"] = state ? state.pypi : undefined;
+            resourceInputs["requirements"] = state ? state.requirements : undefined;
             resourceInputs["whl"] = state ? state.whl : undefined;
         } else {
             const args = argsOrState as LibraryArgs | undefined;
@@ -172,6 +174,7 @@ export class Library extends pulumi.CustomResource {
             resourceInputs["jar"] = args ? args.jar : undefined;
             resourceInputs["maven"] = args ? args.maven : undefined;
             resourceInputs["pypi"] = args ? args.pypi : undefined;
+            resourceInputs["requirements"] = args ? args.requirements : undefined;
             resourceInputs["whl"] = args ? args.whl : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -189,6 +192,7 @@ export interface LibraryState {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.LibraryMaven>;
     pypi?: pulumi.Input<inputs.LibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -202,5 +206,6 @@ export interface LibraryArgs {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.LibraryMaven>;
     pypi?: pulumi.Input<inputs.LibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }

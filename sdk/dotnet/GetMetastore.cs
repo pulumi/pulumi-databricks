@@ -104,7 +104,13 @@ namespace Pulumi.Databricks
     public sealed class GetMetastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the metastore
+        /// ID of the metastore
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// ID of the metastore
         /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
@@ -136,7 +142,13 @@ namespace Pulumi.Databricks
     public sealed class GetMetastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the metastore
+        /// ID of the metastore
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// ID of the metastore
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -170,7 +182,7 @@ namespace Pulumi.Databricks
     public sealed class GetMetastoreResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// ID of the metastore
         /// </summary>
         public readonly string Id;
         public readonly string MetastoreId;

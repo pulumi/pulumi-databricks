@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+ * The resource can be imported using the Git folder ID (obtained via UI or using API)
  *
  * bash
  *
@@ -58,7 +58,7 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly gitProvider!: pulumi.Output<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     public readonly path!: pulumi.Output<string>;
     public readonly sparseCheckout!: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
@@ -67,7 +67,7 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export interface RepoState {
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     path?: pulumi.Input<string>;
     sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
@@ -141,7 +141,7 @@ export interface RepoState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */
     url?: pulumi.Input<string>;
     /**
@@ -167,7 +167,7 @@ export interface RepoArgs {
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     path?: pulumi.Input<string>;
     sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
@@ -176,7 +176,7 @@ export interface RepoArgs {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */
     url: pulumi.Input<string>;
 }

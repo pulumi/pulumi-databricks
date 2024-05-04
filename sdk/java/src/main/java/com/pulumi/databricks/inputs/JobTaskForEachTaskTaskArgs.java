@@ -101,15 +101,25 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.environmentKey);
     }
 
+    /**
+     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     * 
+     */
     @Import(name="existingClusterId")
     private @Nullable Output<String> existingClusterId;
 
+    /**
+     * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     * 
+     */
     public Optional<Output<String>> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
     }
 
     /**
      * block described below that specifies health conditions for a given task.
+     * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     @Import(name="health")
@@ -118,14 +128,24 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * 
      */
     public Optional<Output<JobTaskForEachTaskTaskHealthArgs>> health() {
         return Optional.ofNullable(this.health);
     }
 
+    /**
+     * Identifier of the Job cluster specified in the `job_cluster` block.
+     * 
+     */
     @Import(name="jobClusterKey")
     private @Nullable Output<String> jobClusterKey;
 
+    /**
+     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * 
+     */
     public Optional<Output<String>> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
@@ -175,9 +195,17 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
 
+    /**
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * 
+     */
     @Import(name="newCluster")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterArgs> newCluster;
 
+    /**
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * 
+     */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterArgs>> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
@@ -190,14 +218,14 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      * 
      */
     @Import(name="notificationSettings")
     private @Nullable Output<JobTaskForEachTaskTaskNotificationSettingsArgs> notificationSettings;
 
     /**
-     * @return An optional block controlling the notification settings on the job level (described below).
+     * @return An optional block controlling the notification settings on the job level documented below.
      * 
      */
     public Optional<Output<JobTaskForEachTaskTaskNotificationSettingsArgs>> notificationSettings() {
@@ -480,17 +508,31 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return environmentKey(Output.of(environmentKey));
         }
 
+        /**
+         * @param existingClusterId Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+         * 
+         * @return builder
+         * 
+         */
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {
             $.existingClusterId = existingClusterId;
             return this;
         }
 
+        /**
+         * @param existingClusterId Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+         * 
+         * @return builder
+         * 
+         */
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
         }
 
         /**
          * @param health block described below that specifies health conditions for a given task.
+         * 
+         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 
@@ -503,6 +545,8 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         /**
          * @param health block described below that specifies health conditions for a given task.
          * 
+         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * 
          * @return builder
          * 
          */
@@ -510,11 +554,23 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return health(Output.of(health));
         }
 
+        /**
+         * @param jobClusterKey Identifier of the Job cluster specified in the `job_cluster` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobClusterKey(@Nullable Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
         }
 
+        /**
+         * @param jobClusterKey Identifier of the Job cluster specified in the `job_cluster` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobClusterKey(String jobClusterKey) {
             return jobClusterKey(Output.of(jobClusterKey));
         }
@@ -592,11 +648,23 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return minRetryIntervalMillis(Output.of(minRetryIntervalMillis));
         }
 
+        /**
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newCluster(@Nullable Output<JobTaskForEachTaskTaskNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
 
+        /**
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newCluster(JobTaskForEachTaskTaskNewClusterArgs newCluster) {
             return newCluster(Output.of(newCluster));
         }
@@ -611,7 +679,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
          * 
          * @return builder
          * 
@@ -622,7 +690,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
          * 
          * @return builder
          * 

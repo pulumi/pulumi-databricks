@@ -75,6 +75,9 @@ export class Job extends pulumi.CustomResource {
     public readonly environments!: pulumi.Output<outputs.JobEnvironment[] | undefined>;
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
     /**
      * An optional block that specifies the health conditions for the job (described below).
@@ -112,7 +115,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
@@ -129,6 +132,9 @@ export class Job extends pulumi.CustomResource {
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -150,12 +156,21 @@ export class Job extends pulumi.CustomResource {
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
      * URL of the job on the given workspace
@@ -299,6 +314,9 @@ export interface JobState {
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
      * An optional block that specifies the health conditions for the job (described below).
@@ -336,7 +354,7 @@ export interface JobState {
      */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
@@ -353,6 +371,9 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -374,12 +395,21 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
      * URL of the job on the given workspace
@@ -425,6 +455,9 @@ export interface JobArgs {
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
      * An optional block that specifies the health conditions for the job (described below).
@@ -462,7 +495,7 @@ export interface JobArgs {
      */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
@@ -479,6 +512,9 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -500,12 +536,21 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.

@@ -13,6 +13,8 @@ public final class JobParameter {
     /**
      * @return Default value of the parameter.
      * 
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
+     * 
      */
     private String default_;
     /**
@@ -24,6 +26,8 @@ public final class JobParameter {
     private JobParameter() {}
     /**
      * @return Default value of the parameter.
+     * 
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
      * 
      */
     public String default_() {

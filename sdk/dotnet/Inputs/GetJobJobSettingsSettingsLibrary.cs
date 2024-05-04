@@ -27,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pypi")]
         public Inputs.GetJobJobSettingsSettingsLibraryPypiArgs? Pypi { get; set; }
 
+        [Input("requirements")]
+        public string? Requirements { get; set; }
+
         [Input("whl")]
         public string? Whl { get; set; }
 

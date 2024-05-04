@@ -178,9 +178,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.format);
     }
 
+    /**
+     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     @Import(name="gitSource")
     private @Nullable Output<JobGitSourceArgs> gitSource;
 
+    /**
+     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     public Optional<Output<JobGitSourceArgs>> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
@@ -329,14 +337,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      * 
      */
     @Import(name="notificationSettings")
     private @Nullable Output<JobNotificationSettingsArgs> notificationSettings;
 
     /**
-     * @return An optional block controlling the notification settings on the job level (described below).
+     * @return An optional block controlling the notification settings on the job level documented below.
      * 
      */
     public Optional<Output<JobNotificationSettingsArgs>> notificationSettings() {
@@ -414,9 +422,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    /**
+     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     @Import(name="runAs")
     private @Nullable Output<JobRunAsArgs> runAs;
 
+    /**
+     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     public Optional<Output<JobRunAsArgs>> runAs() {
         return Optional.ofNullable(this.runAs);
     }
@@ -512,16 +528,32 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sparkSubmitTask);
     }
 
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
+    /**
+     * @return An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     @Import(name="tasks")
     private @Nullable Output<List<JobTaskArgs>> tasks;
 
+    /**
+     * @return A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     public Optional<Output<List<JobTaskArgs>>> tasks() {
         return Optional.ofNullable(this.tasks);
     }
@@ -541,9 +573,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     @Import(name="trigger")
     private @Nullable Output<JobTriggerArgs> trigger;
 
+    /**
+     * @return The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     public Optional<Output<JobTriggerArgs>> trigger() {
         return Optional.ofNullable(this.trigger);
     }
@@ -819,11 +859,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return format(Output.of(format));
         }
 
+        /**
+         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(@Nullable Output<JobGitSourceArgs> gitSource) {
             $.gitSource = gitSource;
             return this;
         }
 
+        /**
+         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitSource(JobGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
         }
@@ -1042,7 +1094,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
          * 
          * @return builder
          * 
@@ -1053,7 +1105,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
          * 
          * @return builder
          * 
@@ -1159,11 +1211,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return retryOnTimeout(Output.of(retryOnTimeout));
         }
 
+        /**
+         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAs(@Nullable Output<JobRunAsArgs> runAs) {
             $.runAs = runAs;
             return this;
         }
 
+        /**
+         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAs(JobRunAsArgs runAs) {
             return runAs(Output.of(runAs));
         }
@@ -1289,24 +1353,54 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return sparkSubmitTask(Output.of(sparkSubmitTask));
         }
 
+        /**
+         * @param tags An optional map of the tags associated with the job. See tags Configuration Map
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags An optional map of the tags associated with the job. See tags Configuration Map
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(@Nullable Output<List<JobTaskArgs>> tasks) {
             $.tasks = tasks;
             return this;
         }
 
+        /**
+         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(List<JobTaskArgs> tasks) {
             return tasks(Output.of(tasks));
         }
 
+        /**
+         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(JobTaskArgs... tasks) {
             return tasks(List.of(tasks));
         }
@@ -1332,11 +1426,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return timeoutSeconds(Output.of(timeoutSeconds));
         }
 
+        /**
+         * @param trigger The conditions that triggers the job to start. See trigger Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trigger(@Nullable Output<JobTriggerArgs> trigger) {
             $.trigger = trigger;
             return this;
         }
 
+        /**
+         * @param trigger The conditions that triggers the job to start. See trigger Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trigger(JobTriggerArgs trigger) {
             return trigger(Output.of(trigger));
         }

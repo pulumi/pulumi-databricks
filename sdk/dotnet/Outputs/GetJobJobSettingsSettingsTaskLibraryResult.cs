@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Jar;
         public readonly Outputs.GetJobJobSettingsSettingsTaskLibraryMavenResult? Maven;
         public readonly Outputs.GetJobJobSettingsSettingsTaskLibraryPypiResult? Pypi;
+        public readonly string? Requirements;
         public readonly string? Whl;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskLibraryPypiResult? pypi,
 
+            string? requirements,
+
             string? whl)
         {
             Cran = cran;
@@ -39,6 +42,7 @@ namespace Pulumi.Databricks.Outputs
             Jar = jar;
             Maven = maven;
             Pypi = pypi;
+            Requirements = requirements;
             Whl = whl;
         }
     }

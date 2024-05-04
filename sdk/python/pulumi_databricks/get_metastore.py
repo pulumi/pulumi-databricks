@@ -44,7 +44,7 @@ class GetMetastoreResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        ID of the metastore
         """
         return pulumi.get(self, "id")
 
@@ -88,7 +88,8 @@ class AwaitableGetMetastoreResult(GetMetastoreResult):
             region=self.region)
 
 
-def get_metastore(metastore_id: Optional[str] = None,
+def get_metastore(id: Optional[str] = None,
+                  metastore_id: Optional[str] = None,
                   metastore_info: Optional[pulumi.InputType['GetMetastoreMetastoreInfoArgs']] = None,
                   name: Optional[str] = None,
                   region: Optional[str] = None,
@@ -120,12 +121,14 @@ def get_metastore(metastore_id: Optional[str] = None,
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param str metastore_id: Id of the metastore
+    :param str id: ID of the metastore
+    :param str metastore_id: ID of the metastore
     :param pulumi.InputType['GetMetastoreMetastoreInfoArgs'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
     :param str name: Name of the metastore
     :param str region: Region of the metastore
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['metastoreId'] = metastore_id
     __args__['metastoreInfo'] = metastore_info
     __args__['name'] = name
@@ -142,7 +145,8 @@ def get_metastore(metastore_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_metastore)
-def get_metastore_output(metastore_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                         metastore_id: Optional[pulumi.Input[Optional[str]]] = None,
                          metastore_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetMetastoreMetastoreInfoArgs']]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,7 +178,8 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[Optional[str]]] = N
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param str metastore_id: Id of the metastore
+    :param str id: ID of the metastore
+    :param str metastore_id: ID of the metastore
     :param pulumi.InputType['GetMetastoreMetastoreInfoArgs'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
     :param str name: Name of the metastore
     :param str region: Region of the metastore

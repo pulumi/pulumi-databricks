@@ -319,6 +319,7 @@ export interface ClusterLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.ClusterLibraryMaven>;
     pypi?: pulumi.Input<inputs.ClusterLibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -344,6 +345,7 @@ export interface ClusterPolicyLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven>;
     pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -1904,6 +1906,7 @@ export interface GetJobJobSettingsSettingsLibrary {
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsLibraryMaven;
     pypi?: inputs.GetJobJobSettingsSettingsLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -1913,6 +1916,7 @@ export interface GetJobJobSettingsSettingsLibraryArgs {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryMavenArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryPypiArgs>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -2674,6 +2678,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
     pypi?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -2683,6 +2688,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -3302,6 +3308,7 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskLibraryMaven;
     pypi?: inputs.GetJobJobSettingsSettingsTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -3311,6 +3318,7 @@ export interface GetJobJobSettingsSettingsTaskLibraryArgs {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -4031,7 +4039,7 @@ export interface GetMetastoreMetastoreInfo {
     deltaSharingScope?: string;
     globalMetastoreId?: string;
     /**
-     * Id of the metastore
+     * ID of the metastore
      */
     metastoreId?: string;
     /**
@@ -4076,7 +4084,7 @@ export interface GetMetastoreMetastoreInfoArgs {
     deltaSharingScope?: pulumi.Input<string>;
     globalMetastoreId?: pulumi.Input<string>;
     /**
-     * Id of the metastore
+     * ID of the metastore
      */
     metastoreId?: pulumi.Input<string>;
     /**
@@ -4664,10 +4672,27 @@ export interface JobDeployment {
 }
 
 export interface JobEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -4913,6 +4938,7 @@ export interface JobLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobLibraryMaven>;
     pypi?: pulumi.Input<inputs.JobLibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -5117,6 +5143,8 @@ export interface JobNotebookTask {
 export interface JobNotificationSettings {
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
     /**
@@ -5128,6 +5156,8 @@ export interface JobNotificationSettings {
 export interface JobParameter {
     /**
      * Default value of the parameter.
+     *
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
      */
     default: pulumi.Input<string>;
     /**
@@ -5273,12 +5303,20 @@ export interface JobTask {
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
     environmentKey?: pulumi.Input<string>;
+    /**
+     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     */
     existingClusterId?: pulumi.Input<string>;
     forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
     /**
      * block described below that specifies health conditions for a given task.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: pulumi.Input<inputs.JobTaskHealth>;
+    /**
+     * Identifier of the Job cluster specified in the `jobCluster` block.
+     */
     jobClusterKey?: pulumi.Input<string>;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -5292,10 +5330,13 @@ export interface JobTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     */
     newCluster?: pulumi.Input<inputs.JobTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask>;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask>;
@@ -5381,9 +5422,6 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     */
     outcome?: pulumi.Input<string>;
     /**
      * The name of the task this task depends on.
@@ -5392,10 +5430,27 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5430,11 +5485,19 @@ export interface JobTaskForEachTaskTask {
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
     environmentKey?: pulumi.Input<string>;
+    /**
+     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     */
     existingClusterId?: pulumi.Input<string>;
     /**
      * block described below that specifies health conditions for a given task.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth>;
+    /**
+     * Identifier of the Job cluster specified in the `jobCluster` block.
+     */
     jobClusterKey?: pulumi.Input<string>;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -5448,10 +5511,13 @@ export interface JobTaskForEachTaskTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     */
     newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask>;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask>;
@@ -5537,9 +5603,6 @@ export interface JobTaskForEachTaskTaskDbtTask {
 }
 
 export interface JobTaskForEachTaskTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     */
     outcome?: pulumi.Input<string>;
     /**
      * The name of the task this task depends on.
@@ -5548,10 +5611,27 @@ export interface JobTaskForEachTaskTaskDependsOn {
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5583,6 +5663,7 @@ export interface JobTaskForEachTaskTaskLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryMaven>;
     pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -5788,6 +5869,8 @@ export interface JobTaskForEachTaskTaskNotificationSettings {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
     /**
@@ -6084,6 +6167,7 @@ export interface JobTaskLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskLibraryMaven>;
     pypi?: pulumi.Input<inputs.JobTaskLibraryPypi>;
+    requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
 }
 
@@ -6292,6 +6376,8 @@ export interface JobTaskNotificationSettings {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
     /**
@@ -7617,7 +7703,7 @@ export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
      *
-     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
      */
     patterns: pulumi.Input<pulumi.Input<string>[]>;
 }

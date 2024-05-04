@@ -4045,12 +4045,13 @@ func (o ClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutpu
 }
 
 type ClusterLibrary struct {
-	Cran  *ClusterLibraryCran  `pulumi:"cran"`
-	Egg   *string              `pulumi:"egg"`
-	Jar   *string              `pulumi:"jar"`
-	Maven *ClusterLibraryMaven `pulumi:"maven"`
-	Pypi  *ClusterLibraryPypi  `pulumi:"pypi"`
-	Whl   *string              `pulumi:"whl"`
+	Cran         *ClusterLibraryCran  `pulumi:"cran"`
+	Egg          *string              `pulumi:"egg"`
+	Jar          *string              `pulumi:"jar"`
+	Maven        *ClusterLibraryMaven `pulumi:"maven"`
+	Pypi         *ClusterLibraryPypi  `pulumi:"pypi"`
+	Requirements *string              `pulumi:"requirements"`
+	Whl          *string              `pulumi:"whl"`
 }
 
 // ClusterLibraryInput is an input type that accepts ClusterLibraryArgs and ClusterLibraryOutput values.
@@ -4065,12 +4066,13 @@ type ClusterLibraryInput interface {
 }
 
 type ClusterLibraryArgs struct {
-	Cran  ClusterLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput       `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput       `pulumi:"jar"`
-	Maven ClusterLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  ClusterLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput       `pulumi:"whl"`
+	Cran         ClusterLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput       `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput       `pulumi:"jar"`
+	Maven        ClusterLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         ClusterLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput       `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput       `pulumi:"whl"`
 }
 
 func (ClusterLibraryArgs) ElementType() reflect.Type {
@@ -4142,6 +4144,10 @@ func (o ClusterLibraryOutput) Maven() ClusterLibraryMavenPtrOutput {
 
 func (o ClusterLibraryOutput) Pypi() ClusterLibraryPypiPtrOutput {
 	return o.ApplyT(func(v ClusterLibrary) *ClusterLibraryPypi { return v.Pypi }).(ClusterLibraryPypiPtrOutput)
+}
+
+func (o ClusterLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -4628,12 +4634,13 @@ func (o ClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type ClusterPolicyLibrary struct {
-	Cran  *ClusterPolicyLibraryCran  `pulumi:"cran"`
-	Egg   *string                    `pulumi:"egg"`
-	Jar   *string                    `pulumi:"jar"`
-	Maven *ClusterPolicyLibraryMaven `pulumi:"maven"`
-	Pypi  *ClusterPolicyLibraryPypi  `pulumi:"pypi"`
-	Whl   *string                    `pulumi:"whl"`
+	Cran         *ClusterPolicyLibraryCran  `pulumi:"cran"`
+	Egg          *string                    `pulumi:"egg"`
+	Jar          *string                    `pulumi:"jar"`
+	Maven        *ClusterPolicyLibraryMaven `pulumi:"maven"`
+	Pypi         *ClusterPolicyLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                    `pulumi:"requirements"`
+	Whl          *string                    `pulumi:"whl"`
 }
 
 // ClusterPolicyLibraryInput is an input type that accepts ClusterPolicyLibraryArgs and ClusterPolicyLibraryOutput values.
@@ -4648,12 +4655,13 @@ type ClusterPolicyLibraryInput interface {
 }
 
 type ClusterPolicyLibraryArgs struct {
-	Cran  ClusterPolicyLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput             `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput             `pulumi:"jar"`
-	Maven ClusterPolicyLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  ClusterPolicyLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput             `pulumi:"whl"`
+	Cran         ClusterPolicyLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput             `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput             `pulumi:"jar"`
+	Maven        ClusterPolicyLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         ClusterPolicyLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput             `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput             `pulumi:"whl"`
 }
 
 func (ClusterPolicyLibraryArgs) ElementType() reflect.Type {
@@ -4725,6 +4733,10 @@ func (o ClusterPolicyLibraryOutput) Maven() ClusterPolicyLibraryMavenPtrOutput {
 
 func (o ClusterPolicyLibraryOutput) Pypi() ClusterPolicyLibraryPypiPtrOutput {
 	return o.ApplyT(func(v ClusterPolicyLibrary) *ClusterPolicyLibraryPypi { return v.Pypi }).(ClusterPolicyLibraryPypiPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPolicyLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -8464,11 +8476,18 @@ func (o JobDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
 }
 
 type JobEmailNotifications struct {
-	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          []string `pulumi:"onFailures"`
-	OnStarts                            []string `pulumi:"onStarts"`
-	OnSuccesses                         []string `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures []string `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses []string `pulumi:"onSuccesses"`
 }
 
 // JobEmailNotificationsInput is an input type that accepts JobEmailNotificationsArgs and JobEmailNotificationsOutput values.
@@ -8483,11 +8502,18 @@ type JobEmailNotificationsInput interface {
 }
 
 type JobEmailNotificationsArgs struct {
-	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
-	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
-	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobEmailNotificationsArgs) ElementType() reflect.Type {
@@ -8567,22 +8593,29 @@ func (o JobEmailNotificationsOutput) ToJobEmailNotificationsPtrOutputWithContext
 	}).(JobEmailNotificationsPtrOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -8611,6 +8644,7 @@ func (o JobEmailNotificationsPtrOutput) Elem() JobEmailNotificationsOutput {
 	}).(JobEmailNotificationsOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) *bool {
 		if v == nil {
@@ -8620,6 +8654,9 @@ func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8629,6 +8666,7 @@ func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pu
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8638,6 +8676,7 @@ func (o JobEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -8647,6 +8686,7 @@ func (o JobEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -13389,12 +13429,13 @@ func (o JobJobClusterNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.
 }
 
 type JobLibrary struct {
-	Cran  *JobLibraryCran  `pulumi:"cran"`
-	Egg   *string          `pulumi:"egg"`
-	Jar   *string          `pulumi:"jar"`
-	Maven *JobLibraryMaven `pulumi:"maven"`
-	Pypi  *JobLibraryPypi  `pulumi:"pypi"`
-	Whl   *string          `pulumi:"whl"`
+	Cran         *JobLibraryCran  `pulumi:"cran"`
+	Egg          *string          `pulumi:"egg"`
+	Jar          *string          `pulumi:"jar"`
+	Maven        *JobLibraryMaven `pulumi:"maven"`
+	Pypi         *JobLibraryPypi  `pulumi:"pypi"`
+	Requirements *string          `pulumi:"requirements"`
+	Whl          *string          `pulumi:"whl"`
 }
 
 // JobLibraryInput is an input type that accepts JobLibraryArgs and JobLibraryOutput values.
@@ -13409,12 +13450,13 @@ type JobLibraryInput interface {
 }
 
 type JobLibraryArgs struct {
-	Cran  JobLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput   `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput   `pulumi:"jar"`
-	Maven JobLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  JobLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput   `pulumi:"whl"`
+	Cran         JobLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput   `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput   `pulumi:"jar"`
+	Maven        JobLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput   `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput   `pulumi:"whl"`
 }
 
 func (JobLibraryArgs) ElementType() reflect.Type {
@@ -13486,6 +13528,10 @@ func (o JobLibraryOutput) Maven() JobLibraryMavenPtrOutput {
 
 func (o JobLibraryOutput) Pypi() JobLibraryPypiPtrOutput {
 	return o.ApplyT(func(v JobLibrary) *JobLibraryPypi { return v.Pypi }).(JobLibraryPypiPtrOutput)
+}
+
+func (o JobLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o JobLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -17894,6 +17940,8 @@ func (o JobNotebookTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 
 type JobNotificationSettings struct {
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
@@ -17912,6 +17960,8 @@ type JobNotificationSettingsInput interface {
 
 type JobNotificationSettingsArgs struct {
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
@@ -17995,6 +18045,8 @@ func (o JobNotificationSettingsOutput) ToJobNotificationSettingsPtrOutputWithCon
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
 }
@@ -18029,6 +18081,8 @@ func (o JobNotificationSettingsPtrOutput) Elem() JobNotificationSettingsOutput {
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobNotificationSettings) *bool {
 		if v == nil {
@@ -18050,6 +18104,8 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 
 type JobParameter struct {
 	// Default value of the parameter.
+	//
+	// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
 	Default string `pulumi:"default"`
 	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
 	Name string `pulumi:"name"`
@@ -18068,6 +18124,8 @@ type JobParameterInput interface {
 
 type JobParameterArgs struct {
 	// Default value of the parameter.
+	//
+	// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
 	Default pulumi.StringInput `pulumi:"default"`
 	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -18125,6 +18183,8 @@ func (o JobParameterOutput) ToJobParameterOutputWithContext(ctx context.Context)
 }
 
 // Default value of the parameter.
+//
+// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
 func (o JobParameterOutput) Default() pulumi.StringOutput {
 	return o.ApplyT(func(v JobParameter) string { return v.Default }).(pulumi.StringOutput)
 }
@@ -19735,20 +19795,25 @@ type JobTask struct {
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskEmailNotifications `pulumi:"emailNotifications"`
 	EnvironmentKey     *string                    `pulumi:"environmentKey"`
-	ExistingClusterId  *string                    `pulumi:"existingClusterId"`
-	ForEachTask        *JobTaskForEachTask        `pulumi:"forEachTask"`
+	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+	ExistingClusterId *string             `pulumi:"existingClusterId"`
+	ForEachTask       *JobTaskForEachTask `pulumi:"forEachTask"`
 	// block described below that specifies health conditions for a given task.
-	Health        *JobTaskHealth `pulumi:"health"`
-	JobClusterKey *string        `pulumi:"jobClusterKey"`
+	//
+	// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+	Health *JobTaskHealth `pulumi:"health"`
+	// Identifier of the Job cluster specified in the `jobCluster` block.
+	JobClusterKey *string `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries []JobTaskLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis *int                 `pulumi:"minRetryIntervalMillis"`
-	NewCluster             *JobTaskNewCluster   `pulumi:"newCluster"`
-	NotebookTask           *JobTaskNotebookTask `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	NewCluster   *JobTaskNewCluster   `pulumi:"newCluster"`
+	NotebookTask *JobTaskNotebookTask `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
@@ -19791,20 +19856,25 @@ type JobTaskArgs struct {
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	EnvironmentKey     pulumi.StringPtrInput             `pulumi:"environmentKey"`
-	ExistingClusterId  pulumi.StringPtrInput             `pulumi:"existingClusterId"`
-	ForEachTask        JobTaskForEachTaskPtrInput        `pulumi:"forEachTask"`
+	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+	ExistingClusterId pulumi.StringPtrInput      `pulumi:"existingClusterId"`
+	ForEachTask       JobTaskForEachTaskPtrInput `pulumi:"forEachTask"`
 	// block described below that specifies health conditions for a given task.
-	Health        JobTaskHealthPtrInput `pulumi:"health"`
+	//
+	// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+	Health JobTaskHealthPtrInput `pulumi:"health"`
+	// Identifier of the Job cluster specified in the `jobCluster` block.
 	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries JobTaskLibraryArrayInput `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis pulumi.IntPtrInput          `pulumi:"minRetryIntervalMillis"`
-	NewCluster             JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
-	NotebookTask           JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	NewCluster   JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
+	NotebookTask JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      JobTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
@@ -19904,6 +19974,7 @@ func (o JobTaskOutput) EnvironmentKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.EnvironmentKey }).(pulumi.StringPtrOutput)
 }
 
+// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
 func (o JobTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
@@ -19913,10 +19984,13 @@ func (o JobTaskOutput) ForEachTask() JobTaskForEachTaskPtrOutput {
 }
 
 // block described below that specifies health conditions for a given task.
+//
+// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
 func (o JobTaskOutput) Health() JobTaskHealthPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskHealth { return v.Health }).(JobTaskHealthPtrOutput)
 }
 
+// Identifier of the Job cluster specified in the `jobCluster` block.
 func (o JobTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
 }
@@ -19936,6 +20010,7 @@ func (o JobTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
+// Task will run on a dedicated cluster.  See Cluster documentation for specification.
 func (o JobTaskOutput) NewCluster() JobTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNewCluster { return v.NewCluster }).(JobTaskNewClusterPtrOutput)
 }
@@ -19944,7 +20019,7 @@ func (o JobTaskOutput) NotebookTask() JobTaskNotebookTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNotebookTask { return v.NotebookTask }).(JobTaskNotebookTaskPtrOutput)
 }
 
-// An optional block controlling the notification settings on the job level (described below).
+// An optional block controlling the notification settings on the job level documented below.
 func (o JobTaskOutput) NotificationSettings() JobTaskNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNotificationSettings { return v.NotificationSettings }).(JobTaskNotificationSettingsPtrOutput)
 }
@@ -20474,7 +20549,6 @@ func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskDependsOn struct {
-	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome *string `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey string `pulumi:"taskKey"`
@@ -20492,7 +20566,6 @@ type JobTaskDependsOnInput interface {
 }
 
 type JobTaskDependsOnArgs struct {
-	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey pulumi.StringInput `pulumi:"taskKey"`
@@ -20549,7 +20622,6 @@ func (o JobTaskDependsOnOutput) ToJobTaskDependsOnOutputWithContext(ctx context.
 	return o
 }
 
-// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 func (o JobTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
 }
@@ -20580,11 +20652,18 @@ func (o JobTaskDependsOnArrayOutput) Index(i pulumi.IntInput) JobTaskDependsOnOu
 }
 
 type JobTaskEmailNotifications struct {
-	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          []string `pulumi:"onFailures"`
-	OnStarts                            []string `pulumi:"onStarts"`
-	OnSuccesses                         []string `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures []string `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses []string `pulumi:"onSuccesses"`
 }
 
 // JobTaskEmailNotificationsInput is an input type that accepts JobTaskEmailNotificationsArgs and JobTaskEmailNotificationsOutput values.
@@ -20599,11 +20678,18 @@ type JobTaskEmailNotificationsInput interface {
 }
 
 type JobTaskEmailNotificationsArgs struct {
-	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
-	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
-	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobTaskEmailNotificationsArgs) ElementType() reflect.Type {
@@ -20683,22 +20769,29 @@ func (o JobTaskEmailNotificationsOutput) ToJobTaskEmailNotificationsPtrOutputWit
 	}).(JobTaskEmailNotificationsPtrOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -20727,6 +20820,7 @@ func (o JobTaskEmailNotificationsPtrOutput) Elem() JobTaskEmailNotificationsOutp
 	}).(JobTaskEmailNotificationsOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
 		if v == nil {
@@ -20736,6 +20830,9 @@ func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20745,6 +20842,7 @@ func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs(
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20754,6 +20852,7 @@ func (o JobTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20763,6 +20862,7 @@ func (o JobTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -20957,19 +21057,24 @@ type JobTaskForEachTaskTask struct {
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskForEachTaskTaskEmailNotifications `pulumi:"emailNotifications"`
 	EnvironmentKey     *string                                   `pulumi:"environmentKey"`
-	ExistingClusterId  *string                                   `pulumi:"existingClusterId"`
+	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+	ExistingClusterId *string `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
-	Health        *JobTaskForEachTaskTaskHealth `pulumi:"health"`
-	JobClusterKey *string                       `pulumi:"jobClusterKey"`
+	//
+	// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+	Health *JobTaskForEachTaskTaskHealth `pulumi:"health"`
+	// Identifier of the Job cluster specified in the `jobCluster` block.
+	JobClusterKey *string `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries []JobTaskForEachTaskTaskLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis *int                                `pulumi:"minRetryIntervalMillis"`
-	NewCluster             *JobTaskForEachTaskTaskNewCluster   `pulumi:"newCluster"`
-	NotebookTask           *JobTaskForEachTaskTaskNotebookTask `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	NewCluster   *JobTaskForEachTaskTaskNewCluster   `pulumi:"newCluster"`
+	NotebookTask *JobTaskForEachTaskTaskNotebookTask `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobTaskForEachTaskTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskForEachTaskTaskPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobTaskForEachTaskTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
@@ -21012,19 +21117,24 @@ type JobTaskForEachTaskTaskArgs struct {
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskForEachTaskTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	EnvironmentKey     pulumi.StringPtrInput                            `pulumi:"environmentKey"`
-	ExistingClusterId  pulumi.StringPtrInput                            `pulumi:"existingClusterId"`
+	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+	ExistingClusterId pulumi.StringPtrInput `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
-	Health        JobTaskForEachTaskTaskHealthPtrInput `pulumi:"health"`
-	JobClusterKey pulumi.StringPtrInput                `pulumi:"jobClusterKey"`
+	//
+	// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+	Health JobTaskForEachTaskTaskHealthPtrInput `pulumi:"health"`
+	// Identifier of the Job cluster specified in the `jobCluster` block.
+	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
 	Libraries JobTaskForEachTaskTaskLibraryArrayInput `pulumi:"libraries"`
 	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-	MinRetryIntervalMillis pulumi.IntPtrInput                         `pulumi:"minRetryIntervalMillis"`
-	NewCluster             JobTaskForEachTaskTaskNewClusterPtrInput   `pulumi:"newCluster"`
-	NotebookTask           JobTaskForEachTaskTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	NewCluster   JobTaskForEachTaskTaskNewClusterPtrInput   `pulumi:"newCluster"`
+	NotebookTask JobTaskForEachTaskTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobTaskForEachTaskTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskForEachTaskTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      JobTaskForEachTaskTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
@@ -21150,15 +21260,19 @@ func (o JobTaskForEachTaskTaskOutput) EnvironmentKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.EnvironmentKey }).(pulumi.StringPtrOutput)
 }
 
+// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
 func (o JobTaskForEachTaskTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
 
 // block described below that specifies health conditions for a given task.
+//
+// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
 func (o JobTaskForEachTaskTaskOutput) Health() JobTaskForEachTaskTaskHealthPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskHealth { return v.Health }).(JobTaskForEachTaskTaskHealthPtrOutput)
 }
 
+// Identifier of the Job cluster specified in the `jobCluster` block.
 func (o JobTaskForEachTaskTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
 }
@@ -21178,6 +21292,7 @@ func (o JobTaskForEachTaskTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutp
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
+// Task will run on a dedicated cluster.  See Cluster documentation for specification.
 func (o JobTaskForEachTaskTaskOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster { return v.NewCluster }).(JobTaskForEachTaskTaskNewClusterPtrOutput)
 }
@@ -21186,7 +21301,7 @@ func (o JobTaskForEachTaskTaskOutput) NotebookTask() JobTaskForEachTaskTaskNoteb
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNotebookTask { return v.NotebookTask }).(JobTaskForEachTaskTaskNotebookTaskPtrOutput)
 }
 
-// An optional block controlling the notification settings on the job level (described below).
+// An optional block controlling the notification settings on the job level documented below.
 func (o JobTaskForEachTaskTaskOutput) NotificationSettings() JobTaskForEachTaskTaskNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNotificationSettings {
 		return v.NotificationSettings
@@ -21330,6 +21445,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) EnvironmentKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
 func (o JobTaskForEachTaskTaskPtrOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *string {
 		if v == nil {
@@ -21340,6 +21456,8 @@ func (o JobTaskForEachTaskTaskPtrOutput) ExistingClusterId() pulumi.StringPtrOut
 }
 
 // block described below that specifies health conditions for a given task.
+//
+// > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
 func (o JobTaskForEachTaskTaskPtrOutput) Health() JobTaskForEachTaskTaskHealthPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskHealth {
 		if v == nil {
@@ -21349,6 +21467,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) Health() JobTaskForEachTaskTaskHealthPt
 	}).(JobTaskForEachTaskTaskHealthPtrOutput)
 }
 
+// Identifier of the Job cluster specified in the `jobCluster` block.
 func (o JobTaskForEachTaskTaskPtrOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *string {
 		if v == nil {
@@ -21388,6 +21507,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) MinRetryIntervalMillis() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// Task will run on a dedicated cluster.  See Cluster documentation for specification.
 func (o JobTaskForEachTaskTaskPtrOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster {
 		if v == nil {
@@ -21406,7 +21526,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) NotebookTask() JobTaskForEachTaskTaskNo
 	}).(JobTaskForEachTaskTaskNotebookTaskPtrOutput)
 }
 
-// An optional block controlling the notification settings on the job level (described below).
+// An optional block controlling the notification settings on the job level documented below.
 func (o JobTaskForEachTaskTaskPtrOutput) NotificationSettings() JobTaskForEachTaskTaskNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNotificationSettings {
 		if v == nil {
@@ -21981,7 +22101,6 @@ func (o JobTaskForEachTaskTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOu
 }
 
 type JobTaskForEachTaskTaskDependsOn struct {
-	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome *string `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey string `pulumi:"taskKey"`
@@ -21999,7 +22118,6 @@ type JobTaskForEachTaskTaskDependsOnInput interface {
 }
 
 type JobTaskForEachTaskTaskDependsOnArgs struct {
-	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey pulumi.StringInput `pulumi:"taskKey"`
@@ -22056,7 +22174,6 @@ func (o JobTaskForEachTaskTaskDependsOnOutput) ToJobTaskForEachTaskTaskDependsOn
 	return o
 }
 
-// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 func (o JobTaskForEachTaskTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
 }
@@ -22087,11 +22204,18 @@ func (o JobTaskForEachTaskTaskDependsOnArrayOutput) Index(i pulumi.IntInput) Job
 }
 
 type JobTaskForEachTaskTaskEmailNotifications struct {
-	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          []string `pulumi:"onFailures"`
-	OnStarts                            []string `pulumi:"onStarts"`
-	OnSuccesses                         []string `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures []string `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses []string `pulumi:"onSuccesses"`
 }
 
 // JobTaskForEachTaskTaskEmailNotificationsInput is an input type that accepts JobTaskForEachTaskTaskEmailNotificationsArgs and JobTaskForEachTaskTaskEmailNotificationsOutput values.
@@ -22106,11 +22230,18 @@ type JobTaskForEachTaskTaskEmailNotificationsInput interface {
 }
 
 type JobTaskForEachTaskTaskEmailNotificationsArgs struct {
-	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
-	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
-	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
-	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	// (List) list of emails to notify when the run fails.
+	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
+	// (List) list of emails to notify when the run starts.
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when the run completes successfully.
+	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (JobTaskForEachTaskTaskEmailNotificationsArgs) ElementType() reflect.Type {
@@ -22190,24 +22321,31 @@ func (o JobTaskForEachTaskTaskEmailNotificationsOutput) ToJobTaskForEachTaskTask
 	}).(JobTaskForEachTaskTaskEmailNotificationsPtrOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string {
 		return v.OnDurationWarningThresholdExceededs
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -22236,6 +22374,7 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) Elem() JobTaskForEach
 	}).(JobTaskForEachTaskTaskEmailNotificationsOutput)
 }
 
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) *bool {
 		if v == nil {
@@ -22245,6 +22384,9 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22254,6 +22396,7 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThre
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run fails.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22263,6 +22406,7 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnFailures() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run starts.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22272,6 +22416,7 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when the run completes successfully.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -22534,12 +22679,13 @@ func (o JobTaskForEachTaskTaskHealthRuleArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobTaskForEachTaskTaskLibrary struct {
-	Cran  *JobTaskForEachTaskTaskLibraryCran  `pulumi:"cran"`
-	Egg   *string                             `pulumi:"egg"`
-	Jar   *string                             `pulumi:"jar"`
-	Maven *JobTaskForEachTaskTaskLibraryMaven `pulumi:"maven"`
-	Pypi  *JobTaskForEachTaskTaskLibraryPypi  `pulumi:"pypi"`
-	Whl   *string                             `pulumi:"whl"`
+	Cran         *JobTaskForEachTaskTaskLibraryCran  `pulumi:"cran"`
+	Egg          *string                             `pulumi:"egg"`
+	Jar          *string                             `pulumi:"jar"`
+	Maven        *JobTaskForEachTaskTaskLibraryMaven `pulumi:"maven"`
+	Pypi         *JobTaskForEachTaskTaskLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                             `pulumi:"requirements"`
+	Whl          *string                             `pulumi:"whl"`
 }
 
 // JobTaskForEachTaskTaskLibraryInput is an input type that accepts JobTaskForEachTaskTaskLibraryArgs and JobTaskForEachTaskTaskLibraryOutput values.
@@ -22554,12 +22700,13 @@ type JobTaskForEachTaskTaskLibraryInput interface {
 }
 
 type JobTaskForEachTaskTaskLibraryArgs struct {
-	Cran  JobTaskForEachTaskTaskLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput                      `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput                      `pulumi:"jar"`
-	Maven JobTaskForEachTaskTaskLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  JobTaskForEachTaskTaskLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput                      `pulumi:"whl"`
+	Cran         JobTaskForEachTaskTaskLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                      `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                      `pulumi:"jar"`
+	Maven        JobTaskForEachTaskTaskLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobTaskForEachTaskTaskLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                      `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                      `pulumi:"whl"`
 }
 
 func (JobTaskForEachTaskTaskLibraryArgs) ElementType() reflect.Type {
@@ -22631,6 +22778,10 @@ func (o JobTaskForEachTaskTaskLibraryOutput) Maven() JobTaskForEachTaskTaskLibra
 
 func (o JobTaskForEachTaskTaskLibraryOutput) Pypi() JobTaskForEachTaskTaskLibraryPypiPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskLibrary) *JobTaskForEachTaskTaskLibraryPypi { return v.Pypi }).(JobTaskForEachTaskTaskLibraryPypiPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -27082,6 +27233,8 @@ type JobTaskForEachTaskTaskNotificationSettings struct {
 	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
@@ -27102,6 +27255,8 @@ type JobTaskForEachTaskTaskNotificationSettingsArgs struct {
 	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
@@ -27190,6 +27345,8 @@ func (o JobTaskForEachTaskTaskNotificationSettingsOutput) AlertOnLastAttempt() p
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobTaskForEachTaskTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
 }
@@ -27234,6 +27391,8 @@ func (o JobTaskForEachTaskTaskNotificationSettingsPtrOutput) AlertOnLastAttempt(
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobTaskForEachTaskTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNotificationSettings) *bool {
 		if v == nil {
@@ -30459,12 +30618,13 @@ func (o JobTaskHealthRuleArrayOutput) Index(i pulumi.IntInput) JobTaskHealthRule
 }
 
 type JobTaskLibrary struct {
-	Cran  *JobTaskLibraryCran  `pulumi:"cran"`
-	Egg   *string              `pulumi:"egg"`
-	Jar   *string              `pulumi:"jar"`
-	Maven *JobTaskLibraryMaven `pulumi:"maven"`
-	Pypi  *JobTaskLibraryPypi  `pulumi:"pypi"`
-	Whl   *string              `pulumi:"whl"`
+	Cran         *JobTaskLibraryCran  `pulumi:"cran"`
+	Egg          *string              `pulumi:"egg"`
+	Jar          *string              `pulumi:"jar"`
+	Maven        *JobTaskLibraryMaven `pulumi:"maven"`
+	Pypi         *JobTaskLibraryPypi  `pulumi:"pypi"`
+	Requirements *string              `pulumi:"requirements"`
+	Whl          *string              `pulumi:"whl"`
 }
 
 // JobTaskLibraryInput is an input type that accepts JobTaskLibraryArgs and JobTaskLibraryOutput values.
@@ -30479,12 +30639,13 @@ type JobTaskLibraryInput interface {
 }
 
 type JobTaskLibraryArgs struct {
-	Cran  JobTaskLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput       `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput       `pulumi:"jar"`
-	Maven JobTaskLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  JobTaskLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput       `pulumi:"whl"`
+	Cran         JobTaskLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput       `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput       `pulumi:"jar"`
+	Maven        JobTaskLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobTaskLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput       `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput       `pulumi:"whl"`
 }
 
 func (JobTaskLibraryArgs) ElementType() reflect.Type {
@@ -30556,6 +30717,10 @@ func (o JobTaskLibraryOutput) Maven() JobTaskLibraryMavenPtrOutput {
 
 func (o JobTaskLibraryOutput) Pypi() JobTaskLibraryPypiPtrOutput {
 	return o.ApplyT(func(v JobTaskLibrary) *JobTaskLibraryPypi { return v.Pypi }).(JobTaskLibraryPypiPtrOutput)
+}
+
+func (o JobTaskLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o JobTaskLibraryOutput) Whl() pulumi.StringPtrOutput {
@@ -34966,6 +35131,8 @@ type JobTaskNotificationSettings struct {
 	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
@@ -34986,6 +35153,8 @@ type JobTaskNotificationSettingsArgs struct {
 	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
+	//
+	// The following parameter is only available on task level.
 	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
 	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
@@ -35074,6 +35243,8 @@ func (o JobTaskNotificationSettingsOutput) AlertOnLastAttempt() pulumi.BoolPtrOu
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
 }
@@ -35118,6 +35289,8 @@ func (o JobTaskNotificationSettingsPtrOutput) AlertOnLastAttempt() pulumi.BoolPt
 }
 
 // (Bool) don't send alert for cancelled runs.
+//
+// The following parameter is only available on task level.
 func (o JobTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskNotificationSettings) *bool {
 		if v == nil {
@@ -54694,7 +54867,7 @@ func (o RecipientTokenArrayOutput) Index(i pulumi.IntInput) RecipientTokenOutput
 type RepoSparseCheckout struct {
 	// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
 	//
-	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
 	Patterns []string `pulumi:"patterns"`
 }
 
@@ -54712,7 +54885,7 @@ type RepoSparseCheckoutInput interface {
 type RepoSparseCheckoutArgs struct {
 	// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
 	//
-	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
 	Patterns pulumi.StringArrayInput `pulumi:"patterns"`
 }
 
@@ -54795,7 +54968,7 @@ func (o RepoSparseCheckoutOutput) ToRepoSparseCheckoutPtrOutputWithContext(ctx c
 
 // array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
 //
-// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
 func (o RepoSparseCheckoutOutput) Patterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepoSparseCheckout) []string { return v.Patterns }).(pulumi.StringArrayOutput)
 }
@@ -54826,7 +54999,7 @@ func (o RepoSparseCheckoutPtrOutput) Elem() RepoSparseCheckoutOutput {
 
 // array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
 //
-// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
 func (o RepoSparseCheckoutPtrOutput) Patterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepoSparseCheckout) []string {
 		if v == nil {
@@ -76549,12 +76722,13 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsPtrOutpu
 }
 
 type GetJobJobSettingsSettingsLibrary struct {
-	Cran  *GetJobJobSettingsSettingsLibraryCran  `pulumi:"cran"`
-	Egg   *string                                `pulumi:"egg"`
-	Jar   *string                                `pulumi:"jar"`
-	Maven *GetJobJobSettingsSettingsLibraryMaven `pulumi:"maven"`
-	Pypi  *GetJobJobSettingsSettingsLibraryPypi  `pulumi:"pypi"`
-	Whl   *string                                `pulumi:"whl"`
+	Cran         *GetJobJobSettingsSettingsLibraryCran  `pulumi:"cran"`
+	Egg          *string                                `pulumi:"egg"`
+	Jar          *string                                `pulumi:"jar"`
+	Maven        *GetJobJobSettingsSettingsLibraryMaven `pulumi:"maven"`
+	Pypi         *GetJobJobSettingsSettingsLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                                `pulumi:"requirements"`
+	Whl          *string                                `pulumi:"whl"`
 }
 
 // GetJobJobSettingsSettingsLibraryInput is an input type that accepts GetJobJobSettingsSettingsLibraryArgs and GetJobJobSettingsSettingsLibraryOutput values.
@@ -76569,12 +76743,13 @@ type GetJobJobSettingsSettingsLibraryInput interface {
 }
 
 type GetJobJobSettingsSettingsLibraryArgs struct {
-	Cran  GetJobJobSettingsSettingsLibraryCranPtrInput  `pulumi:"cran"`
-	Egg   pulumi.StringPtrInput                         `pulumi:"egg"`
-	Jar   pulumi.StringPtrInput                         `pulumi:"jar"`
-	Maven GetJobJobSettingsSettingsLibraryMavenPtrInput `pulumi:"maven"`
-	Pypi  GetJobJobSettingsSettingsLibraryPypiPtrInput  `pulumi:"pypi"`
-	Whl   pulumi.StringPtrInput                         `pulumi:"whl"`
+	Cran         GetJobJobSettingsSettingsLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                         `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                         `pulumi:"jar"`
+	Maven        GetJobJobSettingsSettingsLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         GetJobJobSettingsSettingsLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                         `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                         `pulumi:"whl"`
 }
 
 func (GetJobJobSettingsSettingsLibraryArgs) ElementType() reflect.Type {
@@ -76646,6 +76821,10 @@ func (o GetJobJobSettingsSettingsLibraryOutput) Maven() GetJobJobSettingsSetting
 
 func (o GetJobJobSettingsSettingsLibraryOutput) Pypi() GetJobJobSettingsSettingsLibraryPypiPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *GetJobJobSettingsSettingsLibraryPypi { return v.Pypi }).(GetJobJobSettingsSettingsLibraryPypiPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsLibraryOutput) Whl() pulumi.StringPtrOutput {

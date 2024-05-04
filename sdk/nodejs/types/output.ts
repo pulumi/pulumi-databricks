@@ -319,6 +319,7 @@ export interface ClusterLibrary {
     jar?: string;
     maven?: outputs.ClusterLibraryMaven;
     pypi?: outputs.ClusterLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -344,6 +345,7 @@ export interface ClusterPolicyLibrary {
     jar?: string;
     maven?: outputs.ClusterPolicyLibraryMaven;
     pypi?: outputs.ClusterPolicyLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -1166,6 +1168,7 @@ export interface GetJobJobSettingsSettingsLibrary {
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsLibraryMaven;
     pypi?: outputs.GetJobJobSettingsSettingsLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -1551,6 +1554,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
     pypi?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -1865,6 +1869,7 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskLibraryMaven;
     pypi?: outputs.GetJobJobSettingsSettingsTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -2236,7 +2241,7 @@ export interface GetMetastoreMetastoreInfo {
     deltaSharingScope?: string;
     globalMetastoreId?: string;
     /**
-     * Id of the metastore
+     * ID of the metastore
      */
     metastoreId?: string;
     /**
@@ -2635,10 +2640,27 @@ export interface JobDeployment {
 }
 
 export interface JobEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: boolean;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: string[];
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: string[];
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: string[];
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: string[];
 }
 
@@ -2884,6 +2906,7 @@ export interface JobLibrary {
     jar?: string;
     maven?: outputs.JobLibraryMaven;
     pypi?: outputs.JobLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -3088,6 +3111,8 @@ export interface JobNotebookTask {
 export interface JobNotificationSettings {
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: boolean;
     /**
@@ -3099,6 +3124,8 @@ export interface JobNotificationSettings {
 export interface JobParameter {
     /**
      * Default value of the parameter.
+     *
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
      */
     default: string;
     /**
@@ -3244,12 +3271,20 @@ export interface JobTask {
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
     environmentKey?: string;
+    /**
+     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     */
     existingClusterId?: string;
     forEachTask?: outputs.JobTaskForEachTask;
     /**
      * block described below that specifies health conditions for a given task.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: outputs.JobTaskHealth;
+    /**
+     * Identifier of the Job cluster specified in the `jobCluster` block.
+     */
     jobClusterKey?: string;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -3263,10 +3298,13 @@ export interface JobTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: number;
+    /**
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     */
     newCluster?: outputs.JobTaskNewCluster;
     notebookTask?: outputs.JobTaskNotebookTask;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: outputs.JobTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskPipelineTask;
@@ -3352,9 +3390,6 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     */
     outcome?: string;
     /**
      * The name of the task this task depends on.
@@ -3363,10 +3398,27 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: boolean;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: string[];
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: string[];
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: string[];
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: string[];
 }
 
@@ -3401,11 +3453,19 @@ export interface JobTaskForEachTaskTask {
      */
     emailNotifications?: outputs.JobTaskForEachTaskTaskEmailNotifications;
     environmentKey?: string;
+    /**
+     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     */
     existingClusterId?: string;
     /**
      * block described below that specifies health conditions for a given task.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: outputs.JobTaskForEachTaskTaskHealth;
+    /**
+     * Identifier of the Job cluster specified in the `jobCluster` block.
+     */
     jobClusterKey?: string;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -3419,10 +3479,13 @@ export interface JobTaskForEachTaskTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: number;
+    /**
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     */
     newCluster?: outputs.JobTaskForEachTaskTaskNewCluster;
     notebookTask?: outputs.JobTaskForEachTaskTaskNotebookTask;
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: outputs.JobTaskForEachTaskTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskForEachTaskTaskPipelineTask;
@@ -3508,9 +3571,6 @@ export interface JobTaskForEachTaskTaskDbtTask {
 }
 
 export interface JobTaskForEachTaskTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     */
     outcome?: string;
     /**
      * The name of the task this task depends on.
@@ -3519,10 +3579,27 @@ export interface JobTaskForEachTaskTaskDependsOn {
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
     noAlertForSkippedRuns?: boolean;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onDurationWarningThresholdExceededs?: string[];
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
     onFailures?: string[];
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
     onStarts?: string[];
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
     onSuccesses?: string[];
 }
 
@@ -3554,6 +3631,7 @@ export interface JobTaskForEachTaskTaskLibrary {
     jar?: string;
     maven?: outputs.JobTaskForEachTaskTaskLibraryMaven;
     pypi?: outputs.JobTaskForEachTaskTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -3759,6 +3837,8 @@ export interface JobTaskForEachTaskTaskNotificationSettings {
     alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: boolean;
     /**
@@ -4055,6 +4135,7 @@ export interface JobTaskLibrary {
     jar?: string;
     maven?: outputs.JobTaskLibraryMaven;
     pypi?: outputs.JobTaskLibraryPypi;
+    requirements?: string;
     whl?: string;
 }
 
@@ -4263,6 +4344,8 @@ export interface JobTaskNotificationSettings {
     alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for cancelled runs.
+     *
+     * The following parameter is only available on task level.
      */
     noAlertForCanceledRuns?: boolean;
     /**
@@ -5588,7 +5671,7 @@ export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
      *
-     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
      */
     patterns: string[];
 }

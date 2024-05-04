@@ -13,7 +13,7 @@ import (
 
 // ## Example Usage
 //
-// Retrieve all clusters on this workspace on AWS or GCP:
+// Retrieve cluster IDs for all clusters:
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 //
 // ```
 //
-// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+// Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
 //
 // ```go
 // package main

@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskDependsOnArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-        /// </summary>
         [Input("outcome")]
         public Input<string>? Outcome { get; set; }
 

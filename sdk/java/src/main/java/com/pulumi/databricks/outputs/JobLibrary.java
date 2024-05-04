@@ -19,6 +19,7 @@ public final class JobLibrary {
     private @Nullable String jar;
     private @Nullable JobLibraryMaven maven;
     private @Nullable JobLibraryPypi pypi;
+    private @Nullable String requirements;
     private @Nullable String whl;
 
     private JobLibrary() {}
@@ -36,6 +37,9 @@ public final class JobLibrary {
     }
     public Optional<JobLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
+    }
+    public Optional<String> requirements() {
+        return Optional.ofNullable(this.requirements);
     }
     public Optional<String> whl() {
         return Optional.ofNullable(this.whl);
@@ -55,6 +59,7 @@ public final class JobLibrary {
         private @Nullable String jar;
         private @Nullable JobLibraryMaven maven;
         private @Nullable JobLibraryPypi pypi;
+        private @Nullable String requirements;
         private @Nullable String whl;
         public Builder() {}
         public Builder(JobLibrary defaults) {
@@ -64,6 +69,7 @@ public final class JobLibrary {
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
     	      this.pypi = defaults.pypi;
+    	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
         }
 
@@ -98,6 +104,12 @@ public final class JobLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder requirements(@Nullable String requirements) {
+
+            this.requirements = requirements;
+            return this;
+        }
+        @CustomType.Setter
         public Builder whl(@Nullable String whl) {
 
             this.whl = whl;
@@ -110,6 +122,7 @@ public final class JobLibrary {
             _resultValue.jar = jar;
             _resultValue.maven = maven;
             _resultValue.pypi = pypi;
+            _resultValue.requirements = requirements;
             _resultValue.whl = whl;
             return _resultValue;
         }

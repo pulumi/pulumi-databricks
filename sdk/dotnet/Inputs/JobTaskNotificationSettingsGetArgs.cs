@@ -20,6 +20,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (Bool) don't send alert for cancelled runs.
+        /// 
+        /// The following parameter is only available on task level.
         /// </summary>
         [Input("noAlertForCanceledRuns")]
         public Input<bool>? NoAlertForCanceledRuns { get; set; }

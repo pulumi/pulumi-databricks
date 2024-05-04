@@ -14,6 +14,8 @@ public final class JobNotificationSettings {
     /**
      * @return (Bool) don&#39;t send alert for cancelled runs.
      * 
+     * The following parameter is only available on task level.
+     * 
      */
     private @Nullable Boolean noAlertForCanceledRuns;
     /**
@@ -25,6 +27,8 @@ public final class JobNotificationSettings {
     private JobNotificationSettings() {}
     /**
      * @return (Bool) don&#39;t send alert for cancelled runs.
+     * 
+     * The following parameter is only available on task level.
      * 
      */
     public Optional<Boolean> noAlertForCanceledRuns() {

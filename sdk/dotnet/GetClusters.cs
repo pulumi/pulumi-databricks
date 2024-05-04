@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// ## Example Usage
         /// 
-        /// Retrieve all clusters on this workspace on AWS or GCP:
+        /// Retrieve cluster IDs for all clusters:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+        /// Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// ## Example Usage
         /// 
-        /// Retrieve all clusters on this workspace on AWS or GCP:
+        /// Retrieve cluster IDs for all clusters:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+        /// Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

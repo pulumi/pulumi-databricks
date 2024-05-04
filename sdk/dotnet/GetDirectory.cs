@@ -67,6 +67,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetDirectoryArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public string? Id { get; set; }
+
         /// <summary>
         /// directory object ID
         /// </summary>
@@ -79,6 +82,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        [Input("workspacePath")]
+        public string? WorkspacePath { get; set; }
+
         public GetDirectoryArgs()
         {
         }
@@ -87,6 +96,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetDirectoryInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         /// <summary>
         /// directory object ID
         /// </summary>
@@ -99,6 +111,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        [Input("workspacePath")]
+        public Input<string>? WorkspacePath { get; set; }
+
         public GetDirectoryInvokeArgs()
         {
         }
@@ -109,9 +127,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetDirectoryResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// directory object ID
