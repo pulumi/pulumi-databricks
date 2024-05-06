@@ -15,6 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// (Bool) don't send alert for cancelled runs.
+        /// 
+        /// The following parameter is only available on task level.
         /// </summary>
         public readonly bool? NoAlertForCanceledRuns;
         /// <summary>

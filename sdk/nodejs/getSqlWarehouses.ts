@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+ * Retrieve IDs for all SQL warehouses:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getSqlWarehouses({});
  * ```
  *
- * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ * Retrieve IDs for all clusters having "Shared" in the warehouse name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +78,7 @@ export interface GetSqlWarehousesResult {
 /**
  * ## Example Usage
  *
- * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+ * Retrieve IDs for all SQL warehouses:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +87,7 @@ export interface GetSqlWarehousesResult {
  * const all = databricks.getSqlWarehouses({});
  * ```
  *
- * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ * Retrieve IDs for all clusters having "Shared" in the warehouse name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

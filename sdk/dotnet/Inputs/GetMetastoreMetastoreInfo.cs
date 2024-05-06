@@ -46,7 +46,7 @@ namespace Pulumi.Databricks.Inputs
         public string? GlobalMetastoreId { get; set; }
 
         /// <summary>
-        /// Id of the metastore
+        /// ID of the metastore
         /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }

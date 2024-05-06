@@ -255,6 +255,12 @@ public class Library extends com.pulumi.resources.CustomResource {
     public Output<Optional<LibraryPypi>> pypi() {
         return Codegen.optional(this.pypi);
     }
+    @Export(name="requirements", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> requirements;
+
+    public Output<Optional<String>> requirements() {
+        return Codegen.optional(this.requirements);
+    }
     @Export(name="whl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> whl;
 

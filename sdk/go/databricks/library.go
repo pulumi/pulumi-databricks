@@ -176,13 +176,14 @@ import (
 type Library struct {
 	pulumi.CustomResourceState
 
-	ClusterId pulumi.StringOutput    `pulumi:"clusterId"`
-	Cran      LibraryCranPtrOutput   `pulumi:"cran"`
-	Egg       pulumi.StringPtrOutput `pulumi:"egg"`
-	Jar       pulumi.StringPtrOutput `pulumi:"jar"`
-	Maven     LibraryMavenPtrOutput  `pulumi:"maven"`
-	Pypi      LibraryPypiPtrOutput   `pulumi:"pypi"`
-	Whl       pulumi.StringPtrOutput `pulumi:"whl"`
+	ClusterId    pulumi.StringOutput    `pulumi:"clusterId"`
+	Cran         LibraryCranPtrOutput   `pulumi:"cran"`
+	Egg          pulumi.StringPtrOutput `pulumi:"egg"`
+	Jar          pulumi.StringPtrOutput `pulumi:"jar"`
+	Maven        LibraryMavenPtrOutput  `pulumi:"maven"`
+	Pypi         LibraryPypiPtrOutput   `pulumi:"pypi"`
+	Requirements pulumi.StringPtrOutput `pulumi:"requirements"`
+	Whl          pulumi.StringPtrOutput `pulumi:"whl"`
 }
 
 // NewLibrary registers a new resource with the given unique name, arguments, and options.
@@ -218,23 +219,25 @@ func GetLibrary(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Library resources.
 type libraryState struct {
-	ClusterId *string       `pulumi:"clusterId"`
-	Cran      *LibraryCran  `pulumi:"cran"`
-	Egg       *string       `pulumi:"egg"`
-	Jar       *string       `pulumi:"jar"`
-	Maven     *LibraryMaven `pulumi:"maven"`
-	Pypi      *LibraryPypi  `pulumi:"pypi"`
-	Whl       *string       `pulumi:"whl"`
+	ClusterId    *string       `pulumi:"clusterId"`
+	Cran         *LibraryCran  `pulumi:"cran"`
+	Egg          *string       `pulumi:"egg"`
+	Jar          *string       `pulumi:"jar"`
+	Maven        *LibraryMaven `pulumi:"maven"`
+	Pypi         *LibraryPypi  `pulumi:"pypi"`
+	Requirements *string       `pulumi:"requirements"`
+	Whl          *string       `pulumi:"whl"`
 }
 
 type LibraryState struct {
-	ClusterId pulumi.StringPtrInput
-	Cran      LibraryCranPtrInput
-	Egg       pulumi.StringPtrInput
-	Jar       pulumi.StringPtrInput
-	Maven     LibraryMavenPtrInput
-	Pypi      LibraryPypiPtrInput
-	Whl       pulumi.StringPtrInput
+	ClusterId    pulumi.StringPtrInput
+	Cran         LibraryCranPtrInput
+	Egg          pulumi.StringPtrInput
+	Jar          pulumi.StringPtrInput
+	Maven        LibraryMavenPtrInput
+	Pypi         LibraryPypiPtrInput
+	Requirements pulumi.StringPtrInput
+	Whl          pulumi.StringPtrInput
 }
 
 func (LibraryState) ElementType() reflect.Type {
@@ -242,24 +245,26 @@ func (LibraryState) ElementType() reflect.Type {
 }
 
 type libraryArgs struct {
-	ClusterId string        `pulumi:"clusterId"`
-	Cran      *LibraryCran  `pulumi:"cran"`
-	Egg       *string       `pulumi:"egg"`
-	Jar       *string       `pulumi:"jar"`
-	Maven     *LibraryMaven `pulumi:"maven"`
-	Pypi      *LibraryPypi  `pulumi:"pypi"`
-	Whl       *string       `pulumi:"whl"`
+	ClusterId    string        `pulumi:"clusterId"`
+	Cran         *LibraryCran  `pulumi:"cran"`
+	Egg          *string       `pulumi:"egg"`
+	Jar          *string       `pulumi:"jar"`
+	Maven        *LibraryMaven `pulumi:"maven"`
+	Pypi         *LibraryPypi  `pulumi:"pypi"`
+	Requirements *string       `pulumi:"requirements"`
+	Whl          *string       `pulumi:"whl"`
 }
 
 // The set of arguments for constructing a Library resource.
 type LibraryArgs struct {
-	ClusterId pulumi.StringInput
-	Cran      LibraryCranPtrInput
-	Egg       pulumi.StringPtrInput
-	Jar       pulumi.StringPtrInput
-	Maven     LibraryMavenPtrInput
-	Pypi      LibraryPypiPtrInput
-	Whl       pulumi.StringPtrInput
+	ClusterId    pulumi.StringInput
+	Cran         LibraryCranPtrInput
+	Egg          pulumi.StringPtrInput
+	Jar          pulumi.StringPtrInput
+	Maven        LibraryMavenPtrInput
+	Pypi         LibraryPypiPtrInput
+	Requirements pulumi.StringPtrInput
+	Whl          pulumi.StringPtrInput
 }
 
 func (LibraryArgs) ElementType() reflect.Type {
@@ -371,6 +376,10 @@ func (o LibraryOutput) Maven() LibraryMavenPtrOutput {
 
 func (o LibraryOutput) Pypi() LibraryPypiPtrOutput {
 	return o.ApplyT(func(v *Library) LibraryPypiPtrOutput { return v.Pypi }).(LibraryPypiPtrOutput)
+}
+
+func (o LibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
 func (o LibraryOutput) Whl() pulumi.StringPtrOutput {

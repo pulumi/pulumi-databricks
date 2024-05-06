@@ -49,12 +49,22 @@ public final class JobTaskForEachTaskTask {
      */
     private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
     private @Nullable String environmentKey;
+    /**
+     * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     * 
+     */
     private @Nullable String existingClusterId;
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * 
      */
     private @Nullable JobTaskForEachTaskTaskHealth health;
+    /**
+     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * 
+     */
     private @Nullable String jobClusterKey;
     /**
      * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -71,10 +81,14 @@ public final class JobTaskForEachTaskTask {
      * 
      */
     private @Nullable Integer minRetryIntervalMillis;
+    /**
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskNewCluster newCluster;
     private @Nullable JobTaskForEachTaskTaskNotebookTask notebookTask;
     /**
-     * @return An optional block controlling the notification settings on the job level (described below).
+     * @return An optional block controlling the notification settings on the job level documented below.
      * 
      */
     private @Nullable JobTaskForEachTaskTaskNotificationSettings notificationSettings;
@@ -143,16 +157,26 @@ public final class JobTaskForEachTaskTask {
     public Optional<String> environmentKey() {
         return Optional.ofNullable(this.environmentKey);
     }
+    /**
+     * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+     * 
+     */
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
     }
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * 
      */
     public Optional<JobTaskForEachTaskTaskHealth> health() {
         return Optional.ofNullable(this.health);
     }
+    /**
+     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * 
+     */
     public Optional<String> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
@@ -177,6 +201,10 @@ public final class JobTaskForEachTaskTask {
     public Optional<Integer> minRetryIntervalMillis() {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
+    /**
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskNewCluster> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
@@ -184,7 +212,7 @@ public final class JobTaskForEachTaskTask {
         return Optional.ofNullable(this.notebookTask);
     }
     /**
-     * @return An optional block controlling the notification settings on the job level (described below).
+     * @return An optional block controlling the notification settings on the job level documented below.
      * 
      */
     public Optional<JobTaskForEachTaskTaskNotificationSettings> notificationSettings() {

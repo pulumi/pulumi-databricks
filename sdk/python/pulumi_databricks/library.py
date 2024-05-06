@@ -22,6 +22,7 @@ class LibraryArgs:
                  jar: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Library resource.
@@ -37,6 +38,8 @@ class LibraryArgs:
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -96,6 +99,15 @@ class LibraryArgs:
 
     @property
     @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
     def whl(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "whl")
 
@@ -113,6 +125,7 @@ class _LibraryState:
                  jar: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Library resources.
@@ -129,6 +142,8 @@ class _LibraryState:
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -188,6 +203,15 @@ class _LibraryState:
 
     @property
     @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
     def whl(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "whl")
 
@@ -207,6 +231,7 @@ class Library(pulumi.CustomResource):
                  jar: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
                  pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -423,6 +448,7 @@ class Library(pulumi.CustomResource):
                  jar: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
                  pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -441,6 +467,7 @@ class Library(pulumi.CustomResource):
             __props__.__dict__["jar"] = jar
             __props__.__dict__["maven"] = maven
             __props__.__dict__["pypi"] = pypi
+            __props__.__dict__["requirements"] = requirements
             __props__.__dict__["whl"] = whl
         super(Library, __self__).__init__(
             'databricks:index/library:Library',
@@ -458,6 +485,7 @@ class Library(pulumi.CustomResource):
             jar: Optional[pulumi.Input[str]] = None,
             maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
             pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+            requirements: Optional[pulumi.Input[str]] = None,
             whl: Optional[pulumi.Input[str]] = None) -> 'Library':
         """
         Get an existing Library resource's state with the given name, id, and optional extra
@@ -477,6 +505,7 @@ class Library(pulumi.CustomResource):
         __props__.__dict__["jar"] = jar
         __props__.__dict__["maven"] = maven
         __props__.__dict__["pypi"] = pypi
+        __props__.__dict__["requirements"] = requirements
         __props__.__dict__["whl"] = whl
         return Library(resource_name, opts=opts, __props__=__props__)
 
@@ -509,6 +538,11 @@ class Library(pulumi.CustomResource):
     @pulumi.getter
     def pypi(self) -> pulumi.Output[Optional['outputs.LibraryPypi']]:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter

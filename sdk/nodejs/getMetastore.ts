@@ -40,6 +40,7 @@ export function getMetastore(args?: GetMetastoreArgs, opts?: pulumi.InvokeOption
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMetastore:getMetastore", {
+        "id": args.id,
         "metastoreId": args.metastoreId,
         "metastoreInfo": args.metastoreInfo,
         "name": args.name,
@@ -52,7 +53,11 @@ export function getMetastore(args?: GetMetastoreArgs, opts?: pulumi.InvokeOption
  */
 export interface GetMetastoreArgs {
     /**
-     * Id of the metastore
+     * ID of the metastore
+     */
+    id?: string;
+    /**
+     * ID of the metastore
      */
     metastoreId?: string;
     /**
@@ -74,7 +79,7 @@ export interface GetMetastoreArgs {
  */
 export interface GetMetastoreResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * ID of the metastore
      */
     readonly id: string;
     readonly metastoreId: string;
@@ -126,7 +131,11 @@ export function getMetastoreOutput(args?: GetMetastoreOutputArgs, opts?: pulumi.
  */
 export interface GetMetastoreOutputArgs {
     /**
-     * Id of the metastore
+     * ID of the metastore
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * ID of the metastore
      */
     metastoreId?: pulumi.Input<string>;
     /**

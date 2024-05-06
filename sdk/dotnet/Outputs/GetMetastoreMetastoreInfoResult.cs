@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DeltaSharingScope;
         public readonly string? GlobalMetastoreId;
         /// <summary>
-        /// Id of the metastore
+        /// ID of the metastore
         /// </summary>
         public readonly string? MetastoreId;
         /// <summary>

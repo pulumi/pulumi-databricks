@@ -69,7 +69,9 @@ func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pul
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreArgs struct {
-	// Id of the metastore
+	// ID of the metastore
+	Id *string `pulumi:"id"`
+	// ID of the metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo *GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
@@ -81,7 +83,7 @@ type LookupMetastoreArgs struct {
 
 // A collection of values returned by getMetastore.
 type LookupMetastoreResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// ID of the metastore
 	Id          string `pulumi:"id"`
 	MetastoreId string `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
@@ -106,7 +108,9 @@ func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, 
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreOutputArgs struct {
-	// Id of the metastore
+	// ID of the metastore
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// ID of the metastore
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfoPtrInput `pulumi:"metastoreInfo"`
@@ -135,7 +139,7 @@ func (o LookupMetastoreResultOutput) ToLookupMetastoreResultOutputWithContext(ct
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// ID of the metastore
 func (o LookupMetastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }

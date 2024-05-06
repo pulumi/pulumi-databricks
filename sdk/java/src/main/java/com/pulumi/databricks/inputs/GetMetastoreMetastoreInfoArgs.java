@@ -97,14 +97,14 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Id of the metastore
+     * ID of the metastore
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Id of the metastore
+     * @return ID of the metastore
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -356,7 +356,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param metastoreId Id of the metastore
+         * @param metastoreId ID of the metastore
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param metastoreId Id of the metastore
+         * @param metastoreId ID of the metastore
          * 
          * @return builder
          * 

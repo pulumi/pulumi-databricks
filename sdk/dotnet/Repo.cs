@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+    /// The resource can be imported using the Git folder ID (obtained via UI or using API)
     /// 
     /// bash
     /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
         public Output<string> GitProvider { get; private set; } = null!;
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+        /// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
         public Output<string?> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+        /// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Databricks
         public Input<string>? GitProvider { get; set; }
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+        /// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+        /// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Databricks
         public Input<string>? GitProvider { get; set; }
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+        /// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+        /// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

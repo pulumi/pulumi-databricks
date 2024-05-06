@@ -43,7 +43,8 @@ type Job struct {
 	Environments       JobEnvironmentArrayOutput      `pulumi:"environments"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
 	Format             pulumi.StringOutput            `pulumi:"format"`
-	GitSource          JobGitSourcePtrOutput          `pulumi:"gitSource"`
+	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	GitSource JobGitSourcePtrOutput `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job (described below).
 	Health JobHealthPtrOutput `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -63,7 +64,7 @@ type Job struct {
 	NewCluster JobNewClusterPtrOutput `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
 	Parameters           JobParameterArrayOutput          `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -73,7 +74,8 @@ type Job struct {
 	Queue           JobQueuePtrOutput           `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
-	RunAs          JobRunAsOutput       `pulumi:"runAs"`
+	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	RunAs JobRunAsOutput `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrOutput `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -84,11 +86,14 @@ type Job struct {
 	SparkPythonTask JobSparkPythonTaskPtrOutput `pulumi:"sparkPythonTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrOutput `pulumi:"sparkSubmitTask"`
-	Tags            pulumi.MapOutput            `pulumi:"tags"`
-	Tasks           JobTaskArrayOutput          `pulumi:"tasks"`
+	// An optional map of the tags associated with the job. See tags Configuration Map
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	Tasks JobTaskArrayOutput `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
-	Trigger        JobTriggerPtrOutput `pulumi:"trigger"`
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
+	Trigger JobTriggerPtrOutput `pulumi:"trigger"`
 	// URL of the job on the given workspace
 	Url pulumi.StringOutput `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -145,7 +150,8 @@ type jobState struct {
 	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
-	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job (described below).
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -165,7 +171,7 @@ type jobState struct {
 	NewCluster *JobNewCluster `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	Parameters           []JobParameter           `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -174,8 +180,9 @@ type jobState struct {
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	Queue           *JobQueue           `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
-	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
-	RunAs          *JobRunAs `pulumi:"runAs"`
+	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
+	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -185,12 +192,15 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkPythonTask *JobSparkPythonTask `pulumi:"sparkPythonTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
-	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	Tasks           []JobTask              `pulumi:"tasks"`
+	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
+	// An optional map of the tags associated with the job. See tags Configuration Map
+	Tags map[string]interface{} `pulumi:"tags"`
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
-	Trigger        *JobTrigger `pulumi:"trigger"`
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
+	Trigger *JobTrigger `pulumi:"trigger"`
 	// URL of the job on the given workspace
 	Url *string `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -218,7 +228,8 @@ type JobState struct {
 	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
-	GitSource          JobGitSourcePtrInput
+	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job (described below).
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -238,7 +249,7 @@ type JobState struct {
 	NewCluster JobNewClusterPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrInput
-	// An optional block controlling the notification settings on the job level (described below).
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
 	Parameters           JobParameterArrayInput
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -248,7 +259,8 @@ type JobState struct {
 	Queue           JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
-	RunAs          JobRunAsPtrInput
+	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -259,11 +271,14 @@ type JobState struct {
 	SparkPythonTask JobSparkPythonTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
-	Tags            pulumi.MapInput
-	Tasks           JobTaskArrayInput
+	// An optional map of the tags associated with the job. See tags Configuration Map
+	Tags pulumi.MapInput
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
-	Trigger        JobTriggerPtrInput
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
+	Trigger JobTriggerPtrInput
 	// URL of the job on the given workspace
 	Url pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -295,7 +310,8 @@ type jobArgs struct {
 	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
-	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job (described below).
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -315,7 +331,7 @@ type jobArgs struct {
 	NewCluster *JobNewCluster `pulumi:"newCluster"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
-	// An optional block controlling the notification settings on the job level (described below).
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	Parameters           []JobParameter           `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -324,8 +340,9 @@ type jobArgs struct {
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	Queue           *JobQueue           `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
-	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
-	RunAs          *JobRunAs `pulumi:"runAs"`
+	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
+	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -335,12 +352,15 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkPythonTask *JobSparkPythonTask `pulumi:"sparkPythonTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
-	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	Tasks           []JobTask              `pulumi:"tasks"`
+	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
+	// An optional map of the tags associated with the job. See tags Configuration Map
+	Tags map[string]interface{} `pulumi:"tags"`
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
-	Trigger        *JobTrigger `pulumi:"trigger"`
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
+	Trigger *JobTrigger `pulumi:"trigger"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -367,7 +387,8 @@ type JobArgs struct {
 	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
-	GitSource          JobGitSourcePtrInput
+	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job (described below).
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -387,7 +408,7 @@ type JobArgs struct {
 	NewCluster JobNewClusterPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	NotebookTask JobNotebookTaskPtrInput
-	// An optional block controlling the notification settings on the job level (described below).
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
 	Parameters           JobParameterArrayInput
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -397,7 +418,8 @@ type JobArgs struct {
 	Queue           JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
-	RunAs          JobRunAsPtrInput
+	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -408,11 +430,14 @@ type JobArgs struct {
 	SparkPythonTask JobSparkPythonTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
-	Tags            pulumi.MapInput
-	Tasks           JobTaskArrayInput
+	// An optional map of the tags associated with the job. See tags Configuration Map
+	Tags pulumi.MapInput
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
-	Trigger        JobTriggerPtrInput
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
+	Trigger JobTriggerPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
@@ -557,6 +582,7 @@ func (o JobOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
 
+// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 func (o JobOutput) GitSource() JobGitSourcePtrOutput {
 	return o.ApplyT(func(v *Job) JobGitSourcePtrOutput { return v.GitSource }).(JobGitSourcePtrOutput)
 }
@@ -607,7 +633,7 @@ func (o JobOutput) NotebookTask() JobNotebookTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotebookTaskPtrOutput { return v.NotebookTask }).(JobNotebookTaskPtrOutput)
 }
 
-// An optional block controlling the notification settings on the job level (described below).
+// An optional block controlling the notification settings on the job level documented below.
 func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }
@@ -635,6 +661,7 @@ func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
+// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
 func (o JobOutput) RunAs() JobRunAsOutput {
 	return o.ApplyT(func(v *Job) JobRunAsOutput { return v.RunAs }).(JobRunAsOutput)
 }
@@ -664,10 +691,12 @@ func (o JobOutput) SparkSubmitTask() JobSparkSubmitTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobSparkSubmitTaskPtrOutput { return v.SparkSubmitTask }).(JobSparkSubmitTaskPtrOutput)
 }
 
+// An optional map of the tags associated with the job. See tags Configuration Map
 func (o JobOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
+// A list of task specification that the job will execute. See task Configuration Block below.
 func (o JobOutput) Tasks() JobTaskArrayOutput {
 	return o.ApplyT(func(v *Job) JobTaskArrayOutput { return v.Tasks }).(JobTaskArrayOutput)
 }
@@ -677,6 +706,7 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The conditions that triggers the job to start. See trigger Configuration Block below.
 func (o JobOutput) Trigger() JobTriggerPtrOutput {
 	return o.ApplyT(func(v *Job) JobTriggerPtrOutput { return v.Trigger }).(JobTriggerPtrOutput)
 }

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+ * The resource can be imported using the Git folder ID (obtained via UI or using API)
  * 
  * bash
  * 
@@ -72,14 +72,14 @@ public class Repo extends com.pulumi.resources.CustomResource {
         return this.gitProvider;
     }
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      * 
      */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
-     * @return path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+     * @return path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      * 
      */
     public Output<String> path() {
@@ -106,14 +106,14 @@ public class Repo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tag);
     }
     /**
-     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * @return The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      * 
      */
     public Output<String> url() {

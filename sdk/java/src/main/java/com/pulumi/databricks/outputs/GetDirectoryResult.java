@@ -11,10 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDirectoryResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return directory object ID
@@ -29,10 +25,6 @@ public final class GetDirectoryResult {
     private String workspacePath;
 
     private GetDirectoryResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

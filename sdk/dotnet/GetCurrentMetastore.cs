@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["someMetastore"] = thisDatabricksMetastore.MetastoreInfo[0],
+        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getCurrentMetastoreResult =&gt; getCurrentMetastoreResult.MetastoreInfo)),
         ///     };
         /// });
         /// ```
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["someMetastore"] = thisDatabricksMetastore.MetastoreInfo[0],
+        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getCurrentMetastoreResult =&gt; getCurrentMetastoreResult.MetastoreInfo)),
         ///     };
         /// });
         /// ```

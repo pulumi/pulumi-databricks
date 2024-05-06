@@ -63,14 +63,14 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+     * @return path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      * 
      */
     public Optional<Output<String>> path() {
@@ -100,14 +100,14 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+     * @return The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      * 
      */
     public Output<String> url() {
@@ -208,7 +208,7 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+         * @param path path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
+         * @param path path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+         * @param url The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+         * @param url The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
          * 
          * @return builder
          * 

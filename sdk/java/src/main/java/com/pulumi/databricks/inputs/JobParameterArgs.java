@@ -17,12 +17,16 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Default value of the parameter.
      * 
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
+     * 
      */
     @Import(name="default", required=true)
     private Output<String> default_;
 
     /**
      * @return Default value of the parameter.
+     * 
+     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
      * 
      */
     public Output<String> default_() {
@@ -72,6 +76,8 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param default_ Default value of the parameter.
          * 
+         * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
+         * 
          * @return builder
          * 
          */
@@ -82,6 +88,8 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param default_ Default value of the parameter.
+         * 
+         * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
          * 
          * @return builder
          * 

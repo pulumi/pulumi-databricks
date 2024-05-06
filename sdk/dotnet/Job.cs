@@ -70,6 +70,9 @@ namespace Pulumi.Databricks
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// </summary>
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
 
@@ -119,7 +122,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobNotebookTask?> NotebookTask { get; private set; } = null!;
 
         /// <summary>
-        /// An optional block controlling the notification settings on the job level (described below).
+        /// An optional block controlling the notification settings on the job level documented below.
         /// </summary>
         [Output("notificationSettings")]
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
@@ -139,6 +142,9 @@ namespace Pulumi.Databricks
         [Output("retryOnTimeout")]
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// </summary>
         [Output("runAs")]
         public Output<Outputs.JobRunAs> RunAs { get; private set; } = null!;
 
@@ -160,9 +166,15 @@ namespace Pulumi.Databricks
         [Output("sparkSubmitTask")]
         public Output<Outputs.JobSparkSubmitTask?> SparkSubmitTask { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional map of the tags associated with the job. See tags Configuration Map
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of task specification that the job will execute. See task Configuration Block below.
+        /// </summary>
         [Output("tasks")]
         public Output<ImmutableArray<Outputs.JobTask>> Tasks { get; private set; } = null!;
 
@@ -172,6 +184,9 @@ namespace Pulumi.Databricks
         [Output("timeoutSeconds")]
         public Output<int?> TimeoutSeconds { get; private set; } = null!;
 
+        /// <summary>
+        /// The conditions that triggers the job to start. See trigger Configuration Block below.
+        /// </summary>
         [Output("trigger")]
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
@@ -285,6 +300,9 @@ namespace Pulumi.Databricks
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
 
@@ -346,7 +364,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobNotebookTaskArgs>? NotebookTask { get; set; }
 
         /// <summary>
-        /// An optional block controlling the notification settings on the job level (described below).
+        /// An optional block controlling the notification settings on the job level documented below.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsArgs>? NotificationSettings { get; set; }
@@ -371,6 +389,9 @@ namespace Pulumi.Databricks
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        /// <summary>
+        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
 
@@ -394,6 +415,10 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// An optional map of the tags associated with the job. See tags Configuration Map
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -402,6 +427,10 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskArgs>? _tasks;
+
+        /// <summary>
+        /// A list of task specification that the job will execute. See task Configuration Block below.
+        /// </summary>
         public InputList<Inputs.JobTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskArgs>());
@@ -414,6 +443,9 @@ namespace Pulumi.Databricks
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        /// <summary>
+        /// The conditions that triggers the job to start. See trigger Configuration Block below.
+        /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
 
@@ -483,6 +515,9 @@ namespace Pulumi.Databricks
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
 
@@ -544,7 +579,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobNotebookTaskGetArgs>? NotebookTask { get; set; }
 
         /// <summary>
-        /// An optional block controlling the notification settings on the job level (described below).
+        /// An optional block controlling the notification settings on the job level documented below.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsGetArgs>? NotificationSettings { get; set; }
@@ -569,6 +604,9 @@ namespace Pulumi.Databricks
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        /// <summary>
+        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }
 
@@ -592,6 +630,10 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// An optional map of the tags associated with the job. See tags Configuration Map
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -600,6 +642,10 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskGetArgs>? _tasks;
+
+        /// <summary>
+        /// A list of task specification that the job will execute. See task Configuration Block below.
+        /// </summary>
         public InputList<Inputs.JobTaskGetArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskGetArgs>());
@@ -612,6 +658,9 @@ namespace Pulumi.Databricks
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        /// <summary>
+        /// The conditions that triggers the job to start. See trigger Configuration Block below.
+        /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
 

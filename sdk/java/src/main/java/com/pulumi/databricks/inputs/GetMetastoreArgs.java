@@ -17,14 +17,29 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetMetastoreArgs Empty = new GetMetastoreArgs();
 
     /**
-     * Id of the metastore
+     * ID of the metastore
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return ID of the metastore
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * ID of the metastore
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Id of the metastore
+     * @return ID of the metastore
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -79,6 +94,7 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
     private GetMetastoreArgs() {}
 
     private GetMetastoreArgs(GetMetastoreArgs $) {
+        this.id = $.id;
         this.metastoreId = $.metastoreId;
         this.metastoreInfo = $.metastoreInfo;
         this.name = $.name;
@@ -104,7 +120,28 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param metastoreId Id of the metastore
+         * @param id ID of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id ID of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param metastoreId ID of the metastore
          * 
          * @return builder
          * 
@@ -115,7 +152,7 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param metastoreId Id of the metastore
+         * @param metastoreId ID of the metastore
          * 
          * @return builder
          * 

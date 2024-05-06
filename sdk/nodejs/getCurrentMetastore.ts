@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getCurrentMetastore({});
- * export const someMetastore = thisDatabricksMetastore.metastoreInfo[0];
+ * export const someMetastore = _this.then(_this => _this.metastoreInfo);
  * ```
  *
  * ## Related Resources
@@ -87,7 +87,7 @@ export interface GetCurrentMetastoreResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getCurrentMetastore({});
- * export const someMetastore = thisDatabricksMetastore.metastoreInfo[0];
+ * export const someMetastore = _this.then(_this => _this.metastoreInfo);
  * ```
  *
  * ## Related Resources

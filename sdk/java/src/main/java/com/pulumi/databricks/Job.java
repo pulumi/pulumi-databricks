@@ -170,9 +170,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<String> format() {
         return this.format;
     }
+    /**
+     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     @Export(name="gitSource", refs={JobGitSource.class}, tree="[0]")
     private Output</* @Nullable */ JobGitSource> gitSource;
 
+    /**
+     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     public Output<Optional<JobGitSource>> gitSource() {
         return Codegen.optional(this.gitSource);
     }
@@ -295,14 +303,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notebookTask);
     }
     /**
-     * An optional block controlling the notification settings on the job level (described below).
+     * An optional block controlling the notification settings on the job level documented below.
      * 
      */
     @Export(name="notificationSettings", refs={JobNotificationSettings.class}, tree="[0]")
     private Output</* @Nullable */ JobNotificationSettings> notificationSettings;
 
     /**
-     * @return An optional block controlling the notification settings on the job level (described below).
+     * @return An optional block controlling the notification settings on the job level documented below.
      * 
      */
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
@@ -356,9 +364,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> retryOnTimeout() {
         return Codegen.optional(this.retryOnTimeout);
     }
+    /**
+     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
     private Output<JobRunAs> runAs;
 
+    /**
+     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     public Output<JobRunAs> runAs() {
         return this.runAs;
     }
@@ -424,15 +440,31 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobSparkSubmitTask>> sparkSubmitTask() {
         return Codegen.optional(this.sparkSubmitTask);
     }
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
+    /**
+     * @return An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     @Export(name="tasks", refs={List.class,JobTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobTask>> tasks;
 
+    /**
+     * @return A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     public Output<Optional<List<JobTask>>> tasks() {
         return Codegen.optional(this.tasks);
     }
@@ -450,9 +482,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> timeoutSeconds() {
         return Codegen.optional(this.timeoutSeconds);
     }
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     @Export(name="trigger", refs={JobTrigger.class}, tree="[0]")
     private Output</* @Nullable */ JobTrigger> trigger;
 
+    /**
+     * @return The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     public Output<Optional<JobTrigger>> trigger() {
         return Codegen.optional(this.trigger);
     }

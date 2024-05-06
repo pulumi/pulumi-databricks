@@ -15,6 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// Default value of the parameter.
+        /// 
+        /// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
         /// </summary>
         public readonly string Default;
         /// <summary>

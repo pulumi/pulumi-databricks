@@ -1835,6 +1835,7 @@ class ClusterLibrary(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.ClusterLibraryMaven'] = None,
                  pypi: Optional['outputs.ClusterLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -1846,6 +1847,8 @@ class ClusterLibrary(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -1873,6 +1876,11 @@ class ClusterLibrary(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.ClusterLibraryPypi']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -1956,6 +1964,7 @@ class ClusterPolicyLibrary(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.ClusterPolicyLibraryMaven'] = None,
                  pypi: Optional['outputs.ClusterPolicyLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -1967,6 +1976,8 @@ class ClusterPolicyLibrary(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -1994,6 +2005,11 @@ class ClusterPolicyLibrary(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.ClusterPolicyLibraryPypi']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -3010,6 +3026,15 @@ class JobEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
+        """
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+               
+               The following parameter is only available for the job level configuration.
+        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
+        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
+        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -3024,26 +3049,43 @@ class JobEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run fails.
+        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run starts.
+        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
         return pulumi.get(self, "on_successes")
 
 
@@ -4460,6 +4502,7 @@ class JobLibrary(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.JobLibraryMaven'] = None,
                  pypi: Optional['outputs.JobLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -4471,6 +4514,8 @@ class JobLibrary(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -4498,6 +4543,11 @@ class JobLibrary(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.JobLibraryPypi']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -5772,6 +5822,8 @@ class JobNotificationSettings(dict):
                  no_alert_for_skipped_runs: Optional[bool] = None):
         """
         :param bool no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
+               
+               The following parameter is only available on task level.
         :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
         """
         if no_alert_for_canceled_runs is not None:
@@ -5784,6 +5836,8 @@ class JobNotificationSettings(dict):
     def no_alert_for_canceled_runs(self) -> Optional[bool]:
         """
         (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
         """
         return pulumi.get(self, "no_alert_for_canceled_runs")
 
@@ -5803,6 +5857,8 @@ class JobParameter(dict):
                  name: str):
         """
         :param str default: Default value of the parameter.
+               
+               *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
         :param str name: The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         pulumi.set(__self__, "default", default)
@@ -5813,6 +5869,8 @@ class JobParameter(dict):
     def default(self) -> str:
         """
         Default value of the parameter.
+
+        *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
         """
         return pulumi.get(self, "default")
 
@@ -6391,11 +6449,16 @@ class JobTask(dict):
         :param Sequence['JobTaskDependsOnArgs'] depends_ons: block specifying dependency(-ies) for a given task.
         :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param str existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param 'JobTaskHealthArgs' health: block described below that specifies health conditions for a given task.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        :param str job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param Sequence['JobTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param int min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param 'JobTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level (described below).
+        :param 'JobTaskNewClusterArgs' new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        :param 'JobTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
         :param str task_key: string specifying an unique key for a given task.
@@ -6502,6 +6565,9 @@ class JobTask(dict):
     @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        """
         return pulumi.get(self, "existing_cluster_id")
 
     @property
@@ -6514,12 +6580,17 @@ class JobTask(dict):
     def health(self) -> Optional['outputs.JobTaskHealth']:
         """
         block described below that specifies health conditions for a given task.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
     @property
     @pulumi.getter(name="jobClusterKey")
     def job_cluster_key(self) -> Optional[str]:
+        """
+        Identifier of the Job cluster specified in the `job_cluster` block.
+        """
         return pulumi.get(self, "job_cluster_key")
 
     @property
@@ -6549,6 +6620,9 @@ class JobTask(dict):
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional['outputs.JobTaskNewCluster']:
+        """
+        Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        """
         return pulumi.get(self, "new_cluster")
 
     @property
@@ -6560,7 +6634,7 @@ class JobTask(dict):
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> Optional['outputs.JobTaskNotificationSettings']:
         """
-        An optional block controlling the notification settings on the job level (described below).
+        An optional block controlling the notification settings on the job level documented below.
         """
         return pulumi.get(self, "notification_settings")
 
@@ -6828,7 +6902,6 @@ class JobTaskDependsOn(dict):
                  outcome: Optional[str] = None):
         """
         :param str task_key: The name of the task this task depends on.
-        :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -6845,9 +6918,6 @@ class JobTaskDependsOn(dict):
     @property
     @pulumi.getter
     def outcome(self) -> Optional[str]:
-        """
-        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-        """
         return pulumi.get(self, "outcome")
 
 
@@ -6884,6 +6954,15 @@ class JobTaskEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
+        """
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+               
+               The following parameter is only available for the job level configuration.
+        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
+        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
+        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -6898,26 +6977,43 @@ class JobTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run fails.
+        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run starts.
+        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
         return pulumi.get(self, "on_successes")
 
 
@@ -7059,11 +7155,16 @@ class JobTaskForEachTaskTask(dict):
         :param Sequence['JobTaskForEachTaskTaskDependsOnArgs'] depends_ons: block specifying dependency(-ies) for a given task.
         :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param 'JobTaskForEachTaskTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param str existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param 'JobTaskForEachTaskTaskHealthArgs' health: block described below that specifies health conditions for a given task.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        :param str job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param Sequence['JobTaskForEachTaskTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param int min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param 'JobTaskForEachTaskTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level (described below).
+        :param 'JobTaskForEachTaskTaskNewClusterArgs' new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        :param 'JobTaskForEachTaskTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
         :param str task_key: string specifying an unique key for a given task.
@@ -7168,6 +7269,9 @@ class JobTaskForEachTaskTask(dict):
     @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        """
         return pulumi.get(self, "existing_cluster_id")
 
     @property
@@ -7175,12 +7279,17 @@ class JobTaskForEachTaskTask(dict):
     def health(self) -> Optional['outputs.JobTaskForEachTaskTaskHealth']:
         """
         block described below that specifies health conditions for a given task.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
     @property
     @pulumi.getter(name="jobClusterKey")
     def job_cluster_key(self) -> Optional[str]:
+        """
+        Identifier of the Job cluster specified in the `job_cluster` block.
+        """
         return pulumi.get(self, "job_cluster_key")
 
     @property
@@ -7210,6 +7319,9 @@ class JobTaskForEachTaskTask(dict):
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional['outputs.JobTaskForEachTaskTaskNewCluster']:
+        """
+        Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        """
         return pulumi.get(self, "new_cluster")
 
     @property
@@ -7221,7 +7333,7 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> Optional['outputs.JobTaskForEachTaskTaskNotificationSettings']:
         """
-        An optional block controlling the notification settings on the job level (described below).
+        An optional block controlling the notification settings on the job level documented below.
         """
         return pulumi.get(self, "notification_settings")
 
@@ -7489,7 +7601,6 @@ class JobTaskForEachTaskTaskDependsOn(dict):
                  outcome: Optional[str] = None):
         """
         :param str task_key: The name of the task this task depends on.
-        :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -7506,9 +7617,6 @@ class JobTaskForEachTaskTaskDependsOn(dict):
     @property
     @pulumi.getter
     def outcome(self) -> Optional[str]:
-        """
-        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-        """
         return pulumi.get(self, "outcome")
 
 
@@ -7545,6 +7653,15 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
+        """
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+               
+               The following parameter is only available for the job level configuration.
+        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
+        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
+        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -7559,26 +7676,43 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run fails.
+        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run starts.
+        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
         return pulumi.get(self, "on_successes")
 
 
@@ -7651,6 +7785,7 @@ class JobTaskForEachTaskTaskLibrary(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.JobTaskForEachTaskTaskLibraryMaven'] = None,
                  pypi: Optional['outputs.JobTaskForEachTaskTaskLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -7662,6 +7797,8 @@ class JobTaskForEachTaskTaskLibrary(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -7689,6 +7826,11 @@ class JobTaskForEachTaskTaskLibrary(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.JobTaskForEachTaskTaskLibraryPypi']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -8963,6 +9105,8 @@ class JobTaskForEachTaskTaskNotificationSettings(dict):
         """
         :param bool alert_on_last_attempt: (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
         :param bool no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
+               
+               The following parameter is only available on task level.
         :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
         """
         if alert_on_last_attempt is not None:
@@ -8985,6 +9129,8 @@ class JobTaskForEachTaskTaskNotificationSettings(dict):
     def no_alert_for_canceled_runs(self) -> Optional[bool]:
         """
         (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
         """
         return pulumi.get(self, "no_alert_for_canceled_runs")
 
@@ -9998,6 +10144,7 @@ class JobTaskLibrary(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.JobTaskLibraryMaven'] = None,
                  pypi: Optional['outputs.JobTaskLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -10009,6 +10156,8 @@ class JobTaskLibrary(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -10036,6 +10185,11 @@ class JobTaskLibrary(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.JobTaskLibraryPypi']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -11314,6 +11468,8 @@ class JobTaskNotificationSettings(dict):
         """
         :param bool alert_on_last_attempt: (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
         :param bool no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
+               
+               The following parameter is only available on task level.
         :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
         """
         if alert_on_last_attempt is not None:
@@ -11336,6 +11492,8 @@ class JobTaskNotificationSettings(dict):
     def no_alert_for_canceled_runs(self) -> Optional[bool]:
         """
         (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
         """
         return pulumi.get(self, "no_alert_for_canceled_runs")
 
@@ -17669,7 +17827,7 @@ class RepoSparseCheckout(dict):
         """
         :param Sequence[str] patterns: array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
                
-               Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+               Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
         """
         pulumi.set(__self__, "patterns", patterns)
 
@@ -17679,7 +17837,7 @@ class RepoSparseCheckout(dict):
         """
         array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
 
-        Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+        Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
         """
         return pulumi.get(self, "patterns")
 
@@ -23541,6 +23699,7 @@ class GetJobJobSettingsSettingsLibraryResult(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.GetJobJobSettingsSettingsLibraryMavenResult'] = None,
                  pypi: Optional['outputs.GetJobJobSettingsSettingsLibraryPypiResult'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -23552,6 +23711,8 @@ class GetJobJobSettingsSettingsLibraryResult(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -23579,6 +23740,11 @@ class GetJobJobSettingsSettingsLibraryResult(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.GetJobJobSettingsSettingsLibraryPypiResult']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -25584,6 +25750,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryResult(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenResult'] = None,
                  pypi: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiResult'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -25595,6 +25762,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryResult(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -25622,6 +25791,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryResult(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiResult']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -27072,6 +27246,7 @@ class GetJobJobSettingsSettingsTaskLibraryResult(dict):
                  jar: Optional[str] = None,
                  maven: Optional['outputs.GetJobJobSettingsSettingsTaskLibraryMavenResult'] = None,
                  pypi: Optional['outputs.GetJobJobSettingsSettingsTaskLibraryPypiResult'] = None,
+                 requirements: Optional[str] = None,
                  whl: Optional[str] = None):
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
@@ -27083,6 +27258,8 @@ class GetJobJobSettingsSettingsTaskLibraryResult(dict):
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -27110,6 +27287,11 @@ class GetJobJobSettingsSettingsTaskLibraryResult(dict):
     @pulumi.getter
     def pypi(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskLibraryPypiResult']:
         return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
 
     @property
     @pulumi.getter
@@ -28738,7 +28920,7 @@ class GetMetastoreMetastoreInfoResult(dict):
         :param str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
         :param int delta_sharing_recipient_token_lifetime_in_seconds: Used to set expiration duration in seconds on recipient data access tokens.
         :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param str metastore_id: Id of the metastore
+        :param str metastore_id: ID of the metastore
         :param str name: Name of the metastore
         :param str owner: Username/groupname/sp application_id of the metastore owner.
         :param str region: Region of the metastore
@@ -28834,7 +29016,7 @@ class GetMetastoreMetastoreInfoResult(dict):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[str]:
         """
-        Id of the metastore
+        ID of the metastore
         """
         return pulumi.get(self, "metastore_id")
 

@@ -16,14 +16,29 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetMetastorePlainArgs Empty = new GetMetastorePlainArgs();
 
     /**
-     * Id of the metastore
+     * ID of the metastore
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return ID of the metastore
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * ID of the metastore
      * 
      */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
     /**
-     * @return Id of the metastore
+     * @return ID of the metastore
      * 
      */
     public Optional<String> metastoreId() {
@@ -78,6 +93,7 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
     private GetMetastorePlainArgs() {}
 
     private GetMetastorePlainArgs(GetMetastorePlainArgs $) {
+        this.id = $.id;
         this.metastoreId = $.metastoreId;
         this.metastoreInfo = $.metastoreInfo;
         this.name = $.name;
@@ -103,7 +119,18 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param metastoreId Id of the metastore
+         * @param id ID of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param metastoreId ID of the metastore
          * 
          * @return builder
          * 

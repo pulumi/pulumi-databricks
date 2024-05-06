@@ -570,6 +570,9 @@
                 "pypi": {
                     "$ref": "#/types/databricks:index/ClusterLibraryPypi:ClusterLibraryPypi"
                 },
+                "requirements": {
+                    "type": "string"
+                },
                 "whl": {
                     "type": "string"
                 }
@@ -640,6 +643,9 @@
                 },
                 "pypi": {
                     "$ref": "#/types/databricks:index/ClusterPolicyLibraryPypi:ClusterPolicyLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
                 },
                 "whl": {
                     "type": "string"
@@ -1035,31 +1041,36 @@
         "databricks:index/JobEmailNotifications:JobEmailNotifications": {
             "properties": {
                 "noAlertForSkippedRuns": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).\n"
                 },
                 "onDurationWarningThresholdExceededs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.\n\nThe following parameter is only available for the job level configuration.\n"
                 },
                 "onFailures": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run fails.\n"
                 },
                 "onStarts": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run starts.\n"
                 },
                 "onSuccesses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run completes successfully.\n"
                 }
             },
             "type": "object"
@@ -1670,6 +1681,9 @@
                 "pypi": {
                     "$ref": "#/types/databricks:index/JobLibraryPypi:JobLibraryPypi"
                 },
+                "requirements": {
+                    "type": "string"
+                },
                 "whl": {
                     "type": "string"
                 }
@@ -2219,7 +2233,7 @@
             "properties": {
                 "noAlertForCanceledRuns": {
                     "type": "boolean",
-                    "description": "(Bool) don't send alert for cancelled runs.\n"
+                    "description": "(Bool) don't send alert for cancelled runs.\n\nThe following parameter is only available on task level.\n"
                 },
                 "noAlertForSkippedRuns": {
                     "type": "boolean",
@@ -2232,7 +2246,7 @@
             "properties": {
                 "default": {
                     "type": "string",
-                    "description": "Default value of the parameter.\n"
+                    "description": "Default value of the parameter.\n\n*You can use this block only together with `task` blocks, not with the legacy tasks specification!*\n"
                 },
                 "name": {
                     "type": "string",
@@ -2434,17 +2448,19 @@
                     "type": "string"
                 },
                 "existingClusterId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*\n"
                 },
                 "forEachTask": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTask:JobTaskForEachTask"
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobTaskHealth:JobTaskHealth",
-                    "description": "block described below that specifies health conditions for a given task.\n"
+                    "description": "block described below that specifies health conditions for a given task.\n\n\u003e **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.\n"
                 },
                 "jobClusterKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the Job cluster specified in the `job_cluster` block.\n"
                 },
                 "libraries": {
                     "type": "array",
@@ -2462,14 +2478,15 @@
                     "description": "(Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.\n"
                 },
                 "newCluster": {
-                    "$ref": "#/types/databricks:index/JobTaskNewCluster:JobTaskNewCluster"
+                    "$ref": "#/types/databricks:index/JobTaskNewCluster:JobTaskNewCluster",
+                    "description": "Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.\n"
                 },
                 "notebookTask": {
                     "$ref": "#/types/databricks:index/JobTaskNotebookTask:JobTaskNotebookTask"
                 },
                 "notificationSettings": {
                     "$ref": "#/types/databricks:index/JobTaskNotificationSettings:JobTaskNotificationSettings",
-                    "description": "An optional block controlling the notification settings on the job level (described below).\n"
+                    "description": "An optional block controlling the notification settings on the job level documented below.\n"
                 },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobTaskPipelineTask:JobTaskPipelineTask"
@@ -2586,8 +2603,7 @@
         "databricks:index/JobTaskDependsOn:JobTaskDependsOn": {
             "properties": {
                 "outcome": {
-                    "type": "string",
-                    "description": "Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `\"true\"` or `\"false\"`.\n"
+                    "type": "string"
                 },
                 "taskKey": {
                     "type": "string",
@@ -2602,31 +2618,36 @@
         "databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications": {
             "properties": {
                 "noAlertForSkippedRuns": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).\n"
                 },
                 "onDurationWarningThresholdExceededs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.\n\nThe following parameter is only available for the job level configuration.\n"
                 },
                 "onFailures": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run fails.\n"
                 },
                 "onStarts": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run starts.\n"
                 },
                 "onSuccesses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run completes successfully.\n"
                 }
             },
             "type": "object"
@@ -2679,14 +2700,16 @@
                     "type": "string"
                 },
                 "existingClusterId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*\n"
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskHealth:JobTaskForEachTaskTaskHealth",
-                    "description": "block described below that specifies health conditions for a given task.\n"
+                    "description": "block described below that specifies health conditions for a given task.\n\n\u003e **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.\n"
                 },
                 "jobClusterKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the Job cluster specified in the `job_cluster` block.\n"
                 },
                 "libraries": {
                     "type": "array",
@@ -2704,14 +2727,15 @@
                     "description": "(Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.\n"
                 },
                 "newCluster": {
-                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewCluster:JobTaskForEachTaskTaskNewCluster"
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewCluster:JobTaskForEachTaskTaskNewCluster",
+                    "description": "Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.\n"
                 },
                 "notebookTask": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNotebookTask:JobTaskForEachTaskTaskNotebookTask"
                 },
                 "notificationSettings": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNotificationSettings:JobTaskForEachTaskTaskNotificationSettings",
-                    "description": "An optional block controlling the notification settings on the job level (described below).\n"
+                    "description": "An optional block controlling the notification settings on the job level documented below.\n"
                 },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskPipelineTask:JobTaskForEachTaskTaskPipelineTask"
@@ -2828,8 +2852,7 @@
         "databricks:index/JobTaskForEachTaskTaskDependsOn:JobTaskForEachTaskTaskDependsOn": {
             "properties": {
                 "outcome": {
-                    "type": "string",
-                    "description": "Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `\"true\"` or `\"false\"`.\n"
+                    "type": "string"
                 },
                 "taskKey": {
                     "type": "string",
@@ -2844,31 +2867,36 @@
         "databricks:index/JobTaskForEachTaskTaskEmailNotifications:JobTaskForEachTaskTaskEmailNotifications": {
             "properties": {
                 "noAlertForSkippedRuns": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).\n"
                 },
                 "onDurationWarningThresholdExceededs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.\n\nThe following parameter is only available for the job level configuration.\n"
                 },
                 "onFailures": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run fails.\n"
                 },
                 "onStarts": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run starts.\n"
                 },
                 "onSuccesses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "(List) list of emails to notify when the run completes successfully.\n"
                 }
             },
             "type": "object"
@@ -2921,6 +2949,9 @@
                 },
                 "pypi": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskLibraryPypi:JobTaskForEachTaskTaskLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
                 },
                 "whl": {
                     "type": "string"
@@ -3476,7 +3507,7 @@
                 },
                 "noAlertForCanceledRuns": {
                     "type": "boolean",
-                    "description": "(Bool) don't send alert for cancelled runs.\n"
+                    "description": "(Bool) don't send alert for cancelled runs.\n\nThe following parameter is only available on task level.\n"
                 },
                 "noAlertForSkippedRuns": {
                     "type": "boolean",
@@ -3862,6 +3893,9 @@
                 },
                 "pypi": {
                     "$ref": "#/types/databricks:index/JobTaskLibraryPypi:JobTaskLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
                 },
                 "whl": {
                     "type": "string"
@@ -4416,7 +4450,7 @@
                 },
                 "noAlertForCanceledRuns": {
                     "type": "boolean",
-                    "description": "(Bool) don't send alert for cancelled runs.\n"
+                    "description": "(Bool) don't send alert for cancelled runs.\n\nThe following parameter is only available on task level.\n"
                 },
                 "noAlertForSkippedRuns": {
                     "type": "boolean",
@@ -6976,7 +7010,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.\n\nAddition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.\n"
+                    "description": "array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.\n\nAddition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.\n"
                 }
             },
             "type": "object",
@@ -9884,6 +9918,9 @@
                 "pypi": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsLibraryPypi:getJobJobSettingsSettingsLibraryPypi"
                 },
+                "requirements": {
+                    "type": "string"
+                },
                 "whl": {
                     "type": "string"
                 }
@@ -11053,6 +11090,9 @@
                 "pypi": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi:getJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi"
                 },
+                "requirements": {
+                    "type": "string"
+                },
                 "whl": {
                     "type": "string"
                 }
@@ -11947,6 +11987,9 @@
                 },
                 "pypi": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskLibraryPypi:getJobJobSettingsSettingsTaskLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
                 },
                 "whl": {
                     "type": "string"
@@ -12960,7 +13003,7 @@
                 },
                 "metastoreId": {
                     "type": "string",
-                    "description": "Id of the metastore\n"
+                    "description": "ID of the metastore\n"
                 },
                 "name": {
                     "type": "string",
@@ -16579,7 +16622,8 @@
                     "type": "string"
                 },
                 "gitSource": {
-                    "$ref": "#/types/databricks:index/JobGitSource:JobGitSource"
+                    "$ref": "#/types/databricks:index/JobGitSource:JobGitSource",
+                    "description": "Specifices the a Git repository for task source code. See git_source Configuration Block below.\n"
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
@@ -16625,7 +16669,7 @@
                 },
                 "notificationSettings": {
                     "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
-                    "description": "An optional block controlling the notification settings on the job level (described below).\n"
+                    "description": "An optional block controlling the notification settings on the job level documented below.\n"
                 },
                 "parameters": {
                     "type": "array",
@@ -16649,7 +16693,8 @@
                     "deprecationMessage": "should be used inside a task block and not inside a job block"
                 },
                 "runAs": {
-                    "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                    "$ref": "#/types/databricks:index/JobRunAs:JobRunAs",
+                    "description": "The user or the service prinicipal the job runs as. See run_as Configuration Block below.\n"
                 },
                 "runJobTask": {
                     "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask",
@@ -16675,20 +16720,23 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An optional map of the tags associated with the job. See tags Configuration Map\n"
                 },
                 "tasks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobTask:JobTask"
-                    }
+                    },
+                    "description": "A list of task specification that the job will execute. See task Configuration Block below.\n"
                 },
                 "timeoutSeconds": {
                     "type": "integer",
                     "description": "(Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.\n"
                 },
                 "trigger": {
-                    "$ref": "#/types/databricks:index/JobTrigger:JobTrigger"
+                    "$ref": "#/types/databricks:index/JobTrigger:JobTrigger",
+                    "description": "The conditions that triggers the job to start. See trigger Configuration Block below.\n"
                 },
                 "url": {
                     "type": "string",
@@ -16749,7 +16797,8 @@
                     "type": "string"
                 },
                 "gitSource": {
-                    "$ref": "#/types/databricks:index/JobGitSource:JobGitSource"
+                    "$ref": "#/types/databricks:index/JobGitSource:JobGitSource",
+                    "description": "Specifices the a Git repository for task source code. See git_source Configuration Block below.\n"
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
@@ -16795,7 +16844,7 @@
                 },
                 "notificationSettings": {
                     "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
-                    "description": "An optional block controlling the notification settings on the job level (described below).\n"
+                    "description": "An optional block controlling the notification settings on the job level documented below.\n"
                 },
                 "parameters": {
                     "type": "array",
@@ -16819,7 +16868,8 @@
                     "deprecationMessage": "should be used inside a task block and not inside a job block"
                 },
                 "runAs": {
-                    "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                    "$ref": "#/types/databricks:index/JobRunAs:JobRunAs",
+                    "description": "The user or the service prinicipal the job runs as. See run_as Configuration Block below.\n"
                 },
                 "runJobTask": {
                     "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask",
@@ -16845,20 +16895,23 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An optional map of the tags associated with the job. See tags Configuration Map\n"
                 },
                 "tasks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobTask:JobTask"
-                    }
+                    },
+                    "description": "A list of task specification that the job will execute. See task Configuration Block below.\n"
                 },
                 "timeoutSeconds": {
                     "type": "integer",
                     "description": "(Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.\n"
                 },
                 "trigger": {
-                    "$ref": "#/types/databricks:index/JobTrigger:JobTrigger"
+                    "$ref": "#/types/databricks:index/JobTrigger:JobTrigger",
+                    "description": "The conditions that triggers the job to start. See trigger Configuration Block below.\n"
                 },
                 "webhookNotifications": {
                     "$ref": "#/types/databricks:index/JobWebhookNotifications:JobWebhookNotifications",
@@ -16911,7 +16964,8 @@
                         "type": "string"
                     },
                     "gitSource": {
-                        "$ref": "#/types/databricks:index/JobGitSource:JobGitSource"
+                        "$ref": "#/types/databricks:index/JobGitSource:JobGitSource",
+                        "description": "Specifices the a Git repository for task source code. See git_source Configuration Block below.\n"
                     },
                     "health": {
                         "$ref": "#/types/databricks:index/JobHealth:JobHealth",
@@ -16957,7 +17011,7 @@
                     },
                     "notificationSettings": {
                         "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
-                        "description": "An optional block controlling the notification settings on the job level (described below).\n"
+                        "description": "An optional block controlling the notification settings on the job level documented below.\n"
                     },
                     "parameters": {
                         "type": "array",
@@ -16981,7 +17035,8 @@
                         "deprecationMessage": "should be used inside a task block and not inside a job block"
                     },
                     "runAs": {
-                        "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                        "$ref": "#/types/databricks:index/JobRunAs:JobRunAs",
+                        "description": "The user or the service prinicipal the job runs as. See run_as Configuration Block below.\n"
                     },
                     "runJobTask": {
                         "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask",
@@ -17007,20 +17062,23 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        }
+                        },
+                        "description": "An optional map of the tags associated with the job. See tags Configuration Map\n"
                     },
                     "tasks": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/databricks:index/JobTask:JobTask"
-                        }
+                        },
+                        "description": "A list of task specification that the job will execute. See task Configuration Block below.\n"
                     },
                     "timeoutSeconds": {
                         "type": "integer",
                         "description": "(Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.\n"
                     },
                     "trigger": {
-                        "$ref": "#/types/databricks:index/JobTrigger:JobTrigger"
+                        "$ref": "#/types/databricks:index/JobTrigger:JobTrigger",
+                        "description": "The conditions that triggers the job to start. See trigger Configuration Block below.\n"
                     },
                     "url": {
                         "type": "string",
@@ -17318,6 +17376,9 @@
                 "pypi": {
                     "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi"
                 },
+                "requirements": {
+                    "type": "string"
+                },
                 "whl": {
                     "type": "string"
                 }
@@ -17348,6 +17409,10 @@
                 },
                 "pypi": {
                     "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi",
+                    "willReplaceOnChanges": true
+                },
+                "requirements": {
+                    "type": "string",
                     "willReplaceOnChanges": true
                 },
                 "whl": {
@@ -17383,6 +17448,10 @@
                     },
                     "pypi": {
                         "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi",
+                        "willReplaceOnChanges": true
+                    },
+                    "requirements": {
+                        "type": "string",
                         "willReplaceOnChanges": true
                     },
                     "whl": {
@@ -21269,7 +21338,7 @@
             }
         },
         "databricks:index/repo:Repo": {
-            "description": "\n\n## Import\n\nThe resource Repo can be imported using the Repo ID (obtained via UI or using API)\n\nbash\n\n```sh\n$ pulumi import databricks:index/repo:Repo this repo_id\n```\n\n",
+            "description": "\n\n## Import\n\nThe resource can be imported using the Git folder ID (obtained via UI or using API)\n\nbash\n\n```sh\n$ pulumi import databricks:index/repo:Repo this repo_id\n```\n\n",
             "properties": {
                 "branch": {
                     "type": "string",
@@ -21285,7 +21354,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/\u003cusername\u003e/...`).  If the value changes, repo is re-created.\n"
+                    "description": "path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.\n"
                 },
                 "sparseCheckout": {
                     "$ref": "#/types/databricks:index/RepoSparseCheckout:RepoSparseCheckout"
@@ -21296,7 +21365,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL of the Git Repository to clone from. If the value changes, repo is re-created.\n"
+                    "description": "The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.\n"
                 },
                 "workspacePath": {
                     "type": "string",
@@ -21327,7 +21396,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/\u003cusername\u003e/...`).  If the value changes, repo is re-created.\n",
+                    "description": "path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.\n",
                     "willReplaceOnChanges": true
                 },
                 "sparseCheckout": {
@@ -21340,7 +21409,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL of the Git Repository to clone from. If the value changes, repo is re-created.\n",
+                    "description": "The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -21365,7 +21434,7 @@
                     },
                     "path": {
                         "type": "string",
-                        "description": "path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/\u003cusername\u003e/...`).  If the value changes, repo is re-created.\n",
+                        "description": "path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.\n",
                         "willReplaceOnChanges": true
                     },
                     "sparseCheckout": {
@@ -21378,7 +21447,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The URL of the Git Repository to clone from. If the value changes, repo is re-created.\n",
+                        "description": "The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.\n",
                         "willReplaceOnChanges": true
                     },
                     "workspacePath": {
@@ -21904,8 +21973,7 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "This is an alias for the service principal and can be the full name of the service principal.\n",
-                    "willReplaceOnChanges": true
+                    "description": "This is an alias for the service principal and can be the full name of the service principal.\n"
                 },
                 "externalId": {
                     "type": "string",
@@ -21969,8 +22037,7 @@
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "This is an alias for the service principal and can be the full name of the service principal.\n",
-                        "willReplaceOnChanges": true
+                        "description": "This is an alias for the service principal and can be the full name of the service principal.\n"
                     },
                     "externalId": {
                         "type": "string",
@@ -25203,7 +25270,7 @@
             }
         },
         "databricks:index/getClusters:getClusters": {
-            "description": "## Example Usage\n\nRetrieve all clusters on this workspace on AWS or GCP:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getClusters({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetClusters.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve all clusters with \"Shared\" in their cluster name on this Azure Databricks workspace:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getClusters({\n    clusterNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_clusters(cluster_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetClusters.Invoke(new()\n    {\n        ClusterNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{\n\t\t\tClusterNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()\n            .clusterNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments:\n        clusterNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
+            "description": "## Example Usage\n\nRetrieve cluster IDs for all clusters:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getClusters({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetClusters.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve cluster IDs for all clusters having \"Shared\" in the cluster name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getClusters({\n    clusterNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_clusters(cluster_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetClusters.Invoke(new()\n    {\n        ClusterNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{\n\t\t\tClusterNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()\n            .clusterNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments:\n        clusterNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getClusters.\n",
                 "properties": {
@@ -25298,7 +25365,7 @@
             }
         },
         "databricks:index/getCurrentMetastore:getCurrentMetastore": {
-            "description": "Retrieves information about metastore attached to a given workspace.\n\n\u003e **Note** This is the workspace-level data source.\n\n\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.\n\n## Example Usage\n\nMetastoreSummary response for a metastore attached to the current workspace.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getCurrentMetastore({});\nexport const someMetastore = thisDatabricksMetastore.metastoreInfo[0];\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_current_metastore()\npulumi.export(\"someMetastore\", this_databricks_metastore[\"metastoreInfo\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetCurrentMetastore.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"someMetastore\"] = thisDatabricksMetastore.MetastoreInfo[0],\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetCurrentMetastore(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"someMetastore\", thisDatabricksMetastore.MetastoreInfo[0])\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getCurrentMetastore();\n\n        ctx.export(\"someMetastore\", thisDatabricksMetastore.metastoreInfo()[0]);\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getCurrentMetastore\n      Arguments: {}\noutputs:\n  someMetastore: ${thisDatabricksMetastore.metastoreInfo[0]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Metastore to get information for a metastore with a given ID.\n* databricks.getMetastores to get a mapping of name to id of all metastores.\n* databricks.Metastore to manage Metastores within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "Retrieves information about metastore attached to a given workspace.\n\n\u003e **Note** This is the workspace-level data source.\n\n\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.\n\n## Example Usage\n\nMetastoreSummary response for a metastore attached to the current workspace.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getCurrentMetastore({});\nexport const someMetastore = _this.then(_this =\u003e _this.metastoreInfo);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_current_metastore()\npulumi.export(\"someMetastore\", this.metastore_info)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetCurrentMetastore.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"someMetastore\"] = @this.Apply(@this =\u003e @this.Apply(getCurrentMetastoreResult =\u003e getCurrentMetastoreResult.MetastoreInfo)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetCurrentMetastore(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"someMetastore\", this.MetastoreInfo)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getCurrentMetastore();\n\n        ctx.export(\"someMetastore\", this_.metastoreInfo());\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getCurrentMetastore\n      Arguments: {}\noutputs:\n  someMetastore: ${this.metastoreInfo}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Metastore to get information for a metastore with a given ID.\n* databricks.getMetastores to get a mapping of name to id of all metastores.\n* databricks.Metastore to manage Metastores within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCurrentMetastore.\n",
                 "properties": {
@@ -25487,6 +25554,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDirectory.\n",
                 "properties": {
+                    "id": {
+                        "type": "string"
+                    },
                     "objectId": {
                         "type": "integer",
                         "description": "directory object ID\n"
@@ -25495,6 +25565,10 @@
                         "type": "string",
                         "description": "Path to a directory in the workspace\n",
                         "willReplaceOnChanges": true
+                    },
+                    "workspacePath": {
+                        "type": "string",
+                        "description": "path on Workspace File System (WSFS) in form of `/Workspace` + `path`\n"
                     }
                 },
                 "type": "object",
@@ -25506,7 +25580,6 @@
                 "description": "A collection of values returned by getDirectory.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
                     },
                     "objectId": {
@@ -25522,10 +25595,10 @@
                     }
                 },
                 "required": [
+                    "id",
                     "objectId",
                     "path",
-                    "workspacePath",
-                    "id"
+                    "workspacePath"
                 ],
                 "type": "object"
             }
@@ -25970,9 +26043,13 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getMetastore.\n",
                 "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the metastore\n"
+                    },
                     "metastoreId": {
                         "type": "string",
-                        "description": "Id of the metastore\n"
+                        "description": "ID of the metastore\n"
                     },
                     "metastoreInfo": {
                         "$ref": "#/types/databricks:index/getMetastoreMetastoreInfo:getMetastoreMetastoreInfo",
@@ -25993,7 +26070,7 @@
                 "description": "A collection of values returned by getMetastore.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "ID of the metastore\n",
                         "type": "string"
                     },
                     "metastoreId": {
@@ -26012,11 +26089,11 @@
                     }
                 },
                 "required": [
+                    "id",
                     "metastoreId",
                     "metastoreInfo",
                     "name",
-                    "region",
-                    "id"
+                    "region"
                 ],
                 "type": "object"
             }
@@ -27128,7 +27205,7 @@
             }
         },
         "databricks:index/getSqlWarehouses:getSqlWarehouses": {
-            "description": "## Example Usage\n\nRetrieve all SQL warehouses on this workspace on AWS or GCP:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getSqlWarehouses({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_sql_warehouses()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetSqlWarehouses.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getSqlWarehouses();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve all clusters with \"Shared\" in their cluster name on this Azure Databricks workspace:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getSqlWarehouses({\n    warehouseNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_sql_warehouses(warehouse_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetSqlWarehouses.Invoke(new()\n    {\n        WarehouseNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, \u0026databricks.GetSqlWarehousesArgs{\n\t\t\tWarehouseNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()\n            .warehouseNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments:\n        warehouseNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n",
+            "description": "## Example Usage\n\nRetrieve IDs for all SQL warehouses:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getSqlWarehouses({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_sql_warehouses()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetSqlWarehouses.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getSqlWarehouses();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve IDs for all clusters having \"Shared\" in the warehouse name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getSqlWarehouses({\n    warehouseNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_sql_warehouses(warehouse_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetSqlWarehouses.Invoke(new()\n    {\n        WarehouseNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, \u0026databricks.GetSqlWarehousesArgs{\n\t\t\tWarehouseNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()\n            .warehouseNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments:\n        warehouseNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSqlWarehouses.\n",
                 "properties": {

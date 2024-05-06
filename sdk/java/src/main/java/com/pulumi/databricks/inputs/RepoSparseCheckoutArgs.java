@@ -18,7 +18,7 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
      * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
      * 
      */
     @Import(name="patterns", required=true)
@@ -27,7 +27,7 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
     /**
      * @return array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
      * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
      * 
      */
     public Output<List<String>> patterns() {
@@ -61,7 +61,7 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
         /**
          * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
          * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
         /**
          * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
          * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
         /**
          * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
          * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
          * 
          * @return builder
          * 

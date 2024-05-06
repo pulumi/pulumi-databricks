@@ -28,11 +28,19 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskEmailNotifications? EmailNotifications;
         public readonly string? EnvironmentKey;
+        /// <summary>
+        /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        /// </summary>
         public readonly string? ExistingClusterId;
         /// <summary>
         /// block described below that specifies health conditions for a given task.
+        /// 
+        /// &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskHealth? Health;
+        /// <summary>
+        /// Identifier of the Job cluster specified in the `job_cluster` block.
+        /// </summary>
         public readonly string? JobClusterKey;
         /// <summary>
         /// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -46,10 +54,13 @@ namespace Pulumi.Databricks.Outputs
         /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         /// </summary>
         public readonly int? MinRetryIntervalMillis;
+        /// <summary>
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskForEachTaskTaskNotebookTask? NotebookTask;
         /// <summary>
-        /// An optional block controlling the notification settings on the job level (described below).
+        /// An optional block controlling the notification settings on the job level documented below.
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskForEachTaskTaskPipelineTask? PipelineTask;
