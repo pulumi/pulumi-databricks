@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,13 +43,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SecretScope(&#34;this&#34;, SecretScopeArgs.builder()        
- *             .name(&#34;terraform-demo-scope&#34;)
+ *         var this_ = new SecretScope("this", SecretScopeArgs.builder()        
+ *             .name("terraform-demo-scope")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

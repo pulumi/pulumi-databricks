@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new MlflowModel(&#34;test&#34;, MlflowModelArgs.builder()        
- *             .name(&#34;My MLflow Model&#34;)
- *             .description(&#34;My MLflow model description&#34;)
+ *         var test = new MlflowModel("test", MlflowModelArgs.builder()        
+ *             .name("My MLflow Model")
+ *             .description("My MLflow model description")
  *             .tags(            
  *                 MlflowModelTagArgs.builder()
- *                     .key(&#34;key1&#34;)
- *                     .value(&#34;value1&#34;)
+ *                     .key("key1")
+ *                     .value("value1")
  *                     .build(),
  *                 MlflowModelTagArgs.builder()
- *                     .key(&#34;key2&#34;)
- *                     .value(&#34;value2&#34;)
+ *                     .key("key2")
+ *                     .value("value2")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

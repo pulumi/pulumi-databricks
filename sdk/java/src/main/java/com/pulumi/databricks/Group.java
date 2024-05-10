@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * Creating some group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,21 +57,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Some Group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .displayName("Some Group")
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Adding databricks.User as databricks.GroupMember of some group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,30 +98,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Some Group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .displayName("Some Group")
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
- *         var thisUser = new User(&#34;thisUser&#34;, UserArgs.builder()        
- *             .userName(&#34;someone@example.com&#34;)
+ *         var thisUser = new User("thisUser", UserArgs.builder()        
+ *             .userName("someone{@literal @}example.com")
  *             .build());
  * 
- *         var vipMember = new GroupMember(&#34;vipMember&#34;, GroupMemberArgs.builder()        
+ *         var vipMember = new GroupMember("vipMember", GroupMemberArgs.builder()        
  *             .groupId(this_.id())
  *             .memberId(thisUser.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating group in AWS Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -139,19 +144,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Some Group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .displayName("Some Group")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating group in Azure Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -172,13 +179,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Some Group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .displayName("Some Group")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

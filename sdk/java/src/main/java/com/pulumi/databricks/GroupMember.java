@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,31 +49,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var a = new Group(&#34;a&#34;, GroupArgs.builder()        
- *             .displayName(&#34;A&#34;)
+ *         var a = new Group("a", GroupArgs.builder()        
+ *             .displayName("A")
  *             .build());
  * 
- *         var b = new Group(&#34;b&#34;, GroupArgs.builder()        
- *             .displayName(&#34;B&#34;)
+ *         var b = new Group("b", GroupArgs.builder()        
+ *             .displayName("B")
  *             .build());
  * 
- *         var ab = new GroupMember(&#34;ab&#34;, GroupMemberArgs.builder()        
+ *         var ab = new GroupMember("ab", GroupMemberArgs.builder()        
  *             .groupId(a.id())
  *             .memberId(b.id())
  *             .build());
  * 
- *         var bradley = new User(&#34;bradley&#34;, UserArgs.builder()        
- *             .userName(&#34;bradley@example.com&#34;)
+ *         var bradley = new User("bradley", UserArgs.builder()        
+ *             .userName("bradley{@literal @}example.com")
  *             .build());
  * 
- *         var bb = new GroupMember(&#34;bb&#34;, GroupMemberArgs.builder()        
+ *         var bb = new GroupMember("bb", GroupMemberArgs.builder()        
  *             .groupId(b.id())
  *             .memberId(bradley.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

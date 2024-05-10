@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,15 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new DefaultNamespaceSetting(&#34;this&#34;, DefaultNamespaceSettingArgs.builder()        
+ *         var this_ = new DefaultNamespaceSetting("this", DefaultNamespaceSettingArgs.builder()        
  *             .namespace(DefaultNamespaceSettingNamespaceArgs.builder()
- *                 .value(&#34;namespace_value&#34;)
+ *                 .value("namespace_value")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

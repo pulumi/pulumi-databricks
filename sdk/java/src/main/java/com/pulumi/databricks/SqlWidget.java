@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,9 +50,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var d1w1 = new SqlWidget(&#34;d1w1&#34;, SqlWidgetArgs.builder()        
+ *         var d1w1 = new SqlWidget("d1w1", SqlWidgetArgs.builder()        
  *             .dashboardId(d1.id())
- *             .text(&#34;Hello! I&#39;m a **text widget**!&#34;)
+ *             .text("Hello! I'm a **text widget**!")
  *             .position(SqlWidgetPositionArgs.builder()
  *                 .sizeX(3)
  *                 .sizeY(4)
@@ -60,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var d1w2 = new SqlWidget(&#34;d1w2&#34;, SqlWidgetArgs.builder()        
+ *         var d1w2 = new SqlWidget("d1w2", SqlWidgetArgs.builder()        
  *             .dashboardId(d1.id())
  *             .visualizationId(q1v1.id())
  *             .position(SqlWidgetPositionArgs.builder()
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

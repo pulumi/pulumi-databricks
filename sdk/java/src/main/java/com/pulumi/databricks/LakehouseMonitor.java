@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,60 +61,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
- *             .name(&#34;sandbox&#34;)
- *             .comment(&#34;this catalog is managed by terraform&#34;)
- *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
- *         var things = new Schema(&#34;things&#34;, SchemaArgs.builder()        
+ *         var things = new Schema("things", SchemaArgs.builder()        
  *             .catalogName(sandbox.id())
- *             .name(&#34;things&#34;)
- *             .comment(&#34;this database is managed by terraform&#34;)
- *             .properties(Map.of(&#34;kind&#34;, &#34;various&#34;))
+ *             .name("things")
+ *             .comment("this database is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
  *             .build());
  * 
- *         var myTestTable = new SqlTable(&#34;myTestTable&#34;, SqlTableArgs.builder()        
- *             .catalogName(&#34;main&#34;)
+ *         var myTestTable = new SqlTable("myTestTable", SqlTableArgs.builder()        
+ *             .catalogName("main")
  *             .schemaName(things.name())
- *             .name(&#34;bar&#34;)
- *             .tableType(&#34;MANAGED&#34;)
- *             .dataSourceFormat(&#34;DELTA&#34;)
+ *             .name("bar")
+ *             .tableType("MANAGED")
+ *             .dataSourceFormat("DELTA")
  *             .columns(SqlTableColumnArgs.builder()
- *                 .name(&#34;timestamp&#34;)
+ *                 .name("timestamp")
  *                 .position(1)
- *                 .type(&#34;int&#34;)
+ *                 .type("int")
  *                 .build())
  *             .build());
  * 
- *         var testTimeseriesMonitor = new LakehouseMonitor(&#34;testTimeseriesMonitor&#34;, LakehouseMonitorArgs.builder()        
- *             .tableName(Output.tuple(sandbox.name(), things.name(), myTestTable.name()).applyValue(values -&gt; {
+ *         var testTimeseriesMonitor = new LakehouseMonitor("testTimeseriesMonitor", LakehouseMonitorArgs.builder()        
+ *             .tableName(Output.tuple(sandbox.name(), things.name(), myTestTable.name()).applyValue(values -> {
  *                 var sandboxName = values.t1;
  *                 var thingsName = values.t2;
  *                 var myTestTableName = values.t3;
- *                 return String.format(&#34;%s.%s.%s&#34;, sandboxName,thingsName,myTestTableName);
+ *                 return String.format("%s.%s.%s", sandboxName,thingsName,myTestTableName);
  *             }))
- *             .assetsDir(myTestTable.name().applyValue(name -&gt; String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, name)))
- *             .outputSchemaName(Output.tuple(sandbox.name(), things.name()).applyValue(values -&gt; {
+ *             .assetsDir(myTestTable.name().applyValue(name -> String.format("/Shared/provider-test/databricks_lakehouse_monitoring/%s", name)))
+ *             .outputSchemaName(Output.tuple(sandbox.name(), things.name()).applyValue(values -> {
  *                 var sandboxName = values.t1;
  *                 var thingsName = values.t2;
- *                 return String.format(&#34;%s.%s&#34;, sandboxName,thingsName);
+ *                 return String.format("%s.%s", sandboxName,thingsName);
  *             }))
  *             .timeSeries(LakehouseMonitorTimeSeriesArgs.builder()
- *                 .granularities(&#34;1 hour&#34;)
- *                 .timestampCol(&#34;timestamp&#34;)
+ *                 .granularities("1 hour")
+ *                 .timestampCol("timestamp")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Inference Monitor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -135,26 +138,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testMonitorInference = new LakehouseMonitor(&#34;testMonitorInference&#34;, LakehouseMonitorArgs.builder()        
- *             .tableName(String.format(&#34;%s.%s.%s&#34;, sandbox.name(),things.name(),myTestTable.name()))
- *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, myTestTable.name()))
- *             .outputSchemaName(String.format(&#34;%s.%s&#34;, sandbox.name(),things.name()))
+ *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()        
+ *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
+ *             .assetsDir(String.format("/Shared/provider-test/databricks_lakehouse_monitoring/%s", myTestTable.name()))
+ *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
  *             .inferenceLog(LakehouseMonitorInferenceLogArgs.builder()
- *                 .granularities(&#34;1 hour&#34;)
- *                 .timestampCol(&#34;timestamp&#34;)
- *                 .predictionCol(&#34;prediction&#34;)
- *                 .modelIdCol(&#34;model_id&#34;)
- *                 .problemType(&#34;PROBLEM_TYPE_REGRESSION&#34;)
+ *                 .granularities("1 hour")
+ *                 .timestampCol("timestamp")
+ *                 .predictionCol("prediction")
+ *                 .modelIdCol("model_id")
+ *                 .problemType("PROBLEM_TYPE_REGRESSION")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * ### Snapshot Monitor
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -176,16 +181,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testMonitorInference = new LakehouseMonitor(&#34;testMonitorInference&#34;, LakehouseMonitorArgs.builder()        
- *             .tableName(String.format(&#34;%s.%s.%s&#34;, sandbox.name(),things.name(),myTestTable.name()))
- *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, myTestTable.name()))
- *             .outputSchemaName(String.format(&#34;%s.%s&#34;, sandbox.name(),things.name()))
+ *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()        
+ *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
+ *             .assetsDir(String.format("/Shared/provider-test/databricks_lakehouse_monitoring/%s", myTestTable.name()))
+ *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
  *             .snapshot()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

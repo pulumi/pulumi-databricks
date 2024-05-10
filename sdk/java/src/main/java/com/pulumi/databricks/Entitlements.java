@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Setting entitlements for a regular user:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,24 +50,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
- *             .userName(&#34;me@example.com&#34;)
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var meEntitlements = new Entitlements(&#34;meEntitlements&#34;, EntitlementsArgs.builder()        
- *             .userId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+ *         var meEntitlements = new Entitlements("meEntitlements", EntitlementsArgs.builder()        
+ *             .userId(me.applyValue(getUserResult -> getUserResult.id()))
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Setting entitlements for a service principal:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,10 +93,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var this = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
- *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+ *             .applicationId("11111111-2222-3333-4444-555666777888")
  *             .build());
  * 
- *         var thisEntitlements = new Entitlements(&#34;thisEntitlements&#34;, EntitlementsArgs.builder()        
+ *         var thisEntitlements = new Entitlements("thisEntitlements", EntitlementsArgs.builder()        
  *             .servicePrincipalId(this_.spId())
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
@@ -101,13 +104,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,18 +136,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;users&#34;)
+ *             .displayName("users")
  *             .build());
  * 
- *         var workspace_users = new Entitlements(&#34;workspace-users&#34;, EntitlementsArgs.builder()        
- *             .groupId(users.applyValue(getGroupResult -&gt; getGroupResult.id()))
+ *         var workspace_users = new Entitlements("workspace-users", EntitlementsArgs.builder()        
+ *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

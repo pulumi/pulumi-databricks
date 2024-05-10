@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,10 +70,10 @@ import javax.annotation.Nullable;
  *             .longTermSupport(true)
  *             .build());
  * 
- *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
- *             .clusterName(&#34;Shared Autoscaling&#34;)
- *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+ *             .clusterName("Shared Autoscaling")
+ *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
  *             .autoterminationMinutes(20)
  *             .autoscale(ClusterAutoscaleArgs.builder()
  *                 .minWorkers(1)
@@ -82,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control
@@ -222,7 +224,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * For example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,21 +246,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+     *             .clusterName("Shared High-Concurrency")
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
-     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+     *                 Map.entry("spark.databricks.cluster.profile", "serverless")
      *             ))
-     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .customTags(Map.of("ResourceClass", "Serverless"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -270,7 +274,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * For example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,21 +296,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+     *             .clusterName("Shared High-Concurrency")
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
-     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+     *                 Map.entry("spark.databricks.cluster.profile", "serverless")
      *             ))
-     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .customTags(Map.of("ResourceClass", "Serverless"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -448,7 +454,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -481,25 +488,26 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Shared Autoscaling&#34;)
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
      *                 .maxWorkers(50)
      *                 .build())
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
-     *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
-     *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
      *             ))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -512,7 +520,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -545,25 +554,26 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Shared Autoscaling&#34;)
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
      *                 .maxWorkers(50)
      *                 .build())
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
-     *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
-     *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
      *             ))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

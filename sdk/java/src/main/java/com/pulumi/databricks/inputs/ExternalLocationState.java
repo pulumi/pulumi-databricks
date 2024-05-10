@@ -175,14 +175,14 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     public Optional<Output<String>> url() {
@@ -444,7 +444,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
          * 
          * @return builder
          * 

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### AWS example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,15 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig(&#34;this&#34;, SqlGlobalConfigArgs.builder()        
- *             .securityPolicy(&#34;DATA_ACCESS_CONTROL&#34;)
- *             .instanceProfileArn(&#34;arn:....&#34;)
- *             .dataAccessConfig(Map.of(&#34;spark.sql.session.timeZone&#34;, &#34;UTC&#34;))
+ *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()        
+ *             .securityPolicy("DATA_ACCESS_CONTROL")
+ *             .instanceProfileArn("arn:....")
+ *             .dataAccessConfig(Map.of("spark.sql.session.timeZone", "UTC"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Azure example
@@ -62,7 +64,8 @@ import javax.annotation.Nullable;
  * For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,21 +86,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig(&#34;this&#34;, SqlGlobalConfigArgs.builder()        
- *             .securityPolicy(&#34;DATA_ACCESS_CONTROL&#34;)
+ *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()        
+ *             .securityPolicy("DATA_ACCESS_CONTROL")
  *             .dataAccessConfig(Map.ofEntries(
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.auth.type&#34;, &#34;OAuth&#34;),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth.provider.type&#34;, &#34;org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider&#34;),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.id&#34;, applicationId),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.secret&#34;, String.format(&#34;{{{{secrets/%s/%s}}}}&#34;, secretScope,secretKey)),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.endpoint&#34;, String.format(&#34;https://login.microsoftonline.com/%s/oauth2/token&#34;, tenantId))
+ *                 Map.entry("spark.hadoop.fs.azure.account.auth.type", "OAuth"),
+ *                 Map.entry("spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
+ *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.id", applicationId),
+ *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.secret", String.format("{{{{secrets/%s/%s}}}}", secretScope,secretKey)),
+ *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.endpoint", String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId))
  *             ))
- *             .sqlConfigParams(Map.of(&#34;ANSI_MODE&#34;, &#34;true&#34;))
+ *             .sqlConfigParams(Map.of("ANSI_MODE", "true"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

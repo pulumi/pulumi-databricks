@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * * `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,13 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new WorkspaceConf(&#34;this&#34;, WorkspaceConfArgs.builder()        
- *             .customConfig(Map.of(&#34;enableIpAccessLists&#34;, true))
+ *         var this_ = new WorkspaceConf("this", WorkspaceConfArgs.builder()        
+ *             .customConfig(Map.of("enableIpAccessLists", true))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

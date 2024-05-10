@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // create PAT token to provision entities within workspace
- *         var pat = new Token(&#34;pat&#34;, TokenArgs.builder()        
- *             .comment(&#34;Terraform Provisioning&#34;)
+ *         var pat = new Token("pat", TokenArgs.builder()        
+ *             .comment("Terraform Provisioning")
  *             .lifetimeSeconds(8640000)
  *             .build());
  * 
- *         ctx.export(&#34;databricksToken&#34;, pat.tokenValue());
+ *         ctx.export("databricksToken", pat.tokenValue());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -81,18 +84,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Rotating(&#34;this&#34;, RotatingArgs.builder()        
+ *         var this_ = new Rotating("this", RotatingArgs.builder()        
  *             .rotationDays(30)
  *             .build());
  * 
- *         var pat = new Token(&#34;pat&#34;, TokenArgs.builder()        
- *             .comment(this_.rfc3339().applyValue(rfc3339 -&gt; String.format(&#34;Terraform (created: %s)&#34;, rfc3339)))
+ *         var pat = new Token("pat", TokenArgs.builder()        
+ *             .comment(this_.rfc3339().applyValue(rfc3339 -> String.format("Terraform (created: %s)", rfc3339)))
  *             .lifetimeSeconds(60 * 24 * 60 * 60)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

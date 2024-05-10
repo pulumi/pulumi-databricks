@@ -19,7 +19,8 @@ public final class ClusterClusterMountInfo {
      * For example, you can mount Azure Data Lake Storage container using the following code:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,24 +43,25 @@ public final class ClusterClusterMountInfo {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var storageAccount = &#34;ewfw3ggwegwg&#34;;
+     *         final var storageAccount = "ewfw3ggwegwg";
      * 
-     *         final var storageContainer = &#34;test&#34;;
+     *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-     *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
-     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
+     *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
+     *                     .mountOptions("sec=sys,vers=3,nolock,proto=tcp")
      *                     .build())
-     *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
-     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
+     *                 .remoteMountDirPath(String.format("%s/%s", storageAccount,storageContainer))
+     *                 .localMountDirPath("/mnt/nfs-test")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class ClusterClusterMountInfo {
      * For example, you can mount Azure Data Lake Storage container using the following code:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -105,24 +108,25 @@ public final class ClusterClusterMountInfo {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var storageAccount = &#34;ewfw3ggwegwg&#34;;
+     *         final var storageAccount = "ewfw3ggwegwg";
      * 
-     *         final var storageContainer = &#34;test&#34;;
+     *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-     *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
-     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
+     *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
+     *                     .mountOptions("sec=sys,vers=3,nolock,proto=tcp")
      *                     .build())
-     *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
-     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
+     *                 .remoteMountDirPath(String.format("%s/%s", storageAccount,storageContainer))
+     *                 .localMountDirPath("/mnt/nfs-test")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

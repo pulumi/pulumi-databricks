@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,31 +59,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
  *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
  *                 .build())
- *             .comment(&#34;Managed by TF&#34;)
+ *             .comment("Managed by TF")
  *             .build());
  * 
- *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
- *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
+ *                 .principal("Data Engineers")
+ *                 .privileges("CREATE_EXTERNAL_TABLE")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For Azure
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,31 +110,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var externalMi = new StorageCredential(&#34;externalMi&#34;, StorageCredentialArgs.builder()        
- *             .name(&#34;mi_credential&#34;)
+ *         var externalMi = new StorageCredential("externalMi", StorageCredentialArgs.builder()        
+ *             .name("mi_credential")
  *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
  *                 .accessConnectorId(example.id())
  *                 .build())
- *             .comment(&#34;Managed identity credential managed by TF&#34;)
+ *             .comment("Managed identity credential managed by TF")
  *             .build());
  * 
- *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
- *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
+ *                 .principal("Data Engineers")
+ *                 .privileges("CREATE_EXTERNAL_TABLE")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -156,22 +161,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
- *             .name(&#34;the-creds&#34;)
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *             .name("the-creds")
  *             .databricksGcpServiceAccount()
  *             .build());
  * 
- *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
- *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
+ *                 .principal("Data Engineers")
+ *                 .privileges("CREATE_EXTERNAL_TABLE")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

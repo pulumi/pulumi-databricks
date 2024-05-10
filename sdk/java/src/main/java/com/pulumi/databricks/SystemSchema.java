@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Enable the system schema `access`
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,13 +48,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SystemSchema(&#34;this&#34;, SystemSchemaArgs.builder()        
- *             .schema(&#34;access&#34;)
+ *         var this_ = new SystemSchema("this", SystemSchemaArgs.builder()        
+ *             .schema("access")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

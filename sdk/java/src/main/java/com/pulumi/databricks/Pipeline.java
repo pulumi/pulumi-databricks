@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,27 +58,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dltDemo = new Notebook(&#34;dltDemo&#34;);
+ *         var dltDemo = new Notebook("dltDemo");
  * 
- *         var dltDemoRepo = new Repo(&#34;dltDemoRepo&#34;);
+ *         var dltDemoRepo = new Repo("dltDemoRepo");
  * 
- *         var this_ = new Pipeline(&#34;this&#34;, PipelineArgs.builder()        
- *             .name(&#34;Pipeline Name&#34;)
- *             .storage(&#34;/test/first-pipeline&#34;)
+ *         var this_ = new Pipeline("this", PipelineArgs.builder()        
+ *             .name("Pipeline Name")
+ *             .storage("/test/first-pipeline")
  *             .configuration(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
  *             ))
  *             .clusters(            
  *                 PipelineClusterArgs.builder()
- *                     .label(&#34;default&#34;)
+ *                     .label("default")
  *                     .numWorkers(2)
- *                     .customTags(Map.of(&#34;cluster_type&#34;, &#34;default&#34;))
+ *                     .customTags(Map.of("cluster_type", "default"))
  *                     .build(),
  *                 PipelineClusterArgs.builder()
- *                     .label(&#34;maintenance&#34;)
+ *                     .label("maintenance")
  *                     .numWorkers(1)
- *                     .customTags(Map.of(&#34;cluster_type&#34;, &#34;maintenance&#34;))
+ *                     .customTags(Map.of("cluster_type", "maintenance"))
  *                     .build())
  *             .libraries(            
  *                 PipelineLibraryArgs.builder()
@@ -87,25 +88,26 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 PipelineLibraryArgs.builder()
  *                     .file(PipelineLibraryFileArgs.builder()
- *                         .path(dltDemoRepo.path().applyValue(path -&gt; String.format(&#34;%s/pipeline.sql&#34;, path)))
+ *                         .path(dltDemoRepo.path().applyValue(path -> String.format("%s/pipeline.sql", path)))
  *                         .build())
  *                     .build())
  *             .continuous(false)
  *             .notifications(PipelineNotificationArgs.builder()
  *                 .emailRecipients(                
- *                     &#34;user@domain.com&#34;,
- *                     &#34;user1@domain.com&#34;)
+ *                     "user{@literal @}domain.com",
+ *                     "user1{@literal @}domain.com")
  *                 .alerts(                
- *                     &#34;on-update-failure&#34;,
- *                     &#34;on-update-fatal-failure&#34;,
- *                     &#34;on-update-success&#34;,
- *                     &#34;on-flow-failure&#34;)
+ *                     "on-update-failure",
+ *                     "on-update-fatal-failure",
+ *                     "on-update-success",
+ *                     "on-flow-failure")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

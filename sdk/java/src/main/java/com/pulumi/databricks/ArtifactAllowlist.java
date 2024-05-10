@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,17 +43,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var initScripts = new ArtifactAllowlist(&#34;initScripts&#34;, ArtifactAllowlistArgs.builder()        
- *             .artifactType(&#34;INIT_SCRIPT&#34;)
+ *         var initScripts = new ArtifactAllowlist("initScripts", ArtifactAllowlistArgs.builder()        
+ *             .artifactType("INIT_SCRIPT")
  *             .artifactMatchers(ArtifactAllowlistArtifactMatcherArgs.builder()
- *                 .artifact(&#34;/Volumes/inits&#34;)
- *                 .matchType(&#34;PREFIX_MATCH&#34;)
+ *                 .artifact("/Volumes/inits")
+ *                 .matchType("PREFIX_MATCH")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

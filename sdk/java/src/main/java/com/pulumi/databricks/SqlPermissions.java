@@ -24,11 +24,12 @@ import javax.annotation.Nullable;
  * 
  * * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
  * * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
- * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
+ * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge{@literal @}example.com`  ```
  * * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,24 +51,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooTable = new SqlPermissions(&#34;fooTable&#34;, SqlPermissionsArgs.builder()        
- *             .table(&#34;foo&#34;)
+ *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()        
+ *             .table("foo")
  *             .privilegeAssignments(            
  *                 SqlPermissionsPrivilegeAssignmentArgs.builder()
- *                     .principal(&#34;serge@example.com&#34;)
+ *                     .principal("serge{@literal @}example.com")
  *                     .privileges(                    
- *                         &#34;SELECT&#34;,
- *                         &#34;MODIFY&#34;)
+ *                         "SELECT",
+ *                         "MODIFY")
  *                     .build(),
  *                 SqlPermissionsPrivilegeAssignmentArgs.builder()
- *                     .principal(&#34;special group&#34;)
- *                     .privileges(&#34;SELECT&#34;)
+ *                     .principal("special group")
+ *                     .privileges("SELECT")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

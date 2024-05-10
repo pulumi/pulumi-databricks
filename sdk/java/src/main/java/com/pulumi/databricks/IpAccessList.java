@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,24 +49,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new WorkspaceConf(&#34;this&#34;, WorkspaceConfArgs.builder()        
- *             .customConfig(Map.of(&#34;enableIpAccessLists&#34;, true))
+ *         var this_ = new WorkspaceConf("this", WorkspaceConfArgs.builder()        
+ *             .customConfig(Map.of("enableIpAccessLists", true))
  *             .build());
  * 
- *         var allowed_list = new IpAccessList(&#34;allowed-list&#34;, IpAccessListArgs.builder()        
- *             .label(&#34;allow_in&#34;)
- *             .listType(&#34;ALLOW&#34;)
+ *         var allowed_list = new IpAccessList("allowed-list", IpAccessListArgs.builder()        
+ *             .label("allow_in")
+ *             .listType("ALLOW")
  *             .ipAddresses(            
- *                 &#34;1.1.1.1&#34;,
- *                 &#34;1.2.3.0/24&#34;,
- *                 &#34;1.2.5.0/24&#34;)
+ *                 "1.1.1.1",
+ *                 "1.2.3.0/24",
+ *                 "1.2.5.0/24")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(this_)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

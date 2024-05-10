@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,34 +57,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
  *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
  *                 .build())
- *             .comment(&#34;Managed by TF&#34;)
+ *             .comment("Managed by TF")
  *             .build());
  * 
- *         var some = new ExternalLocation(&#34;some&#34;, ExternalLocationArgs.builder()        
- *             .name(&#34;external&#34;)
- *             .url(String.format(&#34;s3://%s/some&#34;, externalAwsS3Bucket.id()))
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()        
+ *             .name("external")
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
  *             .credentialName(external.id())
- *             .comment(&#34;Managed by TF&#34;)
+ *             .comment("Managed by TF")
  *             .build());
  * 
- *         var someGrants = new Grants(&#34;someGrants&#34;, GrantsArgs.builder()        
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()        
  *             .externalLocation(some.id())
  *             .grants(GrantsGrantArgs.builder()
- *                 .principal(&#34;Data Engineers&#34;)
+ *                 .principal("Data Engineers")
  *                 .privileges(                
- *                     &#34;CREATE_EXTERNAL_TABLE&#34;,
- *                     &#34;READ_FILES&#34;)
+ *                     "CREATE_EXTERNAL_TABLE",
+ *                     "READ_FILES")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For Azure
@@ -248,14 +250,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipValidation);
     }
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     public Output<String> url() {

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,29 +49,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
- *             .displayName(&#34;data-scientists&#34;)
+ *         var ds = new Group("ds", GroupArgs.builder()        
+ *             .displayName("data-scientists")
  *             .build());
  * 
- *         var app = new SecretScope(&#34;app&#34;, SecretScopeArgs.builder()        
- *             .name(&#34;app-secret-scope&#34;)
+ *         var app = new SecretScope("app", SecretScopeArgs.builder()        
+ *             .name("app-secret-scope")
  *             .build());
  * 
- *         var mySecretAcl = new SecretAcl(&#34;mySecretAcl&#34;, SecretAclArgs.builder()        
+ *         var mySecretAcl = new SecretAcl("mySecretAcl", SecretAclArgs.builder()        
  *             .principal(ds.displayName())
- *             .permission(&#34;READ&#34;)
+ *             .permission("READ")
  *             .scope(app.name())
  *             .build());
  * 
- *         var publishingApi = new Secret(&#34;publishingApi&#34;, SecretArgs.builder()        
- *             .key(&#34;publishing_api&#34;)
+ *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()        
+ *             .key("publishing_api")
  *             .stringValue(example.value())
  *             .scope(app.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

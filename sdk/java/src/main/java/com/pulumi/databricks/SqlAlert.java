@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,33 +51,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
- *             .path(&#34;/Shared/Queries&#34;)
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *             .path("/Shared/Queries")
  *             .build());
  * 
- *         var this_ = new SqlQuery(&#34;this&#34;, SqlQueryArgs.builder()        
+ *         var this_ = new SqlQuery("this", SqlQueryArgs.builder()        
  *             .dataSourceId(example.dataSourceId())
- *             .name(&#34;My Query Name&#34;)
- *             .query(&#34;SELECT 1 AS p1, 2 as p2&#34;)
- *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *             .name("My Query Name")
+ *             .query("SELECT 1 AS p1, 2 as p2")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
  *             .build());
  * 
- *         var alert = new SqlAlert(&#34;alert&#34;, SqlAlertArgs.builder()        
+ *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()        
  *             .queryId(this_.id())
- *             .name(&#34;My Alert&#34;)
- *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *             .name("My Alert")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
  *             .rearm(1)
  *             .options(SqlAlertOptionsArgs.builder()
- *                 .column(&#34;p1&#34;)
- *                 .op(&#34;==&#34;)
- *                 .value(&#34;2&#34;)
+ *                 .column("p1")
+ *                 .op("==")
+ *                 .value("2")
  *                 .muted(false)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

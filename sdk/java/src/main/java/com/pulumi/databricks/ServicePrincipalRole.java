@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Granting a service principal access to an instance profile
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile(&#34;instanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var this_ = new ServicePrincipal(&#34;this&#34;, ServicePrincipalArgs.builder()        
- *             .displayName(&#34;My Service Principal&#34;)
+ *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()        
+ *             .displayName("My Service Principal")
  *             .build());
  * 
- *         var myServicePrincipalInstanceProfile = new ServicePrincipalRole(&#34;myServicePrincipalInstanceProfile&#34;, ServicePrincipalRoleArgs.builder()        
+ *         var myServicePrincipalInstanceProfile = new ServicePrincipalRole("myServicePrincipalInstanceProfile", ServicePrincipalRoleArgs.builder()        
  *             .servicePrincipalId(this_.id())
  *             .role(instanceProfile.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

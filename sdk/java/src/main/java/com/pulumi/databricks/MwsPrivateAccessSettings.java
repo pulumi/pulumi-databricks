@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pas = new MwsPrivateAccessSettings(&#34;pas&#34;, MwsPrivateAccessSettingsArgs.builder()        
+ *         var pas = new MwsPrivateAccessSettings("pas", MwsPrivateAccessSettingsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .privateAccessSettingsName(String.format(&#34;Private Access Settings for %s&#34;, prefix))
+ *             .privateAccessSettingsName(String.format("Private Access Settings for %s", prefix))
  *             .region(region)
  *             .publicAccessEnabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a databricks.MwsWorkspaces resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,21 +87,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()        
  *             .awsRegion(region)
  *             .workspaceName(prefix)
  *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
  *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.storageConfigurationId())
  *             .networkId(thisDatabricksMwsNetworks.networkId())
  *             .privateAccessSettingsId(pas.privateAccessSettingsId())
- *             .pricingTier(&#34;ENTERPRISE&#34;)
+ *             .pricingTier("ENTERPRISE")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisDatabricksMwsNetworks)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Databricks on GCP usage
@@ -106,7 +110,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.gcp.databricks.com&#34;` and use `provider = databricks.mws`
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,8 +136,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
- *             .workspaceName(&#34;gcp-workspace&#34;)
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()        
+ *             .workspaceName("gcp-workspace")
  *             .location(subnetRegion)
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
  *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
@@ -140,19 +145,20 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
- *                 .connectivityType(&#34;PRIVATE_NODE_PUBLIC_MASTER&#34;)
- *                 .masterIpRange(&#34;10.3.0.0/28&#34;)
+ *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
+ *                 .masterIpRange("10.3.0.0/28")
  *                 .build())
  *             .networkId(thisDatabricksMwsNetworks.networkId())
  *             .privateAccessSettingsId(pas.privateAccessSettingsId())
- *             .pricingTier(&#34;PREMIUM&#34;)
+ *             .pricingTier("PREMIUM")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisDatabricksMwsNetworks)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

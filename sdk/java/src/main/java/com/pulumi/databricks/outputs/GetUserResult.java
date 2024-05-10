@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetUserResult {
     /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     private String aclPrincipalId;
@@ -34,7 +34,7 @@ public final class GetUserResult {
      */
     private String externalId;
     /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     private String home;
@@ -44,20 +44,20 @@ public final class GetUserResult {
      */
     private String id;
     /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     private String repos;
     private @Nullable String userId;
     /**
-     * @return Name of the user, e.g. `mr.foo@example.com`.
+     * @return Name of the user, e.g. `mr.foo{@literal @}example.com`.
      * 
      */
     private @Nullable String userName;
 
     private GetUserResult() {}
     /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     public String aclPrincipalId() {
@@ -88,7 +88,7 @@ public final class GetUserResult {
         return this.externalId;
     }
     /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     public String home() {
@@ -102,7 +102,7 @@ public final class GetUserResult {
         return this.id;
     }
     /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     public String repos() {
@@ -112,7 +112,7 @@ public final class GetUserResult {
         return Optional.ofNullable(this.userId);
     }
     /**
-     * @return Name of the user, e.g. `mr.foo@example.com`.
+     * @return Name of the user, e.g. `mr.foo{@literal @}example.com`.
      * 
      */
     public Optional<String> userName() {

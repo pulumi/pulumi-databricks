@@ -19,7 +19,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      * boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,7 +43,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
      *             .workloadType(ClusterWorkloadTypeArgs.builder()
      *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
      *                     .jobs(false)
@@ -53,7 +54,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -64,7 +66,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,7 +90,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
      *             .workloadType(ClusterWorkloadTypeArgs.builder()
      *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
      *                     .jobs(false)
@@ -98,7 +101,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -150,7 +154,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -173,7 +178,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
          *             .workloadType(ClusterWorkloadTypeArgs.builder()
          *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
          *                     .jobs(false)
@@ -184,7 +189,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
@@ -199,7 +205,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -222,7 +229,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
+         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
          *             .workloadType(ClusterWorkloadTypeArgs.builder()
          *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
          *                     .jobs(false)
@@ -233,7 +240,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

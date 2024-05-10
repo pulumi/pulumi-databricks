@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,18 +49,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new OnlineTable(&#34;this&#34;, OnlineTableArgs.builder()        
- *             .name(&#34;main.default.online_table&#34;)
+ *         var this_ = new OnlineTable("this", OnlineTableArgs.builder()        
+ *             .name("main.default.online_table")
  *             .spec(OnlineTableSpecArgs.builder()
- *                 .sourceTableFullName(&#34;main.default.source_table&#34;)
- *                 .primaryKeyColumns(&#34;id&#34;)
+ *                 .sourceTableFullName("main.default.source_table")
+ *                 .primaryKeyColumns("id")
  *                 .runTriggered()
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

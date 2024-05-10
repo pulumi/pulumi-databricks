@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Adding AWS instance profile to a user
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,28 +47,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile(&#34;instanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myUser = new User(&#34;myUser&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
+ *         var myUser = new User("myUser", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var myUserRole = new UserRole(&#34;myUserRole&#34;, UserRoleArgs.builder()        
+ *         var myUserRole = new UserRole("myUserRole", UserRoleArgs.builder()        
  *             .userId(myUser.id())
  *             .role(instanceProfile.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Adding user as administrator to Databricks Account
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,18 +93,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myUser = new User(&#34;myUser&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
+ *         var myUser = new User("myUser", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var myUserAccountAdmin = new UserRole(&#34;myUserAccountAdmin&#34;, UserRoleArgs.builder()        
+ *         var myUserAccountAdmin = new UserRole("myUserAccountAdmin", UserRoleArgs.builder()        
  *             .userId(myUser.id())
- *             .role(&#34;account_admin&#34;)
+ *             .role("account_admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,15 +46,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = DatabricksFunctions.getCurrentUser();
  * 
- *         var this_ = new MlflowExperiment(&#34;this&#34;, MlflowExperimentArgs.builder()        
- *             .name(String.format(&#34;%s/Sample&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.home())))
- *             .artifactLocation(&#34;dbfs:/tmp/my-experiment&#34;)
- *             .description(&#34;My MLflow experiment description&#34;)
+ *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()        
+ *             .name(String.format("%s/Sample", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .artifactLocation("dbfs:/tmp/my-experiment")
+ *             .description("My MLflow experiment description")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

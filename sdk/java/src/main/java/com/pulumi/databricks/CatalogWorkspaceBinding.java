@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,19 +42,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
- *             .name(&#34;sandbox&#34;)
- *             .isolationMode(&#34;ISOLATED&#34;)
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *             .name("sandbox")
+ *             .isolationMode("ISOLATED")
  *             .build());
  * 
- *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding(&#34;sandboxCatalogWorkspaceBinding&#34;, CatalogWorkspaceBindingArgs.builder()        
+ *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", CatalogWorkspaceBindingArgs.builder()        
  *             .securableName(sandbox.name())
  *             .workspaceId(other.workspaceId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

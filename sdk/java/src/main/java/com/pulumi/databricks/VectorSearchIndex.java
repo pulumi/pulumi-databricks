@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sync = new VectorSearchIndex(&#34;sync&#34;, VectorSearchIndexArgs.builder()        
- *             .name(&#34;main.default.vector_search_index&#34;)
+ *         var sync = new VectorSearchIndex("sync", VectorSearchIndexArgs.builder()        
+ *             .name("main.default.vector_search_index")
  *             .endpointName(thisDatabricksVectorSearchEndpoint.name())
- *             .primaryKey(&#34;id&#34;)
- *             .indexType(&#34;DELTA_SYNC&#34;)
+ *             .primaryKey("id")
+ *             .indexType("DELTA_SYNC")
  *             .deltaSyncIndexSpec(VectorSearchIndexDeltaSyncIndexSpecArgs.builder()
- *                 .sourceTable(&#34;main.default.source_table&#34;)
- *                 .pipelineType(&#34;TRIGGERED&#34;)
+ *                 .sourceTable("main.default.source_table")
+ *                 .pipelineType("TRIGGERED")
  *                 .embeddingSourceColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs.builder()
- *                     .name(&#34;text&#34;)
+ *                     .name("text")
  *                     .embeddingModelEndpointName(this_.name())
  *                     .build())
  *                 .build())
@@ -65,7 +66,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

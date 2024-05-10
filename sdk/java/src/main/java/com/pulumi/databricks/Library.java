@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * You can install libraries on all clusters with the help of databricks.getClusters data resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,13 +55,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var all = DatabricksFunctions.getClusters();
  * 
- *         final var cli = all.applyValue(getClustersResult -&gt; {
- *             final var resources = new ArrayList&lt;Library&gt;();
+ *         final var cli = all.applyValue(getClustersResult -> {
+ *             final var resources = new ArrayList<Library>();
  *             for (var range : KeyedValue.of(getClustersResult.ids()) {
- *                 var resource = new Library(&#34;cli-&#34; + range.key(), LibraryArgs.builder()                
+ *                 var resource = new Library("cli-" + range.key(), LibraryArgs.builder()                
  *                     .clusterId(range.key())
  *                     .pypi(LibraryPypiArgs.builder()
- *                         .package_(&#34;databricks-cli&#34;)
+ *                         .package_("databricks-cli")
  *                         .build())
  *                     .build());
  * 
@@ -72,7 +73,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Java/Scala Maven
@@ -80,7 +82,8 @@ import javax.annotation.Nullable;
  * Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,17 +105,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deequ = new Library(&#34;deequ&#34;, LibraryArgs.builder()        
+ *         var deequ = new Library("deequ", LibraryArgs.builder()        
  *             .clusterId(this_.id())
  *             .maven(LibraryMavenArgs.builder()
- *                 .coordinates(&#34;com.amazon.deequ:deequ:1.0.4&#34;)
- *                 .exclusions(&#34;org.apache.avro:avro&#34;)
+ *                 .coordinates("com.amazon.deequ:deequ:1.0.4")
+ *                 .exclusions("org.apache.avro:avro")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Python PyPI
@@ -122,7 +126,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -144,16 +149,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fbprophet = new Library(&#34;fbprophet&#34;, LibraryArgs.builder()        
+ *         var fbprophet = new Library("fbprophet", LibraryArgs.builder()        
  *             .clusterId(this_.id())
  *             .pypi(LibraryPypiArgs.builder()
- *                 .package_(&#34;fbprophet==0.6&#34;)
+ *                 .package_("fbprophet==0.6")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## R CRan
@@ -161,7 +167,8 @@ import javax.annotation.Nullable;
  * Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -183,16 +190,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rkeops = new Library(&#34;rkeops&#34;, LibraryArgs.builder()        
+ *         var rkeops = new Library("rkeops", LibraryArgs.builder()        
  *             .clusterId(this_.id())
  *             .cran(LibraryCranArgs.builder()
- *                 .package_(&#34;rkeops&#34;)
+ *                 .package_("rkeops")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

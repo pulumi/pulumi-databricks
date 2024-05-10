@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,21 +50,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;);
- *         final var prefix = config.get(&#34;prefix&#34;);
- *         var ncc = new MwsNetworkConnectivityConfig(&#34;ncc&#34;, MwsNetworkConnectivityConfigArgs.builder()        
- *             .name(String.format(&#34;Network Connectivity Config for %s&#34;, prefix))
+ *         final var region = config.get("region");
+ *         final var prefix = config.get("prefix");
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()        
+ *             .name(String.format("Network Connectivity Config for %s", prefix))
  *             .region(region)
  *             .build());
  * 
- *         var nccBinding = new MwsNccBinding(&#34;nccBinding&#34;, MwsNccBindingArgs.builder()        
+ *         var nccBinding = new MwsNccBinding("nccBinding", MwsNccBindingArgs.builder()        
  *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
  *             .workspaceId(databricksWorkspaceId)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources
