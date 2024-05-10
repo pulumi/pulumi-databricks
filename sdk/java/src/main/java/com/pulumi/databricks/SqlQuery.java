@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,66 +56,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
- *             .path(&#34;/Shared/Queries&#34;)
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *             .path("/Shared/Queries")
  *             .build());
  * 
- *         var q1 = new SqlQuery(&#34;q1&#34;, SqlQueryArgs.builder()        
+ *         var q1 = new SqlQuery("q1", SqlQueryArgs.builder()        
  *             .dataSourceId(example.dataSourceId())
- *             .name(&#34;My Query Name&#34;)
- *             .query(&#34;&#34;&#34;
+ *             .name("My Query Name")
+ *             .query("""
  *                         SELECT {{ p1 }} AS p1
  *                         WHERE 1=1
  *                         AND p2 in ({{ p2 }})
- *                         AND event_date &gt; date &#39;{{ p3 }}&#39;
- *             &#34;&#34;&#34;)
- *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
- *             .runAsRole(&#34;viewer&#34;)
+ *                         AND event_date > date '{{ p3 }}'
+ *             """)
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .runAsRole("viewer")
  *             .parameters(            
  *                 SqlQueryParameterArgs.builder()
- *                     .name(&#34;p1&#34;)
- *                     .title(&#34;Title for p1&#34;)
+ *                     .name("p1")
+ *                     .title("Title for p1")
  *                     .text(SqlQueryParameterTextArgs.builder()
- *                         .value(&#34;default&#34;)
+ *                         .value("default")
  *                         .build())
  *                     .build(),
  *                 SqlQueryParameterArgs.builder()
- *                     .name(&#34;p2&#34;)
- *                     .title(&#34;Title for p2&#34;)
+ *                     .name("p2")
+ *                     .title("Title for p2")
  *                     .enum_(SqlQueryParameterEnumArgs.builder()
  *                         .options(                        
- *                             &#34;default&#34;,
- *                             &#34;foo&#34;,
- *                             &#34;bar&#34;)
- *                         .value(&#34;default&#34;)
+ *                             "default",
+ *                             "foo",
+ *                             "bar")
+ *                         .value("default")
  *                         .multiple(SqlQueryParameterEnumMultipleArgs.builder()
- *                             .prefix(&#34;\&#34;&#34;)
- *                             .suffix(&#34;\&#34;&#34;)
- *                             .separator(&#34;,&#34;)
+ *                             .prefix("\"")
+ *                             .suffix("\"")
+ *                             .separator(",")
  *                             .build())
  *                         .build())
  *                     .build(),
  *                 SqlQueryParameterArgs.builder()
- *                     .name(&#34;p3&#34;)
- *                     .title(&#34;Title for p3&#34;)
+ *                     .name("p3")
+ *                     .title("Title for p3")
  *                     .date(SqlQueryParameterDateArgs.builder()
- *                         .value(&#34;2022-01-01&#34;)
+ *                         .value("2022-01-01")
  *                         .build())
  *                     .build())
  *             .tags(            
- *                 &#34;t1&#34;,
- *                 &#34;t2&#34;)
+ *                 "t1",
+ *                 "t2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Example permission to share query with all users:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,22 +139,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var q1 = new Permissions(&#34;q1&#34;, PermissionsArgs.builder()        
+ *         var q1 = new Permissions("q1", PermissionsArgs.builder()        
  *             .sqlQueryId(q1DatabricksSqlQuery.id())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName(users.displayName())
- *                     .permissionLevel(&#34;CAN_RUN&#34;)
+ *                     .permissionLevel("CAN_RUN")
  *                     .build(),
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName(team.displayName())
- *                     .permissionLevel(&#34;CAN_EDIT&#34;)
+ *                     .permissionLevel("CAN_EDIT")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Troubleshooting

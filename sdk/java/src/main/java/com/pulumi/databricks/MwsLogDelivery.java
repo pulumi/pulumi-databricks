@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Common processing scenario is to apply [cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html), that could be enforced by setting custom_tags on a cluster or through cluster policy. Report contains `clusterId` field, that could be joined with data from AWS [cost and usage reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html), that can be joined with `user:ClusterId` tag from AWS usage report.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,19 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var usageLogs = new MwsLogDelivery(&#34;usageLogs&#34;, MwsLogDeliveryArgs.builder()        
+ *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .credentialsId(logWriter.credentialsId())
  *             .storageConfigurationId(logBucket.storageConfigurationId())
- *             .deliveryPathPrefix(&#34;billable-usage&#34;)
- *             .configName(&#34;Usage Logs&#34;)
- *             .logType(&#34;BILLABLE_USAGE&#34;)
- *             .outputFormat(&#34;CSV&#34;)
+ *             .deliveryPathPrefix("billable-usage")
+ *             .configName("Usage Logs")
+ *             .logType("BILLABLE_USAGE")
+ *             .outputFormat("CSV")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Audit Logs
@@ -71,7 +73,8 @@ import javax.annotation.Nullable;
  * JSON files with [static schema](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#audit-log-schema) are delivered to `&lt;delivery_path_prefix&gt;/workspaceId=&lt;workspaceId&gt;/date=&lt;yyyy-mm-dd&gt;/auditlogs_&lt;internal-id&gt;.json`. Logs are available within 15 minutes of activation for audit logs. New JSON files are delivered every few minutes, potentially overwriting existing files for each workspace. Sometimes data may arrive later than 15 minutes. Databricks can overwrite the delivered log files in your bucket at any time. If a file is overwritten, the existing content remains, but there may be additional lines for more auditable events. Overwriting ensures exactly-once semantics without requiring read or delete access to your account.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,19 +95,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auditLogs = new MwsLogDelivery(&#34;auditLogs&#34;, MwsLogDeliveryArgs.builder()        
+ *         var auditLogs = new MwsLogDelivery("auditLogs", MwsLogDeliveryArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .credentialsId(logWriter.credentialsId())
  *             .storageConfigurationId(logBucket.storageConfigurationId())
- *             .deliveryPathPrefix(&#34;audit-logs&#34;)
- *             .configName(&#34;Audit Logs&#34;)
- *             .logType(&#34;AUDIT_LOGS&#34;)
- *             .outputFormat(&#34;JSON&#34;)
+ *             .deliveryPathPrefix("audit-logs")
+ *             .configName("Audit Logs")
+ *             .logType("AUDIT_LOGS")
+ *             .outputFormat("JSON")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

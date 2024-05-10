@@ -57,7 +57,7 @@ public final class GetExternalLocationExternalLocationInfo {
     private @Nullable Integer updatedAt;
     private @Nullable String updatedBy;
     /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     private @Nullable String url;
@@ -134,7 +134,7 @@ public final class GetExternalLocationExternalLocationInfo {
         return Optional.ofNullable(this.updatedBy);
     }
     /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
     public Optional<String> url() {

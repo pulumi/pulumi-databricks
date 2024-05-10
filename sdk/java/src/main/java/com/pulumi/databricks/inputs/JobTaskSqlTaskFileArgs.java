@@ -22,7 +22,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      * Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,11 +49,11 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .name(&#34;Example SQL Job&#34;)
+     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+     *             .name("Example SQL Job")
      *             .tasks(            
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .taskKey("run_agg_query")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .query(JobTaskSqlTaskQueryArgs.builder()
@@ -61,25 +62,25 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      *                         .build())
      *                     .build(),
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .taskKey("run_dashboard")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
      *                             .dashboardId(dash.id())
      *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .userName("user{@literal @}domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
      *                     .build(),
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .taskKey("run_alert")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .alert(JobTaskSqlTaskAlertArgs.builder()
      *                             .alertId(alert.id())
      *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .userName("user{@literal @}domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
@@ -88,7 +89,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -101,7 +103,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      * Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,11 +130,11 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .name(&#34;Example SQL Job&#34;)
+     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+     *             .name("Example SQL Job")
      *             .tasks(            
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .taskKey("run_agg_query")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .query(JobTaskSqlTaskQueryArgs.builder()
@@ -140,25 +143,25 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      *                         .build())
      *                     .build(),
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .taskKey("run_dashboard")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
      *                             .dashboardId(dash.id())
      *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .userName("user{@literal @}domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
      *                     .build(),
      *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .taskKey("run_alert")
      *                     .sqlTask(JobTaskSqlTaskArgs.builder()
      *                         .warehouseId(sqlJobWarehouse.id())
      *                         .alert(JobTaskSqlTaskAlertArgs.builder()
      *                             .alertId(alert.id())
      *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .userName("user{@literal @}domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
@@ -167,7 +170,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -221,7 +225,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          * Example
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -247,11 +252,11 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-         *             .name(&#34;Example SQL Job&#34;)
+         *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+         *             .name("Example SQL Job")
          *             .tasks(            
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .taskKey("run_agg_query")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .query(JobTaskSqlTaskQueryArgs.builder()
@@ -260,25 +265,25 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          *                         .build())
          *                     .build(),
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .taskKey("run_dashboard")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
          *                             .dashboardId(dash.id())
          *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .userName("user{@literal @}domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
          *                     .build(),
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .taskKey("run_alert")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .alert(JobTaskSqlTaskAlertArgs.builder()
          *                             .alertId(alert.id())
          *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .userName("user{@literal @}domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
@@ -287,7 +292,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
@@ -304,7 +310,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          * Example
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -330,11 +337,11 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-         *             .name(&#34;Example SQL Job&#34;)
+         *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+         *             .name("Example SQL Job")
          *             .tasks(            
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .taskKey("run_agg_query")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .query(JobTaskSqlTaskQueryArgs.builder()
@@ -343,25 +350,25 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          *                         .build())
          *                     .build(),
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .taskKey("run_dashboard")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
          *                             .dashboardId(dash.id())
          *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .userName("user{@literal @}domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
          *                     .build(),
          *                 JobTaskArgs.builder()
-         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .taskKey("run_alert")
          *                     .sqlTask(JobTaskSqlTaskArgs.builder()
          *                         .warehouseId(sqlJobWarehouse.id())
          *                         .alert(JobTaskSqlTaskAlertArgs.builder()
          *                             .alertId(alert.id())
          *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .userName("user{@literal @}domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
@@ -370,7 +377,8 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

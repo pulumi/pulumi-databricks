@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * * databricks.MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,32 +69,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+ *         final var databricksAccountId = config.get("databricksAccountId");
  *         // register cross-account ARN
- *         var this_ = new MwsCredentials(&#34;this&#34;, MwsCredentialsArgs.builder()        
+ *         var this_ = new MwsCredentials("this", MwsCredentialsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+ *             .credentialsName(String.format("%s-creds", prefix))
  *             .roleArn(crossaccountArn)
  *             .build());
  * 
  *         // register root bucket
- *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        
+ *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, prefix))
+ *             .storageConfigurationName(String.format("%s-storage", prefix))
  *             .bucketName(rootBucket)
  *             .build());
  * 
  *         // register VPC
- *         var thisMwsNetworks = new MwsNetworks(&#34;thisMwsNetworks&#34;, MwsNetworksArgs.builder()        
+ *         var thisMwsNetworks = new MwsNetworks("thisMwsNetworks", MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;%s-network&#34;, prefix))
+ *             .networkName(String.format("%s-network", prefix))
  *             .vpcId(vpcId)
  *             .subnetIds(subnetsPrivate)
  *             .securityGroupIds(securityGroup)
  *             .build());
  * 
  *         // create workspace in given VPC with DBFS on root bucket
- *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
+ *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .workspaceName(prefix)
  *             .awsRegion(region)
@@ -103,10 +104,11 @@ import javax.annotation.Nullable;
  *             .token()
  *             .build());
  * 
- *         ctx.export(&#34;databricksToken&#34;, thisMwsWorkspaces.token().applyValue(token -&gt; token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
@@ -116,7 +118,8 @@ import javax.annotation.Nullable;
  * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -167,63 +170,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         var naming = new String(&#34;naming&#34;, StringArgs.builder()        
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         var naming = new String("naming", StringArgs.builder()        
  *             .special(false)
  *             .upper(false)
  *             .length(6)
  *             .build());
  * 
- *         final var prefix = String.format(&#34;dltp%s&#34;, naming.result());
+ *         final var prefix = String.format("dltp%s", naming.result());
  * 
  *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
  *             .externalId(databricksAccountId)
  *             .build());
  * 
- *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;%s-crossaccount&#34;, prefix))
+ *         var crossAccountRole = new Role("crossAccountRole", RoleArgs.builder()        
+ *             .name(String.format("%s-crossaccount", prefix))
  *             .assumeRolePolicy(this_.json())
  *             .tags(tags)
  *             .build());
  * 
  *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
  * 
- *         var thisRolePolicy = new RolePolicy(&#34;thisRolePolicy&#34;, RolePolicyArgs.builder()        
- *             .name(String.format(&#34;%s-policy&#34;, prefix))
+ *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()        
+ *             .name(String.format("%s-policy", prefix))
  *             .role(crossAccountRole.id())
- *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+ *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -> getAwsCrossAccountPolicyResult.json()))
  *             .build());
  * 
- *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+ *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+ *             .credentialsName(String.format("%s-creds", prefix))
  *             .roleArn(crossAccountRole.arn())
  *             .build());
  * 
- *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
- *             .bucket(String.format(&#34;%s-rootbucket&#34;, prefix))
- *             .acl(&#34;private&#34;)
+ *         var rootStorageBucket = new BucketV2("rootStorageBucket", BucketV2Args.builder()        
+ *             .bucket(String.format("%s-rootbucket", prefix))
+ *             .acl("private")
  *             .forceDestroy(true)
  *             .tags(tags)
  *             .build());
  * 
- *         var rootVersioning = new BucketVersioningV2(&#34;rootVersioning&#34;, BucketVersioningV2Args.builder()        
+ *         var rootVersioning = new BucketVersioningV2("rootVersioning", BucketVersioningV2Args.builder()        
  *             .bucket(rootStorageBucket.id())
  *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
- *                 .status(&#34;Disabled&#34;)
+ *                 .status("Disabled")
  *                 .build())
  *             .build());
  * 
- *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2(&#34;rootStorageBucketBucketServerSideEncryptionConfigurationV2&#34;, BucketServerSideEncryptionConfigurationV2Args.builder()        
+ *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", BucketServerSideEncryptionConfigurationV2Args.builder()        
  *             .bucket(rootStorageBucket.bucket())
  *             .rules(BucketServerSideEncryptionConfigurationV2RuleArgs.builder()
  *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs.builder()
- *                     .sseAlgorithm(&#34;AES256&#34;)
+ *                     .sseAlgorithm("AES256")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock(&#34;rootStorageBucketBucketPublicAccessBlock&#34;, BucketPublicAccessBlockArgs.builder()        
+ *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()        
  *             .bucket(rootStorageBucket.id())
  *             .blockPublicAcls(true)
  *             .blockPublicPolicy(true)
@@ -237,33 +240,34 @@ import javax.annotation.Nullable;
  *             .bucket(rootStorageBucket.bucket())
  *             .build());
  * 
- *         var rootBucketPolicy = new BucketPolicy(&#34;rootBucketPolicy&#34;, BucketPolicyArgs.builder()        
+ *         var rootBucketPolicy = new BucketPolicy("rootBucketPolicy", BucketPolicyArgs.builder()        
  *             .bucket(rootStorageBucket.id())
- *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -&gt; thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult.json())))
+ *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -> thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult.json())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
  *                 .build());
  * 
- *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        
+ *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, prefix))
+ *             .storageConfigurationName(String.format("%s-storage", prefix))
  *             .bucketName(rootStorageBucket.bucket())
  *             .build());
  * 
- *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
+ *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .workspaceName(prefix)
- *             .awsRegion(&#34;us-east-1&#34;)
+ *             .awsRegion("us-east-1")
  *             .credentialsId(thisMwsCredentials.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
  *             .token()
- *             .customTags(Map.of(&#34;SoldToCode&#34;, &#34;1234&#34;))
+ *             .customTags(Map.of("SoldToCode", "1234"))
  *             .build());
  * 
- *         ctx.export(&#34;databricksToken&#34;, thisMwsWorkspaces.token().applyValue(token -&gt; token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
@@ -275,7 +279,8 @@ import javax.annotation.Nullable;
  * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -304,25 +309,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         final var databricksGoogleServiceAccount = config.get(&#34;databricksGoogleServiceAccount&#34;);
- *         final var googleProject = config.get(&#34;googleProject&#34;);
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksGoogleServiceAccount = config.get("databricksGoogleServiceAccount");
+ *         final var googleProject = config.get("googleProject");
  *         // register VPC
- *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
+ *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;%s-network&#34;, prefix))
+ *             .networkName(String.format("%s-network", prefix))
  *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
  *                 .networkProjectId(googleProject)
  *                 .vpcId(vpcId)
  *                 .subnetId(subnetId)
  *                 .subnetRegion(subnetRegion)
- *                 .podIpRangeName(&#34;pods&#34;)
- *                 .serviceIpRangeName(&#34;svc&#34;)
+ *                 .podIpRangeName("pods")
+ *                 .serviceIpRangeName("svc")
  *                 .build())
  *             .build());
  * 
  *         // create workspace in given VPC
- *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
+ *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .workspaceName(prefix)
  *             .location(subnetRegion)
@@ -333,16 +338,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .networkId(this_.networkId())
  *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
- *                 .connectivityType(&#34;PRIVATE_NODE_PUBLIC_MASTER&#34;)
- *                 .masterIpRange(&#34;10.3.0.0/28&#34;)
+ *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
+ *                 .masterIpRange("10.3.0.0/28")
  *                 .build())
  *             .token()
  *             .build());
  * 
- *         ctx.export(&#34;databricksToken&#34;, thisMwsWorkspaces.token().applyValue(token -&gt; token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.

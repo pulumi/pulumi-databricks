@@ -23,7 +23,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,12 +49,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
      *             .build()
-     *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
+     *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
      *             .dockerImage(ClusterDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -65,7 +66,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -78,7 +80,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,12 +106,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
      *             .build()
-     *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
+     *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
      *             .dockerImage(ClusterDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -120,7 +123,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +178,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -199,12 +204,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
          *             .build()
-         *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
+         *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
          *             .dockerImage(ClusterDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -216,7 +221,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
@@ -233,7 +239,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -258,12 +265,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
          *             .build()
-         *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
+         *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
          *             .dockerImage(ClusterDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -275,7 +282,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

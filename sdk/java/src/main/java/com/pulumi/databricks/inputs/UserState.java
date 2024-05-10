@@ -17,14 +17,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     public static final UserState Empty = new UserState();
 
     /**
-     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     @Import(name="aclPrincipalId")
     private @Nullable Output<String> aclPrincipalId;
 
     /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     public Optional<Output<String>> aclPrincipalId() {
@@ -174,14 +174,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     @Import(name="home")
     private @Nullable Output<String> home;
 
     /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     public Optional<Output<String>> home() {
@@ -189,14 +189,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     @Import(name="repos")
     private @Nullable Output<String> repos;
 
     /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     public Optional<Output<String>> repos() {
@@ -264,7 +264,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param home Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+         * @param home Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param home Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+         * @param home Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
          * 
          * @return builder
          * 

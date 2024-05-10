@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,15 +59,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new RestrictWorkspaceAdminsSetting(&#34;this&#34;, RestrictWorkspaceAdminsSettingArgs.builder()        
+ *         var this_ = new RestrictWorkspaceAdminsSetting("this", RestrictWorkspaceAdminsSettingArgs.builder()        
  *             .restrictWorkspaceAdmins(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs.builder()
- *                 .status(&#34;RESTRICT_TOKENS_AND_JOB_RUN_AS&#34;)
+ *                 .status("RESTRICT_TOKENS_AND_JOB_RUN_AS")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

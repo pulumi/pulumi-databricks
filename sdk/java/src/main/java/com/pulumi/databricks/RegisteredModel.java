@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new RegisteredModel(&#34;this&#34;, RegisteredModelArgs.builder()        
- *             .name(&#34;my_model&#34;)
- *             .catalogName(&#34;main&#34;)
- *             .schemaName(&#34;default&#34;)
+ *         var this_ = new RegisteredModel("this", RegisteredModelArgs.builder()        
+ *             .name("my_model")
+ *             .catalogName("main")
+ *             .schemaName("default")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

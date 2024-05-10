@@ -17,7 +17,8 @@ public final class JobRunAs {
      * Example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -39,15 +40,16 @@ public final class JobRunAs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new Job(&#34;this&#34;, JobArgs.builder()        
+     *         var this_ = new Job("this", JobArgs.builder()        
      *             .runAs(JobRunAsArgs.builder()
-     *                 .servicePrincipalName(&#34;8d23ae77-912e-4a19-81e4-b9c3f5cc9349&#34;)
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -65,7 +67,8 @@ public final class JobRunAs {
      * Example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,15 +90,16 @@ public final class JobRunAs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new Job(&#34;this&#34;, JobArgs.builder()        
+     *         var this_ = new Job("this", JobArgs.builder()        
      *             .runAs(JobRunAsArgs.builder()
-     *                 .servicePrincipalName(&#34;8d23ae77-912e-4a19-81e4-b9c3f5cc9349&#34;)
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

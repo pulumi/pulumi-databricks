@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,21 +53,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = DatabricksFunctions.getCurrentUser();
  * 
- *         var this_ = new SqlEndpoint(&#34;this&#34;, SqlEndpointArgs.builder()        
- *             .name(String.format(&#34;Endpoint of %s&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
- *             .clusterSize(&#34;Small&#34;)
+ *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()        
+ *             .name(String.format("Endpoint of %s", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .clusterSize("Small")
  *             .maxNumClusters(1)
  *             .tags(SqlEndpointTagsArgs.builder()
  *                 .customTags(SqlEndpointTagsCustomTagArgs.builder()
- *                     .key(&#34;City&#34;)
- *                     .value(&#34;Amsterdam&#34;)
+ *                     .key("City")
+ *                     .value("Amsterdam")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access control

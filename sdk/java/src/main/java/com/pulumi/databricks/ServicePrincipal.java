@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * Creating regular Databricks-managed service principal:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,19 +58,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .displayName(&#34;Admin SP&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .displayName("Admin SP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,27 +98,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;admins&#34;)
+ *             .displayName("admins")
  *             .build());
  * 
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .displayName(&#34;Admin SP&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .displayName("Admin SP")
  *             .build());
  * 
- *         var i_am_admin = new GroupMember(&#34;i-am-admin&#34;, GroupMemberArgs.builder()        
- *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+ *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()        
+ *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
  *             .memberId(sp.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Azure-managed service principal with cluster create permissions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,21 +141,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .displayName(&#34;Example service principal&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .applicationId("00000000-0000-0000-0000-000000000000")
+ *             .displayName("Example service principal")
  *             .allowClusterCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Databricks-managed service principal in AWS Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -171,19 +178,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .displayName(&#34;Automation-only SP&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .displayName("Automation-only SP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Azure-managed service principal in Azure Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,13 +213,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .applicationId("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

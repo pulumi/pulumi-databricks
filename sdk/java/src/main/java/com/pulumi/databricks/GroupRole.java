@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Attach an instance profile to a group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,28 +47,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile(&#34;instanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my_group_name&#34;)
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupInstanceProfile = new GroupRole(&#34;myGroupInstanceProfile&#34;, GroupRoleArgs.builder()        
+ *         var myGroupInstanceProfile = new GroupRole("myGroupInstanceProfile", GroupRoleArgs.builder()        
  *             .groupId(myGroup.id())
  *             .role(instanceProfile.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Attach account admin role to an account-level group
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,18 +93,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my_group_name&#34;)
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupAccountAdmin = new GroupRole(&#34;myGroupAccountAdmin&#34;, GroupRoleArgs.builder()        
+ *         var myGroupAccountAdmin = new GroupRole("myGroupAccountAdmin", GroupRoleArgs.builder()        
  *             .groupId(myGroup.id())
- *             .role(&#34;account_admin&#34;)
+ *             .role("account_admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

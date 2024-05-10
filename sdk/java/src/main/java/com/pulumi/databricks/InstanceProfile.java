@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,49 +61,49 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var crossaccountRoleName = config.get(&#34;crossaccountRoleName&#34;);
+ *         final var crossaccountRoleName = config.get("crossaccountRoleName");
  *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .effect(&#34;Allow&#34;)
- *                 .actions(&#34;sts:AssumeRole&#34;)
+ *                 .effect("Allow")
+ *                 .actions("sts:AssumeRole")
  *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                     .identifiers(&#34;ec2.amazonaws.com&#34;)
- *                     .type(&#34;Service&#34;)
+ *                     .identifiers("ec2.amazonaws.com")
+ *                     .type("Service")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var roleForS3Access = new Role(&#34;roleForS3Access&#34;, RoleArgs.builder()        
- *             .name(&#34;shared-ec2-role-for-s3&#34;)
- *             .description(&#34;Role for shared access&#34;)
- *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+ *         var roleForS3Access = new Role("roleForS3Access", RoleArgs.builder()        
+ *             .name("shared-ec2-role-for-s3")
+ *             .description("Role for shared access")
+ *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
  *         final var passRoleForS3Access = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .effect(&#34;Allow&#34;)
- *                 .actions(&#34;iam:PassRole&#34;)
+ *                 .effect("Allow")
+ *                 .actions("iam:PassRole")
  *                 .resources(roleForS3Access.arn())
  *                 .build())
  *             .build());
  * 
- *         var passRoleForS3AccessPolicy = new Policy(&#34;passRoleForS3AccessPolicy&#34;, PolicyArgs.builder()        
- *             .name(&#34;shared-pass-role-for-s3-access&#34;)
- *             .path(&#34;/&#34;)
- *             .policy(passRoleForS3Access.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult).applyValue(passRoleForS3Access -&gt; passRoleForS3Access.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json())))
+ *         var passRoleForS3AccessPolicy = new Policy("passRoleForS3AccessPolicy", PolicyArgs.builder()        
+ *             .name("shared-pass-role-for-s3-access")
+ *             .path("/")
+ *             .policy(passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult).applyValue(passRoleForS3Access -> passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json())))
  *             .build());
  * 
- *         var crossAccount = new RolePolicyAttachment(&#34;crossAccount&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var crossAccount = new RolePolicyAttachment("crossAccount", RolePolicyAttachmentArgs.builder()        
  *             .policyArn(passRoleForS3AccessPolicy.arn())
  *             .role(crossaccountRoleName)
  *             .build());
  * 
- *         var shared = new InstanceProfile(&#34;shared&#34;, InstanceProfileArgs.builder()        
- *             .name(&#34;shared-instance-profile&#34;)
+ *         var shared = new InstanceProfile("shared", InstanceProfileArgs.builder()        
+ *             .name("shared-instance-profile")
  *             .role(roleForS3Access.name())
  *             .build());
  * 
- *         var sharedInstanceProfile = new InstanceProfile(&#34;sharedInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *         var sharedInstanceProfile = new InstanceProfile("sharedInstanceProfile", InstanceProfileArgs.builder()        
  *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
@@ -112,10 +113,10 @@ import javax.annotation.Nullable;
  *             .localDisk(true)
  *             .build());
  * 
- *         var this_ = new Cluster(&#34;this&#34;, ClusterArgs.builder()        
- *             .clusterName(&#34;Shared Autoscaling&#34;)
- *             .sparkVersion(latest.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *         var this_ = new Cluster("this", ClusterArgs.builder()        
+ *             .clusterName("Shared Autoscaling")
+ *             .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
  *             .autoterminationMinutes(20)
  *             .autoscale(ClusterAutoscaleArgs.builder()
  *                 .minWorkers(1)
@@ -123,8 +124,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .awsAttributes(ClusterAwsAttributesArgs.builder()
  *                 .instanceProfileArn(sharedInstanceProfile.id())
- *                 .availability(&#34;SPOT&#34;)
- *                 .zoneId(&#34;us-east-1&#34;)
+ *                 .availability("SPOT")
+ *                 .zoneId("us-east-1")
  *                 .firstOnDemand(1)
  *                 .spotBidPricePercent(100)
  *                 .build())
@@ -132,7 +133,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Usage with Cluster Policies
@@ -140,7 +142,8 @@ import javax.annotation.Nullable;
  * It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -162,20 +165,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ClusterPolicy(&#34;this&#34;, ClusterPolicyArgs.builder()        
- *             .name(&#34;Policy with predefined instance profile&#34;)
+ *         var this_ = new ClusterPolicy("this", ClusterPolicyArgs.builder()        
+ *             .name("Policy with predefined instance profile")
  *             .definition(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;aws_attributes.instance_profile_arn&#34;, jsonObject(
- *                         jsonProperty(&#34;type&#34;, &#34;fixed&#34;),
- *                         jsonProperty(&#34;value&#34;, shared.arn())
+ *                     jsonProperty("aws_attributes.instance_profile_arn", jsonObject(
+ *                         jsonProperty("type", "fixed"),
+ *                         jsonProperty("value", shared.arn())
  *                     ))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Granting access to all users
@@ -183,7 +187,8 @@ import javax.annotation.Nullable;
  * You can make instance profile available to all users by associating it with the special group called `users` through databricks.Group data source.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -208,22 +213,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new InstanceProfile(&#34;this&#34;, InstanceProfileArgs.builder()        
+ *         var this_ = new InstanceProfile("this", InstanceProfileArgs.builder()        
  *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
  *         final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;users&#34;)
+ *             .displayName("users")
  *             .build());
  * 
- *         var all = new GroupInstanceProfile(&#34;all&#34;, GroupInstanceProfileArgs.builder()        
- *             .groupId(users.applyValue(getGroupResult -&gt; getGroupResult.id()))
+ *         var all = new GroupInstanceProfile("all", GroupInstanceProfileArgs.builder()        
+ *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
  *             .instanceProfileId(this_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Usage with Databricks SQL serverless
@@ -231,7 +237,8 @@ import javax.annotation.Nullable;
  * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -260,39 +267,40 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var sqlServerlessAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .actions(&#34;sts:AssumeRole&#34;)
+ *                 .actions("sts:AssumeRole")
  *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                     .type(&#34;AWS&#34;)
- *                     .identifiers(&#34;arn:aws:iam::790110701330:role/serverless-customer-resource-role&#34;)
+ *                     .type("AWS")
+ *                     .identifiers("arn:aws:iam::790110701330:role/serverless-customer-resource-role")
  *                     .build())
  *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
- *                     .test(&#34;StringEquals&#34;)
- *                     .variable(&#34;sts:ExternalID&#34;)
+ *                     .test("StringEquals")
+ *                     .variable("sts:ExternalID")
  *                     .values(                    
- *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;&#34;,
- *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;&#34;)
+ *                         "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+ *                         "databricks-serverless-<YOUR_WORKSPACE_ID2>")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var this_ = new Role(&#34;this&#34;, RoleArgs.builder()        
- *             .name(&#34;my-databricks-sql-serverless-role&#34;)
- *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+ *         var this_ = new Role("this", RoleArgs.builder()        
+ *             .name("my-databricks-sql-serverless-role")
+ *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var thisInstanceProfile = new InstanceProfile(&#34;thisInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .name(&#34;my-databricks-sql-serverless-instance-profile&#34;)
+ *         var thisInstanceProfile = new InstanceProfile("thisInstanceProfile", InstanceProfileArgs.builder()        
+ *             .name("my-databricks-sql-serverless-instance-profile")
  *             .role(this_.name())
  *             .build());
  * 
- *         var thisInstanceProfile2 = new InstanceProfile(&#34;thisInstanceProfile2&#34;, InstanceProfileArgs.builder()        
+ *         var thisInstanceProfile2 = new InstanceProfile("thisInstanceProfile2", InstanceProfileArgs.builder()        
  *             .instanceProfileArn(thisInstanceProfile.arn())
  *             .iamRoleArn(this_.arn())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -48,7 +48,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -78,44 +79,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
- *             .name(&#34;sandbox&#34;)
- *             .comment(&#34;this catalog is managed by terraform&#34;)
- *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
- *         var things = new Schema(&#34;things&#34;, SchemaArgs.builder()        
+ *         var things = new Schema("things", SchemaArgs.builder()        
  *             .catalogName(sandbox.name())
- *             .name(&#34;things&#34;)
- *             .comment(&#34;this schema is managed by terraform&#34;)
- *             .properties(Map.of(&#34;kind&#34;, &#34;various&#34;))
+ *             .name("things")
+ *             .comment("this schema is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
  *             .build());
  * 
- *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
- *             .name(&#34;creds&#34;)
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *             .name("creds")
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
  *                 .build())
  *             .build());
  * 
- *         var some = new ExternalLocation(&#34;some&#34;, ExternalLocationArgs.builder()        
- *             .name(&#34;external-location&#34;)
- *             .url(String.format(&#34;s3://%s/some&#34;, externalAwsS3Bucket.id()))
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()        
+ *             .name("external-location")
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
  *             .credentialName(external.name())
  *             .build());
  * 
- *         var this_ = new Volume(&#34;this&#34;, VolumeArgs.builder()        
- *             .name(&#34;quickstart_volume&#34;)
+ *         var this_ = new Volume("this", VolumeArgs.builder()        
+ *             .name("quickstart_volume")
  *             .catalogName(sandbox.name())
  *             .schemaName(things.name())
- *             .volumeType(&#34;EXTERNAL&#34;)
+ *             .volumeType("EXTERNAL")
  *             .storageLocation(some.url())
- *             .comment(&#34;this volume is managed by terraform&#34;)
+ *             .comment("this volume is managed by terraform")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

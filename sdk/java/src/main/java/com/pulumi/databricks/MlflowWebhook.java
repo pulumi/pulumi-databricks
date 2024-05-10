@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Triggering Databricks job
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,28 +68,28 @@ import javax.annotation.Nullable;
  *             .localDisk(true)
  *             .build());
  * 
- *         var this_ = new Notebook(&#34;this&#34;, NotebookArgs.builder()        
- *             .path(String.format(&#34;%s/MLFlowWebhook&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.home())))
- *             .language(&#34;PYTHON&#34;)
+ *         var this_ = new Notebook("this", NotebookArgs.builder()        
+ *             .path(String.format("%s/MLFlowWebhook", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .language("PYTHON")
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                 .input(&#34;&#34;&#34;
+ *                 .input("""
  * import json
  *  
- * event_message = dbutils.widgets.get(&#34;event_message&#34;)
+ * event_message = dbutils.widgets.get("event_message")
  * event_message_dict = json.loads(event_message)
- * print(f&#34;event data={event_message_dict}&#34;)
- *                 &#34;&#34;&#34;)
+ * print(f"event data={event_message_dict}")
+ *                 """)
  *                 .build()).result())
  *             .build());
  * 
- *         var thisJob = new Job(&#34;thisJob&#34;, JobArgs.builder()        
- *             .name(String.format(&#34;Terraform MLflowWebhook Demo (%s)&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
+ *         var thisJob = new Job("thisJob", JobArgs.builder()        
+ *             .name(String.format("Terraform MLflowWebhook Demo (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .tasks(JobTaskArgs.builder()
- *                 .taskKey(&#34;task1&#34;)
+ *                 .taskKey("task1")
  *                 .newCluster(JobTaskNewClusterArgs.builder()
  *                     .numWorkers(1)
- *                     .sparkVersion(latest.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
- *                     .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *                     .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+ *                     .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
  *                     .build())
  *                 .notebookTask(JobTaskNotebookTaskArgs.builder()
  *                     .notebookPath(this_.path())
@@ -96,31 +97,33 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var patForWebhook = new Token(&#34;patForWebhook&#34;, TokenArgs.builder()        
- *             .comment(&#34;MLflow Webhook&#34;)
+ *         var patForWebhook = new Token("patForWebhook", TokenArgs.builder()        
+ *             .comment("MLflow Webhook")
  *             .lifetimeSeconds(86400000)
  *             .build());
  * 
- *         var job = new MlflowWebhook(&#34;job&#34;, MlflowWebhookArgs.builder()        
- *             .events(&#34;TRANSITION_REQUEST_CREATED&#34;)
- *             .description(&#34;Databricks Job webhook trigger&#34;)
- *             .status(&#34;ACTIVE&#34;)
+ *         var job = new MlflowWebhook("job", MlflowWebhookArgs.builder()        
+ *             .events("TRANSITION_REQUEST_CREATED")
+ *             .description("Databricks Job webhook trigger")
+ *             .status("ACTIVE")
  *             .jobSpec(MlflowWebhookJobSpecArgs.builder()
  *                 .jobId(thisJob.id())
- *                 .workspaceUrl(me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.workspaceUrl()))
+ *                 .workspaceUrl(me.applyValue(getCurrentUserResult -> getCurrentUserResult.workspaceUrl()))
  *                 .accessToken(patForWebhook.tokenValue())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### POSTing to URL
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -142,17 +145,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var url = new MlflowWebhook(&#34;url&#34;, MlflowWebhookArgs.builder()        
- *             .events(&#34;TRANSITION_REQUEST_CREATED&#34;)
- *             .description(&#34;URL webhook trigger&#34;)
+ *         var url = new MlflowWebhook("url", MlflowWebhookArgs.builder()        
+ *             .events("TRANSITION_REQUEST_CREATED")
+ *             .description("URL webhook trigger")
  *             .httpUrlSpec(MlflowWebhookHttpUrlSpecArgs.builder()
- *                 .url(&#34;https://my_cool_host/webhook&#34;)
+ *                 .url("https://my_cool_host/webhook")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

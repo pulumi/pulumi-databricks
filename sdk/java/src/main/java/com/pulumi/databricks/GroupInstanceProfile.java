@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile(&#34;instanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my_group_name&#34;)
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupInstanceProfile = new GroupInstanceProfile(&#34;myGroupInstanceProfile&#34;, GroupInstanceProfileArgs.builder()        
+ *         var myGroupInstanceProfile = new GroupInstanceProfile("myGroupInstanceProfile", GroupInstanceProfileArgs.builder()        
  *             .groupId(myGroup.id())
  *             .instanceProfileId(instanceProfile.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

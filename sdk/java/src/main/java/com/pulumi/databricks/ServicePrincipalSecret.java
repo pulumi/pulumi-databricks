@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Create service principal secret
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,13 +42,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformSp = new ServicePrincipalSecret(&#34;terraformSp&#34;, ServicePrincipalSecretArgs.builder()        
+ *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()        
  *             .servicePrincipalId(this_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

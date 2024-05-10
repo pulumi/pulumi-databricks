@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * In account context, adding account-level group to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,25 +47,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataEng = new Group(&#34;dataEng&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Data Engineering&#34;)
+ *         var dataEng = new Group("dataEng", GroupArgs.builder()        
+ *             .displayName("Data Engineering")
  *             .build());
  * 
- *         var addAdminGroup = new MwsPermissionAssignment(&#34;addAdminGroup&#34;, MwsPermissionAssignmentArgs.builder()        
+ *         var addAdminGroup = new MwsPermissionAssignment("addAdminGroup", MwsPermissionAssignmentArgs.builder()        
  *             .workspaceId(this_.workspaceId())
  *             .principalId(dataEng.id())
- *             .permissions(&#34;ADMIN&#34;)
+ *             .permissions("ADMIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In account context, adding account-level user to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,25 +90,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User(&#34;me&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
+ *         var me = new User("me", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var addUser = new MwsPermissionAssignment(&#34;addUser&#34;, MwsPermissionAssignmentArgs.builder()        
+ *         var addUser = new MwsPermissionAssignment("addUser", MwsPermissionAssignmentArgs.builder()        
  *             .workspaceId(this_.workspaceId())
  *             .principalId(me.id())
- *             .permissions(&#34;USER&#34;)
+ *             .permissions("USER")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In account context, adding account-level service principal to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -128,19 +133,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .displayName(&#34;Automation-only SP&#34;)
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *             .displayName("Automation-only SP")
  *             .build());
  * 
- *         var addAdminSpn = new MwsPermissionAssignment(&#34;addAdminSpn&#34;, MwsPermissionAssignmentArgs.builder()        
+ *         var addAdminSpn = new MwsPermissionAssignment("addAdminSpn", MwsPermissionAssignmentArgs.builder()        
  *             .workspaceId(this_.workspaceId())
  *             .principalId(sp.id())
- *             .permissions(&#34;ADMIN&#34;)
+ *             .permissions("ADMIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

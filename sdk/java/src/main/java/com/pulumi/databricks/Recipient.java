@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,17 +63,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var db2opensharecode = new Password(&#34;db2opensharecode&#34;, PasswordArgs.builder()        
+ *         var db2opensharecode = new Password("db2opensharecode", PasswordArgs.builder()        
  *             .length(16)
  *             .special(true)
  *             .build());
  * 
  *         final var current = DatabricksFunctions.getCurrentUser();
  * 
- *         var db2open = new Recipient(&#34;db2open&#34;, RecipientArgs.builder()        
- *             .name(String.format(&#34;%s-recipient&#34;, current.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
- *             .comment(&#34;made by terraform&#34;)
- *             .authenticationType(&#34;TOKEN&#34;)
+ *         var db2open = new Recipient("db2open", RecipientArgs.builder()        
+ *             .name(String.format("%s-recipient", current.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .comment("made by terraform")
+ *             .authenticationType("TOKEN")
  *             .sharingCode(db2opensharecode.result())
  *             .ipAccessList(RecipientIpAccessListArgs.builder()
  *                 .allowedIpAddresses()
@@ -81,7 +82,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * In workspace context, adding account-level user to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Use the account provider
  *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
- *             .userName(&#34;me@example.com&#34;)
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var addUser = new PermissionAssignment(&#34;addUser&#34;, PermissionAssignmentArgs.builder()        
- *             .principalId(me.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .permissions(&#34;USER&#34;)
+ *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()        
+ *             .principalId(me.applyValue(getUserResult -> getUserResult.id()))
+ *             .permissions("USER")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In workspace context, adding account-level service principal to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,23 +92,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Use the account provider
  *         final var sp = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
- *             .displayName(&#34;Automation-only SP&#34;)
+ *             .displayName("Automation-only SP")
  *             .build());
  * 
- *         var addAdminSpn = new PermissionAssignment(&#34;addAdminSpn&#34;, PermissionAssignmentArgs.builder()        
- *             .principalId(sp.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
- *             .permissions(&#34;ADMIN&#34;)
+ *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()        
+ *             .principalId(sp.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+ *             .permissions("ADMIN")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In workspace context, adding account-level group to a workspace:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,23 +135,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Use the account provider
  *         final var accountLevel = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;example-group&#34;)
+ *             .displayName("example-group")
  *             .build());
  * 
  *         // Use the workspace provider
- *         var this_ = new PermissionAssignment(&#34;this&#34;, PermissionAssignmentArgs.builder()        
- *             .principalId(accountLevel.applyValue(getGroupResult -&gt; getGroupResult.id()))
- *             .permissions(&#34;USER&#34;)
+ *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()        
+ *             .principalId(accountLevel.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .permissions("USER")
  *             .build());
  * 
  *         final var workspaceLevel = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;example-group&#34;)
+ *             .displayName("example-group")
  *             .build());
  * 
- *         ctx.export(&#34;databricksGroupId&#34;, workspaceLevel.applyValue(getGroupResult -&gt; getGroupResult.id()));
+ *         ctx.export("databricksGroupId", workspaceLevel.applyValue(getGroupResult -> getGroupResult.id()));
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

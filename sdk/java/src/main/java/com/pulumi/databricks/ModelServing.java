@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,32 +50,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ModelServing(&#34;this&#34;, ModelServingArgs.builder()        
- *             .name(&#34;ads-serving-endpoint&#34;)
+ *         var this_ = new ModelServing("this", ModelServingArgs.builder()        
+ *             .name("ads-serving-endpoint")
  *             .config(ModelServingConfigArgs.builder()
  *                 .servedEntities(                
  *                     ModelServingConfigServedEntityArgs.builder()
- *                         .name(&#34;prod_model&#34;)
- *                         .entityName(&#34;ads-model&#34;)
- *                         .entityVersion(&#34;2&#34;)
- *                         .workloadSize(&#34;Small&#34;)
+ *                         .name("prod_model")
+ *                         .entityName("ads-model")
+ *                         .entityVersion("2")
+ *                         .workloadSize("Small")
  *                         .scaleToZeroEnabled(true)
  *                         .build(),
  *                     ModelServingConfigServedEntityArgs.builder()
- *                         .name(&#34;candidate_model&#34;)
- *                         .entityName(&#34;ads-model&#34;)
- *                         .entityVersion(&#34;4&#34;)
- *                         .workloadSize(&#34;Small&#34;)
+ *                         .name("candidate_model")
+ *                         .entityName("ads-model")
+ *                         .entityVersion("4")
+ *                         .workloadSize("Small")
  *                         .scaleToZeroEnabled(false)
  *                         .build())
  *                 .trafficConfig(ModelServingConfigTrafficConfigArgs.builder()
  *                     .routes(                    
  *                         ModelServingConfigTrafficConfigRouteArgs.builder()
- *                             .servedModelName(&#34;prod_model&#34;)
+ *                             .servedModelName("prod_model")
  *                             .trafficPercentage(90)
  *                             .build(),
  *                         ModelServingConfigTrafficConfigRouteArgs.builder()
- *                             .servedModelName(&#34;candidate_model&#34;)
+ *                             .servedModelName("candidate_model")
  *                             .trafficPercentage(10)
  *                             .build())
  *                     .build())
@@ -83,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

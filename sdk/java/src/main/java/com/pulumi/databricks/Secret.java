@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new SecretScope(&#34;app&#34;, SecretScopeArgs.builder()        
- *             .name(&#34;application-secret-scope&#34;)
+ *         var app = new SecretScope("app", SecretScopeArgs.builder()        
+ *             .name("application-secret-scope")
  *             .build());
  * 
- *         var publishingApi = new Secret(&#34;publishingApi&#34;, SecretArgs.builder()        
- *             .key(&#34;publishing_api&#34;)
+ *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()        
+ *             .key("publishing_api")
  *             .stringValue(example.value())
  *             .scope(app.id())
  *             .build());
  * 
- *         var this_ = new Cluster(&#34;this&#34;, ClusterArgs.builder()        
- *             .sparkConf(Map.of(&#34;fs.azure.account.oauth2.client.secret&#34;, publishingApi.configReference()))
+ *         var this_ = new Cluster("this", ClusterArgs.builder()        
+ *             .sparkConf(Map.of("fs.azure.account.oauth2.client.secret", publishingApi.configReference()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

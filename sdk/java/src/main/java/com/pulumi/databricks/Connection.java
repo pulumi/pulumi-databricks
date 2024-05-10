@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Create a connection to a MySQL database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,28 +55,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql = new Connection(&#34;mysql&#34;, ConnectionArgs.builder()        
- *             .name(&#34;mysql_connection&#34;)
- *             .connectionType(&#34;MYSQL&#34;)
- *             .comment(&#34;this is a connection to mysql db&#34;)
+ *         var mysql = new Connection("mysql", ConnectionArgs.builder()        
+ *             .name("mysql_connection")
+ *             .connectionType("MYSQL")
+ *             .comment("this is a connection to mysql db")
  *             .options(Map.ofEntries(
- *                 Map.entry(&#34;host&#34;, &#34;test.mysql.database.azure.com&#34;),
- *                 Map.entry(&#34;port&#34;, &#34;3306&#34;),
- *                 Map.entry(&#34;user&#34;, &#34;user&#34;),
- *                 Map.entry(&#34;password&#34;, &#34;password&#34;)
+ *                 Map.entry("host", "test.mysql.database.azure.com"),
+ *                 Map.entry("port", "3306"),
+ *                 Map.entry("user", "user"),
+ *                 Map.entry("password", "password")
  *             ))
- *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
+ *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create a connection to a BigQuery database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,34 +100,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigquery = new Connection(&#34;bigquery&#34;, ConnectionArgs.builder()        
- *             .name(&#34;bq_connection&#34;)
- *             .connectionType(&#34;BIGQUERY&#34;)
- *             .comment(&#34;this is a connection to BQ&#34;)
- *             .options(Map.of(&#34;GoogleServiceAccountKeyJson&#34;, serializeJson(
+ *         var bigquery = new Connection("bigquery", ConnectionArgs.builder()        
+ *             .name("bq_connection")
+ *             .connectionType("BIGQUERY")
+ *             .comment("this is a connection to BQ")
+ *             .options(Map.of("GoogleServiceAccountKeyJson", serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;type&#34;, &#34;service_account&#34;),
- *                     jsonProperty(&#34;project_id&#34;, &#34;PROJECT_ID&#34;),
- *                     jsonProperty(&#34;private_key_id&#34;, &#34;KEY_ID&#34;),
- *                     jsonProperty(&#34;private_key&#34;, &#34;&#34;&#34;
+ *                     jsonProperty("type", "service_account"),
+ *                     jsonProperty("project_id", "PROJECT_ID"),
+ *                     jsonProperty("private_key_id", "KEY_ID"),
+ *                     jsonProperty("private_key", """
  * -----BEGIN PRIVATE KEY-----
  * PRIVATE_KEY
  * -----END PRIVATE KEY-----
- *                     &#34;&#34;&#34;),
- *                     jsonProperty(&#34;client_email&#34;, &#34;SERVICE_ACCOUNT_EMAIL&#34;),
- *                     jsonProperty(&#34;client_id&#34;, &#34;CLIENT_ID&#34;),
- *                     jsonProperty(&#34;auth_uri&#34;, &#34;https://accounts.google.com/o/oauth2/auth&#34;),
- *                     jsonProperty(&#34;token_uri&#34;, &#34;https://accounts.google.com/o/oauth2/token&#34;),
- *                     jsonProperty(&#34;auth_provider_x509_cert_url&#34;, &#34;https://www.googleapis.com/oauth2/v1/certs&#34;),
- *                     jsonProperty(&#34;client_x509_cert_url&#34;, &#34;https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL&#34;),
- *                     jsonProperty(&#34;universe_domain&#34;, &#34;googleapis.com&#34;)
+ *                     """),
+ *                     jsonProperty("client_email", "SERVICE_ACCOUNT_EMAIL"),
+ *                     jsonProperty("client_id", "CLIENT_ID"),
+ *                     jsonProperty("auth_uri", "https://accounts.google.com/o/oauth2/auth"),
+ *                     jsonProperty("token_uri", "https://accounts.google.com/o/oauth2/token"),
+ *                     jsonProperty("auth_provider_x509_cert_url", "https://www.googleapis.com/oauth2/v1/certs"),
+ *                     jsonProperty("client_x509_cert_url", "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL"),
+ *                     jsonProperty("universe_domain", "googleapis.com")
  *                 ))))
- *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
+ *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

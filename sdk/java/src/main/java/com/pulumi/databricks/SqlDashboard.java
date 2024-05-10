@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,27 +50,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
- *             .path(&#34;/Shared/Dashboards&#34;)
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *             .path("/Shared/Dashboards")
  *             .build());
  * 
- *         var d1 = new SqlDashboard(&#34;d1&#34;, SqlDashboardArgs.builder()        
- *             .name(&#34;My Dashboard Name&#34;)
- *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *         var d1 = new SqlDashboard("d1", SqlDashboardArgs.builder()        
+ *             .name("My Dashboard Name")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
  *             .tags(            
- *                 &#34;some-tag&#34;,
- *                 &#34;another-tag&#34;)
+ *                 "some-tag",
+ *                 "another-tag")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Example permission to share dashboard with all users:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,17 +94,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var d1 = new Permissions(&#34;d1&#34;, PermissionsArgs.builder()        
+ *         var d1 = new Permissions("d1", PermissionsArgs.builder()        
  *             .sqlDashboardId(d1DatabricksSqlDashboard.id())
  *             .accessControls(PermissionsAccessControlArgs.builder()
  *                 .groupName(users.displayName())
- *                 .permissionLevel(&#34;CAN_RUN&#34;)
+ *                 .permissionLevel("CAN_RUN")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

@@ -44,7 +44,8 @@ import javax.annotation.Nullable;
  * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,16 +69,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalVmOverride = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         var personalVm = new ClusterPolicy(&#34;personalVm&#34;, ClusterPolicyArgs.builder()        
- *             .policyFamilyId(&#34;personal-vm&#34;)
+ *         var personalVm = new ClusterPolicy("personalVm", ClusterPolicyArgs.builder()        
+ *             .policyFamilyId("personal-vm")
  *             .policyFamilyDefinitionOverrides(serializeJson(
  *                 personalVmOverride))
- *             .name(&#34;Personal Compute&#34;)
+ *             .name("Personal Compute")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

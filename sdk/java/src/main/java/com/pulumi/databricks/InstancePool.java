@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,20 +62,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var smallest = DatabricksFunctions.getNodeType();
  * 
- *         var smallestNodes = new InstancePool(&#34;smallestNodes&#34;, InstancePoolArgs.builder()        
- *             .instancePoolName(&#34;Smallest Nodes&#34;)
+ *         var smallestNodes = new InstancePool("smallestNodes", InstancePoolArgs.builder()        
+ *             .instancePoolName("Smallest Nodes")
  *             .minIdleInstances(0)
  *             .maxCapacity(300)
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
  *             .awsAttributes(InstancePoolAwsAttributesArgs.builder()
- *                 .availability(&#34;ON_DEMAND&#34;)
- *                 .zoneId(&#34;us-east-1a&#34;)
- *                 .spotBidPricePercent(&#34;100&#34;)
+ *                 .availability("ON_DEMAND")
+ *                 .zoneId("us-east-1a")
+ *                 .spotBidPricePercent("100")
  *                 .build())
  *             .idleInstanceAutoterminationMinutes(10)
  *             .diskSpec(InstancePoolDiskSpecArgs.builder()
  *                 .diskType(InstancePoolDiskSpecDiskTypeArgs.builder()
- *                     .ebsVolumeType(&#34;GENERAL_PURPOSE_SSD&#34;)
+ *                     .ebsVolumeType("GENERAL_PURPOSE_SSD")
  *                     .build())
  *                 .diskSize(80)
  *                 .diskCount(1)
@@ -83,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control

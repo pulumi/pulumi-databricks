@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ### For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,63 +62,65 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+ *         final var databricksAccountId = config.get("databricksAccountId");
  *         final var current = AwsFunctions.getCallerIdentity();
  * 
  *         final var databricksManagedServicesCmk = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
- *             .version(&#34;2012-10-17&#34;)
+ *             .version("2012-10-17")
  *             .statements(            
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Enable IAM User Permissions&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Enable IAM User Permissions")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
- *                         .identifiers(current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.accountId()))
+ *                         .type("AWS")
+ *                         .identifiers(current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.accountId()))
  *                         .build())
- *                     .actions(&#34;kms:*&#34;)
- *                     .resources(&#34;*&#34;)
+ *                     .actions("kms:*")
+ *                     .resources("*")
  *                     .build(),
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Allow Databricks to use KMS key for control plane managed services&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Allow Databricks to use KMS key for control plane managed services")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
- *                         .identifiers(&#34;arn:aws:iam::414351767826:root&#34;)
+ *                         .type("AWS")
+ *                         .identifiers("arn:aws:iam::414351767826:root")
  *                         .build())
  *                     .actions(                    
- *                         &#34;kms:Encrypt&#34;,
- *                         &#34;kms:Decrypt&#34;)
- *                     .resources(&#34;*&#34;)
+ *                         "kms:Encrypt",
+ *                         "kms:Decrypt")
+ *                     .resources("*")
  *                     .build())
  *             .build());
  * 
- *         var managedServicesCustomerManagedKey = new Key(&#34;managedServicesCustomerManagedKey&#34;, KeyArgs.builder()        
- *             .policy(databricksManagedServicesCmk.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+ *         var managedServicesCustomerManagedKey = new Key("managedServicesCustomerManagedKey", KeyArgs.builder()        
+ *             .policy(databricksManagedServicesCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var managedServicesCustomerManagedKeyAlias = new Alias(&#34;managedServicesCustomerManagedKeyAlias&#34;, AliasArgs.builder()        
- *             .name(&#34;alias/managed-services-customer-managed-key-alias&#34;)
+ *         var managedServicesCustomerManagedKeyAlias = new Alias("managedServicesCustomerManagedKeyAlias", AliasArgs.builder()        
+ *             .name("alias/managed-services-customer-managed-key-alias")
  *             .targetKeyId(managedServicesCustomerManagedKey.keyId())
  *             .build());
  * 
- *         var managedServices = new MwsCustomerManagedKeys(&#34;managedServices&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .awsKeyInfo(MwsCustomerManagedKeysAwsKeyInfoArgs.builder()
  *                 .keyArn(managedServicesCustomerManagedKey.arn())
  *                 .keyAlias(managedServicesCustomerManagedKeyAlias.name())
  *                 .build())
- *             .useCases(&#34;MANAGED_SERVICES&#34;)
+ *             .useCases("MANAGED_SERVICES")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -140,19 +143,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         final var cmekResourceId = config.get(&#34;cmekResourceId&#34;);
- *         var managedServices = new MwsCustomerManagedKeys(&#34;managedServices&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var cmekResourceId = config.get("cmekResourceId");
+ *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
  *                 .kmsKeyId(cmekResourceId)
  *                 .build())
- *             .useCases(&#34;MANAGED_SERVICES&#34;)
+ *             .useCases("MANAGED_SERVICES")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Customer-managed key for workspace storage
@@ -160,7 +164,8 @@ import javax.annotation.Nullable;
  * ### For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,102 +194,104 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         final var databricksCrossAccountRole = config.get(&#34;databricksCrossAccountRole&#34;);
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksCrossAccountRole = config.get("databricksCrossAccountRole");
  *         final var databricksStorageCmk = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
- *             .version(&#34;2012-10-17&#34;)
+ *             .version("2012-10-17")
  *             .statements(            
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Enable IAM User Permissions&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Enable IAM User Permissions")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
+ *                         .type("AWS")
  *                         .identifiers(current.accountId())
  *                         .build())
- *                     .actions(&#34;kms:*&#34;)
- *                     .resources(&#34;*&#34;)
+ *                     .actions("kms:*")
+ *                     .resources("*")
  *                     .build(),
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Allow Databricks to use KMS key for DBFS&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Allow Databricks to use KMS key for DBFS")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
- *                         .identifiers(&#34;arn:aws:iam::414351767826:root&#34;)
+ *                         .type("AWS")
+ *                         .identifiers("arn:aws:iam::414351767826:root")
  *                         .build())
  *                     .actions(                    
- *                         &#34;kms:Encrypt&#34;,
- *                         &#34;kms:Decrypt&#34;,
- *                         &#34;kms:ReEncrypt*&#34;,
- *                         &#34;kms:GenerateDataKey*&#34;,
- *                         &#34;kms:DescribeKey&#34;)
- *                     .resources(&#34;*&#34;)
+ *                         "kms:Encrypt",
+ *                         "kms:Decrypt",
+ *                         "kms:ReEncrypt*",
+ *                         "kms:GenerateDataKey*",
+ *                         "kms:DescribeKey")
+ *                     .resources("*")
  *                     .build(),
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Allow Databricks to use KMS key for DBFS (Grants)&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Allow Databricks to use KMS key for DBFS (Grants)")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
- *                         .identifiers(&#34;arn:aws:iam::414351767826:root&#34;)
+ *                         .type("AWS")
+ *                         .identifiers("arn:aws:iam::414351767826:root")
  *                         .build())
  *                     .actions(                    
- *                         &#34;kms:CreateGrant&#34;,
- *                         &#34;kms:ListGrants&#34;,
- *                         &#34;kms:RevokeGrant&#34;)
- *                     .resources(&#34;*&#34;)
+ *                         "kms:CreateGrant",
+ *                         "kms:ListGrants",
+ *                         "kms:RevokeGrant")
+ *                     .resources("*")
  *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
- *                         .test(&#34;Bool&#34;)
- *                         .variable(&#34;kms:GrantIsForAWSResource&#34;)
- *                         .values(&#34;true&#34;)
+ *                         .test("Bool")
+ *                         .variable("kms:GrantIsForAWSResource")
+ *                         .values("true")
  *                         .build())
  *                     .build(),
  *                 GetPolicyDocumentStatementArgs.builder()
- *                     .sid(&#34;Allow Databricks to use KMS key for EBS&#34;)
- *                     .effect(&#34;Allow&#34;)
+ *                     .sid("Allow Databricks to use KMS key for EBS")
+ *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                         .type(&#34;AWS&#34;)
+ *                         .type("AWS")
  *                         .identifiers(databricksCrossAccountRole)
  *                         .build())
  *                     .actions(                    
- *                         &#34;kms:Decrypt&#34;,
- *                         &#34;kms:GenerateDataKey*&#34;,
- *                         &#34;kms:CreateGrant&#34;,
- *                         &#34;kms:DescribeKey&#34;)
- *                     .resources(&#34;*&#34;)
+ *                         "kms:Decrypt",
+ *                         "kms:GenerateDataKey*",
+ *                         "kms:CreateGrant",
+ *                         "kms:DescribeKey")
+ *                     .resources("*")
  *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
- *                         .test(&#34;ForAnyValue:StringLike&#34;)
- *                         .variable(&#34;kms:ViaService&#34;)
- *                         .values(&#34;ec2.*.amazonaws.com&#34;)
+ *                         .test("ForAnyValue:StringLike")
+ *                         .variable("kms:ViaService")
+ *                         .values("ec2.*.amazonaws.com")
  *                         .build())
  *                     .build())
  *             .build());
  * 
- *         var storageCustomerManagedKey = new Key(&#34;storageCustomerManagedKey&#34;, KeyArgs.builder()        
- *             .policy(databricksStorageCmk.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+ *         var storageCustomerManagedKey = new Key("storageCustomerManagedKey", KeyArgs.builder()        
+ *             .policy(databricksStorageCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var storageCustomerManagedKeyAlias = new Alias(&#34;storageCustomerManagedKeyAlias&#34;, AliasArgs.builder()        
- *             .name(&#34;alias/storage-customer-managed-key-alias&#34;)
+ *         var storageCustomerManagedKeyAlias = new Alias("storageCustomerManagedKeyAlias", AliasArgs.builder()        
+ *             .name("alias/storage-customer-managed-key-alias")
  *             .targetKeyId(storageCustomerManagedKey.keyId())
  *             .build());
  * 
- *         var storage = new MwsCustomerManagedKeys(&#34;storage&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .awsKeyInfo(MwsCustomerManagedKeysAwsKeyInfoArgs.builder()
  *                 .keyArn(storageCustomerManagedKey.arn())
  *                 .keyAlias(storageCustomerManagedKeyAlias.name())
  *                 .build())
- *             .useCases(&#34;STORAGE&#34;)
+ *             .useCases("STORAGE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -307,19 +314,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         final var cmekResourceId = config.get(&#34;cmekResourceId&#34;);
- *         var storage = new MwsCustomerManagedKeys(&#34;storage&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var cmekResourceId = config.get("cmekResourceId");
+ *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
  *                 .kmsKeyId(cmekResourceId)
  *                 .build())
- *             .useCases(&#34;STORAGE&#34;)
+ *             .useCases("STORAGE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

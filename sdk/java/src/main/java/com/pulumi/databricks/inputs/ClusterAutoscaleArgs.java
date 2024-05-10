@@ -30,7 +30,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * The following example demonstrates how to create an single node cluster:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -62,21 +63,22 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var singleNode = new Cluster(&#34;singleNode&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Single Node&#34;)
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+     *             .clusterName("Single Node")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;singleNode&#34;),
-     *                 Map.entry(&#34;spark.master&#34;, &#34;local[*]&#34;)
+     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+     *                 Map.entry("spark.master", "local[*]")
      *             ))
-     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;SingleNode&#34;))
+     *             .customTags(Map.of("ResourceClass", "SingleNode"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -98,7 +100,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * The following example demonstrates how to create an single node cluster:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,21 +133,22 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var singleNode = new Cluster(&#34;singleNode&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Single Node&#34;)
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+     *             .clusterName("Single Node")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;singleNode&#34;),
-     *                 Map.entry(&#34;spark.master&#34;, &#34;local[*]&#34;)
+     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+     *                 Map.entry("spark.master", "local[*]")
      *             ))
-     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;SingleNode&#34;))
+     *             .customTags(Map.of("ResourceClass", "SingleNode"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +211,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * The following example demonstrates how to create an single node cluster:
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -239,21 +244,22 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *             .longTermSupport(true)
          *             .build());
          * 
-         *         var singleNode = new Cluster(&#34;singleNode&#34;, ClusterArgs.builder()        
-         *             .clusterName(&#34;Single Node&#34;)
-         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+         *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+         *             .clusterName("Single Node")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
-         *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;singleNode&#34;),
-         *                 Map.entry(&#34;spark.master&#34;, &#34;local[*]&#34;)
+         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+         *                 Map.entry("spark.master", "local[*]")
          *             ))
-         *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;SingleNode&#34;))
+         *             .customTags(Map.of("ResourceClass", "SingleNode"))
          *             .build());
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
@@ -279,7 +285,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * The following example demonstrates how to create an single node cluster:
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -311,21 +318,22 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *             .longTermSupport(true)
          *             .build());
          * 
-         *         var singleNode = new Cluster(&#34;singleNode&#34;, ClusterArgs.builder()        
-         *             .clusterName(&#34;Single Node&#34;)
-         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+         *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+         *             .clusterName("Single Node")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
-         *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;singleNode&#34;),
-         *                 Map.entry(&#34;spark.master&#34;, &#34;local[*]&#34;)
+         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+         *                 Map.entry("spark.master", "local[*]")
          *             ))
-         *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;SingleNode&#34;))
+         *             .customTags(Map.of("ResourceClass", "SingleNode"))
          *             .build());
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

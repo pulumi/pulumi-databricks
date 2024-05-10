@@ -151,7 +151,8 @@ public final class DatabricksFunctions {
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,11 +183,11 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -194,27 +195,28 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
-     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-role", prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -237,7 +239,8 @@ public final class DatabricksFunctions {
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,11 +271,11 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -280,27 +283,28 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
-     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-role", prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -323,7 +327,8 @@ public final class DatabricksFunctions {
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -354,11 +359,11 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -366,27 +371,28 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
-     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-role", prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -409,7 +415,8 @@ public final class DatabricksFunctions {
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -440,11 +447,11 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
@@ -452,27 +459,28 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
-     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *             .name(String.format("%s-crossaccount-iam-role", prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -493,7 +501,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -518,9 +527,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
-     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
-     *             .acl(&#34;private&#34;)
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *             .bucket("<unique_bucket_name>")
+     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
@@ -528,14 +537,15 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Bucket policy with full access:
@@ -550,7 +560,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -575,9 +586,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
-     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
-     *             .acl(&#34;private&#34;)
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *             .bucket("<unique_bucket_name>")
+     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
@@ -585,14 +596,15 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Bucket policy with full access:
@@ -607,7 +619,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,9 +645,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
-     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
-     *             .acl(&#34;private&#34;)
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *             .bucket("<unique_bucket_name>")
+     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
@@ -642,14 +655,15 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Bucket policy with full access:
@@ -664,7 +678,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -689,9 +704,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
-     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
-     *             .acl(&#34;private&#34;)
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *             .bucket("<unique_bucket_name>")
+     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
@@ -699,14 +714,15 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Bucket policy with full access:
@@ -725,7 +741,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -750,7 +767,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -776,7 +794,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -801,7 +820,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -827,7 +847,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -852,7 +873,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -878,7 +900,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -903,7 +926,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -929,7 +953,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -954,7 +979,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -980,7 +1006,8 @@ public final class DatabricksFunctions {
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1005,7 +1032,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1029,7 +1057,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,56 +1087,57 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .bucketName("databricks-bucket")
+     *             .roleName("databricks-role")
+     *             .kmsName("databricks-kms")
      *             .build());
      * 
      *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
+     *                         .type("AWS")
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .test("StringEquals")
+     *                         .variable("sts:ExternalId")
      *                         .values(databricksAccountId)
      *                         .build())
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .sid("ExplicitSelfRoleAssumption")
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .type("AWS")
+     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .test("ArnLike")
+     *                         .variable("aws:PrincipalArn")
+     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1122,7 +1152,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1151,56 +1182,57 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .bucketName("databricks-bucket")
+     *             .roleName("databricks-role")
+     *             .kmsName("databricks-kms")
      *             .build());
      * 
      *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
+     *                         .type("AWS")
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .test("StringEquals")
+     *                         .variable("sts:ExternalId")
      *                         .values(databricksAccountId)
      *                         .build())
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .sid("ExplicitSelfRoleAssumption")
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .type("AWS")
+     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .test("ArnLike")
+     *                         .variable("aws:PrincipalArn")
+     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1215,7 +1247,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1244,56 +1277,57 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .bucketName("databricks-bucket")
+     *             .roleName("databricks-role")
+     *             .kmsName("databricks-kms")
      *             .build());
      * 
      *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
+     *                         .type("AWS")
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .test("StringEquals")
+     *                         .variable("sts:ExternalId")
      *                         .values(databricksAccountId)
      *                         .build())
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .sid("ExplicitSelfRoleAssumption")
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .type("AWS")
+     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .test("ArnLike")
+     *                         .variable("aws:PrincipalArn")
+     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1308,7 +1342,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1337,56 +1372,57 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .bucketName("databricks-bucket")
+     *             .roleName("databricks-role")
+     *             .kmsName("databricks-kms")
      *             .build());
      * 
      *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
+     *                         .type("AWS")
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .test("StringEquals")
+     *                         .variable("sts:ExternalId")
      *                         .values(databricksAccountId)
      *                         .build())
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .sid("ExplicitSelfRoleAssumption")
+     *                     .effect("Allow")
+     *                     .actions("sts:AssumeRole")
      *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .type("AWS")
+     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
      *                         .build())
      *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .test("ArnLike")
+     *                         .variable("aws:PrincipalArn")
+     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1399,7 +1435,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1422,10 +1459,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1445,7 +1483,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1468,10 +1507,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1491,7 +1531,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,10 +1555,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1537,7 +1579,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1560,10 +1603,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1583,7 +1627,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1606,10 +1651,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1629,7 +1675,8 @@ public final class DatabricksFunctions {
      * Listing all catalogs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1652,10 +1699,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getCatalogs();
      * 
-     *         ctx.export(&#34;allCatalogs&#34;, all.applyValue(getCatalogsResult -&gt; getCatalogsResult));
+     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1847,7 +1895,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1871,16 +1920,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1897,7 +1947,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1921,16 +1972,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1947,7 +1999,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1971,16 +2024,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1997,7 +2051,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2021,16 +2076,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2047,7 +2103,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2071,16 +2128,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2097,7 +2155,8 @@ public final class DatabricksFunctions {
      * Referring to a cluster policy by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2121,16 +2180,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
-     *             .name(&#34;Personal Compute&#34;)
+     *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2143,7 +2203,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2168,13 +2229,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2196,12 +2259,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2226,7 +2290,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2251,13 +2316,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2279,12 +2346,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2309,7 +2377,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2334,13 +2403,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2362,12 +2433,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2392,7 +2464,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2417,13 +2490,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2445,12 +2520,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2475,7 +2551,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2500,13 +2577,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2528,12 +2607,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2558,7 +2638,8 @@ public final class DatabricksFunctions {
      * Retrieve cluster IDs for all clusters:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2583,13 +2664,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve cluster IDs for all clusters having &#34;Shared&#34; in the cluster name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2611,12 +2694,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
-     *             .clusterNameContains(&#34;shared&#34;)
+     *             .clusterNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2845,7 +2929,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2868,10 +2953,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2899,7 +2985,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2922,10 +3009,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2953,7 +3041,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2976,10 +3065,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3007,7 +3097,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3030,10 +3121,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3061,7 +3153,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3084,10 +3177,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3115,7 +3209,8 @@ public final class DatabricksFunctions {
      * MetastoreSummary response for a metastore attached to the current workspace.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3138,10 +3233,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.metastoreInfo());
+     *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3219,7 +3315,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3241,13 +3338,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .path(&#34;dbfs:/reports/some.csv&#34;)
-     *             .limitFileSize(&#34;true&#34;)
+     *             .path("dbfs:/reports/some.csv")
+     *             .limitFileSize("true")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3271,7 +3369,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3293,13 +3392,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .path(&#34;dbfs:/reports/some.csv&#34;)
-     *             .limitFileSize(&#34;true&#34;)
+     *             .path("dbfs:/reports/some.csv")
+     *             .limitFileSize("true")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3323,7 +3423,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3345,13 +3446,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .path(&#34;dbfs:/reports/some.csv&#34;)
-     *             .limitFileSize(&#34;true&#34;)
+     *             .path("dbfs:/reports/some.csv")
+     *             .limitFileSize("true")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3375,7 +3477,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3397,13 +3500,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .path(&#34;dbfs:/reports/some.csv&#34;)
-     *             .limitFileSize(&#34;true&#34;)
+     *             .path("dbfs:/reports/some.csv")
+     *             .limitFileSize("true")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3427,7 +3531,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3449,13 +3554,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()
-     *             .path(&#34;dbfs:/user/hive/default.db/table&#34;)
+     *             .path("dbfs:/user/hive/default.db/table")
      *             .recursive(false)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3481,7 +3587,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3503,13 +3610,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()
-     *             .path(&#34;dbfs:/user/hive/default.db/table&#34;)
+     *             .path("dbfs:/user/hive/default.db/table")
      *             .recursive(false)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3535,7 +3643,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3557,13 +3666,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()
-     *             .path(&#34;dbfs:/user/hive/default.db/table&#34;)
+     *             .path("dbfs:/user/hive/default.db/table")
      *             .recursive(false)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3589,7 +3699,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3611,13 +3722,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()
-     *             .path(&#34;dbfs:/user/hive/default.db/table&#34;)
+     *             .path("dbfs:/user/hive/default.db/table")
      *             .recursive(false)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3643,7 +3755,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3665,12 +3778,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3685,7 +3799,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3707,12 +3822,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3727,7 +3843,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3749,12 +3866,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3769,7 +3887,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3791,12 +3910,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3845,7 +3965,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3868,10 +3989,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3891,7 +4013,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3914,10 +4037,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3937,7 +4061,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3960,10 +4085,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -3983,7 +4109,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4006,10 +4133,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4029,7 +4157,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4052,10 +4181,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4075,7 +4205,8 @@ public final class DatabricksFunctions {
      * List all external locations in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4098,10 +4229,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getExternalLocations();
      * 
-     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4125,7 +4257,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4151,21 +4284,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
-     *             .userName(&#34;me@example.com&#34;)
+     *         var me = new User("me", UserArgs.builder()        
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4193,7 +4327,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4219,21 +4354,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
-     *             .userName(&#34;me@example.com&#34;)
+     *         var me = new User("me", UserArgs.builder()        
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4261,7 +4397,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4287,21 +4424,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
-     *             .userName(&#34;me@example.com&#34;)
+     *         var me = new User("me", UserArgs.builder()        
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4329,7 +4467,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4355,21 +4494,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
-     *             .userName(&#34;me@example.com&#34;)
+     *         var me = new User("me", UserArgs.builder()        
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4397,7 +4537,8 @@ public final class DatabricksFunctions {
      * Referring to an instance pool by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4421,16 +4562,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
-     *             .name(&#34;All spot&#34;)
+     *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4447,7 +4589,8 @@ public final class DatabricksFunctions {
      * Referring to an instance pool by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4471,16 +4614,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
-     *             .name(&#34;All spot&#34;)
+     *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4497,7 +4641,8 @@ public final class DatabricksFunctions {
      * Referring to an instance pool by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4521,16 +4666,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
-     *             .name(&#34;All spot&#34;)
+     *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4547,7 +4693,8 @@ public final class DatabricksFunctions {
      * Referring to an instance pool by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4571,16 +4718,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
-     *             .name(&#34;All spot&#34;)
+     *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4595,7 +4743,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4618,10 +4767,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4636,7 +4786,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4659,10 +4810,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4677,7 +4829,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4700,10 +4853,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4718,7 +4872,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4741,10 +4896,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4759,7 +4915,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4782,10 +4939,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4800,7 +4958,8 @@ public final class DatabricksFunctions {
      * Get all instance profiles:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4823,10 +4982,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getInstanceProfiles();
      * 
-     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4843,7 +5003,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4865,13 +5026,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4895,7 +5057,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4917,13 +5080,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4947,7 +5111,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4969,13 +5134,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -4999,7 +5165,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5021,13 +5188,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5051,7 +5219,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5073,13 +5242,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5103,7 +5273,8 @@ public final class DatabricksFunctions {
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5125,13 +5296,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
-     *             .jobName(&#34;My job&#34;)
+     *             .jobName("My job")
      *             .build());
      * 
-     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export("jobNumWorkers", this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5151,7 +5323,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5178,14 +5351,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5197,13 +5370,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5226,10 +5401,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5248,7 +5424,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5275,14 +5452,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5294,13 +5471,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5323,10 +5502,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5345,7 +5525,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5372,14 +5553,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5391,13 +5572,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5420,10 +5603,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5442,7 +5626,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5469,14 +5654,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5488,13 +5673,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5517,10 +5704,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5539,7 +5727,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5566,14 +5755,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5585,13 +5774,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5614,10 +5805,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5636,7 +5828,8 @@ public final class DatabricksFunctions {
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5663,14 +5856,14 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
-     *                         .groupName(&#34;users&#34;)
-     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
      *                         .build())
      *                     .build());
      * 
@@ -5682,13 +5875,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5711,10 +5906,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
+     *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5733,7 +5929,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5756,9 +5953,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -5767,10 +5964,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5791,7 +5989,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5814,9 +6013,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -5825,10 +6024,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5849,7 +6049,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5872,9 +6073,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -5883,10 +6084,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5907,7 +6109,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5930,9 +6133,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -5941,10 +6144,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -5965,7 +6169,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5988,9 +6193,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -5999,10 +6204,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6023,7 +6229,8 @@ public final class DatabricksFunctions {
      * MetastoreInfo response for a given metastore id
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6046,9 +6253,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
-     *             .name(&#34;primary&#34;)
-     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *             .name("primary")
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -6057,10 +6264,11 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6081,7 +6289,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6104,10 +6313,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6128,7 +6338,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6151,10 +6362,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6175,7 +6387,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6198,10 +6411,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6222,7 +6436,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6245,10 +6460,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6269,7 +6485,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6292,10 +6509,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6316,7 +6534,8 @@ public final class DatabricksFunctions {
      * Mapping of name to id of all metastores:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6339,10 +6558,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMetastores();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6365,7 +6585,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6389,32 +6610,34 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
-     *             .name(&#34;My MLflow Model&#34;)
-     *             .description(&#34;My MLflow model description&#34;)
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *             .name("My MLflow Model")
+     *             .description("My MLflow model description")
      *             .tags(            
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key1&#34;)
-     *                     .value(&#34;value1&#34;)
+     *                     .key("key1")
+     *                     .value("value1")
      *                     .build(),
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key2&#34;)
-     *                     .value(&#34;value2&#34;)
+     *                     .key("key2")
+     *                     .value("value2")
      *                     .build())
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model&#34;)
+     *             .name("My MLflow Model")
      *             .build());
      * 
-     *         ctx.export(&#34;model&#34;, this_);
+     *         ctx.export("model", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6439,17 +6662,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
-     *             .name(&#34;model-serving-endpoint&#34;)
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
-     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .name("model_serving_prod")
      *                     .modelName(this_.name())
      *                     .modelVersion(this_.latestVersions()[0].version())
-     *                     .workloadSize(&#34;Small&#34;)
+     *                     .workloadSize("Small")
      *                     .scaleToZeroEnabled(true)
      *                     .build())
      *                 .build())
@@ -6457,7 +6680,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6472,7 +6696,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6496,32 +6721,34 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
-     *             .name(&#34;My MLflow Model&#34;)
-     *             .description(&#34;My MLflow model description&#34;)
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *             .name("My MLflow Model")
+     *             .description("My MLflow model description")
      *             .tags(            
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key1&#34;)
-     *                     .value(&#34;value1&#34;)
+     *                     .key("key1")
+     *                     .value("value1")
      *                     .build(),
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key2&#34;)
-     *                     .value(&#34;value2&#34;)
+     *                     .key("key2")
+     *                     .value("value2")
      *                     .build())
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model&#34;)
+     *             .name("My MLflow Model")
      *             .build());
      * 
-     *         ctx.export(&#34;model&#34;, this_);
+     *         ctx.export("model", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6546,17 +6773,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
-     *             .name(&#34;model-serving-endpoint&#34;)
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
-     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .name("model_serving_prod")
      *                     .modelName(this_.name())
      *                     .modelVersion(this_.latestVersions()[0].version())
-     *                     .workloadSize(&#34;Small&#34;)
+     *                     .workloadSize("Small")
      *                     .scaleToZeroEnabled(true)
      *                     .build())
      *                 .build())
@@ -6564,7 +6791,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6579,7 +6807,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6603,32 +6832,34 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
-     *             .name(&#34;My MLflow Model&#34;)
-     *             .description(&#34;My MLflow model description&#34;)
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *             .name("My MLflow Model")
+     *             .description("My MLflow model description")
      *             .tags(            
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key1&#34;)
-     *                     .value(&#34;value1&#34;)
+     *                     .key("key1")
+     *                     .value("value1")
      *                     .build(),
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key2&#34;)
-     *                     .value(&#34;value2&#34;)
+     *                     .key("key2")
+     *                     .value("value2")
      *                     .build())
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model&#34;)
+     *             .name("My MLflow Model")
      *             .build());
      * 
-     *         ctx.export(&#34;model&#34;, this_);
+     *         ctx.export("model", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6653,17 +6884,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
-     *             .name(&#34;model-serving-endpoint&#34;)
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
-     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .name("model_serving_prod")
      *                     .modelName(this_.name())
      *                     .modelVersion(this_.latestVersions()[0].version())
-     *                     .workloadSize(&#34;Small&#34;)
+     *                     .workloadSize("Small")
      *                     .scaleToZeroEnabled(true)
      *                     .build())
      *                 .build())
@@ -6671,7 +6902,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6686,7 +6918,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6710,32 +6943,34 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
-     *             .name(&#34;My MLflow Model&#34;)
-     *             .description(&#34;My MLflow model description&#34;)
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *             .name("My MLflow Model")
+     *             .description("My MLflow model description")
      *             .tags(            
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key1&#34;)
-     *                     .value(&#34;value1&#34;)
+     *                     .key("key1")
+     *                     .value("value1")
      *                     .build(),
      *                 MlflowModelTagArgs.builder()
-     *                     .key(&#34;key2&#34;)
-     *                     .value(&#34;value2&#34;)
+     *                     .key("key2")
+     *                     .value("value2")
      *                     .build())
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model&#34;)
+     *             .name("My MLflow Model")
      *             .build());
      * 
-     *         ctx.export(&#34;model&#34;, this_);
+     *         ctx.export("model", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6760,17 +6995,17 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
-     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
-     *             .name(&#34;model-serving-endpoint&#34;)
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
-     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .name("model_serving_prod")
      *                     .modelName(this_.name())
      *                     .modelVersion(this_.latestVersions()[0].version())
-     *                     .workloadSize(&#34;Small&#34;)
+     *                     .workloadSize("Small")
      *                     .scaleToZeroEnabled(true)
      *                     .build())
      *                 .build())
@@ -6778,7 +7013,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6797,7 +7033,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6820,10 +7057,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6853,7 +7091,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6876,10 +7115,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6909,7 +7149,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6932,10 +7173,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -6965,7 +7207,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6988,10 +7231,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7021,7 +7265,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7044,10 +7289,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7077,7 +7323,8 @@ public final class DatabricksFunctions {
      * Listing all credentials in Databricks Account
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7100,10 +7347,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsCredentials();
      * 
-     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7133,7 +7381,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7156,10 +7405,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7185,7 +7435,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7208,10 +7459,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7237,7 +7489,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7260,10 +7513,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7289,7 +7543,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7312,10 +7567,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7341,7 +7597,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7364,10 +7621,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7393,7 +7651,8 @@ public final class DatabricksFunctions {
      * Listing all workspaces in
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7416,10 +7675,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getMwsWorkspaces();
      * 
-     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7443,7 +7703,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7480,10 +7741,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7493,7 +7754,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7520,7 +7782,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7557,10 +7820,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7570,7 +7833,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7597,7 +7861,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7634,10 +7899,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7647,7 +7912,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7674,7 +7940,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7711,10 +7978,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7724,7 +7991,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7751,7 +8019,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7788,10 +8057,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7801,7 +8070,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7828,7 +8098,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7865,10 +8136,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -7878,7 +8149,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -7903,7 +8175,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7925,13 +8198,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .path(&#34;/Production/Features&#34;)
-     *             .format(&#34;SOURCE&#34;)
+     *             .path("/Production/Features")
+     *             .format("SOURCE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7946,7 +8220,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7968,13 +8243,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .path(&#34;/Production/Features&#34;)
-     *             .format(&#34;SOURCE&#34;)
+     *             .path("/Production/Features")
+     *             .format("SOURCE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7989,7 +8265,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8011,13 +8288,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .path(&#34;/Production/Features&#34;)
-     *             .format(&#34;SOURCE&#34;)
+     *             .path("/Production/Features")
+     *             .format("SOURCE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8032,7 +8310,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8054,13 +8333,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .path(&#34;/Production/Features&#34;)
-     *             .format(&#34;SOURCE&#34;)
+     *             .path("/Production/Features")
+     *             .format("SOURCE")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8075,7 +8355,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8097,13 +8378,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getNotebookPaths(GetNotebookPathsArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8118,7 +8400,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8140,13 +8423,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getNotebookPaths(GetNotebookPathsArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8161,7 +8445,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8183,13 +8468,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getNotebookPaths(GetNotebookPathsArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8204,7 +8490,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8226,13 +8513,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prod = DatabricksFunctions.getNotebookPaths(GetNotebookPathsArgs.builder()
-     *             .path(&#34;/Production&#34;)
+     *             .path("/Production")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8249,7 +8537,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8272,16 +8561,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8303,19 +8594,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8337,13 +8630,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8370,7 +8664,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8393,16 +8688,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8424,19 +8721,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8458,13 +8757,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8491,7 +8791,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8514,16 +8815,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8545,19 +8848,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8579,13 +8884,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8612,7 +8918,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8635,16 +8942,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8666,19 +8975,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8700,13 +9011,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8733,7 +9045,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8756,16 +9069,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8787,19 +9102,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8821,13 +9138,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8854,7 +9172,8 @@ public final class DatabricksFunctions {
      * Get all Delta Live Tables pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8877,16 +9196,18 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getPipelines();
      * 
-     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8908,19 +9229,21 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .pipelineName("my_pipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *         ctx.export("myPipeline", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8942,13 +9265,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
-     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .pipelineName("%pipeline%")
      *             .build());
      * 
-     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *         ctx.export("wildcardPipelines", this_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -8971,7 +9295,8 @@ public final class DatabricksFunctions {
      * Listing all schemas in a _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8993,13 +9318,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
+     *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export(&#34;allSandboxSchemas&#34;, sandbox.applyValue(getSchemasResult -&gt; getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9019,7 +9345,8 @@ public final class DatabricksFunctions {
      * Listing all schemas in a _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9041,13 +9368,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
+     *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export(&#34;allSandboxSchemas&#34;, sandbox.applyValue(getSchemasResult -&gt; getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9067,7 +9395,8 @@ public final class DatabricksFunctions {
      * Listing all schemas in a _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9089,13 +9418,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
+     *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export(&#34;allSandboxSchemas&#34;, sandbox.applyValue(getSchemasResult -&gt; getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9115,7 +9445,8 @@ public final class DatabricksFunctions {
      * Listing all schemas in a _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9137,13 +9468,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
+     *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export(&#34;allSandboxSchemas&#34;, sandbox.applyValue(getSchemasResult -&gt; getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9167,7 +9499,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9192,21 +9525,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9236,7 +9570,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9261,21 +9596,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9305,7 +9641,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9330,21 +9667,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9374,7 +9712,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9399,21 +9738,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9443,7 +9783,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9468,21 +9809,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9512,7 +9854,8 @@ public final class DatabricksFunctions {
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9537,21 +9880,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9631,7 +9975,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9653,13 +9998,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9680,7 +10026,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9702,13 +10049,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9729,7 +10077,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9751,13 +10100,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9778,7 +10128,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9800,13 +10151,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9827,7 +10179,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9849,13 +10202,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9876,7 +10230,8 @@ public final class DatabricksFunctions {
      * Getting details of an existing share in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9898,13 +10253,14 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;this&#34;)
+     *             .name("this")
      *             .build());
      * 
-     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *         ctx.export("createdBy", this_.createdBy());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9925,7 +10281,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9948,10 +10305,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -9972,7 +10330,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9995,10 +10354,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10019,7 +10379,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10042,10 +10403,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10066,7 +10428,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10089,10 +10452,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10113,7 +10477,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10136,10 +10501,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10160,7 +10526,8 @@ public final class DatabricksFunctions {
      * Getting all existing shares in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10183,10 +10550,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getShares();
      * 
-     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *         ctx.export("shareName", this_.shares());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10211,7 +10579,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10248,10 +10617,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10261,7 +10630,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10288,7 +10658,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10325,10 +10696,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10338,7 +10709,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10365,7 +10737,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10402,10 +10775,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10415,7 +10788,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10442,7 +10816,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10479,10 +10854,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10492,7 +10867,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10519,7 +10895,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10556,10 +10933,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10569,7 +10946,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10596,7 +10974,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10633,10 +11012,10 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster(&#34;research&#34;, ClusterArgs.builder()        
-     *             .clusterName(&#34;Research Cluster&#34;)
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *             .clusterName("Research Cluster")
+     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -10646,7 +11025,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -10678,7 +11058,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10700,12 +11081,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -10737,7 +11119,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10759,12 +11142,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -10796,7 +11180,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10818,12 +11203,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -10855,7 +11241,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10877,12 +11264,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -10914,7 +11302,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10936,12 +11325,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -10973,7 +11363,8 @@ public final class DatabricksFunctions {
      * * Search for a specific SQL Warehouse by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10995,12 +11386,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
-     *             .name(&#34;Starter Warehouse&#34;)
+     *             .name("Starter Warehouse")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related resources
@@ -11023,7 +11415,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11048,13 +11441,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11076,12 +11471,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11104,7 +11500,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11129,13 +11526,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11157,12 +11556,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11185,7 +11585,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11210,13 +11611,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11238,12 +11641,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11266,7 +11670,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11291,13 +11696,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11319,12 +11726,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11347,7 +11755,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11372,13 +11781,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11400,12 +11811,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11428,7 +11840,8 @@ public final class DatabricksFunctions {
      * Retrieve IDs for all SQL warehouses:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11453,13 +11866,15 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve IDs for all clusters having &#34;Shared&#34; in the warehouse name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11481,12 +11896,13 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
-     *             .warehouseNameContains(&#34;shared&#34;)
+     *             .warehouseNameContains("shared")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11545,7 +11961,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11568,10 +11985,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11591,7 +12009,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11614,10 +12033,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11637,7 +12057,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11660,10 +12081,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11683,7 +12105,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11706,10 +12129,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11729,7 +12153,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11752,10 +12177,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11775,7 +12201,8 @@ public final class DatabricksFunctions {
      * List all storage credentials in the metastore
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11798,10 +12225,11 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11821,7 +12249,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11847,20 +12276,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getTablesResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -11872,7 +12301,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11892,7 +12322,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11918,20 +12349,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getTablesResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -11943,7 +12374,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -11963,7 +12395,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11989,20 +12422,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getTablesResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12014,7 +12447,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12034,7 +12468,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12060,20 +12495,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getTablesResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12085,7 +12520,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12109,7 +12545,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12134,21 +12571,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12179,7 +12617,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12204,21 +12643,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12249,7 +12689,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12274,21 +12715,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12319,7 +12761,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12344,21 +12787,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12389,7 +12833,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12414,21 +12859,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12459,7 +12905,8 @@ public final class DatabricksFunctions {
      * Adding user to administrative group
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12484,21 +12931,22 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;admins&#34;)
+     *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName(&#34;me@example.com&#34;)
+     *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
-     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12525,7 +12973,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12551,20 +13000,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .view(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12576,7 +13025,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12596,7 +13046,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12622,20 +13073,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .view(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12647,7 +13098,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12667,7 +13119,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12693,20 +13146,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .view(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12718,7 +13171,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12738,7 +13192,8 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12764,20 +13219,20 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
-     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
      *                     .view(range.value())
      *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal(&#34;sensitive&#34;)
+     *                         .principal("sensitive")
      *                         .privileges(                        
-     *                             &#34;SELECT&#34;,
-     *                             &#34;MODIFY&#34;)
+     *                             "SELECT",
+     *                             "MODIFY")
      *                         .build())
      *                     .build());
      * 
@@ -12789,7 +13244,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12809,7 +13265,8 @@ public final class DatabricksFunctions {
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12831,14 +13288,15 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *         ctx.export("allVolumes", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12859,7 +13317,8 @@ public final class DatabricksFunctions {
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12881,14 +13340,15 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *         ctx.export("allVolumes", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12909,7 +13369,8 @@ public final class DatabricksFunctions {
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12931,14 +13392,15 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *         ctx.export("allVolumes", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -12959,7 +13421,8 @@ public final class DatabricksFunctions {
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12981,14 +13444,15 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
-     *             .catalogName(&#34;sandbox&#34;)
-     *             .schemaName(&#34;things&#34;)
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
      *             .build());
      * 
-     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *         ctx.export("allVolumes", this_);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -13011,7 +13475,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13035,7 +13500,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13050,7 +13516,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13074,7 +13541,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13089,7 +13557,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13113,7 +13582,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13128,7 +13598,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13152,7 +13623,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13167,7 +13639,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13191,7 +13664,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13206,7 +13680,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13230,7 +13705,8 @@ public final class DatabricksFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

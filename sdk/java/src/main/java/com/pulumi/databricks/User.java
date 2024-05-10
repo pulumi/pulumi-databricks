@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Creating regular user:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,19 +53,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User(&#34;me&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
+ *         var me = new User("me", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,27 +93,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName(&#34;admins&#34;)
+ *             .displayName("admins")
  *             .build());
  * 
- *         var me = new User(&#34;me&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
+ *         var me = new User("me", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var i_am_admin = new GroupMember(&#34;i-am-admin&#34;, GroupMemberArgs.builder()        
- *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+ *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()        
+ *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
  *             .memberId(me.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating user with cluster create permissions:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -131,21 +136,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User(&#34;me&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
- *             .displayName(&#34;Example user&#34;)
+ *         var me = new User("me", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
+ *             .displayName("Example user")
  *             .allowClusterCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating user in AWS Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,20 +173,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
- *             .displayName(&#34;Example user&#34;)
+ *         var accountUser = new User("accountUser", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
+ *             .displayName("Example user")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating user in Azure Databricks account:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -200,14 +209,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
- *             .userName(&#34;me@example.com&#34;)
- *             .displayName(&#34;Example user&#34;)
+ *         var accountUser = new User("accountUser", UserArgs.builder()        
+ *             .userName("me{@literal @}example.com")
+ *             .displayName("Example user")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources
@@ -236,14 +246,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     @Export(name="aclPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipalId;
 
     /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
      * 
      */
     public Output<String> aclPrincipalId() {
@@ -382,28 +392,28 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDeleteRepos);
     }
     /**
-     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     @Export(name="home", refs={String.class}, tree="[0]")
     private Output<String> home;
 
     /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
      * 
      */
     public Output<String> home() {
         return this.home;
     }
     /**
-     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     @Export(name="repos", refs={String.class}, tree="[0]")
     private Output<String> repos;
 
     /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
      */
     public Output<String> repos() {
