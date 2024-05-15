@@ -78,6 +78,10 @@ type MwsNccPrivateEndpointRule struct {
 
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
+	// * `PENDING`: The endpoint has been created and pending approval.
+	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+	// * `REJECTED`: Connection was rejected by the private link resource owner.
+	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
@@ -140,6 +144,10 @@ func GetMwsNccPrivateEndpointRule(ctx *pulumi.Context,
 type mwsNccPrivateEndpointRuleState struct {
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
+	// * `PENDING`: The endpoint has been created and pending approval.
+	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+	// * `REJECTED`: Connection was rejected by the private link resource owner.
+	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 	ConnectionState *string `pulumi:"connectionState"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime *int `pulumi:"creationTime"`
@@ -164,6 +172,10 @@ type mwsNccPrivateEndpointRuleState struct {
 type MwsNccPrivateEndpointRuleState struct {
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
+	// * `PENDING`: The endpoint has been created and pending approval.
+	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+	// * `REJECTED`: Connection was rejected by the private link resource owner.
+	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 	ConnectionState pulumi.StringPtrInput
 	// Time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntPtrInput
@@ -192,6 +204,10 @@ func (MwsNccPrivateEndpointRuleState) ElementType() reflect.Type {
 type mwsNccPrivateEndpointRuleArgs struct {
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
+	// * `PENDING`: The endpoint has been created and pending approval.
+	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+	// * `REJECTED`: Connection was rejected by the private link resource owner.
+	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 	ConnectionState *string `pulumi:"connectionState"`
 	// Time in epoch milliseconds when this object was created.
 	CreationTime *int `pulumi:"creationTime"`
@@ -217,6 +233,10 @@ type mwsNccPrivateEndpointRuleArgs struct {
 type MwsNccPrivateEndpointRuleArgs struct {
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
+	// * `PENDING`: The endpoint has been created and pending approval.
+	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+	// * `REJECTED`: Connection was rejected by the private link resource owner.
+	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 	ConnectionState pulumi.StringPtrInput
 	// Time in epoch milliseconds when this object was created.
 	CreationTime pulumi.IntPtrInput
@@ -327,6 +347,10 @@ func (o MwsNccPrivateEndpointRuleOutput) ToMwsNccPrivateEndpointRuleOutputWithCo
 
 // The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 // The possible values are:
+// * `PENDING`: The endpoint has been created and pending approval.
+// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+// * `REJECTED`: Connection was rejected by the private link resource owner.
+// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 func (o MwsNccPrivateEndpointRuleOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }

@@ -30,23 +30,9 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         return this.principal;
     }
 
-    /**
-     * set of available privilege names in upper case.
-     * 
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * 
-     */
     @Import(name="privileges", required=true)
     private Output<List<String>> privileges;
 
-    /**
-     * @return set of available privilege names in upper case.
-     * 
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * 
-     */
     public Output<List<String>> privileges() {
         return this.privileges;
     }
@@ -97,42 +83,15 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
             return principal(Output.of(principal));
         }
 
-        /**
-         * @param privileges set of available privilege names in upper case.
-         * 
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(Output<List<String>> privileges) {
             $.privileges = privileges;
             return this;
         }
 
-        /**
-         * @param privileges set of available privilege names in upper case.
-         * 
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(List<String> privileges) {
             return privileges(Output.of(privileges));
         }
 
-        /**
-         * @param privileges set of available privilege names in upper case.
-         * 
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
         }

@@ -44,6 +44,9 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        /// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+        /// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+        /// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

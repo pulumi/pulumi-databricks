@@ -262,6 +262,9 @@ export interface ClusterGcpAttributes {
     usePreemptibleExecutors?: boolean;
     /**
      * Identifier for the availability zone in which the cluster resides. This can be one of the following:
+     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
      */
     zoneId?: string;
 }
@@ -6039,13 +6042,6 @@ export interface SqlPermissionsPrivilegeAssignment {
      * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: string;
-    /**
-     * set of available privilege names in upper case.
-     *
-     *
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     */
     privileges: string[];
 }
 
