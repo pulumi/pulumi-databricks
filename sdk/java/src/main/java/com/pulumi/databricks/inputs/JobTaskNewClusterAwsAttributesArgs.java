@@ -30,11 +30,25 @@ public final class JobTaskNewClusterAwsAttributesArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.ebsVolumeCount);
     }
 
+    @Import(name="ebsVolumeIops")
+    private @Nullable Output<Integer> ebsVolumeIops;
+
+    public Optional<Output<Integer>> ebsVolumeIops() {
+        return Optional.ofNullable(this.ebsVolumeIops);
+    }
+
     @Import(name="ebsVolumeSize")
     private @Nullable Output<Integer> ebsVolumeSize;
 
     public Optional<Output<Integer>> ebsVolumeSize() {
         return Optional.ofNullable(this.ebsVolumeSize);
+    }
+
+    @Import(name="ebsVolumeThroughput")
+    private @Nullable Output<Integer> ebsVolumeThroughput;
+
+    public Optional<Output<Integer>> ebsVolumeThroughput() {
+        return Optional.ofNullable(this.ebsVolumeThroughput);
     }
 
     @Import(name="ebsVolumeType")
@@ -77,7 +91,9 @@ public final class JobTaskNewClusterAwsAttributesArgs extends com.pulumi.resourc
     private JobTaskNewClusterAwsAttributesArgs(JobTaskNewClusterAwsAttributesArgs $) {
         this.availability = $.availability;
         this.ebsVolumeCount = $.ebsVolumeCount;
+        this.ebsVolumeIops = $.ebsVolumeIops;
         this.ebsVolumeSize = $.ebsVolumeSize;
+        this.ebsVolumeThroughput = $.ebsVolumeThroughput;
         this.ebsVolumeType = $.ebsVolumeType;
         this.firstOnDemand = $.firstOnDemand;
         this.instanceProfileArn = $.instanceProfileArn;
@@ -121,6 +137,15 @@ public final class JobTaskNewClusterAwsAttributesArgs extends com.pulumi.resourc
             return ebsVolumeCount(Output.of(ebsVolumeCount));
         }
 
+        public Builder ebsVolumeIops(@Nullable Output<Integer> ebsVolumeIops) {
+            $.ebsVolumeIops = ebsVolumeIops;
+            return this;
+        }
+
+        public Builder ebsVolumeIops(Integer ebsVolumeIops) {
+            return ebsVolumeIops(Output.of(ebsVolumeIops));
+        }
+
         public Builder ebsVolumeSize(@Nullable Output<Integer> ebsVolumeSize) {
             $.ebsVolumeSize = ebsVolumeSize;
             return this;
@@ -128,6 +153,15 @@ public final class JobTaskNewClusterAwsAttributesArgs extends com.pulumi.resourc
 
         public Builder ebsVolumeSize(Integer ebsVolumeSize) {
             return ebsVolumeSize(Output.of(ebsVolumeSize));
+        }
+
+        public Builder ebsVolumeThroughput(@Nullable Output<Integer> ebsVolumeThroughput) {
+            $.ebsVolumeThroughput = ebsVolumeThroughput;
+            return this;
+        }
+
+        public Builder ebsVolumeThroughput(Integer ebsVolumeThroughput) {
+            return ebsVolumeThroughput(Output.of(ebsVolumeThroughput));
         }
 
         public Builder ebsVolumeType(@Nullable Output<String> ebsVolumeType) {

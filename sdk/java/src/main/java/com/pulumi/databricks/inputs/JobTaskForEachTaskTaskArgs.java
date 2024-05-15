@@ -79,6 +79,13 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="disableAutoOptimization")
+    private @Nullable Output<Boolean> disableAutoOptimization;
+
+    public Optional<Output<Boolean>> disableAutoOptimization() {
+        return Optional.ofNullable(this.disableAutoOptimization);
+    }
+
     /**
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
@@ -262,14 +269,14 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      * 
      */
     @Import(name="runIf")
     private @Nullable Output<String> runIf;
 
     /**
-     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      * 
      */
     public Optional<Output<String>> runIf() {
@@ -365,6 +372,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
+        this.disableAutoOptimization = $.disableAutoOptimization;
         this.emailNotifications = $.emailNotifications;
         this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
@@ -476,6 +484,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder disableAutoOptimization(@Nullable Output<Boolean> disableAutoOptimization) {
+            $.disableAutoOptimization = disableAutoOptimization;
+            return this;
+        }
+
+        public Builder disableAutoOptimization(Boolean disableAutoOptimization) {
+            return disableAutoOptimization(Output.of(disableAutoOptimization));
         }
 
         /**
@@ -739,7 +756,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
          * 
          * @return builder
          * 
@@ -750,7 +767,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
          * 
          * @return builder
          * 

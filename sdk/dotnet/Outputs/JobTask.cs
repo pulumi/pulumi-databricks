@@ -23,6 +23,7 @@ namespace Pulumi.Databricks.Outputs
         /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         /// </summary>
         public readonly string? Description;
+        public readonly bool? DisableAutoOptimization;
         /// <summary>
         /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -71,7 +72,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? RetryOnTimeout;
         /// <summary>
-        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         /// </summary>
         public readonly string? RunIf;
         public readonly Outputs.JobTaskRunJobTask? RunJobTask;
@@ -102,6 +103,8 @@ namespace Pulumi.Databricks.Outputs
             ImmutableArray<Outputs.JobTaskDependsOn> dependsOns,
 
             string? description,
+
+            bool? disableAutoOptimization,
 
             Outputs.JobTaskEmailNotifications? emailNotifications,
 
@@ -155,6 +158,7 @@ namespace Pulumi.Databricks.Outputs
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
+            DisableAutoOptimization = disableAutoOptimization;
             EmailNotifications = emailNotifications;
             EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;

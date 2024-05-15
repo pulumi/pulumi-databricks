@@ -8,11 +8,13 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAzureAttributesArgs;
+import com.pulumi.databricks.inputs.JobTaskNewClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterDockerImageArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptArgs;
+import com.pulumi.databricks.inputs.JobTaskNewClusterLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterWorkloadTypeArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -63,6 +65,13 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<JobTaskNewClusterAzureAttributesArgs>> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
+    }
+
+    @Import(name="cloneFrom")
+    private @Nullable Output<JobTaskNewClusterCloneFromArgs> cloneFrom;
+
+    public Optional<Output<JobTaskNewClusterCloneFromArgs>> cloneFrom() {
+        return Optional.ofNullable(this.cloneFrom);
     }
 
     @Import(name="clusterId")
@@ -170,6 +179,21 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    @Import(name="libraries")
+    private @Nullable Output<List<JobTaskNewClusterLibraryArgs>> libraries;
+
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    public Optional<Output<List<JobTaskNewClusterLibraryArgs>>> libraries() {
+        return Optional.ofNullable(this.libraries);
+    }
+
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
@@ -248,6 +272,7 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
+        this.cloneFrom = $.cloneFrom;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
@@ -263,6 +288,7 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.idempotencyToken = $.idempotencyToken;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.libraries = $.libraries;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
@@ -336,6 +362,15 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder azureAttributes(JobTaskNewClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
+        }
+
+        public Builder cloneFrom(@Nullable Output<JobTaskNewClusterCloneFromArgs> cloneFrom) {
+            $.cloneFrom = cloneFrom;
+            return this;
+        }
+
+        public Builder cloneFrom(JobTaskNewClusterCloneFromArgs cloneFrom) {
+            return cloneFrom(Output.of(cloneFrom));
         }
 
         public Builder clusterId(@Nullable Output<String> clusterId) {
@@ -479,6 +514,37 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder instancePoolId(String instancePoolId) {
             return instancePoolId(Output.of(instancePoolId));
+        }
+
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(@Nullable Output<List<JobTaskNewClusterLibraryArgs>> libraries) {
+            $.libraries = libraries;
+            return this;
+        }
+
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(List<JobTaskNewClusterLibraryArgs> libraries) {
+            return libraries(Output.of(libraries));
+        }
+
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(JobTaskNewClusterLibraryArgs... libraries) {
+            return libraries(List.of(libraries));
         }
 
         public Builder nodeTypeId(@Nullable Output<String> nodeTypeId) {

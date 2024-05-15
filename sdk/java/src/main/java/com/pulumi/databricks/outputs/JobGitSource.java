@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobGitSourceGitSnapshot;
 import com.pulumi.databricks.outputs.JobGitSourceJobSource;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -23,6 +24,7 @@ public final class JobGitSource {
      * 
      */
     private @Nullable String commit;
+    private @Nullable JobGitSourceGitSnapshot gitSnapshot;
     private @Nullable JobGitSourceJobSource jobSource;
     /**
      * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
@@ -54,6 +56,9 @@ public final class JobGitSource {
      */
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
+    }
+    public Optional<JobGitSourceGitSnapshot> gitSnapshot() {
+        return Optional.ofNullable(this.gitSnapshot);
     }
     public Optional<JobGitSourceJobSource> jobSource() {
         return Optional.ofNullable(this.jobSource);
@@ -91,6 +96,7 @@ public final class JobGitSource {
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable String commit;
+        private @Nullable JobGitSourceGitSnapshot gitSnapshot;
         private @Nullable JobGitSourceJobSource jobSource;
         private @Nullable String provider;
         private @Nullable String tag;
@@ -100,6 +106,7 @@ public final class JobGitSource {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
     	      this.commit = defaults.commit;
+    	      this.gitSnapshot = defaults.gitSnapshot;
     	      this.jobSource = defaults.jobSource;
     	      this.provider = defaults.provider;
     	      this.tag = defaults.tag;
@@ -116,6 +123,12 @@ public final class JobGitSource {
         public Builder commit(@Nullable String commit) {
 
             this.commit = commit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitSnapshot(@Nullable JobGitSourceGitSnapshot gitSnapshot) {
+
+            this.gitSnapshot = gitSnapshot;
             return this;
         }
         @CustomType.Setter
@@ -148,6 +161,7 @@ public final class JobGitSource {
             final var _resultValue = new JobGitSource();
             _resultValue.branch = branch;
             _resultValue.commit = commit;
+            _resultValue.gitSnapshot = gitSnapshot;
             _resultValue.jobSource = jobSource;
             _resultValue.provider = provider;
             _resultValue.tag = tag;

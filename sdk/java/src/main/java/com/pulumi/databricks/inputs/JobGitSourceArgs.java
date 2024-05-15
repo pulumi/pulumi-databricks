@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobGitSourceGitSnapshotArgs;
 import com.pulumi.databricks.inputs.JobGitSourceJobSourceArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -45,6 +46,13 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> commit() {
         return Optional.ofNullable(this.commit);
+    }
+
+    @Import(name="gitSnapshot")
+    private @Nullable Output<JobGitSourceGitSnapshotArgs> gitSnapshot;
+
+    public Optional<Output<JobGitSourceGitSnapshotArgs>> gitSnapshot() {
+        return Optional.ofNullable(this.gitSnapshot);
     }
 
     @Import(name="jobSource")
@@ -104,6 +112,7 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
     private JobGitSourceArgs(JobGitSourceArgs $) {
         this.branch = $.branch;
         this.commit = $.commit;
+        this.gitSnapshot = $.gitSnapshot;
         this.jobSource = $.jobSource;
         this.provider = $.provider;
         this.tag = $.tag;
@@ -168,6 +177,15 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder commit(String commit) {
             return commit(Output.of(commit));
+        }
+
+        public Builder gitSnapshot(@Nullable Output<JobGitSourceGitSnapshotArgs> gitSnapshot) {
+            $.gitSnapshot = gitSnapshot;
+            return this;
+        }
+
+        public Builder gitSnapshot(JobGitSourceGitSnapshotArgs gitSnapshot) {
+            return gitSnapshot(Output.of(gitSnapshot));
         }
 
         public Builder jobSource(@Nullable Output<JobGitSourceJobSourceArgs> jobSource) {

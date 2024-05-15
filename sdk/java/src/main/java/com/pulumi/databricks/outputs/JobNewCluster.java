@@ -7,11 +7,13 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobNewClusterAutoscale;
 import com.pulumi.databricks.outputs.JobNewClusterAwsAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterAzureAttributes;
+import com.pulumi.databricks.outputs.JobNewClusterCloneFrom;
 import com.pulumi.databricks.outputs.JobNewClusterClusterLogConf;
 import com.pulumi.databricks.outputs.JobNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.JobNewClusterDockerImage;
 import com.pulumi.databricks.outputs.JobNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterInitScript;
+import com.pulumi.databricks.outputs.JobNewClusterLibrary;
 import com.pulumi.databricks.outputs.JobNewClusterWorkloadType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -31,6 +33,7 @@ public final class JobNewCluster {
     private @Nullable Integer autoterminationMinutes;
     private @Nullable JobNewClusterAwsAttributes awsAttributes;
     private @Nullable JobNewClusterAzureAttributes azureAttributes;
+    private @Nullable JobNewClusterCloneFrom cloneFrom;
     private @Nullable String clusterId;
     private @Nullable JobNewClusterClusterLogConf clusterLogConf;
     private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
@@ -46,6 +49,11 @@ public final class JobNewCluster {
     private @Nullable String idempotencyToken;
     private @Nullable List<JobNewClusterInitScript> initScripts;
     private @Nullable String instancePoolId;
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    private @Nullable List<JobNewClusterLibrary> libraries;
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
     private @Nullable String policyId;
@@ -72,6 +80,9 @@ public final class JobNewCluster {
     }
     public Optional<JobNewClusterAzureAttributes> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
+    }
+    public Optional<JobNewClusterCloneFrom> cloneFrom() {
+        return Optional.ofNullable(this.cloneFrom);
     }
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
@@ -118,6 +129,13 @@ public final class JobNewCluster {
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    public List<JobNewClusterLibrary> libraries() {
+        return this.libraries == null ? List.of() : this.libraries;
+    }
     public Optional<String> nodeTypeId() {
         return Optional.ofNullable(this.nodeTypeId);
     }
@@ -163,6 +181,7 @@ public final class JobNewCluster {
         private @Nullable Integer autoterminationMinutes;
         private @Nullable JobNewClusterAwsAttributes awsAttributes;
         private @Nullable JobNewClusterAzureAttributes azureAttributes;
+        private @Nullable JobNewClusterCloneFrom cloneFrom;
         private @Nullable String clusterId;
         private @Nullable JobNewClusterClusterLogConf clusterLogConf;
         private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
@@ -178,6 +197,7 @@ public final class JobNewCluster {
         private @Nullable String idempotencyToken;
         private @Nullable List<JobNewClusterInitScript> initScripts;
         private @Nullable String instancePoolId;
+        private @Nullable List<JobNewClusterLibrary> libraries;
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
@@ -196,6 +216,7 @@ public final class JobNewCluster {
     	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
     	      this.azureAttributes = defaults.azureAttributes;
+    	      this.cloneFrom = defaults.cloneFrom;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterLogConf = defaults.clusterLogConf;
     	      this.clusterMountInfos = defaults.clusterMountInfos;
@@ -211,6 +232,7 @@ public final class JobNewCluster {
     	      this.idempotencyToken = defaults.idempotencyToken;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
+    	      this.libraries = defaults.libraries;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
@@ -251,6 +273,12 @@ public final class JobNewCluster {
         public Builder azureAttributes(@Nullable JobNewClusterAzureAttributes azureAttributes) {
 
             this.azureAttributes = azureAttributes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloneFrom(@Nullable JobNewClusterCloneFrom cloneFrom) {
+
+            this.cloneFrom = cloneFrom;
             return this;
         }
         @CustomType.Setter
@@ -350,6 +378,15 @@ public final class JobNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder libraries(@Nullable List<JobNewClusterLibrary> libraries) {
+
+            this.libraries = libraries;
+            return this;
+        }
+        public Builder libraries(JobNewClusterLibrary... libraries) {
+            return libraries(List.of(libraries));
+        }
+        @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
 
             this.nodeTypeId = nodeTypeId;
@@ -421,6 +458,7 @@ public final class JobNewCluster {
             _resultValue.autoterminationMinutes = autoterminationMinutes;
             _resultValue.awsAttributes = awsAttributes;
             _resultValue.azureAttributes = azureAttributes;
+            _resultValue.cloneFrom = cloneFrom;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterLogConf = clusterLogConf;
             _resultValue.clusterMountInfos = clusterMountInfos;
@@ -436,6 +474,7 @@ public final class JobNewCluster {
             _resultValue.idempotencyToken = idempotencyToken;
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
+            _resultValue.libraries = libraries;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
             _resultValue.policyId = policyId;

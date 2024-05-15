@@ -27,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("azureAttributes")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesGetArgs>? AzureAttributes { get; set; }
 
+        [Input("cloneFrom")]
+        public Input<Inputs.JobTaskForEachTaskTaskNewClusterCloneFromGetArgs>? CloneFrom { get; set; }
+
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -87,11 +90,23 @@ namespace Pulumi.Databricks.Inputs
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
+        [Input("libraries")]
+        private InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryGetArgs>? _libraries;
+
+        /// <summary>
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// </summary>
+        public InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryGetArgs> Libraries
+        {
+            get => _libraries ?? (_libraries = new InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryGetArgs>());
+            set => _libraries = value;
+        }
+
         [Input("nodeTypeId")]
         public Input<string>? NodeTypeId { get; set; }
 
-        [Input("numWorkers", required: true)]
-        public Input<int> NumWorkers { get; set; } = null!;
+        [Input("numWorkers")]
+        public Input<int>? NumWorkers { get; set; }
 
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobNewClusterAzureAttributesLogAnalyticsInfo;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 public final class JobNewClusterAzureAttributes {
     private @Nullable String availability;
     private @Nullable Integer firstOnDemand;
+    private @Nullable JobNewClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
     private @Nullable Double spotBidMaxPrice;
 
     private JobNewClusterAzureAttributes() {}
@@ -23,6 +25,9 @@ public final class JobNewClusterAzureAttributes {
     }
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
+    }
+    public Optional<JobNewClusterAzureAttributesLogAnalyticsInfo> logAnalyticsInfo() {
+        return Optional.ofNullable(this.logAnalyticsInfo);
     }
     public Optional<Double> spotBidMaxPrice() {
         return Optional.ofNullable(this.spotBidMaxPrice);
@@ -39,12 +44,14 @@ public final class JobNewClusterAzureAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer firstOnDemand;
+        private @Nullable JobNewClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
         private @Nullable Double spotBidMaxPrice;
         public Builder() {}
         public Builder(JobNewClusterAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.firstOnDemand = defaults.firstOnDemand;
+    	      this.logAnalyticsInfo = defaults.logAnalyticsInfo;
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
         }
 
@@ -61,6 +68,12 @@ public final class JobNewClusterAzureAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder logAnalyticsInfo(@Nullable JobNewClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo) {
+
+            this.logAnalyticsInfo = logAnalyticsInfo;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
 
             this.spotBidMaxPrice = spotBidMaxPrice;
@@ -70,6 +83,7 @@ public final class JobNewClusterAzureAttributes {
             final var _resultValue = new JobNewClusterAzureAttributes();
             _resultValue.availability = availability;
             _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.logAnalyticsInfo = logAnalyticsInfo;
             _resultValue.spotBidMaxPrice = spotBidMaxPrice;
             return _resultValue;
         }

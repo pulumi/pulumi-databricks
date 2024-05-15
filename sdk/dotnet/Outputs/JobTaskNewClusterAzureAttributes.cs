@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? Availability;
         public readonly int? FirstOnDemand;
+        public readonly Outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo? LogAnalyticsInfo;
         public readonly double? SpotBidMaxPrice;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Databricks.Outputs
 
             int? firstOnDemand,
 
+            Outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo? logAnalyticsInfo,
+
             double? spotBidMaxPrice)
         {
             Availability = availability;
             FirstOnDemand = firstOnDemand;
+            LogAnalyticsInfo = logAnalyticsInfo;
             SpotBidMaxPrice = spotBidMaxPrice;
         }
     }

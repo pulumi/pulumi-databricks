@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
+import com.pulumi.databricks.outputs.JobTriggerTable;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
@@ -23,6 +24,7 @@ public final class JobTrigger {
      * 
      */
     private @Nullable String pauseStatus;
+    private @Nullable JobTriggerTable table;
     /**
      * @return configuration block to define a trigger for Table Update events consisting of following attributes:
      * 
@@ -44,6 +46,9 @@ public final class JobTrigger {
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
+    public Optional<JobTriggerTable> table() {
+        return Optional.ofNullable(this.table);
+    }
     /**
      * @return configuration block to define a trigger for Table Update events consisting of following attributes:
      * 
@@ -63,12 +68,14 @@ public final class JobTrigger {
     public static final class Builder {
         private @Nullable JobTriggerFileArrival fileArrival;
         private @Nullable String pauseStatus;
+        private @Nullable JobTriggerTable table;
         private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(JobTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileArrival = defaults.fileArrival;
     	      this.pauseStatus = defaults.pauseStatus;
+    	      this.table = defaults.table;
     	      this.tableUpdate = defaults.tableUpdate;
         }
 
@@ -85,6 +92,12 @@ public final class JobTrigger {
             return this;
         }
         @CustomType.Setter
+        public Builder table(@Nullable JobTriggerTable table) {
+
+            this.table = table;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableUpdate(@Nullable JobTriggerTableUpdate tableUpdate) {
 
             this.tableUpdate = tableUpdate;
@@ -94,6 +107,7 @@ public final class JobTrigger {
             final var _resultValue = new JobTrigger();
             _resultValue.fileArrival = fileArrival;
             _resultValue.pauseStatus = pauseStatus;
+            _resultValue.table = table;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;
         }

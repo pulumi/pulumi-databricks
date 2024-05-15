@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskRunJobTask
     {
+        public readonly ImmutableArray<string> DbtCommands;
+        public readonly ImmutableArray<string> JarParams;
         /// <summary>
         /// (String) ID of the job
         /// </summary>
@@ -21,15 +23,45 @@ namespace Pulumi.Databricks.Outputs
         /// (Map) Job parameters for the task
         /// </summary>
         public readonly ImmutableDictionary<string, object>? JobParameters;
+        public readonly ImmutableDictionary<string, object>? NotebookParams;
+        public readonly Outputs.JobTaskRunJobTaskPipelineParams? PipelineParams;
+        public readonly ImmutableDictionary<string, object>? PythonNamedParams;
+        public readonly ImmutableArray<string> PythonParams;
+        public readonly ImmutableArray<string> SparkSubmitParams;
+        public readonly ImmutableDictionary<string, object>? SqlParams;
 
         [OutputConstructor]
         private JobTaskRunJobTask(
+            ImmutableArray<string> dbtCommands,
+
+            ImmutableArray<string> jarParams,
+
             int jobId,
 
-            ImmutableDictionary<string, object>? jobParameters)
+            ImmutableDictionary<string, object>? jobParameters,
+
+            ImmutableDictionary<string, object>? notebookParams,
+
+            Outputs.JobTaskRunJobTaskPipelineParams? pipelineParams,
+
+            ImmutableDictionary<string, object>? pythonNamedParams,
+
+            ImmutableArray<string> pythonParams,
+
+            ImmutableArray<string> sparkSubmitParams,
+
+            ImmutableDictionary<string, object>? sqlParams)
         {
+            DbtCommands = dbtCommands;
+            JarParams = jarParams;
             JobId = jobId;
             JobParameters = jobParameters;
+            NotebookParams = notebookParams;
+            PipelineParams = pipelineParams;
+            PythonNamedParams = pythonNamedParams;
+            PythonParams = pythonParams;
+            SparkSubmitParams = sparkSubmitParams;
+            SqlParams = sqlParams;
         }
     }
 }
