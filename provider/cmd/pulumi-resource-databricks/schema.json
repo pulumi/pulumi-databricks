@@ -430,7 +430,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "Identifier for the availability zone in which the cluster resides. This can be one of the following:\n"
+                    "description": "Identifier for the availability zone in which the cluster resides. This can be one of the following:\n* `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.\n* `AUTO`: Databricks picks an availability zone to schedule the cluster on.\n* name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).\n"
                 }
             },
             "type": "object"
@@ -7899,8 +7899,7 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "set of available privilege names in upper case.\n\n\n[Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:\n[Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:\n"
+                    }
                 }
             },
             "type": "object",
@@ -19213,7 +19212,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n"
+                    "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n* `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane\n* `STORAGE` - for encryption of the DBFS Storage \u0026 Cluster EBS Volumes\n"
                 }
             },
             "required": [
@@ -19251,7 +19250,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n",
+                    "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n* `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane\n* `STORAGE` - for encryption of the DBFS Storage \u0026 Cluster EBS Volumes\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -19290,7 +19289,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n",
+                        "description": "*(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = [\"MANAGED_SERVICES\"]` to keep the previous behaviour.* Possible values are:\n* `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane\n* `STORAGE` - for encryption of the DBFS Storage \u0026 Cluster EBS Volumes\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19540,7 +19539,7 @@
             "properties": {
                 "connectionState": {
                     "type": "string",
-                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n* `PENDING`: The endpoint has been created and pending approval.\n* `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.\n* `REJECTED`: Connection was rejected by the private link resource owner.\n* `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.\n"
                 },
                 "creationTime": {
                     "type": "integer",
@@ -19592,7 +19591,7 @@
             "inputProperties": {
                 "connectionState": {
                     "type": "string",
-                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                    "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n* `PENDING`: The endpoint has been created and pending approval.\n* `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.\n* `REJECTED`: Connection was rejected by the private link resource owner.\n* `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.\n"
                 },
                 "creationTime": {
                     "type": "integer",
@@ -19646,7 +19645,7 @@
                 "properties": {
                     "connectionState": {
                         "type": "string",
-                        "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n"
+                        "description": "The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.\nThe possible values are:\n* `PENDING`: The endpoint has been created and pending approval.\n* `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.\n* `REJECTED`: Connection was rejected by the private link resource owner.\n* `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.\n"
                     },
                     "creationTime": {
                         "type": "integer",
@@ -25070,7 +25069,7 @@
                 },
                 "indexType": {
                     "type": "string",
-                    "description": "Vector Search index type. Currently supported values are:\n"
+                    "description": "Vector Search index type. Currently supported values are:\n* `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.\n* `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.\n"
                 },
                 "name": {
                     "type": "string",
@@ -25114,7 +25113,7 @@
                 },
                 "indexType": {
                     "type": "string",
-                    "description": "Vector Search index type. Currently supported values are:\n",
+                    "description": "Vector Search index type. Currently supported values are:\n* `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.\n* `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -25157,7 +25156,7 @@
                     },
                     "indexType": {
                         "type": "string",
-                        "description": "Vector Search index type. Currently supported values are:\n",
+                        "description": "Vector Search index type. Currently supported values are:\n* `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.\n* `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
