@@ -409,6 +409,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "git_snapshot": {
+                                    "maxItemsOne": true
+                                },
                                 "job_source": {
                                     "maxItemsOne": true
                                 }
@@ -440,6 +443,16 @@
                                                 "maxItemsOne": true
                                             },
                                             "azure_attributes": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "log_analytics_info": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "clone_from": {
                                                 "maxItemsOne": true
                                             },
                                             "cluster_log_conf": {
@@ -506,6 +519,29 @@
                                                     }
                                                 }
                                             },
+                                            "library": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cran": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "maven": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "exclusions": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "pypi": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
                                             },
@@ -559,6 +595,16 @@
                                     "maxItemsOne": true
                                 },
                                 "azure_attributes": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log_analytics_info": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "clone_from": {
                                     "maxItemsOne": true
                                 },
                                 "cluster_log_conf": {
@@ -620,6 +666,29 @@
                                                 "maxItemsOne": true
                                             },
                                             "workspace": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "library": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cran": {
+                                                "maxItemsOne": true
+                                            },
+                                            "maven": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "exclusions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "pypi": {
                                                 "maxItemsOne": true
                                             }
                                         }
@@ -831,6 +900,16 @@
                                                                         "maxItemsOne": true
                                                                     },
                                                                     "azure_attributes": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "log_analytics_info": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "clone_from": {
                                                                         "maxItemsOne": true
                                                                     },
                                                                     "cluster_log_conf": {
@@ -897,6 +976,29 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "library": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "cran": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "maven": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exclusions": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "pypi": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
                                                                     "ssh_public_keys": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -933,7 +1035,26 @@
                                                             }
                                                         },
                                                         "run_job_task": {
-                                                            "maxItemsOne": true
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "dbt_commands": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "jar_params": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "pipeline_params": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "python_params": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "spark_submit_params": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "spark_jar_task": {
                                                             "maxItemsOne": true,
@@ -1067,6 +1188,16 @@
                                                 "maxItemsOne": true
                                             },
                                             "azure_attributes": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "log_analytics_info": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "clone_from": {
                                                 "maxItemsOne": true
                                             },
                                             "cluster_log_conf": {
@@ -1133,6 +1264,29 @@
                                                     }
                                                 }
                                             },
+                                            "library": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cran": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "maven": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "exclusions": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "pypi": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
                                             },
@@ -1169,7 +1323,26 @@
                                     }
                                 },
                                 "run_job_task": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dbt_commands": {
+                                                "maxItemsOne": false
+                                            },
+                                            "jar_params": {
+                                                "maxItemsOne": false
+                                            },
+                                            "pipeline_params": {
+                                                "maxItemsOne": true
+                                            },
+                                            "python_params": {
+                                                "maxItemsOne": false
+                                            },
+                                            "spark_submit_params": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "spark_jar_task": {
                                     "maxItemsOne": true,
@@ -1262,6 +1435,16 @@
                             "fields": {
                                 "file_arrival": {
                                     "maxItemsOne": true
+                                },
+                                "table": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "table_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "table_update": {
                                     "maxItemsOne": true,
