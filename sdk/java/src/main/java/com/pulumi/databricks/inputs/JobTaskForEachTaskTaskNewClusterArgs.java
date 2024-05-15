@@ -8,11 +8,13 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterDockerImageArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterInitScriptArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -63,6 +65,13 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
     public Optional<Output<JobTaskForEachTaskTaskNewClusterAzureAttributesArgs>> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
+    }
+
+    @Import(name="cloneFrom")
+    private @Nullable Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs> cloneFrom;
+
+    public Optional<Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs>> cloneFrom() {
+        return Optional.ofNullable(this.cloneFrom);
     }
 
     @Import(name="clusterId")
@@ -170,6 +179,21 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    @Import(name="libraries")
+    private @Nullable Output<List<JobTaskForEachTaskTaskNewClusterLibraryArgs>> libraries;
+
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * 
+     */
+    public Optional<Output<List<JobTaskForEachTaskTaskNewClusterLibraryArgs>>> libraries() {
+        return Optional.ofNullable(this.libraries);
+    }
+
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
@@ -177,11 +201,11 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.nodeTypeId);
     }
 
-    @Import(name="numWorkers", required=true)
-    private Output<Integer> numWorkers;
+    @Import(name="numWorkers")
+    private @Nullable Output<Integer> numWorkers;
 
-    public Output<Integer> numWorkers() {
-        return this.numWorkers;
+    public Optional<Output<Integer>> numWorkers() {
+        return Optional.ofNullable(this.numWorkers);
     }
 
     @Import(name="policyId")
@@ -248,6 +272,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
+        this.cloneFrom = $.cloneFrom;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
@@ -263,6 +288,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.idempotencyToken = $.idempotencyToken;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.libraries = $.libraries;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
@@ -336,6 +362,15 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder azureAttributes(JobTaskForEachTaskTaskNewClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
+        }
+
+        public Builder cloneFrom(@Nullable Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs> cloneFrom) {
+            $.cloneFrom = cloneFrom;
+            return this;
+        }
+
+        public Builder cloneFrom(JobTaskForEachTaskTaskNewClusterCloneFromArgs cloneFrom) {
+            return cloneFrom(Output.of(cloneFrom));
         }
 
         public Builder clusterId(@Nullable Output<String> clusterId) {
@@ -481,6 +516,37 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
             return instancePoolId(Output.of(instancePoolId));
         }
 
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(@Nullable Output<List<JobTaskForEachTaskTaskNewClusterLibraryArgs>> libraries) {
+            $.libraries = libraries;
+            return this;
+        }
+
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(List<JobTaskForEachTaskTaskNewClusterLibraryArgs> libraries) {
+            return libraries(Output.of(libraries));
+        }
+
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder libraries(JobTaskForEachTaskTaskNewClusterLibraryArgs... libraries) {
+            return libraries(List.of(libraries));
+        }
+
         public Builder nodeTypeId(@Nullable Output<String> nodeTypeId) {
             $.nodeTypeId = nodeTypeId;
             return this;
@@ -490,7 +556,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
             return nodeTypeId(Output.of(nodeTypeId));
         }
 
-        public Builder numWorkers(Output<Integer> numWorkers) {
+        public Builder numWorkers(@Nullable Output<Integer> numWorkers) {
             $.numWorkers = numWorkers;
             return this;
         }
@@ -576,9 +642,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         }
 
         public JobTaskForEachTaskTaskNewClusterArgs build() {
-            if ($.numWorkers == null) {
-                throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskNewClusterArgs", "numWorkers");
-            }
             if ($.sparkVersion == null) {
                 throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskNewClusterArgs", "sparkVersion");
             }

@@ -8948,8 +8948,9 @@ type JobGitSource struct {
 	// name of the Git branch to use. Conflicts with `tag` and `commit`.
 	Branch *string `pulumi:"branch"`
 	// hash of Git commit to use. Conflicts with `branch` and `tag`.
-	Commit    *string                `pulumi:"commit"`
-	JobSource *JobGitSourceJobSource `pulumi:"jobSource"`
+	Commit      *string                  `pulumi:"commit"`
+	GitSnapshot *JobGitSourceGitSnapshot `pulumi:"gitSnapshot"`
+	JobSource   *JobGitSourceJobSource   `pulumi:"jobSource"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 	Provider *string `pulumi:"provider"`
 	// name of the Git branch to use. Conflicts with `branch` and `commit`.
@@ -8973,8 +8974,9 @@ type JobGitSourceArgs struct {
 	// name of the Git branch to use. Conflicts with `tag` and `commit`.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
 	// hash of Git commit to use. Conflicts with `branch` and `tag`.
-	Commit    pulumi.StringPtrInput         `pulumi:"commit"`
-	JobSource JobGitSourceJobSourcePtrInput `pulumi:"jobSource"`
+	Commit      pulumi.StringPtrInput           `pulumi:"commit"`
+	GitSnapshot JobGitSourceGitSnapshotPtrInput `pulumi:"gitSnapshot"`
+	JobSource   JobGitSourceJobSourcePtrInput   `pulumi:"jobSource"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// name of the Git branch to use. Conflicts with `branch` and `commit`.
@@ -9070,6 +9072,10 @@ func (o JobGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
 
+func (o JobGitSourceOutput) GitSnapshot() JobGitSourceGitSnapshotPtrOutput {
+	return o.ApplyT(func(v JobGitSource) *JobGitSourceGitSnapshot { return v.GitSnapshot }).(JobGitSourceGitSnapshotPtrOutput)
+}
+
 func (o JobGitSourceOutput) JobSource() JobGitSourceJobSourcePtrOutput {
 	return o.ApplyT(func(v JobGitSource) *JobGitSourceJobSource { return v.JobSource }).(JobGitSourceJobSourcePtrOutput)
 }
@@ -9133,6 +9139,15 @@ func (o JobGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o JobGitSourcePtrOutput) GitSnapshot() JobGitSourceGitSnapshotPtrOutput {
+	return o.ApplyT(func(v *JobGitSource) *JobGitSourceGitSnapshot {
+		if v == nil {
+			return nil
+		}
+		return v.GitSnapshot
+	}).(JobGitSourceGitSnapshotPtrOutput)
+}
+
 func (o JobGitSourcePtrOutput) JobSource() JobGitSourceJobSourcePtrOutput {
 	return o.ApplyT(func(v *JobGitSource) *JobGitSourceJobSource {
 		if v == nil {
@@ -9169,6 +9184,139 @@ func (o JobGitSourcePtrOutput) Url() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobGitSourceGitSnapshot struct {
+	UsedCommit *string `pulumi:"usedCommit"`
+}
+
+// JobGitSourceGitSnapshotInput is an input type that accepts JobGitSourceGitSnapshotArgs and JobGitSourceGitSnapshotOutput values.
+// You can construct a concrete instance of `JobGitSourceGitSnapshotInput` via:
+//
+//	JobGitSourceGitSnapshotArgs{...}
+type JobGitSourceGitSnapshotInput interface {
+	pulumi.Input
+
+	ToJobGitSourceGitSnapshotOutput() JobGitSourceGitSnapshotOutput
+	ToJobGitSourceGitSnapshotOutputWithContext(context.Context) JobGitSourceGitSnapshotOutput
+}
+
+type JobGitSourceGitSnapshotArgs struct {
+	UsedCommit pulumi.StringPtrInput `pulumi:"usedCommit"`
+}
+
+func (JobGitSourceGitSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobGitSourceGitSnapshot)(nil)).Elem()
+}
+
+func (i JobGitSourceGitSnapshotArgs) ToJobGitSourceGitSnapshotOutput() JobGitSourceGitSnapshotOutput {
+	return i.ToJobGitSourceGitSnapshotOutputWithContext(context.Background())
+}
+
+func (i JobGitSourceGitSnapshotArgs) ToJobGitSourceGitSnapshotOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceGitSnapshotOutput)
+}
+
+func (i JobGitSourceGitSnapshotArgs) ToJobGitSourceGitSnapshotPtrOutput() JobGitSourceGitSnapshotPtrOutput {
+	return i.ToJobGitSourceGitSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i JobGitSourceGitSnapshotArgs) ToJobGitSourceGitSnapshotPtrOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceGitSnapshotOutput).ToJobGitSourceGitSnapshotPtrOutputWithContext(ctx)
+}
+
+// JobGitSourceGitSnapshotPtrInput is an input type that accepts JobGitSourceGitSnapshotArgs, JobGitSourceGitSnapshotPtr and JobGitSourceGitSnapshotPtrOutput values.
+// You can construct a concrete instance of `JobGitSourceGitSnapshotPtrInput` via:
+//
+//	        JobGitSourceGitSnapshotArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobGitSourceGitSnapshotPtrInput interface {
+	pulumi.Input
+
+	ToJobGitSourceGitSnapshotPtrOutput() JobGitSourceGitSnapshotPtrOutput
+	ToJobGitSourceGitSnapshotPtrOutputWithContext(context.Context) JobGitSourceGitSnapshotPtrOutput
+}
+
+type jobGitSourceGitSnapshotPtrType JobGitSourceGitSnapshotArgs
+
+func JobGitSourceGitSnapshotPtr(v *JobGitSourceGitSnapshotArgs) JobGitSourceGitSnapshotPtrInput {
+	return (*jobGitSourceGitSnapshotPtrType)(v)
+}
+
+func (*jobGitSourceGitSnapshotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobGitSourceGitSnapshot)(nil)).Elem()
+}
+
+func (i *jobGitSourceGitSnapshotPtrType) ToJobGitSourceGitSnapshotPtrOutput() JobGitSourceGitSnapshotPtrOutput {
+	return i.ToJobGitSourceGitSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *jobGitSourceGitSnapshotPtrType) ToJobGitSourceGitSnapshotPtrOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceGitSnapshotPtrOutput)
+}
+
+type JobGitSourceGitSnapshotOutput struct{ *pulumi.OutputState }
+
+func (JobGitSourceGitSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobGitSourceGitSnapshot)(nil)).Elem()
+}
+
+func (o JobGitSourceGitSnapshotOutput) ToJobGitSourceGitSnapshotOutput() JobGitSourceGitSnapshotOutput {
+	return o
+}
+
+func (o JobGitSourceGitSnapshotOutput) ToJobGitSourceGitSnapshotOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotOutput {
+	return o
+}
+
+func (o JobGitSourceGitSnapshotOutput) ToJobGitSourceGitSnapshotPtrOutput() JobGitSourceGitSnapshotPtrOutput {
+	return o.ToJobGitSourceGitSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (o JobGitSourceGitSnapshotOutput) ToJobGitSourceGitSnapshotPtrOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobGitSourceGitSnapshot) *JobGitSourceGitSnapshot {
+		return &v
+	}).(JobGitSourceGitSnapshotPtrOutput)
+}
+
+func (o JobGitSourceGitSnapshotOutput) UsedCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobGitSourceGitSnapshot) *string { return v.UsedCommit }).(pulumi.StringPtrOutput)
+}
+
+type JobGitSourceGitSnapshotPtrOutput struct{ *pulumi.OutputState }
+
+func (JobGitSourceGitSnapshotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobGitSourceGitSnapshot)(nil)).Elem()
+}
+
+func (o JobGitSourceGitSnapshotPtrOutput) ToJobGitSourceGitSnapshotPtrOutput() JobGitSourceGitSnapshotPtrOutput {
+	return o
+}
+
+func (o JobGitSourceGitSnapshotPtrOutput) ToJobGitSourceGitSnapshotPtrOutputWithContext(ctx context.Context) JobGitSourceGitSnapshotPtrOutput {
+	return o
+}
+
+func (o JobGitSourceGitSnapshotPtrOutput) Elem() JobGitSourceGitSnapshotOutput {
+	return o.ApplyT(func(v *JobGitSourceGitSnapshot) JobGitSourceGitSnapshot {
+		if v != nil {
+			return *v
+		}
+		var ret JobGitSourceGitSnapshot
+		return ret
+	}).(JobGitSourceGitSnapshotOutput)
+}
+
+func (o JobGitSourceGitSnapshotPtrOutput) UsedCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobGitSourceGitSnapshot) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsedCommit
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9699,6 +9847,7 @@ type JobJobClusterNewCluster struct {
 	AutoterminationMinutes    *int                                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobJobClusterNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobJobClusterNewClusterAzureAttributes   `pulumi:"azureAttributes"`
+	CloneFrom                 *JobJobClusterNewClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId                 *string                                   `pulumi:"clusterId"`
 	ClusterLogConf            *JobJobClusterNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobJobClusterNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
@@ -9714,16 +9863,18 @@ type JobJobClusterNewCluster struct {
 	IdempotencyToken          *string                                   `pulumi:"idempotencyToken"`
 	InitScripts               []JobJobClusterNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                                   `pulumi:"instancePoolId"`
-	NodeTypeId                *string                                   `pulumi:"nodeTypeId"`
-	NumWorkers                *int                                      `pulumi:"numWorkers"`
-	PolicyId                  *string                                   `pulumi:"policyId"`
-	RuntimeEngine             *string                                   `pulumi:"runtimeEngine"`
-	SingleUserName            *string                                   `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                    `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                    `pulumi:"sparkEnvVars"`
-	SparkVersion              string                                    `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                                  `pulumi:"sshPublicKeys"`
-	WorkloadType              *JobJobClusterNewClusterWorkloadType      `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      []JobJobClusterNewClusterLibrary     `pulumi:"libraries"`
+	NodeTypeId     *string                              `pulumi:"nodeTypeId"`
+	NumWorkers     *int                                 `pulumi:"numWorkers"`
+	PolicyId       *string                              `pulumi:"policyId"`
+	RuntimeEngine  *string                              `pulumi:"runtimeEngine"`
+	SingleUserName *string                              `pulumi:"singleUserName"`
+	SparkConf      map[string]interface{}               `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]interface{}               `pulumi:"sparkEnvVars"`
+	SparkVersion   string                               `pulumi:"sparkVersion"`
+	SshPublicKeys  []string                             `pulumi:"sshPublicKeys"`
+	WorkloadType   *JobJobClusterNewClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // JobJobClusterNewClusterInput is an input type that accepts JobJobClusterNewClusterArgs and JobJobClusterNewClusterOutput values.
@@ -9743,6 +9894,7 @@ type JobJobClusterNewClusterArgs struct {
 	AutoterminationMinutes    pulumi.IntPtrInput                                `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobJobClusterNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobJobClusterNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
+	CloneFrom                 JobJobClusterNewClusterCloneFromPtrInput          `pulumi:"cloneFrom"`
 	ClusterId                 pulumi.StringPtrInput                             `pulumi:"clusterId"`
 	ClusterLogConf            JobJobClusterNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobJobClusterNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
@@ -9758,16 +9910,18 @@ type JobJobClusterNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                             `pulumi:"idempotencyToken"`
 	InitScripts               JobJobClusterNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                             `pulumi:"instancePoolId"`
-	NodeTypeId                pulumi.StringPtrInput                             `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntPtrInput                                `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                             `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                             `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                             `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                   `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                   `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringInput                                `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                           `pulumi:"sshPublicKeys"`
-	WorkloadType              JobJobClusterNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      JobJobClusterNewClusterLibraryArrayInput    `pulumi:"libraries"`
+	NodeTypeId     pulumi.StringPtrInput                       `pulumi:"nodeTypeId"`
+	NumWorkers     pulumi.IntPtrInput                          `pulumi:"numWorkers"`
+	PolicyId       pulumi.StringPtrInput                       `pulumi:"policyId"`
+	RuntimeEngine  pulumi.StringPtrInput                       `pulumi:"runtimeEngine"`
+	SingleUserName pulumi.StringPtrInput                       `pulumi:"singleUserName"`
+	SparkConf      pulumi.MapInput                             `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.MapInput                             `pulumi:"sparkEnvVars"`
+	SparkVersion   pulumi.StringInput                          `pulumi:"sparkVersion"`
+	SshPublicKeys  pulumi.StringArrayInput                     `pulumi:"sshPublicKeys"`
+	WorkloadType   JobJobClusterNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (JobJobClusterNewClusterArgs) ElementType() reflect.Type {
@@ -9867,6 +10021,10 @@ func (o JobJobClusterNewClusterOutput) AzureAttributes() JobJobClusterNewCluster
 	return o.ApplyT(func(v JobJobClusterNewCluster) *JobJobClusterNewClusterAzureAttributes { return v.AzureAttributes }).(JobJobClusterNewClusterAzureAttributesPtrOutput)
 }
 
+func (o JobJobClusterNewClusterOutput) CloneFrom() JobJobClusterNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) *JobJobClusterNewClusterCloneFrom { return v.CloneFrom }).(JobJobClusterNewClusterCloneFromPtrOutput)
+}
+
 func (o JobJobClusterNewClusterOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -9925,6 +10083,11 @@ func (o JobJobClusterNewClusterOutput) InitScripts() JobJobClusterNewClusterInit
 
 func (o JobJobClusterNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobJobClusterNewClusterOutput) Libraries() JobJobClusterNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) []JobJobClusterNewClusterLibrary { return v.Libraries }).(JobJobClusterNewClusterLibraryArrayOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -10034,6 +10197,15 @@ func (o JobJobClusterNewClusterPtrOutput) AzureAttributes() JobJobClusterNewClus
 		}
 		return v.AzureAttributes
 	}).(JobJobClusterNewClusterAzureAttributesPtrOutput)
+}
+
+func (o JobJobClusterNewClusterPtrOutput) CloneFrom() JobJobClusterNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterCloneFrom {
+		if v == nil {
+			return nil
+		}
+		return v.CloneFrom
+	}).(JobJobClusterNewClusterCloneFromPtrOutput)
 }
 
 func (o JobJobClusterNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
@@ -10169,6 +10341,16 @@ func (o JobJobClusterNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutpu
 		}
 		return v.InstancePoolId
 	}).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobJobClusterNewClusterPtrOutput) Libraries() JobJobClusterNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v *JobJobClusterNewCluster) []JobJobClusterNewClusterLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.Libraries
+	}).(JobJobClusterNewClusterLibraryArrayOutput)
 }
 
 func (o JobJobClusterNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -10412,7 +10594,9 @@ func (o JobJobClusterNewClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOut
 type JobJobClusterNewClusterAwsAttributes struct {
 	Availability        *string `pulumi:"availability"`
 	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       *int    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
 	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
@@ -10434,7 +10618,9 @@ type JobJobClusterNewClusterAwsAttributesInput interface {
 type JobJobClusterNewClusterAwsAttributesArgs struct {
 	Availability        pulumi.StringPtrInput `pulumi:"availability"`
 	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       pulumi.IntPtrInput    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
 	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -10527,8 +10713,16 @@ func (o JobJobClusterNewClusterAwsAttributesOutput) EbsVolumeCount() pulumi.IntP
 	return o.ApplyT(func(v JobJobClusterNewClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+func (o JobJobClusterNewClusterAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
 func (o JobJobClusterNewClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o JobJobClusterNewClusterAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
 }
 
 func (o JobJobClusterNewClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
@@ -10593,12 +10787,30 @@ func (o JobJobClusterNewClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobJobClusterNewClusterAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o JobJobClusterNewClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterAwsAttributes) *int {
 		if v == nil {
 			return nil
 		}
 		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobJobClusterNewClusterAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -10648,9 +10860,10 @@ func (o JobJobClusterNewClusterAwsAttributesPtrOutput) ZoneId() pulumi.StringPtr
 }
 
 type JobJobClusterNewClusterAzureAttributes struct {
-	Availability    *string  `pulumi:"availability"`
-	FirstOnDemand   *int     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
+	Availability     *string                                                 `pulumi:"availability"`
+	FirstOnDemand    *int                                                    `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  *float64                                                `pulumi:"spotBidMaxPrice"`
 }
 
 // JobJobClusterNewClusterAzureAttributesInput is an input type that accepts JobJobClusterNewClusterAzureAttributesArgs and JobJobClusterNewClusterAzureAttributesOutput values.
@@ -10665,9 +10878,10 @@ type JobJobClusterNewClusterAzureAttributesInput interface {
 }
 
 type JobJobClusterNewClusterAzureAttributesArgs struct {
-	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
-	FirstOnDemand   pulumi.IntPtrInput     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
+	Availability     pulumi.StringPtrInput                                          `pulumi:"availability"`
+	FirstOnDemand    pulumi.IntPtrInput                                             `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  pulumi.Float64PtrInput                                         `pulumi:"spotBidMaxPrice"`
 }
 
 func (JobJobClusterNewClusterAzureAttributesArgs) ElementType() reflect.Type {
@@ -10755,6 +10969,12 @@ func (o JobJobClusterNewClusterAzureAttributesOutput) FirstOnDemand() pulumi.Int
 	return o.ApplyT(func(v JobJobClusterNewClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+func (o JobJobClusterNewClusterAzureAttributesOutput) LogAnalyticsInfo() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterAzureAttributes) *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+		return v.LogAnalyticsInfo
+	}).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobJobClusterNewClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -10801,6 +11021,15 @@ func (o JobJobClusterNewClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobJobClusterNewClusterAzureAttributesPtrOutput) LogAnalyticsInfo() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAzureAttributes) *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobJobClusterNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterAzureAttributes) *float64 {
 		if v == nil {
@@ -10808,6 +11037,291 @@ func (o JobJobClusterNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulum
 		}
 		return v.SpotBidMaxPrice
 	}).(pulumi.Float64PtrOutput)
+}
+
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoInput is an input type that accepts JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs and JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput
+	ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput
+}
+
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput).ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs, JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtr and JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+	ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type jobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrType JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs
+
+func JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtr(v *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*jobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*jobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) Elem() JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterCloneFrom struct {
+	SourceClusterId string `pulumi:"sourceClusterId"`
+}
+
+// JobJobClusterNewClusterCloneFromInput is an input type that accepts JobJobClusterNewClusterCloneFromArgs and JobJobClusterNewClusterCloneFromOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterCloneFromInput` via:
+//
+//	JobJobClusterNewClusterCloneFromArgs{...}
+type JobJobClusterNewClusterCloneFromInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterCloneFromOutput() JobJobClusterNewClusterCloneFromOutput
+	ToJobJobClusterNewClusterCloneFromOutputWithContext(context.Context) JobJobClusterNewClusterCloneFromOutput
+}
+
+type JobJobClusterNewClusterCloneFromArgs struct {
+	SourceClusterId pulumi.StringInput `pulumi:"sourceClusterId"`
+}
+
+func (JobJobClusterNewClusterCloneFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterCloneFromArgs) ToJobJobClusterNewClusterCloneFromOutput() JobJobClusterNewClusterCloneFromOutput {
+	return i.ToJobJobClusterNewClusterCloneFromOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterCloneFromArgs) ToJobJobClusterNewClusterCloneFromOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterCloneFromOutput)
+}
+
+func (i JobJobClusterNewClusterCloneFromArgs) ToJobJobClusterNewClusterCloneFromPtrOutput() JobJobClusterNewClusterCloneFromPtrOutput {
+	return i.ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterCloneFromArgs) ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterCloneFromOutput).ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterCloneFromPtrInput is an input type that accepts JobJobClusterNewClusterCloneFromArgs, JobJobClusterNewClusterCloneFromPtr and JobJobClusterNewClusterCloneFromPtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterCloneFromPtrInput` via:
+//
+//	        JobJobClusterNewClusterCloneFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterCloneFromPtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterCloneFromPtrOutput() JobJobClusterNewClusterCloneFromPtrOutput
+	ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(context.Context) JobJobClusterNewClusterCloneFromPtrOutput
+}
+
+type jobJobClusterNewClusterCloneFromPtrType JobJobClusterNewClusterCloneFromArgs
+
+func JobJobClusterNewClusterCloneFromPtr(v *JobJobClusterNewClusterCloneFromArgs) JobJobClusterNewClusterCloneFromPtrInput {
+	return (*jobJobClusterNewClusterCloneFromPtrType)(v)
+}
+
+func (*jobJobClusterNewClusterCloneFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterCloneFromPtrType) ToJobJobClusterNewClusterCloneFromPtrOutput() JobJobClusterNewClusterCloneFromPtrOutput {
+	return i.ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterCloneFromPtrType) ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterCloneFromPtrOutput)
+}
+
+type JobJobClusterNewClusterCloneFromOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterCloneFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterCloneFromOutput) ToJobJobClusterNewClusterCloneFromOutput() JobJobClusterNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterCloneFromOutput) ToJobJobClusterNewClusterCloneFromOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterCloneFromOutput) ToJobJobClusterNewClusterCloneFromPtrOutput() JobJobClusterNewClusterCloneFromPtrOutput {
+	return o.ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterCloneFromOutput) ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterCloneFrom) *JobJobClusterNewClusterCloneFrom {
+		return &v
+	}).(JobJobClusterNewClusterCloneFromPtrOutput)
+}
+
+func (o JobJobClusterNewClusterCloneFromOutput) SourceClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterCloneFrom) string { return v.SourceClusterId }).(pulumi.StringOutput)
+}
+
+type JobJobClusterNewClusterCloneFromPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterCloneFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterCloneFromPtrOutput) ToJobJobClusterNewClusterCloneFromPtrOutput() JobJobClusterNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterCloneFromPtrOutput) ToJobJobClusterNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterCloneFromPtrOutput) Elem() JobJobClusterNewClusterCloneFromOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterCloneFrom) JobJobClusterNewClusterCloneFrom {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterCloneFrom
+		return ret
+	}).(JobJobClusterNewClusterCloneFromOutput)
+}
+
+func (o JobJobClusterNewClusterCloneFromPtrOutput) SourceClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterCloneFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobJobClusterNewClusterClusterLogConf struct {
@@ -13145,6 +13659,595 @@ func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) Destination() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobJobClusterNewClusterLibrary struct {
+	Cran         *JobJobClusterNewClusterLibraryCran  `pulumi:"cran"`
+	Egg          *string                              `pulumi:"egg"`
+	Jar          *string                              `pulumi:"jar"`
+	Maven        *JobJobClusterNewClusterLibraryMaven `pulumi:"maven"`
+	Pypi         *JobJobClusterNewClusterLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                              `pulumi:"requirements"`
+	Whl          *string                              `pulumi:"whl"`
+}
+
+// JobJobClusterNewClusterLibraryInput is an input type that accepts JobJobClusterNewClusterLibraryArgs and JobJobClusterNewClusterLibraryOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryInput` via:
+//
+//	JobJobClusterNewClusterLibraryArgs{...}
+type JobJobClusterNewClusterLibraryInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryOutput() JobJobClusterNewClusterLibraryOutput
+	ToJobJobClusterNewClusterLibraryOutputWithContext(context.Context) JobJobClusterNewClusterLibraryOutput
+}
+
+type JobJobClusterNewClusterLibraryArgs struct {
+	Cran         JobJobClusterNewClusterLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                       `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                       `pulumi:"jar"`
+	Maven        JobJobClusterNewClusterLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobJobClusterNewClusterLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                       `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                       `pulumi:"whl"`
+}
+
+func (JobJobClusterNewClusterLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterLibraryArgs) ToJobJobClusterNewClusterLibraryOutput() JobJobClusterNewClusterLibraryOutput {
+	return i.ToJobJobClusterNewClusterLibraryOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryArgs) ToJobJobClusterNewClusterLibraryOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryOutput)
+}
+
+// JobJobClusterNewClusterLibraryArrayInput is an input type that accepts JobJobClusterNewClusterLibraryArray and JobJobClusterNewClusterLibraryArrayOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryArrayInput` via:
+//
+//	JobJobClusterNewClusterLibraryArray{ JobJobClusterNewClusterLibraryArgs{...} }
+type JobJobClusterNewClusterLibraryArrayInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryArrayOutput() JobJobClusterNewClusterLibraryArrayOutput
+	ToJobJobClusterNewClusterLibraryArrayOutputWithContext(context.Context) JobJobClusterNewClusterLibraryArrayOutput
+}
+
+type JobJobClusterNewClusterLibraryArray []JobJobClusterNewClusterLibraryInput
+
+func (JobJobClusterNewClusterLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobJobClusterNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterLibraryArray) ToJobJobClusterNewClusterLibraryArrayOutput() JobJobClusterNewClusterLibraryArrayOutput {
+	return i.ToJobJobClusterNewClusterLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryArray) ToJobJobClusterNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryArrayOutput)
+}
+
+type JobJobClusterNewClusterLibraryOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) ToJobJobClusterNewClusterLibraryOutput() JobJobClusterNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) ToJobJobClusterNewClusterLibraryOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Cran() JobJobClusterNewClusterLibraryCranPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *JobJobClusterNewClusterLibraryCran { return v.Cran }).(JobJobClusterNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Maven() JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *JobJobClusterNewClusterLibraryMaven { return v.Maven }).(JobJobClusterNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Pypi() JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *JobJobClusterNewClusterLibraryPypi { return v.Pypi }).(JobJobClusterNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobJobClusterNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryArrayOutput) ToJobJobClusterNewClusterLibraryArrayOutput() JobJobClusterNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryArrayOutput) ToJobJobClusterNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryArrayOutput) Index(i pulumi.IntInput) JobJobClusterNewClusterLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobJobClusterNewClusterLibrary {
+		return vs[0].([]JobJobClusterNewClusterLibrary)[vs[1].(int)]
+	}).(JobJobClusterNewClusterLibraryOutput)
+}
+
+type JobJobClusterNewClusterLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobJobClusterNewClusterLibraryCranInput is an input type that accepts JobJobClusterNewClusterLibraryCranArgs and JobJobClusterNewClusterLibraryCranOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryCranInput` via:
+//
+//	JobJobClusterNewClusterLibraryCranArgs{...}
+type JobJobClusterNewClusterLibraryCranInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryCranOutput() JobJobClusterNewClusterLibraryCranOutput
+	ToJobJobClusterNewClusterLibraryCranOutputWithContext(context.Context) JobJobClusterNewClusterLibraryCranOutput
+}
+
+type JobJobClusterNewClusterLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobJobClusterNewClusterLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterLibraryCranArgs) ToJobJobClusterNewClusterLibraryCranOutput() JobJobClusterNewClusterLibraryCranOutput {
+	return i.ToJobJobClusterNewClusterLibraryCranOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryCranArgs) ToJobJobClusterNewClusterLibraryCranOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryCranOutput)
+}
+
+func (i JobJobClusterNewClusterLibraryCranArgs) ToJobJobClusterNewClusterLibraryCranPtrOutput() JobJobClusterNewClusterLibraryCranPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryCranArgs) ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryCranOutput).ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterLibraryCranPtrInput is an input type that accepts JobJobClusterNewClusterLibraryCranArgs, JobJobClusterNewClusterLibraryCranPtr and JobJobClusterNewClusterLibraryCranPtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryCranPtrInput` via:
+//
+//	        JobJobClusterNewClusterLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryCranPtrOutput() JobJobClusterNewClusterLibraryCranPtrOutput
+	ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(context.Context) JobJobClusterNewClusterLibraryCranPtrOutput
+}
+
+type jobJobClusterNewClusterLibraryCranPtrType JobJobClusterNewClusterLibraryCranArgs
+
+func JobJobClusterNewClusterLibraryCranPtr(v *JobJobClusterNewClusterLibraryCranArgs) JobJobClusterNewClusterLibraryCranPtrInput {
+	return (*jobJobClusterNewClusterLibraryCranPtrType)(v)
+}
+
+func (*jobJobClusterNewClusterLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterLibraryCranPtrType) ToJobJobClusterNewClusterLibraryCranPtrOutput() JobJobClusterNewClusterLibraryCranPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterLibraryCranPtrType) ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryCranPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) ToJobJobClusterNewClusterLibraryCranOutput() JobJobClusterNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) ToJobJobClusterNewClusterLibraryCranOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) ToJobJobClusterNewClusterLibraryCranPtrOutput() JobJobClusterNewClusterLibraryCranPtrOutput {
+	return o.ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterLibraryCran) *JobJobClusterNewClusterLibraryCran {
+		return &v
+	}).(JobJobClusterNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryCranPtrOutput) ToJobJobClusterNewClusterLibraryCranPtrOutput() JobJobClusterNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryCranPtrOutput) ToJobJobClusterNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryCranPtrOutput) Elem() JobJobClusterNewClusterLibraryCranOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryCran) JobJobClusterNewClusterLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterLibraryCran
+		return ret
+	}).(JobJobClusterNewClusterLibraryCranOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryMaven struct {
+	Coordinates string   `pulumi:"coordinates"`
+	Exclusions  []string `pulumi:"exclusions"`
+	Repo        *string  `pulumi:"repo"`
+}
+
+// JobJobClusterNewClusterLibraryMavenInput is an input type that accepts JobJobClusterNewClusterLibraryMavenArgs and JobJobClusterNewClusterLibraryMavenOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryMavenInput` via:
+//
+//	JobJobClusterNewClusterLibraryMavenArgs{...}
+type JobJobClusterNewClusterLibraryMavenInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryMavenOutput() JobJobClusterNewClusterLibraryMavenOutput
+	ToJobJobClusterNewClusterLibraryMavenOutputWithContext(context.Context) JobJobClusterNewClusterLibraryMavenOutput
+}
+
+type JobJobClusterNewClusterLibraryMavenArgs struct {
+	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
+	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
+	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
+}
+
+func (JobJobClusterNewClusterLibraryMavenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterLibraryMavenArgs) ToJobJobClusterNewClusterLibraryMavenOutput() JobJobClusterNewClusterLibraryMavenOutput {
+	return i.ToJobJobClusterNewClusterLibraryMavenOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryMavenArgs) ToJobJobClusterNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryMavenOutput)
+}
+
+func (i JobJobClusterNewClusterLibraryMavenArgs) ToJobJobClusterNewClusterLibraryMavenPtrOutput() JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryMavenArgs) ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryMavenOutput).ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterLibraryMavenPtrInput is an input type that accepts JobJobClusterNewClusterLibraryMavenArgs, JobJobClusterNewClusterLibraryMavenPtr and JobJobClusterNewClusterLibraryMavenPtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryMavenPtrInput` via:
+//
+//	        JobJobClusterNewClusterLibraryMavenArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterLibraryMavenPtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryMavenPtrOutput() JobJobClusterNewClusterLibraryMavenPtrOutput
+	ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(context.Context) JobJobClusterNewClusterLibraryMavenPtrOutput
+}
+
+type jobJobClusterNewClusterLibraryMavenPtrType JobJobClusterNewClusterLibraryMavenArgs
+
+func JobJobClusterNewClusterLibraryMavenPtr(v *JobJobClusterNewClusterLibraryMavenArgs) JobJobClusterNewClusterLibraryMavenPtrInput {
+	return (*jobJobClusterNewClusterLibraryMavenPtrType)(v)
+}
+
+func (*jobJobClusterNewClusterLibraryMavenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterLibraryMavenPtrType) ToJobJobClusterNewClusterLibraryMavenPtrOutput() JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterLibraryMavenPtrType) ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryMavenPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryMavenOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryMavenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) ToJobJobClusterNewClusterLibraryMavenOutput() JobJobClusterNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) ToJobJobClusterNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) ToJobJobClusterNewClusterLibraryMavenPtrOutput() JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return o.ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterLibraryMaven) *JobJobClusterNewClusterLibraryMaven {
+		return &v
+	}).(JobJobClusterNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) Coordinates() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryMavenPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryMavenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) ToJobJobClusterNewClusterLibraryMavenPtrOutput() JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) ToJobJobClusterNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) Elem() JobJobClusterNewClusterLibraryMavenOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryMaven) JobJobClusterNewClusterLibraryMaven {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterLibraryMaven
+		return ret
+	}).(JobJobClusterNewClusterLibraryMavenOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Coordinates
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryMaven) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryPypi struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobJobClusterNewClusterLibraryPypiInput is an input type that accepts JobJobClusterNewClusterLibraryPypiArgs and JobJobClusterNewClusterLibraryPypiOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryPypiInput` via:
+//
+//	JobJobClusterNewClusterLibraryPypiArgs{...}
+type JobJobClusterNewClusterLibraryPypiInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryPypiOutput() JobJobClusterNewClusterLibraryPypiOutput
+	ToJobJobClusterNewClusterLibraryPypiOutputWithContext(context.Context) JobJobClusterNewClusterLibraryPypiOutput
+}
+
+type JobJobClusterNewClusterLibraryPypiArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobJobClusterNewClusterLibraryPypiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterLibraryPypiArgs) ToJobJobClusterNewClusterLibraryPypiOutput() JobJobClusterNewClusterLibraryPypiOutput {
+	return i.ToJobJobClusterNewClusterLibraryPypiOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryPypiArgs) ToJobJobClusterNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryPypiOutput)
+}
+
+func (i JobJobClusterNewClusterLibraryPypiArgs) ToJobJobClusterNewClusterLibraryPypiPtrOutput() JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterLibraryPypiArgs) ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryPypiOutput).ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterLibraryPypiPtrInput is an input type that accepts JobJobClusterNewClusterLibraryPypiArgs, JobJobClusterNewClusterLibraryPypiPtr and JobJobClusterNewClusterLibraryPypiPtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterLibraryPypiPtrInput` via:
+//
+//	        JobJobClusterNewClusterLibraryPypiArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterLibraryPypiPtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterLibraryPypiPtrOutput() JobJobClusterNewClusterLibraryPypiPtrOutput
+	ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(context.Context) JobJobClusterNewClusterLibraryPypiPtrOutput
+}
+
+type jobJobClusterNewClusterLibraryPypiPtrType JobJobClusterNewClusterLibraryPypiArgs
+
+func JobJobClusterNewClusterLibraryPypiPtr(v *JobJobClusterNewClusterLibraryPypiArgs) JobJobClusterNewClusterLibraryPypiPtrInput {
+	return (*jobJobClusterNewClusterLibraryPypiPtrType)(v)
+}
+
+func (*jobJobClusterNewClusterLibraryPypiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterLibraryPypiPtrType) ToJobJobClusterNewClusterLibraryPypiPtrOutput() JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return i.ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterLibraryPypiPtrType) ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterLibraryPypiPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryPypiOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryPypiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) ToJobJobClusterNewClusterLibraryPypiOutput() JobJobClusterNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) ToJobJobClusterNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) ToJobJobClusterNewClusterLibraryPypiPtrOutput() JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return o.ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterLibraryPypi) *JobJobClusterNewClusterLibraryPypi {
+		return &v
+	}).(JobJobClusterNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterLibraryPypiPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterLibraryPypiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterLibraryPypiPtrOutput) ToJobJobClusterNewClusterLibraryPypiPtrOutput() JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryPypiPtrOutput) ToJobJobClusterNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterLibraryPypiPtrOutput) Elem() JobJobClusterNewClusterLibraryPypiOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryPypi) JobJobClusterNewClusterLibraryPypi {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterLibraryPypi
+		return ret
+	}).(JobJobClusterNewClusterLibraryPypiOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobJobClusterNewClusterWorkloadType struct {
 	Clients JobJobClusterNewClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -14023,6 +15126,7 @@ type JobNewCluster struct {
 	AutoterminationMinutes    *int                            `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobNewClusterAzureAttributes   `pulumi:"azureAttributes"`
+	CloneFrom                 *JobNewClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId                 *string                         `pulumi:"clusterId"`
 	ClusterLogConf            *JobNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
@@ -14038,16 +15142,18 @@ type JobNewCluster struct {
 	IdempotencyToken          *string                         `pulumi:"idempotencyToken"`
 	InitScripts               []JobNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                         `pulumi:"instancePoolId"`
-	NodeTypeId                *string                         `pulumi:"nodeTypeId"`
-	NumWorkers                *int                            `pulumi:"numWorkers"`
-	PolicyId                  *string                         `pulumi:"policyId"`
-	RuntimeEngine             *string                         `pulumi:"runtimeEngine"`
-	SingleUserName            *string                         `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}          `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}          `pulumi:"sparkEnvVars"`
-	SparkVersion              string                          `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                        `pulumi:"sshPublicKeys"`
-	WorkloadType              *JobNewClusterWorkloadType      `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      []JobNewClusterLibrary     `pulumi:"libraries"`
+	NodeTypeId     *string                    `pulumi:"nodeTypeId"`
+	NumWorkers     *int                       `pulumi:"numWorkers"`
+	PolicyId       *string                    `pulumi:"policyId"`
+	RuntimeEngine  *string                    `pulumi:"runtimeEngine"`
+	SingleUserName *string                    `pulumi:"singleUserName"`
+	SparkConf      map[string]interface{}     `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]interface{}     `pulumi:"sparkEnvVars"`
+	SparkVersion   string                     `pulumi:"sparkVersion"`
+	SshPublicKeys  []string                   `pulumi:"sshPublicKeys"`
+	WorkloadType   *JobNewClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // JobNewClusterInput is an input type that accepts JobNewClusterArgs and JobNewClusterOutput values.
@@ -14067,6 +15173,7 @@ type JobNewClusterArgs struct {
 	AutoterminationMinutes    pulumi.IntPtrInput                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
+	CloneFrom                 JobNewClusterCloneFromPtrInput          `pulumi:"cloneFrom"`
 	ClusterId                 pulumi.StringPtrInput                   `pulumi:"clusterId"`
 	ClusterLogConf            JobNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
@@ -14082,16 +15189,18 @@ type JobNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                   `pulumi:"idempotencyToken"`
 	InitScripts               JobNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                   `pulumi:"instancePoolId"`
-	NodeTypeId                pulumi.StringPtrInput                   `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntPtrInput                      `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                   `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                   `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                   `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                         `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                         `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringInput                      `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                 `pulumi:"sshPublicKeys"`
-	WorkloadType              JobNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      JobNewClusterLibraryArrayInput    `pulumi:"libraries"`
+	NodeTypeId     pulumi.StringPtrInput             `pulumi:"nodeTypeId"`
+	NumWorkers     pulumi.IntPtrInput                `pulumi:"numWorkers"`
+	PolicyId       pulumi.StringPtrInput             `pulumi:"policyId"`
+	RuntimeEngine  pulumi.StringPtrInput             `pulumi:"runtimeEngine"`
+	SingleUserName pulumi.StringPtrInput             `pulumi:"singleUserName"`
+	SparkConf      pulumi.MapInput                   `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.MapInput                   `pulumi:"sparkEnvVars"`
+	SparkVersion   pulumi.StringInput                `pulumi:"sparkVersion"`
+	SshPublicKeys  pulumi.StringArrayInput           `pulumi:"sshPublicKeys"`
+	WorkloadType   JobNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (JobNewClusterArgs) ElementType() reflect.Type {
@@ -14191,6 +15300,10 @@ func (o JobNewClusterOutput) AzureAttributes() JobNewClusterAzureAttributesPtrOu
 	return o.ApplyT(func(v JobNewCluster) *JobNewClusterAzureAttributes { return v.AzureAttributes }).(JobNewClusterAzureAttributesPtrOutput)
 }
 
+func (o JobNewClusterOutput) CloneFrom() JobNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v JobNewCluster) *JobNewClusterCloneFrom { return v.CloneFrom }).(JobNewClusterCloneFromPtrOutput)
+}
+
 func (o JobNewClusterOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -14249,6 +15362,11 @@ func (o JobNewClusterOutput) InitScripts() JobNewClusterInitScriptArrayOutput {
 
 func (o JobNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobNewClusterOutput) Libraries() JobNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v JobNewCluster) []JobNewClusterLibrary { return v.Libraries }).(JobNewClusterLibraryArrayOutput)
 }
 
 func (o JobNewClusterOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -14358,6 +15476,15 @@ func (o JobNewClusterPtrOutput) AzureAttributes() JobNewClusterAzureAttributesPt
 		}
 		return v.AzureAttributes
 	}).(JobNewClusterAzureAttributesPtrOutput)
+}
+
+func (o JobNewClusterPtrOutput) CloneFrom() JobNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v *JobNewCluster) *JobNewClusterCloneFrom {
+		if v == nil {
+			return nil
+		}
+		return v.CloneFrom
+	}).(JobNewClusterCloneFromPtrOutput)
 }
 
 func (o JobNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
@@ -14493,6 +15620,16 @@ func (o JobNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 		}
 		return v.InstancePoolId
 	}).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobNewClusterPtrOutput) Libraries() JobNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v *JobNewCluster) []JobNewClusterLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.Libraries
+	}).(JobNewClusterLibraryArrayOutput)
 }
 
 func (o JobNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -14736,7 +15873,9 @@ func (o JobNewClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 type JobNewClusterAwsAttributes struct {
 	Availability        *string `pulumi:"availability"`
 	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       *int    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
 	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
@@ -14758,7 +15897,9 @@ type JobNewClusterAwsAttributesInput interface {
 type JobNewClusterAwsAttributesArgs struct {
 	Availability        pulumi.StringPtrInput `pulumi:"availability"`
 	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       pulumi.IntPtrInput    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
 	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -14851,8 +15992,16 @@ func (o JobNewClusterAwsAttributesOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobNewClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+func (o JobNewClusterAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNewClusterAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
 func (o JobNewClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobNewClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o JobNewClusterAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNewClusterAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
 }
 
 func (o JobNewClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
@@ -14917,12 +16066,30 @@ func (o JobNewClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobNewClusterAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o JobNewClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobNewClusterAwsAttributes) *int {
 		if v == nil {
 			return nil
 		}
 		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobNewClusterAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -14972,9 +16139,10 @@ func (o JobNewClusterAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 }
 
 type JobNewClusterAzureAttributes struct {
-	Availability    *string  `pulumi:"availability"`
-	FirstOnDemand   *int     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
+	Availability     *string                                       `pulumi:"availability"`
+	FirstOnDemand    *int                                          `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *JobNewClusterAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  *float64                                      `pulumi:"spotBidMaxPrice"`
 }
 
 // JobNewClusterAzureAttributesInput is an input type that accepts JobNewClusterAzureAttributesArgs and JobNewClusterAzureAttributesOutput values.
@@ -14989,9 +16157,10 @@ type JobNewClusterAzureAttributesInput interface {
 }
 
 type JobNewClusterAzureAttributesArgs struct {
-	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
-	FirstOnDemand   pulumi.IntPtrInput     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
+	Availability     pulumi.StringPtrInput                                `pulumi:"availability"`
+	FirstOnDemand    pulumi.IntPtrInput                                   `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  pulumi.Float64PtrInput                               `pulumi:"spotBidMaxPrice"`
 }
 
 func (JobNewClusterAzureAttributesArgs) ElementType() reflect.Type {
@@ -15079,6 +16248,12 @@ func (o JobNewClusterAzureAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v JobNewClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+func (o JobNewClusterAzureAttributesOutput) LogAnalyticsInfo() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v JobNewClusterAzureAttributes) *JobNewClusterAzureAttributesLogAnalyticsInfo {
+		return v.LogAnalyticsInfo
+	}).(JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobNewClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v JobNewClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -15125,6 +16300,15 @@ func (o JobNewClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobNewClusterAzureAttributesPtrOutput) LogAnalyticsInfo() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterAzureAttributes) *JobNewClusterAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *JobNewClusterAzureAttributes) *float64 {
 		if v == nil {
@@ -15132,6 +16316,287 @@ func (o JobNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64P
 		}
 		return v.SpotBidMaxPrice
 	}).(pulumi.Float64PtrOutput)
+}
+
+type JobNewClusterAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// JobNewClusterAzureAttributesLogAnalyticsInfoInput is an input type that accepts JobNewClusterAzureAttributesLogAnalyticsInfoArgs and JobNewClusterAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `JobNewClusterAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	JobNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+type JobNewClusterAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToJobNewClusterAzureAttributesLogAnalyticsInfoOutput() JobNewClusterAzureAttributesLogAnalyticsInfoOutput
+	ToJobNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoOutput
+}
+
+type JobNewClusterAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (JobNewClusterAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i JobNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobNewClusterAzureAttributesLogAnalyticsInfoOutput() JobNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToJobNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i JobNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterAzureAttributesLogAnalyticsInfoOutput).ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts JobNewClusterAzureAttributesLogAnalyticsInfoArgs, JobNewClusterAzureAttributesLogAnalyticsInfoPtr and JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        JobNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+	ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type jobNewClusterAzureAttributesLogAnalyticsInfoPtrType JobNewClusterAzureAttributesLogAnalyticsInfoArgs
+
+func JobNewClusterAzureAttributesLogAnalyticsInfoPtr(v *JobNewClusterAzureAttributesLogAnalyticsInfoArgs) JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*jobNewClusterAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*jobNewClusterAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *jobNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type JobNewClusterAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoOutput() JobNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterAzureAttributesLogAnalyticsInfo) *JobNewClusterAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsPrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) Elem() JobNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *JobNewClusterAzureAttributesLogAnalyticsInfo) JobNewClusterAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(JobNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterCloneFrom struct {
+	SourceClusterId string `pulumi:"sourceClusterId"`
+}
+
+// JobNewClusterCloneFromInput is an input type that accepts JobNewClusterCloneFromArgs and JobNewClusterCloneFromOutput values.
+// You can construct a concrete instance of `JobNewClusterCloneFromInput` via:
+//
+//	JobNewClusterCloneFromArgs{...}
+type JobNewClusterCloneFromInput interface {
+	pulumi.Input
+
+	ToJobNewClusterCloneFromOutput() JobNewClusterCloneFromOutput
+	ToJobNewClusterCloneFromOutputWithContext(context.Context) JobNewClusterCloneFromOutput
+}
+
+type JobNewClusterCloneFromArgs struct {
+	SourceClusterId pulumi.StringInput `pulumi:"sourceClusterId"`
+}
+
+func (JobNewClusterCloneFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i JobNewClusterCloneFromArgs) ToJobNewClusterCloneFromOutput() JobNewClusterCloneFromOutput {
+	return i.ToJobNewClusterCloneFromOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterCloneFromArgs) ToJobNewClusterCloneFromOutputWithContext(ctx context.Context) JobNewClusterCloneFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterCloneFromOutput)
+}
+
+func (i JobNewClusterCloneFromArgs) ToJobNewClusterCloneFromPtrOutput() JobNewClusterCloneFromPtrOutput {
+	return i.ToJobNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterCloneFromArgs) ToJobNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterCloneFromOutput).ToJobNewClusterCloneFromPtrOutputWithContext(ctx)
+}
+
+// JobNewClusterCloneFromPtrInput is an input type that accepts JobNewClusterCloneFromArgs, JobNewClusterCloneFromPtr and JobNewClusterCloneFromPtrOutput values.
+// You can construct a concrete instance of `JobNewClusterCloneFromPtrInput` via:
+//
+//	        JobNewClusterCloneFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterCloneFromPtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterCloneFromPtrOutput() JobNewClusterCloneFromPtrOutput
+	ToJobNewClusterCloneFromPtrOutputWithContext(context.Context) JobNewClusterCloneFromPtrOutput
+}
+
+type jobNewClusterCloneFromPtrType JobNewClusterCloneFromArgs
+
+func JobNewClusterCloneFromPtr(v *JobNewClusterCloneFromArgs) JobNewClusterCloneFromPtrInput {
+	return (*jobNewClusterCloneFromPtrType)(v)
+}
+
+func (*jobNewClusterCloneFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i *jobNewClusterCloneFromPtrType) ToJobNewClusterCloneFromPtrOutput() JobNewClusterCloneFromPtrOutput {
+	return i.ToJobNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterCloneFromPtrType) ToJobNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterCloneFromPtrOutput)
+}
+
+type JobNewClusterCloneFromOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterCloneFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobNewClusterCloneFromOutput) ToJobNewClusterCloneFromOutput() JobNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobNewClusterCloneFromOutput) ToJobNewClusterCloneFromOutputWithContext(ctx context.Context) JobNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobNewClusterCloneFromOutput) ToJobNewClusterCloneFromPtrOutput() JobNewClusterCloneFromPtrOutput {
+	return o.ToJobNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterCloneFromOutput) ToJobNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobNewClusterCloneFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterCloneFrom) *JobNewClusterCloneFrom {
+		return &v
+	}).(JobNewClusterCloneFromPtrOutput)
+}
+
+func (o JobNewClusterCloneFromOutput) SourceClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterCloneFrom) string { return v.SourceClusterId }).(pulumi.StringOutput)
+}
+
+type JobNewClusterCloneFromPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterCloneFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobNewClusterCloneFromPtrOutput) ToJobNewClusterCloneFromPtrOutput() JobNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobNewClusterCloneFromPtrOutput) ToJobNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobNewClusterCloneFromPtrOutput) Elem() JobNewClusterCloneFromOutput {
+	return o.ApplyT(func(v *JobNewClusterCloneFrom) JobNewClusterCloneFrom {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterCloneFrom
+		return ret
+	}).(JobNewClusterCloneFromOutput)
+}
+
+func (o JobNewClusterCloneFromPtrOutput) SourceClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterCloneFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobNewClusterClusterLogConf struct {
@@ -17463,6 +18928,595 @@ func (o JobNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobNewClusterLibrary struct {
+	Cran         *JobNewClusterLibraryCran  `pulumi:"cran"`
+	Egg          *string                    `pulumi:"egg"`
+	Jar          *string                    `pulumi:"jar"`
+	Maven        *JobNewClusterLibraryMaven `pulumi:"maven"`
+	Pypi         *JobNewClusterLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                    `pulumi:"requirements"`
+	Whl          *string                    `pulumi:"whl"`
+}
+
+// JobNewClusterLibraryInput is an input type that accepts JobNewClusterLibraryArgs and JobNewClusterLibraryOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryInput` via:
+//
+//	JobNewClusterLibraryArgs{...}
+type JobNewClusterLibraryInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryOutput() JobNewClusterLibraryOutput
+	ToJobNewClusterLibraryOutputWithContext(context.Context) JobNewClusterLibraryOutput
+}
+
+type JobNewClusterLibraryArgs struct {
+	Cran         JobNewClusterLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput             `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput             `pulumi:"jar"`
+	Maven        JobNewClusterLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobNewClusterLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput             `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput             `pulumi:"whl"`
+}
+
+func (JobNewClusterLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobNewClusterLibraryArgs) ToJobNewClusterLibraryOutput() JobNewClusterLibraryOutput {
+	return i.ToJobNewClusterLibraryOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryArgs) ToJobNewClusterLibraryOutputWithContext(ctx context.Context) JobNewClusterLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryOutput)
+}
+
+// JobNewClusterLibraryArrayInput is an input type that accepts JobNewClusterLibraryArray and JobNewClusterLibraryArrayOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryArrayInput` via:
+//
+//	JobNewClusterLibraryArray{ JobNewClusterLibraryArgs{...} }
+type JobNewClusterLibraryArrayInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryArrayOutput() JobNewClusterLibraryArrayOutput
+	ToJobNewClusterLibraryArrayOutputWithContext(context.Context) JobNewClusterLibraryArrayOutput
+}
+
+type JobNewClusterLibraryArray []JobNewClusterLibraryInput
+
+func (JobNewClusterLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobNewClusterLibraryArray) ToJobNewClusterLibraryArrayOutput() JobNewClusterLibraryArrayOutput {
+	return i.ToJobNewClusterLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryArray) ToJobNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobNewClusterLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryArrayOutput)
+}
+
+type JobNewClusterLibraryOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryOutput) ToJobNewClusterLibraryOutput() JobNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryOutput) ToJobNewClusterLibraryOutputWithContext(ctx context.Context) JobNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryOutput) Cran() JobNewClusterLibraryCranPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *JobNewClusterLibraryCran { return v.Cran }).(JobNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Maven() JobNewClusterLibraryMavenPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *JobNewClusterLibraryMaven { return v.Maven }).(JobNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Pypi() JobNewClusterLibraryPypiPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *JobNewClusterLibraryPypi { return v.Pypi }).(JobNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryArrayOutput) ToJobNewClusterLibraryArrayOutput() JobNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryArrayOutput) ToJobNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryArrayOutput) Index(i pulumi.IntInput) JobNewClusterLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobNewClusterLibrary {
+		return vs[0].([]JobNewClusterLibrary)[vs[1].(int)]
+	}).(JobNewClusterLibraryOutput)
+}
+
+type JobNewClusterLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobNewClusterLibraryCranInput is an input type that accepts JobNewClusterLibraryCranArgs and JobNewClusterLibraryCranOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryCranInput` via:
+//
+//	JobNewClusterLibraryCranArgs{...}
+type JobNewClusterLibraryCranInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryCranOutput() JobNewClusterLibraryCranOutput
+	ToJobNewClusterLibraryCranOutputWithContext(context.Context) JobNewClusterLibraryCranOutput
+}
+
+type JobNewClusterLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobNewClusterLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i JobNewClusterLibraryCranArgs) ToJobNewClusterLibraryCranOutput() JobNewClusterLibraryCranOutput {
+	return i.ToJobNewClusterLibraryCranOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryCranArgs) ToJobNewClusterLibraryCranOutputWithContext(ctx context.Context) JobNewClusterLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryCranOutput)
+}
+
+func (i JobNewClusterLibraryCranArgs) ToJobNewClusterLibraryCranPtrOutput() JobNewClusterLibraryCranPtrOutput {
+	return i.ToJobNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryCranArgs) ToJobNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryCranOutput).ToJobNewClusterLibraryCranPtrOutputWithContext(ctx)
+}
+
+// JobNewClusterLibraryCranPtrInput is an input type that accepts JobNewClusterLibraryCranArgs, JobNewClusterLibraryCranPtr and JobNewClusterLibraryCranPtrOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryCranPtrInput` via:
+//
+//	        JobNewClusterLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryCranPtrOutput() JobNewClusterLibraryCranPtrOutput
+	ToJobNewClusterLibraryCranPtrOutputWithContext(context.Context) JobNewClusterLibraryCranPtrOutput
+}
+
+type jobNewClusterLibraryCranPtrType JobNewClusterLibraryCranArgs
+
+func JobNewClusterLibraryCranPtr(v *JobNewClusterLibraryCranArgs) JobNewClusterLibraryCranPtrInput {
+	return (*jobNewClusterLibraryCranPtrType)(v)
+}
+
+func (*jobNewClusterLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i *jobNewClusterLibraryCranPtrType) ToJobNewClusterLibraryCranPtrOutput() JobNewClusterLibraryCranPtrOutput {
+	return i.ToJobNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterLibraryCranPtrType) ToJobNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryCranPtrOutput)
+}
+
+type JobNewClusterLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryCranOutput) ToJobNewClusterLibraryCranOutput() JobNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryCranOutput) ToJobNewClusterLibraryCranOutputWithContext(ctx context.Context) JobNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryCranOutput) ToJobNewClusterLibraryCranPtrOutput() JobNewClusterLibraryCranPtrOutput {
+	return o.ToJobNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterLibraryCranOutput) ToJobNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterLibraryCran) *JobNewClusterLibraryCran {
+		return &v
+	}).(JobNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobNewClusterLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobNewClusterLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryCranPtrOutput) ToJobNewClusterLibraryCranPtrOutput() JobNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryCranPtrOutput) ToJobNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryCranPtrOutput) Elem() JobNewClusterLibraryCranOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryCran) JobNewClusterLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterLibraryCran
+		return ret
+	}).(JobNewClusterLibraryCranOutput)
+}
+
+func (o JobNewClusterLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryMaven struct {
+	Coordinates string   `pulumi:"coordinates"`
+	Exclusions  []string `pulumi:"exclusions"`
+	Repo        *string  `pulumi:"repo"`
+}
+
+// JobNewClusterLibraryMavenInput is an input type that accepts JobNewClusterLibraryMavenArgs and JobNewClusterLibraryMavenOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryMavenInput` via:
+//
+//	JobNewClusterLibraryMavenArgs{...}
+type JobNewClusterLibraryMavenInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryMavenOutput() JobNewClusterLibraryMavenOutput
+	ToJobNewClusterLibraryMavenOutputWithContext(context.Context) JobNewClusterLibraryMavenOutput
+}
+
+type JobNewClusterLibraryMavenArgs struct {
+	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
+	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
+	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
+}
+
+func (JobNewClusterLibraryMavenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i JobNewClusterLibraryMavenArgs) ToJobNewClusterLibraryMavenOutput() JobNewClusterLibraryMavenOutput {
+	return i.ToJobNewClusterLibraryMavenOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryMavenArgs) ToJobNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryMavenOutput)
+}
+
+func (i JobNewClusterLibraryMavenArgs) ToJobNewClusterLibraryMavenPtrOutput() JobNewClusterLibraryMavenPtrOutput {
+	return i.ToJobNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryMavenArgs) ToJobNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryMavenOutput).ToJobNewClusterLibraryMavenPtrOutputWithContext(ctx)
+}
+
+// JobNewClusterLibraryMavenPtrInput is an input type that accepts JobNewClusterLibraryMavenArgs, JobNewClusterLibraryMavenPtr and JobNewClusterLibraryMavenPtrOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryMavenPtrInput` via:
+//
+//	        JobNewClusterLibraryMavenArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterLibraryMavenPtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryMavenPtrOutput() JobNewClusterLibraryMavenPtrOutput
+	ToJobNewClusterLibraryMavenPtrOutputWithContext(context.Context) JobNewClusterLibraryMavenPtrOutput
+}
+
+type jobNewClusterLibraryMavenPtrType JobNewClusterLibraryMavenArgs
+
+func JobNewClusterLibraryMavenPtr(v *JobNewClusterLibraryMavenArgs) JobNewClusterLibraryMavenPtrInput {
+	return (*jobNewClusterLibraryMavenPtrType)(v)
+}
+
+func (*jobNewClusterLibraryMavenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i *jobNewClusterLibraryMavenPtrType) ToJobNewClusterLibraryMavenPtrOutput() JobNewClusterLibraryMavenPtrOutput {
+	return i.ToJobNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterLibraryMavenPtrType) ToJobNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryMavenPtrOutput)
+}
+
+type JobNewClusterLibraryMavenOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryMavenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryMavenOutput) ToJobNewClusterLibraryMavenOutput() JobNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryMavenOutput) ToJobNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryMavenOutput) ToJobNewClusterLibraryMavenPtrOutput() JobNewClusterLibraryMavenPtrOutput {
+	return o.ToJobNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterLibraryMavenOutput) ToJobNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterLibraryMaven) *JobNewClusterLibraryMaven {
+		return &v
+	}).(JobNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobNewClusterLibraryMavenOutput) Coordinates() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
+}
+
+func (o JobNewClusterLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+func (o JobNewClusterLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryMavenPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryMavenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) ToJobNewClusterLibraryMavenPtrOutput() JobNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) ToJobNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) Elem() JobNewClusterLibraryMavenOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryMaven) JobNewClusterLibraryMaven {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterLibraryMaven
+		return ret
+	}).(JobNewClusterLibraryMavenOutput)
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Coordinates
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryMaven) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobNewClusterLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryPypi struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobNewClusterLibraryPypiInput is an input type that accepts JobNewClusterLibraryPypiArgs and JobNewClusterLibraryPypiOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryPypiInput` via:
+//
+//	JobNewClusterLibraryPypiArgs{...}
+type JobNewClusterLibraryPypiInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryPypiOutput() JobNewClusterLibraryPypiOutput
+	ToJobNewClusterLibraryPypiOutputWithContext(context.Context) JobNewClusterLibraryPypiOutput
+}
+
+type JobNewClusterLibraryPypiArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobNewClusterLibraryPypiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i JobNewClusterLibraryPypiArgs) ToJobNewClusterLibraryPypiOutput() JobNewClusterLibraryPypiOutput {
+	return i.ToJobNewClusterLibraryPypiOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryPypiArgs) ToJobNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryPypiOutput)
+}
+
+func (i JobNewClusterLibraryPypiArgs) ToJobNewClusterLibraryPypiPtrOutput() JobNewClusterLibraryPypiPtrOutput {
+	return i.ToJobNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterLibraryPypiArgs) ToJobNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryPypiOutput).ToJobNewClusterLibraryPypiPtrOutputWithContext(ctx)
+}
+
+// JobNewClusterLibraryPypiPtrInput is an input type that accepts JobNewClusterLibraryPypiArgs, JobNewClusterLibraryPypiPtr and JobNewClusterLibraryPypiPtrOutput values.
+// You can construct a concrete instance of `JobNewClusterLibraryPypiPtrInput` via:
+//
+//	        JobNewClusterLibraryPypiArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterLibraryPypiPtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterLibraryPypiPtrOutput() JobNewClusterLibraryPypiPtrOutput
+	ToJobNewClusterLibraryPypiPtrOutputWithContext(context.Context) JobNewClusterLibraryPypiPtrOutput
+}
+
+type jobNewClusterLibraryPypiPtrType JobNewClusterLibraryPypiArgs
+
+func JobNewClusterLibraryPypiPtr(v *JobNewClusterLibraryPypiArgs) JobNewClusterLibraryPypiPtrInput {
+	return (*jobNewClusterLibraryPypiPtrType)(v)
+}
+
+func (*jobNewClusterLibraryPypiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i *jobNewClusterLibraryPypiPtrType) ToJobNewClusterLibraryPypiPtrOutput() JobNewClusterLibraryPypiPtrOutput {
+	return i.ToJobNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterLibraryPypiPtrType) ToJobNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterLibraryPypiPtrOutput)
+}
+
+type JobNewClusterLibraryPypiOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryPypiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryPypiOutput) ToJobNewClusterLibraryPypiOutput() JobNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryPypiOutput) ToJobNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryPypiOutput) ToJobNewClusterLibraryPypiPtrOutput() JobNewClusterLibraryPypiPtrOutput {
+	return o.ToJobNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterLibraryPypiOutput) ToJobNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterLibraryPypi) *JobNewClusterLibraryPypi {
+		return &v
+	}).(JobNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobNewClusterLibraryPypiOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobNewClusterLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterLibraryPypiPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterLibraryPypiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobNewClusterLibraryPypiPtrOutput) ToJobNewClusterLibraryPypiPtrOutput() JobNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryPypiPtrOutput) ToJobNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobNewClusterLibraryPypiPtrOutput) Elem() JobNewClusterLibraryPypiOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryPypi) JobNewClusterLibraryPypi {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterLibraryPypi
+		return ret
+	}).(JobNewClusterLibraryPypiOutput)
+}
+
+func (o JobNewClusterLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobNewClusterWorkloadType struct {
 	Clients JobNewClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -19791,7 +21845,8 @@ type JobTask struct {
 	// block specifying dependency(-ies) for a given task.
 	DependsOns []JobTaskDependsOn `pulumi:"dependsOns"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description *string `pulumi:"description"`
+	Description             *string `pulumi:"description"`
+	DisableAutoOptimization *bool   `pulumi:"disableAutoOptimization"`
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskEmailNotifications `pulumi:"emailNotifications"`
 	EnvironmentKey     *string                    `pulumi:"environmentKey"`
@@ -19819,7 +21874,7 @@ type JobTask struct {
 	PythonWheelTask      *JobTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
-	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           *string                 `pulumi:"runIf"`
 	RunJobTask      *JobTaskRunJobTask      `pulumi:"runJobTask"`
 	SparkJarTask    *JobTaskSparkJarTask    `pulumi:"sparkJarTask"`
@@ -19852,7 +21907,8 @@ type JobTaskArgs struct {
 	// block specifying dependency(-ies) for a given task.
 	DependsOns JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description pulumi.StringPtrInput `pulumi:"description"`
+	Description             pulumi.StringPtrInput `pulumi:"description"`
+	DisableAutoOptimization pulumi.BoolPtrInput   `pulumi:"disableAutoOptimization"`
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	EnvironmentKey     pulumi.StringPtrInput             `pulumi:"environmentKey"`
@@ -19880,7 +21936,7 @@ type JobTaskArgs struct {
 	PythonWheelTask      JobTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput `pulumi:"retryOnTimeout"`
-	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           pulumi.StringPtrInput          `pulumi:"runIf"`
 	RunJobTask      JobTaskRunJobTaskPtrInput      `pulumi:"runJobTask"`
 	SparkJarTask    JobTaskSparkJarTaskPtrInput    `pulumi:"sparkJarTask"`
@@ -19965,6 +22021,10 @@ func (o JobTaskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTaskOutput) DisableAutoOptimization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTask) *bool { return v.DisableAutoOptimization }).(pulumi.BoolPtrOutput)
+}
+
 // (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 func (o JobTaskOutput) EmailNotifications() JobTaskEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskEmailNotifications { return v.EmailNotifications }).(JobTaskEmailNotificationsPtrOutput)
@@ -20037,7 +22097,7 @@ func (o JobTaskOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTask) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
-// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 func (o JobTaskOutput) RunIf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
 }
@@ -21053,7 +23113,8 @@ type JobTaskForEachTaskTask struct {
 	// block specifying dependency(-ies) for a given task.
 	DependsOns []JobTaskForEachTaskTaskDependsOn `pulumi:"dependsOns"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description *string `pulumi:"description"`
+	Description             *string `pulumi:"description"`
+	DisableAutoOptimization *bool   `pulumi:"disableAutoOptimization"`
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskForEachTaskTaskEmailNotifications `pulumi:"emailNotifications"`
 	EnvironmentKey     *string                                   `pulumi:"environmentKey"`
@@ -21080,7 +23141,7 @@ type JobTaskForEachTaskTask struct {
 	PythonWheelTask      *JobTaskForEachTaskTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
-	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           *string                                `pulumi:"runIf"`
 	RunJobTask      *JobTaskForEachTaskTaskRunJobTask      `pulumi:"runJobTask"`
 	SparkJarTask    *JobTaskForEachTaskTaskSparkJarTask    `pulumi:"sparkJarTask"`
@@ -21113,7 +23174,8 @@ type JobTaskForEachTaskTaskArgs struct {
 	// block specifying dependency(-ies) for a given task.
 	DependsOns JobTaskForEachTaskTaskDependsOnArrayInput `pulumi:"dependsOns"`
 	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-	Description pulumi.StringPtrInput `pulumi:"description"`
+	Description             pulumi.StringPtrInput `pulumi:"description"`
+	DisableAutoOptimization pulumi.BoolPtrInput   `pulumi:"disableAutoOptimization"`
 	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskForEachTaskTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	EnvironmentKey     pulumi.StringPtrInput                            `pulumi:"environmentKey"`
@@ -21140,7 +23202,7 @@ type JobTaskForEachTaskTaskArgs struct {
 	PythonWheelTask      JobTaskForEachTaskTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput `pulumi:"retryOnTimeout"`
-	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           pulumi.StringPtrInput                         `pulumi:"runIf"`
 	RunJobTask      JobTaskForEachTaskTaskRunJobTaskPtrInput      `pulumi:"runJobTask"`
 	SparkJarTask    JobTaskForEachTaskTaskSparkJarTaskPtrInput    `pulumi:"sparkJarTask"`
@@ -21251,6 +23313,10 @@ func (o JobTaskForEachTaskTaskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskOutput) DisableAutoOptimization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) *bool { return v.DisableAutoOptimization }).(pulumi.BoolPtrOutput)
+}
+
 // (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 func (o JobTaskForEachTaskTaskOutput) EmailNotifications() JobTaskForEachTaskTaskEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskEmailNotifications { return v.EmailNotifications }).(JobTaskForEachTaskTaskEmailNotificationsPtrOutput)
@@ -21321,7 +23387,7 @@ func (o JobTaskForEachTaskTaskOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
-// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 func (o JobTaskForEachTaskTaskOutput) RunIf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
 }
@@ -21424,6 +23490,15 @@ func (o JobTaskForEachTaskTaskPtrOutput) Description() pulumi.StringPtrOutput {
 		}
 		return v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPtrOutput) DisableAutoOptimization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAutoOptimization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -21564,7 +23639,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
 func (o JobTaskForEachTaskTaskPtrOutput) RunIf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *string {
 		if v == nil {
@@ -23273,6 +25348,7 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	AutoterminationMinutes    *int                                               `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobTaskForEachTaskTaskNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobTaskForEachTaskTaskNewClusterAzureAttributes   `pulumi:"azureAttributes"`
+	CloneFrom                 *JobTaskForEachTaskTaskNewClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId                 *string                                            `pulumi:"clusterId"`
 	ClusterLogConf            *JobTaskForEachTaskTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobTaskForEachTaskTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
@@ -23288,16 +25364,18 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	IdempotencyToken          *string                                            `pulumi:"idempotencyToken"`
 	InitScripts               []JobTaskForEachTaskTaskNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                                            `pulumi:"instancePoolId"`
-	NodeTypeId                *string                                            `pulumi:"nodeTypeId"`
-	NumWorkers                int                                                `pulumi:"numWorkers"`
-	PolicyId                  *string                                            `pulumi:"policyId"`
-	RuntimeEngine             *string                                            `pulumi:"runtimeEngine"`
-	SingleUserName            *string                                            `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                             `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                             `pulumi:"sparkEnvVars"`
-	SparkVersion              string                                             `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                                           `pulumi:"sshPublicKeys"`
-	WorkloadType              *JobTaskForEachTaskTaskNewClusterWorkloadType      `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      []JobTaskForEachTaskTaskNewClusterLibrary     `pulumi:"libraries"`
+	NodeTypeId     *string                                       `pulumi:"nodeTypeId"`
+	NumWorkers     *int                                          `pulumi:"numWorkers"`
+	PolicyId       *string                                       `pulumi:"policyId"`
+	RuntimeEngine  *string                                       `pulumi:"runtimeEngine"`
+	SingleUserName *string                                       `pulumi:"singleUserName"`
+	SparkConf      map[string]interface{}                        `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]interface{}                        `pulumi:"sparkEnvVars"`
+	SparkVersion   string                                        `pulumi:"sparkVersion"`
+	SshPublicKeys  []string                                      `pulumi:"sshPublicKeys"`
+	WorkloadType   *JobTaskForEachTaskTaskNewClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // JobTaskForEachTaskTaskNewClusterInput is an input type that accepts JobTaskForEachTaskTaskNewClusterArgs and JobTaskForEachTaskTaskNewClusterOutput values.
@@ -23317,6 +25395,7 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	AutoterminationMinutes    pulumi.IntPtrInput                                         `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobTaskForEachTaskTaskNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobTaskForEachTaskTaskNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
+	CloneFrom                 JobTaskForEachTaskTaskNewClusterCloneFromPtrInput          `pulumi:"cloneFrom"`
 	ClusterId                 pulumi.StringPtrInput                                      `pulumi:"clusterId"`
 	ClusterLogConf            JobTaskForEachTaskTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobTaskForEachTaskTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
@@ -23332,16 +25411,18 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                                      `pulumi:"idempotencyToken"`
 	InitScripts               JobTaskForEachTaskTaskNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                                      `pulumi:"instancePoolId"`
-	NodeTypeId                pulumi.StringPtrInput                                      `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntInput                                            `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                                      `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                                      `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                                      `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                            `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                            `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringInput                                         `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                                    `pulumi:"sshPublicKeys"`
-	WorkloadType              JobTaskForEachTaskTaskNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      JobTaskForEachTaskTaskNewClusterLibraryArrayInput    `pulumi:"libraries"`
+	NodeTypeId     pulumi.StringPtrInput                                `pulumi:"nodeTypeId"`
+	NumWorkers     pulumi.IntPtrInput                                   `pulumi:"numWorkers"`
+	PolicyId       pulumi.StringPtrInput                                `pulumi:"policyId"`
+	RuntimeEngine  pulumi.StringPtrInput                                `pulumi:"runtimeEngine"`
+	SingleUserName pulumi.StringPtrInput                                `pulumi:"singleUserName"`
+	SparkConf      pulumi.MapInput                                      `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.MapInput                                      `pulumi:"sparkEnvVars"`
+	SparkVersion   pulumi.StringInput                                   `pulumi:"sparkVersion"`
+	SshPublicKeys  pulumi.StringArrayInput                              `pulumi:"sshPublicKeys"`
+	WorkloadType   JobTaskForEachTaskTaskNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (JobTaskForEachTaskTaskNewClusterArgs) ElementType() reflect.Type {
@@ -23447,6 +25528,12 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) AzureAttributes() JobTaskForEach
 	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskNewClusterOutput) CloneFrom() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *JobTaskForEachTaskTaskNewClusterCloneFrom {
+		return v.CloneFrom
+	}).(JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -23517,12 +25604,17 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) InstancePoolId() pulumi.StringPt
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobTaskForEachTaskTaskNewClusterOutput) Libraries() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) []JobTaskForEachTaskTaskNewClusterLibrary { return v.Libraries }).(JobTaskForEachTaskTaskNewClusterLibraryArrayOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.NodeTypeId }).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterOutput) NumWorkers() pulumi.IntOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) int { return v.NumWorkers }).(pulumi.IntOutput)
+func (o JobTaskForEachTaskTaskNewClusterOutput) NumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterOutput) PolicyId() pulumi.StringPtrOutput {
@@ -23626,6 +25718,15 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) AzureAttributes() JobTaskForE
 		}
 		return v.AzureAttributes
 	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterPtrOutput) CloneFrom() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) *JobTaskForEachTaskTaskNewClusterCloneFrom {
+		if v == nil {
+			return nil
+		}
+		return v.CloneFrom
+	}).(JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
@@ -23763,6 +25864,16 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) InstancePoolId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobTaskForEachTaskTaskNewClusterPtrOutput) Libraries() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) []JobTaskForEachTaskTaskNewClusterLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.Libraries
+	}).(JobTaskForEachTaskTaskNewClusterLibraryArrayOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) *string {
 		if v == nil {
@@ -23777,7 +25888,7 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) NumWorkers() pulumi.IntPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.NumWorkers
+		return v.NumWorkers
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -24004,7 +26115,9 @@ func (o JobTaskForEachTaskTaskNewClusterAutoscalePtrOutput) MinWorkers() pulumi.
 type JobTaskForEachTaskTaskNewClusterAwsAttributes struct {
 	Availability        *string `pulumi:"availability"`
 	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       *int    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
 	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
@@ -24026,7 +26139,9 @@ type JobTaskForEachTaskTaskNewClusterAwsAttributesInput interface {
 type JobTaskForEachTaskTaskNewClusterAwsAttributesArgs struct {
 	Availability        pulumi.StringPtrInput `pulumi:"availability"`
 	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       pulumi.IntPtrInput    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
 	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -24119,8 +26234,16 @@ func (o JobTaskForEachTaskTaskNewClusterAwsAttributesOutput) EbsVolumeCount() pu
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskNewClusterAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
@@ -24185,12 +26308,30 @@ func (o JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput) EbsVolumeCount()
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAwsAttributes) *int {
 		if v == nil {
 			return nil
 		}
 		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -24240,9 +26381,10 @@ func (o JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput) ZoneId() pulumi.
 }
 
 type JobTaskForEachTaskTaskNewClusterAzureAttributes struct {
-	Availability    *string  `pulumi:"availability"`
-	FirstOnDemand   *int     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
+	Availability     *string                                                          `pulumi:"availability"`
+	FirstOnDemand    *int                                                             `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  *float64                                                         `pulumi:"spotBidMaxPrice"`
 }
 
 // JobTaskForEachTaskTaskNewClusterAzureAttributesInput is an input type that accepts JobTaskForEachTaskTaskNewClusterAzureAttributesArgs and JobTaskForEachTaskTaskNewClusterAzureAttributesOutput values.
@@ -24257,9 +26399,10 @@ type JobTaskForEachTaskTaskNewClusterAzureAttributesInput interface {
 }
 
 type JobTaskForEachTaskTaskNewClusterAzureAttributesArgs struct {
-	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
-	FirstOnDemand   pulumi.IntPtrInput     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
+	Availability     pulumi.StringPtrInput                                                   `pulumi:"availability"`
+	FirstOnDemand    pulumi.IntPtrInput                                                      `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  pulumi.Float64PtrInput                                                  `pulumi:"spotBidMaxPrice"`
 }
 
 func (JobTaskForEachTaskTaskNewClusterAzureAttributesArgs) ElementType() reflect.Type {
@@ -24347,6 +26490,12 @@ func (o JobTaskForEachTaskTaskNewClusterAzureAttributesOutput) FirstOnDemand() p
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesOutput) LogAnalyticsInfo() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAzureAttributes) *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		return v.LogAnalyticsInfo
+	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -24393,6 +26542,15 @@ func (o JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput) FirstOnDemand(
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput) LogAnalyticsInfo() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAzureAttributes) *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAzureAttributes) *float64 {
 		if v == nil {
@@ -24400,6 +26558,291 @@ func (o JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput) SpotBidMaxPric
 		}
 		return v.SpotBidMaxPrice
 	}).(pulumi.Float64PtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoInput is an input type that accepts JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs and JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput
+	ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput).ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs, JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtr and JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+	ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type jobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs
+
+func JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtr(v *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*jobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) Elem() JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterCloneFrom struct {
+	SourceClusterId string `pulumi:"sourceClusterId"`
+}
+
+// JobTaskForEachTaskTaskNewClusterCloneFromInput is an input type that accepts JobTaskForEachTaskTaskNewClusterCloneFromArgs and JobTaskForEachTaskTaskNewClusterCloneFromOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterCloneFromInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterCloneFromArgs{...}
+type JobTaskForEachTaskTaskNewClusterCloneFromInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterCloneFromOutput() JobTaskForEachTaskTaskNewClusterCloneFromOutput
+	ToJobTaskForEachTaskTaskNewClusterCloneFromOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterCloneFromOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterCloneFromArgs struct {
+	SourceClusterId pulumi.StringInput `pulumi:"sourceClusterId"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterCloneFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterCloneFromArgs) ToJobTaskForEachTaskTaskNewClusterCloneFromOutput() JobTaskForEachTaskTaskNewClusterCloneFromOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterCloneFromOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterCloneFromArgs) ToJobTaskForEachTaskTaskNewClusterCloneFromOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterCloneFromOutput)
+}
+
+func (i JobTaskForEachTaskTaskNewClusterCloneFromArgs) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutput() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterCloneFromArgs) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterCloneFromOutput).ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskNewClusterCloneFromPtrInput is an input type that accepts JobTaskForEachTaskTaskNewClusterCloneFromArgs, JobTaskForEachTaskTaskNewClusterCloneFromPtr and JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterCloneFromPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskNewClusterCloneFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskNewClusterCloneFromPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutput() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput
+	ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput
+}
+
+type jobTaskForEachTaskTaskNewClusterCloneFromPtrType JobTaskForEachTaskTaskNewClusterCloneFromArgs
+
+func JobTaskForEachTaskTaskNewClusterCloneFromPtr(v *JobTaskForEachTaskTaskNewClusterCloneFromArgs) JobTaskForEachTaskTaskNewClusterCloneFromPtrInput {
+	return (*jobTaskForEachTaskTaskNewClusterCloneFromPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskNewClusterCloneFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterCloneFromPtrType) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutput() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterCloneFromPtrType) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterCloneFromOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterCloneFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromOutput() JobTaskForEachTaskTaskNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutput() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o.ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskNewClusterCloneFrom) *JobTaskForEachTaskTaskNewClusterCloneFrom {
+		return &v
+	}).(JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromOutput) SourceClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterCloneFrom) string { return v.SourceClusterId }).(pulumi.StringOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutput() JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput) ToJobTaskForEachTaskTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput) Elem() JobTaskForEachTaskTaskNewClusterCloneFromOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterCloneFrom) JobTaskForEachTaskTaskNewClusterCloneFrom {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskNewClusterCloneFrom
+		return ret
+	}).(JobTaskForEachTaskTaskNewClusterCloneFromOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput) SourceClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterCloneFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskForEachTaskTaskNewClusterClusterLogConf struct {
@@ -25588,7 +28031,8 @@ func (o JobTaskForEachTaskTaskNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.
 }
 
 type JobTaskForEachTaskTaskNewClusterInitScript struct {
-	Abfss     *JobTaskForEachTaskTaskNewClusterInitScriptAbfss     `pulumi:"abfss"`
+	Abfss *JobTaskForEachTaskTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
+	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
 	Dbfs      *JobTaskForEachTaskTaskNewClusterInitScriptDbfs      `pulumi:"dbfs"`
 	File      *JobTaskForEachTaskTaskNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobTaskForEachTaskTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
@@ -25609,7 +28053,8 @@ type JobTaskForEachTaskTaskNewClusterInitScriptInput interface {
 }
 
 type JobTaskForEachTaskTaskNewClusterInitScriptArgs struct {
-	Abfss     JobTaskForEachTaskTaskNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Abfss JobTaskForEachTaskTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
+	// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
 	Dbfs      JobTaskForEachTaskTaskNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
 	File      JobTaskForEachTaskTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobTaskForEachTaskTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
@@ -25675,6 +28120,7 @@ func (o JobTaskForEachTaskTaskNewClusterInitScriptOutput) Abfss() JobTaskForEach
 	}).(JobTaskForEachTaskTaskNewClusterInitScriptAbfssPtrOutput)
 }
 
+// Deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
 func (o JobTaskForEachTaskTaskNewClusterInitScriptOutput) Dbfs() JobTaskForEachTaskTaskNewClusterInitScriptDbfsPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterInitScript) *JobTaskForEachTaskTaskNewClusterInitScriptDbfs {
 		return v.Dbfs
@@ -26752,6 +29198,601 @@ func (o JobTaskForEachTaskTaskNewClusterInitScriptWorkspacePtrOutput) Destinatio
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobTaskForEachTaskTaskNewClusterLibrary struct {
+	Cran         *JobTaskForEachTaskTaskNewClusterLibraryCran  `pulumi:"cran"`
+	Egg          *string                                       `pulumi:"egg"`
+	Jar          *string                                       `pulumi:"jar"`
+	Maven        *JobTaskForEachTaskTaskNewClusterLibraryMaven `pulumi:"maven"`
+	Pypi         *JobTaskForEachTaskTaskNewClusterLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                                       `pulumi:"requirements"`
+	Whl          *string                                       `pulumi:"whl"`
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryArgs and JobTaskForEachTaskTaskNewClusterLibraryOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterLibraryArgs{...}
+type JobTaskForEachTaskTaskNewClusterLibraryInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryOutput() JobTaskForEachTaskTaskNewClusterLibraryOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryArgs struct {
+	Cran         JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                                `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                                `pulumi:"jar"`
+	Maven        JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                                `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                                `pulumi:"whl"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryArgs) ToJobTaskForEachTaskTaskNewClusterLibraryOutput() JobTaskForEachTaskTaskNewClusterLibraryOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryArgs) ToJobTaskForEachTaskTaskNewClusterLibraryOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryOutput)
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryArrayInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryArray and JobTaskForEachTaskTaskNewClusterLibraryArrayOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryArrayInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterLibraryArray{ JobTaskForEachTaskTaskNewClusterLibraryArgs{...} }
+type JobTaskForEachTaskTaskNewClusterLibraryArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutput() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryArrayOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryArray []JobTaskForEachTaskTaskNewClusterLibraryInput
+
+func (JobTaskForEachTaskTaskNewClusterLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryArray) ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutput() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryArray) ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryArrayOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) ToJobTaskForEachTaskTaskNewClusterLibraryOutput() JobTaskForEachTaskTaskNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) ToJobTaskForEachTaskTaskNewClusterLibraryOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Cran() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *JobTaskForEachTaskTaskNewClusterLibraryCran {
+		return v.Cran
+	}).(JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Maven() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *JobTaskForEachTaskTaskNewClusterLibraryMaven {
+		return v.Maven
+	}).(JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Pypi() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *JobTaskForEachTaskTaskNewClusterLibraryPypi {
+		return v.Pypi
+	}).(JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryArrayOutput) ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutput() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryArrayOutput) ToJobTaskForEachTaskTaskNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryArrayOutput) Index(i pulumi.IntInput) JobTaskForEachTaskTaskNewClusterLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskNewClusterLibrary {
+		return vs[0].([]JobTaskForEachTaskTaskNewClusterLibrary)[vs[1].(int)]
+	}).(JobTaskForEachTaskTaskNewClusterLibraryOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryCranInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryCranArgs and JobTaskForEachTaskTaskNewClusterLibraryCranOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryCranInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterLibraryCranArgs{...}
+type JobTaskForEachTaskTaskNewClusterLibraryCranInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryCranOutput() JobTaskForEachTaskTaskNewClusterLibraryCranOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryCranOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryCranArgs) ToJobTaskForEachTaskTaskNewClusterLibraryCranOutput() JobTaskForEachTaskTaskNewClusterLibraryCranOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryCranOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryCranArgs) ToJobTaskForEachTaskTaskNewClusterLibraryCranOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryCranOutput)
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryCranArgs) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryCranArgs) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryCranOutput).ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryCranArgs, JobTaskForEachTaskTaskNewClusterLibraryCranPtr and JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskNewClusterLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput
+}
+
+type jobTaskForEachTaskTaskNewClusterLibraryCranPtrType JobTaskForEachTaskTaskNewClusterLibraryCranArgs
+
+func JobTaskForEachTaskTaskNewClusterLibraryCranPtr(v *JobTaskForEachTaskTaskNewClusterLibraryCranArgs) JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput {
+	return (*jobTaskForEachTaskTaskNewClusterLibraryCranPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskNewClusterLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryCranPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryCranPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranOutput() JobTaskForEachTaskTaskNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return o.ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskNewClusterLibraryCran) *JobTaskForEachTaskTaskNewClusterLibraryCran {
+		return &v
+	}).(JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) Elem() JobTaskForEachTaskTaskNewClusterLibraryCranOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryCran) JobTaskForEachTaskTaskNewClusterLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskNewClusterLibraryCran
+		return ret
+	}).(JobTaskForEachTaskTaskNewClusterLibraryCranOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryMaven struct {
+	Coordinates string   `pulumi:"coordinates"`
+	Exclusions  []string `pulumi:"exclusions"`
+	Repo        *string  `pulumi:"repo"`
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryMavenInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryMavenArgs and JobTaskForEachTaskTaskNewClusterLibraryMavenOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryMavenInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterLibraryMavenArgs{...}
+type JobTaskForEachTaskTaskNewClusterLibraryMavenInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryMavenArgs struct {
+	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
+	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
+	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryMavenOutput)
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryMavenOutput).ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryMavenArgs, JobTaskForEachTaskTaskNewClusterLibraryMavenPtr and JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskNewClusterLibraryMavenArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput
+}
+
+type jobTaskForEachTaskTaskNewClusterLibraryMavenPtrType JobTaskForEachTaskTaskNewClusterLibraryMavenArgs
+
+func JobTaskForEachTaskTaskNewClusterLibraryMavenPtr(v *JobTaskForEachTaskTaskNewClusterLibraryMavenArgs) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput {
+	return (*jobTaskForEachTaskTaskNewClusterLibraryMavenPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskNewClusterLibraryMavenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryMavenPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryMavenPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryMavenOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return o.ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskNewClusterLibraryMaven) *JobTaskForEachTaskTaskNewClusterLibraryMaven {
+		return &v
+	}).(JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) Coordinates() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) Elem() JobTaskForEachTaskTaskNewClusterLibraryMavenOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryMaven) JobTaskForEachTaskTaskNewClusterLibraryMaven {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskNewClusterLibraryMaven
+		return ret
+	}).(JobTaskForEachTaskTaskNewClusterLibraryMavenOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Coordinates
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryMaven) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryPypi struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryPypiInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryPypiArgs and JobTaskForEachTaskTaskNewClusterLibraryPypiOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryPypiInput` via:
+//
+//	JobTaskForEachTaskTaskNewClusterLibraryPypiArgs{...}
+type JobTaskForEachTaskTaskNewClusterLibraryPypiInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiOutput
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryPypiArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryPypiOutput)
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryPypiOutput).ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput is an input type that accepts JobTaskForEachTaskTaskNewClusterLibraryPypiArgs, JobTaskForEachTaskTaskNewClusterLibraryPypiPtr and JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskNewClusterLibraryPypiArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput
+	ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput
+}
+
+type jobTaskForEachTaskTaskNewClusterLibraryPypiPtrType JobTaskForEachTaskTaskNewClusterLibraryPypiArgs
+
+func JobTaskForEachTaskTaskNewClusterLibraryPypiPtr(v *JobTaskForEachTaskTaskNewClusterLibraryPypiArgs) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput {
+	return (*jobTaskForEachTaskTaskNewClusterLibraryPypiPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskNewClusterLibraryPypiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryPypiPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return i.ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskNewClusterLibraryPypiPtrType) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryPypiOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return o.ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskNewClusterLibraryPypi) *JobTaskForEachTaskTaskNewClusterLibraryPypi {
+		return &v
+	}).(JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewClusterLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput() JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) ToJobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) Elem() JobTaskForEachTaskTaskNewClusterLibraryPypiOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryPypi) JobTaskForEachTaskTaskNewClusterLibraryPypi {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskNewClusterLibraryPypi
+		return ret
+	}).(JobTaskForEachTaskTaskNewClusterLibraryPypiOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobTaskForEachTaskTaskNewClusterWorkloadType struct {
 	Clients JobTaskForEachTaskTaskNewClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -27771,10 +30812,18 @@ func (o JobTaskForEachTaskTaskPythonWheelTaskPtrOutput) Parameters() pulumi.Stri
 }
 
 type JobTaskForEachTaskTaskRunJobTask struct {
+	DbtCommands []string `pulumi:"dbtCommands"`
+	JarParams   []string `pulumi:"jarParams"`
 	// (String) ID of the job
 	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobParameters     map[string]interface{}                          `pulumi:"jobParameters"`
+	NotebookParams    map[string]interface{}                          `pulumi:"notebookParams"`
+	PipelineParams    *JobTaskForEachTaskTaskRunJobTaskPipelineParams `pulumi:"pipelineParams"`
+	PythonNamedParams map[string]interface{}                          `pulumi:"pythonNamedParams"`
+	PythonParams      []string                                        `pulumi:"pythonParams"`
+	SparkSubmitParams []string                                        `pulumi:"sparkSubmitParams"`
+	SqlParams         map[string]interface{}                          `pulumi:"sqlParams"`
 }
 
 // JobTaskForEachTaskTaskRunJobTaskInput is an input type that accepts JobTaskForEachTaskTaskRunJobTaskArgs and JobTaskForEachTaskTaskRunJobTaskOutput values.
@@ -27789,10 +30838,18 @@ type JobTaskForEachTaskTaskRunJobTaskInput interface {
 }
 
 type JobTaskForEachTaskTaskRunJobTaskArgs struct {
+	DbtCommands pulumi.StringArrayInput `pulumi:"dbtCommands"`
+	JarParams   pulumi.StringArrayInput `pulumi:"jarParams"`
 	// (String) ID of the job
 	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobParameters     pulumi.MapInput                                        `pulumi:"jobParameters"`
+	NotebookParams    pulumi.MapInput                                        `pulumi:"notebookParams"`
+	PipelineParams    JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput `pulumi:"pipelineParams"`
+	PythonNamedParams pulumi.MapInput                                        `pulumi:"pythonNamedParams"`
+	PythonParams      pulumi.StringArrayInput                                `pulumi:"pythonParams"`
+	SparkSubmitParams pulumi.StringArrayInput                                `pulumi:"sparkSubmitParams"`
+	SqlParams         pulumi.MapInput                                        `pulumi:"sqlParams"`
 }
 
 func (JobTaskForEachTaskTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -27872,6 +30929,14 @@ func (o JobTaskForEachTaskTaskRunJobTaskOutput) ToJobTaskForEachTaskTaskRunJobTa
 	}).(JobTaskForEachTaskTaskRunJobTaskPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) DbtCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) []string { return v.DbtCommands }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) JarParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) []string { return v.JarParams }).(pulumi.StringArrayOutput)
+}
+
 // (String) ID of the job
 func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
@@ -27880,6 +30945,32 @@ func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 // (Map) Job parameters for the task
 func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) NotebookParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.NotebookParams }).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) PipelineParams() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) *JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+		return v.PipelineParams
+	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) PythonNamedParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.PythonNamedParams }).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) PythonParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) []string { return v.PythonParams }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) SparkSubmitParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) []string { return v.SparkSubmitParams }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) SqlParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.SqlParams }).(pulumi.MapOutput)
 }
 
 type JobTaskForEachTaskTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -27906,6 +30997,24 @@ func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) Elem() JobTaskForEachTaskTask
 	}).(JobTaskForEachTaskTaskRunJobTaskOutput)
 }
 
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) DbtCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DbtCommands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JarParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarParams
+	}).(pulumi.StringArrayOutput)
+}
+
 // (String) ID of the job
 func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) *int {
@@ -27924,6 +31033,193 @@ func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOut
 		}
 		return v.JobParameters
 	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) NotebookParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookParams
+	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PipelineParams() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) *JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineParams
+	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PythonNamedParams
+	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PythonParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonParams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) SparkSubmitParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkSubmitParams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) SqlParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SqlParams
+	}).(pulumi.MapOutput)
+}
+
+type JobTaskForEachTaskTaskRunJobTaskPipelineParams struct {
+	FullRefresh *bool `pulumi:"fullRefresh"`
+}
+
+// JobTaskForEachTaskTaskRunJobTaskPipelineParamsInput is an input type that accepts JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs and JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskRunJobTaskPipelineParamsInput` via:
+//
+//	JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs{...}
+type JobTaskForEachTaskTaskRunJobTaskPipelineParamsInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput
+	ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutputWithContext(context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput
+}
+
+type JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs struct {
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+}
+
+func (JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput {
+	return i.ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput)
+}
+
+func (i JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return i.ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput).ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput is an input type that accepts JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs, JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtr and JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput
+	ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput
+}
+
+type jobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrType JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs
+
+func JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtr(v *JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput {
+	return (*jobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrType) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return i.ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrType) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+type JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskRunJobTaskPipelineParams) *JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+		return &v
+	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTaskPipelineParams) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
+type JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput) ToJobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput) Elem() JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTaskPipelineParams) JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskRunJobTaskPipelineParams
+		return ret
+	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput)
+}
+
+func (o JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTaskPipelineParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobTaskForEachTaskTaskSparkJarTask struct {
@@ -31212,6 +34508,7 @@ type JobTaskNewCluster struct {
 	AutoterminationMinutes    *int                                `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobTaskNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobTaskNewClusterAzureAttributes   `pulumi:"azureAttributes"`
+	CloneFrom                 *JobTaskNewClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId                 *string                             `pulumi:"clusterId"`
 	ClusterLogConf            *JobTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
@@ -31227,16 +34524,18 @@ type JobTaskNewCluster struct {
 	IdempotencyToken          *string                             `pulumi:"idempotencyToken"`
 	InitScripts               []JobTaskNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                             `pulumi:"instancePoolId"`
-	NodeTypeId                *string                             `pulumi:"nodeTypeId"`
-	NumWorkers                *int                                `pulumi:"numWorkers"`
-	PolicyId                  *string                             `pulumi:"policyId"`
-	RuntimeEngine             *string                             `pulumi:"runtimeEngine"`
-	SingleUserName            *string                             `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}              `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}              `pulumi:"sparkEnvVars"`
-	SparkVersion              string                              `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                            `pulumi:"sshPublicKeys"`
-	WorkloadType              *JobTaskNewClusterWorkloadType      `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      []JobTaskNewClusterLibrary     `pulumi:"libraries"`
+	NodeTypeId     *string                        `pulumi:"nodeTypeId"`
+	NumWorkers     *int                           `pulumi:"numWorkers"`
+	PolicyId       *string                        `pulumi:"policyId"`
+	RuntimeEngine  *string                        `pulumi:"runtimeEngine"`
+	SingleUserName *string                        `pulumi:"singleUserName"`
+	SparkConf      map[string]interface{}         `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]interface{}         `pulumi:"sparkEnvVars"`
+	SparkVersion   string                         `pulumi:"sparkVersion"`
+	SshPublicKeys  []string                       `pulumi:"sshPublicKeys"`
+	WorkloadType   *JobTaskNewClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // JobTaskNewClusterInput is an input type that accepts JobTaskNewClusterArgs and JobTaskNewClusterOutput values.
@@ -31256,6 +34555,7 @@ type JobTaskNewClusterArgs struct {
 	AutoterminationMinutes    pulumi.IntPtrInput                          `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobTaskNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobTaskNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
+	CloneFrom                 JobTaskNewClusterCloneFromPtrInput          `pulumi:"cloneFrom"`
 	ClusterId                 pulumi.StringPtrInput                       `pulumi:"clusterId"`
 	ClusterLogConf            JobTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
@@ -31271,16 +34571,18 @@ type JobTaskNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                       `pulumi:"idempotencyToken"`
 	InitScripts               JobTaskNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                       `pulumi:"instancePoolId"`
-	NodeTypeId                pulumi.StringPtrInput                       `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntPtrInput                          `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                       `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                       `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                       `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                             `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                             `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringInput                          `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                     `pulumi:"sshPublicKeys"`
-	WorkloadType              JobTaskNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	Libraries      JobTaskNewClusterLibraryArrayInput    `pulumi:"libraries"`
+	NodeTypeId     pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
+	NumWorkers     pulumi.IntPtrInput                    `pulumi:"numWorkers"`
+	PolicyId       pulumi.StringPtrInput                 `pulumi:"policyId"`
+	RuntimeEngine  pulumi.StringPtrInput                 `pulumi:"runtimeEngine"`
+	SingleUserName pulumi.StringPtrInput                 `pulumi:"singleUserName"`
+	SparkConf      pulumi.MapInput                       `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.MapInput                       `pulumi:"sparkEnvVars"`
+	SparkVersion   pulumi.StringInput                    `pulumi:"sparkVersion"`
+	SshPublicKeys  pulumi.StringArrayInput               `pulumi:"sshPublicKeys"`
+	WorkloadType   JobTaskNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (JobTaskNewClusterArgs) ElementType() reflect.Type {
@@ -31380,6 +34682,10 @@ func (o JobTaskNewClusterOutput) AzureAttributes() JobTaskNewClusterAzureAttribu
 	return o.ApplyT(func(v JobTaskNewCluster) *JobTaskNewClusterAzureAttributes { return v.AzureAttributes }).(JobTaskNewClusterAzureAttributesPtrOutput)
 }
 
+func (o JobTaskNewClusterOutput) CloneFrom() JobTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) *JobTaskNewClusterCloneFrom { return v.CloneFrom }).(JobTaskNewClusterCloneFromPtrOutput)
+}
+
 func (o JobTaskNewClusterOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -31438,6 +34744,11 @@ func (o JobTaskNewClusterOutput) InitScripts() JobTaskNewClusterInitScriptArrayO
 
 func (o JobTaskNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobTaskNewClusterOutput) Libraries() JobTaskNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) []JobTaskNewClusterLibrary { return v.Libraries }).(JobTaskNewClusterLibraryArrayOutput)
 }
 
 func (o JobTaskNewClusterOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -31547,6 +34858,15 @@ func (o JobTaskNewClusterPtrOutput) AzureAttributes() JobTaskNewClusterAzureAttr
 		}
 		return v.AzureAttributes
 	}).(JobTaskNewClusterAzureAttributesPtrOutput)
+}
+
+func (o JobTaskNewClusterPtrOutput) CloneFrom() JobTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) *JobTaskNewClusterCloneFrom {
+		if v == nil {
+			return nil
+		}
+		return v.CloneFrom
+	}).(JobTaskNewClusterCloneFromPtrOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
@@ -31682,6 +35002,16 @@ func (o JobTaskNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 		}
 		return v.InstancePoolId
 	}).(pulumi.StringPtrOutput)
+}
+
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+func (o JobTaskNewClusterPtrOutput) Libraries() JobTaskNewClusterLibraryArrayOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) []JobTaskNewClusterLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.Libraries
+	}).(JobTaskNewClusterLibraryArrayOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
@@ -31925,7 +35255,9 @@ func (o JobTaskNewClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 type JobTaskNewClusterAwsAttributes struct {
 	Availability        *string `pulumi:"availability"`
 	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       *int    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
 	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
@@ -31947,7 +35279,9 @@ type JobTaskNewClusterAwsAttributesInput interface {
 type JobTaskNewClusterAwsAttributesArgs struct {
 	Availability        pulumi.StringPtrInput `pulumi:"availability"`
 	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       pulumi.IntPtrInput    `pulumi:"ebsVolumeIops"`
 	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput    `pulumi:"ebsVolumeThroughput"`
 	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
 	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
 	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -32040,8 +35374,16 @@ func (o JobTaskNewClusterAwsAttributesOutput) EbsVolumeCount() pulumi.IntPtrOutp
 	return o.ApplyT(func(v JobTaskNewClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskNewClusterAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
 func (o JobTaskNewClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o JobTaskNewClusterAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskNewClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
@@ -32106,12 +35448,30 @@ func (o JobTaskNewClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskNewClusterAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o JobTaskNewClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterAwsAttributes) *int {
 		if v == nil {
 			return nil
 		}
 		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobTaskNewClusterAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -32161,9 +35521,10 @@ func (o JobTaskNewClusterAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput
 }
 
 type JobTaskNewClusterAzureAttributes struct {
-	Availability    *string  `pulumi:"availability"`
-	FirstOnDemand   *int     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
+	Availability     *string                                           `pulumi:"availability"`
+	FirstOnDemand    *int                                              `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *JobTaskNewClusterAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  *float64                                          `pulumi:"spotBidMaxPrice"`
 }
 
 // JobTaskNewClusterAzureAttributesInput is an input type that accepts JobTaskNewClusterAzureAttributesArgs and JobTaskNewClusterAzureAttributesOutput values.
@@ -32178,9 +35539,10 @@ type JobTaskNewClusterAzureAttributesInput interface {
 }
 
 type JobTaskNewClusterAzureAttributesArgs struct {
-	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
-	FirstOnDemand   pulumi.IntPtrInput     `pulumi:"firstOnDemand"`
-	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
+	Availability     pulumi.StringPtrInput                                    `pulumi:"availability"`
+	FirstOnDemand    pulumi.IntPtrInput                                       `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  pulumi.Float64PtrInput                                   `pulumi:"spotBidMaxPrice"`
 }
 
 func (JobTaskNewClusterAzureAttributesArgs) ElementType() reflect.Type {
@@ -32268,6 +35630,12 @@ func (o JobTaskNewClusterAzureAttributesOutput) FirstOnDemand() pulumi.IntPtrOut
 	return o.ApplyT(func(v JobTaskNewClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskNewClusterAzureAttributesOutput) LogAnalyticsInfo() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterAzureAttributes) *JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		return v.LogAnalyticsInfo
+	}).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobTaskNewClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -32314,6 +35682,15 @@ func (o JobTaskNewClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o JobTaskNewClusterAzureAttributesPtrOutput) LogAnalyticsInfo() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAzureAttributes) *JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 func (o JobTaskNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterAzureAttributes) *float64 {
 		if v == nil {
@@ -32321,6 +35698,287 @@ func (o JobTaskNewClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Floa
 		}
 		return v.SpotBidMaxPrice
 	}).(pulumi.Float64PtrOutput)
+}
+
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// JobTaskNewClusterAzureAttributesLogAnalyticsInfoInput is an input type that accepts JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs and JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput
+	ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput
+}
+
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput).ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs, JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtr and JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+	ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type jobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs
+
+func JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtr(v *JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*jobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*jobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrType) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterAzureAttributesLogAnalyticsInfo) *JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsPrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput() JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToJobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) Elem() JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAzureAttributesLogAnalyticsInfo) JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterCloneFrom struct {
+	SourceClusterId string `pulumi:"sourceClusterId"`
+}
+
+// JobTaskNewClusterCloneFromInput is an input type that accepts JobTaskNewClusterCloneFromArgs and JobTaskNewClusterCloneFromOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterCloneFromInput` via:
+//
+//	JobTaskNewClusterCloneFromArgs{...}
+type JobTaskNewClusterCloneFromInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterCloneFromOutput() JobTaskNewClusterCloneFromOutput
+	ToJobTaskNewClusterCloneFromOutputWithContext(context.Context) JobTaskNewClusterCloneFromOutput
+}
+
+type JobTaskNewClusterCloneFromArgs struct {
+	SourceClusterId pulumi.StringInput `pulumi:"sourceClusterId"`
+}
+
+func (JobTaskNewClusterCloneFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterCloneFromArgs) ToJobTaskNewClusterCloneFromOutput() JobTaskNewClusterCloneFromOutput {
+	return i.ToJobTaskNewClusterCloneFromOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterCloneFromArgs) ToJobTaskNewClusterCloneFromOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterCloneFromOutput)
+}
+
+func (i JobTaskNewClusterCloneFromArgs) ToJobTaskNewClusterCloneFromPtrOutput() JobTaskNewClusterCloneFromPtrOutput {
+	return i.ToJobTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterCloneFromArgs) ToJobTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterCloneFromOutput).ToJobTaskNewClusterCloneFromPtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterCloneFromPtrInput is an input type that accepts JobTaskNewClusterCloneFromArgs, JobTaskNewClusterCloneFromPtr and JobTaskNewClusterCloneFromPtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterCloneFromPtrInput` via:
+//
+//	        JobTaskNewClusterCloneFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterCloneFromPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterCloneFromPtrOutput() JobTaskNewClusterCloneFromPtrOutput
+	ToJobTaskNewClusterCloneFromPtrOutputWithContext(context.Context) JobTaskNewClusterCloneFromPtrOutput
+}
+
+type jobTaskNewClusterCloneFromPtrType JobTaskNewClusterCloneFromArgs
+
+func JobTaskNewClusterCloneFromPtr(v *JobTaskNewClusterCloneFromArgs) JobTaskNewClusterCloneFromPtrInput {
+	return (*jobTaskNewClusterCloneFromPtrType)(v)
+}
+
+func (*jobTaskNewClusterCloneFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterCloneFromPtrType) ToJobTaskNewClusterCloneFromPtrOutput() JobTaskNewClusterCloneFromPtrOutput {
+	return i.ToJobTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterCloneFromPtrType) ToJobTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterCloneFromPtrOutput)
+}
+
+type JobTaskNewClusterCloneFromOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterCloneFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterCloneFromOutput) ToJobTaskNewClusterCloneFromOutput() JobTaskNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobTaskNewClusterCloneFromOutput) ToJobTaskNewClusterCloneFromOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromOutput {
+	return o
+}
+
+func (o JobTaskNewClusterCloneFromOutput) ToJobTaskNewClusterCloneFromPtrOutput() JobTaskNewClusterCloneFromPtrOutput {
+	return o.ToJobTaskNewClusterCloneFromPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterCloneFromOutput) ToJobTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterCloneFrom) *JobTaskNewClusterCloneFrom {
+		return &v
+	}).(JobTaskNewClusterCloneFromPtrOutput)
+}
+
+func (o JobTaskNewClusterCloneFromOutput) SourceClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterCloneFrom) string { return v.SourceClusterId }).(pulumi.StringOutput)
+}
+
+type JobTaskNewClusterCloneFromPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterCloneFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterCloneFrom)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterCloneFromPtrOutput) ToJobTaskNewClusterCloneFromPtrOutput() JobTaskNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterCloneFromPtrOutput) ToJobTaskNewClusterCloneFromPtrOutputWithContext(ctx context.Context) JobTaskNewClusterCloneFromPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterCloneFromPtrOutput) Elem() JobTaskNewClusterCloneFromOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterCloneFrom) JobTaskNewClusterCloneFrom {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterCloneFrom
+		return ret
+	}).(JobTaskNewClusterCloneFromOutput)
+}
+
+func (o JobTaskNewClusterCloneFromPtrOutput) SourceClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterCloneFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskNewClusterClusterLogConf struct {
@@ -34652,6 +38310,595 @@ func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobTaskNewClusterLibrary struct {
+	Cran         *JobTaskNewClusterLibraryCran  `pulumi:"cran"`
+	Egg          *string                        `pulumi:"egg"`
+	Jar          *string                        `pulumi:"jar"`
+	Maven        *JobTaskNewClusterLibraryMaven `pulumi:"maven"`
+	Pypi         *JobTaskNewClusterLibraryPypi  `pulumi:"pypi"`
+	Requirements *string                        `pulumi:"requirements"`
+	Whl          *string                        `pulumi:"whl"`
+}
+
+// JobTaskNewClusterLibraryInput is an input type that accepts JobTaskNewClusterLibraryArgs and JobTaskNewClusterLibraryOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryInput` via:
+//
+//	JobTaskNewClusterLibraryArgs{...}
+type JobTaskNewClusterLibraryInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryOutput() JobTaskNewClusterLibraryOutput
+	ToJobTaskNewClusterLibraryOutputWithContext(context.Context) JobTaskNewClusterLibraryOutput
+}
+
+type JobTaskNewClusterLibraryArgs struct {
+	Cran         JobTaskNewClusterLibraryCranPtrInput  `pulumi:"cran"`
+	Egg          pulumi.StringPtrInput                 `pulumi:"egg"`
+	Jar          pulumi.StringPtrInput                 `pulumi:"jar"`
+	Maven        JobTaskNewClusterLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi         JobTaskNewClusterLibraryPypiPtrInput  `pulumi:"pypi"`
+	Requirements pulumi.StringPtrInput                 `pulumi:"requirements"`
+	Whl          pulumi.StringPtrInput                 `pulumi:"whl"`
+}
+
+func (JobTaskNewClusterLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterLibraryArgs) ToJobTaskNewClusterLibraryOutput() JobTaskNewClusterLibraryOutput {
+	return i.ToJobTaskNewClusterLibraryOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryArgs) ToJobTaskNewClusterLibraryOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryOutput)
+}
+
+// JobTaskNewClusterLibraryArrayInput is an input type that accepts JobTaskNewClusterLibraryArray and JobTaskNewClusterLibraryArrayOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryArrayInput` via:
+//
+//	JobTaskNewClusterLibraryArray{ JobTaskNewClusterLibraryArgs{...} }
+type JobTaskNewClusterLibraryArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryArrayOutput() JobTaskNewClusterLibraryArrayOutput
+	ToJobTaskNewClusterLibraryArrayOutputWithContext(context.Context) JobTaskNewClusterLibraryArrayOutput
+}
+
+type JobTaskNewClusterLibraryArray []JobTaskNewClusterLibraryInput
+
+func (JobTaskNewClusterLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterLibraryArray) ToJobTaskNewClusterLibraryArrayOutput() JobTaskNewClusterLibraryArrayOutput {
+	return i.ToJobTaskNewClusterLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryArray) ToJobTaskNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryArrayOutput)
+}
+
+type JobTaskNewClusterLibraryOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryOutput) ToJobTaskNewClusterLibraryOutput() JobTaskNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryOutput) ToJobTaskNewClusterLibraryOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryOutput) Cran() JobTaskNewClusterLibraryCranPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *JobTaskNewClusterLibraryCran { return v.Cran }).(JobTaskNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Maven() JobTaskNewClusterLibraryMavenPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *JobTaskNewClusterLibraryMaven { return v.Maven }).(JobTaskNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Pypi() JobTaskNewClusterLibraryPypiPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *JobTaskNewClusterLibraryPypi { return v.Pypi }).(JobTaskNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Requirements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *string { return v.Requirements }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskNewClusterLibrary)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryArrayOutput) ToJobTaskNewClusterLibraryArrayOutput() JobTaskNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryArrayOutput) ToJobTaskNewClusterLibraryArrayOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryArrayOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryArrayOutput) Index(i pulumi.IntInput) JobTaskNewClusterLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskNewClusterLibrary {
+		return vs[0].([]JobTaskNewClusterLibrary)[vs[1].(int)]
+	}).(JobTaskNewClusterLibraryOutput)
+}
+
+type JobTaskNewClusterLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobTaskNewClusterLibraryCranInput is an input type that accepts JobTaskNewClusterLibraryCranArgs and JobTaskNewClusterLibraryCranOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryCranInput` via:
+//
+//	JobTaskNewClusterLibraryCranArgs{...}
+type JobTaskNewClusterLibraryCranInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryCranOutput() JobTaskNewClusterLibraryCranOutput
+	ToJobTaskNewClusterLibraryCranOutputWithContext(context.Context) JobTaskNewClusterLibraryCranOutput
+}
+
+type JobTaskNewClusterLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobTaskNewClusterLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterLibraryCranArgs) ToJobTaskNewClusterLibraryCranOutput() JobTaskNewClusterLibraryCranOutput {
+	return i.ToJobTaskNewClusterLibraryCranOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryCranArgs) ToJobTaskNewClusterLibraryCranOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryCranOutput)
+}
+
+func (i JobTaskNewClusterLibraryCranArgs) ToJobTaskNewClusterLibraryCranPtrOutput() JobTaskNewClusterLibraryCranPtrOutput {
+	return i.ToJobTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryCranArgs) ToJobTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryCranOutput).ToJobTaskNewClusterLibraryCranPtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterLibraryCranPtrInput is an input type that accepts JobTaskNewClusterLibraryCranArgs, JobTaskNewClusterLibraryCranPtr and JobTaskNewClusterLibraryCranPtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryCranPtrInput` via:
+//
+//	        JobTaskNewClusterLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryCranPtrOutput() JobTaskNewClusterLibraryCranPtrOutput
+	ToJobTaskNewClusterLibraryCranPtrOutputWithContext(context.Context) JobTaskNewClusterLibraryCranPtrOutput
+}
+
+type jobTaskNewClusterLibraryCranPtrType JobTaskNewClusterLibraryCranArgs
+
+func JobTaskNewClusterLibraryCranPtr(v *JobTaskNewClusterLibraryCranArgs) JobTaskNewClusterLibraryCranPtrInput {
+	return (*jobTaskNewClusterLibraryCranPtrType)(v)
+}
+
+func (*jobTaskNewClusterLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterLibraryCranPtrType) ToJobTaskNewClusterLibraryCranPtrOutput() JobTaskNewClusterLibraryCranPtrOutput {
+	return i.ToJobTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterLibraryCranPtrType) ToJobTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryCranPtrOutput)
+}
+
+type JobTaskNewClusterLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) ToJobTaskNewClusterLibraryCranOutput() JobTaskNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) ToJobTaskNewClusterLibraryCranOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) ToJobTaskNewClusterLibraryCranPtrOutput() JobTaskNewClusterLibraryCranPtrOutput {
+	return o.ToJobTaskNewClusterLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) ToJobTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterLibraryCran) *JobTaskNewClusterLibraryCran {
+		return &v
+	}).(JobTaskNewClusterLibraryCranPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobTaskNewClusterLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryCran)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryCranPtrOutput) ToJobTaskNewClusterLibraryCranPtrOutput() JobTaskNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryCranPtrOutput) ToJobTaskNewClusterLibraryCranPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryCranPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryCranPtrOutput) Elem() JobTaskNewClusterLibraryCranOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryCran) JobTaskNewClusterLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterLibraryCran
+		return ret
+	}).(JobTaskNewClusterLibraryCranOutput)
+}
+
+func (o JobTaskNewClusterLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryMaven struct {
+	Coordinates string   `pulumi:"coordinates"`
+	Exclusions  []string `pulumi:"exclusions"`
+	Repo        *string  `pulumi:"repo"`
+}
+
+// JobTaskNewClusterLibraryMavenInput is an input type that accepts JobTaskNewClusterLibraryMavenArgs and JobTaskNewClusterLibraryMavenOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryMavenInput` via:
+//
+//	JobTaskNewClusterLibraryMavenArgs{...}
+type JobTaskNewClusterLibraryMavenInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryMavenOutput() JobTaskNewClusterLibraryMavenOutput
+	ToJobTaskNewClusterLibraryMavenOutputWithContext(context.Context) JobTaskNewClusterLibraryMavenOutput
+}
+
+type JobTaskNewClusterLibraryMavenArgs struct {
+	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
+	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
+	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
+}
+
+func (JobTaskNewClusterLibraryMavenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterLibraryMavenArgs) ToJobTaskNewClusterLibraryMavenOutput() JobTaskNewClusterLibraryMavenOutput {
+	return i.ToJobTaskNewClusterLibraryMavenOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryMavenArgs) ToJobTaskNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryMavenOutput)
+}
+
+func (i JobTaskNewClusterLibraryMavenArgs) ToJobTaskNewClusterLibraryMavenPtrOutput() JobTaskNewClusterLibraryMavenPtrOutput {
+	return i.ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryMavenArgs) ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryMavenOutput).ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterLibraryMavenPtrInput is an input type that accepts JobTaskNewClusterLibraryMavenArgs, JobTaskNewClusterLibraryMavenPtr and JobTaskNewClusterLibraryMavenPtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryMavenPtrInput` via:
+//
+//	        JobTaskNewClusterLibraryMavenArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterLibraryMavenPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryMavenPtrOutput() JobTaskNewClusterLibraryMavenPtrOutput
+	ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(context.Context) JobTaskNewClusterLibraryMavenPtrOutput
+}
+
+type jobTaskNewClusterLibraryMavenPtrType JobTaskNewClusterLibraryMavenArgs
+
+func JobTaskNewClusterLibraryMavenPtr(v *JobTaskNewClusterLibraryMavenArgs) JobTaskNewClusterLibraryMavenPtrInput {
+	return (*jobTaskNewClusterLibraryMavenPtrType)(v)
+}
+
+func (*jobTaskNewClusterLibraryMavenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterLibraryMavenPtrType) ToJobTaskNewClusterLibraryMavenPtrOutput() JobTaskNewClusterLibraryMavenPtrOutput {
+	return i.ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterLibraryMavenPtrType) ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryMavenPtrOutput)
+}
+
+type JobTaskNewClusterLibraryMavenOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryMavenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) ToJobTaskNewClusterLibraryMavenOutput() JobTaskNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) ToJobTaskNewClusterLibraryMavenOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) ToJobTaskNewClusterLibraryMavenPtrOutput() JobTaskNewClusterLibraryMavenPtrOutput {
+	return o.ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterLibraryMaven) *JobTaskNewClusterLibraryMaven {
+		return &v
+	}).(JobTaskNewClusterLibraryMavenPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) Coordinates() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryMavenPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryMavenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryMaven)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) ToJobTaskNewClusterLibraryMavenPtrOutput() JobTaskNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) ToJobTaskNewClusterLibraryMavenPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryMavenPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) Elem() JobTaskNewClusterLibraryMavenOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryMaven) JobTaskNewClusterLibraryMaven {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterLibraryMaven
+		return ret
+	}).(JobTaskNewClusterLibraryMavenOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Coordinates
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryMaven) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskNewClusterLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryPypi struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// JobTaskNewClusterLibraryPypiInput is an input type that accepts JobTaskNewClusterLibraryPypiArgs and JobTaskNewClusterLibraryPypiOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryPypiInput` via:
+//
+//	JobTaskNewClusterLibraryPypiArgs{...}
+type JobTaskNewClusterLibraryPypiInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryPypiOutput() JobTaskNewClusterLibraryPypiOutput
+	ToJobTaskNewClusterLibraryPypiOutputWithContext(context.Context) JobTaskNewClusterLibraryPypiOutput
+}
+
+type JobTaskNewClusterLibraryPypiArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (JobTaskNewClusterLibraryPypiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterLibraryPypiArgs) ToJobTaskNewClusterLibraryPypiOutput() JobTaskNewClusterLibraryPypiOutput {
+	return i.ToJobTaskNewClusterLibraryPypiOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryPypiArgs) ToJobTaskNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryPypiOutput)
+}
+
+func (i JobTaskNewClusterLibraryPypiArgs) ToJobTaskNewClusterLibraryPypiPtrOutput() JobTaskNewClusterLibraryPypiPtrOutput {
+	return i.ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterLibraryPypiArgs) ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryPypiOutput).ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterLibraryPypiPtrInput is an input type that accepts JobTaskNewClusterLibraryPypiArgs, JobTaskNewClusterLibraryPypiPtr and JobTaskNewClusterLibraryPypiPtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterLibraryPypiPtrInput` via:
+//
+//	        JobTaskNewClusterLibraryPypiArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterLibraryPypiPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterLibraryPypiPtrOutput() JobTaskNewClusterLibraryPypiPtrOutput
+	ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(context.Context) JobTaskNewClusterLibraryPypiPtrOutput
+}
+
+type jobTaskNewClusterLibraryPypiPtrType JobTaskNewClusterLibraryPypiArgs
+
+func JobTaskNewClusterLibraryPypiPtr(v *JobTaskNewClusterLibraryPypiArgs) JobTaskNewClusterLibraryPypiPtrInput {
+	return (*jobTaskNewClusterLibraryPypiPtrType)(v)
+}
+
+func (*jobTaskNewClusterLibraryPypiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterLibraryPypiPtrType) ToJobTaskNewClusterLibraryPypiPtrOutput() JobTaskNewClusterLibraryPypiPtrOutput {
+	return i.ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterLibraryPypiPtrType) ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterLibraryPypiPtrOutput)
+}
+
+type JobTaskNewClusterLibraryPypiOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryPypiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) ToJobTaskNewClusterLibraryPypiOutput() JobTaskNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) ToJobTaskNewClusterLibraryPypiOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) ToJobTaskNewClusterLibraryPypiPtrOutput() JobTaskNewClusterLibraryPypiPtrOutput {
+	return o.ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterLibraryPypi) *JobTaskNewClusterLibraryPypi {
+		return &v
+	}).(JobTaskNewClusterLibraryPypiPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o JobTaskNewClusterLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterLibraryPypiPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterLibraryPypiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterLibraryPypi)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterLibraryPypiPtrOutput) ToJobTaskNewClusterLibraryPypiPtrOutput() JobTaskNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryPypiPtrOutput) ToJobTaskNewClusterLibraryPypiPtrOutputWithContext(ctx context.Context) JobTaskNewClusterLibraryPypiPtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterLibraryPypiPtrOutput) Elem() JobTaskNewClusterLibraryPypiOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryPypi) JobTaskNewClusterLibraryPypi {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterLibraryPypi
+		return ret
+	}).(JobTaskNewClusterLibraryPypiOutput)
+}
+
+func (o JobTaskNewClusterLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobTaskNewClusterWorkloadType struct {
 	Clients JobTaskNewClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -35669,10 +39916,18 @@ func (o JobTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTaskRunJobTask struct {
+	DbtCommands []string `pulumi:"dbtCommands"`
+	JarParams   []string `pulumi:"jarParams"`
 	// (String) ID of the job
 	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobParameters     map[string]interface{}           `pulumi:"jobParameters"`
+	NotebookParams    map[string]interface{}           `pulumi:"notebookParams"`
+	PipelineParams    *JobTaskRunJobTaskPipelineParams `pulumi:"pipelineParams"`
+	PythonNamedParams map[string]interface{}           `pulumi:"pythonNamedParams"`
+	PythonParams      []string                         `pulumi:"pythonParams"`
+	SparkSubmitParams []string                         `pulumi:"sparkSubmitParams"`
+	SqlParams         map[string]interface{}           `pulumi:"sqlParams"`
 }
 
 // JobTaskRunJobTaskInput is an input type that accepts JobTaskRunJobTaskArgs and JobTaskRunJobTaskOutput values.
@@ -35687,10 +39942,18 @@ type JobTaskRunJobTaskInput interface {
 }
 
 type JobTaskRunJobTaskArgs struct {
+	DbtCommands pulumi.StringArrayInput `pulumi:"dbtCommands"`
+	JarParams   pulumi.StringArrayInput `pulumi:"jarParams"`
 	// (String) ID of the job
 	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobParameters     pulumi.MapInput                         `pulumi:"jobParameters"`
+	NotebookParams    pulumi.MapInput                         `pulumi:"notebookParams"`
+	PipelineParams    JobTaskRunJobTaskPipelineParamsPtrInput `pulumi:"pipelineParams"`
+	PythonNamedParams pulumi.MapInput                         `pulumi:"pythonNamedParams"`
+	PythonParams      pulumi.StringArrayInput                 `pulumi:"pythonParams"`
+	SparkSubmitParams pulumi.StringArrayInput                 `pulumi:"sparkSubmitParams"`
+	SqlParams         pulumi.MapInput                         `pulumi:"sqlParams"`
 }
 
 func (JobTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -35770,6 +40033,14 @@ func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskPtrOutputWithContext(ctx con
 	}).(JobTaskRunJobTaskPtrOutput)
 }
 
+func (o JobTaskRunJobTaskOutput) DbtCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) []string { return v.DbtCommands }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) JarParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) []string { return v.JarParams }).(pulumi.StringArrayOutput)
+}
+
 // (String) ID of the job
 func (o JobTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v JobTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
@@ -35778,6 +40049,30 @@ func (o JobTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 // (Map) Job parameters for the task
 func (o JobTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
 	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) NotebookParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.NotebookParams }).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) PipelineParams() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) *JobTaskRunJobTaskPipelineParams { return v.PipelineParams }).(JobTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) PythonNamedParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.PythonNamedParams }).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) PythonParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) []string { return v.PythonParams }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) SparkSubmitParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) []string { return v.SparkSubmitParams }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskOutput) SqlParams() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.SqlParams }).(pulumi.MapOutput)
 }
 
 type JobTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -35804,6 +40099,24 @@ func (o JobTaskRunJobTaskPtrOutput) Elem() JobTaskRunJobTaskOutput {
 	}).(JobTaskRunJobTaskOutput)
 }
 
+func (o JobTaskRunJobTaskPtrOutput) DbtCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DbtCommands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) JarParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarParams
+	}).(pulumi.StringArrayOutput)
+}
+
 // (String) ID of the job
 func (o JobTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTaskRunJobTask) *int {
@@ -35822,6 +40135,193 @@ func (o JobTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
 		}
 		return v.JobParameters
 	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) NotebookParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookParams
+	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) PipelineParams() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) *JobTaskRunJobTaskPipelineParams {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineParams
+	}).(JobTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PythonNamedParams
+	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) PythonParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonParams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) SparkSubmitParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkSubmitParams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskRunJobTaskPtrOutput) SqlParams() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SqlParams
+	}).(pulumi.MapOutput)
+}
+
+type JobTaskRunJobTaskPipelineParams struct {
+	FullRefresh *bool `pulumi:"fullRefresh"`
+}
+
+// JobTaskRunJobTaskPipelineParamsInput is an input type that accepts JobTaskRunJobTaskPipelineParamsArgs and JobTaskRunJobTaskPipelineParamsOutput values.
+// You can construct a concrete instance of `JobTaskRunJobTaskPipelineParamsInput` via:
+//
+//	JobTaskRunJobTaskPipelineParamsArgs{...}
+type JobTaskRunJobTaskPipelineParamsInput interface {
+	pulumi.Input
+
+	ToJobTaskRunJobTaskPipelineParamsOutput() JobTaskRunJobTaskPipelineParamsOutput
+	ToJobTaskRunJobTaskPipelineParamsOutputWithContext(context.Context) JobTaskRunJobTaskPipelineParamsOutput
+}
+
+type JobTaskRunJobTaskPipelineParamsArgs struct {
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+}
+
+func (JobTaskRunJobTaskPipelineParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (i JobTaskRunJobTaskPipelineParamsArgs) ToJobTaskRunJobTaskPipelineParamsOutput() JobTaskRunJobTaskPipelineParamsOutput {
+	return i.ToJobTaskRunJobTaskPipelineParamsOutputWithContext(context.Background())
+}
+
+func (i JobTaskRunJobTaskPipelineParamsArgs) ToJobTaskRunJobTaskPipelineParamsOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskPipelineParamsOutput)
+}
+
+func (i JobTaskRunJobTaskPipelineParamsArgs) ToJobTaskRunJobTaskPipelineParamsPtrOutput() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return i.ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskRunJobTaskPipelineParamsArgs) ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskPipelineParamsOutput).ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx)
+}
+
+// JobTaskRunJobTaskPipelineParamsPtrInput is an input type that accepts JobTaskRunJobTaskPipelineParamsArgs, JobTaskRunJobTaskPipelineParamsPtr and JobTaskRunJobTaskPipelineParamsPtrOutput values.
+// You can construct a concrete instance of `JobTaskRunJobTaskPipelineParamsPtrInput` via:
+//
+//	        JobTaskRunJobTaskPipelineParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskRunJobTaskPipelineParamsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskRunJobTaskPipelineParamsPtrOutput() JobTaskRunJobTaskPipelineParamsPtrOutput
+	ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Context) JobTaskRunJobTaskPipelineParamsPtrOutput
+}
+
+type jobTaskRunJobTaskPipelineParamsPtrType JobTaskRunJobTaskPipelineParamsArgs
+
+func JobTaskRunJobTaskPipelineParamsPtr(v *JobTaskRunJobTaskPipelineParamsArgs) JobTaskRunJobTaskPipelineParamsPtrInput {
+	return (*jobTaskRunJobTaskPipelineParamsPtrType)(v)
+}
+
+func (*jobTaskRunJobTaskPipelineParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (i *jobTaskRunJobTaskPipelineParamsPtrType) ToJobTaskRunJobTaskPipelineParamsPtrOutput() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return i.ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskRunJobTaskPipelineParamsPtrType) ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+type JobTaskRunJobTaskPipelineParamsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskRunJobTaskPipelineParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (o JobTaskRunJobTaskPipelineParamsOutput) ToJobTaskRunJobTaskPipelineParamsOutput() JobTaskRunJobTaskPipelineParamsOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPipelineParamsOutput) ToJobTaskRunJobTaskPipelineParamsOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPipelineParamsOutput) ToJobTaskRunJobTaskPipelineParamsPtrOutput() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskRunJobTaskPipelineParamsOutput) ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskRunJobTaskPipelineParams) *JobTaskRunJobTaskPipelineParams {
+		return &v
+	}).(JobTaskRunJobTaskPipelineParamsPtrOutput)
+}
+
+func (o JobTaskRunJobTaskPipelineParamsOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskRunJobTaskPipelineParams) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
+type JobTaskRunJobTaskPipelineParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskRunJobTaskPipelineParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskRunJobTaskPipelineParams)(nil)).Elem()
+}
+
+func (o JobTaskRunJobTaskPipelineParamsPtrOutput) ToJobTaskRunJobTaskPipelineParamsPtrOutput() JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPipelineParamsPtrOutput) ToJobTaskRunJobTaskPipelineParamsPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPipelineParamsPtrOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPipelineParamsPtrOutput) Elem() JobTaskRunJobTaskPipelineParamsOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTaskPipelineParams) JobTaskRunJobTaskPipelineParams {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskRunJobTaskPipelineParams
+		return ret
+	}).(JobTaskRunJobTaskPipelineParamsOutput)
+}
+
+func (o JobTaskRunJobTaskPipelineParamsPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTaskPipelineParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobTaskSparkJarTask struct {
@@ -38255,7 +42755,8 @@ type JobTrigger struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival *JobTriggerFileArrival `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus *string `pulumi:"pauseStatus"`
+	PauseStatus *string          `pulumi:"pauseStatus"`
+	Table       *JobTriggerTable `pulumi:"table"`
 	// configuration block to define a trigger for Table Update events consisting of following attributes:
 	TableUpdate *JobTriggerTableUpdate `pulumi:"tableUpdate"`
 }
@@ -38275,7 +42776,8 @@ type JobTriggerArgs struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival JobTriggerFileArrivalPtrInput `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
+	PauseStatus pulumi.StringPtrInput   `pulumi:"pauseStatus"`
+	Table       JobTriggerTablePtrInput `pulumi:"table"`
 	// configuration block to define a trigger for Table Update events consisting of following attributes:
 	TableUpdate JobTriggerTableUpdatePtrInput `pulumi:"tableUpdate"`
 }
@@ -38367,6 +42869,10 @@ func (o JobTriggerOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTrigger) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTriggerOutput) Table() JobTriggerTablePtrOutput {
+	return o.ApplyT(func(v JobTrigger) *JobTriggerTable { return v.Table }).(JobTriggerTablePtrOutput)
+}
+
 // configuration block to define a trigger for Table Update events consisting of following attributes:
 func (o JobTriggerOutput) TableUpdate() JobTriggerTableUpdatePtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerTableUpdate { return v.TableUpdate }).(JobTriggerTableUpdatePtrOutput)
@@ -38414,6 +42920,15 @@ func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 		}
 		return v.PauseStatus
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTriggerPtrOutput) Table() JobTriggerTablePtrOutput {
+	return o.ApplyT(func(v *JobTrigger) *JobTriggerTable {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(JobTriggerTablePtrOutput)
 }
 
 // configuration block to define a trigger for Table Update events consisting of following attributes:
@@ -38594,6 +43109,184 @@ func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
 // If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitAfterLastChangeSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type JobTriggerTable struct {
+	Condition                     *string  `pulumi:"condition"`
+	MinTimeBetweenTriggersSeconds *int     `pulumi:"minTimeBetweenTriggersSeconds"`
+	TableNames                    []string `pulumi:"tableNames"`
+	WaitAfterLastChangeSeconds    *int     `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+// JobTriggerTableInput is an input type that accepts JobTriggerTableArgs and JobTriggerTableOutput values.
+// You can construct a concrete instance of `JobTriggerTableInput` via:
+//
+//	JobTriggerTableArgs{...}
+type JobTriggerTableInput interface {
+	pulumi.Input
+
+	ToJobTriggerTableOutput() JobTriggerTableOutput
+	ToJobTriggerTableOutputWithContext(context.Context) JobTriggerTableOutput
+}
+
+type JobTriggerTableArgs struct {
+	Condition                     pulumi.StringPtrInput   `pulumi:"condition"`
+	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput      `pulumi:"minTimeBetweenTriggersSeconds"`
+	TableNames                    pulumi.StringArrayInput `pulumi:"tableNames"`
+	WaitAfterLastChangeSeconds    pulumi.IntPtrInput      `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+func (JobTriggerTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerTable)(nil)).Elem()
+}
+
+func (i JobTriggerTableArgs) ToJobTriggerTableOutput() JobTriggerTableOutput {
+	return i.ToJobTriggerTableOutputWithContext(context.Background())
+}
+
+func (i JobTriggerTableArgs) ToJobTriggerTableOutputWithContext(ctx context.Context) JobTriggerTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerTableOutput)
+}
+
+func (i JobTriggerTableArgs) ToJobTriggerTablePtrOutput() JobTriggerTablePtrOutput {
+	return i.ToJobTriggerTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobTriggerTableArgs) ToJobTriggerTablePtrOutputWithContext(ctx context.Context) JobTriggerTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerTableOutput).ToJobTriggerTablePtrOutputWithContext(ctx)
+}
+
+// JobTriggerTablePtrInput is an input type that accepts JobTriggerTableArgs, JobTriggerTablePtr and JobTriggerTablePtrOutput values.
+// You can construct a concrete instance of `JobTriggerTablePtrInput` via:
+//
+//	        JobTriggerTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTriggerTablePtrInput interface {
+	pulumi.Input
+
+	ToJobTriggerTablePtrOutput() JobTriggerTablePtrOutput
+	ToJobTriggerTablePtrOutputWithContext(context.Context) JobTriggerTablePtrOutput
+}
+
+type jobTriggerTablePtrType JobTriggerTableArgs
+
+func JobTriggerTablePtr(v *JobTriggerTableArgs) JobTriggerTablePtrInput {
+	return (*jobTriggerTablePtrType)(v)
+}
+
+func (*jobTriggerTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerTable)(nil)).Elem()
+}
+
+func (i *jobTriggerTablePtrType) ToJobTriggerTablePtrOutput() JobTriggerTablePtrOutput {
+	return i.ToJobTriggerTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTriggerTablePtrType) ToJobTriggerTablePtrOutputWithContext(ctx context.Context) JobTriggerTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerTablePtrOutput)
+}
+
+type JobTriggerTableOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerTable)(nil)).Elem()
+}
+
+func (o JobTriggerTableOutput) ToJobTriggerTableOutput() JobTriggerTableOutput {
+	return o
+}
+
+func (o JobTriggerTableOutput) ToJobTriggerTableOutputWithContext(ctx context.Context) JobTriggerTableOutput {
+	return o
+}
+
+func (o JobTriggerTableOutput) ToJobTriggerTablePtrOutput() JobTriggerTablePtrOutput {
+	return o.ToJobTriggerTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobTriggerTableOutput) ToJobTriggerTablePtrOutputWithContext(ctx context.Context) JobTriggerTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTriggerTable) *JobTriggerTable {
+		return &v
+	}).(JobTriggerTablePtrOutput)
+}
+
+func (o JobTriggerTableOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTriggerTable) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTriggerTableOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTriggerTable) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o JobTriggerTableOutput) TableNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTriggerTable) []string { return v.TableNames }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTriggerTableOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTriggerTable) *int { return v.WaitAfterLastChangeSeconds }).(pulumi.IntPtrOutput)
+}
+
+type JobTriggerTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerTable)(nil)).Elem()
+}
+
+func (o JobTriggerTablePtrOutput) ToJobTriggerTablePtrOutput() JobTriggerTablePtrOutput {
+	return o
+}
+
+func (o JobTriggerTablePtrOutput) ToJobTriggerTablePtrOutputWithContext(ctx context.Context) JobTriggerTablePtrOutput {
+	return o
+}
+
+func (o JobTriggerTablePtrOutput) Elem() JobTriggerTableOutput {
+	return o.ApplyT(func(v *JobTriggerTable) JobTriggerTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobTriggerTable
+		return ret
+	}).(JobTriggerTableOutput)
+}
+
+func (o JobTriggerTablePtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTriggerTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTriggerTablePtrOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTriggerTable) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTimeBetweenTriggersSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobTriggerTablePtrOutput) TableNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTriggerTable) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TableNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTriggerTablePtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTriggerTable) *int {
 		if v == nil {
 			return nil
 		}
@@ -79061,4264 +83754,6 @@ func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput) Index(i 
 	}).(GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput)
 }
 
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo struct {
-	MountOptions  *string `pulumi:"mountOptions"`
-	ServerAddress string  `pulumi:"serverAddress"`
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs and GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs{...}
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs struct {
-	MountOptions  pulumi.StringPtrInput `pulumi:"mountOptions"`
-	ServerAddress pulumi.StringInput    `pulumi:"serverAddress"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput) MountOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo) *string {
-		return v.MountOptions
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo) string {
-		return v.ServerAddress
-	}).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImage struct {
-	BasicAuth *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	Url       string                                                   `pulumi:"url"`
-}
-
-// GetJobJobSettingsSettingsNewClusterDockerImageInput is an input type that accepts GetJobJobSettingsSettingsNewClusterDockerImageArgs and GetJobJobSettingsSettingsNewClusterDockerImageOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterDockerImageInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterDockerImageArgs{...}
-type GetJobJobSettingsSettingsNewClusterDockerImageInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterDockerImageOutput() GetJobJobSettingsSettingsNewClusterDockerImageOutput
-	ToGetJobJobSettingsSettingsNewClusterDockerImageOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterDockerImageOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageArgs struct {
-	BasicAuth GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	Url       pulumi.StringInput                                              `pulumi:"url"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterDockerImageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImage)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageOutput() GetJobJobSettingsSettingsNewClusterDockerImageOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImageOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImageOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageArgs) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutput() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageArgs) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImageOutput).ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterDockerImagePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterDockerImageArgs, GetJobJobSettingsSettingsNewClusterDockerImagePtr and GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterDockerImagePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterDockerImageArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterDockerImagePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutput() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput
-	ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterDockerImagePtrType GetJobJobSettingsSettingsNewClusterDockerImageArgs
-
-func GetJobJobSettingsSettingsNewClusterDockerImagePtr(v *GetJobJobSettingsSettingsNewClusterDockerImageArgs) GetJobJobSettingsSettingsNewClusterDockerImagePtrInput {
-	return (*getJobJobSettingsSettingsNewClusterDockerImagePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterDockerImagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterDockerImage)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterDockerImagePtrType) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutput() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterDockerImagePtrType) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterDockerImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImage)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageOutput() GetJobJobSettingsSettingsNewClusterDockerImageOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutput() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterDockerImage) *GetJobJobSettingsSettingsNewClusterDockerImage {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) BasicAuth() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterDockerImage) *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth {
-		return v.BasicAuth
-	}).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterDockerImage)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutput() GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) ToGetJobJobSettingsSettingsNewClusterDockerImagePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterDockerImageOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImage) GetJobJobSettingsSettingsNewClusterDockerImage {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterDockerImage
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterDockerImageOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) BasicAuth() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImage) *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth {
-		if v == nil {
-			return nil
-		}
-		return v.BasicAuth
-	}).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth struct {
-	Password string `pulumi:"password"`
-	Username string `pulumi:"username"`
-}
-
-// GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthInput is an input type that accepts GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs and GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs{...}
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput
-	ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs struct {
-	Password pulumi.StringInput `pulumi:"password"`
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput).ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs, GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtr and GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrType GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs
-
-func GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtr(v *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrType) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrType) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) string { return v.Password }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) ToGetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterGcpAttributes struct {
-	Availability            *string `pulumi:"availability"`
-	BootDiskSize            *int    `pulumi:"bootDiskSize"`
-	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
-	LocalSsdCount           *int    `pulumi:"localSsdCount"`
-	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
-	ZoneId                  *string `pulumi:"zoneId"`
-}
-
-// GetJobJobSettingsSettingsNewClusterGcpAttributesInput is an input type that accepts GetJobJobSettingsSettingsNewClusterGcpAttributesArgs and GetJobJobSettingsSettingsNewClusterGcpAttributesOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterGcpAttributesInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterGcpAttributesArgs{...}
-type GetJobJobSettingsSettingsNewClusterGcpAttributesInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesOutput
-	ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterGcpAttributesArgs struct {
-	Availability            pulumi.StringPtrInput `pulumi:"availability"`
-	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
-	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
-	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
-	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
-	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterGcpAttributes)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterGcpAttributesOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterGcpAttributesOutput).ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterGcpAttributesArgs, GetJobJobSettingsSettingsNewClusterGcpAttributesPtr and GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterGcpAttributesArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterGcpAttributesPtrType GetJobJobSettingsSettingsNewClusterGcpAttributesArgs
-
-func GetJobJobSettingsSettingsNewClusterGcpAttributesPtr(v *GetJobJobSettingsSettingsNewClusterGcpAttributesArgs) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterGcpAttributesPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterGcpAttributesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterGcpAttributes)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterGcpAttributesPtrType) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterGcpAttributesPtrType) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterGcpAttributesOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterGcpAttributes)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterGcpAttributes) *GetJobJobSettingsSettingsNewClusterGcpAttributes {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) Availability() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) BootDiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *int { return v.BootDiskSize }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterGcpAttributes)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput() GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) ToGetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterGcpAttributesOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) GetJobJobSettingsSettingsNewClusterGcpAttributes {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterGcpAttributes
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterGcpAttributesOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Availability
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) BootDiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BootDiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GoogleServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LocalSsdCount
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UsePreemptibleExecutors
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ZoneId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScript struct {
-	Abfss     *GetJobJobSettingsSettingsNewClusterInitScriptAbfss     `pulumi:"abfss"`
-	Dbfs      *GetJobJobSettingsSettingsNewClusterInitScriptDbfs      `pulumi:"dbfs"`
-	File      *GetJobJobSettingsSettingsNewClusterInitScriptFile      `pulumi:"file"`
-	Gcs       *GetJobJobSettingsSettingsNewClusterInitScriptGcs       `pulumi:"gcs"`
-	S3        *GetJobJobSettingsSettingsNewClusterInitScriptS3        `pulumi:"s3"`
-	Volumes   *GetJobJobSettingsSettingsNewClusterInitScriptVolumes   `pulumi:"volumes"`
-	Workspace *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace `pulumi:"workspace"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptArgs and GetJobJobSettingsSettingsNewClusterInitScriptOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptOutput() GetJobJobSettingsSettingsNewClusterInitScriptOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptArgs struct {
-	Abfss     GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
-	Dbfs      GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
-	File      GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput      `pulumi:"file"`
-	Gcs       GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
-	S3        GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
-	Volumes   GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput   `pulumi:"volumes"`
-	Workspace GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScript)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptOutput() GetJobJobSettingsSettingsNewClusterInitScriptOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptOutput)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptArrayInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptArray and GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptArrayInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptArray{ GetJobJobSettingsSettingsNewClusterInitScriptArgs{...} }
-type GetJobJobSettingsSettingsNewClusterInitScriptArrayInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutput() GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptArray []GetJobJobSettingsSettingsNewClusterInitScriptInput
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsNewClusterInitScript)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptArray) ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutput() GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptArray) ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScript)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptOutput() GetJobJobSettingsSettingsNewClusterInitScriptOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Abfss() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
-		return v.Abfss
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Dbfs() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
-		return v.Dbfs
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) File() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptFile {
-		return v.File
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Gcs() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptGcs {
-		return v.Gcs
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) S3() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptS3 {
-		return v.S3
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Volumes() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
-		return v.Volumes
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Workspace() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
-		return v.Workspace
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsNewClusterInitScript)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutput() GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsNewClusterInitScriptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsNewClusterInitScript {
-		return vs[0].([]GetJobJobSettingsSettingsNewClusterInitScript)[vs[1].(int)]
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfss struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs and GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptAbfss)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs, GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtr and GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptAbfssPtrType GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtr(v *GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptAbfssPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptAbfssPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptAbfss)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptAbfssPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptAbfssPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptAbfss)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptAbfss) *GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptAbfss)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptAbfss) GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptAbfss
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptAbfss) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfs struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptDbfsInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs and GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptDbfsInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptDbfs)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs, GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtr and GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptDbfsPtrType GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtr(v *GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptDbfsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptDbfsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptDbfs)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptDbfsPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptDbfsPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptDbfs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptDbfs) *GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptDbfs) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptDbfs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptDbfs) GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptDbfs
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptDbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptFile struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptFileInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptFileArgs and GetJobJobSettingsSettingsNewClusterInitScriptFileOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptFileInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptFileArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptFileInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutput() GetJobJobSettingsSettingsNewClusterInitScriptFileOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFileOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptFile)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutput() GetJobJobSettingsSettingsNewClusterInitScriptFileOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptFileOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptFileOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptFileArgs, GetJobJobSettingsSettingsNewClusterInitScriptFilePtr and GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptFileArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptFilePtrType GetJobJobSettingsSettingsNewClusterInitScriptFileArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptFilePtr(v *GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptFilePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptFilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptFile)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptFilePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptFilePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptFileOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptFile)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutput() GetJobJobSettingsSettingsNewClusterInitScriptFileOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFileOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFileOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptFile) *GetJobJobSettingsSettingsNewClusterInitScriptFile {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptFile)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptFileOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptFile) GetJobJobSettingsSettingsNewClusterInitScriptFile {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptFile
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptFileOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptFile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptGcs struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptGcsInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs and GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptGcsInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptGcsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptGcs)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs, GetJobJobSettingsSettingsNewClusterInitScriptGcsPtr and GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptGcsPtrType GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptGcsPtr(v *GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptGcsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptGcsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptGcs)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptGcsPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptGcsPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptGcs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptGcs) *GetJobJobSettingsSettingsNewClusterInitScriptGcs {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptGcs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptGcs) GetJobJobSettingsSettingsNewClusterInitScriptGcs {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptGcs
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptGcs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptS3 struct {
-	CannedAcl        *string `pulumi:"cannedAcl"`
-	Destination      string  `pulumi:"destination"`
-	EnableEncryption *bool   `pulumi:"enableEncryption"`
-	EncryptionType   *string `pulumi:"encryptionType"`
-	Endpoint         *string `pulumi:"endpoint"`
-	KmsKey           *string `pulumi:"kmsKey"`
-	Region           *string `pulumi:"region"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptS3Input is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptS3Args and GetJobJobSettingsSettingsNewClusterInitScriptS3Output values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptS3Input` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptS3Args{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptS3Input interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptS3Output() GetJobJobSettingsSettingsNewClusterInitScriptS3Output
-	ToGetJobJobSettingsSettingsNewClusterInitScriptS3OutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3Output
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptS3Args struct {
-	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	Destination      pulumi.StringInput    `pulumi:"destination"`
-	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
-	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
-	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
-	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
-	Region           pulumi.StringPtrInput `pulumi:"region"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptS3Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsNewClusterInitScriptS3Output() GetJobJobSettingsSettingsNewClusterInitScriptS3Output {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptS3OutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsNewClusterInitScriptS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptS3Output)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptS3Output).ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptS3Args, GetJobJobSettingsSettingsNewClusterInitScriptS3Ptr and GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptS3Args{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptS3PtrType GetJobJobSettingsSettingsNewClusterInitScriptS3Args
-
-func GetJobJobSettingsSettingsNewClusterInitScriptS3Ptr(v *GetJobJobSettingsSettingsNewClusterInitScriptS3Args) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptS3PtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptS3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptS3)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptS3PtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptS3PtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptS3Output struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptS3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsNewClusterInitScriptS3Output() GetJobJobSettingsSettingsNewClusterInitScriptS3Output {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsNewClusterInitScriptS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3Output {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptS3) *GetJobJobSettingsSettingsNewClusterInitScriptS3 {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) CannedAcl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) EnableEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) KmsKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3Output) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptS3) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptS3)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptS3Output {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) GetJobJobSettingsSettingsNewClusterInitScriptS3 {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptS3
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptS3Output)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CannedAcl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KmsKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumes struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptVolumesInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs and GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptVolumesInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumesInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptVolumes)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs, GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtr and GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptVolumesPtrType GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtr(v *GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptVolumesPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptVolumesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptVolumes)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptVolumesPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptVolumesPtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptVolumes)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptVolumes) *GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptVolumes) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptVolumes)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptVolumes) GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptVolumes
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptVolumes) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspace struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{...}
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs, GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtr and GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput
-	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs
-
-func GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtr(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput {
-	return (*getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterInitScriptWorkspace
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadType struct {
-	Clients GetJobJobSettingsSettingsNewClusterWorkloadTypeClients `pulumi:"clients"`
-}
-
-// GetJobJobSettingsSettingsNewClusterWorkloadTypeInput is an input type that accepts GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs and GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterWorkloadTypeInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{...}
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs struct {
-	Clients GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput `pulumi:"clients"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput).ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs, GetJobJobSettingsSettingsNewClusterWorkloadTypePtr and GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterWorkloadTypePtrType GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs
-
-func GetJobJobSettingsSettingsNewClusterWorkloadTypePtr(v *GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput {
-	return (*getJobJobSettingsSettingsNewClusterWorkloadTypePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterWorkloadTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterWorkloadTypePtrType) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterWorkloadTypePtrType) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterWorkloadType) *GetJobJobSettingsSettingsNewClusterWorkloadType {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput) Clients() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterWorkloadType) GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
-		return v.Clients
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterWorkloadType)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterWorkloadType) GetJobJobSettingsSettingsNewClusterWorkloadType {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterWorkloadType
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput) Clients() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterWorkloadType) *GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
-		if v == nil {
-			return nil
-		}
-		return &v.Clients
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClients struct {
-	Jobs      *bool `pulumi:"jobs"`
-	Notebooks *bool `pulumi:"notebooks"`
-}
-
-// GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput is an input type that accepts GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs and GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{...}
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs struct {
-	Jobs      pulumi.BoolPtrInput `pulumi:"jobs"`
-	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput).ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs, GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtr and GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrType GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs
-
-func GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtr(v *GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrType) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrType) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) *GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput) Notebooks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) *bool { return v.Notebooks }).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterWorkloadTypeClients)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) ToGetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterWorkloadTypeClients
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Jobs
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterWorkloadTypeClients) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Notebooks
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotebookTask struct {
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
-	NotebookPath   string                 `pulumi:"notebookPath"`
-	Source         *string                `pulumi:"source"`
-	WarehouseId    *string                `pulumi:"warehouseId"`
-}
-
-// GetJobJobSettingsSettingsNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsNotebookTaskArgs and GetJobJobSettingsSettingsNotebookTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNotebookTaskInput` via:
-//
-//	GetJobJobSettingsSettingsNotebookTaskArgs{...}
-type GetJobJobSettingsSettingsNotebookTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNotebookTaskOutput() GetJobJobSettingsSettingsNotebookTaskOutput
-	ToGetJobJobSettingsSettingsNotebookTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsNotebookTaskOutput
-}
-
-type GetJobJobSettingsSettingsNotebookTaskArgs struct {
-	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
-	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
-	Source         pulumi.StringPtrInput `pulumi:"source"`
-	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
-}
-
-func (GetJobJobSettingsSettingsNotebookTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNotebookTaskArgs) ToGetJobJobSettingsSettingsNotebookTaskOutput() GetJobJobSettingsSettingsNotebookTaskOutput {
-	return i.ToGetJobJobSettingsSettingsNotebookTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNotebookTaskArgs) ToGetJobJobSettingsSettingsNotebookTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotebookTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsNotebookTaskArgs) ToGetJobJobSettingsSettingsNotebookTaskPtrOutput() GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNotebookTaskArgs) ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotebookTaskOutput).ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNotebookTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsNotebookTaskArgs, GetJobJobSettingsSettingsNotebookTaskPtr and GetJobJobSettingsSettingsNotebookTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNotebookTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNotebookTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNotebookTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNotebookTaskPtrOutput() GetJobJobSettingsSettingsNotebookTaskPtrOutput
-	ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNotebookTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsNotebookTaskPtrType GetJobJobSettingsSettingsNotebookTaskArgs
-
-func GetJobJobSettingsSettingsNotebookTaskPtr(v *GetJobJobSettingsSettingsNotebookTaskArgs) GetJobJobSettingsSettingsNotebookTaskPtrInput {
-	return (*getJobJobSettingsSettingsNotebookTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNotebookTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNotebookTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNotebookTaskPtrType) ToGetJobJobSettingsSettingsNotebookTaskPtrOutput() GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNotebookTaskPtrType) ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotebookTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotebookTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNotebookTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) ToGetJobJobSettingsSettingsNotebookTaskOutput() GetJobJobSettingsSettingsNotebookTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) ToGetJobJobSettingsSettingsNotebookTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) ToGetJobJobSettingsSettingsNotebookTaskPtrOutput() GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNotebookTask) *GetJobJobSettingsSettingsNotebookTask {
-		return &v
-	}).(GetJobJobSettingsSettingsNotebookTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) string { return v.NotebookPath }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotebookTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNotebookTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNotebookTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) ToGetJobJobSettingsSettingsNotebookTaskPtrOutput() GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) ToGetJobJobSettingsSettingsNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotebookTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) Elem() GetJobJobSettingsSettingsNotebookTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) GetJobJobSettingsSettingsNotebookTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNotebookTask
-		return ret
-	}).(GetJobJobSettingsSettingsNotebookTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.BaseParameters
-	}).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NotebookPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Source
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WarehouseId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotificationSettings struct {
-	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
-	NoAlertForSkippedRuns  *bool `pulumi:"noAlertForSkippedRuns"`
-}
-
-// GetJobJobSettingsSettingsNotificationSettingsInput is an input type that accepts GetJobJobSettingsSettingsNotificationSettingsArgs and GetJobJobSettingsSettingsNotificationSettingsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNotificationSettingsInput` via:
-//
-//	GetJobJobSettingsSettingsNotificationSettingsArgs{...}
-type GetJobJobSettingsSettingsNotificationSettingsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput
-	ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput
-}
-
-type GetJobJobSettingsSettingsNotificationSettingsArgs struct {
-	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
-	NoAlertForSkippedRuns  pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
-}
-
-func (GetJobJobSettingsSettingsNotificationSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput {
-	return i.ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsOutput)
-}
-
-func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsOutput).ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNotificationSettingsPtrInput is an input type that accepts GetJobJobSettingsSettingsNotificationSettingsArgs, GetJobJobSettingsSettingsNotificationSettingsPtr and GetJobJobSettingsSettingsNotificationSettingsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNotificationSettingsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNotificationSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNotificationSettingsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput
-	ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput
-}
-
-type getJobJobSettingsSettingsNotificationSettingsPtrType GetJobJobSettingsSettingsNotificationSettingsArgs
-
-func GetJobJobSettingsSettingsNotificationSettingsPtr(v *GetJobJobSettingsSettingsNotificationSettingsArgs) GetJobJobSettingsSettingsNotificationSettingsPtrInput {
-	return (*getJobJobSettingsSettingsNotificationSettingsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNotificationSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNotificationSettingsPtrType) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNotificationSettingsPtrType) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotificationSettingsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNotificationSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNotificationSettings) *GetJobJobSettingsSettingsNotificationSettings {
-		return &v
-	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) Elem() GetJobJobSettingsSettingsNotificationSettingsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) GetJobJobSettingsSettingsNotificationSettings {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNotificationSettings
-		return ret
-	}).(GetJobJobSettingsSettingsNotificationSettingsOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoAlertForCanceledRuns
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoAlertForSkippedRuns
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsParameter struct {
-	Default string `pulumi:"default"`
-	// the job name of Job if the resource was matched by id.
-	Name string `pulumi:"name"`
-}
-
-// GetJobJobSettingsSettingsParameterInput is an input type that accepts GetJobJobSettingsSettingsParameterArgs and GetJobJobSettingsSettingsParameterOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsParameterInput` via:
-//
-//	GetJobJobSettingsSettingsParameterArgs{...}
-type GetJobJobSettingsSettingsParameterInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput
-	ToGetJobJobSettingsSettingsParameterOutputWithContext(context.Context) GetJobJobSettingsSettingsParameterOutput
-}
-
-type GetJobJobSettingsSettingsParameterArgs struct {
-	Default pulumi.StringInput `pulumi:"default"`
-	// the job name of Job if the resource was matched by id.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetJobJobSettingsSettingsParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsParameter)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsParameterArgs) ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput {
-	return i.ToGetJobJobSettingsSettingsParameterOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsParameterArgs) ToGetJobJobSettingsSettingsParameterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsParameterOutput)
-}
-
-// GetJobJobSettingsSettingsParameterArrayInput is an input type that accepts GetJobJobSettingsSettingsParameterArray and GetJobJobSettingsSettingsParameterArrayOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsParameterArrayInput` via:
-//
-//	GetJobJobSettingsSettingsParameterArray{ GetJobJobSettingsSettingsParameterArgs{...} }
-type GetJobJobSettingsSettingsParameterArrayInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput
-	ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsParameterArrayOutput
-}
-
-type GetJobJobSettingsSettingsParameterArray []GetJobJobSettingsSettingsParameterInput
-
-func (GetJobJobSettingsSettingsParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsParameter)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsParameterArray) ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput {
-	return i.ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsParameterArray) ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsParameterArrayOutput)
-}
-
-type GetJobJobSettingsSettingsParameterOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsParameter)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsParameterOutput) ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsParameterOutput) ToGetJobJobSettingsSettingsParameterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsParameterOutput) Default() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Default }).(pulumi.StringOutput)
-}
-
-// the job name of Job if the resource was matched by id.
-func (o GetJobJobSettingsSettingsParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsParameter)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsParameterArrayOutput) ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsParameterArrayOutput) ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsParameterArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsParameter {
-		return vs[0].([]GetJobJobSettingsSettingsParameter)[vs[1].(int)]
-	}).(GetJobJobSettingsSettingsParameterOutput)
-}
-
-type GetJobJobSettingsSettingsPipelineTask struct {
-	FullRefresh *bool  `pulumi:"fullRefresh"`
-	PipelineId  string `pulumi:"pipelineId"`
-}
-
-// GetJobJobSettingsSettingsPipelineTaskInput is an input type that accepts GetJobJobSettingsSettingsPipelineTaskArgs and GetJobJobSettingsSettingsPipelineTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsPipelineTaskInput` via:
-//
-//	GetJobJobSettingsSettingsPipelineTaskArgs{...}
-type GetJobJobSettingsSettingsPipelineTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsPipelineTaskOutput() GetJobJobSettingsSettingsPipelineTaskOutput
-	ToGetJobJobSettingsSettingsPipelineTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsPipelineTaskOutput
-}
-
-type GetJobJobSettingsSettingsPipelineTaskArgs struct {
-	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
-	PipelineId  pulumi.StringInput  `pulumi:"pipelineId"`
-}
-
-func (GetJobJobSettingsSettingsPipelineTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsPipelineTaskArgs) ToGetJobJobSettingsSettingsPipelineTaskOutput() GetJobJobSettingsSettingsPipelineTaskOutput {
-	return i.ToGetJobJobSettingsSettingsPipelineTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsPipelineTaskArgs) ToGetJobJobSettingsSettingsPipelineTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPipelineTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsPipelineTaskArgs) ToGetJobJobSettingsSettingsPipelineTaskPtrOutput() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsPipelineTaskArgs) ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPipelineTaskOutput).ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsPipelineTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsPipelineTaskArgs, GetJobJobSettingsSettingsPipelineTaskPtr and GetJobJobSettingsSettingsPipelineTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsPipelineTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsPipelineTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsPipelineTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsPipelineTaskPtrOutput() GetJobJobSettingsSettingsPipelineTaskPtrOutput
-	ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsPipelineTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsPipelineTaskPtrType GetJobJobSettingsSettingsPipelineTaskArgs
-
-func GetJobJobSettingsSettingsPipelineTaskPtr(v *GetJobJobSettingsSettingsPipelineTaskArgs) GetJobJobSettingsSettingsPipelineTaskPtrInput {
-	return (*getJobJobSettingsSettingsPipelineTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsPipelineTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsPipelineTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsPipelineTaskPtrType) ToGetJobJobSettingsSettingsPipelineTaskPtrOutput() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsPipelineTaskPtrType) ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPipelineTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsPipelineTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsPipelineTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) ToGetJobJobSettingsSettingsPipelineTaskOutput() GetJobJobSettingsSettingsPipelineTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) ToGetJobJobSettingsSettingsPipelineTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) ToGetJobJobSettingsSettingsPipelineTaskPtrOutput() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsPipelineTask) *GetJobJobSettingsSettingsPipelineTask {
-		return &v
-	}).(GetJobJobSettingsSettingsPipelineTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskOutput) PipelineId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsPipelineTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsPipelineTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsPipelineTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) ToGetJobJobSettingsSettingsPipelineTaskPtrOutput() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) ToGetJobJobSettingsSettingsPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPipelineTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) Elem() GetJobJobSettingsSettingsPipelineTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPipelineTask) GetJobJobSettingsSettingsPipelineTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsPipelineTask
-		return ret
-	}).(GetJobJobSettingsSettingsPipelineTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPipelineTask) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.FullRefresh
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPipelineTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PipelineId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsPythonWheelTask struct {
-	EntryPoint      *string                `pulumi:"entryPoint"`
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
-	PackageName     *string                `pulumi:"packageName"`
-	Parameters      []string               `pulumi:"parameters"`
-}
-
-// GetJobJobSettingsSettingsPythonWheelTaskInput is an input type that accepts GetJobJobSettingsSettingsPythonWheelTaskArgs and GetJobJobSettingsSettingsPythonWheelTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsPythonWheelTaskInput` via:
-//
-//	GetJobJobSettingsSettingsPythonWheelTaskArgs{...}
-type GetJobJobSettingsSettingsPythonWheelTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsPythonWheelTaskOutput() GetJobJobSettingsSettingsPythonWheelTaskOutput
-	ToGetJobJobSettingsSettingsPythonWheelTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsPythonWheelTaskOutput
-}
-
-type GetJobJobSettingsSettingsPythonWheelTaskArgs struct {
-	EntryPoint      pulumi.StringPtrInput   `pulumi:"entryPoint"`
-	NamedParameters pulumi.MapInput         `pulumi:"namedParameters"`
-	PackageName     pulumi.StringPtrInput   `pulumi:"packageName"`
-	Parameters      pulumi.StringArrayInput `pulumi:"parameters"`
-}
-
-func (GetJobJobSettingsSettingsPythonWheelTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsPythonWheelTaskArgs) ToGetJobJobSettingsSettingsPythonWheelTaskOutput() GetJobJobSettingsSettingsPythonWheelTaskOutput {
-	return i.ToGetJobJobSettingsSettingsPythonWheelTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsPythonWheelTaskArgs) ToGetJobJobSettingsSettingsPythonWheelTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPythonWheelTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsPythonWheelTaskArgs) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsPythonWheelTaskArgs) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPythonWheelTaskOutput).ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsPythonWheelTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsPythonWheelTaskArgs, GetJobJobSettingsSettingsPythonWheelTaskPtr and GetJobJobSettingsSettingsPythonWheelTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsPythonWheelTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsPythonWheelTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsPythonWheelTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsPythonWheelTaskPtrOutput
-	ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsPythonWheelTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsPythonWheelTaskPtrType GetJobJobSettingsSettingsPythonWheelTaskArgs
-
-func GetJobJobSettingsSettingsPythonWheelTaskPtr(v *GetJobJobSettingsSettingsPythonWheelTaskArgs) GetJobJobSettingsSettingsPythonWheelTaskPtrInput {
-	return (*getJobJobSettingsSettingsPythonWheelTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsPythonWheelTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsPythonWheelTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsPythonWheelTaskPtrType) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsPythonWheelTaskPtrType) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsPythonWheelTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsPythonWheelTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) ToGetJobJobSettingsSettingsPythonWheelTaskOutput() GetJobJobSettingsSettingsPythonWheelTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) ToGetJobJobSettingsSettingsPythonWheelTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsPythonWheelTask) *GetJobJobSettingsSettingsPythonWheelTask {
-		return &v
-	}).(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) EntryPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) *string { return v.PackageName }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsPythonWheelTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsPythonWheelTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) ToGetJobJobSettingsSettingsPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsPythonWheelTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) Elem() GetJobJobSettingsSettingsPythonWheelTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) GetJobJobSettingsSettingsPythonWheelTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsPythonWheelTask
-		return ret
-	}).(GetJobJobSettingsSettingsPythonWheelTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) EntryPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EntryPoint
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.NamedParameters
-	}).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PackageName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsQueue struct {
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetJobJobSettingsSettingsQueueInput is an input type that accepts GetJobJobSettingsSettingsQueueArgs and GetJobJobSettingsSettingsQueueOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsQueueInput` via:
-//
-//	GetJobJobSettingsSettingsQueueArgs{...}
-type GetJobJobSettingsSettingsQueueInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput
-	ToGetJobJobSettingsSettingsQueueOutputWithContext(context.Context) GetJobJobSettingsSettingsQueueOutput
-}
-
-type GetJobJobSettingsSettingsQueueArgs struct {
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetJobJobSettingsSettingsQueueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsQueue)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput {
-	return i.ToGetJobJobSettingsSettingsQueueOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueueOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueueOutput)
-}
-
-func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
-	return i.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueueOutput).ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsQueuePtrInput is an input type that accepts GetJobJobSettingsSettingsQueueArgs, GetJobJobSettingsSettingsQueuePtr and GetJobJobSettingsSettingsQueuePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsQueuePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsQueueArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsQueuePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput
-	ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsQueuePtrOutput
-}
-
-type getJobJobSettingsSettingsQueuePtrType GetJobJobSettingsSettingsQueueArgs
-
-func GetJobJobSettingsSettingsQueuePtr(v *GetJobJobSettingsSettingsQueueArgs) GetJobJobSettingsSettingsQueuePtrInput {
-	return (*getJobJobSettingsSettingsQueuePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsQueuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsQueue)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsQueuePtrType) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
-	return i.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsQueuePtrType) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueuePtrOutput)
-}
-
-type GetJobJobSettingsSettingsQueueOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsQueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsQueue)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueueOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueueOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
-	return o.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsQueue) *GetJobJobSettingsSettingsQueue {
-		return &v
-	}).(GetJobJobSettingsSettingsQueuePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsQueueOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsQueue) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetJobJobSettingsSettingsQueuePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsQueuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsQueue)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsQueuePtrOutput) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsQueuePtrOutput) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsQueuePtrOutput) Elem() GetJobJobSettingsSettingsQueueOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsQueue) GetJobJobSettingsSettingsQueue {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsQueue
-		return ret
-	}).(GetJobJobSettingsSettingsQueueOutput)
-}
-
-func (o GetJobJobSettingsSettingsQueuePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsQueue) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GetJobJobSettingsSettingsRunAs struct {
-	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	UserName             *string `pulumi:"userName"`
-}
-
-// GetJobJobSettingsSettingsRunAsInput is an input type that accepts GetJobJobSettingsSettingsRunAsArgs and GetJobJobSettingsSettingsRunAsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsRunAsInput` via:
-//
-//	GetJobJobSettingsSettingsRunAsArgs{...}
-type GetJobJobSettingsSettingsRunAsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput
-	ToGetJobJobSettingsSettingsRunAsOutputWithContext(context.Context) GetJobJobSettingsSettingsRunAsOutput
-}
-
-type GetJobJobSettingsSettingsRunAsArgs struct {
-	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
-	UserName             pulumi.StringPtrInput `pulumi:"userName"`
-}
-
-func (GetJobJobSettingsSettingsRunAsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsRunAs)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput {
-	return i.ToGetJobJobSettingsSettingsRunAsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsOutput)
-}
-
-func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsOutput).ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsRunAsPtrInput is an input type that accepts GetJobJobSettingsSettingsRunAsArgs, GetJobJobSettingsSettingsRunAsPtr and GetJobJobSettingsSettingsRunAsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsRunAsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsRunAsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsRunAsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput
-	ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsRunAsPtrOutput
-}
-
-type getJobJobSettingsSettingsRunAsPtrType GetJobJobSettingsSettingsRunAsArgs
-
-func GetJobJobSettingsSettingsRunAsPtr(v *GetJobJobSettingsSettingsRunAsArgs) GetJobJobSettingsSettingsRunAsPtrInput {
-	return (*getJobJobSettingsSettingsRunAsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsRunAsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsRunAs)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsRunAsPtrType) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsRunAsPtrType) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsRunAsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsRunAsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsRunAs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsRunAs) *GetJobJobSettingsSettingsRunAs {
-		return &v
-	}).(GetJobJobSettingsSettingsRunAsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunAsOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunAs) *string { return v.UserName }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsRunAsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsRunAsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsRunAs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsRunAsPtrOutput) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunAsPtrOutput) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunAsPtrOutput) Elem() GetJobJobSettingsSettingsRunAsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) GetJobJobSettingsSettingsRunAs {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsRunAs
-		return ret
-	}).(GetJobJobSettingsSettingsRunAsOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServicePrincipalName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserName
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsRunJobTask struct {
-	JobId         int                    `pulumi:"jobId"`
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
-}
-
-// GetJobJobSettingsSettingsRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsRunJobTaskArgs and GetJobJobSettingsSettingsRunJobTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsRunJobTaskInput` via:
-//
-//	GetJobJobSettingsSettingsRunJobTaskArgs{...}
-type GetJobJobSettingsSettingsRunJobTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput
-	ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsRunJobTaskOutput
-}
-
-type GetJobJobSettingsSettingsRunJobTaskArgs struct {
-	JobId         pulumi.IntInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
-}
-
-func (GetJobJobSettingsSettingsRunJobTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput {
-	return i.ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskOutput).ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsRunJobTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsRunJobTaskArgs, GetJobJobSettingsSettingsRunJobTaskPtr and GetJobJobSettingsSettingsRunJobTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsRunJobTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsRunJobTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsRunJobTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput
-	ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsRunJobTaskPtrType GetJobJobSettingsSettingsRunJobTaskArgs
-
-func GetJobJobSettingsSettingsRunJobTaskPtr(v *GetJobJobSettingsSettingsRunJobTaskArgs) GetJobJobSettingsSettingsRunJobTaskPtrInput {
-	return (*getJobJobSettingsSettingsRunJobTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsRunJobTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsRunJobTaskPtrType) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsRunJobTaskPtrType) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsRunJobTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsRunJobTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsRunJobTask) *GetJobJobSettingsSettingsRunJobTask {
-		return &v
-	}).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
-}
-
-type GetJobJobSettingsSettingsRunJobTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsRunJobTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) Elem() GetJobJobSettingsSettingsRunJobTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) GetJobJobSettingsSettingsRunJobTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsRunJobTask
-		return ret
-	}).(GetJobJobSettingsSettingsRunJobTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.JobId
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.JobParameters
-	}).(pulumi.MapOutput)
-}
-
-type GetJobJobSettingsSettingsSchedule struct {
-	PauseStatus          *string `pulumi:"pauseStatus"`
-	QuartzCronExpression string  `pulumi:"quartzCronExpression"`
-	TimezoneId           string  `pulumi:"timezoneId"`
-}
-
-// GetJobJobSettingsSettingsScheduleInput is an input type that accepts GetJobJobSettingsSettingsScheduleArgs and GetJobJobSettingsSettingsScheduleOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsScheduleInput` via:
-//
-//	GetJobJobSettingsSettingsScheduleArgs{...}
-type GetJobJobSettingsSettingsScheduleInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsScheduleOutput() GetJobJobSettingsSettingsScheduleOutput
-	ToGetJobJobSettingsSettingsScheduleOutputWithContext(context.Context) GetJobJobSettingsSettingsScheduleOutput
-}
-
-type GetJobJobSettingsSettingsScheduleArgs struct {
-	PauseStatus          pulumi.StringPtrInput `pulumi:"pauseStatus"`
-	QuartzCronExpression pulumi.StringInput    `pulumi:"quartzCronExpression"`
-	TimezoneId           pulumi.StringInput    `pulumi:"timezoneId"`
-}
-
-func (GetJobJobSettingsSettingsScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSchedule)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsScheduleArgs) ToGetJobJobSettingsSettingsScheduleOutput() GetJobJobSettingsSettingsScheduleOutput {
-	return i.ToGetJobJobSettingsSettingsScheduleOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsScheduleArgs) ToGetJobJobSettingsSettingsScheduleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsScheduleOutput)
-}
-
-func (i GetJobJobSettingsSettingsScheduleArgs) ToGetJobJobSettingsSettingsSchedulePtrOutput() GetJobJobSettingsSettingsSchedulePtrOutput {
-	return i.ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsScheduleArgs) ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsScheduleOutput).ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsSchedulePtrInput is an input type that accepts GetJobJobSettingsSettingsScheduleArgs, GetJobJobSettingsSettingsSchedulePtr and GetJobJobSettingsSettingsSchedulePtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSchedulePtrInput` via:
-//
-//	        GetJobJobSettingsSettingsScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsSchedulePtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSchedulePtrOutput() GetJobJobSettingsSettingsSchedulePtrOutput
-	ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsSchedulePtrOutput
-}
-
-type getJobJobSettingsSettingsSchedulePtrType GetJobJobSettingsSettingsScheduleArgs
-
-func GetJobJobSettingsSettingsSchedulePtr(v *GetJobJobSettingsSettingsScheduleArgs) GetJobJobSettingsSettingsSchedulePtrInput {
-	return (*getJobJobSettingsSettingsSchedulePtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSchedule)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsSchedulePtrType) ToGetJobJobSettingsSettingsSchedulePtrOutput() GetJobJobSettingsSettingsSchedulePtrOutput {
-	return i.ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsSchedulePtrType) ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSchedulePtrOutput)
-}
-
-type GetJobJobSettingsSettingsScheduleOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSchedule)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) ToGetJobJobSettingsSettingsScheduleOutput() GetJobJobSettingsSettingsScheduleOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) ToGetJobJobSettingsSettingsScheduleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsScheduleOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) ToGetJobJobSettingsSettingsSchedulePtrOutput() GetJobJobSettingsSettingsSchedulePtrOutput {
-	return o.ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsSchedule) *GetJobJobSettingsSettingsSchedule {
-		return &v
-	}).(GetJobJobSettingsSettingsSchedulePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) PauseStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSchedule) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) QuartzCronExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSchedule) string { return v.QuartzCronExpression }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsScheduleOutput) TimezoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSchedule) string { return v.TimezoneId }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSchedule)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) ToGetJobJobSettingsSettingsSchedulePtrOutput() GetJobJobSettingsSettingsSchedulePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) ToGetJobJobSettingsSettingsSchedulePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSchedulePtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) Elem() GetJobJobSettingsSettingsScheduleOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSchedule) GetJobJobSettingsSettingsSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsSchedule
-		return ret
-	}).(GetJobJobSettingsSettingsScheduleOutput)
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) PauseStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PauseStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) QuartzCronExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.QuartzCronExpression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSchedulePtrOutput) TimezoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TimezoneId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkJarTask struct {
-	JarUri        *string  `pulumi:"jarUri"`
-	MainClassName *string  `pulumi:"mainClassName"`
-	Parameters    []string `pulumi:"parameters"`
-}
-
-// GetJobJobSettingsSettingsSparkJarTaskInput is an input type that accepts GetJobJobSettingsSettingsSparkJarTaskArgs and GetJobJobSettingsSettingsSparkJarTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkJarTaskInput` via:
-//
-//	GetJobJobSettingsSettingsSparkJarTaskArgs{...}
-type GetJobJobSettingsSettingsSparkJarTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkJarTaskOutput() GetJobJobSettingsSettingsSparkJarTaskOutput
-	ToGetJobJobSettingsSettingsSparkJarTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkJarTaskOutput
-}
-
-type GetJobJobSettingsSettingsSparkJarTaskArgs struct {
-	JarUri        pulumi.StringPtrInput   `pulumi:"jarUri"`
-	MainClassName pulumi.StringPtrInput   `pulumi:"mainClassName"`
-	Parameters    pulumi.StringArrayInput `pulumi:"parameters"`
-}
-
-func (GetJobJobSettingsSettingsSparkJarTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsSparkJarTaskArgs) ToGetJobJobSettingsSettingsSparkJarTaskOutput() GetJobJobSettingsSettingsSparkJarTaskOutput {
-	return i.ToGetJobJobSettingsSettingsSparkJarTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkJarTaskArgs) ToGetJobJobSettingsSettingsSparkJarTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkJarTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsSparkJarTaskArgs) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutput() GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkJarTaskArgs) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkJarTaskOutput).ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsSparkJarTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsSparkJarTaskArgs, GetJobJobSettingsSettingsSparkJarTaskPtr and GetJobJobSettingsSettingsSparkJarTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkJarTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsSparkJarTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsSparkJarTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkJarTaskPtrOutput() GetJobJobSettingsSettingsSparkJarTaskPtrOutput
-	ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkJarTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsSparkJarTaskPtrType GetJobJobSettingsSettingsSparkJarTaskArgs
-
-func GetJobJobSettingsSettingsSparkJarTaskPtr(v *GetJobJobSettingsSettingsSparkJarTaskArgs) GetJobJobSettingsSettingsSparkJarTaskPtrInput {
-	return (*getJobJobSettingsSettingsSparkJarTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsSparkJarTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkJarTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsSparkJarTaskPtrType) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutput() GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsSparkJarTaskPtrType) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkJarTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkJarTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkJarTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) ToGetJobJobSettingsSettingsSparkJarTaskOutput() GetJobJobSettingsSettingsSparkJarTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) ToGetJobJobSettingsSettingsSparkJarTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutput() GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsSparkJarTask) *GetJobJobSettingsSettingsSparkJarTask {
-		return &v
-	}).(GetJobJobSettingsSettingsSparkJarTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) JarUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkJarTask) *string { return v.JarUri }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) MainClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkJarTask) *string { return v.MainClassName }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsSparkJarTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkJarTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkJarTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutput() GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) ToGetJobJobSettingsSettingsSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkJarTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) Elem() GetJobJobSettingsSettingsSparkJarTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkJarTask) GetJobJobSettingsSettingsSparkJarTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsSparkJarTask
-		return ret
-	}).(GetJobJobSettingsSettingsSparkJarTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) JarUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkJarTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.JarUri
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) MainClassName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkJarTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MainClassName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkJarTask) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsSparkPythonTask struct {
-	Parameters []string `pulumi:"parameters"`
-	PythonFile string   `pulumi:"pythonFile"`
-	Source     *string  `pulumi:"source"`
-}
-
-// GetJobJobSettingsSettingsSparkPythonTaskInput is an input type that accepts GetJobJobSettingsSettingsSparkPythonTaskArgs and GetJobJobSettingsSettingsSparkPythonTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkPythonTaskInput` via:
-//
-//	GetJobJobSettingsSettingsSparkPythonTaskArgs{...}
-type GetJobJobSettingsSettingsSparkPythonTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkPythonTaskOutput() GetJobJobSettingsSettingsSparkPythonTaskOutput
-	ToGetJobJobSettingsSettingsSparkPythonTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkPythonTaskOutput
-}
-
-type GetJobJobSettingsSettingsSparkPythonTaskArgs struct {
-	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	PythonFile pulumi.StringInput      `pulumi:"pythonFile"`
-	Source     pulumi.StringPtrInput   `pulumi:"source"`
-}
-
-func (GetJobJobSettingsSettingsSparkPythonTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkPythonTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsSparkPythonTaskArgs) ToGetJobJobSettingsSettingsSparkPythonTaskOutput() GetJobJobSettingsSettingsSparkPythonTaskOutput {
-	return i.ToGetJobJobSettingsSettingsSparkPythonTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkPythonTaskArgs) ToGetJobJobSettingsSettingsSparkPythonTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkPythonTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsSparkPythonTaskArgs) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkPythonTaskArgs) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkPythonTaskOutput).ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsSparkPythonTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsSparkPythonTaskArgs, GetJobJobSettingsSettingsSparkPythonTaskPtr and GetJobJobSettingsSettingsSparkPythonTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkPythonTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsSparkPythonTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsSparkPythonTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsSparkPythonTaskPtrOutput
-	ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkPythonTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsSparkPythonTaskPtrType GetJobJobSettingsSettingsSparkPythonTaskArgs
-
-func GetJobJobSettingsSettingsSparkPythonTaskPtr(v *GetJobJobSettingsSettingsSparkPythonTaskArgs) GetJobJobSettingsSettingsSparkPythonTaskPtrInput {
-	return (*getJobJobSettingsSettingsSparkPythonTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsSparkPythonTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkPythonTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsSparkPythonTaskPtrType) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsSparkPythonTaskPtrType) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkPythonTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkPythonTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkPythonTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkPythonTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) ToGetJobJobSettingsSettingsSparkPythonTaskOutput() GetJobJobSettingsSettingsSparkPythonTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) ToGetJobJobSettingsSettingsSparkPythonTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsSparkPythonTask) *GetJobJobSettingsSettingsSparkPythonTask {
-		return &v
-	}).(GetJobJobSettingsSettingsSparkPythonTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkPythonTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) ToGetJobJobSettingsSettingsSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkPythonTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) Elem() GetJobJobSettingsSettingsSparkPythonTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkPythonTask) GetJobJobSettingsSettingsSparkPythonTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsSparkPythonTask
-		return ret
-	}).(GetJobJobSettingsSettingsSparkPythonTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkPythonTask) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkPythonTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PythonFile
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkPythonTask) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Source
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkSubmitTask struct {
-	Parameters []string `pulumi:"parameters"`
-}
-
-// GetJobJobSettingsSettingsSparkSubmitTaskInput is an input type that accepts GetJobJobSettingsSettingsSparkSubmitTaskArgs and GetJobJobSettingsSettingsSparkSubmitTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkSubmitTaskInput` via:
-//
-//	GetJobJobSettingsSettingsSparkSubmitTaskArgs{...}
-type GetJobJobSettingsSettingsSparkSubmitTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkSubmitTaskOutput() GetJobJobSettingsSettingsSparkSubmitTaskOutput
-	ToGetJobJobSettingsSettingsSparkSubmitTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkSubmitTaskOutput
-}
-
-type GetJobJobSettingsSettingsSparkSubmitTaskArgs struct {
-	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-}
-
-func (GetJobJobSettingsSettingsSparkSubmitTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkSubmitTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsSparkSubmitTaskOutput() GetJobJobSettingsSettingsSparkSubmitTaskOutput {
-	return i.ToGetJobJobSettingsSettingsSparkSubmitTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsSparkSubmitTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkSubmitTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkSubmitTaskOutput).ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsSparkSubmitTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsSparkSubmitTaskArgs, GetJobJobSettingsSettingsSparkSubmitTaskPtr and GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsSparkSubmitTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsSparkSubmitTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsSparkSubmitTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput
-	ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsSparkSubmitTaskPtrType GetJobJobSettingsSettingsSparkSubmitTaskArgs
-
-func GetJobJobSettingsSettingsSparkSubmitTaskPtr(v *GetJobJobSettingsSettingsSparkSubmitTaskArgs) GetJobJobSettingsSettingsSparkSubmitTaskPtrInput {
-	return (*getJobJobSettingsSettingsSparkSubmitTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsSparkSubmitTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkSubmitTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsSparkSubmitTaskPtrType) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsSparkSubmitTaskPtrType) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsSparkSubmitTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkSubmitTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsSparkSubmitTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskOutput() GetJobJobSettingsSettingsSparkSubmitTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsSparkSubmitTask) *GetJobJobSettingsSettingsSparkSubmitTask {
-		return &v
-	}).(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkSubmitTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsSparkSubmitTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) ToGetJobJobSettingsSettingsSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) Elem() GetJobJobSettingsSettingsSparkSubmitTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkSubmitTask) GetJobJobSettingsSettingsSparkSubmitTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsSparkSubmitTask
-		return ret
-	}).(GetJobJobSettingsSettingsSparkSubmitTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkSubmitTask) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetJobJobSettingsSettingsTask struct {
-	ConditionTask          *GetJobJobSettingsSettingsTaskConditionTask        `pulumi:"conditionTask"`
-	DbtTask                *GetJobJobSettingsSettingsTaskDbtTask              `pulumi:"dbtTask"`
-	DependsOns             []GetJobJobSettingsSettingsTaskDependsOn           `pulumi:"dependsOns"`
-	Description            *string                                            `pulumi:"description"`
-	EmailNotifications     *GetJobJobSettingsSettingsTaskEmailNotifications   `pulumi:"emailNotifications"`
-	EnvironmentKey         *string                                            `pulumi:"environmentKey"`
-	ExistingClusterId      *string                                            `pulumi:"existingClusterId"`
-	ForEachTask            *GetJobJobSettingsSettingsTaskForEachTask          `pulumi:"forEachTask"`
-	Health                 *GetJobJobSettingsSettingsTaskHealth               `pulumi:"health"`
-	JobClusterKey          *string                                            `pulumi:"jobClusterKey"`
-	Libraries              []GetJobJobSettingsSettingsTaskLibrary             `pulumi:"libraries"`
-	MaxRetries             *int                                               `pulumi:"maxRetries"`
-	MinRetryIntervalMillis *int                                               `pulumi:"minRetryIntervalMillis"`
-	NewCluster             *GetJobJobSettingsSettingsTaskNewCluster           `pulumi:"newCluster"`
-	NotebookTask           *GetJobJobSettingsSettingsTaskNotebookTask         `pulumi:"notebookTask"`
-	NotificationSettings   *GetJobJobSettingsSettingsTaskNotificationSettings `pulumi:"notificationSettings"`
-	PipelineTask           *GetJobJobSettingsSettingsTaskPipelineTask         `pulumi:"pipelineTask"`
-	PythonWheelTask        *GetJobJobSettingsSettingsTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
-	RetryOnTimeout         bool                                               `pulumi:"retryOnTimeout"`
-	RunIf                  *string                                            `pulumi:"runIf"`
-	RunJobTask             *GetJobJobSettingsSettingsTaskRunJobTask           `pulumi:"runJobTask"`
-	SparkJarTask           *GetJobJobSettingsSettingsTaskSparkJarTask         `pulumi:"sparkJarTask"`
-	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask      `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask      `pulumi:"sparkSubmitTask"`
-	SqlTask                *GetJobJobSettingsSettingsTaskSqlTask              `pulumi:"sqlTask"`
-	TaskKey                *string                                            `pulumi:"taskKey"`
-	TimeoutSeconds         *int                                               `pulumi:"timeoutSeconds"`
-	WebhookNotifications   *GetJobJobSettingsSettingsTaskWebhookNotifications `pulumi:"webhookNotifications"`
-}
-
-// GetJobJobSettingsSettingsTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskArgs and GetJobJobSettingsSettingsTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskInput` via:
-//
-//	GetJobJobSettingsSettingsTaskArgs{...}
-type GetJobJobSettingsSettingsTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsTaskOutput() GetJobJobSettingsSettingsTaskOutput
-	ToGetJobJobSettingsSettingsTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskOutput
-}
-
-type GetJobJobSettingsSettingsTaskArgs struct {
-	ConditionTask          GetJobJobSettingsSettingsTaskConditionTaskPtrInput        `pulumi:"conditionTask"`
-	DbtTask                GetJobJobSettingsSettingsTaskDbtTaskPtrInput              `pulumi:"dbtTask"`
-	DependsOns             GetJobJobSettingsSettingsTaskDependsOnArrayInput          `pulumi:"dependsOns"`
-	Description            pulumi.StringPtrInput                                     `pulumi:"description"`
-	EmailNotifications     GetJobJobSettingsSettingsTaskEmailNotificationsPtrInput   `pulumi:"emailNotifications"`
-	EnvironmentKey         pulumi.StringPtrInput                                     `pulumi:"environmentKey"`
-	ExistingClusterId      pulumi.StringPtrInput                                     `pulumi:"existingClusterId"`
-	ForEachTask            GetJobJobSettingsSettingsTaskForEachTaskPtrInput          `pulumi:"forEachTask"`
-	Health                 GetJobJobSettingsSettingsTaskHealthPtrInput               `pulumi:"health"`
-	JobClusterKey          pulumi.StringPtrInput                                     `pulumi:"jobClusterKey"`
-	Libraries              GetJobJobSettingsSettingsTaskLibraryArrayInput            `pulumi:"libraries"`
-	MaxRetries             pulumi.IntPtrInput                                        `pulumi:"maxRetries"`
-	MinRetryIntervalMillis pulumi.IntPtrInput                                        `pulumi:"minRetryIntervalMillis"`
-	NewCluster             GetJobJobSettingsSettingsTaskNewClusterPtrInput           `pulumi:"newCluster"`
-	NotebookTask           GetJobJobSettingsSettingsTaskNotebookTaskPtrInput         `pulumi:"notebookTask"`
-	NotificationSettings   GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
-	PipelineTask           GetJobJobSettingsSettingsTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
-	PythonWheelTask        GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
-	RetryOnTimeout         pulumi.BoolInput                                          `pulumi:"retryOnTimeout"`
-	RunIf                  pulumi.StringPtrInput                                     `pulumi:"runIf"`
-	RunJobTask             GetJobJobSettingsSettingsTaskRunJobTaskPtrInput           `pulumi:"runJobTask"`
-	SparkJarTask           GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
-	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
-	SqlTask                GetJobJobSettingsSettingsTaskSqlTaskPtrInput              `pulumi:"sqlTask"`
-	TaskKey                pulumi.StringPtrInput                                     `pulumi:"taskKey"`
-	TimeoutSeconds         pulumi.IntPtrInput                                        `pulumi:"timeoutSeconds"`
-	WebhookNotifications   GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
-}
-
-func (GetJobJobSettingsSettingsTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsTaskArgs) ToGetJobJobSettingsSettingsTaskOutput() GetJobJobSettingsSettingsTaskOutput {
-	return i.ToGetJobJobSettingsSettingsTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsTaskArgs) ToGetJobJobSettingsSettingsTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskOutput)
-}
-
-// GetJobJobSettingsSettingsTaskArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskArray and GetJobJobSettingsSettingsTaskArrayOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskArrayInput` via:
-//
-//	GetJobJobSettingsSettingsTaskArray{ GetJobJobSettingsSettingsTaskArgs{...} }
-type GetJobJobSettingsSettingsTaskArrayInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsTaskArrayOutput() GetJobJobSettingsSettingsTaskArrayOutput
-	ToGetJobJobSettingsSettingsTaskArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskArrayOutput
-}
-
-type GetJobJobSettingsSettingsTaskArray []GetJobJobSettingsSettingsTaskInput
-
-func (GetJobJobSettingsSettingsTaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsTaskArray) ToGetJobJobSettingsSettingsTaskArrayOutput() GetJobJobSettingsSettingsTaskArrayOutput {
-	return i.ToGetJobJobSettingsSettingsTaskArrayOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsTaskArray) ToGetJobJobSettingsSettingsTaskArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskArrayOutput)
-}
-
-type GetJobJobSettingsSettingsTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) ToGetJobJobSettingsSettingsTaskOutput() GetJobJobSettingsSettingsTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) ToGetJobJobSettingsSettingsTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) ConditionTask() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskConditionTask {
-		return v.ConditionTask
-	}).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) DbtTask() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskDbtTask { return v.DbtTask }).(GetJobJobSettingsSettingsTaskDbtTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) DependsOns() GetJobJobSettingsSettingsTaskDependsOnArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) []GetJobJobSettingsSettingsTaskDependsOn { return v.DependsOns }).(GetJobJobSettingsSettingsTaskDependsOnArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) EmailNotifications() GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskEmailNotifications {
-		return v.EmailNotifications
-	}).(GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) EnvironmentKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.EnvironmentKey }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) ForEachTask() GetJobJobSettingsSettingsTaskForEachTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskForEachTask { return v.ForEachTask }).(GetJobJobSettingsSettingsTaskForEachTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) Health() GetJobJobSettingsSettingsTaskHealthPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskHealth { return v.Health }).(GetJobJobSettingsSettingsTaskHealthPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) Libraries() GetJobJobSettingsSettingsTaskLibraryArrayOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) []GetJobJobSettingsSettingsTaskLibrary { return v.Libraries }).(GetJobJobSettingsSettingsTaskLibraryArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) MaxRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) NewCluster() GetJobJobSettingsSettingsTaskNewClusterPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskNewCluster { return v.NewCluster }).(GetJobJobSettingsSettingsTaskNewClusterPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) NotebookTask() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskNotebookTask {
-		return v.NotebookTask
-	}).(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) NotificationSettings() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskNotificationSettings {
-		return v.NotificationSettings
-	}).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) PipelineTask() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskPipelineTask {
-		return v.PipelineTask
-	}).(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) PythonWheelTask() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskPythonWheelTask {
-		return v.PythonWheelTask
-	}).(GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) RetryOnTimeout() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) bool { return v.RetryOnTimeout }).(pulumi.BoolOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) RunIf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) RunJobTask() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskRunJobTask { return v.RunJobTask }).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) SparkJarTask() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskSparkJarTask {
-		return v.SparkJarTask
-	}).(GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) SparkPythonTask() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskSparkPythonTask {
-		return v.SparkPythonTask
-	}).(GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) SparkSubmitTask() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskSparkSubmitTask {
-		return v.SparkSubmitTask
-	}).(GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) SqlTask() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskSqlTask { return v.SqlTask }).(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) TimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskOutput) WebhookNotifications() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskWebhookNotifications {
-		return v.WebhookNotifications
-	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsTaskArrayOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsTaskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsTaskArrayOutput) ToGetJobJobSettingsSettingsTaskArrayOutput() GetJobJobSettingsSettingsTaskArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskArrayOutput) ToGetJobJobSettingsSettingsTaskArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTask {
-		return vs[0].([]GetJobJobSettingsSettingsTask)[vs[1].(int)]
-	}).(GetJobJobSettingsSettingsTaskOutput)
-}
-
-type GetJobJobSettingsSettingsTaskConditionTask struct {
-	Left  string `pulumi:"left"`
-	Op    string `pulumi:"op"`
-	Right string `pulumi:"right"`
-}
-
-// GetJobJobSettingsSettingsTaskConditionTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskConditionTaskArgs and GetJobJobSettingsSettingsTaskConditionTaskOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskConditionTaskInput` via:
-//
-//	GetJobJobSettingsSettingsTaskConditionTaskArgs{...}
-type GetJobJobSettingsSettingsTaskConditionTaskInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput
-	ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput
-}
-
-type GetJobJobSettingsSettingsTaskConditionTaskArgs struct {
-	Left  pulumi.StringInput `pulumi:"left"`
-	Op    pulumi.StringInput `pulumi:"op"`
-	Right pulumi.StringInput `pulumi:"right"`
-}
-
-func (GetJobJobSettingsSettingsTaskConditionTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput {
-	return i.ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskOutput)
-}
-
-func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskOutput).ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsTaskConditionTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskConditionTaskArgs, GetJobJobSettingsSettingsTaskConditionTaskPtr and GetJobJobSettingsSettingsTaskConditionTaskPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskConditionTaskPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsTaskConditionTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsTaskConditionTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput
-	ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput
-}
-
-type getJobJobSettingsSettingsTaskConditionTaskPtrType GetJobJobSettingsSettingsTaskConditionTaskArgs
-
-func GetJobJobSettingsSettingsTaskConditionTaskPtr(v *GetJobJobSettingsSettingsTaskConditionTaskArgs) GetJobJobSettingsSettingsTaskConditionTaskPtrInput {
-	return (*getJobJobSettingsSettingsTaskConditionTaskPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsTaskConditionTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsTaskConditionTaskPtrType) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return i.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsTaskConditionTaskPtrType) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
-}
-
-type GetJobJobSettingsSettingsTaskConditionTaskOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsTaskConditionTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return o.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskConditionTask) *GetJobJobSettingsSettingsTaskConditionTask {
-		return &v
-	}).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Left() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) string { return v.Left }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Op() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) string { return v.Op }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Right() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) string { return v.Right }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsTaskConditionTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskConditionTaskOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) GetJobJobSettingsSettingsTaskConditionTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsTaskConditionTask
-		return ret
-	}).(GetJobJobSettingsSettingsTaskConditionTaskOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Left
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Op
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Right
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -83429,6 +83864,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEnvironmentSpecPtrInput)(nil)).Elem(), JobEnvironmentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceInput)(nil)).Elem(), JobGitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourcePtrInput)(nil)).Elem(), JobGitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceGitSnapshotInput)(nil)).Elem(), JobGitSourceGitSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceGitSnapshotPtrInput)(nil)).Elem(), JobGitSourceGitSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceJobSourceInput)(nil)).Elem(), JobGitSourceJobSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceJobSourcePtrInput)(nil)).Elem(), JobGitSourceJobSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHealthInput)(nil)).Elem(), JobHealthArgs{})
@@ -83445,6 +83882,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAwsAttributesPtrInput)(nil)).Elem(), JobJobClusterNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesInput)(nil)).Elem(), JobJobClusterNewClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesPtrInput)(nil)).Elem(), JobJobClusterNewClusterAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterCloneFromInput)(nil)).Elem(), JobJobClusterNewClusterCloneFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterCloneFromPtrInput)(nil)).Elem(), JobJobClusterNewClusterCloneFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterClusterLogConfInput)(nil)).Elem(), JobJobClusterNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterClusterLogConfPtrInput)(nil)).Elem(), JobJobClusterNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterClusterLogConfDbfsInput)(nil)).Elem(), JobJobClusterNewClusterClusterLogConfDbfsArgs{})
@@ -83476,6 +83917,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryInput)(nil)).Elem(), JobJobClusterNewClusterLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryArrayInput)(nil)).Elem(), JobJobClusterNewClusterLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryCranInput)(nil)).Elem(), JobJobClusterNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryCranPtrInput)(nil)).Elem(), JobJobClusterNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryMavenInput)(nil)).Elem(), JobJobClusterNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryMavenPtrInput)(nil)).Elem(), JobJobClusterNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryPypiInput)(nil)).Elem(), JobJobClusterNewClusterLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterLibraryPypiPtrInput)(nil)).Elem(), JobJobClusterNewClusterLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeClientsArgs{})
@@ -83496,6 +83945,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterAwsAttributesPtrInput)(nil)).Elem(), JobNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterAzureAttributesInput)(nil)).Elem(), JobNewClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterAzureAttributesPtrInput)(nil)).Elem(), JobNewClusterAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), JobNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), JobNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterCloneFromInput)(nil)).Elem(), JobNewClusterCloneFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterCloneFromPtrInput)(nil)).Elem(), JobNewClusterCloneFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterClusterLogConfInput)(nil)).Elem(), JobNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterClusterLogConfPtrInput)(nil)).Elem(), JobNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterClusterLogConfDbfsInput)(nil)).Elem(), JobNewClusterClusterLogConfDbfsArgs{})
@@ -83527,6 +83980,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), JobNewClusterInitScriptVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryInput)(nil)).Elem(), JobNewClusterLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryArrayInput)(nil)).Elem(), JobNewClusterLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryCranInput)(nil)).Elem(), JobNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryCranPtrInput)(nil)).Elem(), JobNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryMavenInput)(nil)).Elem(), JobNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryMavenPtrInput)(nil)).Elem(), JobNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryPypiInput)(nil)).Elem(), JobNewClusterLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterLibraryPypiPtrInput)(nil)).Elem(), JobNewClusterLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypeInput)(nil)).Elem(), JobNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobNewClusterWorkloadTypeClientsArgs{})
@@ -83597,6 +84058,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAwsAttributesPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterCloneFromInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterCloneFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterCloneFromPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterCloneFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterClusterLogConfInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterClusterLogConfPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs{})
@@ -83628,6 +84093,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryCranInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryCranPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryMavenInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryMavenPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryPypiInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterLibraryPypiPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterWorkloadTypeInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs{})
@@ -83642,6 +84115,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskPipelineParamsInput)(nil)).Elem(), JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskSparkJarTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskSparkJarTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskSparkPythonTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskSparkPythonTaskArgs{})
@@ -83692,6 +84167,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterAwsAttributesPtrInput)(nil)).Elem(), JobTaskNewClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterAzureAttributesInput)(nil)).Elem(), JobTaskNewClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterAzureAttributesPtrInput)(nil)).Elem(), JobTaskNewClusterAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterCloneFromInput)(nil)).Elem(), JobTaskNewClusterCloneFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterCloneFromPtrInput)(nil)).Elem(), JobTaskNewClusterCloneFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterClusterLogConfInput)(nil)).Elem(), JobTaskNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterClusterLogConfPtrInput)(nil)).Elem(), JobTaskNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterClusterLogConfDbfsInput)(nil)).Elem(), JobTaskNewClusterClusterLogConfDbfsArgs{})
@@ -83723,6 +84202,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), JobTaskNewClusterInitScriptVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobTaskNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobTaskNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryInput)(nil)).Elem(), JobTaskNewClusterLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryArrayInput)(nil)).Elem(), JobTaskNewClusterLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryCranInput)(nil)).Elem(), JobTaskNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryCranPtrInput)(nil)).Elem(), JobTaskNewClusterLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryMavenInput)(nil)).Elem(), JobTaskNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryMavenPtrInput)(nil)).Elem(), JobTaskNewClusterLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryPypiInput)(nil)).Elem(), JobTaskNewClusterLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterLibraryPypiPtrInput)(nil)).Elem(), JobTaskNewClusterLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypeInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeClientsArgs{})
@@ -83737,6 +84224,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPtrInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPipelineParamsInput)(nil)).Elem(), JobTaskRunJobTaskPipelineParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPipelineParamsPtrInput)(nil)).Elem(), JobTaskRunJobTaskPipelineParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkJarTaskInput)(nil)).Elem(), JobTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkJarTaskPtrInput)(nil)).Elem(), JobTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkPythonTaskInput)(nil)).Elem(), JobTaskSparkPythonTaskArgs{})
@@ -83771,6 +84260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerPtrInput)(nil)).Elem(), JobTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalPtrInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerTableInput)(nil)).Elem(), JobTriggerTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerTablePtrInput)(nil)).Elem(), JobTriggerTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerTableUpdateInput)(nil)).Elem(), JobTriggerTableUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerTableUpdatePtrInput)(nil)).Elem(), JobTriggerTableUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsInput)(nil)).Elem(), JobWebhookNotificationsArgs{})
@@ -84258,61 +84749,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterMountInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImageInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterDockerImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImagePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterDockerImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterGcpAttributesInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterGcpAttributesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterGcpAttributesPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterGcpAttributesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptDbfsInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptFileInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptGcsInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3Input)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptVolumesInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsNotebookTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotebookTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsParameterInput)(nil)).Elem(), GetJobJobSettingsSettingsParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsParameterArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueueInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueuePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsRunJobTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsRunJobTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsScheduleInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSchedulePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkJarTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkJarTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkPythonTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkPythonTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkPythonTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkPythonTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkSubmitTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkSubmitTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkSubmitTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkSubmitTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskConditionTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskConditionTaskArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactAllowlistArtifactMatcherOutput{})
@@ -84422,6 +84858,8 @@ func init() {
 	pulumi.RegisterOutputType(JobEnvironmentSpecPtrOutput{})
 	pulumi.RegisterOutputType(JobGitSourceOutput{})
 	pulumi.RegisterOutputType(JobGitSourcePtrOutput{})
+	pulumi.RegisterOutputType(JobGitSourceGitSnapshotOutput{})
+	pulumi.RegisterOutputType(JobGitSourceGitSnapshotPtrOutput{})
 	pulumi.RegisterOutputType(JobGitSourceJobSourceOutput{})
 	pulumi.RegisterOutputType(JobGitSourceJobSourcePtrOutput{})
 	pulumi.RegisterOutputType(JobHealthOutput{})
@@ -84438,6 +84876,10 @@ func init() {
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAzureAttributesOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterCloneFromOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterCloneFromPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterClusterLogConfPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterClusterLogConfDbfsOutput{})
@@ -84469,6 +84911,14 @@ func init() {
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptVolumesPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptWorkspaceOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryArrayOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryCranOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryCranPtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryMavenOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryMavenPtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryPypiOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterLibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeClientsOutput{})
@@ -84489,6 +84939,10 @@ func init() {
 	pulumi.RegisterOutputType(JobNewClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterAzureAttributesOutput{})
 	pulumi.RegisterOutputType(JobNewClusterAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(JobNewClusterAzureAttributesLogAnalyticsInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterCloneFromOutput{})
+	pulumi.RegisterOutputType(JobNewClusterCloneFromPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(JobNewClusterClusterLogConfPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterClusterLogConfDbfsOutput{})
@@ -84520,6 +84974,14 @@ func init() {
 	pulumi.RegisterOutputType(JobNewClusterInitScriptVolumesPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterInitScriptWorkspaceOutput{})
 	pulumi.RegisterOutputType(JobNewClusterInitScriptWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryArrayOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryCranOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryCranPtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryMavenOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryMavenPtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryPypiOutput{})
+	pulumi.RegisterOutputType(JobNewClusterLibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypeClientsOutput{})
@@ -84590,6 +85052,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterAzureAttributesOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterCloneFromOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterCloneFromPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterClusterLogConfPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsOutput{})
@@ -84621,6 +85087,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterInitScriptVolumesPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterInitScriptWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryCranOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryCranPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryMavenOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryMavenPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryPypiOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterLibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsOutput{})
@@ -84635,6 +85109,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskRunJobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskRunJobTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskRunJobTaskPipelineParamsOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskSparkJarTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskSparkJarTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskSparkPythonTaskOutput{})
@@ -84685,6 +85161,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskNewClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterAzureAttributesOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterAzureAttributesLogAnalyticsInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterCloneFromOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterCloneFromPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterClusterLogConfPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterClusterLogConfDbfsOutput{})
@@ -84716,6 +85196,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptVolumesPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptWorkspaceOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryCranOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryCranPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryMavenOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryMavenPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryPypiOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterLibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypeClientsOutput{})
@@ -84730,6 +85218,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskRunJobTaskPipelineParamsOutput{})
+	pulumi.RegisterOutputType(JobTaskRunJobTaskPipelineParamsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkJarTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkJarTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkPythonTaskOutput{})
@@ -84764,6 +85254,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTriggerPtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerFileArrivalOutput{})
 	pulumi.RegisterOutputType(JobTriggerFileArrivalPtrOutput{})
+	pulumi.RegisterOutputType(JobTriggerTableOutput{})
+	pulumi.RegisterOutputType(JobTriggerTablePtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerTableUpdateOutput{})
 	pulumi.RegisterOutputType(JobTriggerTableUpdatePtrOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOutput{})
@@ -85251,59 +85743,4 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterDockerImageOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterDockerImagePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterGcpAttributesOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptDbfsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptFileOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptS3Output{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptVolumesOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotebookTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotebookTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsParameterOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsParameterArrayOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueueOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueuePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunJobTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunJobTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsScheduleOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSchedulePtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkJarTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkJarTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkPythonTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkPythonTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkSubmitTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskArrayOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskConditionTaskOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput{})
 }

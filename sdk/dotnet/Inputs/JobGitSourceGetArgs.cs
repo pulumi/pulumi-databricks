@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("commit")]
         public Input<string>? Commit { get; set; }
 
+        [Input("gitSnapshot")]
+        public Input<Inputs.JobGitSourceGitSnapshotGetArgs>? GitSnapshot { get; set; }
+
         [Input("jobSource")]
         public Input<Inputs.JobGitSourceJobSourceGetArgs>? JobSource { get; set; }
 

@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         /// </summary>
         public readonly string? PauseStatus;
+        public readonly Outputs.JobTriggerTable? Table;
         /// <summary>
         /// configuration block to define a trigger for Table Update events consisting of following attributes:
         /// </summary>
@@ -32,10 +33,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? pauseStatus,
 
+            Outputs.JobTriggerTable? table,
+
             Outputs.JobTriggerTableUpdate? tableUpdate)
         {
             FileArrival = fileArrival;
             PauseStatus = pauseStatus;
+            Table = table;
             TableUpdate = tableUpdate;
         }
     }

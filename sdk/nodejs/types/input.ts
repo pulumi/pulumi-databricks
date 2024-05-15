@@ -4715,6 +4715,7 @@ export interface JobGitSource {
      * hash of Git commit to use. Conflicts with `branch` and `tag`.
      */
     commit?: pulumi.Input<string>;
+    gitSnapshot?: pulumi.Input<inputs.JobGitSourceGitSnapshot>;
     jobSource?: pulumi.Input<inputs.JobGitSourceJobSource>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
@@ -4728,6 +4729,10 @@ export interface JobGitSource {
      * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
+}
+
+export interface JobGitSourceGitSnapshot {
+    usedCommit?: pulumi.Input<string>;
 }
 
 export interface JobGitSourceJobSource {
@@ -4775,6 +4780,7 @@ export interface JobJobClusterNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes>;
+    cloneFrom?: pulumi.Input<inputs.JobJobClusterNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[]>;
@@ -4790,6 +4796,10 @@ export interface JobJobClusterNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
@@ -4810,7 +4820,9 @@ export interface JobJobClusterNewClusterAutoscale {
 export interface JobJobClusterNewClusterAwsAttributes {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -4821,7 +4833,17 @@ export interface JobJobClusterNewClusterAwsAttributes {
 export interface JobJobClusterNewClusterAzureAttributes {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterCloneFrom {
+    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConf {
@@ -4923,6 +4945,32 @@ export interface JobJobClusterNewClusterInitScriptWorkspace {
     destination: pulumi.Input<string>;
 }
 
+export interface JobJobClusterNewClusterLibrary {
+    cran?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryMaven>;
+    pypi?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryPypi>;
+    requirements?: pulumi.Input<string>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
 export interface JobJobClusterNewClusterWorkloadType {
     clients: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadTypeClients>;
 }
@@ -4964,6 +5012,7 @@ export interface JobNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes>;
+    cloneFrom?: pulumi.Input<inputs.JobNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[]>;
@@ -4979,6 +5028,10 @@ export interface JobNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
@@ -4999,7 +5052,9 @@ export interface JobNewClusterAutoscale {
 export interface JobNewClusterAwsAttributes {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -5010,7 +5065,17 @@ export interface JobNewClusterAwsAttributes {
 export interface JobNewClusterAzureAttributes {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobNewClusterAzureAttributesLogAnalyticsInfo>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterCloneFrom {
+    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobNewClusterClusterLogConf {
@@ -5110,6 +5175,32 @@ export interface JobNewClusterInitScriptVolumes {
 
 export interface JobNewClusterInitScriptWorkspace {
     destination: pulumi.Input<string>;
+}
+
+export interface JobNewClusterLibrary {
+    cran?: pulumi.Input<inputs.JobNewClusterLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.JobNewClusterLibraryMaven>;
+    pypi?: pulumi.Input<inputs.JobNewClusterLibraryPypi>;
+    requirements?: pulumi.Input<string>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -5298,6 +5389,7 @@ export interface JobTask {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string>;
+    disableAutoOptimization?: pulumi.Input<boolean>;
     /**
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -5346,7 +5438,7 @@ export interface JobTask {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
     runIf?: pulumi.Input<string>;
     runJobTask?: pulumi.Input<inputs.JobTaskRunJobTask>;
@@ -5480,6 +5572,7 @@ export interface JobTaskForEachTaskTask {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string>;
+    disableAutoOptimization?: pulumi.Input<boolean>;
     /**
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -5527,7 +5620,7 @@ export interface JobTaskForEachTaskTask {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
     runIf?: pulumi.Input<string>;
     runJobTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTask>;
@@ -5689,6 +5782,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes>;
+    cloneFrom?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[]>;
@@ -5704,8 +5798,12 @@ export interface JobTaskForEachTaskTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
-    numWorkers: pulumi.Input<number>;
+    numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
@@ -5724,7 +5822,9 @@ export interface JobTaskForEachTaskTaskNewClusterAutoscale {
 export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -5735,7 +5835,17 @@ export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterCloneFrom {
+    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
@@ -5792,6 +5902,9 @@ export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
 
 export interface JobTaskForEachTaskTaskNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs>;
@@ -5832,6 +5945,32 @@ export interface JobTaskForEachTaskTaskNewClusterInitScriptVolumes {
 
 export interface JobTaskForEachTaskTaskNewClusterInitScriptWorkspace {
     destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibrary {
+    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryMaven>;
+    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryPypi>;
+    requirements?: pulumi.Input<string>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -5912,6 +6051,8 @@ export interface JobTaskForEachTaskTaskPythonWheelTask {
 }
 
 export interface JobTaskForEachTaskTaskRunJobTask {
+    dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    jarParams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (String) ID of the job
      */
@@ -5920,6 +6061,16 @@ export interface JobTaskForEachTaskTaskRunJobTask {
      * (Map) Job parameters for the task
      */
     jobParameters?: pulumi.Input<{[key: string]: any}>;
+    notebookParams?: pulumi.Input<{[key: string]: any}>;
+    pipelineParams?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: any}>;
+    pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
+    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
+    sqlParams?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+    fullRefresh?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskForEachTaskTaskSparkJarTask {
@@ -6193,6 +6344,7 @@ export interface JobTaskNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes>;
+    cloneFrom?: pulumi.Input<inputs.JobTaskNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[]>;
@@ -6208,6 +6360,10 @@ export interface JobTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
@@ -6228,7 +6384,9 @@ export interface JobTaskNewClusterAutoscale {
 export interface JobTaskNewClusterAwsAttributes {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -6239,7 +6397,17 @@ export interface JobTaskNewClusterAwsAttributes {
 export interface JobTaskNewClusterAzureAttributes {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterCloneFrom {
+    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterClusterLogConf {
@@ -6341,6 +6509,32 @@ export interface JobTaskNewClusterInitScriptWorkspace {
     destination: pulumi.Input<string>;
 }
 
+export interface JobTaskNewClusterLibrary {
+    cran?: pulumi.Input<inputs.JobTaskNewClusterLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.JobTaskNewClusterLibraryMaven>;
+    pypi?: pulumi.Input<inputs.JobTaskNewClusterLibraryPypi>;
+    requirements?: pulumi.Input<string>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
 export interface JobTaskNewClusterWorkloadType {
     clients: pulumi.Input<inputs.JobTaskNewClusterWorkloadTypeClients>;
 }
@@ -6419,6 +6613,8 @@ export interface JobTaskPythonWheelTask {
 }
 
 export interface JobTaskRunJobTask {
+    dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    jarParams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (String) ID of the job
      */
@@ -6427,6 +6623,16 @@ export interface JobTaskRunJobTask {
      * (Map) Job parameters for the task
      */
     jobParameters?: pulumi.Input<{[key: string]: any}>;
+    notebookParams?: pulumi.Input<{[key: string]: any}>;
+    pipelineParams?: pulumi.Input<inputs.JobTaskRunJobTaskPipelineParams>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: any}>;
+    pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
+    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
+    sqlParams?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface JobTaskRunJobTaskPipelineParams {
+    fullRefresh?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskSparkJarTask {
@@ -6655,6 +6861,7 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
+    table?: pulumi.Input<inputs.JobTriggerTable>;
     /**
      * configuration block to define a trigger for Table Update events consisting of following attributes:
      */
@@ -6673,6 +6880,13 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
+    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+}
+
+export interface JobTriggerTable {
+    condition?: pulumi.Input<string>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    tableNames?: pulumi.Input<pulumi.Input<string>[]>;
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 

@@ -2683,6 +2683,7 @@ export interface JobGitSource {
      * hash of Git commit to use. Conflicts with `branch` and `tag`.
      */
     commit?: string;
+    gitSnapshot?: outputs.JobGitSourceGitSnapshot;
     jobSource?: outputs.JobGitSourceJobSource;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
@@ -2696,6 +2697,10 @@ export interface JobGitSource {
      * URL of the Git repository to use.
      */
     url: string;
+}
+
+export interface JobGitSourceGitSnapshot {
+    usedCommit?: string;
 }
 
 export interface JobGitSourceJobSource {
@@ -2743,6 +2748,7 @@ export interface JobJobClusterNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
     azureAttributes?: outputs.JobJobClusterNewClusterAzureAttributes;
+    cloneFrom?: outputs.JobJobClusterNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobJobClusterNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobJobClusterNewClusterClusterMountInfo[];
@@ -2758,6 +2764,10 @@ export interface JobJobClusterNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobJobClusterNewClusterInitScript[];
     instancePoolId?: string;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: outputs.JobJobClusterNewClusterLibrary[];
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
@@ -2778,7 +2788,9 @@ export interface JobJobClusterNewClusterAutoscale {
 export interface JobJobClusterNewClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -2789,7 +2801,17 @@ export interface JobJobClusterNewClusterAwsAttributes {
 export interface JobJobClusterNewClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface JobJobClusterNewClusterCloneFrom {
+    sourceClusterId: string;
 }
 
 export interface JobJobClusterNewClusterClusterLogConf {
@@ -2891,6 +2913,32 @@ export interface JobJobClusterNewClusterInitScriptWorkspace {
     destination: string;
 }
 
+export interface JobJobClusterNewClusterLibrary {
+    cran?: outputs.JobJobClusterNewClusterLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.JobJobClusterNewClusterLibraryMaven;
+    pypi?: outputs.JobJobClusterNewClusterLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface JobJobClusterNewClusterLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface JobJobClusterNewClusterLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface JobJobClusterNewClusterLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
 export interface JobJobClusterNewClusterWorkloadType {
     clients: outputs.JobJobClusterNewClusterWorkloadTypeClients;
 }
@@ -2932,6 +2980,7 @@ export interface JobNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobNewClusterAwsAttributes;
     azureAttributes?: outputs.JobNewClusterAzureAttributes;
+    cloneFrom?: outputs.JobNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobNewClusterClusterMountInfo[];
@@ -2947,6 +2996,10 @@ export interface JobNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobNewClusterInitScript[];
     instancePoolId?: string;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: outputs.JobNewClusterLibrary[];
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
@@ -2967,7 +3020,9 @@ export interface JobNewClusterAutoscale {
 export interface JobNewClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -2978,7 +3033,17 @@ export interface JobNewClusterAwsAttributes {
 export interface JobNewClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.JobNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface JobNewClusterCloneFrom {
+    sourceClusterId: string;
 }
 
 export interface JobNewClusterClusterLogConf {
@@ -3078,6 +3143,32 @@ export interface JobNewClusterInitScriptVolumes {
 
 export interface JobNewClusterInitScriptWorkspace {
     destination: string;
+}
+
+export interface JobNewClusterLibrary {
+    cran?: outputs.JobNewClusterLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.JobNewClusterLibraryMaven;
+    pypi?: outputs.JobNewClusterLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface JobNewClusterLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface JobNewClusterLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface JobNewClusterLibraryPypi {
+    package: string;
+    repo?: string;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -3266,6 +3357,7 @@ export interface JobTask {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: string;
+    disableAutoOptimization?: boolean;
     /**
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -3314,7 +3406,7 @@ export interface JobTask {
      */
     retryOnTimeout: boolean;
     /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
     runIf?: string;
     runJobTask?: outputs.JobTaskRunJobTask;
@@ -3448,6 +3540,7 @@ export interface JobTaskForEachTaskTask {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: string;
+    disableAutoOptimization?: boolean;
     /**
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -3495,7 +3588,7 @@ export interface JobTaskForEachTaskTask {
      */
     retryOnTimeout: boolean;
     /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
     runIf?: string;
     runJobTask?: outputs.JobTaskForEachTaskTaskRunJobTask;
@@ -3657,6 +3750,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes;
+    cloneFrom?: outputs.JobTaskForEachTaskTaskNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo[];
@@ -3672,8 +3766,12 @@ export interface JobTaskForEachTaskTaskNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobTaskForEachTaskTaskNewClusterInitScript[];
     instancePoolId?: string;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: outputs.JobTaskForEachTaskTaskNewClusterLibrary[];
     nodeTypeId: string;
-    numWorkers: number;
+    numWorkers?: number;
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
@@ -3692,7 +3790,9 @@ export interface JobTaskForEachTaskTaskNewClusterAutoscale {
 export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -3703,7 +3803,17 @@ export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterCloneFrom {
+    sourceClusterId: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
@@ -3760,6 +3870,9 @@ export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
 
 export interface JobTaskForEachTaskTaskNewClusterInitScript {
     abfss?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs;
     file?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs;
@@ -3800,6 +3913,32 @@ export interface JobTaskForEachTaskTaskNewClusterInitScriptVolumes {
 
 export interface JobTaskForEachTaskTaskNewClusterInitScriptWorkspace {
     destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibrary {
+    cran?: outputs.JobTaskForEachTaskTaskNewClusterLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.JobTaskForEachTaskTaskNewClusterLibraryMaven;
+    pypi?: outputs.JobTaskForEachTaskTaskNewClusterLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
+    package: string;
+    repo?: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -3880,6 +4019,8 @@ export interface JobTaskForEachTaskTaskPythonWheelTask {
 }
 
 export interface JobTaskForEachTaskTaskRunJobTask {
+    dbtCommands?: string[];
+    jarParams?: string[];
     /**
      * (String) ID of the job
      */
@@ -3888,6 +4029,16 @@ export interface JobTaskForEachTaskTaskRunJobTask {
      * (Map) Job parameters for the task
      */
     jobParameters?: {[key: string]: any};
+    notebookParams?: {[key: string]: any};
+    pipelineParams?: outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams;
+    pythonNamedParams?: {[key: string]: any};
+    pythonParams?: string[];
+    sparkSubmitParams?: string[];
+    sqlParams?: {[key: string]: any};
+}
+
+export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+    fullRefresh?: boolean;
 }
 
 export interface JobTaskForEachTaskTaskSparkJarTask {
@@ -4161,6 +4312,7 @@ export interface JobTaskNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskNewClusterAzureAttributes;
+    cloneFrom?: outputs.JobTaskNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskNewClusterClusterMountInfo[];
@@ -4176,6 +4328,10 @@ export interface JobTaskNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobTaskNewClusterInitScript[];
     instancePoolId?: string;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     */
+    libraries?: outputs.JobTaskNewClusterLibrary[];
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
@@ -4196,7 +4352,9 @@ export interface JobTaskNewClusterAutoscale {
 export interface JobTaskNewClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -4207,7 +4365,17 @@ export interface JobTaskNewClusterAwsAttributes {
 export interface JobTaskNewClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface JobTaskNewClusterCloneFrom {
+    sourceClusterId: string;
 }
 
 export interface JobTaskNewClusterClusterLogConf {
@@ -4309,6 +4477,32 @@ export interface JobTaskNewClusterInitScriptWorkspace {
     destination: string;
 }
 
+export interface JobTaskNewClusterLibrary {
+    cran?: outputs.JobTaskNewClusterLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.JobTaskNewClusterLibraryMaven;
+    pypi?: outputs.JobTaskNewClusterLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface JobTaskNewClusterLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface JobTaskNewClusterLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface JobTaskNewClusterLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
 export interface JobTaskNewClusterWorkloadType {
     clients: outputs.JobTaskNewClusterWorkloadTypeClients;
 }
@@ -4387,6 +4581,8 @@ export interface JobTaskPythonWheelTask {
 }
 
 export interface JobTaskRunJobTask {
+    dbtCommands?: string[];
+    jarParams?: string[];
     /**
      * (String) ID of the job
      */
@@ -4395,6 +4591,16 @@ export interface JobTaskRunJobTask {
      * (Map) Job parameters for the task
      */
     jobParameters?: {[key: string]: any};
+    notebookParams?: {[key: string]: any};
+    pipelineParams?: outputs.JobTaskRunJobTaskPipelineParams;
+    pythonNamedParams?: {[key: string]: any};
+    pythonParams?: string[];
+    sparkSubmitParams?: string[];
+    sqlParams?: {[key: string]: any};
+}
+
+export interface JobTaskRunJobTaskPipelineParams {
+    fullRefresh?: boolean;
 }
 
 export interface JobTaskSparkJarTask {
@@ -4623,6 +4829,7 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: string;
+    table?: outputs.JobTriggerTable;
     /**
      * configuration block to define a trigger for Table Update events consisting of following attributes:
      */
@@ -4641,6 +4848,13 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
+    waitAfterLastChangeSeconds?: number;
+}
+
+export interface JobTriggerTable {
+    condition?: string;
+    minTimeBetweenTriggersSeconds?: number;
+    tableNames?: string[];
     waitAfterLastChangeSeconds?: number;
 }
 
