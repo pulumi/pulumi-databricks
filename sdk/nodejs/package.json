@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/databricks",
-    "version": "${VERSION}",
+    "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing databricks cloud resources.",
     "keywords": [
         "pulumi",
@@ -23,6 +23,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "databricks"
+        "name": "databricks",
+        "version": "1.0.0-alpha.0+dev"
     }
 }
