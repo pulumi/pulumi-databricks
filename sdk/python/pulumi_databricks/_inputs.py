@@ -65,6 +65,7 @@ __all__ = [
     'JobEnvironmentArgs',
     'JobEnvironmentSpecArgs',
     'JobGitSourceArgs',
+    'JobGitSourceGitSnapshotArgs',
     'JobGitSourceJobSourceArgs',
     'JobHealthArgs',
     'JobHealthRuleArgs',
@@ -73,6 +74,8 @@ __all__ = [
     'JobJobClusterNewClusterAutoscaleArgs',
     'JobJobClusterNewClusterAwsAttributesArgs',
     'JobJobClusterNewClusterAzureAttributesArgs',
+    'JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobJobClusterNewClusterCloneFromArgs',
     'JobJobClusterNewClusterClusterLogConfArgs',
     'JobJobClusterNewClusterClusterLogConfDbfsArgs',
     'JobJobClusterNewClusterClusterLogConfS3Args',
@@ -89,6 +92,10 @@ __all__ = [
     'JobJobClusterNewClusterInitScriptS3Args',
     'JobJobClusterNewClusterInitScriptVolumesArgs',
     'JobJobClusterNewClusterInitScriptWorkspaceArgs',
+    'JobJobClusterNewClusterLibraryArgs',
+    'JobJobClusterNewClusterLibraryCranArgs',
+    'JobJobClusterNewClusterLibraryMavenArgs',
+    'JobJobClusterNewClusterLibraryPypiArgs',
     'JobJobClusterNewClusterWorkloadTypeArgs',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
     'JobLibraryArgs',
@@ -99,6 +106,8 @@ __all__ = [
     'JobNewClusterAutoscaleArgs',
     'JobNewClusterAwsAttributesArgs',
     'JobNewClusterAzureAttributesArgs',
+    'JobNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobNewClusterCloneFromArgs',
     'JobNewClusterClusterLogConfArgs',
     'JobNewClusterClusterLogConfDbfsArgs',
     'JobNewClusterClusterLogConfS3Args',
@@ -115,6 +124,10 @@ __all__ = [
     'JobNewClusterInitScriptS3Args',
     'JobNewClusterInitScriptVolumesArgs',
     'JobNewClusterInitScriptWorkspaceArgs',
+    'JobNewClusterLibraryArgs',
+    'JobNewClusterLibraryCranArgs',
+    'JobNewClusterLibraryMavenArgs',
+    'JobNewClusterLibraryPypiArgs',
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeClientsArgs',
     'JobNotebookTaskArgs',
@@ -150,6 +163,8 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterAutoscaleArgs',
     'JobTaskForEachTaskTaskNewClusterAwsAttributesArgs',
     'JobTaskForEachTaskTaskNewClusterAzureAttributesArgs',
+    'JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobTaskForEachTaskTaskNewClusterCloneFromArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args',
@@ -166,6 +181,10 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterInitScriptS3Args',
     'JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgs',
     'JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryCranArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryMavenArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryPypiArgs',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs',
     'JobTaskForEachTaskTaskNotebookTaskArgs',
@@ -173,6 +192,7 @@ __all__ = [
     'JobTaskForEachTaskTaskPipelineTaskArgs',
     'JobTaskForEachTaskTaskPythonWheelTaskArgs',
     'JobTaskForEachTaskTaskRunJobTaskArgs',
+    'JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs',
     'JobTaskForEachTaskTaskSparkJarTaskArgs',
     'JobTaskForEachTaskTaskSparkPythonTaskArgs',
     'JobTaskForEachTaskTaskSparkSubmitTaskArgs',
@@ -198,6 +218,8 @@ __all__ = [
     'JobTaskNewClusterAutoscaleArgs',
     'JobTaskNewClusterAwsAttributesArgs',
     'JobTaskNewClusterAzureAttributesArgs',
+    'JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobTaskNewClusterCloneFromArgs',
     'JobTaskNewClusterClusterLogConfArgs',
     'JobTaskNewClusterClusterLogConfDbfsArgs',
     'JobTaskNewClusterClusterLogConfS3Args',
@@ -214,6 +236,10 @@ __all__ = [
     'JobTaskNewClusterInitScriptS3Args',
     'JobTaskNewClusterInitScriptVolumesArgs',
     'JobTaskNewClusterInitScriptWorkspaceArgs',
+    'JobTaskNewClusterLibraryArgs',
+    'JobTaskNewClusterLibraryCranArgs',
+    'JobTaskNewClusterLibraryMavenArgs',
+    'JobTaskNewClusterLibraryPypiArgs',
     'JobTaskNewClusterWorkloadTypeArgs',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
     'JobTaskNotebookTaskArgs',
@@ -221,6 +247,7 @@ __all__ = [
     'JobTaskPipelineTaskArgs',
     'JobTaskPythonWheelTaskArgs',
     'JobTaskRunJobTaskArgs',
+    'JobTaskRunJobTaskPipelineParamsArgs',
     'JobTaskSparkJarTaskArgs',
     'JobTaskSparkPythonTaskArgs',
     'JobTaskSparkSubmitTaskArgs',
@@ -238,6 +265,7 @@ __all__ = [
     'JobTaskWebhookNotificationsOnSuccessArgs',
     'JobTriggerArgs',
     'JobTriggerFileArrivalArgs',
+    'JobTriggerTableArgs',
     'JobTriggerTableUpdateArgs',
     'JobWebhookNotificationsArgs',
     'JobWebhookNotificationsOnDurationWarningThresholdExceededArgs',
@@ -3175,6 +3203,7 @@ class JobGitSourceArgs:
                  url: pulumi.Input[str],
                  branch: Optional[pulumi.Input[str]] = None,
                  commit: Optional[pulumi.Input[str]] = None,
+                 git_snapshot: Optional[pulumi.Input['JobGitSourceGitSnapshotArgs']] = None,
                  job_source: Optional[pulumi.Input['JobGitSourceJobSourceArgs']] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
@@ -3190,6 +3219,8 @@ class JobGitSourceArgs:
             pulumi.set(__self__, "branch", branch)
         if commit is not None:
             pulumi.set(__self__, "commit", commit)
+        if git_snapshot is not None:
+            pulumi.set(__self__, "git_snapshot", git_snapshot)
         if job_source is not None:
             pulumi.set(__self__, "job_source", job_source)
         if provider is not None:
@@ -3234,6 +3265,15 @@ class JobGitSourceArgs:
         pulumi.set(self, "commit", value)
 
     @property
+    @pulumi.getter(name="gitSnapshot")
+    def git_snapshot(self) -> Optional[pulumi.Input['JobGitSourceGitSnapshotArgs']]:
+        return pulumi.get(self, "git_snapshot")
+
+    @git_snapshot.setter
+    def git_snapshot(self, value: Optional[pulumi.Input['JobGitSourceGitSnapshotArgs']]):
+        pulumi.set(self, "git_snapshot", value)
+
+    @property
     @pulumi.getter(name="jobSource")
     def job_source(self) -> Optional[pulumi.Input['JobGitSourceJobSourceArgs']]:
         return pulumi.get(self, "job_source")
@@ -3265,6 +3305,23 @@ class JobGitSourceArgs:
     @tag.setter
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class JobGitSourceGitSnapshotArgs:
+    def __init__(__self__, *,
+                 used_commit: Optional[pulumi.Input[str]] = None):
+        if used_commit is not None:
+            pulumi.set(__self__, "used_commit", used_commit)
+
+    @property
+    @pulumi.getter(name="usedCommit")
+    def used_commit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "used_commit")
+
+    @used_commit.setter
+    def used_commit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "used_commit", value)
 
 
 @pulumi.input_type
@@ -3431,6 +3488,7 @@ class JobJobClusterNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgs']] = None,
+                 clone_from: Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterClusterMountInfoArgs']]]] = None,
@@ -3446,6 +3504,7 @@ class JobJobClusterNewClusterArgs:
                  idempotency_token: Optional[pulumi.Input[str]] = None,
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -3455,6 +3514,9 @@ class JobJobClusterNewClusterArgs:
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -3466,6 +3528,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -3496,6 +3560,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -3568,6 +3634,15 @@ class JobJobClusterNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']]:
+        return pulumi.get(self, "clone_from")
+
+    @clone_from.setter
+    def clone_from(self, value: Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']]):
+        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -3705,6 +3780,18 @@ class JobJobClusterNewClusterArgs:
         pulumi.set(self, "instance_pool_id", value)
 
     @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_type_id")
@@ -3820,7 +3907,9 @@ class JobJobClusterNewClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -3830,8 +3919,12 @@ class JobJobClusterNewClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -3862,6 +3955,15 @@ class JobJobClusterNewClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ebs_volume_size")
@@ -3869,6 +3971,15 @@ class JobJobClusterNewClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -3921,11 +4032,14 @@ class JobJobClusterNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -3948,6 +4062,15 @@ class JobJobClusterNewClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -3955,6 +4078,51 @@ class JobJobClusterNewClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterCloneFromArgs:
+    def __init__(__self__, *,
+                 source_cluster_id: pulumi.Input[str]):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_cluster_id")
+
+    @source_cluster_id.setter
+    def source_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -4575,6 +4743,191 @@ class JobJobClusterNewClusterInitScriptWorkspaceArgs:
 
 
 @pulumi.input_type
+class JobJobClusterNewClusterLibraryArgs:
+    def __init__(__self__, *,
+                 cran: Optional[pulumi.Input['JobJobClusterNewClusterLibraryCranArgs']] = None,
+                 egg: Optional[pulumi.Input[str]] = None,
+                 jar: Optional[pulumi.Input[str]] = None,
+                 maven: Optional[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgs']] = None,
+                 pypi: Optional[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
+                 whl: Optional[pulumi.Input[str]] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional[pulumi.Input['JobJobClusterNewClusterLibraryCranArgs']]:
+        return pulumi.get(self, "cran")
+
+    @cran.setter
+    def cran(self, value: Optional[pulumi.Input['JobJobClusterNewClusterLibraryCranArgs']]):
+        pulumi.set(self, "cran", value)
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "egg")
+
+    @egg.setter
+    def egg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egg", value)
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jar")
+
+    @jar.setter
+    def jar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgs']]:
+        return pulumi.get(self, "maven")
+
+    @maven.setter
+    def maven(self, value: Optional[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgs']]):
+        pulumi.set(self, "maven", value)
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgs']]:
+        return pulumi.get(self, "pypi")
+
+    @pypi.setter
+    def pypi(self, value: Optional[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgs']]):
+        pulumi.set(self, "pypi", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "whl")
+
+    @whl.setter
+    def whl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterLibraryCranArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterLibraryMavenArgs:
+    def __init__(__self__, *,
+                 coordinates: pulumi.Input[str],
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "coordinates")
+
+    @coordinates.setter
+    def coordinates(self, value: pulumi.Input[str]):
+        pulumi.set(self, "coordinates", value)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclusions", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterLibraryPypiArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
 class JobJobClusterNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
                  clients: pulumi.Input['JobJobClusterNewClusterWorkloadTypeClientsArgs']):
@@ -4813,6 +5166,7 @@ class JobNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobNewClusterAzureAttributesArgs']] = None,
+                 clone_from: Optional[pulumi.Input['JobNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterClusterMountInfoArgs']]]] = None,
@@ -4828,6 +5182,7 @@ class JobNewClusterArgs:
                  idempotency_token: Optional[pulumi.Input[str]] = None,
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -4837,6 +5192,9 @@ class JobNewClusterArgs:
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -4848,6 +5206,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -4878,6 +5238,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -4950,6 +5312,15 @@ class JobNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional[pulumi.Input['JobNewClusterCloneFromArgs']]:
+        return pulumi.get(self, "clone_from")
+
+    @clone_from.setter
+    def clone_from(self, value: Optional[pulumi.Input['JobNewClusterCloneFromArgs']]):
+        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -5087,6 +5458,18 @@ class JobNewClusterArgs:
         pulumi.set(self, "instance_pool_id", value)
 
     @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_type_id")
@@ -5202,7 +5585,9 @@ class JobNewClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -5212,8 +5597,12 @@ class JobNewClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -5244,6 +5633,15 @@ class JobNewClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ebs_volume_size")
@@ -5251,6 +5649,15 @@ class JobNewClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -5303,11 +5710,14 @@ class JobNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['JobNewClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -5330,6 +5740,15 @@ class JobNewClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['JobNewClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['JobNewClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -5337,6 +5756,51 @@ class JobNewClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class JobNewClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
+
+
+@pulumi.input_type
+class JobNewClusterCloneFromArgs:
+    def __init__(__self__, *,
+                 source_cluster_id: pulumi.Input[str]):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_cluster_id")
+
+    @source_cluster_id.setter
+    def source_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -5954,6 +6418,191 @@ class JobNewClusterInitScriptWorkspaceArgs:
     @destination.setter
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class JobNewClusterLibraryArgs:
+    def __init__(__self__, *,
+                 cran: Optional[pulumi.Input['JobNewClusterLibraryCranArgs']] = None,
+                 egg: Optional[pulumi.Input[str]] = None,
+                 jar: Optional[pulumi.Input[str]] = None,
+                 maven: Optional[pulumi.Input['JobNewClusterLibraryMavenArgs']] = None,
+                 pypi: Optional[pulumi.Input['JobNewClusterLibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
+                 whl: Optional[pulumi.Input[str]] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional[pulumi.Input['JobNewClusterLibraryCranArgs']]:
+        return pulumi.get(self, "cran")
+
+    @cran.setter
+    def cran(self, value: Optional[pulumi.Input['JobNewClusterLibraryCranArgs']]):
+        pulumi.set(self, "cran", value)
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "egg")
+
+    @egg.setter
+    def egg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egg", value)
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jar")
+
+    @jar.setter
+    def jar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional[pulumi.Input['JobNewClusterLibraryMavenArgs']]:
+        return pulumi.get(self, "maven")
+
+    @maven.setter
+    def maven(self, value: Optional[pulumi.Input['JobNewClusterLibraryMavenArgs']]):
+        pulumi.set(self, "maven", value)
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional[pulumi.Input['JobNewClusterLibraryPypiArgs']]:
+        return pulumi.get(self, "pypi")
+
+    @pypi.setter
+    def pypi(self, value: Optional[pulumi.Input['JobNewClusterLibraryPypiArgs']]):
+        pulumi.set(self, "pypi", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "whl")
+
+    @whl.setter
+    def whl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class JobNewClusterLibraryCranArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobNewClusterLibraryMavenArgs:
+    def __init__(__self__, *,
+                 coordinates: pulumi.Input[str],
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "coordinates")
+
+    @coordinates.setter
+    def coordinates(self, value: pulumi.Input[str]):
+        pulumi.set(self, "coordinates", value)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclusions", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobNewClusterLibraryPypiArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
 
 
 @pulumi.input_type
@@ -6577,6 +7226,7 @@ class JobTaskArgs:
                  dbt_task: Optional[pulumi.Input['JobTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_auto_optimization: Optional[pulumi.Input[bool]] = None,
                  email_notifications: Optional[pulumi.Input['JobTaskEmailNotificationsArgs']] = None,
                  environment_key: Optional[pulumi.Input[str]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -6616,7 +7266,7 @@ class JobTaskArgs:
         :param pulumi.Input['JobTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
         :param pulumi.Input['JobTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -6630,6 +7280,8 @@ class JobTaskArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_auto_optimization is not None:
+            pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -6720,6 +7372,15 @@ class JobTaskArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableAutoOptimization")
+    def disable_auto_optimization(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_auto_optimization")
+
+    @disable_auto_optimization.setter
+    def disable_auto_optimization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_auto_optimization", value)
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -6892,7 +7553,7 @@ class JobTaskArgs:
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         """
         return pulumi.get(self, "run_if")
 
@@ -7350,6 +8011,7 @@ class JobTaskForEachTaskTaskArgs:
                  dbt_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_auto_optimization: Optional[pulumi.Input[bool]] = None,
                  email_notifications: Optional[pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs']] = None,
                  environment_key: Optional[pulumi.Input[str]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -7388,7 +8050,7 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input['JobTaskForEachTaskTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
         :param pulumi.Input['JobTaskForEachTaskTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -7402,6 +8064,8 @@ class JobTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_auto_optimization is not None:
+            pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -7490,6 +8154,15 @@ class JobTaskForEachTaskTaskArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableAutoOptimization")
+    def disable_auto_optimization(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_auto_optimization")
+
+    @disable_auto_optimization.setter
+    def disable_auto_optimization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_auto_optimization", value)
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -7653,7 +8326,7 @@ class JobTaskForEachTaskTaskArgs:
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         """
         return pulumi.get(self, "run_if")
 
@@ -8316,13 +8989,13 @@ class JobTaskForEachTaskTaskLibraryPypiArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterArgs:
     def __init__(__self__, *,
-                 num_workers: pulumi.Input[int],
                  spark_version: pulumi.Input[str],
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgs']] = None,
+                 clone_from: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs']]]] = None,
@@ -8338,7 +9011,9 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  idempotency_token: Optional[pulumi.Input[str]] = None,
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
+                 num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
@@ -8346,7 +9021,9 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs']] = None):
-        pulumi.set(__self__, "num_workers", num_workers)
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -8358,6 +9035,8 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -8388,8 +9067,12 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
+        if num_workers is not None:
+            pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if runtime_engine is not None:
@@ -8404,15 +9087,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "num_workers")
-
-    @num_workers.setter
-    def num_workers(self, value: pulumi.Input[int]):
-        pulumi.set(self, "num_workers", value)
 
     @property
     @pulumi.getter(name="sparkVersion")
@@ -8467,6 +9141,15 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']]:
+        return pulumi.get(self, "clone_from")
+
+    @clone_from.setter
+    def clone_from(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']]):
+        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -8604,6 +9287,18 @@ class JobTaskForEachTaskTaskNewClusterArgs:
         pulumi.set(self, "instance_pool_id", value)
 
     @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_type_id")
@@ -8611,6 +9306,15 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @node_type_id.setter
     def node_type_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_type_id", value)
+
+    @property
+    @pulumi.getter(name="numWorkers")
+    def num_workers(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "num_workers")
+
+    @num_workers.setter
+    def num_workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_workers", value)
 
     @property
     @pulumi.getter(name="policyId")
@@ -8710,7 +9414,9 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -8720,8 +9426,12 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -8752,6 +9462,15 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ebs_volume_size")
@@ -8759,6 +9478,15 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -8811,11 +9539,14 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -8838,6 +9569,15 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -8845,6 +9585,51 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterCloneFromArgs:
+    def __init__(__self__, *,
+                 source_cluster_id: pulumi.Input[str]):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_cluster_id")
+
+    @source_cluster_id.setter
+    def source_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -9198,6 +9983,9 @@ class JobTaskForEachTaskTaskNewClusterInitScriptArgs:
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+        if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
@@ -9222,6 +10010,9 @@ class JobTaskForEachTaskTaskNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -9456,6 +10247,191 @@ class JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs:
     @destination.setter
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterLibraryArgs:
+    def __init__(__self__, *,
+                 cran: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryCranArgs']] = None,
+                 egg: Optional[pulumi.Input[str]] = None,
+                 jar: Optional[pulumi.Input[str]] = None,
+                 maven: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgs']] = None,
+                 pypi: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
+                 whl: Optional[pulumi.Input[str]] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryCranArgs']]:
+        return pulumi.get(self, "cran")
+
+    @cran.setter
+    def cran(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryCranArgs']]):
+        pulumi.set(self, "cran", value)
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "egg")
+
+    @egg.setter
+    def egg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egg", value)
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jar")
+
+    @jar.setter
+    def jar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgs']]:
+        return pulumi.get(self, "maven")
+
+    @maven.setter
+    def maven(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgs']]):
+        pulumi.set(self, "maven", value)
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgs']]:
+        return pulumi.get(self, "pypi")
+
+    @pypi.setter
+    def pypi(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgs']]):
+        pulumi.set(self, "pypi", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "whl")
+
+    @whl.setter
+    def whl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterLibraryCranArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterLibraryMavenArgs:
+    def __init__(__self__, *,
+                 coordinates: pulumi.Input[str],
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "coordinates")
+
+    @coordinates.setter
+    def coordinates(self, value: pulumi.Input[str]):
+        pulumi.set(self, "coordinates", value)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclusions", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterLibraryPypiArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
 
 
 @pulumi.input_type
@@ -9749,14 +10725,38 @@ class JobTaskForEachTaskTaskPythonWheelTaskArgs:
 class JobTaskForEachTaskTaskRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[int],
-                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 dbt_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jar_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 notebook_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pipeline_params: Optional[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs']] = None,
+                 python_named_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 python_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spark_submit_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         :param pulumi.Input[int] job_id: (String) ID of the job
         :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
+        if dbt_commands is not None:
+            pulumi.set(__self__, "dbt_commands", dbt_commands)
+        if jar_params is not None:
+            pulumi.set(__self__, "jar_params", jar_params)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
+        if notebook_params is not None:
+            pulumi.set(__self__, "notebook_params", notebook_params)
+        if pipeline_params is not None:
+            pulumi.set(__self__, "pipeline_params", pipeline_params)
+        if python_named_params is not None:
+            pulumi.set(__self__, "python_named_params", python_named_params)
+        if python_params is not None:
+            pulumi.set(__self__, "python_params", python_params)
+        if spark_submit_params is not None:
+            pulumi.set(__self__, "spark_submit_params", spark_submit_params)
+        if sql_params is not None:
+            pulumi.set(__self__, "sql_params", sql_params)
 
     @property
     @pulumi.getter(name="jobId")
@@ -9771,6 +10771,24 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
         pulumi.set(self, "job_id", value)
 
     @property
+    @pulumi.getter(name="dbtCommands")
+    def dbt_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dbt_commands")
+
+    @dbt_commands.setter
+    def dbt_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dbt_commands", value)
+
+    @property
+    @pulumi.getter(name="jarParams")
+    def jar_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "jar_params")
+
+    @jar_params.setter
+    def jar_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_params", value)
+
+    @property
     @pulumi.getter(name="jobParameters")
     def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -9781,6 +10799,77 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
     @job_parameters.setter
     def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "job_parameters", value)
+
+    @property
+    @pulumi.getter(name="notebookParams")
+    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "notebook_params")
+
+    @notebook_params.setter
+    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "notebook_params", value)
+
+    @property
+    @pulumi.getter(name="pipelineParams")
+    def pipeline_params(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs']]:
+        return pulumi.get(self, "pipeline_params")
+
+    @pipeline_params.setter
+    def pipeline_params(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs']]):
+        pulumi.set(self, "pipeline_params", value)
+
+    @property
+    @pulumi.getter(name="pythonNamedParams")
+    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "python_named_params")
+
+    @python_named_params.setter
+    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "python_named_params", value)
+
+    @property
+    @pulumi.getter(name="pythonParams")
+    def python_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "python_params")
+
+    @python_params.setter
+    def python_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "python_params", value)
+
+    @property
+    @pulumi.getter(name="sparkSubmitParams")
+    def spark_submit_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "spark_submit_params")
+
+    @spark_submit_params.setter
+    def spark_submit_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "spark_submit_params", value)
+
+    @property
+    @pulumi.getter(name="sqlParams")
+    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "sql_params")
+
+    @sql_params.setter
+    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "sql_params", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs:
+    def __init__(__self__, *,
+                 full_refresh: Optional[pulumi.Input[bool]] = None):
+        if full_refresh is not None:
+            pulumi.set(__self__, "full_refresh", full_refresh)
+
+    @property
+    @pulumi.getter(name="fullRefresh")
+    def full_refresh(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "full_refresh")
+
+    @full_refresh.setter
+    def full_refresh(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "full_refresh", value)
 
 
 @pulumi.input_type
@@ -10777,6 +11866,7 @@ class JobTaskNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesArgs']] = None,
+                 clone_from: Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterClusterMountInfoArgs']]]] = None,
@@ -10792,6 +11882,7 @@ class JobTaskNewClusterArgs:
                  idempotency_token: Optional[pulumi.Input[str]] = None,
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -10801,6 +11892,9 @@ class JobTaskNewClusterArgs:
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -10812,6 +11906,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -10842,6 +11938,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -10914,6 +12012,15 @@ class JobTaskNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']]:
+        return pulumi.get(self, "clone_from")
+
+    @clone_from.setter
+    def clone_from(self, value: Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']]):
+        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -11051,6 +12158,18 @@ class JobTaskNewClusterArgs:
         pulumi.set(self, "instance_pool_id", value)
 
     @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_type_id")
@@ -11166,7 +12285,9 @@ class JobTaskNewClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -11176,8 +12297,12 @@ class JobTaskNewClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -11208,6 +12333,15 @@ class JobTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ebs_volume_size")
@@ -11215,6 +12349,15 @@ class JobTaskNewClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -11267,11 +12410,14 @@ class JobTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -11294,6 +12440,15 @@ class JobTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -11301,6 +12456,51 @@ class JobTaskNewClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterCloneFromArgs:
+    def __init__(__self__, *,
+                 source_cluster_id: pulumi.Input[str]):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_cluster_id")
+
+    @source_cluster_id.setter
+    def source_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -11921,6 +13121,191 @@ class JobTaskNewClusterInitScriptWorkspaceArgs:
 
 
 @pulumi.input_type
+class JobTaskNewClusterLibraryArgs:
+    def __init__(__self__, *,
+                 cran: Optional[pulumi.Input['JobTaskNewClusterLibraryCranArgs']] = None,
+                 egg: Optional[pulumi.Input[str]] = None,
+                 jar: Optional[pulumi.Input[str]] = None,
+                 maven: Optional[pulumi.Input['JobTaskNewClusterLibraryMavenArgs']] = None,
+                 pypi: Optional[pulumi.Input['JobTaskNewClusterLibraryPypiArgs']] = None,
+                 requirements: Optional[pulumi.Input[str]] = None,
+                 whl: Optional[pulumi.Input[str]] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional[pulumi.Input['JobTaskNewClusterLibraryCranArgs']]:
+        return pulumi.get(self, "cran")
+
+    @cran.setter
+    def cran(self, value: Optional[pulumi.Input['JobTaskNewClusterLibraryCranArgs']]):
+        pulumi.set(self, "cran", value)
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "egg")
+
+    @egg.setter
+    def egg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egg", value)
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jar")
+
+    @jar.setter
+    def jar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional[pulumi.Input['JobTaskNewClusterLibraryMavenArgs']]:
+        return pulumi.get(self, "maven")
+
+    @maven.setter
+    def maven(self, value: Optional[pulumi.Input['JobTaskNewClusterLibraryMavenArgs']]):
+        pulumi.set(self, "maven", value)
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional[pulumi.Input['JobTaskNewClusterLibraryPypiArgs']]:
+        return pulumi.get(self, "pypi")
+
+    @pypi.setter
+    def pypi(self, value: Optional[pulumi.Input['JobTaskNewClusterLibraryPypiArgs']]):
+        pulumi.set(self, "pypi", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "whl")
+
+    @whl.setter
+    def whl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterLibraryCranArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterLibraryMavenArgs:
+    def __init__(__self__, *,
+                 coordinates: pulumi.Input[str],
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "coordinates")
+
+    @coordinates.setter
+    def coordinates(self, value: pulumi.Input[str]):
+        pulumi.set(self, "coordinates", value)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclusions", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterLibraryPypiArgs:
+    def __init__(__self__, *,
+                 package: pulumi.Input[str],
+                 repo: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
 class JobTaskNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
                  clients: pulumi.Input['JobTaskNewClusterWorkloadTypeClientsArgs']):
@@ -12211,14 +13596,38 @@ class JobTaskPythonWheelTaskArgs:
 class JobTaskRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[int],
-                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 dbt_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jar_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 notebook_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pipeline_params: Optional[pulumi.Input['JobTaskRunJobTaskPipelineParamsArgs']] = None,
+                 python_named_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 python_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spark_submit_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         :param pulumi.Input[int] job_id: (String) ID of the job
         :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
+        if dbt_commands is not None:
+            pulumi.set(__self__, "dbt_commands", dbt_commands)
+        if jar_params is not None:
+            pulumi.set(__self__, "jar_params", jar_params)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
+        if notebook_params is not None:
+            pulumi.set(__self__, "notebook_params", notebook_params)
+        if pipeline_params is not None:
+            pulumi.set(__self__, "pipeline_params", pipeline_params)
+        if python_named_params is not None:
+            pulumi.set(__self__, "python_named_params", python_named_params)
+        if python_params is not None:
+            pulumi.set(__self__, "python_params", python_params)
+        if spark_submit_params is not None:
+            pulumi.set(__self__, "spark_submit_params", spark_submit_params)
+        if sql_params is not None:
+            pulumi.set(__self__, "sql_params", sql_params)
 
     @property
     @pulumi.getter(name="jobId")
@@ -12233,6 +13642,24 @@ class JobTaskRunJobTaskArgs:
         pulumi.set(self, "job_id", value)
 
     @property
+    @pulumi.getter(name="dbtCommands")
+    def dbt_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dbt_commands")
+
+    @dbt_commands.setter
+    def dbt_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dbt_commands", value)
+
+    @property
+    @pulumi.getter(name="jarParams")
+    def jar_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "jar_params")
+
+    @jar_params.setter
+    def jar_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_params", value)
+
+    @property
     @pulumi.getter(name="jobParameters")
     def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -12243,6 +13670,77 @@ class JobTaskRunJobTaskArgs:
     @job_parameters.setter
     def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "job_parameters", value)
+
+    @property
+    @pulumi.getter(name="notebookParams")
+    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "notebook_params")
+
+    @notebook_params.setter
+    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "notebook_params", value)
+
+    @property
+    @pulumi.getter(name="pipelineParams")
+    def pipeline_params(self) -> Optional[pulumi.Input['JobTaskRunJobTaskPipelineParamsArgs']]:
+        return pulumi.get(self, "pipeline_params")
+
+    @pipeline_params.setter
+    def pipeline_params(self, value: Optional[pulumi.Input['JobTaskRunJobTaskPipelineParamsArgs']]):
+        pulumi.set(self, "pipeline_params", value)
+
+    @property
+    @pulumi.getter(name="pythonNamedParams")
+    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "python_named_params")
+
+    @python_named_params.setter
+    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "python_named_params", value)
+
+    @property
+    @pulumi.getter(name="pythonParams")
+    def python_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "python_params")
+
+    @python_params.setter
+    def python_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "python_params", value)
+
+    @property
+    @pulumi.getter(name="sparkSubmitParams")
+    def spark_submit_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "spark_submit_params")
+
+    @spark_submit_params.setter
+    def spark_submit_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "spark_submit_params", value)
+
+    @property
+    @pulumi.getter(name="sqlParams")
+    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "sql_params")
+
+    @sql_params.setter
+    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "sql_params", value)
+
+
+@pulumi.input_type
+class JobTaskRunJobTaskPipelineParamsArgs:
+    def __init__(__self__, *,
+                 full_refresh: Optional[pulumi.Input[bool]] = None):
+        if full_refresh is not None:
+            pulumi.set(__self__, "full_refresh", full_refresh)
+
+    @property
+    @pulumi.getter(name="fullRefresh")
+    def full_refresh(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "full_refresh")
+
+    @full_refresh.setter
+    def full_refresh(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "full_refresh", value)
 
 
 @pulumi.input_type
@@ -12973,6 +14471,7 @@ class JobTriggerArgs:
     def __init__(__self__, *,
                  file_arrival: Optional[pulumi.Input['JobTriggerFileArrivalArgs']] = None,
                  pause_status: Optional[pulumi.Input[str]] = None,
+                 table: Optional[pulumi.Input['JobTriggerTableArgs']] = None,
                  table_update: Optional[pulumi.Input['JobTriggerTableUpdateArgs']] = None):
         """
         :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
@@ -12983,6 +14482,8 @@ class JobTriggerArgs:
             pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
         if table_update is not None:
             pulumi.set(__self__, "table_update", table_update)
 
@@ -13009,6 +14510,15 @@ class JobTriggerArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input['JobTriggerTableArgs']]:
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input['JobTriggerTableArgs']]):
+        pulumi.set(self, "table", value)
 
     @property
     @pulumi.getter(name="tableUpdate")
@@ -13070,6 +14580,59 @@ class JobTriggerFileArrivalArgs:
         """
         If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+@pulumi.input_type
+class JobTriggerTableArgs:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
+                 table_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if table_names is not None:
+            pulumi.set(__self__, "table_names", table_names)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "table_names")
+
+    @table_names.setter
+    def table_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "table_names", value)
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wait_after_last_change_seconds")
 
     @wait_after_last_change_seconds.setter

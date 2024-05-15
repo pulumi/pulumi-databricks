@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
+import com.pulumi.databricks.inputs.JobTriggerTableArgs;
 import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    @Import(name="table")
+    private @Nullable Output<JobTriggerTableArgs> table;
+
+    public Optional<Output<JobTriggerTableArgs>> table() {
+        return Optional.ofNullable(this.table);
+    }
+
     /**
      * configuration block to define a trigger for Table Update events consisting of following attributes:
      * 
@@ -67,6 +75,7 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
     private JobTriggerArgs(JobTriggerArgs $) {
         this.fileArrival = $.fileArrival;
         this.pauseStatus = $.pauseStatus;
+        this.table = $.table;
         this.tableUpdate = $.tableUpdate;
     }
 
@@ -128,6 +137,15 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
+        }
+
+        public Builder table(@Nullable Output<JobTriggerTableArgs> table) {
+            $.table = table;
+            return this;
+        }
+
+        public Builder table(JobTriggerTableArgs table) {
+            return table(Output.of(table));
         }
 
         /**

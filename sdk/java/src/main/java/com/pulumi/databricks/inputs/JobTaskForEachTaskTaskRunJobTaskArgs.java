@@ -5,10 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +20,20 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskForEachTaskTaskRunJobTaskArgs Empty = new JobTaskForEachTaskTaskRunJobTaskArgs();
+
+    @Import(name="dbtCommands")
+    private @Nullable Output<List<String>> dbtCommands;
+
+    public Optional<Output<List<String>>> dbtCommands() {
+        return Optional.ofNullable(this.dbtCommands);
+    }
+
+    @Import(name="jarParams")
+    private @Nullable Output<List<String>> jarParams;
+
+    public Optional<Output<List<String>>> jarParams() {
+        return Optional.ofNullable(this.jarParams);
+    }
 
     /**
      * (String) ID of the job
@@ -49,11 +65,61 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
         return Optional.ofNullable(this.jobParameters);
     }
 
+    @Import(name="notebookParams")
+    private @Nullable Output<Map<String,Object>> notebookParams;
+
+    public Optional<Output<Map<String,Object>>> notebookParams() {
+        return Optional.ofNullable(this.notebookParams);
+    }
+
+    @Import(name="pipelineParams")
+    private @Nullable Output<JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs> pipelineParams;
+
+    public Optional<Output<JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs>> pipelineParams() {
+        return Optional.ofNullable(this.pipelineParams);
+    }
+
+    @Import(name="pythonNamedParams")
+    private @Nullable Output<Map<String,Object>> pythonNamedParams;
+
+    public Optional<Output<Map<String,Object>>> pythonNamedParams() {
+        return Optional.ofNullable(this.pythonNamedParams);
+    }
+
+    @Import(name="pythonParams")
+    private @Nullable Output<List<String>> pythonParams;
+
+    public Optional<Output<List<String>>> pythonParams() {
+        return Optional.ofNullable(this.pythonParams);
+    }
+
+    @Import(name="sparkSubmitParams")
+    private @Nullable Output<List<String>> sparkSubmitParams;
+
+    public Optional<Output<List<String>>> sparkSubmitParams() {
+        return Optional.ofNullable(this.sparkSubmitParams);
+    }
+
+    @Import(name="sqlParams")
+    private @Nullable Output<Map<String,Object>> sqlParams;
+
+    public Optional<Output<Map<String,Object>>> sqlParams() {
+        return Optional.ofNullable(this.sqlParams);
+    }
+
     private JobTaskForEachTaskTaskRunJobTaskArgs() {}
 
     private JobTaskForEachTaskTaskRunJobTaskArgs(JobTaskForEachTaskTaskRunJobTaskArgs $) {
+        this.dbtCommands = $.dbtCommands;
+        this.jarParams = $.jarParams;
         this.jobId = $.jobId;
         this.jobParameters = $.jobParameters;
+        this.notebookParams = $.notebookParams;
+        this.pipelineParams = $.pipelineParams;
+        this.pythonNamedParams = $.pythonNamedParams;
+        this.pythonParams = $.pythonParams;
+        this.sparkSubmitParams = $.sparkSubmitParams;
+        this.sqlParams = $.sqlParams;
     }
 
     public static Builder builder() {
@@ -72,6 +138,32 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
 
         public Builder(JobTaskForEachTaskTaskRunJobTaskArgs defaults) {
             $ = new JobTaskForEachTaskTaskRunJobTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dbtCommands(@Nullable Output<List<String>> dbtCommands) {
+            $.dbtCommands = dbtCommands;
+            return this;
+        }
+
+        public Builder dbtCommands(List<String> dbtCommands) {
+            return dbtCommands(Output.of(dbtCommands));
+        }
+
+        public Builder dbtCommands(String... dbtCommands) {
+            return dbtCommands(List.of(dbtCommands));
+        }
+
+        public Builder jarParams(@Nullable Output<List<String>> jarParams) {
+            $.jarParams = jarParams;
+            return this;
+        }
+
+        public Builder jarParams(List<String> jarParams) {
+            return jarParams(Output.of(jarParams));
+        }
+
+        public Builder jarParams(String... jarParams) {
+            return jarParams(List.of(jarParams));
         }
 
         /**
@@ -114,6 +206,68 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
          */
         public Builder jobParameters(Map<String,Object> jobParameters) {
             return jobParameters(Output.of(jobParameters));
+        }
+
+        public Builder notebookParams(@Nullable Output<Map<String,Object>> notebookParams) {
+            $.notebookParams = notebookParams;
+            return this;
+        }
+
+        public Builder notebookParams(Map<String,Object> notebookParams) {
+            return notebookParams(Output.of(notebookParams));
+        }
+
+        public Builder pipelineParams(@Nullable Output<JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs> pipelineParams) {
+            $.pipelineParams = pipelineParams;
+            return this;
+        }
+
+        public Builder pipelineParams(JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs pipelineParams) {
+            return pipelineParams(Output.of(pipelineParams));
+        }
+
+        public Builder pythonNamedParams(@Nullable Output<Map<String,Object>> pythonNamedParams) {
+            $.pythonNamedParams = pythonNamedParams;
+            return this;
+        }
+
+        public Builder pythonNamedParams(Map<String,Object> pythonNamedParams) {
+            return pythonNamedParams(Output.of(pythonNamedParams));
+        }
+
+        public Builder pythonParams(@Nullable Output<List<String>> pythonParams) {
+            $.pythonParams = pythonParams;
+            return this;
+        }
+
+        public Builder pythonParams(List<String> pythonParams) {
+            return pythonParams(Output.of(pythonParams));
+        }
+
+        public Builder pythonParams(String... pythonParams) {
+            return pythonParams(List.of(pythonParams));
+        }
+
+        public Builder sparkSubmitParams(@Nullable Output<List<String>> sparkSubmitParams) {
+            $.sparkSubmitParams = sparkSubmitParams;
+            return this;
+        }
+
+        public Builder sparkSubmitParams(List<String> sparkSubmitParams) {
+            return sparkSubmitParams(Output.of(sparkSubmitParams));
+        }
+
+        public Builder sparkSubmitParams(String... sparkSubmitParams) {
+            return sparkSubmitParams(List.of(sparkSubmitParams));
+        }
+
+        public Builder sqlParams(@Nullable Output<Map<String,Object>> sqlParams) {
+            $.sqlParams = sqlParams;
+            return this;
+        }
+
+        public Builder sqlParams(Map<String,Object> sqlParams) {
+            return sqlParams(Output.of(sqlParams));
         }
 
         public JobTaskForEachTaskTaskRunJobTaskArgs build() {

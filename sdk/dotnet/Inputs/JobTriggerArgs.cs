@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
+        [Input("table")]
+        public Input<Inputs.JobTriggerTableArgs>? Table { get; set; }
+
         /// <summary>
         /// configuration block to define a trigger for Table Update events consisting of following attributes:
         /// </summary>

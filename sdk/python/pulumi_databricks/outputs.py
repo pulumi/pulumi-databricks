@@ -66,6 +66,7 @@ __all__ = [
     'JobEnvironment',
     'JobEnvironmentSpec',
     'JobGitSource',
+    'JobGitSourceGitSnapshot',
     'JobGitSourceJobSource',
     'JobHealth',
     'JobHealthRule',
@@ -74,6 +75,8 @@ __all__ = [
     'JobJobClusterNewClusterAutoscale',
     'JobJobClusterNewClusterAwsAttributes',
     'JobJobClusterNewClusterAzureAttributes',
+    'JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo',
+    'JobJobClusterNewClusterCloneFrom',
     'JobJobClusterNewClusterClusterLogConf',
     'JobJobClusterNewClusterClusterLogConfDbfs',
     'JobJobClusterNewClusterClusterLogConfS3',
@@ -90,6 +93,10 @@ __all__ = [
     'JobJobClusterNewClusterInitScriptS3',
     'JobJobClusterNewClusterInitScriptVolumes',
     'JobJobClusterNewClusterInitScriptWorkspace',
+    'JobJobClusterNewClusterLibrary',
+    'JobJobClusterNewClusterLibraryCran',
+    'JobJobClusterNewClusterLibraryMaven',
+    'JobJobClusterNewClusterLibraryPypi',
     'JobJobClusterNewClusterWorkloadType',
     'JobJobClusterNewClusterWorkloadTypeClients',
     'JobLibrary',
@@ -100,6 +107,8 @@ __all__ = [
     'JobNewClusterAutoscale',
     'JobNewClusterAwsAttributes',
     'JobNewClusterAzureAttributes',
+    'JobNewClusterAzureAttributesLogAnalyticsInfo',
+    'JobNewClusterCloneFrom',
     'JobNewClusterClusterLogConf',
     'JobNewClusterClusterLogConfDbfs',
     'JobNewClusterClusterLogConfS3',
@@ -116,6 +125,10 @@ __all__ = [
     'JobNewClusterInitScriptS3',
     'JobNewClusterInitScriptVolumes',
     'JobNewClusterInitScriptWorkspace',
+    'JobNewClusterLibrary',
+    'JobNewClusterLibraryCran',
+    'JobNewClusterLibraryMaven',
+    'JobNewClusterLibraryPypi',
     'JobNewClusterWorkloadType',
     'JobNewClusterWorkloadTypeClients',
     'JobNotebookTask',
@@ -151,6 +164,8 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterAutoscale',
     'JobTaskForEachTaskTaskNewClusterAwsAttributes',
     'JobTaskForEachTaskTaskNewClusterAzureAttributes',
+    'JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo',
+    'JobTaskForEachTaskTaskNewClusterCloneFrom',
     'JobTaskForEachTaskTaskNewClusterClusterLogConf',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3',
@@ -167,6 +182,10 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterInitScriptS3',
     'JobTaskForEachTaskTaskNewClusterInitScriptVolumes',
     'JobTaskForEachTaskTaskNewClusterInitScriptWorkspace',
+    'JobTaskForEachTaskTaskNewClusterLibrary',
+    'JobTaskForEachTaskTaskNewClusterLibraryCran',
+    'JobTaskForEachTaskTaskNewClusterLibraryMaven',
+    'JobTaskForEachTaskTaskNewClusterLibraryPypi',
     'JobTaskForEachTaskTaskNewClusterWorkloadType',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClients',
     'JobTaskForEachTaskTaskNotebookTask',
@@ -174,6 +193,7 @@ __all__ = [
     'JobTaskForEachTaskTaskPipelineTask',
     'JobTaskForEachTaskTaskPythonWheelTask',
     'JobTaskForEachTaskTaskRunJobTask',
+    'JobTaskForEachTaskTaskRunJobTaskPipelineParams',
     'JobTaskForEachTaskTaskSparkJarTask',
     'JobTaskForEachTaskTaskSparkPythonTask',
     'JobTaskForEachTaskTaskSparkSubmitTask',
@@ -199,6 +219,8 @@ __all__ = [
     'JobTaskNewClusterAutoscale',
     'JobTaskNewClusterAwsAttributes',
     'JobTaskNewClusterAzureAttributes',
+    'JobTaskNewClusterAzureAttributesLogAnalyticsInfo',
+    'JobTaskNewClusterCloneFrom',
     'JobTaskNewClusterClusterLogConf',
     'JobTaskNewClusterClusterLogConfDbfs',
     'JobTaskNewClusterClusterLogConfS3',
@@ -215,6 +237,10 @@ __all__ = [
     'JobTaskNewClusterInitScriptS3',
     'JobTaskNewClusterInitScriptVolumes',
     'JobTaskNewClusterInitScriptWorkspace',
+    'JobTaskNewClusterLibrary',
+    'JobTaskNewClusterLibraryCran',
+    'JobTaskNewClusterLibraryMaven',
+    'JobTaskNewClusterLibraryPypi',
     'JobTaskNewClusterWorkloadType',
     'JobTaskNewClusterWorkloadTypeClients',
     'JobTaskNotebookTask',
@@ -222,6 +248,7 @@ __all__ = [
     'JobTaskPipelineTask',
     'JobTaskPythonWheelTask',
     'JobTaskRunJobTask',
+    'JobTaskRunJobTaskPipelineParams',
     'JobTaskSparkJarTask',
     'JobTaskSparkPythonTask',
     'JobTaskSparkSubmitTask',
@@ -239,6 +266,7 @@ __all__ = [
     'JobTaskWebhookNotificationsOnSuccess',
     'JobTrigger',
     'JobTriggerFileArrival',
+    'JobTriggerTable',
     'JobTriggerTableUpdate',
     'JobWebhookNotifications',
     'JobWebhookNotificationsOnDurationWarningThresholdExceeded',
@@ -3151,7 +3179,9 @@ class JobGitSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "jobSource":
+        if key == "gitSnapshot":
+            suggest = "git_snapshot"
+        elif key == "jobSource":
             suggest = "job_source"
 
         if suggest:
@@ -3169,6 +3199,7 @@ class JobGitSource(dict):
                  url: str,
                  branch: Optional[str] = None,
                  commit: Optional[str] = None,
+                 git_snapshot: Optional['outputs.JobGitSourceGitSnapshot'] = None,
                  job_source: Optional['outputs.JobGitSourceJobSource'] = None,
                  provider: Optional[str] = None,
                  tag: Optional[str] = None):
@@ -3184,6 +3215,8 @@ class JobGitSource(dict):
             pulumi.set(__self__, "branch", branch)
         if commit is not None:
             pulumi.set(__self__, "commit", commit)
+        if git_snapshot is not None:
+            pulumi.set(__self__, "git_snapshot", git_snapshot)
         if job_source is not None:
             pulumi.set(__self__, "job_source", job_source)
         if provider is not None:
@@ -3216,6 +3249,11 @@ class JobGitSource(dict):
         return pulumi.get(self, "commit")
 
     @property
+    @pulumi.getter(name="gitSnapshot")
+    def git_snapshot(self) -> Optional['outputs.JobGitSourceGitSnapshot']:
+        return pulumi.get(self, "git_snapshot")
+
+    @property
     @pulumi.getter(name="jobSource")
     def job_source(self) -> Optional['outputs.JobGitSourceJobSource']:
         return pulumi.get(self, "job_source")
@@ -3235,6 +3273,36 @@ class JobGitSource(dict):
         name of the Git branch to use. Conflicts with `branch` and `commit`.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class JobGitSourceGitSnapshot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usedCommit":
+            suggest = "used_commit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobGitSourceGitSnapshot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobGitSourceGitSnapshot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobGitSourceGitSnapshot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 used_commit: Optional[str] = None):
+        if used_commit is not None:
+            pulumi.set(__self__, "used_commit", used_commit)
+
+    @property
+    @pulumi.getter(name="usedCommit")
+    def used_commit(self) -> Optional[str]:
+        return pulumi.get(self, "used_commit")
 
 
 @pulumi.output_type
@@ -3411,6 +3479,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "aws_attributes"
         elif key == "azureAttributes":
             suggest = "azure_attributes"
+        elif key == "cloneFrom":
+            suggest = "clone_from"
         elif key == "clusterId":
             suggest = "cluster_id"
         elif key == "clusterLogConf":
@@ -3478,6 +3548,7 @@ class JobJobClusterNewCluster(dict):
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
                  azure_attributes: Optional['outputs.JobJobClusterNewClusterAzureAttributes'] = None,
+                 clone_from: Optional['outputs.JobJobClusterNewClusterCloneFrom'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobJobClusterNewClusterClusterLogConf'] = None,
                  cluster_mount_infos: Optional[Sequence['outputs.JobJobClusterNewClusterClusterMountInfo']] = None,
@@ -3493,6 +3564,7 @@ class JobJobClusterNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobJobClusterNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 libraries: Optional[Sequence['outputs.JobJobClusterNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
@@ -3502,6 +3574,9 @@ class JobJobClusterNewCluster(dict):
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
+        """
+        :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -3513,6 +3588,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -3543,6 +3620,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -3591,6 +3670,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="azureAttributes")
     def azure_attributes(self) -> Optional['outputs.JobJobClusterNewClusterAzureAttributes']:
         return pulumi.get(self, "azure_attributes")
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional['outputs.JobJobClusterNewClusterCloneFrom']:
+        return pulumi.get(self, "clone_from")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -3666,6 +3750,14 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_pool_id")
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[Sequence['outputs.JobJobClusterNewClusterLibrary']]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
 
     @property
     @pulumi.getter(name="nodeTypeId")
@@ -3760,8 +3852,12 @@ class JobJobClusterNewClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -3787,7 +3883,9 @@ class JobJobClusterNewClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -3797,8 +3895,12 @@ class JobJobClusterNewClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -3821,9 +3923,19 @@ class JobJobClusterNewClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -3858,6 +3970,8 @@ class JobJobClusterNewClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -3875,11 +3989,14 @@ class JobJobClusterNewClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -3894,9 +4011,83 @@ class JobJobClusterNewClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterCloneFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceClusterId":
+            suggest = "source_cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterCloneFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterCloneFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterCloneFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_cluster_id: str):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> str:
+        return pulumi.get(self, "source_cluster_id")
 
 
 @pulumi.output_type
@@ -4462,6 +4653,135 @@ class JobJobClusterNewClusterInitScriptWorkspace(dict):
 
 
 @pulumi.output_type
+class JobJobClusterNewClusterLibrary(dict):
+    def __init__(__self__, *,
+                 cran: Optional['outputs.JobJobClusterNewClusterLibraryCran'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['outputs.JobJobClusterNewClusterLibraryMaven'] = None,
+                 pypi: Optional['outputs.JobJobClusterNewClusterLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['outputs.JobJobClusterNewClusterLibraryCran']:
+        return pulumi.get(self, "cran")
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['outputs.JobJobClusterNewClusterLibraryMaven']:
+        return pulumi.get(self, "maven")
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['outputs.JobJobClusterNewClusterLibraryPypi']:
+        return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterLibraryCran(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterLibraryMaven(dict):
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterLibraryPypi(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
 class JobJobClusterNewClusterWorkloadType(dict):
     def __init__(__self__, *,
                  clients: 'outputs.JobJobClusterNewClusterWorkloadTypeClients'):
@@ -4638,6 +4958,8 @@ class JobNewCluster(dict):
             suggest = "aws_attributes"
         elif key == "azureAttributes":
             suggest = "azure_attributes"
+        elif key == "cloneFrom":
+            suggest = "clone_from"
         elif key == "clusterId":
             suggest = "cluster_id"
         elif key == "clusterLogConf":
@@ -4705,6 +5027,7 @@ class JobNewCluster(dict):
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobNewClusterAwsAttributes'] = None,
                  azure_attributes: Optional['outputs.JobNewClusterAzureAttributes'] = None,
+                 clone_from: Optional['outputs.JobNewClusterCloneFrom'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobNewClusterClusterLogConf'] = None,
                  cluster_mount_infos: Optional[Sequence['outputs.JobNewClusterClusterMountInfo']] = None,
@@ -4720,6 +5043,7 @@ class JobNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 libraries: Optional[Sequence['outputs.JobNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
@@ -4729,6 +5053,9 @@ class JobNewCluster(dict):
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
+        """
+        :param Sequence['JobNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -4740,6 +5067,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -4770,6 +5099,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -4818,6 +5149,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="azureAttributes")
     def azure_attributes(self) -> Optional['outputs.JobNewClusterAzureAttributes']:
         return pulumi.get(self, "azure_attributes")
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional['outputs.JobNewClusterCloneFrom']:
+        return pulumi.get(self, "clone_from")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -4893,6 +5229,14 @@ class JobNewCluster(dict):
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_pool_id")
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[Sequence['outputs.JobNewClusterLibrary']]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
 
     @property
     @pulumi.getter(name="nodeTypeId")
@@ -4987,8 +5331,12 @@ class JobNewClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -5014,7 +5362,9 @@ class JobNewClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -5024,8 +5374,12 @@ class JobNewClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -5048,9 +5402,19 @@ class JobNewClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -5085,6 +5449,8 @@ class JobNewClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -5102,11 +5468,14 @@ class JobNewClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.JobNewClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -5121,9 +5490,83 @@ class JobNewClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.JobNewClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class JobNewClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+
+@pulumi.output_type
+class JobNewClusterCloneFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceClusterId":
+            suggest = "source_cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterCloneFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterCloneFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterCloneFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_cluster_id: str):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> str:
+        return pulumi.get(self, "source_cluster_id")
 
 
 @pulumi.output_type
@@ -5686,6 +6129,135 @@ class JobNewClusterInitScriptWorkspace(dict):
     @pulumi.getter
     def destination(self) -> str:
         return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class JobNewClusterLibrary(dict):
+    def __init__(__self__, *,
+                 cran: Optional['outputs.JobNewClusterLibraryCran'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['outputs.JobNewClusterLibraryMaven'] = None,
+                 pypi: Optional['outputs.JobNewClusterLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['outputs.JobNewClusterLibraryCran']:
+        return pulumi.get(self, "cran")
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['outputs.JobNewClusterLibraryMaven']:
+        return pulumi.get(self, "maven")
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['outputs.JobNewClusterLibraryPypi']:
+        return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+
+@pulumi.output_type
+class JobNewClusterLibraryCran(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobNewClusterLibraryMaven(dict):
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobNewClusterLibraryPypi(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -6360,6 +6932,8 @@ class JobTask(dict):
             suggest = "dbt_task"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "disableAutoOptimization":
+            suggest = "disable_auto_optimization"
         elif key == "emailNotifications":
             suggest = "email_notifications"
         elif key == "environmentKey":
@@ -6421,6 +6995,7 @@ class JobTask(dict):
                  dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
                  description: Optional[str] = None,
+                 disable_auto_optimization: Optional[bool] = None,
                  email_notifications: Optional['outputs.JobTaskEmailNotifications'] = None,
                  environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
@@ -6460,7 +7035,7 @@ class JobTask(dict):
         :param 'JobTaskNewClusterArgs' new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
         :param 'JobTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -6474,6 +7049,8 @@ class JobTask(dict):
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_auto_optimization is not None:
+            pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -6548,6 +7125,11 @@ class JobTask(dict):
         An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableAutoOptimization")
+    def disable_auto_optimization(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_auto_optimization")
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -6660,7 +7242,7 @@ class JobTask(dict):
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[str]:
         """
-        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         """
         return pulumi.get(self, "run_if")
 
@@ -7069,6 +7651,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "dbt_task"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "disableAutoOptimization":
+            suggest = "disable_auto_optimization"
         elif key == "emailNotifications":
             suggest = "email_notifications"
         elif key == "environmentKey":
@@ -7128,6 +7712,7 @@ class JobTaskForEachTaskTask(dict):
                  dbt_task: Optional['outputs.JobTaskForEachTaskTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskForEachTaskTaskDependsOn']] = None,
                  description: Optional[str] = None,
+                 disable_auto_optimization: Optional[bool] = None,
                  email_notifications: Optional['outputs.JobTaskForEachTaskTaskEmailNotifications'] = None,
                  environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
@@ -7166,7 +7751,7 @@ class JobTaskForEachTaskTask(dict):
         :param 'JobTaskForEachTaskTaskNewClusterArgs' new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
         :param 'JobTaskForEachTaskTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -7180,6 +7765,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_auto_optimization is not None:
+            pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -7252,6 +7839,11 @@ class JobTaskForEachTaskTask(dict):
         An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableAutoOptimization")
+    def disable_auto_optimization(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_auto_optimization")
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -7359,7 +7951,7 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[str]:
         """
-        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         """
         return pulumi.get(self, "run_if")
 
@@ -7911,9 +8503,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "numWorkers":
-            suggest = "num_workers"
-        elif key == "sparkVersion":
+        if key == "sparkVersion":
             suggest = "spark_version"
         elif key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
@@ -7923,6 +8513,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "aws_attributes"
         elif key == "azureAttributes":
             suggest = "azure_attributes"
+        elif key == "cloneFrom":
+            suggest = "clone_from"
         elif key == "clusterId":
             suggest = "cluster_id"
         elif key == "clusterLogConf":
@@ -7955,6 +8547,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "instance_pool_id"
         elif key == "nodeTypeId":
             suggest = "node_type_id"
+        elif key == "numWorkers":
+            suggest = "num_workers"
         elif key == "policyId":
             suggest = "policy_id"
         elif key == "runtimeEngine":
@@ -7982,13 +8576,13 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 num_workers: int,
                  spark_version: str,
                  apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.JobTaskForEachTaskTaskNewClusterAutoscale'] = None,
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes'] = None,
                  azure_attributes: Optional['outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes'] = None,
+                 clone_from: Optional['outputs.JobTaskForEachTaskTaskNewClusterCloneFrom'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConf'] = None,
                  cluster_mount_infos: Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo']] = None,
@@ -8004,7 +8598,9 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 libraries: Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
+                 num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
@@ -8012,7 +8608,9 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
-        pulumi.set(__self__, "num_workers", num_workers)
+        """
+        :param Sequence['JobTaskForEachTaskTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -8024,6 +8622,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -8054,8 +8654,12 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
+        if num_workers is not None:
+            pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if runtime_engine is not None:
@@ -8070,11 +8674,6 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> int:
-        return pulumi.get(self, "num_workers")
 
     @property
     @pulumi.getter(name="sparkVersion")
@@ -8105,6 +8704,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="azureAttributes")
     def azure_attributes(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes']:
         return pulumi.get(self, "azure_attributes")
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterCloneFrom']:
+        return pulumi.get(self, "clone_from")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -8182,9 +8786,22 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter
+    def libraries(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterLibrary']]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
+
+    @property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[str]:
         return pulumi.get(self, "node_type_id")
+
+    @property
+    @pulumi.getter(name="numWorkers")
+    def num_workers(self) -> Optional[int]:
+        return pulumi.get(self, "num_workers")
 
     @property
     @pulumi.getter(name="policyId")
@@ -8269,8 +8886,12 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -8296,7 +8917,9 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -8306,8 +8929,12 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -8330,9 +8957,19 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -8367,6 +9004,8 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -8384,11 +9023,14 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -8403,9 +9045,83 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterCloneFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceClusterId":
+            suggest = "source_cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterCloneFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskNewClusterCloneFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskNewClusterCloneFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_cluster_id: str):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> str:
+        return pulumi.get(self, "source_cluster_id")
 
 
 @pulumi.output_type
@@ -8784,6 +9500,9 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def dbfs(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs']:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @property
@@ -8965,6 +9684,135 @@ class JobTaskForEachTaskTaskNewClusterInitScriptWorkspace(dict):
     @pulumi.getter
     def destination(self) -> str:
         return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterLibrary(dict):
+    def __init__(__self__, *,
+                 cran: Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryCran'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryMaven'] = None,
+                 pypi: Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryCran']:
+        return pulumi.get(self, "cran")
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryMaven']:
+        return pulumi.get(self, "maven")
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterLibraryPypi']:
+        return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterLibraryCran(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterLibraryMaven(dict):
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterLibraryPypi(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -9279,8 +10127,24 @@ class JobTaskForEachTaskTaskRunJobTask(dict):
         suggest = None
         if key == "jobId":
             suggest = "job_id"
+        elif key == "dbtCommands":
+            suggest = "dbt_commands"
+        elif key == "jarParams":
+            suggest = "jar_params"
         elif key == "jobParameters":
             suggest = "job_parameters"
+        elif key == "notebookParams":
+            suggest = "notebook_params"
+        elif key == "pipelineParams":
+            suggest = "pipeline_params"
+        elif key == "pythonNamedParams":
+            suggest = "python_named_params"
+        elif key == "pythonParams":
+            suggest = "python_params"
+        elif key == "sparkSubmitParams":
+            suggest = "spark_submit_params"
+        elif key == "sqlParams":
+            suggest = "sql_params"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskRunJobTask. Access the value via the '{suggest}' property getter instead.")
@@ -9295,14 +10159,38 @@ class JobTaskForEachTaskTaskRunJobTask(dict):
 
     def __init__(__self__, *,
                  job_id: int,
-                 job_parameters: Optional[Mapping[str, Any]] = None):
+                 dbt_commands: Optional[Sequence[str]] = None,
+                 jar_params: Optional[Sequence[str]] = None,
+                 job_parameters: Optional[Mapping[str, Any]] = None,
+                 notebook_params: Optional[Mapping[str, Any]] = None,
+                 pipeline_params: Optional['outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams'] = None,
+                 python_named_params: Optional[Mapping[str, Any]] = None,
+                 python_params: Optional[Sequence[str]] = None,
+                 spark_submit_params: Optional[Sequence[str]] = None,
+                 sql_params: Optional[Mapping[str, Any]] = None):
         """
         :param int job_id: (String) ID of the job
         :param Mapping[str, Any] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
+        if dbt_commands is not None:
+            pulumi.set(__self__, "dbt_commands", dbt_commands)
+        if jar_params is not None:
+            pulumi.set(__self__, "jar_params", jar_params)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
+        if notebook_params is not None:
+            pulumi.set(__self__, "notebook_params", notebook_params)
+        if pipeline_params is not None:
+            pulumi.set(__self__, "pipeline_params", pipeline_params)
+        if python_named_params is not None:
+            pulumi.set(__self__, "python_named_params", python_named_params)
+        if python_params is not None:
+            pulumi.set(__self__, "python_params", python_params)
+        if spark_submit_params is not None:
+            pulumi.set(__self__, "spark_submit_params", spark_submit_params)
+        if sql_params is not None:
+            pulumi.set(__self__, "sql_params", sql_params)
 
     @property
     @pulumi.getter(name="jobId")
@@ -9313,12 +10201,82 @@ class JobTaskForEachTaskTaskRunJobTask(dict):
         return pulumi.get(self, "job_id")
 
     @property
+    @pulumi.getter(name="dbtCommands")
+    def dbt_commands(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "dbt_commands")
+
+    @property
+    @pulumi.getter(name="jarParams")
+    def jar_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "jar_params")
+
+    @property
     @pulumi.getter(name="jobParameters")
     def job_parameters(self) -> Optional[Mapping[str, Any]]:
         """
         (Map) Job parameters for the task
         """
         return pulumi.get(self, "job_parameters")
+
+    @property
+    @pulumi.getter(name="notebookParams")
+    def notebook_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "notebook_params")
+
+    @property
+    @pulumi.getter(name="pipelineParams")
+    def pipeline_params(self) -> Optional['outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams']:
+        return pulumi.get(self, "pipeline_params")
+
+    @property
+    @pulumi.getter(name="pythonNamedParams")
+    def python_named_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "python_named_params")
+
+    @property
+    @pulumi.getter(name="pythonParams")
+    def python_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "python_params")
+
+    @property
+    @pulumi.getter(name="sparkSubmitParams")
+    def spark_submit_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "spark_submit_params")
+
+    @property
+    @pulumi.getter(name="sqlParams")
+    def sql_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "sql_params")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskRunJobTaskPipelineParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullRefresh":
+            suggest = "full_refresh"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskRunJobTaskPipelineParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskRunJobTaskPipelineParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskRunJobTaskPipelineParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_refresh: Optional[bool] = None):
+        if full_refresh is not None:
+            pulumi.set(__self__, "full_refresh", full_refresh)
+
+    @property
+    @pulumi.getter(name="fullRefresh")
+    def full_refresh(self) -> Optional[bool]:
+        return pulumi.get(self, "full_refresh")
 
 
 @pulumi.output_type
@@ -10280,6 +11238,8 @@ class JobTaskNewCluster(dict):
             suggest = "aws_attributes"
         elif key == "azureAttributes":
             suggest = "azure_attributes"
+        elif key == "cloneFrom":
+            suggest = "clone_from"
         elif key == "clusterId":
             suggest = "cluster_id"
         elif key == "clusterLogConf":
@@ -10347,6 +11307,7 @@ class JobTaskNewCluster(dict):
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
                  azure_attributes: Optional['outputs.JobTaskNewClusterAzureAttributes'] = None,
+                 clone_from: Optional['outputs.JobTaskNewClusterCloneFrom'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobTaskNewClusterClusterLogConf'] = None,
                  cluster_mount_infos: Optional[Sequence['outputs.JobTaskNewClusterClusterMountInfo']] = None,
@@ -10362,6 +11323,7 @@ class JobTaskNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobTaskNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 libraries: Optional[Sequence['outputs.JobTaskNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
@@ -10371,6 +11333,9 @@ class JobTaskNewCluster(dict):
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
+        """
+        :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -10382,6 +11347,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -10412,6 +11379,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -10460,6 +11429,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="azureAttributes")
     def azure_attributes(self) -> Optional['outputs.JobTaskNewClusterAzureAttributes']:
         return pulumi.get(self, "azure_attributes")
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional['outputs.JobTaskNewClusterCloneFrom']:
+        return pulumi.get(self, "clone_from")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -10535,6 +11509,14 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_pool_id")
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[Sequence['outputs.JobTaskNewClusterLibrary']]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        """
+        return pulumi.get(self, "libraries")
 
     @property
     @pulumi.getter(name="nodeTypeId")
@@ -10629,8 +11611,12 @@ class JobTaskNewClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -10656,7 +11642,9 @@ class JobTaskNewClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -10666,8 +11654,12 @@ class JobTaskNewClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -10690,9 +11682,19 @@ class JobTaskNewClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -10727,6 +11729,8 @@ class JobTaskNewClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -10744,11 +11748,14 @@ class JobTaskNewClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -10763,9 +11770,83 @@ class JobTaskNewClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class JobTaskNewClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+
+@pulumi.output_type
+class JobTaskNewClusterCloneFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceClusterId":
+            suggest = "source_cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterCloneFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterCloneFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterCloneFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_cluster_id: str):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> str:
+        return pulumi.get(self, "source_cluster_id")
 
 
 @pulumi.output_type
@@ -11331,6 +12412,135 @@ class JobTaskNewClusterInitScriptWorkspace(dict):
 
 
 @pulumi.output_type
+class JobTaskNewClusterLibrary(dict):
+    def __init__(__self__, *,
+                 cran: Optional['outputs.JobTaskNewClusterLibraryCran'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['outputs.JobTaskNewClusterLibraryMaven'] = None,
+                 pypi: Optional['outputs.JobTaskNewClusterLibraryPypi'] = None,
+                 requirements: Optional[str] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['outputs.JobTaskNewClusterLibraryCran']:
+        return pulumi.get(self, "cran")
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['outputs.JobTaskNewClusterLibraryMaven']:
+        return pulumi.get(self, "maven")
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['outputs.JobTaskNewClusterLibraryPypi']:
+        return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+
+@pulumi.output_type
+class JobTaskNewClusterLibraryCran(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobTaskNewClusterLibraryMaven(dict):
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class JobTaskNewClusterLibraryPypi(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
 class JobTaskNewClusterWorkloadType(dict):
     def __init__(__self__, *,
                  clients: 'outputs.JobTaskNewClusterWorkloadTypeClients'):
@@ -11642,8 +12852,24 @@ class JobTaskRunJobTask(dict):
         suggest = None
         if key == "jobId":
             suggest = "job_id"
+        elif key == "dbtCommands":
+            suggest = "dbt_commands"
+        elif key == "jarParams":
+            suggest = "jar_params"
         elif key == "jobParameters":
             suggest = "job_parameters"
+        elif key == "notebookParams":
+            suggest = "notebook_params"
+        elif key == "pipelineParams":
+            suggest = "pipeline_params"
+        elif key == "pythonNamedParams":
+            suggest = "python_named_params"
+        elif key == "pythonParams":
+            suggest = "python_params"
+        elif key == "sparkSubmitParams":
+            suggest = "spark_submit_params"
+        elif key == "sqlParams":
+            suggest = "sql_params"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskRunJobTask. Access the value via the '{suggest}' property getter instead.")
@@ -11658,14 +12884,38 @@ class JobTaskRunJobTask(dict):
 
     def __init__(__self__, *,
                  job_id: int,
-                 job_parameters: Optional[Mapping[str, Any]] = None):
+                 dbt_commands: Optional[Sequence[str]] = None,
+                 jar_params: Optional[Sequence[str]] = None,
+                 job_parameters: Optional[Mapping[str, Any]] = None,
+                 notebook_params: Optional[Mapping[str, Any]] = None,
+                 pipeline_params: Optional['outputs.JobTaskRunJobTaskPipelineParams'] = None,
+                 python_named_params: Optional[Mapping[str, Any]] = None,
+                 python_params: Optional[Sequence[str]] = None,
+                 spark_submit_params: Optional[Sequence[str]] = None,
+                 sql_params: Optional[Mapping[str, Any]] = None):
         """
         :param int job_id: (String) ID of the job
         :param Mapping[str, Any] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
+        if dbt_commands is not None:
+            pulumi.set(__self__, "dbt_commands", dbt_commands)
+        if jar_params is not None:
+            pulumi.set(__self__, "jar_params", jar_params)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
+        if notebook_params is not None:
+            pulumi.set(__self__, "notebook_params", notebook_params)
+        if pipeline_params is not None:
+            pulumi.set(__self__, "pipeline_params", pipeline_params)
+        if python_named_params is not None:
+            pulumi.set(__self__, "python_named_params", python_named_params)
+        if python_params is not None:
+            pulumi.set(__self__, "python_params", python_params)
+        if spark_submit_params is not None:
+            pulumi.set(__self__, "spark_submit_params", spark_submit_params)
+        if sql_params is not None:
+            pulumi.set(__self__, "sql_params", sql_params)
 
     @property
     @pulumi.getter(name="jobId")
@@ -11676,12 +12926,82 @@ class JobTaskRunJobTask(dict):
         return pulumi.get(self, "job_id")
 
     @property
+    @pulumi.getter(name="dbtCommands")
+    def dbt_commands(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "dbt_commands")
+
+    @property
+    @pulumi.getter(name="jarParams")
+    def jar_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "jar_params")
+
+    @property
     @pulumi.getter(name="jobParameters")
     def job_parameters(self) -> Optional[Mapping[str, Any]]:
         """
         (Map) Job parameters for the task
         """
         return pulumi.get(self, "job_parameters")
+
+    @property
+    @pulumi.getter(name="notebookParams")
+    def notebook_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "notebook_params")
+
+    @property
+    @pulumi.getter(name="pipelineParams")
+    def pipeline_params(self) -> Optional['outputs.JobTaskRunJobTaskPipelineParams']:
+        return pulumi.get(self, "pipeline_params")
+
+    @property
+    @pulumi.getter(name="pythonNamedParams")
+    def python_named_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "python_named_params")
+
+    @property
+    @pulumi.getter(name="pythonParams")
+    def python_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "python_params")
+
+    @property
+    @pulumi.getter(name="sparkSubmitParams")
+    def spark_submit_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "spark_submit_params")
+
+    @property
+    @pulumi.getter(name="sqlParams")
+    def sql_params(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "sql_params")
+
+
+@pulumi.output_type
+class JobTaskRunJobTaskPipelineParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullRefresh":
+            suggest = "full_refresh"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskRunJobTaskPipelineParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskRunJobTaskPipelineParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskRunJobTaskPipelineParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_refresh: Optional[bool] = None):
+        if full_refresh is not None:
+            pulumi.set(__self__, "full_refresh", full_refresh)
+
+    @property
+    @pulumi.getter(name="fullRefresh")
+    def full_refresh(self) -> Optional[bool]:
+        return pulumi.get(self, "full_refresh")
 
 
 @pulumi.output_type
@@ -12464,6 +13784,7 @@ class JobTrigger(dict):
     def __init__(__self__, *,
                  file_arrival: Optional['outputs.JobTriggerFileArrival'] = None,
                  pause_status: Optional[str] = None,
+                 table: Optional['outputs.JobTriggerTable'] = None,
                  table_update: Optional['outputs.JobTriggerTableUpdate'] = None):
         """
         :param 'JobTriggerFileArrivalArgs' file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
@@ -12474,6 +13795,8 @@ class JobTrigger(dict):
             pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
         if table_update is not None:
             pulumi.set(__self__, "table_update", table_update)
 
@@ -12492,6 +13815,11 @@ class JobTrigger(dict):
         Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         """
         return pulumi.get(self, "pause_status")
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.JobTriggerTable']:
+        return pulumi.get(self, "table")
 
     @property
     @pulumi.getter(name="tableUpdate")
@@ -12560,6 +13888,64 @@ class JobTriggerFileArrival(dict):
         """
         If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+
+@pulumi.output_type
+class JobTriggerTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minTimeBetweenTriggersSeconds":
+            suggest = "min_time_between_triggers_seconds"
+        elif key == "tableNames":
+            suggest = "table_names"
+        elif key == "waitAfterLastChangeSeconds":
+            suggest = "wait_after_last_change_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTriggerTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTriggerTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTriggerTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: Optional[str] = None,
+                 min_time_between_triggers_seconds: Optional[int] = None,
+                 table_names: Optional[Sequence[str]] = None,
+                 wait_after_last_change_seconds: Optional[int] = None):
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if table_names is not None:
+            pulumi.set(__self__, "table_names", table_names)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "table_names")
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[int]:
         return pulumi.get(self, "wait_after_last_change_seconds")
 
 

@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? AutoterminationMinutes;
         public readonly Outputs.JobNewClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.JobNewClusterAzureAttributes? AzureAttributes;
+        public readonly Outputs.JobNewClusterCloneFrom? CloneFrom;
         public readonly string? ClusterId;
         public readonly Outputs.JobNewClusterClusterLogConf? ClusterLogConf;
         public readonly ImmutableArray<Outputs.JobNewClusterClusterMountInfo> ClusterMountInfos;
@@ -33,6 +34,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? IdempotencyToken;
         public readonly ImmutableArray<Outputs.JobNewClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
+        /// <summary>
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.JobNewClusterLibrary> Libraries;
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
         public readonly string? PolicyId;
@@ -55,6 +60,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobNewClusterAwsAttributes? awsAttributes,
 
             Outputs.JobNewClusterAzureAttributes? azureAttributes,
+
+            Outputs.JobNewClusterCloneFrom? cloneFrom,
 
             string? clusterId,
 
@@ -86,6 +93,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? instancePoolId,
 
+            ImmutableArray<Outputs.JobNewClusterLibrary> libraries,
+
             string? nodeTypeId,
 
             int? numWorkers,
@@ -111,6 +120,7 @@ namespace Pulumi.Databricks.Outputs
             AutoterminationMinutes = autoterminationMinutes;
             AwsAttributes = awsAttributes;
             AzureAttributes = azureAttributes;
+            CloneFrom = cloneFrom;
             ClusterId = clusterId;
             ClusterLogConf = clusterLogConf;
             ClusterMountInfos = clusterMountInfos;
@@ -126,6 +136,7 @@ namespace Pulumi.Databricks.Outputs
             IdempotencyToken = idempotencyToken;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
+            Libraries = libraries;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;

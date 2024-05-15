@@ -18,6 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTaskNewClusterInitScript {
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptAbfss abfss;
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptDbfs dbfs;
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptFile file;
     private @Nullable JobTaskForEachTaskTaskNewClusterInitScriptGcs gcs;
@@ -29,6 +35,12 @@ public final class JobTaskForEachTaskTaskNewClusterInitScript {
     public Optional<JobTaskForEachTaskTaskNewClusterInitScriptAbfss> abfss() {
         return Optional.ofNullable(this.abfss);
     }
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<JobTaskForEachTaskTaskNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }

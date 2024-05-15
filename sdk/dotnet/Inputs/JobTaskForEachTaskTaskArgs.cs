@@ -36,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("disableAutoOptimization")]
+        public Input<bool>? DisableAutoOptimization { get; set; }
+
         /// <summary>
         /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -117,7 +120,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? RetryOnTimeout { get; set; }
 
         /// <summary>
-        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         /// </summary>
         [Input("runIf")]
         public Input<string>? RunIf { get; set; }

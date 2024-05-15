@@ -28,9 +28,21 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
         return Optional.ofNullable(this.abfss);
     }
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     @Import(name="dbfs")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs> dbfs;
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -109,11 +121,27 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
             return abfss(Output.of(abfss));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(@Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }

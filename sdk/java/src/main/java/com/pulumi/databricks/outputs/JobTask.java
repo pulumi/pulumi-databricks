@@ -44,6 +44,7 @@ public final class JobTask {
      * 
      */
     private @Nullable String description;
+    private @Nullable Boolean disableAutoOptimization;
     /**
      * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
@@ -102,7 +103,7 @@ public final class JobTask {
      */
     private @Nullable Boolean retryOnTimeout;
     /**
-     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      * 
      */
     private @Nullable String runIf;
@@ -148,6 +149,9 @@ public final class JobTask {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    public Optional<Boolean> disableAutoOptimization() {
+        return Optional.ofNullable(this.disableAutoOptimization);
     }
     /**
      * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -237,7 +241,7 @@ public final class JobTask {
         return Optional.ofNullable(this.retryOnTimeout);
     }
     /**
-     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      * 
      */
     public Optional<String> runIf() {
@@ -294,6 +298,7 @@ public final class JobTask {
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
+        private @Nullable Boolean disableAutoOptimization;
         private @Nullable JobTaskEmailNotifications emailNotifications;
         private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
@@ -325,6 +330,7 @@ public final class JobTask {
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
+    	      this.disableAutoOptimization = defaults.disableAutoOptimization;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
@@ -376,6 +382,12 @@ public final class JobTask {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableAutoOptimization(@Nullable Boolean disableAutoOptimization) {
+
+            this.disableAutoOptimization = disableAutoOptimization;
             return this;
         }
         @CustomType.Setter
@@ -531,6 +543,7 @@ public final class JobTask {
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
+            _resultValue.disableAutoOptimization = disableAutoOptimization;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;

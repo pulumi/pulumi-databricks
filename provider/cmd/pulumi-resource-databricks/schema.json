@@ -1120,6 +1120,9 @@
                     "type": "string",
                     "description": "hash of Git commit to use. Conflicts with `branch` and `tag`.\n"
                 },
+                "gitSnapshot": {
+                    "$ref": "#/types/databricks:index/JobGitSourceGitSnapshot:JobGitSourceGitSnapshot"
+                },
                 "jobSource": {
                     "$ref": "#/types/databricks:index/JobGitSourceJobSource:JobGitSourceJobSource"
                 },
@@ -1140,6 +1143,14 @@
             "required": [
                 "url"
             ]
+        },
+        "databricks:index/JobGitSourceGitSnapshot:JobGitSourceGitSnapshot": {
+            "properties": {
+                "usedCommit": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobGitSourceJobSource:JobGitSourceJobSource": {
             "properties": {
@@ -1221,6 +1232,9 @@
                 "azureAttributes": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterAzureAttributes:JobJobClusterNewClusterAzureAttributes"
                 },
+                "cloneFrom": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterCloneFrom:JobJobClusterNewClusterCloneFrom"
+                },
                 "clusterId": {
                     "type": "string"
                 },
@@ -1275,6 +1289,13 @@
                 },
                 "instancePoolId": {
                     "type": "string"
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobJobClusterNewClusterLibrary:JobJobClusterNewClusterLibrary"
+                    },
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -1352,7 +1373,13 @@
                 "ebsVolumeCount": {
                     "type": "integer"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
                     "type": "integer"
                 },
                 "ebsVolumeType": {
@@ -1381,11 +1408,36 @@
                 "firstOnDemand": {
                     "type": "integer"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo:JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number"
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo:JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobJobClusterNewClusterCloneFrom:JobJobClusterNewClusterCloneFrom": {
+            "properties": {
+                "sourceClusterId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceClusterId"
+            ]
         },
         "databricks:index/JobJobClusterNewClusterClusterLogConf:JobJobClusterNewClusterClusterLogConf": {
             "properties": {
@@ -1646,6 +1698,80 @@
                 "destination"
             ]
         },
+        "databricks:index/JobJobClusterNewClusterLibrary:JobJobClusterNewClusterLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterLibraryCran:JobJobClusterNewClusterLibraryCran"
+                },
+                "egg": {
+                    "type": "string"
+                },
+                "jar": {
+                    "type": "string"
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterLibraryMaven:JobJobClusterNewClusterLibraryMaven"
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterLibraryPypi:JobJobClusterNewClusterLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
+                },
+                "whl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobJobClusterNewClusterLibraryCran:JobJobClusterNewClusterLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/JobJobClusterNewClusterLibraryMaven:JobJobClusterNewClusterLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string"
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/JobJobClusterNewClusterLibraryPypi:JobJobClusterNewClusterLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
         "databricks:index/JobJobClusterNewClusterWorkloadType:JobJobClusterNewClusterWorkloadType": {
             "properties": {
                 "clients": {
@@ -1759,6 +1885,9 @@
                 "azureAttributes": {
                     "$ref": "#/types/databricks:index/JobNewClusterAzureAttributes:JobNewClusterAzureAttributes"
                 },
+                "cloneFrom": {
+                    "$ref": "#/types/databricks:index/JobNewClusterCloneFrom:JobNewClusterCloneFrom"
+                },
                 "clusterId": {
                     "type": "string"
                 },
@@ -1813,6 +1942,13 @@
                 },
                 "instancePoolId": {
                     "type": "string"
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobNewClusterLibrary:JobNewClusterLibrary"
+                    },
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -1890,7 +2026,13 @@
                 "ebsVolumeCount": {
                     "type": "integer"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
                     "type": "integer"
                 },
                 "ebsVolumeType": {
@@ -1919,11 +2061,36 @@
                 "firstOnDemand": {
                     "type": "integer"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/JobNewClusterAzureAttributesLogAnalyticsInfo:JobNewClusterAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number"
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobNewClusterAzureAttributesLogAnalyticsInfo:JobNewClusterAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobNewClusterCloneFrom:JobNewClusterCloneFrom": {
+            "properties": {
+                "sourceClusterId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceClusterId"
+            ]
         },
         "databricks:index/JobNewClusterClusterLogConf:JobNewClusterClusterLogConf": {
             "properties": {
@@ -2182,6 +2349,80 @@
             "type": "object",
             "required": [
                 "destination"
+            ]
+        },
+        "databricks:index/JobNewClusterLibrary:JobNewClusterLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/JobNewClusterLibraryCran:JobNewClusterLibraryCran"
+                },
+                "egg": {
+                    "type": "string"
+                },
+                "jar": {
+                    "type": "string"
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/JobNewClusterLibraryMaven:JobNewClusterLibraryMaven"
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/JobNewClusterLibraryPypi:JobNewClusterLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
+                },
+                "whl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobNewClusterLibraryCran:JobNewClusterLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/JobNewClusterLibraryMaven:JobNewClusterLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string"
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/JobNewClusterLibraryPypi:JobNewClusterLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
             ]
         },
         "databricks:index/JobNewClusterWorkloadType:JobNewClusterWorkloadType": {
@@ -2444,6 +2685,9 @@
                     "type": "string",
                     "description": "An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.\n"
                 },
+                "disableAutoOptimization": {
+                    "type": "boolean"
+                },
                 "emailNotifications": {
                     "$ref": "#/types/databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications",
                     "description": "(List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.\n"
@@ -2504,7 +2748,7 @@
                 },
                 "runIf": {
                     "type": "string",
-                    "description": "An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.\n"
+                    "description": "An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.\n"
                 },
                 "runJobTask": {
                     "$ref": "#/types/databricks:index/JobTaskRunJobTask:JobTaskRunJobTask"
@@ -2696,6 +2940,9 @@
                     "type": "string",
                     "description": "An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.\n"
                 },
+                "disableAutoOptimization": {
+                    "type": "boolean"
+                },
                 "emailNotifications": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskEmailNotifications:JobTaskForEachTaskTaskEmailNotifications",
                     "description": "(List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.\n"
@@ -2753,7 +3000,7 @@
                 },
                 "runIf": {
                     "type": "string",
-                    "description": "An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.\n"
+                    "description": "An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.\n"
                 },
                 "runJobTask": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskRunJobTask:JobTaskForEachTaskTaskRunJobTask"
@@ -3028,6 +3275,9 @@
                 "azureAttributes": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterAzureAttributes:JobTaskForEachTaskTaskNewClusterAzureAttributes"
                 },
+                "cloneFrom": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterCloneFrom:JobTaskForEachTaskTaskNewClusterCloneFrom"
+                },
                 "clusterId": {
                     "type": "string"
                 },
@@ -3083,6 +3333,13 @@
                 "instancePoolId": {
                     "type": "string"
                 },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterLibrary:JobTaskForEachTaskTaskNewClusterLibrary"
+                    },
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                },
                 "nodeTypeId": {
                     "type": "string"
                 },
@@ -3125,7 +3382,6 @@
             },
             "type": "object",
             "required": [
-                "numWorkers",
                 "sparkVersion"
             ],
             "language": {
@@ -3136,7 +3392,6 @@
                         "enableElasticDisk",
                         "enableLocalDiskEncryption",
                         "nodeTypeId",
-                        "numWorkers",
                         "sparkVersion"
                     ]
                 }
@@ -3161,7 +3416,13 @@
                 "ebsVolumeCount": {
                     "type": "integer"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
                     "type": "integer"
                 },
                 "ebsVolumeType": {
@@ -3190,11 +3451,36 @@
                 "firstOnDemand": {
                     "type": "integer"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo:JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number"
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo:JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterCloneFrom:JobTaskForEachTaskTaskNewClusterCloneFrom": {
+            "properties": {
+                "sourceClusterId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceClusterId"
+            ]
         },
         "databricks:index/JobTaskForEachTaskTaskNewClusterClusterLogConf:JobTaskForEachTaskTaskNewClusterClusterLogConf": {
             "properties": {
@@ -3339,7 +3625,8 @@
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptAbfss:JobTaskForEachTaskTaskNewClusterInitScriptAbfss"
                 },
                 "dbfs": {
-                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptDbfs:JobTaskForEachTaskTaskNewClusterInitScriptDbfs"
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptDbfs:JobTaskForEachTaskTaskNewClusterInitScriptDbfs",
+                    "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
                 },
                 "file": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptFile:JobTaskForEachTaskTaskNewClusterInitScriptFile"
@@ -3454,6 +3741,80 @@
                 "destination"
             ]
         },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterLibrary:JobTaskForEachTaskTaskNewClusterLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterLibraryCran:JobTaskForEachTaskTaskNewClusterLibraryCran"
+                },
+                "egg": {
+                    "type": "string"
+                },
+                "jar": {
+                    "type": "string"
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterLibraryMaven:JobTaskForEachTaskTaskNewClusterLibraryMaven"
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterLibraryPypi:JobTaskForEachTaskTaskNewClusterLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
+                },
+                "whl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterLibraryCran:JobTaskForEachTaskTaskNewClusterLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterLibraryMaven:JobTaskForEachTaskTaskNewClusterLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string"
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/JobTaskForEachTaskTaskNewClusterLibraryPypi:JobTaskForEachTaskTaskNewClusterLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
         "databricks:index/JobTaskForEachTaskTaskNewClusterWorkloadType:JobTaskForEachTaskTaskNewClusterWorkloadType": {
             "properties": {
                 "clients": {
@@ -3565,6 +3926,18 @@
         },
         "databricks:index/JobTaskForEachTaskTaskRunJobTask:JobTaskForEachTaskTaskRunJobTask": {
             "properties": {
+                "dbtCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jarParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "jobId": {
                     "type": "integer",
                     "description": "(String) ID of the job\n"
@@ -3575,12 +3948,53 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "(Map) Job parameters for the task\n"
+                },
+                "notebookParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "pipelineParams": {
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskRunJobTaskPipelineParams:JobTaskForEachTaskTaskRunJobTaskPipelineParams"
+                },
+                "pythonNamedParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "pythonParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sparkSubmitParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sqlParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "jobId"
             ]
+        },
+        "databricks:index/JobTaskForEachTaskTaskRunJobTaskPipelineParams:JobTaskForEachTaskTaskRunJobTaskPipelineParams": {
+            "properties": {
+                "fullRefresh": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTaskForEachTaskTaskSparkJarTask:JobTaskForEachTaskTaskSparkJarTask": {
             "properties": {
@@ -3972,6 +4386,9 @@
                 "azureAttributes": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterAzureAttributes:JobTaskNewClusterAzureAttributes"
                 },
+                "cloneFrom": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterCloneFrom:JobTaskNewClusterCloneFrom"
+                },
                 "clusterId": {
                     "type": "string"
                 },
@@ -4026,6 +4443,13 @@
                 },
                 "instancePoolId": {
                     "type": "string"
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobTaskNewClusterLibrary:JobTaskNewClusterLibrary"
+                    },
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -4103,7 +4527,13 @@
                 "ebsVolumeCount": {
                     "type": "integer"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
                     "type": "integer"
                 },
                 "ebsVolumeType": {
@@ -4132,11 +4562,36 @@
                 "firstOnDemand": {
                     "type": "integer"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterAzureAttributesLogAnalyticsInfo:JobTaskNewClusterAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number"
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobTaskNewClusterAzureAttributesLogAnalyticsInfo:JobTaskNewClusterAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobTaskNewClusterCloneFrom:JobTaskNewClusterCloneFrom": {
+            "properties": {
+                "sourceClusterId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceClusterId"
+            ]
         },
         "databricks:index/JobTaskNewClusterClusterLogConf:JobTaskNewClusterClusterLogConf": {
             "properties": {
@@ -4397,6 +4852,80 @@
                 "destination"
             ]
         },
+        "databricks:index/JobTaskNewClusterLibrary:JobTaskNewClusterLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterLibraryCran:JobTaskNewClusterLibraryCran"
+                },
+                "egg": {
+                    "type": "string"
+                },
+                "jar": {
+                    "type": "string"
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterLibraryMaven:JobTaskNewClusterLibraryMaven"
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterLibraryPypi:JobTaskNewClusterLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
+                },
+                "whl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobTaskNewClusterLibraryCran:JobTaskNewClusterLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/JobTaskNewClusterLibraryMaven:JobTaskNewClusterLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string"
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/JobTaskNewClusterLibraryPypi:JobTaskNewClusterLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
         "databricks:index/JobTaskNewClusterWorkloadType:JobTaskNewClusterWorkloadType": {
             "properties": {
                 "clients": {
@@ -4508,6 +5037,18 @@
         },
         "databricks:index/JobTaskRunJobTask:JobTaskRunJobTask": {
             "properties": {
+                "dbtCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jarParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "jobId": {
                     "type": "integer",
                     "description": "(String) ID of the job\n"
@@ -4518,12 +5059,53 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "(Map) Job parameters for the task\n"
+                },
+                "notebookParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "pipelineParams": {
+                    "$ref": "#/types/databricks:index/JobTaskRunJobTaskPipelineParams:JobTaskRunJobTaskPipelineParams"
+                },
+                "pythonNamedParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "pythonParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sparkSubmitParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sqlParams": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "jobId"
             ]
+        },
+        "databricks:index/JobTaskRunJobTaskPipelineParams:JobTaskRunJobTaskPipelineParams": {
+            "properties": {
+                "fullRefresh": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTaskSparkJarTask:JobTaskSparkJarTask": {
             "properties": {
@@ -4802,6 +5384,9 @@
                     "type": "string",
                     "description": "Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.\n"
                 },
+                "table": {
+                    "$ref": "#/types/databricks:index/JobTriggerTable:JobTriggerTable"
+                },
                 "tableUpdate": {
                     "$ref": "#/types/databricks:index/JobTriggerTableUpdate:JobTriggerTableUpdate",
                     "description": "configuration block to define a trigger for Table Update events consisting of following attributes:\n"
@@ -4828,6 +5413,26 @@
             "required": [
                 "url"
             ]
+        },
+        "databricks:index/JobTriggerTable:JobTriggerTable": {
+            "properties": {
+                "condition": {
+                    "type": "string"
+                },
+                "minTimeBetweenTriggersSeconds": {
+                    "type": "integer"
+                },
+                "tableNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "waitAfterLastChangeSeconds": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTriggerTableUpdate:JobTriggerTableUpdate": {
             "properties": {
