@@ -1295,7 +1295,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobJobClusterNewClusterLibrary:JobJobClusterNewClusterLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -1948,7 +1948,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobNewClusterLibrary:JobNewClusterLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -3338,7 +3338,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterLibrary:JobTaskForEachTaskTaskNewClusterLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -4449,7 +4449,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobTaskNewClusterLibrary:JobTaskNewClusterLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "nodeTypeId": {
                     "type": "string"
@@ -8634,6 +8634,136 @@
                 "ready": {
                     "type": "boolean",
                     "description": "Whether the index is ready for search\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getCatalogCatalogInfo:getCatalogCatalogInfo": {
+            "properties": {
+                "browseOnly": {
+                    "type": "boolean"
+                },
+                "catalogType": {
+                    "type": "string",
+                    "description": "Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Free-form text description\n"
+                },
+                "connectionName": {
+                    "type": "string",
+                    "description": "The name of the connection to an external data source.\n"
+                },
+                "createdAt": {
+                    "type": "integer",
+                    "description": "Time at which this catalog was created, in epoch milliseconds.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Username of catalog creator.\n"
+                },
+                "effectivePredictiveOptimizationFlag": {
+                    "$ref": "#/types/databricks:index/getCatalogCatalogInfoEffectivePredictiveOptimizationFlag:getCatalogCatalogInfoEffectivePredictiveOptimizationFlag",
+                    "description": "object describing applied predictive optimization flag.\n"
+                },
+                "enablePredictiveOptimization": {
+                    "type": "string",
+                    "description": "Whether predictive optimization should be enabled for this object and objects under it.\n"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "The full name of the catalog. Corresponds with the name field.\n"
+                },
+                "isolationMode": {
+                    "type": "string",
+                    "description": "Whether the current securable is accessible from all workspaces or a  specific set of workspaces.\n"
+                },
+                "metastoreId": {
+                    "type": "string",
+                    "description": "Unique identifier of parent metastore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the catalog\n"
+                },
+                "options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A map of key-value properties attached to the securable.\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Current owner of the catalog\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A map of key-value properties attached to the securable.\n"
+                },
+                "providerName": {
+                    "type": "string",
+                    "description": "The name of delta sharing provider.\n"
+                },
+                "provisioningInfo": {
+                    "$ref": "#/types/databricks:index/getCatalogCatalogInfoProvisioningInfo:getCatalogCatalogInfoProvisioningInfo"
+                },
+                "securableKind": {
+                    "type": "string",
+                    "description": "Kind of catalog securable.\n"
+                },
+                "securableType": {
+                    "type": "string",
+                    "description": "Securable type.\n"
+                },
+                "shareName": {
+                    "type": "string",
+                    "description": "The name of the share under the share provider.\n"
+                },
+                "storageLocation": {
+                    "type": "string",
+                    "description": "Storage Location URL (full path) for managed tables within catalog.\n"
+                },
+                "storageRoot": {
+                    "type": "string",
+                    "description": "Storage root URL for managed tables within catalog.\n"
+                },
+                "updatedAt": {
+                    "type": "integer",
+                    "description": "Time at which this catalog was last modified, in epoch milliseconds.\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Username of user who last modified catalog.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getCatalogCatalogInfoEffectivePredictiveOptimizationFlag:getCatalogCatalogInfoEffectivePredictiveOptimizationFlag": {
+            "properties": {
+                "inheritedFromName": {
+                    "type": "string"
+                },
+                "inheritedFromType": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "databricks:index/getCatalogCatalogInfoProvisioningInfo:getCatalogCatalogInfoProvisioningInfo": {
+            "properties": {
+                "state": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -13648,6 +13778,17 @@
             },
             "type": "object"
         },
+        "databricks:index/getMlflowExperimentTag:getMlflowExperimentTag": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/getMlflowModelLatestVersion:getMlflowModelLatestVersion": {
             "properties": {
                 "creationTimestamp": {
@@ -14063,6 +14204,370 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/getTableTableInfo:getTableTableInfo": {
+            "properties": {
+                "accessPoint": {
+                    "type": "string"
+                },
+                "browseOnly": {
+                    "type": "boolean"
+                },
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of parent catalog.\n"
+                },
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getTableTableInfoColumn:getTableTableInfoColumn"
+                    },
+                    "description": "Array of ColumnInfo objects of the table's columns\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Free-form text description\n"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "dataAccessConfigurationId": {
+                    "type": "string"
+                },
+                "dataSourceFormat": {
+                    "type": "string",
+                    "description": "Table format, e.g. DELTA, CSV, JSON\n"
+                },
+                "deletedAt": {
+                    "type": "integer"
+                },
+                "deltaRuntimePropertiesKvpairs": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoDeltaRuntimePropertiesKvpairs:getTableTableInfoDeltaRuntimePropertiesKvpairs"
+                },
+                "effectivePredictiveOptimizationFlag": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoEffectivePredictiveOptimizationFlag:getTableTableInfoEffectivePredictiveOptimizationFlag"
+                },
+                "enablePredictiveOptimization": {
+                    "type": "string"
+                },
+                "encryptionDetails": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoEncryptionDetails:getTableTableInfoEncryptionDetails"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "metastoreId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Current owner of the table\n"
+                },
+                "pipelineId": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "rowFilter": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoRowFilter:getTableTableInfoRowFilter"
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "Name of parent schema relative to its parent catalog.\n"
+                },
+                "sqlPath": {
+                    "type": "string"
+                },
+                "storageCredentialName": {
+                    "type": "string"
+                },
+                "storageLocation": {
+                    "type": "string"
+                },
+                "tableConstraints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getTableTableInfoTableConstraint:getTableTableInfoTableConstraint"
+                    }
+                },
+                "tableId": {
+                    "type": "string"
+                },
+                "tableType": {
+                    "type": "string",
+                    "description": "Table type, e.g. MANAGED, EXTERNAL, VIEW\n"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                },
+                "updatedBy": {
+                    "type": "string"
+                },
+                "viewDefinition": {
+                    "type": "string",
+                    "description": "View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)\n"
+                },
+                "viewDependencies": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoViewDependencies:getTableTableInfoViewDependencies",
+                    "description": "View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoColumn:getTableTableInfoColumn": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "Free-form text description\n"
+                },
+                "mask": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoColumnMask:getTableTableInfoColumnMask"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n"
+                },
+                "nullable": {
+                    "type": "boolean"
+                },
+                "partitionIndex": {
+                    "type": "integer"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "typeIntervalType": {
+                    "type": "string"
+                },
+                "typeJson": {
+                    "type": "string"
+                },
+                "typeName": {
+                    "type": "string"
+                },
+                "typePrecision": {
+                    "type": "integer"
+                },
+                "typeScale": {
+                    "type": "integer"
+                },
+                "typeText": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoColumnMask:getTableTableInfoColumnMask": {
+            "properties": {
+                "functionName": {
+                    "type": "string"
+                },
+                "usingColumnNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoDeltaRuntimePropertiesKvpairs:getTableTableInfoDeltaRuntimePropertiesKvpairs": {
+            "properties": {
+                "deltaRuntimeProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "deltaRuntimeProperties"
+            ]
+        },
+        "databricks:index/getTableTableInfoEffectivePredictiveOptimizationFlag:getTableTableInfoEffectivePredictiveOptimizationFlag": {
+            "properties": {
+                "inheritedFromName": {
+                    "type": "string"
+                },
+                "inheritedFromType": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "databricks:index/getTableTableInfoEncryptionDetails:getTableTableInfoEncryptionDetails": {
+            "properties": {
+                "sseEncryptionDetails": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoEncryptionDetailsSseEncryptionDetails:getTableTableInfoEncryptionDetailsSseEncryptionDetails"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoEncryptionDetailsSseEncryptionDetails:getTableTableInfoEncryptionDetailsSseEncryptionDetails": {
+            "properties": {
+                "algorithm": {
+                    "type": "string"
+                },
+                "awsKmsKeyArn": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoRowFilter:getTableTableInfoRowFilter": {
+            "properties": {
+                "functionName": {
+                    "type": "string"
+                },
+                "inputColumnNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "functionName",
+                "inputColumnNames"
+            ]
+        },
+        "databricks:index/getTableTableInfoTableConstraint:getTableTableInfoTableConstraint": {
+            "properties": {
+                "foreignKeyConstraint": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoTableConstraintForeignKeyConstraint:getTableTableInfoTableConstraintForeignKeyConstraint"
+                },
+                "namedTableConstraint": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoTableConstraintNamedTableConstraint:getTableTableInfoTableConstraintNamedTableConstraint"
+                },
+                "primaryKeyConstraint": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoTableConstraintPrimaryKeyConstraint:getTableTableInfoTableConstraintPrimaryKeyConstraint"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoTableConstraintForeignKeyConstraint:getTableTableInfoTableConstraintForeignKeyConstraint": {
+            "properties": {
+                "childColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n"
+                },
+                "parentColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "parentTable": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "childColumns",
+                "name",
+                "parentColumns",
+                "parentTable"
+            ]
+        },
+        "databricks:index/getTableTableInfoTableConstraintNamedTableConstraint:getTableTableInfoTableConstraintNamedTableConstraint": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "databricks:index/getTableTableInfoTableConstraintPrimaryKeyConstraint:getTableTableInfoTableConstraintPrimaryKeyConstraint": {
+            "properties": {
+                "childColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "childColumns",
+                "name"
+            ]
+        },
+        "databricks:index/getTableTableInfoViewDependencies:getTableTableInfoViewDependencies": {
+            "properties": {
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getTableTableInfoViewDependenciesDependency:getTableTableInfoViewDependenciesDependency"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoViewDependenciesDependency:getTableTableInfoViewDependenciesDependency": {
+            "properties": {
+                "function": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoViewDependenciesDependencyFunction:getTableTableInfoViewDependenciesDependencyFunction"
+                },
+                "table": {
+                    "$ref": "#/types/databricks:index/getTableTableInfoViewDependenciesDependencyTable:getTableTableInfoViewDependenciesDependencyTable"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getTableTableInfoViewDependenciesDependencyFunction:getTableTableInfoViewDependenciesDependencyFunction": {
+            "properties": {
+                "functionFullName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "functionFullName"
+            ]
+        },
+        "databricks:index/getTableTableInfoViewDependenciesDependencyTable:getTableTableInfoViewDependenciesDependencyTable": {
+            "properties": {
+                "tableFullName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tableFullName"
+            ]
         }
     },
     "provider": {
@@ -17194,7 +17699,8 @@
                     "deprecationMessage": "always_running will be replaced by control_run_state in the next major release."
                 },
                 "continuous": {
-                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous",
+                    "description": "Configuration block to configure pause status. See continuous Configuration Block.\n"
                 },
                 "controlRunState": {
                     "type": "boolean",
@@ -17236,7 +17742,7 @@
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                    "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                    "description": "An optional block that specifies the health conditions for the job documented below.\n"
                 },
                 "jobClusters": {
                     "type": "array",
@@ -17250,7 +17756,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobLibrary:JobLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "maxConcurrentRuns": {
                     "type": "integer",
@@ -17284,7 +17790,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobParameter:JobParameter"
-                    }
+                    },
+                    "description": "Specifices job parameter for the job. See parameter Configuration Block\n"
                 },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask",
@@ -17295,7 +17802,8 @@
                     "deprecationMessage": "should be used inside a task block and not inside a job block"
                 },
                 "queue": {
-                    "$ref": "#/types/databricks:index/JobQueue:JobQueue"
+                    "$ref": "#/types/databricks:index/JobQueue:JobQueue",
+                    "description": "The queue status for the job. See queue Configuration Block below.\n"
                 },
                 "retryOnTimeout": {
                     "type": "boolean",
@@ -17369,7 +17877,8 @@
                     "deprecationMessage": "always_running will be replaced by control_run_state in the next major release."
                 },
                 "continuous": {
-                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous",
+                    "description": "Configuration block to configure pause status. See continuous Configuration Block.\n"
                 },
                 "controlRunState": {
                     "type": "boolean",
@@ -17411,7 +17920,7 @@
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                    "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                    "description": "An optional block that specifies the health conditions for the job documented below.\n"
                 },
                 "jobClusters": {
                     "type": "array",
@@ -17425,7 +17934,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobLibrary:JobLibrary"
                     },
-                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                    "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                 },
                 "maxConcurrentRuns": {
                     "type": "integer",
@@ -17459,7 +17968,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobParameter:JobParameter"
-                    }
+                    },
+                    "description": "Specifices job parameter for the job. See parameter Configuration Block\n"
                 },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask",
@@ -17470,7 +17980,8 @@
                     "deprecationMessage": "should be used inside a task block and not inside a job block"
                 },
                 "queue": {
-                    "$ref": "#/types/databricks:index/JobQueue:JobQueue"
+                    "$ref": "#/types/databricks:index/JobQueue:JobQueue",
+                    "description": "The queue status for the job. See queue Configuration Block below.\n"
                 },
                 "retryOnTimeout": {
                     "type": "boolean",
@@ -17536,7 +18047,8 @@
                         "deprecationMessage": "always_running will be replaced by control_run_state in the next major release."
                     },
                     "continuous": {
-                        "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                        "$ref": "#/types/databricks:index/JobContinuous:JobContinuous",
+                        "description": "Configuration block to configure pause status. See continuous Configuration Block.\n"
                     },
                     "controlRunState": {
                         "type": "boolean",
@@ -17578,7 +18090,7 @@
                     },
                     "health": {
                         "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                        "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                        "description": "An optional block that specifies the health conditions for the job documented below.\n"
                     },
                     "jobClusters": {
                         "type": "array",
@@ -17592,7 +18104,7 @@
                         "items": {
                             "$ref": "#/types/databricks:index/JobLibrary:JobLibrary"
                         },
-                        "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.\n"
+                        "description": "(List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.\n"
                     },
                     "maxConcurrentRuns": {
                         "type": "integer",
@@ -17626,7 +18138,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/databricks:index/JobParameter:JobParameter"
-                        }
+                        },
+                        "description": "Specifices job parameter for the job. See parameter Configuration Block\n"
                     },
                     "pipelineTask": {
                         "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask",
@@ -17637,7 +18150,8 @@
                         "deprecationMessage": "should be used inside a task block and not inside a job block"
                     },
                     "queue": {
-                        "$ref": "#/types/databricks:index/JobQueue:JobQueue"
+                        "$ref": "#/types/databricks:index/JobQueue:JobQueue",
+                        "description": "The queue status for the job. See queue Configuration Block below.\n"
                     },
                     "retryOnTimeout": {
                         "type": "boolean",
@@ -23751,6 +24265,10 @@
                     },
                     "description": "Map of user defined table options. Change forces creation of a new resource.\n"
                 },
+                "owner": {
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the schema owner.\n"
+                },
                 "partitions": {
                     "type": "array",
                     "items": {
@@ -23795,6 +24313,7 @@
                 "clusterId",
                 "columns",
                 "name",
+                "owner",
                 "properties",
                 "schemaName",
                 "tableType"
@@ -23842,6 +24361,10 @@
                     },
                     "description": "Map of user defined table options. Change forces creation of a new resource.\n",
                     "willReplaceOnChanges": true
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the schema owner.\n"
                 },
                 "partitions": {
                     "type": "array",
@@ -23936,6 +24459,10 @@
                         },
                         "description": "Map of user defined table options. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "Username/groupname/sp application_id of the schema owner.\n"
                     },
                     "partitions": {
                         "type": "array",
@@ -25701,6 +26228,54 @@
                 "type": "object"
             }
         },
+        "databricks:index/getCatalog:getCatalog": {
+            "description": "## Example Usage\n\nRead  on a specific catalog `test`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst test = databricks.getCatalog({\n    name: \"test\",\n});\nconst things = new databricks.Grants(\"things\", {\n    catalog: test.then(test =\u003e test.name),\n    grants: [{\n        principal: \"sensitive\",\n        privileges: [\"USE_CATALOG\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest = databricks.get_catalog(name=\"test\")\nthings = databricks.Grants(\"things\",\n    catalog=test.name,\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"sensitive\",\n        privileges=[\"USE_CATALOG\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Databricks.GetCatalog.Invoke(new()\n    {\n        Name = \"test\",\n    });\n\n    var things = new Databricks.Grants(\"things\", new()\n    {\n        Catalog = test.Apply(getCatalogResult =\u003e getCatalogResult.Name),\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"sensitive\",\n                Privileges = new[]\n                {\n                    \"USE_CATALOG\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := databricks.LookupCatalog(ctx, \u0026databricks.LookupCatalogArgs{\n\t\t\tName: \"test\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"things\", \u0026databricks.GrantsArgs{\n\t\t\tCatalog: pulumi.String(test.Name),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"sensitive\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"USE_CATALOG\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCatalogArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()\n            .name(\"test\")\n            .build());\n\n        var things = new Grants(\"things\", GrantsArgs.builder()        \n            .catalog(test.applyValue(getCatalogResult -\u003e getCatalogResult.name()))\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"sensitive\")\n                .privileges(\"USE_CATALOG\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  things:\n    type: databricks:Grants\n    properties:\n      catalog: ${test.name}\n      grants:\n        - principal: sensitive\n          privileges:\n            - USE_CATALOG\nvariables:\n  test:\n    fn::invoke:\n      Function: databricks:getCatalog\n      Arguments:\n        name: test\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Grant to manage grants within Unity Catalog.\n* databricks.getCatalogs to list all catalogs within Unity Catalog metastore.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCatalog.\n",
+                "properties": {
+                    "catalogInfo": {
+                        "$ref": "#/types/databricks:index/getCatalogCatalogInfo:getCatalogCatalogInfo",
+                        "description": "the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "same as the `name`\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the catalog\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCatalog.\n",
+                "properties": {
+                    "catalogInfo": {
+                        "$ref": "#/types/databricks:index/getCatalogCatalogInfo:getCatalogCatalogInfo",
+                        "description": "the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):\n"
+                    },
+                    "id": {
+                        "description": "same as the `name`\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the catalog\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "catalogInfo",
+                    "id",
+                    "name"
+                ],
+                "type": "object"
+            }
+        },
         "databricks:index/getCatalogs:getCatalogs": {
             "description": "## Example Usage\n\nListing all catalogs:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getCatalogs({});\nexport const allCatalogs = all;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_catalogs()\npulumi.export(\"allCatalogs\", all)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetCatalogs.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allCatalogs\"] = all,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetCatalogs(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allCatalogs\", all)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCatalogsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getCatalogs();\n\n        ctx.export(\"allCatalogs\", all.applyValue(getCatalogsResult -\u003e getCatalogsResult));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getCatalogs\n      Arguments: {}\noutputs:\n  allCatalogs: ${all}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
@@ -26740,6 +27315,101 @@
                 "required": [
                     "ids",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "databricks:index/getMlflowExperiment:getMlflowExperiment": {
+            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nRetrieves the settings of databricks.MlflowExperiment by id or name.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMlflowExperiment.\n",
+                "properties": {
+                    "artifactLocation": {
+                        "type": "string",
+                        "description": "Location where artifacts for the experiment are stored.\n"
+                    },
+                    "creationTime": {
+                        "type": "integer",
+                        "description": "Creation time in unix time stamp.\n"
+                    },
+                    "experimentId": {
+                        "type": "string",
+                        "description": "Unique identifier for the experiment.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the experiment. (same as `experiment_id`)\n"
+                    },
+                    "lastUpdateTime": {
+                        "type": "integer",
+                        "description": "Last update time in unix time stamp.\n"
+                    },
+                    "lifecycleStage": {
+                        "type": "string",
+                        "description": "Current life cycle stage of the experiment: `active` or `deleted`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Path to experiment.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/getMlflowExperimentTag:getMlflowExperimentTag"
+                        },
+                        "description": "Additional metadata key-value pairs.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMlflowExperiment.\n",
+                "properties": {
+                    "artifactLocation": {
+                        "description": "Location where artifacts for the experiment are stored.\n",
+                        "type": "string"
+                    },
+                    "creationTime": {
+                        "description": "Creation time in unix time stamp.\n",
+                        "type": "integer"
+                    },
+                    "experimentId": {
+                        "description": "Unique identifier for the experiment. (same as `id`)\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Unique identifier for the experiment. (same as `experiment_id`)\n",
+                        "type": "string"
+                    },
+                    "lastUpdateTime": {
+                        "description": "Last update time in unix time stamp.\n",
+                        "type": "integer"
+                    },
+                    "lifecycleStage": {
+                        "description": "Current life cycle stage of the experiment: `active` or `deleted`.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Path to experiment.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Additional metadata key-value pairs.\n",
+                        "items": {
+                            "$ref": "#/types/databricks:index/getMlflowExperimentTag:getMlflowExperimentTag"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "artifactLocation",
+                    "creationTime",
+                    "experimentId",
+                    "id",
+                    "lastUpdateTime",
+                    "lifecycleStage",
+                    "name",
+                    "tags"
                 ],
                 "type": "object"
             }
@@ -27932,6 +28602,52 @@
                 "required": [
                     "names",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "databricks:index/getTable:getTable": {
+            "description": "## Example Usage\n\nRead  on a specific table `main.certified.fct_transactions`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst fctTransactions = databricks.getTable({\n    name: \"main.certified.fct_transactions\",\n});\nconst things = new databricks.Grants(\"things\", {\n    table: fctTransactions.then(fctTransactions =\u003e fctTransactions.name),\n    grants: [{\n        principal: \"sensitive\",\n        privileges: [\n            \"SELECT\",\n            \"MODIFY\",\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nfct_transactions = databricks.get_table(name=\"main.certified.fct_transactions\")\nthings = databricks.Grants(\"things\",\n    table=fct_transactions.name,\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"sensitive\",\n        privileges=[\n            \"SELECT\",\n            \"MODIFY\",\n        ],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fctTransactions = Databricks.GetTable.Invoke(new()\n    {\n        Name = \"main.certified.fct_transactions\",\n    });\n\n    var things = new Databricks.Grants(\"things\", new()\n    {\n        Table = fctTransactions.Apply(getTableResult =\u003e getTableResult.Name),\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"sensitive\",\n                Privileges = new[]\n                {\n                    \"SELECT\",\n                    \"MODIFY\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfctTransactions, err := databricks.LookupTable(ctx, \u0026databricks.LookupTableArgs{\n\t\t\tName: \"main.certified.fct_transactions\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"things\", \u0026databricks.GrantsArgs{\n\t\t\tTable: pulumi.String(fctTransactions.Name),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"sensitive\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t\t\t\tpulumi.String(\"MODIFY\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetTableArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var fctTransactions = DatabricksFunctions.getTable(GetTableArgs.builder()\n            .name(\"main.certified.fct_transactions\")\n            .build());\n\n        var things = new Grants(\"things\", GrantsArgs.builder()        \n            .table(fctTransactions.applyValue(getTableResult -\u003e getTableResult.name()))\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"sensitive\")\n                .privileges(                \n                    \"SELECT\",\n                    \"MODIFY\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  things:\n    type: databricks:Grants\n    properties:\n      table: ${fctTransactions.name}\n      grants:\n        - principal: sensitive\n          privileges:\n            - SELECT\n            - MODIFY\nvariables:\n  fctTransactions:\n    fn::invoke:\n      Function: databricks:getTable\n      Arguments:\n        name: main.certified.fct_transactions\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Grant to manage grants within Unity Catalog.\n* databricks.getTables to list all tables within a schema in Unity Catalog.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTable.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Full name of the databricks_table: _`catalog`.`schema`.`table`_\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tableInfo": {
+                        "$ref": "#/types/databricks:index/getTableTableInfo:getTableTableInfo",
+                        "description": "TableInfo object for a Unity Catalog table. This contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTable.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of table, relative to parent schema.\n",
+                        "type": "string"
+                    },
+                    "tableInfo": {
+                        "$ref": "#/types/databricks:index/getTableTableInfo:getTableTableInfo",
+                        "description": "TableInfo object for a Unity Catalog table. This contains the following attributes:\n"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "tableInfo"
                 ],
                 "type": "object"
             }

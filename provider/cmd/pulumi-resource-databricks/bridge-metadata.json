@@ -2567,6 +2567,25 @@
                 "current": "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy",
                 "majorVersion": 1
             },
+            "databricks_catalog": {
+                "current": "databricks:index/getCatalog:getCatalog",
+                "majorVersion": 1,
+                "fields": {
+                    "catalog_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "effective_predictive_optimization_flag": {
+                                    "maxItemsOne": true
+                                },
+                                "provisioning_info": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_catalogs": {
                 "current": "databricks:index/getCatalogs:getCatalogs",
                 "majorVersion": 1,
@@ -3836,6 +3855,15 @@
                 "current": "databricks:index/getMetastores:getMetastores",
                 "majorVersion": 1
             },
+            "databricks_mlflow_experiment": {
+                "current": "databricks:index/getMlflowExperiment:getMlflowExperiment",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_mlflow_model": {
                 "current": "databricks:index/getMlflowModel:getMlflowModel",
                 "majorVersion": 1,
@@ -4022,6 +4050,115 @@
                 "fields": {
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_table": {
+                "current": "databricks:index/getTable:getTable",
+                "majorVersion": 1,
+                "fields": {
+                    "table_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "columns": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "mask": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "using_column_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "delta_runtime_properties_kvpairs": {
+                                    "maxItemsOne": true
+                                },
+                                "effective_predictive_optimization_flag": {
+                                    "maxItemsOne": true
+                                },
+                                "encryption_details": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "sse_encryption_details": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "row_filter": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "input_column_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "table_constraints": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "foreign_key_constraint": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "child_columns": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "parent_columns": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "named_table_constraint": {
+                                                "maxItemsOne": true
+                                            },
+                                            "primary_key_constraint": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "child_columns": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "view_dependencies": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dependencies": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "function": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "table": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
