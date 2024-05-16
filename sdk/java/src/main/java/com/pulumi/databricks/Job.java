@@ -76,9 +76,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
     }
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     @Export(name="continuous", refs={JobContinuous.class}, tree="[0]")
     private Output</* @Nullable */ JobContinuous> continuous;
 
+    /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     public Output<Optional<JobContinuous>> continuous() {
         return Codegen.optional(this.continuous);
     }
@@ -185,14 +193,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gitSource);
     }
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * An optional block that specifies the health conditions for the job documented below.
      * 
      */
     @Export(name="health", refs={JobHealth.class}, tree="[0]")
     private Output</* @Nullable */ JobHealth> health;
 
     /**
-     * @return An optional block that specifies the health conditions for the job (described below).
+     * @return An optional block that specifies the health conditions for the job documented below.
      * 
      */
     public Output<Optional<JobHealth>> health() {
@@ -213,14 +221,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jobClusters);
     }
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     @Export(name="libraries", refs={List.class,JobLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobLibrary>> libraries;
 
     /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     public Output<Optional<List<JobLibrary>>> libraries() {
@@ -316,9 +324,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
         return Codegen.optional(this.notificationSettings);
     }
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     @Export(name="parameters", refs={List.class,JobParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobParameter>> parameters;
 
+    /**
+     * @return Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
@@ -346,9 +362,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobPythonWheelTask>> pythonWheelTask() {
         return Codegen.optional(this.pythonWheelTask);
     }
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     @Export(name="queue", refs={JobQueue.class}, tree="[0]")
     private Output</* @Nullable */ JobQueue> queue;
 
+    /**
+     * @return The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     public Output<Optional<JobQueue>> queue() {
         return Codegen.optional(this.queue);
     }

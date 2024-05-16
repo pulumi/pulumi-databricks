@@ -9863,7 +9863,7 @@ type JobJobClusterNewCluster struct {
 	IdempotencyToken          *string                                   `pulumi:"idempotencyToken"`
 	InitScripts               []JobJobClusterNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                                   `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      []JobJobClusterNewClusterLibrary     `pulumi:"libraries"`
 	NodeTypeId     *string                              `pulumi:"nodeTypeId"`
 	NumWorkers     *int                                 `pulumi:"numWorkers"`
@@ -9910,7 +9910,7 @@ type JobJobClusterNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                             `pulumi:"idempotencyToken"`
 	InitScripts               JobJobClusterNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                             `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      JobJobClusterNewClusterLibraryArrayInput    `pulumi:"libraries"`
 	NodeTypeId     pulumi.StringPtrInput                       `pulumi:"nodeTypeId"`
 	NumWorkers     pulumi.IntPtrInput                          `pulumi:"numWorkers"`
@@ -10085,7 +10085,7 @@ func (o JobJobClusterNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobJobClusterNewClusterOutput) Libraries() JobJobClusterNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) []JobJobClusterNewClusterLibrary { return v.Libraries }).(JobJobClusterNewClusterLibraryArrayOutput)
 }
@@ -10343,7 +10343,7 @@ func (o JobJobClusterNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobJobClusterNewClusterPtrOutput) Libraries() JobJobClusterNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v *JobJobClusterNewCluster) []JobJobClusterNewClusterLibrary {
 		if v == nil {
@@ -15142,7 +15142,7 @@ type JobNewCluster struct {
 	IdempotencyToken          *string                         `pulumi:"idempotencyToken"`
 	InitScripts               []JobNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                         `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      []JobNewClusterLibrary     `pulumi:"libraries"`
 	NodeTypeId     *string                    `pulumi:"nodeTypeId"`
 	NumWorkers     *int                       `pulumi:"numWorkers"`
@@ -15189,7 +15189,7 @@ type JobNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                   `pulumi:"idempotencyToken"`
 	InitScripts               JobNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                   `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      JobNewClusterLibraryArrayInput    `pulumi:"libraries"`
 	NodeTypeId     pulumi.StringPtrInput             `pulumi:"nodeTypeId"`
 	NumWorkers     pulumi.IntPtrInput                `pulumi:"numWorkers"`
@@ -15364,7 +15364,7 @@ func (o JobNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobNewClusterOutput) Libraries() JobNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v JobNewCluster) []JobNewClusterLibrary { return v.Libraries }).(JobNewClusterLibraryArrayOutput)
 }
@@ -15622,7 +15622,7 @@ func (o JobNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobNewClusterPtrOutput) Libraries() JobNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v *JobNewCluster) []JobNewClusterLibrary {
 		if v == nil {
@@ -25364,7 +25364,7 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	IdempotencyToken          *string                                            `pulumi:"idempotencyToken"`
 	InitScripts               []JobTaskForEachTaskTaskNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                                            `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      []JobTaskForEachTaskTaskNewClusterLibrary     `pulumi:"libraries"`
 	NodeTypeId     *string                                       `pulumi:"nodeTypeId"`
 	NumWorkers     *int                                          `pulumi:"numWorkers"`
@@ -25411,7 +25411,7 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                                      `pulumi:"idempotencyToken"`
 	InitScripts               JobTaskForEachTaskTaskNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                                      `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      JobTaskForEachTaskTaskNewClusterLibraryArrayInput    `pulumi:"libraries"`
 	NodeTypeId     pulumi.StringPtrInput                                `pulumi:"nodeTypeId"`
 	NumWorkers     pulumi.IntPtrInput                                   `pulumi:"numWorkers"`
@@ -25604,7 +25604,7 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) InstancePoolId() pulumi.StringPt
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobTaskForEachTaskTaskNewClusterOutput) Libraries() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) []JobTaskForEachTaskTaskNewClusterLibrary { return v.Libraries }).(JobTaskForEachTaskTaskNewClusterLibraryArrayOutput)
 }
@@ -25864,7 +25864,7 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) InstancePoolId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) Libraries() JobTaskForEachTaskTaskNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) []JobTaskForEachTaskTaskNewClusterLibrary {
 		if v == nil {
@@ -34524,7 +34524,7 @@ type JobTaskNewCluster struct {
 	IdempotencyToken          *string                             `pulumi:"idempotencyToken"`
 	InitScripts               []JobTaskNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                             `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      []JobTaskNewClusterLibrary     `pulumi:"libraries"`
 	NodeTypeId     *string                        `pulumi:"nodeTypeId"`
 	NumWorkers     *int                           `pulumi:"numWorkers"`
@@ -34571,7 +34571,7 @@ type JobTaskNewClusterArgs struct {
 	IdempotencyToken          pulumi.StringPtrInput                       `pulumi:"idempotencyToken"`
 	InitScripts               JobTaskNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                       `pulumi:"instancePoolId"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries      JobTaskNewClusterLibraryArrayInput    `pulumi:"libraries"`
 	NodeTypeId     pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
 	NumWorkers     pulumi.IntPtrInput                    `pulumi:"numWorkers"`
@@ -34746,7 +34746,7 @@ func (o JobTaskNewClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobTaskNewClusterOutput) Libraries() JobTaskNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) []JobTaskNewClusterLibrary { return v.Libraries }).(JobTaskNewClusterLibraryArrayOutput)
 }
@@ -35004,7 +35004,7 @@ func (o JobTaskNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobTaskNewClusterPtrOutput) Libraries() JobTaskNewClusterLibraryArrayOutput {
 	return o.ApplyT(func(v *JobTaskNewCluster) []JobTaskNewClusterLibrary {
 		if v == nil {
@@ -67165,6 +67165,870 @@ func (o VectorSearchIndexStatusArrayOutput) Index(i pulumi.IntInput) VectorSearc
 	}).(VectorSearchIndexStatusOutput)
 }
 
+type GetCatalogCatalogInfo struct {
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+	CatalogType *string `pulumi:"catalogType"`
+	// Free-form text description
+	Comment *string `pulumi:"comment"`
+	// The name of the connection to an external data source.
+	ConnectionName *string `pulumi:"connectionName"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// object describing applied predictive optimization flag.
+	EffectivePredictiveOptimizationFlag *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
+	// Whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// The full name of the catalog. Corresponds with the name field.
+	FullName *string `pulumi:"fullName"`
+	// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+	IsolationMode *string `pulumi:"isolationMode"`
+	// Unique identifier of parent metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// name of the catalog
+	Name *string `pulumi:"name"`
+	// A map of key-value properties attached to the securable.
+	Options map[string]interface{} `pulumi:"options"`
+	// Current owner of the catalog
+	Owner *string `pulumi:"owner"`
+	// A map of key-value properties attached to the securable.
+	Properties map[string]interface{} `pulumi:"properties"`
+	// The name of delta sharing provider.
+	ProviderName     *string                                `pulumi:"providerName"`
+	ProvisioningInfo *GetCatalogCatalogInfoProvisioningInfo `pulumi:"provisioningInfo"`
+	// Kind of catalog securable.
+	SecurableKind *string `pulumi:"securableKind"`
+	// Securable type.
+	SecurableType *string `pulumi:"securableType"`
+	// The name of the share under the share provider.
+	ShareName *string `pulumi:"shareName"`
+	// Storage Location URL (full path) for managed tables within catalog.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// Storage root URL for managed tables within catalog.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetCatalogCatalogInfoInput is an input type that accepts GetCatalogCatalogInfoArgs and GetCatalogCatalogInfoOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoInput` via:
+//
+//	GetCatalogCatalogInfoArgs{...}
+type GetCatalogCatalogInfoInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoOutput() GetCatalogCatalogInfoOutput
+	ToGetCatalogCatalogInfoOutputWithContext(context.Context) GetCatalogCatalogInfoOutput
+}
+
+type GetCatalogCatalogInfoArgs struct {
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+	CatalogType pulumi.StringPtrInput `pulumi:"catalogType"`
+	// Free-form text description
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The name of the connection to an external data source.
+	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// object describing applied predictive optimization flag.
+	EffectivePredictiveOptimizationFlag GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput `pulumi:"effectivePredictiveOptimizationFlag"`
+	// Whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization pulumi.StringPtrInput `pulumi:"enablePredictiveOptimization"`
+	// The full name of the catalog. Corresponds with the name field.
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
+	// Unique identifier of parent metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// name of the catalog
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A map of key-value properties attached to the securable.
+	Options pulumi.MapInput `pulumi:"options"`
+	// Current owner of the catalog
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// A map of key-value properties attached to the securable.
+	Properties pulumi.MapInput `pulumi:"properties"`
+	// The name of delta sharing provider.
+	ProviderName     pulumi.StringPtrInput                         `pulumi:"providerName"`
+	ProvisioningInfo GetCatalogCatalogInfoProvisioningInfoPtrInput `pulumi:"provisioningInfo"`
+	// Kind of catalog securable.
+	SecurableKind pulumi.StringPtrInput `pulumi:"securableKind"`
+	// Securable type.
+	SecurableType pulumi.StringPtrInput `pulumi:"securableType"`
+	// The name of the share under the share provider.
+	ShareName pulumi.StringPtrInput `pulumi:"shareName"`
+	// Storage Location URL (full path) for managed tables within catalog.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// Storage root URL for managed tables within catalog.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetCatalogCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfo)(nil)).Elem()
+}
+
+func (i GetCatalogCatalogInfoArgs) ToGetCatalogCatalogInfoOutput() GetCatalogCatalogInfoOutput {
+	return i.ToGetCatalogCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoArgs) ToGetCatalogCatalogInfoOutputWithContext(ctx context.Context) GetCatalogCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoOutput)
+}
+
+func (i GetCatalogCatalogInfoArgs) ToGetCatalogCatalogInfoPtrOutput() GetCatalogCatalogInfoPtrOutput {
+	return i.ToGetCatalogCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoArgs) ToGetCatalogCatalogInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoOutput).ToGetCatalogCatalogInfoPtrOutputWithContext(ctx)
+}
+
+// GetCatalogCatalogInfoPtrInput is an input type that accepts GetCatalogCatalogInfoArgs, GetCatalogCatalogInfoPtr and GetCatalogCatalogInfoPtrOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoPtrInput` via:
+//
+//	        GetCatalogCatalogInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCatalogCatalogInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoPtrOutput() GetCatalogCatalogInfoPtrOutput
+	ToGetCatalogCatalogInfoPtrOutputWithContext(context.Context) GetCatalogCatalogInfoPtrOutput
+}
+
+type getCatalogCatalogInfoPtrType GetCatalogCatalogInfoArgs
+
+func GetCatalogCatalogInfoPtr(v *GetCatalogCatalogInfoArgs) GetCatalogCatalogInfoPtrInput {
+	return (*getCatalogCatalogInfoPtrType)(v)
+}
+
+func (*getCatalogCatalogInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfo)(nil)).Elem()
+}
+
+func (i *getCatalogCatalogInfoPtrType) ToGetCatalogCatalogInfoPtrOutput() GetCatalogCatalogInfoPtrOutput {
+	return i.ToGetCatalogCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getCatalogCatalogInfoPtrType) ToGetCatalogCatalogInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoPtrOutput)
+}
+
+type GetCatalogCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfo)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoOutput) ToGetCatalogCatalogInfoOutput() GetCatalogCatalogInfoOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoOutput) ToGetCatalogCatalogInfoOutputWithContext(ctx context.Context) GetCatalogCatalogInfoOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoOutput) ToGetCatalogCatalogInfoPtrOutput() GetCatalogCatalogInfoPtrOutput {
+	return o.ToGetCatalogCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetCatalogCatalogInfoOutput) ToGetCatalogCatalogInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCatalogCatalogInfo) *GetCatalogCatalogInfo {
+		return &v
+	}).(GetCatalogCatalogInfoPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+func (o GetCatalogCatalogInfoOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.CatalogType }).(pulumi.StringPtrOutput)
+}
+
+// Free-form text description
+func (o GetCatalogCatalogInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The name of the connection to an external data source.
+func (o GetCatalogCatalogInfoOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was created, in epoch milliseconds.
+func (o GetCatalogCatalogInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of catalog creator.
+func (o GetCatalogCatalogInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// object describing applied predictive optimization flag.
+func (o GetCatalogCatalogInfoOutput) EffectivePredictiveOptimizationFlag() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+		return v.EffectivePredictiveOptimizationFlag
+	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+// Whether predictive optimization should be enabled for this object and objects under it.
+func (o GetCatalogCatalogInfoOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.EnablePredictiveOptimization }).(pulumi.StringPtrOutput)
+}
+
+// The full name of the catalog. Corresponds with the name field.
+func (o GetCatalogCatalogInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+func (o GetCatalogCatalogInfoOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of parent metastore.
+func (o GetCatalogCatalogInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// name of the catalog
+func (o GetCatalogCatalogInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of key-value properties attached to the securable.
+func (o GetCatalogCatalogInfoOutput) Options() pulumi.MapOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
+}
+
+// Current owner of the catalog
+func (o GetCatalogCatalogInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// A map of key-value properties attached to the securable.
+func (o GetCatalogCatalogInfoOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+}
+
+// The name of delta sharing provider.
+func (o GetCatalogCatalogInfoOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoOutput) ProvisioningInfo() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *GetCatalogCatalogInfoProvisioningInfo { return v.ProvisioningInfo }).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
+}
+
+// Kind of catalog securable.
+func (o GetCatalogCatalogInfoOutput) SecurableKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.SecurableKind }).(pulumi.StringPtrOutput)
+}
+
+// Securable type.
+func (o GetCatalogCatalogInfoOutput) SecurableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.SecurableType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the share under the share provider.
+func (o GetCatalogCatalogInfoOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ShareName }).(pulumi.StringPtrOutput)
+}
+
+// Storage Location URL (full path) for managed tables within catalog.
+func (o GetCatalogCatalogInfoOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// Storage root URL for managed tables within catalog.
+func (o GetCatalogCatalogInfoOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was last modified, in epoch milliseconds.
+func (o GetCatalogCatalogInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of user who last modified catalog.
+func (o GetCatalogCatalogInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetCatalogCatalogInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfo)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoPtrOutput) ToGetCatalogCatalogInfoPtrOutput() GetCatalogCatalogInfoPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoPtrOutput) ToGetCatalogCatalogInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoPtrOutput) Elem() GetCatalogCatalogInfoOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) GetCatalogCatalogInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetCatalogCatalogInfo
+		return ret
+	}).(GetCatalogCatalogInfoOutput)
+}
+
+func (o GetCatalogCatalogInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BrowseOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+func (o GetCatalogCatalogInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Free-form text description
+func (o GetCatalogCatalogInfoPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the connection to an external data source.
+func (o GetCatalogCatalogInfoPtrOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was created, in epoch milliseconds.
+func (o GetCatalogCatalogInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username of catalog creator.
+func (o GetCatalogCatalogInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// object describing applied predictive optimization flag.
+func (o GetCatalogCatalogInfoPtrOutput) EffectivePredictiveOptimizationFlag() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+		if v == nil {
+			return nil
+		}
+		return v.EffectivePredictiveOptimizationFlag
+	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+// Whether predictive optimization should be enabled for this object and objects under it.
+func (o GetCatalogCatalogInfoPtrOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePredictiveOptimization
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name of the catalog. Corresponds with the name field.
+func (o GetCatalogCatalogInfoPtrOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+func (o GetCatalogCatalogInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsolationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of parent metastore.
+func (o GetCatalogCatalogInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the catalog
+func (o GetCatalogCatalogInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of key-value properties attached to the securable.
+func (o GetCatalogCatalogInfoPtrOutput) Options() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(pulumi.MapOutput)
+}
+
+// Current owner of the catalog
+func (o GetCatalogCatalogInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of key-value properties attached to the securable.
+func (o GetCatalogCatalogInfoPtrOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.MapOutput)
+}
+
+// The name of delta sharing provider.
+func (o GetCatalogCatalogInfoPtrOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoPtrOutput) ProvisioningInfo() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *GetCatalogCatalogInfoProvisioningInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningInfo
+	}).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
+}
+
+// Kind of catalog securable.
+func (o GetCatalogCatalogInfoPtrOutput) SecurableKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurableKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Securable type.
+func (o GetCatalogCatalogInfoPtrOutput) SecurableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurableType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the share under the share provider.
+func (o GetCatalogCatalogInfoPtrOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShareName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Location URL (full path) for managed tables within catalog.
+func (o GetCatalogCatalogInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage root URL for managed tables within catalog.
+func (o GetCatalogCatalogInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was last modified, in epoch milliseconds.
+func (o GetCatalogCatalogInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username of user who last modified catalog.
+func (o GetCatalogCatalogInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag struct {
+	InheritedFromName *string `pulumi:"inheritedFromName"`
+	InheritedFromType *string `pulumi:"inheritedFromType"`
+	Value             string  `pulumi:"value"`
+}
+
+// GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagInput is an input type that accepts GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs and GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagInput` via:
+//
+//	GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs{...}
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput
+	ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutputWithContext(context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput
+}
+
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs struct {
+	InheritedFromName pulumi.StringPtrInput `pulumi:"inheritedFromName"`
+	InheritedFromType pulumi.StringPtrInput `pulumi:"inheritedFromType"`
+	Value             pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (i GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput {
+	return i.ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput)
+}
+
+func (i GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return i.ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput).ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx)
+}
+
+// GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput is an input type that accepts GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs, GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtr and GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput` via:
+//
+//	        GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput
+	ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput
+}
+
+type getCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrType GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs
+
+func GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtr(v *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput {
+	return (*getCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrType)(v)
+}
+
+func (*getCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (i *getCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrType) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return i.ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (i *getCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrType) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+		return &v
+	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) InheritedFromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *string { return v.InheritedFromName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) InheritedFromType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *string { return v.InheritedFromType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) ToGetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) Elem() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+		if v != nil {
+			return *v
+		}
+		var ret GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag
+		return ret
+	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) InheritedFromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InheritedFromName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) InheritedFromType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InheritedFromType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetCatalogCatalogInfoProvisioningInfo struct {
+	State *string `pulumi:"state"`
+}
+
+// GetCatalogCatalogInfoProvisioningInfoInput is an input type that accepts GetCatalogCatalogInfoProvisioningInfoArgs and GetCatalogCatalogInfoProvisioningInfoOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoProvisioningInfoInput` via:
+//
+//	GetCatalogCatalogInfoProvisioningInfoArgs{...}
+type GetCatalogCatalogInfoProvisioningInfoInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoProvisioningInfoOutput() GetCatalogCatalogInfoProvisioningInfoOutput
+	ToGetCatalogCatalogInfoProvisioningInfoOutputWithContext(context.Context) GetCatalogCatalogInfoProvisioningInfoOutput
+}
+
+type GetCatalogCatalogInfoProvisioningInfoArgs struct {
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (GetCatalogCatalogInfoProvisioningInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfoProvisioningInfo)(nil)).Elem()
+}
+
+func (i GetCatalogCatalogInfoProvisioningInfoArgs) ToGetCatalogCatalogInfoProvisioningInfoOutput() GetCatalogCatalogInfoProvisioningInfoOutput {
+	return i.ToGetCatalogCatalogInfoProvisioningInfoOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoProvisioningInfoArgs) ToGetCatalogCatalogInfoProvisioningInfoOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoProvisioningInfoOutput)
+}
+
+func (i GetCatalogCatalogInfoProvisioningInfoArgs) ToGetCatalogCatalogInfoProvisioningInfoPtrOutput() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return i.ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetCatalogCatalogInfoProvisioningInfoArgs) ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoProvisioningInfoOutput).ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(ctx)
+}
+
+// GetCatalogCatalogInfoProvisioningInfoPtrInput is an input type that accepts GetCatalogCatalogInfoProvisioningInfoArgs, GetCatalogCatalogInfoProvisioningInfoPtr and GetCatalogCatalogInfoProvisioningInfoPtrOutput values.
+// You can construct a concrete instance of `GetCatalogCatalogInfoProvisioningInfoPtrInput` via:
+//
+//	        GetCatalogCatalogInfoProvisioningInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCatalogCatalogInfoProvisioningInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetCatalogCatalogInfoProvisioningInfoPtrOutput() GetCatalogCatalogInfoProvisioningInfoPtrOutput
+	ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(context.Context) GetCatalogCatalogInfoProvisioningInfoPtrOutput
+}
+
+type getCatalogCatalogInfoProvisioningInfoPtrType GetCatalogCatalogInfoProvisioningInfoArgs
+
+func GetCatalogCatalogInfoProvisioningInfoPtr(v *GetCatalogCatalogInfoProvisioningInfoArgs) GetCatalogCatalogInfoProvisioningInfoPtrInput {
+	return (*getCatalogCatalogInfoProvisioningInfoPtrType)(v)
+}
+
+func (*getCatalogCatalogInfoProvisioningInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfoProvisioningInfo)(nil)).Elem()
+}
+
+func (i *getCatalogCatalogInfoProvisioningInfoPtrType) ToGetCatalogCatalogInfoProvisioningInfoPtrOutput() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return i.ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getCatalogCatalogInfoProvisioningInfoPtrType) ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
+}
+
+type GetCatalogCatalogInfoProvisioningInfoOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoProvisioningInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogCatalogInfoProvisioningInfo)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoOutput) ToGetCatalogCatalogInfoProvisioningInfoOutput() GetCatalogCatalogInfoProvisioningInfoOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoOutput) ToGetCatalogCatalogInfoProvisioningInfoOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoOutput) ToGetCatalogCatalogInfoProvisioningInfoPtrOutput() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o.ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoOutput) ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCatalogCatalogInfoProvisioningInfo) *GetCatalogCatalogInfoProvisioningInfo {
+		return &v
+	}).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfoProvisioningInfo) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type GetCatalogCatalogInfoProvisioningInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogCatalogInfoProvisioningInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCatalogCatalogInfoProvisioningInfo)(nil)).Elem()
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoPtrOutput) ToGetCatalogCatalogInfoProvisioningInfoPtrOutput() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoPtrOutput) ToGetCatalogCatalogInfoProvisioningInfoPtrOutputWithContext(ctx context.Context) GetCatalogCatalogInfoProvisioningInfoPtrOutput {
+	return o
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoPtrOutput) Elem() GetCatalogCatalogInfoProvisioningInfoOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoProvisioningInfo) GetCatalogCatalogInfoProvisioningInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetCatalogCatalogInfoProvisioningInfo
+		return ret
+	}).(GetCatalogCatalogInfoProvisioningInfoOutput)
+}
+
+func (o GetCatalogCatalogInfoProvisioningInfoPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfoProvisioningInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetClusterClusterInfo struct {
 	Autoscale *GetClusterClusterInfoAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
@@ -83290,470 +84154,6 @@ func (o GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput) S3() GetJobJ
 	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput)
 }
 
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs struct {
-	Destination string `pulumi:"destination"`
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs and GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs{...}
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs struct {
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput).ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs, GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtr and GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrType GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs
-
-func GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtr(v *GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrInput {
-	return (*getJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrType) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrType) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs) *GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput) Elem() GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs) GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3 struct {
-	CannedAcl        *string `pulumi:"cannedAcl"`
-	Destination      string  `pulumi:"destination"`
-	EnableEncryption *bool   `pulumi:"enableEncryption"`
-	EncryptionType   *string `pulumi:"encryptionType"`
-	Endpoint         *string `pulumi:"endpoint"`
-	KmsKey           *string `pulumi:"kmsKey"`
-	Region           *string `pulumi:"region"`
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterLogConfS3Input is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args and GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterLogConfS3Input` via:
-//
-//	GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args{...}
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3Input interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3Output() GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3OutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args struct {
-	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	Destination      pulumi.StringInput    `pulumi:"destination"`
-	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
-	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
-	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
-	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
-	Region           pulumi.StringPtrInput `pulumi:"region"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfS3)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3Output() GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3OutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output)
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output).ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args, GetJobJobSettingsSettingsNewClusterClusterLogConfS3Ptr and GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput` via:
-//
-//	        GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput
-}
-
-type getJobJobSettingsSettingsNewClusterClusterLogConfS3PtrType GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args
-
-func GetJobJobSettingsSettingsNewClusterClusterLogConfS3Ptr(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput {
-	return (*getJobJobSettingsSettingsNewClusterClusterLogConfS3PtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsNewClusterClusterLogConfS3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterClusterLogConfS3)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsNewClusterClusterLogConfS3PtrType) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsNewClusterClusterLogConfS3PtrType) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfS3)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3Output() GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return o.ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *GetJobJobSettingsSettingsNewClusterClusterLogConfS3 {
-		return &v
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) CannedAcl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) EnableEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) KmsKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterClusterLogConfS3)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput() GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) ToGetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) Elem() GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) GetJobJobSettingsSettingsNewClusterClusterLogConfS3 {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsNewClusterClusterLogConfS3
-		return ret
-	}).(GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CannedAcl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KmsKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterClusterLogConfS3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfo struct {
-	LocalMountDirPath     string                                                                   `pulumi:"localMountDirPath"`
-	NetworkFilesystemInfo GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo `pulumi:"networkFilesystemInfo"`
-	RemoteMountDirPath    *string                                                                  `pulumi:"remoteMountDirPath"`
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterMountInfoInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs and GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterMountInfoInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs{...}
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs struct {
-	LocalMountDirPath     pulumi.StringInput                                                            `pulumi:"localMountDirPath"`
-	NetworkFilesystemInfo GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoInput `pulumi:"networkFilesystemInfo"`
-	RemoteMountDirPath    pulumi.StringPtrInput                                                         `pulumi:"remoteMountDirPath"`
-}
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfo)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput)
-}
-
-// GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput is an input type that accepts GetJobJobSettingsSettingsNewClusterClusterMountInfoArray and GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput` via:
-//
-//	GetJobJobSettingsSettingsNewClusterClusterMountInfoArray{ GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs{...} }
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput
-	ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoArray []GetJobJobSettingsSettingsNewClusterClusterMountInfoInput
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsNewClusterClusterMountInfo)(nil)).Elem()
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoArray) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return i.ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsNewClusterClusterMountInfoArray) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfo)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) LocalMountDirPath() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterMountInfo) string { return v.LocalMountDirPath }).(pulumi.StringOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) NetworkFilesystemInfo() GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterMountInfo) GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo {
-		return v.NetworkFilesystemInfo
-	}).(GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoOutput)
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput) RemoteMountDirPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterClusterMountInfo) *string { return v.RemoteMountDirPath }).(pulumi.StringPtrOutput)
-}
-
-type GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetJobJobSettingsSettingsNewClusterClusterMountInfo)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput() GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput) ToGetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsNewClusterClusterMountInfo {
-		return vs[0].([]GetJobJobSettingsSettingsNewClusterClusterMountInfo)[vs[1].(int)]
-	}).(GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -84570,6 +84970,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusInput)(nil)).Elem(), VectorSearchIndexStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusArrayInput)(nil)).Elem(), VectorSearchIndexStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoInput)(nil)).Elem(), GetCatalogCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoPtrInput)(nil)).Elem(), GetCatalogCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagInput)(nil)).Elem(), GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput)(nil)).Elem(), GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoProvisioningInfoInput)(nil)).Elem(), GetCatalogCatalogInfoProvisioningInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoProvisioningInfoPtrInput)(nil)).Elem(), GetCatalogCatalogInfoProvisioningInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInput)(nil)).Elem(), GetClusterClusterInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoPtrInput)(nil)).Elem(), GetClusterClusterInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoAutoscaleInput)(nil)).Elem(), GetClusterClusterInfoAutoscaleArgs{})
@@ -84743,12 +85149,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterAzureAttributesPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfS3Input)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterClusterMountInfoArray{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactAllowlistArtifactMatcherOutput{})
@@ -85564,6 +85964,12 @@ func init() {
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexStatusOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoProvisioningInfoOutput{})
+	pulumi.RegisterOutputType(GetCatalogCatalogInfoProvisioningInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoAutoscaleOutput{})
@@ -85737,10 +86143,4 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterAzureAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsPtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfS3Output{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterLogConfS3PtrOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterMountInfoOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayOutput{})
 }

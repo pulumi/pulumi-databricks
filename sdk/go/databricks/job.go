@@ -26,8 +26,9 @@ type Job struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
-	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
-	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
+	AlwaysRunning pulumi.BoolPtrOutput `pulumi:"alwaysRunning"`
+	// Configuration block to configure pause status. See continuous Configuration Block.
+	Continuous JobContinuousPtrOutput `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
@@ -45,11 +46,11 @@ type Job struct {
 	Format             pulumi.StringOutput            `pulumi:"format"`
 	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrOutput `pulumi:"gitSource"`
-	// An optional block that specifies the health conditions for the job (described below).
+	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrOutput `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayOutput `pulumi:"jobClusters"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrOutput `pulumi:"maxConcurrentRuns"`
@@ -66,12 +67,14 @@ type Job struct {
 	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
-	Parameters           JobParameterArrayOutput          `pulumi:"parameters"`
+	// Specifices job parameter for the job. See parameter Configuration Block
+	Parameters JobParameterArrayOutput `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrOutput `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrOutput `pulumi:"pythonWheelTask"`
-	Queue           JobQueuePtrOutput           `pulumi:"queue"`
+	// The queue status for the job. See queue Configuration Block below.
+	Queue JobQueuePtrOutput `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
 	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
@@ -133,8 +136,9 @@ type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
-	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
-	Continuous    *JobContinuous `pulumi:"continuous"`
+	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	// Configuration block to configure pause status. See continuous Configuration Block.
+	Continuous *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
@@ -152,11 +156,11 @@ type jobState struct {
 	Format             *string                `pulumi:"format"`
 	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
-	// An optional block that specifies the health conditions for the job (described below).
+	// An optional block that specifies the health conditions for the job documented below.
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
@@ -173,12 +177,14 @@ type jobState struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
-	Parameters           []JobParameter           `pulumi:"parameters"`
+	// Specifices job parameter for the job. See parameter Configuration Block
+	Parameters []JobParameter `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
-	Queue           *JobQueue           `pulumi:"queue"`
+	// The queue status for the job. See queue Configuration Block below.
+	Queue *JobQueue `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
@@ -212,7 +218,8 @@ type JobState struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
-	Continuous    JobContinuousPtrInput
+	// Configuration block to configure pause status. See continuous Configuration Block.
+	Continuous JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
@@ -230,11 +237,11 @@ type JobState struct {
 	Format             pulumi.StringPtrInput
 	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
-	// An optional block that specifies the health conditions for the job (described below).
+	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
@@ -251,12 +258,14 @@ type JobState struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
-	Parameters           JobParameterArrayInput
+	// Specifices job parameter for the job. See parameter Configuration Block
+	Parameters JobParameterArrayInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
-	Queue           JobQueuePtrInput
+	// The queue status for the job. See queue Configuration Block below.
+	Queue JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
 	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
@@ -293,8 +302,9 @@ type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
-	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
-	Continuous    *JobContinuous `pulumi:"continuous"`
+	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	// Configuration block to configure pause status. See continuous Configuration Block.
+	Continuous *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
@@ -312,11 +322,11 @@ type jobArgs struct {
 	Format             *string                `pulumi:"format"`
 	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
-	// An optional block that specifies the health conditions for the job (described below).
+	// An optional block that specifies the health conditions for the job documented below.
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
@@ -333,12 +343,14 @@ type jobArgs struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
-	Parameters           []JobParameter           `pulumi:"parameters"`
+	// Specifices job parameter for the job. See parameter Configuration Block
+	Parameters []JobParameter `pulumi:"parameters"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
-	Queue           *JobQueue           `pulumi:"queue"`
+	// The queue status for the job. See queue Configuration Block below.
+	Queue *JobQueue `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
@@ -371,7 +383,8 @@ type JobArgs struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
-	Continuous    JobContinuousPtrInput
+	// Configuration block to configure pause status. See continuous Configuration Block.
+	Continuous JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
@@ -389,11 +402,11 @@ type JobArgs struct {
 	Format             pulumi.StringPtrInput
 	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
-	// An optional block that specifies the health conditions for the job (described below).
+	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
-	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
@@ -410,12 +423,14 @@ type JobArgs struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
-	Parameters           JobParameterArrayInput
+	// Specifices job parameter for the job. See parameter Configuration Block
+	Parameters JobParameterArrayInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
-	Queue           JobQueuePtrInput
+	// The queue status for the job. See queue Configuration Block below.
+	Queue JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
 	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
@@ -536,6 +551,7 @@ func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration block to configure pause status. See continuous Configuration Block.
 func (o JobOutput) Continuous() JobContinuousPtrOutput {
 	return o.ApplyT(func(v *Job) JobContinuousPtrOutput { return v.Continuous }).(JobContinuousPtrOutput)
 }
@@ -587,7 +603,7 @@ func (o JobOutput) GitSource() JobGitSourcePtrOutput {
 	return o.ApplyT(func(v *Job) JobGitSourcePtrOutput { return v.GitSource }).(JobGitSourcePtrOutput)
 }
 
-// An optional block that specifies the health conditions for the job (described below).
+// An optional block that specifies the health conditions for the job documented below.
 func (o JobOutput) Health() JobHealthPtrOutput {
 	return o.ApplyT(func(v *Job) JobHealthPtrOutput { return v.Health }).(JobHealthPtrOutput)
 }
@@ -597,7 +613,7 @@ func (o JobOutput) JobClusters() JobJobClusterArrayOutput {
 	return o.ApplyT(func(v *Job) JobJobClusterArrayOutput { return v.JobClusters }).(JobJobClusterArrayOutput)
 }
 
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 func (o JobOutput) Libraries() JobLibraryArrayOutput {
 	return o.ApplyT(func(v *Job) JobLibraryArrayOutput { return v.Libraries }).(JobLibraryArrayOutput)
 }
@@ -638,6 +654,7 @@ func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }
 
+// Specifices job parameter for the job. See parameter Configuration Block
 func (o JobOutput) Parameters() JobParameterArrayOutput {
 	return o.ApplyT(func(v *Job) JobParameterArrayOutput { return v.Parameters }).(JobParameterArrayOutput)
 }
@@ -652,6 +669,7 @@ func (o JobOutput) PythonWheelTask() JobPythonWheelTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobPythonWheelTaskPtrOutput { return v.PythonWheelTask }).(JobPythonWheelTaskPtrOutput)
 }
 
+// The queue status for the job. See queue Configuration Block below.
 func (o JobOutput) Queue() JobQueuePtrOutput {
 	return o.ApplyT(func(v *Job) JobQueuePtrOutput { return v.Queue }).(JobQueuePtrOutput)
 }

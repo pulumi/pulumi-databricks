@@ -180,14 +180,14 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     @Import(name="libraries")
     private @Nullable Output<List<JobNewClusterLibraryArgs>> libraries;
 
     /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     public Optional<Output<List<JobNewClusterLibraryArgs>>> libraries() {
@@ -517,7 +517,7 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 

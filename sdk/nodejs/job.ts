@@ -51,6 +51,9 @@ export class Job extends pulumi.CustomResource {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -80,7 +83,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * An optional block that specifies the health conditions for the job documented below.
      */
     public readonly health!: pulumi.Output<outputs.JobHealth | undefined>;
     /**
@@ -88,7 +91,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly jobClusters!: pulumi.Output<outputs.JobJobCluster[] | undefined>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     public readonly libraries!: pulumi.Output<outputs.JobLibrary[] | undefined>;
     /**
@@ -118,6 +121,9 @@ export class Job extends pulumi.CustomResource {
      * An optional block controlling the notification settings on the job level documented below.
      */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -127,6 +133,9 @@ export class Job extends pulumi.CustomResource {
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -290,6 +299,9 @@ export interface JobState {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     continuous?: pulumi.Input<inputs.JobContinuous>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -319,7 +331,7 @@ export interface JobState {
      */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * An optional block that specifies the health conditions for the job documented below.
      */
     health?: pulumi.Input<inputs.JobHealth>;
     /**
@@ -327,7 +339,7 @@ export interface JobState {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**
@@ -357,6 +369,9 @@ export interface JobState {
      * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -366,6 +381,9 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -431,6 +449,9 @@ export interface JobArgs {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     continuous?: pulumi.Input<inputs.JobContinuous>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -460,7 +481,7 @@ export interface JobArgs {
      */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * An optional block that specifies the health conditions for the job documented below.
      */
     health?: pulumi.Input<inputs.JobHealth>;
     /**
@@ -468,7 +489,7 @@ export interface JobArgs {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**
@@ -498,6 +519,9 @@ export interface JobArgs {
      * An optional block controlling the notification settings on the job level documented below.
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -507,6 +531,9 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * @deprecated should be used inside a task block and not inside a job block

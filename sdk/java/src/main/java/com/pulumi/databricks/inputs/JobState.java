@@ -68,9 +68,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.alwaysRunning);
     }
 
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     @Import(name="continuous")
     private @Nullable Output<JobContinuousArgs> continuous;
 
+    /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     public Optional<Output<JobContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
     }
@@ -194,14 +202,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * An optional block that specifies the health conditions for the job documented below.
      * 
      */
     @Import(name="health")
     private @Nullable Output<JobHealthArgs> health;
 
     /**
-     * @return An optional block that specifies the health conditions for the job (described below).
+     * @return An optional block that specifies the health conditions for the job documented below.
      * 
      */
     public Optional<Output<JobHealthArgs>> health() {
@@ -224,14 +232,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     @Import(name="libraries")
     private @Nullable Output<List<JobLibraryArgs>> libraries;
 
     /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     public Optional<Output<List<JobLibraryArgs>>> libraries() {
@@ -351,9 +359,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notificationSettings);
     }
 
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     @Import(name="parameters")
     private @Nullable Output<List<JobParameterArgs>> parameters;
 
+    /**
+     * @return Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     public Optional<Output<List<JobParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -396,9 +412,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     @Import(name="queue")
     private @Nullable Output<JobQueueArgs> queue;
 
+    /**
+     * @return The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     public Optional<Output<JobQueueArgs>> queue() {
         return Optional.ofNullable(this.queue);
     }
@@ -709,11 +733,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return alwaysRunning(Output.of(alwaysRunning));
         }
 
+        /**
+         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder continuous(@Nullable Output<JobContinuousArgs> continuous) {
             $.continuous = continuous;
             return this;
         }
 
+        /**
+         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder continuous(JobContinuousArgs continuous) {
             return continuous(Output.of(continuous));
         }
@@ -881,7 +917,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param health An optional block that specifies the health conditions for the job (described below).
+         * @param health An optional block that specifies the health conditions for the job documented below.
          * 
          * @return builder
          * 
@@ -892,7 +928,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param health An optional block that specifies the health conditions for the job (described below).
+         * @param health An optional block that specifies the health conditions for the job documented below.
          * 
          * @return builder
          * 
@@ -933,7 +969,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 
@@ -944,7 +980,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 
@@ -954,7 +990,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
          * @return builder
          * 
@@ -1114,15 +1150,33 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return notificationSettings(Output.of(notificationSettings));
         }
 
+        /**
+         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable Output<List<JobParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(List<JobParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
 
+        /**
+         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(JobParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }
@@ -1177,11 +1231,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
 
+        /**
+         * @param queue The queue status for the job. See queue Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queue(@Nullable Output<JobQueueArgs> queue) {
             $.queue = queue;
             return this;
         }
 
+        /**
+         * @param queue The queue status for the job. See queue Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queue(JobQueueArgs queue) {
             return queue(Output.of(queue));
         }
