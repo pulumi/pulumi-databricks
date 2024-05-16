@@ -90,6 +90,11 @@ export const getAwsUnityCatalogPolicy: typeof import("./getAwsUnityCatalogPolicy
 export const getAwsUnityCatalogPolicyOutput: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsUnityCatalogPolicy","getAwsUnityCatalogPolicyOutput"], () => require("./getAwsUnityCatalogPolicy"));
 
+export { GetCatalogArgs, GetCatalogResult, GetCatalogOutputArgs } from "./getCatalog";
+export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
+export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalog","getCatalogOutput"], () => require("./getCatalog"));
+
 export { GetCatalogsArgs, GetCatalogsResult, GetCatalogsOutputArgs } from "./getCatalogs";
 export const getCatalogs: typeof import("./getCatalogs").getCatalogs = null as any;
 export const getCatalogsOutput: typeof import("./getCatalogs").getCatalogsOutput = null as any;
@@ -185,6 +190,11 @@ export const getMetastores: typeof import("./getMetastores").getMetastores = nul
 export const getMetastoresOutput: typeof import("./getMetastores").getMetastoresOutput = null as any;
 utilities.lazyLoad(exports, ["getMetastores","getMetastoresOutput"], () => require("./getMetastores"));
 
+export { GetMlflowExperimentArgs, GetMlflowExperimentResult, GetMlflowExperimentOutputArgs } from "./getMlflowExperiment";
+export const getMlflowExperiment: typeof import("./getMlflowExperiment").getMlflowExperiment = null as any;
+export const getMlflowExperimentOutput: typeof import("./getMlflowExperiment").getMlflowExperimentOutput = null as any;
+utilities.lazyLoad(exports, ["getMlflowExperiment","getMlflowExperimentOutput"], () => require("./getMlflowExperiment"));
+
 export { GetMlflowModelArgs, GetMlflowModelResult, GetMlflowModelOutputArgs } from "./getMlflowModel";
 export const getMlflowModel: typeof import("./getMlflowModel").getMlflowModel = null as any;
 export const getMlflowModelOutput: typeof import("./getMlflowModel").getMlflowModelOutput = null as any;
@@ -269,6 +279,11 @@ export { GetStorageCredentialsArgs, GetStorageCredentialsResult, GetStorageCrede
 export const getStorageCredentials: typeof import("./getStorageCredentials").getStorageCredentials = null as any;
 export const getStorageCredentialsOutput: typeof import("./getStorageCredentials").getStorageCredentialsOutput = null as any;
 utilities.lazyLoad(exports, ["getStorageCredentials","getStorageCredentialsOutput"], () => require("./getStorageCredentials"));
+
+export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
+export const getTable: typeof import("./getTable").getTable = null as any;
+export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
+utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
 
 export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
 export const getTables: typeof import("./getTables").getTables = null as any;

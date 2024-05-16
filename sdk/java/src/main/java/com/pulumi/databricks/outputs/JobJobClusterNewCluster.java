@@ -50,7 +50,7 @@ public final class JobJobClusterNewCluster {
     private @Nullable List<JobJobClusterNewClusterInitScript> initScripts;
     private @Nullable String instancePoolId;
     /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     private @Nullable List<JobJobClusterNewClusterLibrary> libraries;
@@ -130,7 +130,7 @@ public final class JobJobClusterNewCluster {
         return Optional.ofNullable(this.instancePoolId);
     }
     /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
      */
     public List<JobJobClusterNewClusterLibrary> libraries() {

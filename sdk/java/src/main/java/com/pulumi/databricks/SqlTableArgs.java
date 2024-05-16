@@ -125,6 +125,21 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Username/groupname/sp application_id of the schema owner.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the schema owner.
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
      * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
@@ -255,6 +270,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         this.dataSourceFormat = $.dataSourceFormat;
         this.name = $.name;
         this.options = $.options;
+        this.owner = $.owner;
         this.partitions = $.partitions;
         this.properties = $.properties;
         this.schemaName = $.schemaName;
@@ -439,6 +455,27 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(Map<String,Object> options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the schema owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the schema owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
         }
 
         /**

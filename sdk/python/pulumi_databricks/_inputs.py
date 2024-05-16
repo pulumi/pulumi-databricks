@@ -420,6 +420,9 @@ __all__ = [
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs',
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs',
     'VectorSearchIndexStatusArgs',
+    'GetCatalogCatalogInfoArgs',
+    'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs',
+    'GetCatalogCatalogInfoProvisioningInfoArgs',
     'GetClusterClusterInfoArgs',
     'GetClusterClusterInfoAutoscaleArgs',
     'GetClusterClusterInfoAwsAttributesArgs',
@@ -651,6 +654,7 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
     'GetMetastoreMetastoreInfoArgs',
+    'GetMlflowExperimentTagArgs',
     'GetMlflowModelLatestVersionArgs',
     'GetMlflowModelLatestVersionTagArgs',
     'GetMlflowModelTagArgs',
@@ -669,6 +673,22 @@ __all__ = [
     'GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs',
     'GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs',
     'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs',
+    'GetTableTableInfoArgs',
+    'GetTableTableInfoColumnArgs',
+    'GetTableTableInfoColumnMaskArgs',
+    'GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs',
+    'GetTableTableInfoEffectivePredictiveOptimizationFlagArgs',
+    'GetTableTableInfoEncryptionDetailsArgs',
+    'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs',
+    'GetTableTableInfoRowFilterArgs',
+    'GetTableTableInfoTableConstraintArgs',
+    'GetTableTableInfoTableConstraintForeignKeyConstraintArgs',
+    'GetTableTableInfoTableConstraintNamedTableConstraintArgs',
+    'GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs',
+    'GetTableTableInfoViewDependenciesArgs',
+    'GetTableTableInfoViewDependenciesDependencyArgs',
+    'GetTableTableInfoViewDependenciesDependencyFunctionArgs',
+    'GetTableTableInfoViewDependenciesDependencyTableArgs',
 ]
 
 @pulumi.input_type
@@ -3515,7 +3535,7 @@ class JobJobClusterNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -3783,7 +3803,7 @@ class JobJobClusterNewClusterArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]]]:
         """
-        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         return pulumi.get(self, "libraries")
 
@@ -5193,7 +5213,7 @@ class JobNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -5461,7 +5481,7 @@ class JobNewClusterArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]]]:
         """
-        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         return pulumi.get(self, "libraries")
 
@@ -9022,7 +9042,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -9290,7 +9310,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]]]:
         """
-        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         return pulumi.get(self, "libraries")
 
@@ -11893,7 +11913,7 @@ class JobTaskNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -12161,7 +12181,7 @@ class JobTaskNewClusterArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]]]:
         """
-        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         """
         return pulumi.get(self, "libraries")
 
@@ -22128,6 +22148,446 @@ class VectorSearchIndexStatusArgs:
     @ready.setter
     def ready(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ready", value)
+
+
+@pulumi.input_type
+class GetCatalogCatalogInfoArgs:
+    def __init__(__self__, *,
+                 browse_only: Optional[bool] = None,
+                 catalog_type: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 connection_name: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 effective_predictive_optimization_flag: Optional['GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs'] = None,
+                 enable_predictive_optimization: Optional[str] = None,
+                 full_name: Optional[str] = None,
+                 isolation_mode: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 options: Optional[Mapping[str, Any]] = None,
+                 owner: Optional[str] = None,
+                 properties: Optional[Mapping[str, Any]] = None,
+                 provider_name: Optional[str] = None,
+                 provisioning_info: Optional['GetCatalogCatalogInfoProvisioningInfoArgs'] = None,
+                 securable_kind: Optional[str] = None,
+                 securable_type: Optional[str] = None,
+                 share_name: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 storage_root: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None):
+        """
+        :param str catalog_type: Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+        :param str comment: Free-form text description
+        :param str connection_name: The name of the connection to an external data source.
+        :param int created_at: Time at which this catalog was created, in epoch milliseconds.
+        :param str created_by: Username of catalog creator.
+        :param 'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs' effective_predictive_optimization_flag: object describing applied predictive optimization flag.
+        :param str enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it.
+        :param str full_name: The full name of the catalog. Corresponds with the name field.
+        :param str isolation_mode: Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+        :param str metastore_id: Unique identifier of parent metastore.
+        :param str name: name of the catalog
+        :param Mapping[str, Any] options: A map of key-value properties attached to the securable.
+        :param str owner: Current owner of the catalog
+        :param Mapping[str, Any] properties: A map of key-value properties attached to the securable.
+        :param str provider_name: The name of delta sharing provider.
+        :param str securable_kind: Kind of catalog securable.
+        :param str securable_type: Securable type.
+        :param str share_name: The name of the share under the share provider.
+        :param str storage_location: Storage Location URL (full path) for managed tables within catalog.
+        :param str storage_root: Storage root URL for managed tables within catalog.
+        :param int updated_at: Time at which this catalog was last modified, in epoch milliseconds.
+        :param str updated_by: Username of user who last modified catalog.
+        """
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_type is not None:
+            pulumi.set(__self__, "catalog_type", catalog_type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if effective_predictive_optimization_flag is not None:
+            pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if provider_name is not None:
+            pulumi.set(__self__, "provider_name", provider_name)
+        if provisioning_info is not None:
+            pulumi.set(__self__, "provisioning_info", provisioning_info)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+        if share_name is not None:
+            pulumi.set(__self__, "share_name", share_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[bool]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
+    @pulumi.getter(name="catalogType")
+    def catalog_type(self) -> Optional[str]:
+        """
+        Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+        """
+        return pulumi.get(self, "catalog_type")
+
+    @catalog_type.setter
+    def catalog_type(self, value: Optional[str]):
+        pulumi.set(self, "catalog_type", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        Free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[str]:
+        """
+        The name of the connection to an external data source.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[str]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[int]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        Username of catalog creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[str]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> Optional['GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs']:
+        """
+        object describing applied predictive optimization flag.
+        """
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @effective_predictive_optimization_flag.setter
+    def effective_predictive_optimization_flag(self, value: Optional['GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs']):
+        pulumi.set(self, "effective_predictive_optimization_flag", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[str]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it.
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[str]):
+        pulumi.set(self, "enable_predictive_optimization", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        """
+        The full name of the catalog. Corresponds with the name field.
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[str]:
+        """
+        Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[str]):
+        pulumi.set(self, "isolation_mode", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        Unique identifier of parent metastore.
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[str]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the catalog
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of key-value properties attached to the securable.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Current owner of the catalog
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of key-value properties attached to the securable.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> Optional[str]:
+        """
+        The name of delta sharing provider.
+        """
+        return pulumi.get(self, "provider_name")
+
+    @provider_name.setter
+    def provider_name(self, value: Optional[str]):
+        pulumi.set(self, "provider_name", value)
+
+    @property
+    @pulumi.getter(name="provisioningInfo")
+    def provisioning_info(self) -> Optional['GetCatalogCatalogInfoProvisioningInfoArgs']:
+        return pulumi.get(self, "provisioning_info")
+
+    @provisioning_info.setter
+    def provisioning_info(self, value: Optional['GetCatalogCatalogInfoProvisioningInfoArgs']):
+        pulumi.set(self, "provisioning_info", value)
+
+    @property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[str]:
+        """
+        Kind of catalog securable.
+        """
+        return pulumi.get(self, "securable_kind")
+
+    @securable_kind.setter
+    def securable_kind(self, value: Optional[str]):
+        pulumi.set(self, "securable_kind", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[str]:
+        """
+        Securable type.
+        """
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[str]):
+        pulumi.set(self, "securable_type", value)
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> Optional[str]:
+        """
+        The name of the share under the share provider.
+        """
+        return pulumi.get(self, "share_name")
+
+    @share_name.setter
+    def share_name(self, value: Optional[str]):
+        pulumi.set(self, "share_name", value)
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        """
+        Storage Location URL (full path) for managed tables within catalog.
+        """
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[str]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[str]:
+        """
+        Storage root URL for managed tables within catalog.
+        """
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[str]):
+        pulumi.set(self, "storage_root", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[int]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        Username of user who last modified catalog.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[str]):
+        pulumi.set(self, "updated_by", value)
+
+
+@pulumi.input_type
+class GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs:
+    def __init__(__self__, *,
+                 value: str,
+                 inherited_from_name: Optional[str] = None,
+                 inherited_from_type: Optional[str] = None):
+        pulumi.set(__self__, "value", value)
+        if inherited_from_name is not None:
+            pulumi.set(__self__, "inherited_from_name", inherited_from_name)
+        if inherited_from_type is not None:
+            pulumi.set(__self__, "inherited_from_type", inherited_from_type)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromName")
+    def inherited_from_name(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_name")
+
+    @inherited_from_name.setter
+    def inherited_from_name(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_name", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromType")
+    def inherited_from_type(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_type")
+
+    @inherited_from_type.setter
+    def inherited_from_type(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_type", value)
+
+
+@pulumi.input_type
+class GetCatalogCatalogInfoProvisioningInfoArgs:
+    def __init__(__self__, *,
+                 state: Optional[str] = None):
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[str]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
@@ -34807,6 +35267,35 @@ class GetMetastoreMetastoreInfoArgs:
 
 
 @pulumi.input_type
+class GetMlflowExperimentTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class GetMlflowModelLatestVersionArgs:
     def __init__(__self__, *,
                  creation_timestamp: Optional[int] = None,
@@ -35940,5 +36429,982 @@ class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs:
     @email.setter
     def email(self, value: Optional[str]):
         pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoArgs:
+    def __init__(__self__, *,
+                 access_point: Optional[str] = None,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 columns: Optional[Sequence['GetTableTableInfoColumnArgs']] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 data_access_configuration_id: Optional[str] = None,
+                 data_source_format: Optional[str] = None,
+                 deleted_at: Optional[int] = None,
+                 delta_runtime_properties_kvpairs: Optional['GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs'] = None,
+                 effective_predictive_optimization_flag: Optional['GetTableTableInfoEffectivePredictiveOptimizationFlagArgs'] = None,
+                 enable_predictive_optimization: Optional[str] = None,
+                 encryption_details: Optional['GetTableTableInfoEncryptionDetailsArgs'] = None,
+                 full_name: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 pipeline_id: Optional[str] = None,
+                 properties: Optional[Mapping[str, Any]] = None,
+                 row_filter: Optional['GetTableTableInfoRowFilterArgs'] = None,
+                 schema_name: Optional[str] = None,
+                 sql_path: Optional[str] = None,
+                 storage_credential_name: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 table_constraints: Optional[Sequence['GetTableTableInfoTableConstraintArgs']] = None,
+                 table_id: Optional[str] = None,
+                 table_type: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None,
+                 view_definition: Optional[str] = None,
+                 view_dependencies: Optional['GetTableTableInfoViewDependenciesArgs'] = None):
+        """
+        :param str catalog_name: Name of parent catalog.
+        :param Sequence['GetTableTableInfoColumnArgs'] columns: Array of ColumnInfo objects of the table's columns
+        :param str comment: Free-form text description
+        :param str data_source_format: Table format, e.g. DELTA, CSV, JSON
+        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str owner: Current owner of the table
+        :param str schema_name: Name of parent schema relative to its parent catalog.
+        :param str table_type: Table type, e.g. MANAGED, EXTERNAL, VIEW
+        :param str view_definition: View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+        :param 'GetTableTableInfoViewDependenciesArgs' view_dependencies: View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+        """
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if data_access_configuration_id is not None:
+            pulumi.set(__self__, "data_access_configuration_id", data_access_configuration_id)
+        if data_source_format is not None:
+            pulumi.set(__self__, "data_source_format", data_source_format)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if delta_runtime_properties_kvpairs is not None:
+            pulumi.set(__self__, "delta_runtime_properties_kvpairs", delta_runtime_properties_kvpairs)
+        if effective_predictive_optimization_flag is not None:
+            pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
+        if encryption_details is not None:
+            pulumi.set(__self__, "encryption_details", encryption_details)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if sql_path is not None:
+            pulumi.set(__self__, "sql_path", sql_path)
+        if storage_credential_name is not None:
+            pulumi.set(__self__, "storage_credential_name", storage_credential_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if table_constraints is not None:
+            pulumi.set(__self__, "table_constraints", table_constraints)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+        if table_type is not None:
+            pulumi.set(__self__, "table_type", table_type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if view_definition is not None:
+            pulumi.set(__self__, "view_definition", view_definition)
+        if view_dependencies is not None:
+            pulumi.set(__self__, "view_dependencies", view_dependencies)
+
+    @property
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> Optional[str]:
+        return pulumi.get(self, "access_point")
+
+    @access_point.setter
+    def access_point(self, value: Optional[str]):
+        pulumi.set(self, "access_point", value)
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[bool]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        Name of parent catalog.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['GetTableTableInfoColumnArgs']]:
+        """
+        Array of ColumnInfo objects of the table's columns
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[Sequence['GetTableTableInfoColumnArgs']]):
+        pulumi.set(self, "columns", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        Free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[int]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[str]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="dataAccessConfigurationId")
+    def data_access_configuration_id(self) -> Optional[str]:
+        return pulumi.get(self, "data_access_configuration_id")
+
+    @data_access_configuration_id.setter
+    def data_access_configuration_id(self, value: Optional[str]):
+        pulumi.set(self, "data_access_configuration_id", value)
+
+    @property
+    @pulumi.getter(name="dataSourceFormat")
+    def data_source_format(self) -> Optional[str]:
+        """
+        Table format, e.g. DELTA, CSV, JSON
+        """
+        return pulumi.get(self, "data_source_format")
+
+    @data_source_format.setter
+    def data_source_format(self, value: Optional[str]):
+        pulumi.set(self, "data_source_format", value)
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[int]:
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[int]):
+        pulumi.set(self, "deleted_at", value)
+
+    @property
+    @pulumi.getter(name="deltaRuntimePropertiesKvpairs")
+    def delta_runtime_properties_kvpairs(self) -> Optional['GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs']:
+        return pulumi.get(self, "delta_runtime_properties_kvpairs")
+
+    @delta_runtime_properties_kvpairs.setter
+    def delta_runtime_properties_kvpairs(self, value: Optional['GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs']):
+        pulumi.set(self, "delta_runtime_properties_kvpairs", value)
+
+    @property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> Optional['GetTableTableInfoEffectivePredictiveOptimizationFlagArgs']:
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @effective_predictive_optimization_flag.setter
+    def effective_predictive_optimization_flag(self, value: Optional['GetTableTableInfoEffectivePredictiveOptimizationFlagArgs']):
+        pulumi.set(self, "effective_predictive_optimization_flag", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[str]:
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[str]):
+        pulumi.set(self, "enable_predictive_optimization", value)
+
+    @property
+    @pulumi.getter(name="encryptionDetails")
+    def encryption_details(self) -> Optional['GetTableTableInfoEncryptionDetailsArgs']:
+        return pulumi.get(self, "encryption_details")
+
+    @encryption_details.setter
+    def encryption_details(self, value: Optional['GetTableTableInfoEncryptionDetailsArgs']):
+        pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[str]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Current owner of the table
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[str]:
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: Optional[str]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional['GetTableTableInfoRowFilterArgs']:
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: Optional['GetTableTableInfoRowFilterArgs']):
+        pulumi.set(self, "row_filter", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        Name of parent schema relative to its parent catalog.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[str]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="sqlPath")
+    def sql_path(self) -> Optional[str]:
+        return pulumi.get(self, "sql_path")
+
+    @sql_path.setter
+    def sql_path(self, value: Optional[str]):
+        pulumi.set(self, "sql_path", value)
+
+    @property
+    @pulumi.getter(name="storageCredentialName")
+    def storage_credential_name(self) -> Optional[str]:
+        return pulumi.get(self, "storage_credential_name")
+
+    @storage_credential_name.setter
+    def storage_credential_name(self, value: Optional[str]):
+        pulumi.set(self, "storage_credential_name", value)
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[str]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> Optional[Sequence['GetTableTableInfoTableConstraintArgs']]:
+        return pulumi.get(self, "table_constraints")
+
+    @table_constraints.setter
+    def table_constraints(self, value: Optional[Sequence['GetTableTableInfoTableConstraintArgs']]):
+        pulumi.set(self, "table_constraints", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[str]:
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: Optional[str]):
+        pulumi.set(self, "table_id", value)
+
+    @property
+    @pulumi.getter(name="tableType")
+    def table_type(self) -> Optional[str]:
+        """
+        Table type, e.g. MANAGED, EXTERNAL, VIEW
+        """
+        return pulumi.get(self, "table_type")
+
+    @table_type.setter
+    def table_type(self, value: Optional[str]):
+        pulumi.set(self, "table_type", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[int]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[str]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="viewDefinition")
+    def view_definition(self) -> Optional[str]:
+        """
+        View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+        """
+        return pulumi.get(self, "view_definition")
+
+    @view_definition.setter
+    def view_definition(self, value: Optional[str]):
+        pulumi.set(self, "view_definition", value)
+
+    @property
+    @pulumi.getter(name="viewDependencies")
+    def view_dependencies(self) -> Optional['GetTableTableInfoViewDependenciesArgs']:
+        """
+        View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+        """
+        return pulumi.get(self, "view_dependencies")
+
+    @view_dependencies.setter
+    def view_dependencies(self, value: Optional['GetTableTableInfoViewDependenciesArgs']):
+        pulumi.set(self, "view_dependencies", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoColumnArgs:
+    def __init__(__self__, *,
+                 comment: Optional[str] = None,
+                 mask: Optional['GetTableTableInfoColumnMaskArgs'] = None,
+                 name: Optional[str] = None,
+                 nullable: Optional[bool] = None,
+                 partition_index: Optional[int] = None,
+                 position: Optional[int] = None,
+                 type_interval_type: Optional[str] = None,
+                 type_json: Optional[str] = None,
+                 type_name: Optional[str] = None,
+                 type_precision: Optional[int] = None,
+                 type_scale: Optional[int] = None,
+                 type_text: Optional[str] = None):
+        """
+        :param str comment: Free-form text description
+        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        Free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional['GetTableTableInfoColumnMaskArgs']:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional['GetTableTableInfoColumnMaskArgs']):
+        pulumi.set(self, "mask", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[bool]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[int]:
+        return pulumi.get(self, "partition_index")
+
+    @partition_index.setter
+    def partition_index(self, value: Optional[int]):
+        pulumi.set(self, "partition_index", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[int]:
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[int]):
+        pulumi.set(self, "position", value)
+
+    @property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[str]:
+        return pulumi.get(self, "type_interval_type")
+
+    @type_interval_type.setter
+    def type_interval_type(self, value: Optional[str]):
+        pulumi.set(self, "type_interval_type", value)
+
+    @property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[str]:
+        return pulumi.get(self, "type_json")
+
+    @type_json.setter
+    def type_json(self, value: Optional[str]):
+        pulumi.set(self, "type_json", value)
+
+    @property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[str]:
+        return pulumi.get(self, "type_name")
+
+    @type_name.setter
+    def type_name(self, value: Optional[str]):
+        pulumi.set(self, "type_name", value)
+
+    @property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[int]:
+        return pulumi.get(self, "type_precision")
+
+    @type_precision.setter
+    def type_precision(self, value: Optional[int]):
+        pulumi.set(self, "type_precision", value)
+
+    @property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[int]:
+        return pulumi.get(self, "type_scale")
+
+    @type_scale.setter
+    def type_scale(self, value: Optional[int]):
+        pulumi.set(self, "type_scale", value)
+
+    @property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[str]:
+        return pulumi.get(self, "type_text")
+
+    @type_text.setter
+    def type_text(self, value: Optional[str]):
+        pulumi.set(self, "type_text", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoColumnMaskArgs:
+    def __init__(__self__, *,
+                 function_name: Optional[str] = None,
+                 using_column_names: Optional[Sequence[str]] = None):
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[str]:
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: Optional[str]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "using_column_names")
+
+    @using_column_names.setter
+    def using_column_names(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "using_column_names", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs:
+    def __init__(__self__, *,
+                 delta_runtime_properties: Mapping[str, Any]):
+        pulumi.set(__self__, "delta_runtime_properties", delta_runtime_properties)
+
+    @property
+    @pulumi.getter(name="deltaRuntimeProperties")
+    def delta_runtime_properties(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "delta_runtime_properties")
+
+    @delta_runtime_properties.setter
+    def delta_runtime_properties(self, value: Mapping[str, Any]):
+        pulumi.set(self, "delta_runtime_properties", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoEffectivePredictiveOptimizationFlagArgs:
+    def __init__(__self__, *,
+                 value: str,
+                 inherited_from_name: Optional[str] = None,
+                 inherited_from_type: Optional[str] = None):
+        pulumi.set(__self__, "value", value)
+        if inherited_from_name is not None:
+            pulumi.set(__self__, "inherited_from_name", inherited_from_name)
+        if inherited_from_type is not None:
+            pulumi.set(__self__, "inherited_from_type", inherited_from_type)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromName")
+    def inherited_from_name(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_name")
+
+    @inherited_from_name.setter
+    def inherited_from_name(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_name", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromType")
+    def inherited_from_type(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_type")
+
+    @inherited_from_type.setter
+    def inherited_from_type(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_type", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 sse_encryption_details: Optional['GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs'] = None):
+        if sse_encryption_details is not None:
+            pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
+
+    @property
+    @pulumi.getter(name="sseEncryptionDetails")
+    def sse_encryption_details(self) -> Optional['GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs']:
+        return pulumi.get(self, "sse_encryption_details")
+
+    @sse_encryption_details.setter
+    def sse_encryption_details(self, value: Optional['GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs']):
+        pulumi.set(self, "sse_encryption_details", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[str] = None,
+                 aws_kms_key_arn: Optional[str] = None):
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if aws_kms_key_arn is not None:
+            pulumi.set(__self__, "aws_kms_key_arn", aws_kms_key_arn)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="awsKmsKeyArn")
+    def aws_kms_key_arn(self) -> Optional[str]:
+        return pulumi.get(self, "aws_kms_key_arn")
+
+    @aws_kms_key_arn.setter
+    def aws_kms_key_arn(self, value: Optional[str]):
+        pulumi.set(self, "aws_kms_key_arn", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoRowFilterArgs:
+    def __init__(__self__, *,
+                 function_name: str,
+                 input_column_names: Sequence[str]):
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "input_column_names", input_column_names)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> str:
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: str):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter(name="inputColumnNames")
+    def input_column_names(self) -> Sequence[str]:
+        return pulumi.get(self, "input_column_names")
+
+    @input_column_names.setter
+    def input_column_names(self, value: Sequence[str]):
+        pulumi.set(self, "input_column_names", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoTableConstraintArgs:
+    def __init__(__self__, *,
+                 foreign_key_constraint: Optional['GetTableTableInfoTableConstraintForeignKeyConstraintArgs'] = None,
+                 named_table_constraint: Optional['GetTableTableInfoTableConstraintNamedTableConstraintArgs'] = None,
+                 primary_key_constraint: Optional['GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs'] = None):
+        if foreign_key_constraint is not None:
+            pulumi.set(__self__, "foreign_key_constraint", foreign_key_constraint)
+        if named_table_constraint is not None:
+            pulumi.set(__self__, "named_table_constraint", named_table_constraint)
+        if primary_key_constraint is not None:
+            pulumi.set(__self__, "primary_key_constraint", primary_key_constraint)
+
+    @property
+    @pulumi.getter(name="foreignKeyConstraint")
+    def foreign_key_constraint(self) -> Optional['GetTableTableInfoTableConstraintForeignKeyConstraintArgs']:
+        return pulumi.get(self, "foreign_key_constraint")
+
+    @foreign_key_constraint.setter
+    def foreign_key_constraint(self, value: Optional['GetTableTableInfoTableConstraintForeignKeyConstraintArgs']):
+        pulumi.set(self, "foreign_key_constraint", value)
+
+    @property
+    @pulumi.getter(name="namedTableConstraint")
+    def named_table_constraint(self) -> Optional['GetTableTableInfoTableConstraintNamedTableConstraintArgs']:
+        return pulumi.get(self, "named_table_constraint")
+
+    @named_table_constraint.setter
+    def named_table_constraint(self, value: Optional['GetTableTableInfoTableConstraintNamedTableConstraintArgs']):
+        pulumi.set(self, "named_table_constraint", value)
+
+    @property
+    @pulumi.getter(name="primaryKeyConstraint")
+    def primary_key_constraint(self) -> Optional['GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs']:
+        return pulumi.get(self, "primary_key_constraint")
+
+    @primary_key_constraint.setter
+    def primary_key_constraint(self, value: Optional['GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs']):
+        pulumi.set(self, "primary_key_constraint", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
+    def __init__(__self__, *,
+                 child_columns: Sequence[str],
+                 name: str,
+                 parent_columns: Sequence[str],
+                 parent_table: str):
+        """
+        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        pulumi.set(__self__, "child_columns", child_columns)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_columns", parent_columns)
+        pulumi.set(__self__, "parent_table", parent_table)
+
+    @property
+    @pulumi.getter(name="childColumns")
+    def child_columns(self) -> Sequence[str]:
+        return pulumi.get(self, "child_columns")
+
+    @child_columns.setter
+    def child_columns(self, value: Sequence[str]):
+        pulumi.set(self, "child_columns", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentColumns")
+    def parent_columns(self) -> Sequence[str]:
+        return pulumi.get(self, "parent_columns")
+
+    @parent_columns.setter
+    def parent_columns(self, value: Sequence[str]):
+        pulumi.set(self, "parent_columns", value)
+
+    @property
+    @pulumi.getter(name="parentTable")
+    def parent_table(self) -> str:
+        return pulumi.get(self, "parent_table")
+
+    @parent_table.setter
+    def parent_table(self, value: str):
+        pulumi.set(self, "parent_table", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoTableConstraintNamedTableConstraintArgs:
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
+    def __init__(__self__, *,
+                 child_columns: Sequence[str],
+                 name: str):
+        """
+        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        pulumi.set(__self__, "child_columns", child_columns)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="childColumns")
+    def child_columns(self) -> Sequence[str]:
+        return pulumi.get(self, "child_columns")
+
+    @child_columns.setter
+    def child_columns(self, value: Sequence[str]):
+        pulumi.set(self, "child_columns", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesArgs:
+    def __init__(__self__, *,
+                 dependencies: Optional[Sequence['GetTableTableInfoViewDependenciesDependencyArgs']] = None):
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence['GetTableTableInfoViewDependenciesDependencyArgs']]:
+        return pulumi.get(self, "dependencies")
+
+    @dependencies.setter
+    def dependencies(self, value: Optional[Sequence['GetTableTableInfoViewDependenciesDependencyArgs']]):
+        pulumi.set(self, "dependencies", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesDependencyArgs:
+    def __init__(__self__, *,
+                 function: Optional['GetTableTableInfoViewDependenciesDependencyFunctionArgs'] = None,
+                 table: Optional['GetTableTableInfoViewDependenciesDependencyTableArgs'] = None):
+        if function is not None:
+            pulumi.set(__self__, "function", function)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def function(self) -> Optional['GetTableTableInfoViewDependenciesDependencyFunctionArgs']:
+        return pulumi.get(self, "function")
+
+    @function.setter
+    def function(self, value: Optional['GetTableTableInfoViewDependenciesDependencyFunctionArgs']):
+        pulumi.set(self, "function", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional['GetTableTableInfoViewDependenciesDependencyTableArgs']:
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional['GetTableTableInfoViewDependenciesDependencyTableArgs']):
+        pulumi.set(self, "table", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesDependencyFunctionArgs:
+    def __init__(__self__, *,
+                 function_full_name: str):
+        pulumi.set(__self__, "function_full_name", function_full_name)
+
+    @property
+    @pulumi.getter(name="functionFullName")
+    def function_full_name(self) -> str:
+        return pulumi.get(self, "function_full_name")
+
+    @function_full_name.setter
+    def function_full_name(self, value: str):
+        pulumi.set(self, "function_full_name", value)
+
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesDependencyTableArgs:
+    def __init__(__self__, *,
+                 table_full_name: str):
+        pulumi.set(__self__, "table_full_name", table_full_name)
+
+    @property
+    @pulumi.getter(name="tableFullName")
+    def table_full_name(self) -> str:
+        return pulumi.get(self, "table_full_name")
+
+    @table_full_name.setter
+    def table_full_name(self, value: str):
+        pulumi.set(self, "table_full_name", value)
 
 

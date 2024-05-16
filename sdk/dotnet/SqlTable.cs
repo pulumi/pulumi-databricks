@@ -72,6 +72,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, object>?> Options { get; private set; } = null!;
 
         /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
+        [Output("owner")]
+        public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
         /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
         /// </summary>
         [Output("partitions")]
@@ -224,6 +230,12 @@ namespace Pulumi.Databricks
             set => _options = value;
         }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
         [Input("partitions")]
         private InputList<string>? _partitions;
 
@@ -350,6 +362,12 @@ namespace Pulumi.Databricks
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         [Input("partitions")]
         private InputList<string>? _partitions;

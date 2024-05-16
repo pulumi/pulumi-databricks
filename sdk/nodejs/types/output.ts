@@ -408,6 +408,109 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: string;
 }
 
+export interface GetCatalogCatalogInfo {
+    browseOnly?: boolean;
+    /**
+     * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+     */
+    catalogType?: string;
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    /**
+     * The name of the connection to an external data source.
+     */
+    connectionName?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
+    createdBy?: string;
+    /**
+     * object describing applied predictive optimization flag.
+     */
+    effectivePredictiveOptimizationFlag?: outputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: string;
+    /**
+     * The full name of the catalog. Corresponds with the name field.
+     */
+    fullName?: string;
+    /**
+     * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+     */
+    isolationMode?: string;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: string;
+    /**
+     * name of the catalog
+     */
+    name?: string;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    options?: {[key: string]: any};
+    /**
+     * Current owner of the catalog
+     */
+    owner?: string;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    properties?: {[key: string]: any};
+    /**
+     * The name of delta sharing provider.
+     */
+    providerName?: string;
+    provisioningInfo?: outputs.GetCatalogCatalogInfoProvisioningInfo;
+    /**
+     * Kind of catalog securable.
+     */
+    securableKind?: string;
+    /**
+     * Securable type.
+     */
+    securableType?: string;
+    /**
+     * The name of the share under the share provider.
+     */
+    shareName?: string;
+    /**
+     * Storage Location URL (full path) for managed tables within catalog.
+     */
+    storageLocation?: string;
+    /**
+     * Storage root URL for managed tables within catalog.
+     */
+    storageRoot?: string;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
+    updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
+    updatedBy?: string;
+}
+
+export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface GetCatalogCatalogInfoProvisioningInfo {
+    state?: string;
+}
+
 export interface GetClusterClusterInfo {
     autoscale?: outputs.GetClusterClusterInfoAutoscale;
     /**
@@ -2267,6 +2370,11 @@ export interface GetMetastoreMetastoreInfo {
     updatedBy?: string;
 }
 
+export interface GetMlflowExperimentTag {
+    key?: string;
+    value?: string;
+}
+
 export interface GetMlflowModelLatestVersion {
     creationTimestamp?: number;
     currentStage?: string;
@@ -2470,6 +2578,169 @@ export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAc
      * The email of the GCP service account created, to be granted access to relevant buckets.
      */
     email?: string;
+}
+
+export interface GetTableTableInfo {
+    accessPoint?: string;
+    browseOnly?: boolean;
+    /**
+     * Name of parent catalog.
+     */
+    catalogName?: string;
+    /**
+     * Array of ColumnInfo objects of the table's columns
+     */
+    columns?: outputs.GetTableTableInfoColumn[];
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    dataAccessConfigurationId?: string;
+    /**
+     * Table format, e.g. DELTA, CSV, JSON
+     */
+    dataSourceFormat?: string;
+    deletedAt?: number;
+    deltaRuntimePropertiesKvpairs?: outputs.GetTableTableInfoDeltaRuntimePropertiesKvpairs;
+    effectivePredictiveOptimizationFlag?: outputs.GetTableTableInfoEffectivePredictiveOptimizationFlag;
+    enablePredictiveOptimization?: string;
+    encryptionDetails?: outputs.GetTableTableInfoEncryptionDetails;
+    fullName?: string;
+    metastoreId?: string;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    /**
+     * Current owner of the table
+     */
+    owner?: string;
+    pipelineId?: string;
+    properties?: {[key: string]: any};
+    rowFilter?: outputs.GetTableTableInfoRowFilter;
+    /**
+     * Name of parent schema relative to its parent catalog.
+     */
+    schemaName?: string;
+    sqlPath?: string;
+    storageCredentialName?: string;
+    storageLocation?: string;
+    tableConstraints?: outputs.GetTableTableInfoTableConstraint[];
+    tableId?: string;
+    /**
+     * Table type, e.g. MANAGED, EXTERNAL, VIEW
+     */
+    tableType?: string;
+    updatedAt?: number;
+    updatedBy?: string;
+    /**
+     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     */
+    viewDefinition?: string;
+    /**
+     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     */
+    viewDependencies?: outputs.GetTableTableInfoViewDependencies;
+}
+
+export interface GetTableTableInfoColumn {
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    mask?: outputs.GetTableTableInfoColumnMask;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    nullable?: boolean;
+    partitionIndex?: number;
+    position?: number;
+    typeIntervalType?: string;
+    typeJson?: string;
+    typeName?: string;
+    typePrecision?: number;
+    typeScale?: number;
+    typeText?: string;
+}
+
+export interface GetTableTableInfoColumnMask {
+    functionName?: string;
+    usingColumnNames?: string[];
+}
+
+export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
+    deltaRuntimeProperties: {[key: string]: any};
+}
+
+export interface GetTableTableInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface GetTableTableInfoEncryptionDetails {
+    sseEncryptionDetails?: outputs.GetTableTableInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
+export interface GetTableTableInfoRowFilter {
+    functionName: string;
+    inputColumnNames: string[];
+}
+
+export interface GetTableTableInfoTableConstraint {
+    foreignKeyConstraint?: outputs.GetTableTableInfoTableConstraintForeignKeyConstraint;
+    namedTableConstraint?: outputs.GetTableTableInfoTableConstraintNamedTableConstraint;
+    primaryKeyConstraint?: outputs.GetTableTableInfoTableConstraintPrimaryKeyConstraint;
+}
+
+export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
+    childColumns: string[];
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+    parentColumns: string[];
+    parentTable: string;
+}
+
+export interface GetTableTableInfoTableConstraintNamedTableConstraint {
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+}
+
+export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
+    childColumns: string[];
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+}
+
+export interface GetTableTableInfoViewDependencies {
+    dependencies?: outputs.GetTableTableInfoViewDependenciesDependency[];
+}
+
+export interface GetTableTableInfoViewDependenciesDependency {
+    function?: outputs.GetTableTableInfoViewDependenciesDependencyFunction;
+    table?: outputs.GetTableTableInfoViewDependenciesDependencyTable;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyFunction {
+    functionFullName: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyTable {
+    tableFullName: string;
 }
 
 export interface GrantsGrant {
@@ -2765,7 +3036,7 @@ export interface JobJobClusterNewCluster {
     initScripts?: outputs.JobJobClusterNewClusterInitScript[];
     instancePoolId?: string;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: outputs.JobJobClusterNewClusterLibrary[];
     nodeTypeId: string;
@@ -2997,7 +3268,7 @@ export interface JobNewCluster {
     initScripts?: outputs.JobNewClusterInitScript[];
     instancePoolId?: string;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: outputs.JobNewClusterLibrary[];
     nodeTypeId: string;
@@ -3767,7 +4038,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     initScripts?: outputs.JobTaskForEachTaskTaskNewClusterInitScript[];
     instancePoolId?: string;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: outputs.JobTaskForEachTaskTaskNewClusterLibrary[];
     nodeTypeId: string;
@@ -4329,7 +4600,7 @@ export interface JobTaskNewCluster {
     initScripts?: outputs.JobTaskNewClusterInitScript[];
     instancePoolId?: string;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: outputs.JobTaskNewClusterLibrary[];
     nodeTypeId: string;

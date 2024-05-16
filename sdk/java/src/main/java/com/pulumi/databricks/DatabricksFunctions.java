@@ -14,6 +14,8 @@ import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetCatalogArgs;
+import com.pulumi.databricks.inputs.GetCatalogPlainArgs;
 import com.pulumi.databricks.inputs.GetCatalogsArgs;
 import com.pulumi.databricks.inputs.GetCatalogsPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterArgs;
@@ -50,6 +52,8 @@ import com.pulumi.databricks.inputs.GetMetastoreArgs;
 import com.pulumi.databricks.inputs.GetMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoresArgs;
 import com.pulumi.databricks.inputs.GetMetastoresPlainArgs;
+import com.pulumi.databricks.inputs.GetMlflowExperimentArgs;
+import com.pulumi.databricks.inputs.GetMlflowExperimentPlainArgs;
 import com.pulumi.databricks.inputs.GetMlflowModelArgs;
 import com.pulumi.databricks.inputs.GetMlflowModelPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
@@ -84,6 +88,8 @@ import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialPlainArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialsPlainArgs;
+import com.pulumi.databricks.inputs.GetTableArgs;
+import com.pulumi.databricks.inputs.GetTablePlainArgs;
 import com.pulumi.databricks.inputs.GetTablesArgs;
 import com.pulumi.databricks.inputs.GetTablesPlainArgs;
 import com.pulumi.databricks.inputs.GetUserArgs;
@@ -96,6 +102,7 @@ import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsUnityCatalogPolicyResult;
+import com.pulumi.databricks.outputs.GetCatalogResult;
 import com.pulumi.databricks.outputs.GetCatalogsResult;
 import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
@@ -115,6 +122,7 @@ import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
 import com.pulumi.databricks.outputs.GetMetastoresResult;
+import com.pulumi.databricks.outputs.GetMlflowExperimentResult;
 import com.pulumi.databricks.outputs.GetMlflowModelResult;
 import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
@@ -132,6 +140,7 @@ import com.pulumi.databricks.outputs.GetSqlWarehouseResult;
 import com.pulumi.databricks.outputs.GetSqlWarehousesResult;
 import com.pulumi.databricks.outputs.GetStorageCredentialResult;
 import com.pulumi.databricks.outputs.GetStorageCredentialsResult;
+import com.pulumi.databricks.outputs.GetTableResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
 import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
@@ -1428,6 +1437,246 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific catalog `test`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges("USE_CATALOG")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
+     * 
+     */
+    public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args) {
+        return getCatalog(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific catalog `test`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges("USE_CATALOG")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
+     * 
+     */
+    public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args) {
+        return getCatalogPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific catalog `test`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges("USE_CATALOG")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
+     * 
+     */
+    public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific catalog `test`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges("USE_CATALOG")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
+     * 
+     */
+    public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -6576,6 +6825,60 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetMetastoresResult> getMetastoresPlain(GetMetastoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static Output<GetMlflowExperimentResult> getMlflowExperiment() {
+        return getMlflowExperiment(GetMlflowExperimentArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static CompletableFuture<GetMlflowExperimentResult> getMlflowExperimentPlain() {
+        return getMlflowExperimentPlain(GetMlflowExperimentPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static Output<GetMlflowExperimentResult> getMlflowExperiment(GetMlflowExperimentArgs args) {
+        return getMlflowExperiment(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static CompletableFuture<GetMlflowExperimentResult> getMlflowExperimentPlain(GetMlflowExperimentPlainArgs args) {
+        return getMlflowExperimentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static Output<GetMlflowExperimentResult> getMlflowExperiment(GetMlflowExperimentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMlflowExperiment:getMlflowExperiment", TypeShape.of(GetMlflowExperimentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowExperiment by id or name.
+     * 
+     */
+    public static CompletableFuture<GetMlflowExperimentResult> getMlflowExperimentPlain(GetMlflowExperimentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMlflowExperiment:getMlflowExperiment", TypeShape.of(GetMlflowExperimentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -12242,6 +12545,254 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetStorageCredentialsResult> getStorageCredentialsPlain(GetStorageCredentialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific table `main.certified.fct_transactions`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fctTransactions = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("main.certified.fct_transactions")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges(                
+     *                     "SELECT",
+     *                     "MODIFY")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getTables to list all tables within a schema in Unity Catalog.
+     * 
+     */
+    public static Output<GetTableResult> getTable(GetTableArgs args) {
+        return getTable(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific table `main.certified.fct_transactions`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fctTransactions = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("main.certified.fct_transactions")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges(                
+     *                     "SELECT",
+     *                     "MODIFY")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getTables to list all tables within a schema in Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetTableResult> getTablePlain(GetTablePlainArgs args) {
+        return getTablePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific table `main.certified.fct_transactions`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fctTransactions = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("main.certified.fct_transactions")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges(                
+     *                     "SELECT",
+     *                     "MODIFY")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getTables to list all tables within a schema in Unity Catalog.
+     * 
+     */
+    public static Output<GetTableResult> getTable(GetTableArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Read  on a specific table `main.certified.fct_transactions`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fctTransactions = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("main.certified.fct_transactions")
+     *             .build());
+     * 
+     *         var things = new Grants("things", GrantsArgs.builder()        
+     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .grants(GrantsGrantArgs.builder()
+     *                 .principal("sensitive")
+     *                 .privileges(                
+     *                     "SELECT",
+     *                     "MODIFY")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Grant to manage grants within Unity Catalog.
+     * * databricks.getTables to list all tables within a schema in Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetTableResult> getTablePlain(GetTablePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

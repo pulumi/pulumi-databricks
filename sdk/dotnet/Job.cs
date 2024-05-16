@@ -29,6 +29,9 @@ namespace Pulumi.Databricks
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration block to configure pause status. See continuous Configuration Block.
+        /// </summary>
         [Output("continuous")]
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
@@ -77,7 +80,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// An optional block that specifies the health conditions for the job documented below.
         /// </summary>
         [Output("health")]
         public Output<Outputs.JobHealth?> Health { get; private set; } = null!;
@@ -89,7 +92,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.JobJobCluster>> JobClusters { get; private set; } = null!;
 
         /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.JobLibrary>> Libraries { get; private set; } = null!;
@@ -127,6 +130,9 @@ namespace Pulumi.Databricks
         [Output("notificationSettings")]
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
 
@@ -136,6 +142,9 @@ namespace Pulumi.Databricks
         [Output("pythonWheelTask")]
         public Output<Outputs.JobPythonWheelTask?> PythonWheelTask { get; private set; } = null!;
 
+        /// <summary>
+        /// The queue status for the job. See queue Configuration Block below.
+        /// </summary>
         [Output("queue")]
         public Output<Outputs.JobQueue?> Queue { get; private set; } = null!;
 
@@ -254,6 +263,9 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        /// <summary>
+        /// Configuration block to configure pause status. See continuous Configuration Block.
+        /// </summary>
         [Input("continuous")]
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
@@ -307,7 +319,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// An optional block that specifies the health conditions for the job documented below.
         /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthArgs>? Health { get; set; }
@@ -328,7 +340,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobLibraryArgs>? _libraries;
 
         /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         /// </summary>
         public InputList<Inputs.JobLibraryArgs> Libraries
         {
@@ -371,6 +383,10 @@ namespace Pulumi.Databricks
 
         [Input("parameters")]
         private InputList<Inputs.JobParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// </summary>
         public InputList<Inputs.JobParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterArgs>());
@@ -383,6 +399,9 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskArgs>? PythonWheelTask { get; set; }
 
+        /// <summary>
+        /// The queue status for the job. See queue Configuration Block below.
+        /// </summary>
         [Input("queue")]
         public Input<Inputs.JobQueueArgs>? Queue { get; set; }
 
@@ -469,6 +488,9 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        /// <summary>
+        /// Configuration block to configure pause status. See continuous Configuration Block.
+        /// </summary>
         [Input("continuous")]
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
 
@@ -522,7 +544,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// An optional block that specifies the health conditions for the job documented below.
         /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthGetArgs>? Health { get; set; }
@@ -543,7 +565,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         /// </summary>
         public InputList<Inputs.JobLibraryGetArgs> Libraries
         {
@@ -586,6 +608,10 @@ namespace Pulumi.Databricks
 
         [Input("parameters")]
         private InputList<Inputs.JobParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// </summary>
         public InputList<Inputs.JobParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterGetArgs>());
@@ -598,6 +624,9 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskGetArgs>? PythonWheelTask { get; set; }
 
+        /// <summary>
+        /// The queue status for the job. See queue Configuration Block below.
+        /// </summary>
         [Input("queue")]
         public Input<Inputs.JobQueueGetArgs>? Queue { get; set; }
 

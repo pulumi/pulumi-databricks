@@ -78,6 +78,10 @@ export class SqlTable extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * Username/groupname/sp applicationId of the schema owner.
+     */
+    public readonly owner!: pulumi.Output<string>;
+    /**
      * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
      */
     public readonly partitions!: pulumi.Output<string[] | undefined>;
@@ -131,6 +135,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["dataSourceFormat"] = state ? state.dataSourceFormat : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["partitions"] = state ? state.partitions : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["schemaName"] = state ? state.schemaName : undefined;
@@ -158,6 +163,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["dataSourceFormat"] = args ? args.dataSourceFormat : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["partitions"] = args ? args.partitions : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["schemaName"] = args ? args.schemaName : undefined;
@@ -202,6 +208,10 @@ export interface SqlTableState {
      * Map of user defined table options. Change forces creation of a new resource.
      */
     options?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Username/groupname/sp applicationId of the schema owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
      */
@@ -266,6 +276,10 @@ export interface SqlTableArgs {
      * Map of user defined table options. Change forces creation of a new resource.
      */
     options?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Username/groupname/sp applicationId of the schema owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
      */

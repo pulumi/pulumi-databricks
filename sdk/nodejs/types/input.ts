@@ -408,6 +408,212 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
+export interface GetCatalogCatalogInfo {
+    browseOnly?: boolean;
+    /**
+     * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+     */
+    catalogType?: string;
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    /**
+     * The name of the connection to an external data source.
+     */
+    connectionName?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
+    createdBy?: string;
+    /**
+     * object describing applied predictive optimization flag.
+     */
+    effectivePredictiveOptimizationFlag?: inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: string;
+    /**
+     * The full name of the catalog. Corresponds with the name field.
+     */
+    fullName?: string;
+    /**
+     * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+     */
+    isolationMode?: string;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: string;
+    /**
+     * name of the catalog
+     */
+    name?: string;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    options?: {[key: string]: any};
+    /**
+     * Current owner of the catalog
+     */
+    owner?: string;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    properties?: {[key: string]: any};
+    /**
+     * The name of delta sharing provider.
+     */
+    providerName?: string;
+    provisioningInfo?: inputs.GetCatalogCatalogInfoProvisioningInfo;
+    /**
+     * Kind of catalog securable.
+     */
+    securableKind?: string;
+    /**
+     * Securable type.
+     */
+    securableType?: string;
+    /**
+     * The name of the share under the share provider.
+     */
+    shareName?: string;
+    /**
+     * Storage Location URL (full path) for managed tables within catalog.
+     */
+    storageLocation?: string;
+    /**
+     * Storage root URL for managed tables within catalog.
+     */
+    storageRoot?: string;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
+    updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
+    updatedBy?: string;
+}
+
+export interface GetCatalogCatalogInfoArgs {
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+     */
+    catalogType?: pulumi.Input<string>;
+    /**
+     * Free-form text description
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * The name of the connection to an external data source.
+     */
+    connectionName?: pulumi.Input<string>;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * Username of catalog creator.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * object describing applied predictive optimization flag.
+     */
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs>;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
+    /**
+     * The full name of the catalog. Corresponds with the name field.
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+     */
+    isolationMode?: pulumi.Input<string>;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * name of the catalog
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    options?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Current owner of the catalog
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * A map of key-value properties attached to the securable.
+     */
+    properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of delta sharing provider.
+     */
+    providerName?: pulumi.Input<string>;
+    provisioningInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoProvisioningInfoArgs>;
+    /**
+     * Kind of catalog securable.
+     */
+    securableKind?: pulumi.Input<string>;
+    /**
+     * Securable type.
+     */
+    securableType?: pulumi.Input<string>;
+    /**
+     * The name of the share under the share provider.
+     */
+    shareName?: pulumi.Input<string>;
+    /**
+     * Storage Location URL (full path) for managed tables within catalog.
+     */
+    storageLocation?: pulumi.Input<string>;
+    /**
+     * Storage root URL for managed tables within catalog.
+     */
+    storageRoot?: pulumi.Input<string>;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified catalog.
+     */
+    updatedBy?: pulumi.Input<string>;
+}
+
+export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs {
+    inheritedFromName?: pulumi.Input<string>;
+    inheritedFromType?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface GetCatalogCatalogInfoProvisioningInfo {
+    state?: string;
+}
+
+export interface GetCatalogCatalogInfoProvisioningInfoArgs {
+    state?: pulumi.Input<string>;
+}
+
 export interface GetClusterClusterInfo {
     autoscale?: inputs.GetClusterClusterInfoAutoscale;
     /**
@@ -4110,6 +4316,16 @@ export interface GetMetastoreMetastoreInfoArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
+export interface GetMlflowExperimentTag {
+    key?: string;
+    value?: string;
+}
+
+export interface GetMlflowExperimentTagArgs {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
 export interface GetMlflowModelLatestVersion {
     creationTimestamp?: number;
     currentStage?: string;
@@ -4504,6 +4720,332 @@ export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAc
     email?: pulumi.Input<string>;
 }
 
+export interface GetTableTableInfo {
+    accessPoint?: string;
+    browseOnly?: boolean;
+    /**
+     * Name of parent catalog.
+     */
+    catalogName?: string;
+    /**
+     * Array of ColumnInfo objects of the table's columns
+     */
+    columns?: inputs.GetTableTableInfoColumn[];
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    dataAccessConfigurationId?: string;
+    /**
+     * Table format, e.g. DELTA, CSV, JSON
+     */
+    dataSourceFormat?: string;
+    deletedAt?: number;
+    deltaRuntimePropertiesKvpairs?: inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairs;
+    effectivePredictiveOptimizationFlag?: inputs.GetTableTableInfoEffectivePredictiveOptimizationFlag;
+    enablePredictiveOptimization?: string;
+    encryptionDetails?: inputs.GetTableTableInfoEncryptionDetails;
+    fullName?: string;
+    metastoreId?: string;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    /**
+     * Current owner of the table
+     */
+    owner?: string;
+    pipelineId?: string;
+    properties?: {[key: string]: any};
+    rowFilter?: inputs.GetTableTableInfoRowFilter;
+    /**
+     * Name of parent schema relative to its parent catalog.
+     */
+    schemaName?: string;
+    sqlPath?: string;
+    storageCredentialName?: string;
+    storageLocation?: string;
+    tableConstraints?: inputs.GetTableTableInfoTableConstraint[];
+    tableId?: string;
+    /**
+     * Table type, e.g. MANAGED, EXTERNAL, VIEW
+     */
+    tableType?: string;
+    updatedAt?: number;
+    updatedBy?: string;
+    /**
+     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     */
+    viewDefinition?: string;
+    /**
+     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     */
+    viewDependencies?: inputs.GetTableTableInfoViewDependencies;
+}
+
+export interface GetTableTableInfoArgs {
+    accessPoint?: pulumi.Input<string>;
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * Name of parent catalog.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * Array of ColumnInfo objects of the table's columns
+     */
+    columns?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnArgs>[]>;
+    /**
+     * Free-form text description
+     */
+    comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    dataAccessConfigurationId?: pulumi.Input<string>;
+    /**
+     * Table format, e.g. DELTA, CSV, JSON
+     */
+    dataSourceFormat?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<number>;
+    deltaRuntimePropertiesKvpairs?: pulumi.Input<inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetTableTableInfoEffectivePredictiveOptimizationFlagArgs>;
+    enablePredictiveOptimization?: pulumi.Input<string>;
+    encryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsArgs>;
+    fullName?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Current owner of the table
+     */
+    owner?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string>;
+    properties?: pulumi.Input<{[key: string]: any}>;
+    rowFilter?: pulumi.Input<inputs.GetTableTableInfoRowFilterArgs>;
+    /**
+     * Name of parent schema relative to its parent catalog.
+     */
+    schemaName?: pulumi.Input<string>;
+    sqlPath?: pulumi.Input<string>;
+    storageCredentialName?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
+    tableConstraints?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoTableConstraintArgs>[]>;
+    tableId?: pulumi.Input<string>;
+    /**
+     * Table type, e.g. MANAGED, EXTERNAL, VIEW
+     */
+    tableType?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
+    /**
+     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     */
+    viewDefinition?: pulumi.Input<string>;
+    /**
+     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     */
+    viewDependencies?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesArgs>;
+}
+
+export interface GetTableTableInfoColumn {
+    /**
+     * Free-form text description
+     */
+    comment?: string;
+    mask?: inputs.GetTableTableInfoColumnMask;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    nullable?: boolean;
+    partitionIndex?: number;
+    position?: number;
+    typeIntervalType?: string;
+    typeJson?: string;
+    typeName?: string;
+    typePrecision?: number;
+    typeScale?: number;
+    typeText?: string;
+}
+
+export interface GetTableTableInfoColumnArgs {
+    /**
+     * Free-form text description
+     */
+    comment?: pulumi.Input<string>;
+    mask?: pulumi.Input<inputs.GetTableTableInfoColumnMaskArgs>;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: pulumi.Input<string>;
+    nullable?: pulumi.Input<boolean>;
+    partitionIndex?: pulumi.Input<number>;
+    position?: pulumi.Input<number>;
+    typeIntervalType?: pulumi.Input<string>;
+    typeJson?: pulumi.Input<string>;
+    typeName?: pulumi.Input<string>;
+    typePrecision?: pulumi.Input<number>;
+    typeScale?: pulumi.Input<number>;
+    typeText?: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoColumnMask {
+    functionName?: string;
+    usingColumnNames?: string[];
+}
+
+export interface GetTableTableInfoColumnMaskArgs {
+    functionName?: pulumi.Input<string>;
+    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
+    deltaRuntimeProperties: {[key: string]: any};
+}
+
+export interface GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs {
+    deltaRuntimeProperties: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface GetTableTableInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface GetTableTableInfoEffectivePredictiveOptimizationFlagArgs {
+    inheritedFromName?: pulumi.Input<string>;
+    inheritedFromType?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoEncryptionDetails {
+    sseEncryptionDetails?: inputs.GetTableTableInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetTableTableInfoEncryptionDetailsArgs {
+    sseEncryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+}
+
+export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
+export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs {
+    algorithm?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoRowFilter {
+    functionName: string;
+    inputColumnNames: string[];
+}
+
+export interface GetTableTableInfoRowFilterArgs {
+    functionName: pulumi.Input<string>;
+    inputColumnNames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetTableTableInfoTableConstraint {
+    foreignKeyConstraint?: inputs.GetTableTableInfoTableConstraintForeignKeyConstraint;
+    namedTableConstraint?: inputs.GetTableTableInfoTableConstraintNamedTableConstraint;
+    primaryKeyConstraint?: inputs.GetTableTableInfoTableConstraintPrimaryKeyConstraint;
+}
+
+export interface GetTableTableInfoTableConstraintArgs {
+    foreignKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintForeignKeyConstraintArgs>;
+    namedTableConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintNamedTableConstraintArgs>;
+    primaryKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs>;
+}
+
+export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
+    childColumns: string[];
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+    parentColumns: string[];
+    parentTable: string;
+}
+
+export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
+    childColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: pulumi.Input<string>;
+    parentColumns: pulumi.Input<pulumi.Input<string>[]>;
+    parentTable: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoTableConstraintNamedTableConstraint {
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+}
+
+export interface GetTableTableInfoTableConstraintNamedTableConstraintArgs {
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
+    childColumns: string[];
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: string;
+}
+
+export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
+    childColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoViewDependencies {
+    dependencies?: inputs.GetTableTableInfoViewDependenciesDependency[];
+}
+
+export interface GetTableTableInfoViewDependenciesArgs {
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyArgs>[]>;
+}
+
+export interface GetTableTableInfoViewDependenciesDependency {
+    function?: inputs.GetTableTableInfoViewDependenciesDependencyFunction;
+    table?: inputs.GetTableTableInfoViewDependenciesDependencyTable;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyArgs {
+    function?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyFunctionArgs>;
+    table?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyTableArgs>;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyFunction {
+    functionFullName: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyFunctionArgs {
+    functionFullName: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyTable {
+    tableFullName: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyTableArgs {
+    tableFullName: pulumi.Input<string>;
+}
+
 export interface GrantsGrant {
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
@@ -4797,7 +5339,7 @@ export interface JobJobClusterNewCluster {
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
@@ -5029,7 +5571,7 @@ export interface JobNewCluster {
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
@@ -5799,7 +6341,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
@@ -6361,7 +6903,7 @@ export interface JobTaskNewCluster {
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
     /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;

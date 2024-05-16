@@ -22,6 +22,7 @@ from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
 from .get_aws_unity_catalog_policy import *
+from .get_catalog import *
 from .get_catalogs import *
 from .get_cluster import *
 from .get_cluster_policy import *
@@ -41,6 +42,7 @@ from .get_job import *
 from .get_jobs import *
 from .get_metastore import *
 from .get_metastores import *
+from .get_mlflow_experiment import *
 from .get_mlflow_model import *
 from .get_mws_credentials import *
 from .get_mws_workspaces import *
@@ -58,6 +60,7 @@ from .get_sql_warehouse import *
 from .get_sql_warehouses import *
 from .get_storage_credential import *
 from .get_storage_credentials import *
+from .get_table import *
 from .get_tables import *
 from .get_user import *
 from .get_views import *

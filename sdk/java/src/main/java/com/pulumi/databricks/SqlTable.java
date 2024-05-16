@@ -135,6 +135,20 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
+     * Username/groupname/sp application_id of the schema owner.
+     * 
+     */
+    @Export(name="owner", refs={String.class}, tree="[0]")
+    private Output<String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the schema owner.
+     * 
+     */
+    public Output<String> owner() {
+        return this.owner;
+    }
+    /**
      * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */

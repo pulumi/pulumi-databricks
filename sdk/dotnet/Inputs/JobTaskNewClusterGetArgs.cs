@@ -94,7 +94,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.JobTaskNewClusterLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         /// </summary>
         public InputList<Inputs.JobTaskNewClusterLibraryGetArgs> Libraries
         {
