@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ModelServing("this", ModelServingArgs.builder()        
+ *         var this_ = new ModelServing("this", ModelServingArgs.builder()
  *             .name("ads-serving-endpoint")
  *             .config(ModelServingConfigArgs.builder()
  *                 .servedEntities(                

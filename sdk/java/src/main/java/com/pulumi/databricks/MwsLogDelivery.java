@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()        
+ *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()
  *             .accountId(databricksAccountId)
  *             .credentialsId(logWriter.credentialsId())
  *             .storageConfigurationId(logBucket.storageConfigurationId())
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auditLogs = new MwsLogDelivery("auditLogs", MwsLogDeliveryArgs.builder()        
+ *         var auditLogs = new MwsLogDelivery("auditLogs", MwsLogDeliveryArgs.builder()
  *             .accountId(databricksAccountId)
  *             .credentialsId(logWriter.credentialsId())
  *             .storageConfigurationId(logBucket.storageConfigurationId())

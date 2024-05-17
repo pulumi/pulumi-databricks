@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myUser = new User("myUser", UserArgs.builder()        
+ *         var myUser = new User("myUser", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var myUserInstanceProfile = new UserInstanceProfile("myUserInstanceProfile", UserInstanceProfileArgs.builder()        
+ *         var myUserInstanceProfile = new UserInstanceProfile("myUserInstanceProfile", UserInstanceProfileArgs.builder()
  *             .userId(myUser.id())
  *             .instanceProfileId(instanceProfile.id())
  *             .build());

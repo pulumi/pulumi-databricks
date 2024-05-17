@@ -49,21 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ds = new Group("ds", GroupArgs.builder()        
+ *         var ds = new Group("ds", GroupArgs.builder()
  *             .displayName("data-scientists")
  *             .build());
  * 
- *         var app = new SecretScope("app", SecretScopeArgs.builder()        
+ *         var app = new SecretScope("app", SecretScopeArgs.builder()
  *             .name("app-secret-scope")
  *             .build());
  * 
- *         var mySecretAcl = new SecretAcl("mySecretAcl", SecretAclArgs.builder()        
+ *         var mySecretAcl = new SecretAcl("mySecretAcl", SecretAclArgs.builder()
  *             .principal(ds.displayName())
  *             .permission("READ")
  *             .scope(app.name())
  *             .build());
  * 
- *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()        
+ *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()
  *             .key("publishing_api")
  *             .stringValue(example.value())
  *             .scope(app.name())

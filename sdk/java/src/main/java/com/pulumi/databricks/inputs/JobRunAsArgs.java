@@ -44,7 +44,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new Job("this", JobArgs.builder()        
+     *         var this_ = new Job("this", JobArgs.builder()
      *             .runAs(JobRunAsArgs.builder()
      *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
      *                 .build())
@@ -89,7 +89,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new Job("this", JobArgs.builder()        
+     *         var this_ = new Job("this", JobArgs.builder()
      *             .runAs(JobRunAsArgs.builder()
      *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
      *                 .build())
@@ -175,7 +175,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new Job("this", JobArgs.builder()        
+         *         var this_ = new Job("this", JobArgs.builder()
          *             .runAs(JobRunAsArgs.builder()
          *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
          *                 .build())
@@ -224,7 +224,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new Job("this", JobArgs.builder()        
+         *         var this_ = new Job("this", JobArgs.builder()
          *             .runAs(JobRunAsArgs.builder()
          *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
          *                 .build())

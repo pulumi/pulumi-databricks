@@ -81,6 +81,8 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
 
     /**
      * Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
      */
     @Import(name="indexType")
@@ -88,6 +90,8 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
      */
     public Optional<Output<String>> indexType() {
@@ -256,6 +260,8 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
 
         /**
          * @param indexType Vector Search index type. Currently supported values are:
+         * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+         * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
          * 
          * @return builder
          * 
@@ -267,6 +273,8 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
 
         /**
          * @param indexType Vector Search index type. Currently supported values are:
+         * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+         * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
          * 
          * @return builder
          * 

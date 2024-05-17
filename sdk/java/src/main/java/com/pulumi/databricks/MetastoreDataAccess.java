@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Metastore("this", MetastoreArgs.builder()        
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
  *             .name("primary")
  *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
  *             .owner("uc admins")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var thisMetastoreDataAccess = new MetastoreDataAccess("thisMetastoreDataAccess", MetastoreDataAccessArgs.builder()        
+ *         var thisMetastoreDataAccess = new MetastoreDataAccess("thisMetastoreDataAccess", MetastoreDataAccessArgs.builder()
  *             .metastoreId(this_.id())
  *             .name(metastoreDataAccess.name())
  *             .awsIamRole(MetastoreDataAccessAwsIamRoleArgs.builder()

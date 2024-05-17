@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region");
  *         final var prefix = config.get("prefix");
- *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()        
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
  *             .name(String.format("Network Connectivity Config for %s", prefix))
  *             .region(region)
  *             .build());
  * 
- *         var storage = new MwsNccPrivateEndpointRule("storage", MwsNccPrivateEndpointRuleArgs.builder()        
+ *         var storage = new MwsNccPrivateEndpointRule("storage", MwsNccPrivateEndpointRuleArgs.builder()
  *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
  *             .resourceId("/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa")
  *             .groupId("blob")
@@ -91,6 +91,10 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
+     * * `PENDING`: The endpoint has been created and pending approval.
+     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+     * * `REJECTED`: Connection was rejected by the private link resource owner.
+     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * 
      */
     @Export(name="connectionState", refs={String.class}, tree="[0]")
@@ -99,6 +103,10 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
     /**
      * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
+     * * `PENDING`: The endpoint has been created and pending approval.
+     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+     * * `REJECTED`: Connection was rejected by the private link resource owner.
+     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * 
      */
     public Output<String> connectionState() {

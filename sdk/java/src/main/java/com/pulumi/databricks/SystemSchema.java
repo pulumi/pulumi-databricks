@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SystemSchema("this", SystemSchemaArgs.builder()        
+ *         var this_ = new SystemSchema("this", SystemSchemaArgs.builder()
  *             .schema("access")
  *             .build());
  * 

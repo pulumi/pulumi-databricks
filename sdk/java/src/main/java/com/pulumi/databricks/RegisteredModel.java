@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new RegisteredModel("this", RegisteredModelArgs.builder()        
+ *         var this_ = new RegisteredModel("this", RegisteredModelArgs.builder()
  *             .name("my_model")
  *             .catalogName("main")
  *             .schemaName("default")

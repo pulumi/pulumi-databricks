@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myUser = new User("myUser", UserArgs.builder()        
+ *         var myUser = new User("myUser", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var myUserRole = new UserRole("myUserRole", UserRoleArgs.builder()        
+ *         var myUserRole = new UserRole("myUserRole", UserRoleArgs.builder()
  *             .userId(myUser.id())
  *             .role(instanceProfile.id())
  *             .build());
@@ -93,11 +93,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myUser = new User("myUser", UserArgs.builder()        
+ *         var myUser = new User("myUser", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var myUserAccountAdmin = new UserRole("myUserAccountAdmin", UserRoleArgs.builder()        
+ *         var myUserAccountAdmin = new UserRole("myUserAccountAdmin", UserRoleArgs.builder()
  *             .userId(myUser.id())
  *             .role("account_admin")
  *             .build());

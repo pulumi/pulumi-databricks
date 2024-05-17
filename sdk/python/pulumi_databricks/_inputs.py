@@ -1527,6 +1527,9 @@ class ClusterGcpAttributesArgs:
         :param pulumi.Input[int] local_ssd_count: Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
         :param pulumi.Input[bool] use_preemptible_executors: if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
         :param pulumi.Input[str] zone_id: Identifier for the availability zone in which the cluster resides. This can be one of the following:
+               * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+               * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+               * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1606,6 +1609,9 @@ class ClusterGcpAttributesArgs:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+        * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+        * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
         """
         return pulumi.get(self, "zone_id")
 
@@ -20374,11 +20380,6 @@ class SqlPermissionsPrivilegeAssignmentArgs:
                  privileges: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: set of available privilege names in upper case.
-               
-               
-               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         pulumi.set(__self__, "principal", principal)
         pulumi.set(__self__, "privileges", privileges)
@@ -20398,13 +20399,6 @@ class SqlPermissionsPrivilegeAssignmentArgs:
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        set of available privilege names in upper case.
-
-
-        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter

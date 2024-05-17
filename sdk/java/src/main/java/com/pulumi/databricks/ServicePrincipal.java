@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .displayName("Admin SP")
  *             .build());
  * 
@@ -101,11 +101,11 @@ import javax.annotation.Nullable;
  *             .displayName("admins")
  *             .build());
  * 
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .displayName("Admin SP")
  *             .build());
  * 
- *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()        
+ *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()
  *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
  *             .memberId(sp.id())
  *             .build());
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .applicationId("00000000-0000-0000-0000-000000000000")
  *             .displayName("Example service principal")
  *             .allowClusterCreate(true)
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .displayName("Automation-only SP")
  *             .build());
  * 
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .applicationId("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 

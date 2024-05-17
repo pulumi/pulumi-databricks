@@ -2670,6 +2670,9 @@ type ClusterGcpAttributes struct {
 	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
 	UsePreemptibleExecutors *bool `pulumi:"usePreemptibleExecutors"`
 	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+	// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+	// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -2696,6 +2699,9 @@ type ClusterGcpAttributesArgs struct {
 	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
 	UsePreemptibleExecutors pulumi.BoolPtrInput `pulumi:"usePreemptibleExecutors"`
 	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+	// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+	// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -2802,6 +2808,9 @@ func (o ClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutp
 }
 
 // Identifier for the availability zone in which the cluster resides. This can be one of the following:
+// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 func (o ClusterGcpAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -2881,6 +2890,9 @@ func (o ClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrO
 }
 
 // Identifier for the availability zone in which the cluster resides. This can be one of the following:
+// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 func (o ClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *string {
 		if v == nil {
@@ -61486,11 +61498,7 @@ func (o SqlEndpointTagsCustomTagArrayOutput) Index(i pulumi.IntInput) SqlEndpoin
 
 type SqlPermissionsPrivilegeAssignment struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal string `pulumi:"principal"`
-	// set of available privilege names in upper case.
-	//
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+	Principal  string   `pulumi:"principal"`
 	Privileges []string `pulumi:"privileges"`
 }
 
@@ -61507,11 +61515,7 @@ type SqlPermissionsPrivilegeAssignmentInput interface {
 
 type SqlPermissionsPrivilegeAssignmentArgs struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal pulumi.StringInput `pulumi:"principal"`
-	// set of available privilege names in upper case.
-	//
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+	Principal  pulumi.StringInput      `pulumi:"principal"`
 	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
 }
 
@@ -61571,10 +61575,6 @@ func (o SqlPermissionsPrivilegeAssignmentOutput) Principal() pulumi.StringOutput
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) string { return v.Principal }).(pulumi.StringOutput)
 }
 
-// set of available privilege names in upper case.
-//
-// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 func (o SqlPermissionsPrivilegeAssignmentOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) []string { return v.Privileges }).(pulumi.StringArrayOutput)
 }

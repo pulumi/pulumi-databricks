@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
@@ -65,14 +65,14 @@ import javax.annotation.Nullable;
  *             .comment("Managed by TF")
  *             .build());
  * 
- *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()        
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("external")
  *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
  *             .credentialName(external.id())
  *             .comment("Managed by TF")
  *             .build());
  * 
- *         var someGrants = new Grants("someGrants", GrantsArgs.builder()        
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()
  *             .externalLocation(some.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")

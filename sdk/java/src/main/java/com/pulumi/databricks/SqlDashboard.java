@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
  *             .path("/Shared/Dashboards")
  *             .build());
  * 
- *         var d1 = new SqlDashboard("d1", SqlDashboardArgs.builder()        
+ *         var d1 = new SqlDashboard("d1", SqlDashboardArgs.builder()
  *             .name("My Dashboard Name")
  *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
  *             .tags(            
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var d1 = new Permissions("d1", PermissionsArgs.builder()        
+ *         var d1 = new Permissions("d1", PermissionsArgs.builder()
  *             .sqlDashboardId(d1DatabricksSqlDashboard.id())
  *             .accessControls(PermissionsAccessControlArgs.builder()
  *                 .groupName(users.displayName())

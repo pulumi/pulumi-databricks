@@ -26,6 +26,8 @@ class MwsCustomerManagedKeysArgs:
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+               * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+               * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
@@ -59,6 +61,8 @@ class MwsCustomerManagedKeysArgs:
     def use_cases(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         return pulumi.get(self, "use_cases")
 
@@ -132,6 +136,8 @@ class _MwsCustomerManagedKeysState:
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
         :param pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs'] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+               * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+               * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -211,6 +217,8 @@ class _MwsCustomerManagedKeysState:
     def use_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         return pulumi.get(self, "use_cases")
 
@@ -446,6 +454,8 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
         :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysGcpKeyInfoArgs']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+               * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+               * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         ...
     @overload
@@ -729,6 +739,8 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
         :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysGcpKeyInfoArgs']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+               * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+               * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -787,6 +799,8 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     def use_cases(self) -> pulumi.Output[Sequence[str]]:
         """
         *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
         """
         return pulumi.get(self, "use_cases")
 

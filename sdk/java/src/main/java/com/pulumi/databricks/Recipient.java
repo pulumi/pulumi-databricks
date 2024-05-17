@@ -63,14 +63,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var db2opensharecode = new Password("db2opensharecode", PasswordArgs.builder()        
+ *         var db2opensharecode = new Password("db2opensharecode", PasswordArgs.builder()
  *             .length(16)
  *             .special(true)
  *             .build());
  * 
  *         final var current = DatabricksFunctions.getCurrentUser();
  * 
- *         var db2open = new Recipient("db2open", RecipientArgs.builder()        
+ *         var db2open = new Recipient("db2open", RecipientArgs.builder()
  *             .name(String.format("%s-recipient", current.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .comment("made by terraform")
  *             .authenticationType("TOKEN")

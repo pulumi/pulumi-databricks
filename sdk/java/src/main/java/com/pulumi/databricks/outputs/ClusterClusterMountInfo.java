@@ -47,7 +47,7 @@ public final class ClusterClusterMountInfo {
      * 
      *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
      *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
@@ -112,7 +112,7 @@ public final class ClusterClusterMountInfo {
      * 
      *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
      *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))

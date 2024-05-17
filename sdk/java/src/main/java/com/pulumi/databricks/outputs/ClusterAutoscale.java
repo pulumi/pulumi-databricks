@@ -59,7 +59,7 @@ public final class ClusterAutoscale {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
      *             .clusterName("Single Node")
      *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -134,7 +134,7 @@ public final class ClusterAutoscale {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()        
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
      *             .clusterName("Single Node")
      *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
