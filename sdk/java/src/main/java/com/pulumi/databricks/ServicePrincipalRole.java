@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()        
+ *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()
  *             .displayName("My Service Principal")
  *             .build());
  * 
- *         var myServicePrincipalInstanceProfile = new ServicePrincipalRole("myServicePrincipalInstanceProfile", ServicePrincipalRoleArgs.builder()        
+ *         var myServicePrincipalInstanceProfile = new ServicePrincipalRole("myServicePrincipalInstanceProfile", ServicePrincipalRoleArgs.builder()
  *             .servicePrincipalId(this_.id())
  *             .role(instanceProfile.id())
  *             .build());

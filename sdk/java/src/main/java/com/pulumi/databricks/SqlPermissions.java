@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()        
+ *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
  *             .table("foo")
  *             .privilegeAssignments(            
  *                 SqlPermissionsPrivilegeAssignmentArgs.builder()

@@ -64,11 +64,11 @@ import javax.annotation.Nullable;
  *             .displayName("Data Science")
  *             .build());
  * 
- *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()        
+ *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()
  *             .displayName("SP_FOR_AUTOMATION")
  *             .build());
  * 
- *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
@@ -115,15 +115,15 @@ import javax.annotation.Nullable;
  *         final var accountId = "00000000-0000-0000-0000-000000000000";
  * 
  *         // account level group creation
- *         var ds = new Group("ds", GroupArgs.builder()        
+ *         var ds = new Group("ds", GroupArgs.builder()
  *             .displayName("Data Science")
  *             .build());
  * 
- *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()        
+ *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()
  *             .displayName("SP_FOR_AUTOMATION")
  *             .build());
  * 
- *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
@@ -170,16 +170,16 @@ import javax.annotation.Nullable;
  *         final var accountId = "00000000-0000-0000-0000-000000000000";
  * 
  *         // account level group creation
- *         var ds = new Group("ds", GroupArgs.builder()        
+ *         var ds = new Group("ds", GroupArgs.builder()
  *             .displayName("Data Science")
  *             .build());
  * 
- *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()        
+ *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()
  *             .applicationId("00000000-0000-0000-0000-000000000000")
  *             .displayName("SP_FOR_AUTOMATION")
  *             .build());
  * 
- *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
@@ -226,15 +226,15 @@ import javax.annotation.Nullable;
  *         final var accountId = "00000000-0000-0000-0000-000000000000";
  * 
  *         // account level group creation
- *         var ds = new Group("ds", GroupArgs.builder()        
+ *         var ds = new Group("ds", GroupArgs.builder()
  *             .displayName("Data Science")
  *             .build());
  * 
- *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()        
+ *         var automationSp = new ServicePrincipal("automationSp", ServicePrincipalArgs.builder()
  *             .displayName("SP_FOR_AUTOMATION")
  *             .build());
  * 
- *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
@@ -290,7 +290,7 @@ import javax.annotation.Nullable;
  *             .userName("john.doe{@literal @}example.com")
  *             .build());
  * 
- *         var dsGroupRuleSet = new AccessControlRuleSet("dsGroupRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var dsGroupRuleSet = new AccessControlRuleSet("dsGroupRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(String.format("accounts/%s/groups/%s/ruleSets/default", accountId,dsDatabricksGroup.id()))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(john.applyValue(getUserResult -> getUserResult.aclPrincipalId()))
@@ -351,7 +351,7 @@ import javax.annotation.Nullable;
  *             .userName("john.doe{@literal @}example.com")
  *             .build());
  * 
- *         var accountRuleSet = new AccessControlRuleSet("accountRuleSet", AccessControlRuleSetArgs.builder()        
+ *         var accountRuleSet = new AccessControlRuleSet("accountRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(String.format("accounts/%s/ruleSets/default", accountId))
  *             .grantRules(            
  *                 AccessControlRuleSetGrantRuleArgs.builder()

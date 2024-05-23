@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataEng = new Group("dataEng", GroupArgs.builder()        
+ *         var dataEng = new Group("dataEng", GroupArgs.builder()
  *             .displayName("Data Engineering")
  *             .build());
  * 
- *         var addAdminGroup = new MwsPermissionAssignment("addAdminGroup", MwsPermissionAssignmentArgs.builder()        
+ *         var addAdminGroup = new MwsPermissionAssignment("addAdminGroup", MwsPermissionAssignmentArgs.builder()
  *             .workspaceId(this_.workspaceId())
  *             .principalId(dataEng.id())
  *             .permissions("ADMIN")
@@ -90,11 +90,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User("me", UserArgs.builder()        
+ *         var me = new User("me", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var addUser = new MwsPermissionAssignment("addUser", MwsPermissionAssignmentArgs.builder()        
+ *         var addUser = new MwsPermissionAssignment("addUser", MwsPermissionAssignmentArgs.builder()
  *             .workspaceId(this_.workspaceId())
  *             .principalId(me.id())
  *             .permissions("USER")
@@ -133,11 +133,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()        
+ *         var sp = new ServicePrincipal("sp", ServicePrincipalArgs.builder()
  *             .displayName("Automation-only SP")
  *             .build());
  * 
- *         var addAdminSpn = new MwsPermissionAssignment("addAdminSpn", MwsPermissionAssignmentArgs.builder()        
+ *         var addAdminSpn = new MwsPermissionAssignment("addAdminSpn", MwsPermissionAssignmentArgs.builder()
  *             .workspaceId(this_.workspaceId())
  *             .principalId(sp.id())
  *             .permissions("ADMIN")

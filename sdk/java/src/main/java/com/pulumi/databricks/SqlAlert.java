@@ -51,18 +51,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
  *             .path("/Shared/Queries")
  *             .build());
  * 
- *         var this_ = new SqlQuery("this", SqlQueryArgs.builder()        
+ *         var this_ = new SqlQuery("this", SqlQueryArgs.builder()
  *             .dataSourceId(example.dataSourceId())
  *             .name("My Query Name")
  *             .query("SELECT 1 AS p1, 2 as p2")
  *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
  *             .build());
  * 
- *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()        
+ *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()
  *             .queryId(this_.id())
  *             .name("My Alert")
  *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))

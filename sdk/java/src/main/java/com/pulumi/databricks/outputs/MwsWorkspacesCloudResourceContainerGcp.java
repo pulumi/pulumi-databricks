@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesCloudResourceContainerGcp {
+    /**
+     * @return The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+     * 
+     */
     private String projectId;
 
     private MwsWorkspacesCloudResourceContainerGcp() {}
+    /**
+     * @return The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

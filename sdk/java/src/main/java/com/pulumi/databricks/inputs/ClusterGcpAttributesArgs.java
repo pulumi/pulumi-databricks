@@ -94,6 +94,9 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
 
     /**
      * Identifier for the availability zone in which the cluster resides. This can be one of the following:
+     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
      * 
      */
     @Import(name="zoneId")
@@ -101,6 +104,9 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Identifier for the availability zone in which the cluster resides. This can be one of the following:
+     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -243,6 +249,9 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param zoneId Identifier for the availability zone in which the cluster resides. This can be one of the following:
+         * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+         * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+         * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
          * 
          * @return builder
          * 
@@ -254,6 +263,9 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param zoneId Identifier for the availability zone in which the cluster resides. This can be one of the following:
+         * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+         * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+         * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
          * 
          * @return builder
          * 

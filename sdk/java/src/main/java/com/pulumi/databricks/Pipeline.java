@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var dltDemoRepo = new Repo("dltDemoRepo");
  * 
- *         var this_ = new Pipeline("this", PipelineArgs.builder()        
+ *         var this_ = new Pipeline("this", PipelineArgs.builder()
  *             .name("Pipeline Name")
  *             .storage("/test/first-pipeline")
  *             .configuration(Map.ofEntries(

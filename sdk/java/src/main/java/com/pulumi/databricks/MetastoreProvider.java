@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbprovider = new MetastoreProvider("dbprovider", MetastoreProviderArgs.builder()        
+ *         var dbprovider = new MetastoreProvider("dbprovider", MetastoreProviderArgs.builder()
  *             .name("terraform-test-provider")
  *             .comment("made by terraform 2")
  *             .authenticationType("TOKEN")

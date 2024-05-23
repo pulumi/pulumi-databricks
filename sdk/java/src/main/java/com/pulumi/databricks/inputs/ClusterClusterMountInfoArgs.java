@@ -51,7 +51,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * 
      *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
      *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
@@ -106,7 +106,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * 
      *         final var storageContainer = "test";
      * 
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
      *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
@@ -218,7 +218,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * 
          *         final var storageContainer = "test";
          * 
-         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
          *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
          *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
          *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
@@ -277,7 +277,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * 
          *         final var storageContainer = "test";
          * 
-         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
          *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
          *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
          *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))

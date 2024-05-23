@@ -385,6 +385,8 @@ type MwsCustomerManagedKeys struct {
 	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrOutput `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+	// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+	// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 	UseCases pulumi.StringArrayOutput `pulumi:"useCases"`
 }
 
@@ -435,6 +437,8 @@ type mwsCustomerManagedKeysState struct {
 	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 	GcpKeyInfo *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+	// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+	// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 	UseCases []string `pulumi:"useCases"`
 }
 
@@ -450,6 +454,8 @@ type MwsCustomerManagedKeysState struct {
 	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrInput
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+	// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+	// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 	UseCases pulumi.StringArrayInput
 }
 
@@ -469,6 +475,8 @@ type mwsCustomerManagedKeysArgs struct {
 	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 	GcpKeyInfo *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+	// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+	// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 	UseCases []string `pulumi:"useCases"`
 }
 
@@ -485,6 +493,8 @@ type MwsCustomerManagedKeysArgs struct {
 	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrInput
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+	// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+	// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 	UseCases pulumi.StringArrayInput
 }
 
@@ -601,6 +611,8 @@ func (o MwsCustomerManagedKeysOutput) GcpKeyInfo() MwsCustomerManagedKeysGcpKeyI
 }
 
 // *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+// * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
 func (o MwsCustomerManagedKeysOutput) UseCases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) pulumi.StringArrayOutput { return v.UseCases }).(pulumi.StringArrayOutput)
 }

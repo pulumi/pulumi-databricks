@@ -49,12 +49,12 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
      *             .build()
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()        
+     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
      *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
@@ -106,12 +106,12 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
      *             .build()
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()        
+     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
      *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
@@ -204,12 +204,12 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
          *             .build()
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()        
+         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
          *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
@@ -265,12 +265,12 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
          *             .build()
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()        
+         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
          *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()

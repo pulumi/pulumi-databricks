@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region");
  *         final var prefix = config.get("prefix");
- *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()        
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
  *             .name(String.format("Network Connectivity Config for %s", prefix))
  *             .region(region)
  *             .build());
  * 
- *         var nccBinding = new MwsNccBinding("nccBinding", MwsNccBindingArgs.builder()        
+ *         var nccBinding = new MwsNccBinding("nccBinding", MwsNccBindingArgs.builder()
  *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
  *             .workspaceId(databricksWorkspaceId)
  *             .build());

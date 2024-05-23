@@ -61,20 +61,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
  *             .name("sandbox")
  *             .comment("this catalog is managed by terraform")
  *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
- *         var things = new Schema("things", SchemaArgs.builder()        
+ *         var things = new Schema("things", SchemaArgs.builder()
  *             .catalogName(sandbox.id())
  *             .name("things")
  *             .comment("this database is managed by terraform")
  *             .properties(Map.of("kind", "various"))
  *             .build());
  * 
- *         var myTestTable = new SqlTable("myTestTable", SqlTableArgs.builder()        
+ *         var myTestTable = new SqlTable("myTestTable", SqlTableArgs.builder()
  *             .catalogName("main")
  *             .schemaName(things.name())
  *             .name("bar")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var testTimeseriesMonitor = new LakehouseMonitor("testTimeseriesMonitor", LakehouseMonitorArgs.builder()        
+ *         var testTimeseriesMonitor = new LakehouseMonitor("testTimeseriesMonitor", LakehouseMonitorArgs.builder()
  *             .tableName(Output.tuple(sandbox.name(), things.name(), myTestTable.name()).applyValue(values -> {
  *                 var sandboxName = values.t1;
  *                 var thingsName = values.t2;
@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()        
+ *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()
  *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
  *             .assetsDir(String.format("/Shared/provider-test/databricks_lakehouse_monitoring/%s", myTestTable.name()))
  *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()        
+ *         var testMonitorInference = new LakehouseMonitor("testMonitorInference", LakehouseMonitorArgs.builder()
  *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
  *             .assetsDir(String.format("/Shared/provider-test/databricks_lakehouse_monitoring/%s", myTestTable.name()))
  *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))

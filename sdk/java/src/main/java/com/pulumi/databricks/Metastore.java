@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Metastore("this", MetastoreArgs.builder()        
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
  *             .name("primary")
  *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
  *             .owner("uc admins")
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()        
+ *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()
  *             .metastoreId(this_.id())
  *             .workspaceId(workspaceId)
  *             .build());

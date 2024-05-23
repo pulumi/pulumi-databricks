@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User("me", UserArgs.builder()        
+ *         var me = new User("me", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
@@ -96,11 +96,11 @@ import javax.annotation.Nullable;
  *             .displayName("admins")
  *             .build());
  * 
- *         var me = new User("me", UserArgs.builder()        
+ *         var me = new User("me", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()        
+ *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()
  *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
  *             .memberId(me.id())
  *             .build());
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var me = new User("me", UserArgs.builder()        
+ *         var me = new User("me", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .displayName("Example user")
  *             .allowClusterCreate(true)
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var accountUser = new User("accountUser", UserArgs.builder()        
+ *         var accountUser = new User("accountUser", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .displayName("Example user")
  *             .build());
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var accountUser = new User("accountUser", UserArgs.builder()        
+ *         var accountUser = new User("accountUser", UserArgs.builder()
  *             .userName("me{@literal @}example.com")
  *             .displayName("Example user")
  *             .build());

@@ -2670,6 +2670,9 @@ type ClusterGcpAttributes struct {
 	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
 	UsePreemptibleExecutors *bool `pulumi:"usePreemptibleExecutors"`
 	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+	// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+	// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -2696,6 +2699,9 @@ type ClusterGcpAttributesArgs struct {
 	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
 	UsePreemptibleExecutors pulumi.BoolPtrInput `pulumi:"usePreemptibleExecutors"`
 	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+	// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+	// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -2802,6 +2808,9 @@ func (o ClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutp
 }
 
 // Identifier for the availability zone in which the cluster resides. This can be one of the following:
+// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 func (o ClusterGcpAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -2881,6 +2890,9 @@ func (o ClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrO
 }
 
 // Identifier for the availability zone in which the cluster resides. This can be one of the following:
+// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
 func (o ClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *string {
 		if v == nil {
@@ -47792,22 +47804,15 @@ func (o ModelServingConfigServedEntityArrayOutput) Index(i pulumi.IntInput) Mode
 }
 
 type ModelServingConfigServedEntityExternalModel struct {
-	// AI21Labs Config
-	Ai21labsConfig *ModelServingConfigServedEntityExternalModelAi21labsConfig `pulumi:"ai21labsConfig"`
-	// Amazon Bedrock Config
-	AmazonBedrockConfig *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig `pulumi:"amazonBedrockConfig"`
-	// Anthropic Config
-	AnthropicConfig *ModelServingConfigServedEntityExternalModelAnthropicConfig `pulumi:"anthropicConfig"`
-	// Cohere Config
-	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
-	// Databricks Model Serving Config
+	Ai21labsConfig               *ModelServingConfigServedEntityExternalModelAi21labsConfig               `pulumi:"ai21labsConfig"`
+	AmazonBedrockConfig          *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig          `pulumi:"amazonBedrockConfig"`
+	AnthropicConfig              *ModelServingConfigServedEntityExternalModelAnthropicConfig              `pulumi:"anthropicConfig"`
+	CohereConfig                 *ModelServingConfigServedEntityExternalModelCohereConfig                 `pulumi:"cohereConfig"`
 	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
 	// The name of the external model.
-	Name string `pulumi:"name"`
-	// OpenAI Config
+	Name         string                                                   `pulumi:"name"`
 	OpenaiConfig *ModelServingConfigServedEntityExternalModelOpenaiConfig `pulumi:"openaiConfig"`
-	// PaLM Config
-	PalmConfig *ModelServingConfigServedEntityExternalModelPalmConfig `pulumi:"palmConfig"`
+	PalmConfig   *ModelServingConfigServedEntityExternalModelPalmConfig   `pulumi:"palmConfig"`
 	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
 	Provider string `pulumi:"provider"`
 	// The task type of the external model.
@@ -47826,22 +47831,15 @@ type ModelServingConfigServedEntityExternalModelInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelArgs struct {
-	// AI21Labs Config
-	Ai21labsConfig ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput `pulumi:"ai21labsConfig"`
-	// Amazon Bedrock Config
-	AmazonBedrockConfig ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput `pulumi:"amazonBedrockConfig"`
-	// Anthropic Config
-	AnthropicConfig ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput `pulumi:"anthropicConfig"`
-	// Cohere Config
-	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
-	// Databricks Model Serving Config
+	Ai21labsConfig               ModelServingConfigServedEntityExternalModelAi21labsConfigPtrInput               `pulumi:"ai21labsConfig"`
+	AmazonBedrockConfig          ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrInput          `pulumi:"amazonBedrockConfig"`
+	AnthropicConfig              ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput              `pulumi:"anthropicConfig"`
+	CohereConfig                 ModelServingConfigServedEntityExternalModelCohereConfigPtrInput                 `pulumi:"cohereConfig"`
 	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
 	// The name of the external model.
-	Name pulumi.StringInput `pulumi:"name"`
-	// OpenAI Config
+	Name         pulumi.StringInput                                              `pulumi:"name"`
 	OpenaiConfig ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput `pulumi:"openaiConfig"`
-	// PaLM Config
-	PalmConfig ModelServingConfigServedEntityExternalModelPalmConfigPtrInput `pulumi:"palmConfig"`
+	PalmConfig   ModelServingConfigServedEntityExternalModelPalmConfigPtrInput   `pulumi:"palmConfig"`
 	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// The task type of the external model.
@@ -47925,35 +47923,30 @@ func (o ModelServingConfigServedEntityExternalModelOutput) ToModelServingConfigS
 	}).(ModelServingConfigServedEntityExternalModelPtrOutput)
 }
 
-// AI21Labs Config
 func (o ModelServingConfigServedEntityExternalModelOutput) Ai21labsConfig() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAi21labsConfig {
 		return v.Ai21labsConfig
 	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
 }
 
-// Amazon Bedrock Config
 func (o ModelServingConfigServedEntityExternalModelOutput) AmazonBedrockConfig() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
 		return v.AmazonBedrockConfig
 	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 }
 
-// Anthropic Config
 func (o ModelServingConfigServedEntityExternalModelOutput) AnthropicConfig() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAnthropicConfig {
 		return v.AnthropicConfig
 	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
 }
 
-// Cohere Config
 func (o ModelServingConfigServedEntityExternalModelOutput) CohereConfig() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCohereConfig {
 		return v.CohereConfig
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
-// Databricks Model Serving Config
 func (o ModelServingConfigServedEntityExternalModelOutput) DatabricksModelServingConfig() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
 		return v.DatabricksModelServingConfig
@@ -47965,14 +47958,12 @@ func (o ModelServingConfigServedEntityExternalModelOutput) Name() pulumi.StringO
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// OpenAI Config
 func (o ModelServingConfigServedEntityExternalModelOutput) OpenaiConfig() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelOpenaiConfig {
 		return v.OpenaiConfig
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
 }
 
-// PaLM Config
 func (o ModelServingConfigServedEntityExternalModelOutput) PalmConfig() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelPalmConfig {
 		return v.PalmConfig
@@ -48013,7 +48004,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) Elem() ModelServin
 	}).(ModelServingConfigServedEntityExternalModelOutput)
 }
 
-// AI21Labs Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) Ai21labsConfig() ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAi21labsConfig {
 		if v == nil {
@@ -48023,7 +48013,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) Ai21labsConfig() M
 	}).(ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput)
 }
 
-// Amazon Bedrock Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) AmazonBedrockConfig() ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
 		if v == nil {
@@ -48033,7 +48022,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) AmazonBedrockConfi
 	}).(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 }
 
-// Anthropic Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) AnthropicConfig() ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelAnthropicConfig {
 		if v == nil {
@@ -48043,7 +48031,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) AnthropicConfig() 
 	}).(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput)
 }
 
-// Cohere Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) CohereConfig() ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCohereConfig {
 		if v == nil {
@@ -48053,7 +48040,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) CohereConfig() Mod
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
-// Databricks Model Serving Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) DatabricksModelServingConfig() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
 		if v == nil {
@@ -48073,7 +48059,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) Name() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// OpenAI Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) OpenaiConfig() ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelOpenaiConfig {
 		if v == nil {
@@ -48083,7 +48068,6 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) OpenaiConfig() Mod
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
 }
 
-// PaLM Config
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) PalmConfig() ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelPalmConfig {
 		if v == nil {
@@ -52834,6 +52818,7 @@ func (o MwsWorkspacesCloudResourceContainerPtrOutput) Gcp() MwsWorkspacesCloudRe
 }
 
 type MwsWorkspacesCloudResourceContainerGcp struct {
+	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -52849,6 +52834,7 @@ type MwsWorkspacesCloudResourceContainerGcpInput interface {
 }
 
 type MwsWorkspacesCloudResourceContainerGcpArgs struct {
+	// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -52929,6 +52915,7 @@ func (o MwsWorkspacesCloudResourceContainerGcpOutput) ToMwsWorkspacesCloudResour
 	}).(MwsWorkspacesCloudResourceContainerGcpPtrOutput)
 }
 
+// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 func (o MwsWorkspacesCloudResourceContainerGcpOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsWorkspacesCloudResourceContainerGcp) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -52957,6 +52944,7 @@ func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) Elem() MwsWorkspacesClo
 	}).(MwsWorkspacesCloudResourceContainerGcpOutput)
 }
 
+// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
 func (o MwsWorkspacesCloudResourceContainerGcpPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesCloudResourceContainerGcp) *string {
 		if v == nil {
@@ -61486,11 +61474,7 @@ func (o SqlEndpointTagsCustomTagArrayOutput) Index(i pulumi.IntInput) SqlEndpoin
 
 type SqlPermissionsPrivilegeAssignment struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal string `pulumi:"principal"`
-	// set of available privilege names in upper case.
-	//
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+	Principal  string   `pulumi:"principal"`
 	Privileges []string `pulumi:"privileges"`
 }
 
@@ -61507,11 +61491,7 @@ type SqlPermissionsPrivilegeAssignmentInput interface {
 
 type SqlPermissionsPrivilegeAssignmentArgs struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal pulumi.StringInput `pulumi:"principal"`
-	// set of available privilege names in upper case.
-	//
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+	Principal  pulumi.StringInput      `pulumi:"principal"`
 	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
 }
 
@@ -61571,10 +61551,6 @@ func (o SqlPermissionsPrivilegeAssignmentOutput) Principal() pulumi.StringOutput
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) string { return v.Principal }).(pulumi.StringOutput)
 }
 
-// set of available privilege names in upper case.
-//
-// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 func (o SqlPermissionsPrivilegeAssignmentOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) []string { return v.Privileges }).(pulumi.StringArrayOutput)
 }
@@ -66439,9 +66415,8 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) SourceTable() pulumi.Strin
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn struct {
-	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -66457,9 +66432,8 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs struct {
-	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -66514,14 +66488,13 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ToVector
 	return o
 }
 
-// The name of the embedding model endpoint
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the column.
+// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -66547,9 +66520,8 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) Ind
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn struct {
-	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -66565,9 +66537,8 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs struct {
-	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -66622,12 +66593,11 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ToVector
 	return o
 }
 
-// Dimension of the embedding vector.
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// The name of the column.
+// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -66828,9 +66798,8 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.Str
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
-	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -66846,9 +66815,8 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
-	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -66903,14 +66871,13 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVec
 	return o
 }
 
-// The name of the embedding model endpoint
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the column.
+// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -66936,9 +66903,8 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
-	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -66954,9 +66920,8 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
-	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -67011,12 +66976,11 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVec
 	return o
 }
 
-// Dimension of the embedding vector.
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// The name of the column.
+// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

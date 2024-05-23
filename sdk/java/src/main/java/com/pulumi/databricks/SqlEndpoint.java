@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = DatabricksFunctions.getCurrentUser();
  * 
- *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()        
+ *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()
  *             .name(String.format("Endpoint of %s", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .clusterSize("Small")
  *             .maxNumClusters(1)

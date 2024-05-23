@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new RestrictWorkspaceAdminsSetting("this", RestrictWorkspaceAdminsSettingArgs.builder()        
+ *         var this_ = new RestrictWorkspaceAdminsSetting("this", RestrictWorkspaceAdminsSettingArgs.builder()
  *             .restrictWorkspaceAdmins(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs.builder()
  *                 .status("RESTRICT_TOKENS_AND_JOB_RUN_AS")
  *                 .build())
