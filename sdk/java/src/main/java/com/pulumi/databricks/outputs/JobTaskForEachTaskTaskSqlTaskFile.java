@@ -45,7 +45,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
      *             .name("Example SQL Job")
      *             .tasks(            
      *                 JobTaskArgs.builder()
@@ -131,7 +131,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()        
+     *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
      *             .name("Example SQL Job")
      *             .tasks(            
      *                 JobTaskArgs.builder()

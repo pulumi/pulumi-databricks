@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var cli = all.applyValue(getClustersResult -> {
  *             final var resources = new ArrayList<Library>();
  *             for (var range : KeyedValue.of(getClustersResult.ids()) {
- *                 var resource = new Library("cli-" + range.key(), LibraryArgs.builder()                
+ *                 var resource = new Library("cli-" + range.key(), LibraryArgs.builder()
  *                     .clusterId(range.key())
  *                     .pypi(LibraryPypiArgs.builder()
  *                         .package_("databricks-cli")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deequ = new Library("deequ", LibraryArgs.builder()        
+ *         var deequ = new Library("deequ", LibraryArgs.builder()
  *             .clusterId(this_.id())
  *             .maven(LibraryMavenArgs.builder()
  *                 .coordinates("com.amazon.deequ:deequ:1.0.4")
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fbprophet = new Library("fbprophet", LibraryArgs.builder()        
+ *         var fbprophet = new Library("fbprophet", LibraryArgs.builder()
  *             .clusterId(this_.id())
  *             .pypi(LibraryPypiArgs.builder()
  *                 .package_("fbprophet==0.6")
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rkeops = new Library("rkeops", LibraryArgs.builder()        
+ *         var rkeops = new Library("rkeops", LibraryArgs.builder()
  *             .clusterId(this_.id())
  *             .cran(LibraryCranArgs.builder()
  *                 .package_("rkeops")

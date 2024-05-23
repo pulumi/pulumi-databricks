@@ -31,6 +31,10 @@ class MwsNccPrivateEndpointRuleArgs:
         :param pulumi.Input[str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
+               * `PENDING`: The endpoint has been created and pending approval.
+               * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+               * `REJECTED`: Connection was rejected by the private link resource owner.
+               * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         :param pulumi.Input[int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
@@ -98,6 +102,10 @@ class MwsNccPrivateEndpointRuleArgs:
         """
         The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
+        * `PENDING`: The endpoint has been created and pending approval.
+        * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+        * `REJECTED`: Connection was rejected by the private link resource owner.
+        * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         """
         return pulumi.get(self, "connection_state")
 
@@ -195,6 +203,10 @@ class _MwsNccPrivateEndpointRuleState:
         Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
         :param pulumi.Input[str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
+               * `PENDING`: The endpoint has been created and pending approval.
+               * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+               * `REJECTED`: Connection was rejected by the private link resource owner.
+               * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         :param pulumi.Input[int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
@@ -232,6 +244,10 @@ class _MwsNccPrivateEndpointRuleState:
         """
         The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
+        * `PENDING`: The endpoint has been created and pending approval.
+        * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+        * `REJECTED`: Connection was rejected by the private link resource owner.
+        * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         """
         return pulumi.get(self, "connection_state")
 
@@ -408,6 +424,10 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
+               * `PENDING`: The endpoint has been created and pending approval.
+               * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+               * `REJECTED`: Connection was rejected by the private link resource owner.
+               * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         :param pulumi.Input[int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
@@ -543,6 +563,10 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
+               * `PENDING`: The endpoint has been created and pending approval.
+               * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+               * `REJECTED`: Connection was rejected by the private link resource owner.
+               * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         :param pulumi.Input[int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
@@ -575,6 +599,10 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         """
         The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
+        * `PENDING`: The endpoint has been created and pending approval.
+        * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+        * `REJECTED`: Connection was rejected by the private link resource owner.
+        * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
         """
         return pulumi.get(self, "connection_state")
 

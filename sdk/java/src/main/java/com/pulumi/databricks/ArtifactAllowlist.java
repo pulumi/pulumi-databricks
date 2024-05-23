@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var initScripts = new ArtifactAllowlist("initScripts", ArtifactAllowlistArgs.builder()        
+ *         var initScripts = new ArtifactAllowlist("initScripts", ArtifactAllowlistArgs.builder()
  *             .artifactType("INIT_SCRIPT")
  *             .artifactMatchers(ArtifactAllowlistArtifactMatcherArgs.builder()
  *                 .artifact("/Volumes/inits")

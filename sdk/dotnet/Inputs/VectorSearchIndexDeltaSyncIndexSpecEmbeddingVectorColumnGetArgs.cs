@@ -12,14 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Dimension of the embedding vector.
-        /// </summary>
         [Input("embeddingDimension")]
         public Input<int>? EmbeddingDimension { get; set; }
 
         /// <summary>
-        /// The name of the column.
+        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

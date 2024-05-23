@@ -15,30 +15,22 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
 
     public static final VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs Empty = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs();
 
-    /**
-     * The name of the embedding model endpoint
-     * 
-     */
     @Import(name="embeddingModelEndpointName")
     private @Nullable Output<String> embeddingModelEndpointName;
 
-    /**
-     * @return The name of the embedding model endpoint
-     * 
-     */
     public Optional<Output<String>> embeddingModelEndpointName() {
         return Optional.ofNullable(this.embeddingModelEndpointName);
     }
 
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the column.
+     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Optional<Output<String>> name() {
@@ -70,29 +62,17 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
             $ = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param embeddingModelEndpointName The name of the embedding model endpoint
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingModelEndpointName(@Nullable Output<String> embeddingModelEndpointName) {
             $.embeddingModelEndpointName = embeddingModelEndpointName;
             return this;
         }
 
-        /**
-         * @param embeddingModelEndpointName The name of the embedding model endpoint
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingModelEndpointName(String embeddingModelEndpointName) {
             return embeddingModelEndpointName(Output.of(embeddingModelEndpointName));
         }
 
         /**
-         * @param name The name of the column.
+         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 
@@ -103,7 +83,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
         }
 
         /**
-         * @param name The name of the column.
+         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 

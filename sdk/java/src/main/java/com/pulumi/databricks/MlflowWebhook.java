@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .localDisk(true)
  *             .build());
  * 
- *         var this_ = new Notebook("this", NotebookArgs.builder()        
+ *         var this_ = new Notebook("this", NotebookArgs.builder()
  *             .path(String.format("%s/MLFlowWebhook", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
  *             .language("PYTHON")
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var thisJob = new Job("thisJob", JobArgs.builder()        
+ *         var thisJob = new Job("thisJob", JobArgs.builder()
  *             .name(String.format("Terraform MLflowWebhook Demo (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .tasks(JobTaskArgs.builder()
  *                 .taskKey("task1")
@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var patForWebhook = new Token("patForWebhook", TokenArgs.builder()        
+ *         var patForWebhook = new Token("patForWebhook", TokenArgs.builder()
  *             .comment("MLflow Webhook")
  *             .lifetimeSeconds(86400000)
  *             .build());
  * 
- *         var job = new MlflowWebhook("job", MlflowWebhookArgs.builder()        
+ *         var job = new MlflowWebhook("job", MlflowWebhookArgs.builder()
  *             .events("TRANSITION_REQUEST_CREATED")
  *             .description("Databricks Job webhook trigger")
  *             .status("ACTIVE")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var url = new MlflowWebhook("url", MlflowWebhookArgs.builder()        
+ *         var url = new MlflowWebhook("url", MlflowWebhookArgs.builder()
  *             .events("TRANSITION_REQUEST_CREATED")
  *             .description("URL webhook trigger")
  *             .httpUrlSpec(MlflowWebhookHttpUrlSpecArgs.builder()

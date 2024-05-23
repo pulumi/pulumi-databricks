@@ -414,6 +414,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>
         [Output("useCases")]
         public Output<ImmutableArray<string>> UseCases { get; private set; } = null!;
@@ -499,6 +501,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>
         public InputList<string> UseCases
         {
@@ -549,6 +553,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+        /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>
         public InputList<string> UseCases
         {

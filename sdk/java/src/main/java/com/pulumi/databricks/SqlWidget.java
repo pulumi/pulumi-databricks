@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var d1w1 = new SqlWidget("d1w1", SqlWidgetArgs.builder()        
+ *         var d1w1 = new SqlWidget("d1w1", SqlWidgetArgs.builder()
  *             .dashboardId(d1.id())
  *             .text("Hello! I'm a **text widget**!")
  *             .position(SqlWidgetPositionArgs.builder()
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var d1w2 = new SqlWidget("d1w2", SqlWidgetArgs.builder()        
+ *         var d1w2 = new SqlWidget("d1w2", SqlWidgetArgs.builder()
  *             .dashboardId(d1.id())
  *             .visualizationId(q1v1.id())
  *             .position(SqlWidgetPositionArgs.builder()

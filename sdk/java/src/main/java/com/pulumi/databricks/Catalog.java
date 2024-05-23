@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
  *             .name("sandbox")
  *             .comment("this catalog is managed by terraform")
  *             .properties(Map.of("purpose", "testing"))

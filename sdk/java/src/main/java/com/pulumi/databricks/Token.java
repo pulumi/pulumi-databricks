@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // create PAT token to provision entities within workspace
- *         var pat = new Token("pat", TokenArgs.builder()        
+ *         var pat = new Token("pat", TokenArgs.builder()
  *             .comment("Terraform Provisioning")
  *             .lifetimeSeconds(8640000)
  *             .build());
@@ -84,11 +84,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Rotating("this", RotatingArgs.builder()        
+ *         var this_ = new Rotating("this", RotatingArgs.builder()
  *             .rotationDays(30)
  *             .build());
  * 
- *         var pat = new Token("pat", TokenArgs.builder()        
+ *         var pat = new Token("pat", TokenArgs.builder()
  *             .comment(this_.rfc3339().applyValue(rfc3339 -> String.format("Terraform (created: %s)", rfc3339)))
  *             .lifetimeSeconds(60 * 24 * 60 * 60)
  *             .build());

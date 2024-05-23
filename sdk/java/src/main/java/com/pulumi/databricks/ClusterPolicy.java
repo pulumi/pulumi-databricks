@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalVmOverride = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         var personalVm = new ClusterPolicy("personalVm", ClusterPolicyArgs.builder()        
+ *         var personalVm = new ClusterPolicy("personalVm", ClusterPolicyArgs.builder()
  *             .policyFamilyId("personal-vm")
  *             .policyFamilyDefinitionOverrides(serializeJson(
  *                 personalVmOverride))

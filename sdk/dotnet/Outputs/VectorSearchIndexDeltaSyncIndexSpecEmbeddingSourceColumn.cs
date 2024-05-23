@@ -13,12 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn
     {
-        /// <summary>
-        /// The name of the embedding model endpoint
-        /// </summary>
         public readonly string? EmbeddingModelEndpointName;
         /// <summary>
-        /// The name of the column.
+        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         /// </summary>
         public readonly string? Name;
 

@@ -12,33 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AI21Labs Config
-        /// </summary>
         [Input("ai21labsConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAi21labsConfigArgs>? Ai21labsConfig { get; set; }
 
-        /// <summary>
-        /// Amazon Bedrock Config
-        /// </summary>
         [Input("amazonBedrockConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs>? AmazonBedrockConfig { get; set; }
 
-        /// <summary>
-        /// Anthropic Config
-        /// </summary>
         [Input("anthropicConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAnthropicConfigArgs>? AnthropicConfig { get; set; }
 
-        /// <summary>
-        /// Cohere Config
-        /// </summary>
         [Input("cohereConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCohereConfigArgs>? CohereConfig { get; set; }
 
-        /// <summary>
-        /// Databricks Model Serving Config
-        /// </summary>
         [Input("databricksModelServingConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs>? DatabricksModelServingConfig { get; set; }
 
@@ -48,15 +33,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// OpenAI Config
-        /// </summary>
         [Input("openaiConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs>? OpenaiConfig { get; set; }
 
-        /// <summary>
-        /// PaLM Config
-        /// </summary>
         [Input("palmConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelPalmConfigArgs>? PalmConfig { get; set; }
 

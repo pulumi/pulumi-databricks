@@ -26,10 +26,12 @@ class VectorSearchIndexArgs:
         The set of arguments for constructing a VectorSearchIndex resource.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
         :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
         :param pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs'] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
         :param pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
-        :param pulumi.Input[str] name: The name of the column.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         pulumi.set(__self__, "endpoint_name", endpoint_name)
         pulumi.set(__self__, "index_type", index_type)
@@ -58,6 +60,8 @@ class VectorSearchIndexArgs:
     def index_type(self) -> pulumi.Input[str]:
         """
         Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
         """
         return pulumi.get(self, "index_type")
 
@@ -105,7 +109,7 @@ class VectorSearchIndexArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -132,7 +136,9 @@ class _VectorSearchIndexState:
         :param pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
-        :param pulumi.Input[str] name: The name of the column.
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
         :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]] statuses: Object describing the current status of the index consisting of the following fields:
         """
@@ -206,6 +212,8 @@ class _VectorSearchIndexState:
     def index_type(self) -> Optional[pulumi.Input[str]]:
         """
         Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
         """
         return pulumi.get(self, "index_type")
 
@@ -217,7 +225,7 @@ class _VectorSearchIndexState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -304,7 +312,9 @@ class VectorSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
-        :param pulumi.Input[str] name: The name of the column.
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
         """
         ...
@@ -423,7 +433,9 @@ class VectorSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
-        :param pulumi.Input[str] name: The name of the column.
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchIndexStatusArgs']]]] statuses: Object describing the current status of the index consisting of the following fields:
         """
@@ -478,6 +490,8 @@ class VectorSearchIndex(pulumi.CustomResource):
     def index_type(self) -> pulumi.Output[str]:
         """
         Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
         """
         return pulumi.get(self, "index_type")
 
@@ -485,7 +499,7 @@ class VectorSearchIndex(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 

@@ -23,77 +23,37 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
 
     public static final ModelServingConfigServedEntityExternalModelArgs Empty = new ModelServingConfigServedEntityExternalModelArgs();
 
-    /**
-     * AI21Labs Config
-     * 
-     */
     @Import(name="ai21labsConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelAi21labsConfigArgs> ai21labsConfig;
 
-    /**
-     * @return AI21Labs Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelAi21labsConfigArgs>> ai21labsConfig() {
         return Optional.ofNullable(this.ai21labsConfig);
     }
 
-    /**
-     * Amazon Bedrock Config
-     * 
-     */
     @Import(name="amazonBedrockConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs> amazonBedrockConfig;
 
-    /**
-     * @return Amazon Bedrock Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs>> amazonBedrockConfig() {
         return Optional.ofNullable(this.amazonBedrockConfig);
     }
 
-    /**
-     * Anthropic Config
-     * 
-     */
     @Import(name="anthropicConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelAnthropicConfigArgs> anthropicConfig;
 
-    /**
-     * @return Anthropic Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelAnthropicConfigArgs>> anthropicConfig() {
         return Optional.ofNullable(this.anthropicConfig);
     }
 
-    /**
-     * Cohere Config
-     * 
-     */
     @Import(name="cohereConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCohereConfigArgs> cohereConfig;
 
-    /**
-     * @return Cohere Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCohereConfigArgs>> cohereConfig() {
         return Optional.ofNullable(this.cohereConfig);
     }
 
-    /**
-     * Databricks Model Serving Config
-     * 
-     */
     @Import(name="databricksModelServingConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs> databricksModelServingConfig;
 
-    /**
-     * @return Databricks Model Serving Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs>> databricksModelServingConfig() {
         return Optional.ofNullable(this.databricksModelServingConfig);
     }
@@ -113,32 +73,16 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         return this.name;
     }
 
-    /**
-     * OpenAI Config
-     * 
-     */
     @Import(name="openaiConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelOpenaiConfigArgs> openaiConfig;
 
-    /**
-     * @return OpenAI Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelOpenaiConfigArgs>> openaiConfig() {
         return Optional.ofNullable(this.openaiConfig);
     }
 
-    /**
-     * PaLM Config
-     * 
-     */
     @Import(name="palmConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelPalmConfigArgs> palmConfig;
 
-    /**
-     * @return PaLM Config
-     * 
-     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelPalmConfigArgs>> palmConfig() {
         return Optional.ofNullable(this.palmConfig);
     }
@@ -206,107 +150,47 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
             $ = new ModelServingConfigServedEntityExternalModelArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ai21labsConfig AI21Labs Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder ai21labsConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelAi21labsConfigArgs> ai21labsConfig) {
             $.ai21labsConfig = ai21labsConfig;
             return this;
         }
 
-        /**
-         * @param ai21labsConfig AI21Labs Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder ai21labsConfig(ModelServingConfigServedEntityExternalModelAi21labsConfigArgs ai21labsConfig) {
             return ai21labsConfig(Output.of(ai21labsConfig));
         }
 
-        /**
-         * @param amazonBedrockConfig Amazon Bedrock Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder amazonBedrockConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs> amazonBedrockConfig) {
             $.amazonBedrockConfig = amazonBedrockConfig;
             return this;
         }
 
-        /**
-         * @param amazonBedrockConfig Amazon Bedrock Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder amazonBedrockConfig(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs amazonBedrockConfig) {
             return amazonBedrockConfig(Output.of(amazonBedrockConfig));
         }
 
-        /**
-         * @param anthropicConfig Anthropic Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder anthropicConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelAnthropicConfigArgs> anthropicConfig) {
             $.anthropicConfig = anthropicConfig;
             return this;
         }
 
-        /**
-         * @param anthropicConfig Anthropic Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder anthropicConfig(ModelServingConfigServedEntityExternalModelAnthropicConfigArgs anthropicConfig) {
             return anthropicConfig(Output.of(anthropicConfig));
         }
 
-        /**
-         * @param cohereConfig Cohere Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder cohereConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelCohereConfigArgs> cohereConfig) {
             $.cohereConfig = cohereConfig;
             return this;
         }
 
-        /**
-         * @param cohereConfig Cohere Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder cohereConfig(ModelServingConfigServedEntityExternalModelCohereConfigArgs cohereConfig) {
             return cohereConfig(Output.of(cohereConfig));
         }
 
-        /**
-         * @param databricksModelServingConfig Databricks Model Serving Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder databricksModelServingConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs> databricksModelServingConfig) {
             $.databricksModelServingConfig = databricksModelServingConfig;
             return this;
         }
 
-        /**
-         * @param databricksModelServingConfig Databricks Model Serving Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder databricksModelServingConfig(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs databricksModelServingConfig) {
             return databricksModelServingConfig(Output.of(databricksModelServingConfig));
         }
@@ -332,44 +216,20 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
             return name(Output.of(name));
         }
 
-        /**
-         * @param openaiConfig OpenAI Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelOpenaiConfigArgs> openaiConfig) {
             $.openaiConfig = openaiConfig;
             return this;
         }
 
-        /**
-         * @param openaiConfig OpenAI Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiConfig(ModelServingConfigServedEntityExternalModelOpenaiConfigArgs openaiConfig) {
             return openaiConfig(Output.of(openaiConfig));
         }
 
-        /**
-         * @param palmConfig PaLM Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder palmConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelPalmConfigArgs> palmConfig) {
             $.palmConfig = palmConfig;
             return this;
         }
 
-        /**
-         * @param palmConfig PaLM Config
-         * 
-         * @return builder
-         * 
-         */
         public Builder palmConfig(ModelServingConfigServedEntityExternalModelPalmConfigArgs palmConfig) {
             return palmConfig(Output.of(palmConfig));
         }

@@ -273,6 +273,8 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     public readonly gcpKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+     * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+     * * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
      */
     public readonly useCases!: pulumi.Output<string[]>;
 
@@ -341,6 +343,8 @@ export interface MwsCustomerManagedKeysState {
     gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+     * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+     * * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
      */
     useCases?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -371,6 +375,8 @@ export interface MwsCustomerManagedKeysArgs {
     gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+     * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+     * * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
      */
     useCases: pulumi.Input<pulumi.Input<string>[]>;
 }

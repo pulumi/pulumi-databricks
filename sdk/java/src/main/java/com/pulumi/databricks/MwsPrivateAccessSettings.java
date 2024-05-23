@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pas = new MwsPrivateAccessSettings("pas", MwsPrivateAccessSettingsArgs.builder()        
+ *         var pas = new MwsPrivateAccessSettings("pas", MwsPrivateAccessSettingsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .privateAccessSettingsName(String.format("Private Access Settings for %s", prefix))
  *             .region(region)
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()        
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
  *             .awsRegion(region)
  *             .workspaceName(prefix)
  *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()        
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
  *             .workspaceName("gcp-workspace")
  *             .location(subnetRegion)
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()

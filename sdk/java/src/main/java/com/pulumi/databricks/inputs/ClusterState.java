@@ -160,7 +160,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
      *             .clusterName("Shared High-Concurrency")
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
@@ -210,7 +210,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
      *             .clusterName("Shared High-Concurrency")
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
@@ -414,7 +414,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
      *             .clusterName("Shared Autoscaling")
      *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -480,7 +480,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *             .longTermSupport(true)
      *             .build());
      * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
      *             .clusterName("Shared Autoscaling")
      *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -901,7 +901,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
          *             .clusterName("Shared High-Concurrency")
          *             .sparkVersion(latestLts.id())
          *             .nodeTypeId(smallest.id())
@@ -955,7 +955,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()        
+         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
          *             .clusterName("Shared High-Concurrency")
          *             .sparkVersion(latestLts.id())
          *             .nodeTypeId(smallest.id())
@@ -1219,7 +1219,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *             .longTermSupport(true)
          *             .build());
          * 
-         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
          *             .clusterName("Shared Autoscaling")
          *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
          *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -1289,7 +1289,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *             .longTermSupport(true)
          *             .build());
          * 
-         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()        
+         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
          *             .clusterName("Shared Autoscaling")
          *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
          *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))

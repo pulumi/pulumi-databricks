@@ -1527,6 +1527,9 @@ class ClusterGcpAttributesArgs:
         :param pulumi.Input[int] local_ssd_count: Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
         :param pulumi.Input[bool] use_preemptible_executors: if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
         :param pulumi.Input[str] zone_id: Identifier for the availability zone in which the cluster resides. This can be one of the following:
+               * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+               * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+               * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1606,6 +1609,9 @@ class ClusterGcpAttributesArgs:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+        * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+        * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
         """
         return pulumi.get(self, "zone_id")
 
@@ -16060,13 +16066,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
         :param pulumi.Input[str] name: The name of the external model.
         :param pulumi.Input[str] provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
         :param pulumi.Input[str] task: The task type of the external model.
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs'] ai21labs_config: AI21Labs Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs'] amazon_bedrock_config: Amazon Bedrock Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs'] anthropic_config: Anthropic Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs'] cohere_config: Cohere Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs'] databricks_model_serving_config: Databricks Model Serving Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs'] openai_config: OpenAI Config
-        :param pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs'] palm_config: PaLM Config
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "provider", provider)
@@ -16125,9 +16124,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="ai21labsConfig")
     def ai21labs_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs']]:
-        """
-        AI21Labs Config
-        """
         return pulumi.get(self, "ai21labs_config")
 
     @ai21labs_config.setter
@@ -16137,9 +16133,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="amazonBedrockConfig")
     def amazon_bedrock_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs']]:
-        """
-        Amazon Bedrock Config
-        """
         return pulumi.get(self, "amazon_bedrock_config")
 
     @amazon_bedrock_config.setter
@@ -16149,9 +16142,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="anthropicConfig")
     def anthropic_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']]:
-        """
-        Anthropic Config
-        """
         return pulumi.get(self, "anthropic_config")
 
     @anthropic_config.setter
@@ -16161,9 +16151,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="cohereConfig")
     def cohere_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']]:
-        """
-        Cohere Config
-        """
         return pulumi.get(self, "cohere_config")
 
     @cohere_config.setter
@@ -16173,9 +16160,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="databricksModelServingConfig")
     def databricks_model_serving_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']]:
-        """
-        Databricks Model Serving Config
-        """
         return pulumi.get(self, "databricks_model_serving_config")
 
     @databricks_model_serving_config.setter
@@ -16185,9 +16169,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="openaiConfig")
     def openai_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']]:
-        """
-        OpenAI Config
-        """
         return pulumi.get(self, "openai_config")
 
     @openai_config.setter
@@ -16197,9 +16178,6 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="palmConfig")
     def palm_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs']]:
-        """
-        PaLM Config
-        """
         return pulumi.get(self, "palm_config")
 
     @palm_config.setter
@@ -17624,11 +17602,17 @@ class MwsWorkspacesCloudResourceContainerArgs:
 class MwsWorkspacesCloudResourceContainerGcpArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] project_id: The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+        """
         pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -20374,11 +20358,6 @@ class SqlPermissionsPrivilegeAssignmentArgs:
                  privileges: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: set of available privilege names in upper case.
-               
-               
-               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         pulumi.set(__self__, "principal", principal)
         pulumi.set(__self__, "privileges", privileges)
@@ -20398,13 +20377,6 @@ class SqlPermissionsPrivilegeAssignmentArgs:
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        set of available privilege names in upper case.
-
-
-        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -21878,8 +21850,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
-        :param pulumi.Input[str] name: The name of the column.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -21889,9 +21860,6 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the embedding model endpoint
-        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @embedding_model_endpoint_name.setter
@@ -21902,7 +21870,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -21917,8 +21885,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
-        :param pulumi.Input[str] name: The name of the column.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -21928,9 +21895,6 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
-        """
-        Dimension of the embedding vector.
-        """
         return pulumi.get(self, "embedding_dimension")
 
     @embedding_dimension.setter
@@ -21941,7 +21905,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -22007,8 +21971,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
-        :param pulumi.Input[str] name: The name of the column.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -22018,9 +21981,6 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the embedding model endpoint
-        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @embedding_model_endpoint_name.setter
@@ -22031,7 +21991,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -22046,8 +22006,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
-        :param pulumi.Input[str] name: The name of the column.
+        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -22057,9 +22016,6 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
-        """
-        Dimension of the embedding vector.
-        """
         return pulumi.get(self, "embedding_dimension")
 
     @embedding_dimension.setter
@@ -22070,7 +22026,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the column.
+        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 

@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  *         final var storageAcc = "lrs";
  * 
- *         var this_ = new Mount("this", MountArgs.builder()        
+ *         var this_ = new Mount("this", MountArgs.builder()
  *             .name("tf-abfss")
  *             .uri(String.format("abfss://%s{@literal @}%s.dfs.core.windows.net", container,storageAcc))
  *             .extraConfigs(Map.ofEntries(
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * 
  *         final var latest = DatabricksFunctions.getSparkVersion();
  * 
- *         var sharedPassthrough = new Cluster("sharedPassthrough", ClusterArgs.builder()        
+ *         var sharedPassthrough = new Cluster("sharedPassthrough", ClusterArgs.builder()
  *             .clusterName("Shared Passthrough for mount")
  *             .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
  *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  *         final var storageAcc = config.get("storageAcc");
  *         final var container = config.get("container");
- *         var passthrough = new Mount("passthrough", MountArgs.builder()        
+ *         var passthrough = new Mount("passthrough", MountArgs.builder()
  *             .name("passthrough-test")
  *             .clusterId(sharedPassthrough.id())
  *             .uri(String.format("abfss://%s{@literal @}%s.dfs.core.windows.net", container,storageAcc))
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // now you can do `%fs ls /mnt/experiments` in notebooks
- *         var this_ = new Mount("this", MountArgs.builder()        
+ *         var this_ = new Mount("this", MountArgs.builder()
  *             .name("experiments")
  *             .s3(MountS3Args.builder()
  *                 .instanceProfile(ds.id())
@@ -282,18 +282,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraform = new SecretScope("terraform", SecretScopeArgs.builder()        
+ *         var terraform = new SecretScope("terraform", SecretScopeArgs.builder()
  *             .name("application")
  *             .initialManagePrincipal("users")
  *             .build());
  * 
- *         var servicePrincipalKey = new Secret("servicePrincipalKey", SecretArgs.builder()        
+ *         var servicePrincipalKey = new Secret("servicePrincipalKey", SecretArgs.builder()
  *             .key("service_principal_key")
  *             .stringValue(ARM_CLIENT_SECRET)
  *             .scope(terraform.name())
  *             .build());
  * 
- *         var this_ = new Account("this", AccountArgs.builder()        
+ *         var this_ = new Account("this", AccountArgs.builder()
  *             .name(String.format("%sdatalake", prefix))
  *             .resourceGroupName(resourceGroupName)
  *             .location(resourceGroupLocation)
@@ -303,19 +303,19 @@ import javax.annotation.Nullable;
  *             .isHnsEnabled(true)
  *             .build());
  * 
- *         var thisAssignment = new Assignment("thisAssignment", AssignmentArgs.builder()        
+ *         var thisAssignment = new Assignment("thisAssignment", AssignmentArgs.builder()
  *             .scope(this_.id())
  *             .roleDefinitionName("Storage Blob Data Contributor")
  *             .principalId(current.objectId())
  *             .build());
  * 
- *         var thisContainer = new Container("thisContainer", ContainerArgs.builder()        
+ *         var thisContainer = new Container("thisContainer", ContainerArgs.builder()
  *             .name("marketing")
  *             .storageAccountName(this_.name())
  *             .containerAccessType("private")
  *             .build());
  * 
- *         var marketing = new Mount("marketing", MountArgs.builder()        
+ *         var marketing = new Mount("marketing", MountArgs.builder()
  *             .name("marketing")
  *             .resourceId(thisContainer.resourceManagerId())
  *             .abfs(MountAbfsArgs.builder()
@@ -365,7 +365,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisGs = new Mount("thisGs", MountArgs.builder()        
+ *         var thisGs = new Mount("thisGs", MountArgs.builder()
  *             .name("gs-mount")
  *             .gs(MountGsArgs.builder()
  *                 .serviceAccount("acc{@literal @}company.iam.gserviceaccount.com")
@@ -418,7 +418,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mount = new Mount("mount", MountArgs.builder()        
+ *         var mount = new Mount("mount", MountArgs.builder()
  *             .name("{var.RANDOM}")
  *             .adl(MountAdlArgs.builder()
  *                 .storageResourceName("{env.TEST_STORAGE_ACCOUNT_NAME}")
@@ -481,7 +481,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var blobaccount = new Account("blobaccount", AccountArgs.builder()        
+ *         var blobaccount = new Account("blobaccount", AccountArgs.builder()
  *             .name(String.format("%sblob", prefix))
  *             .resourceGroupName(resourceGroupName)
  *             .location(resourceGroupLocation)
@@ -490,24 +490,24 @@ import javax.annotation.Nullable;
  *             .accountKind("StorageV2")
  *             .build());
  * 
- *         var marketing = new Container("marketing", ContainerArgs.builder()        
+ *         var marketing = new Container("marketing", ContainerArgs.builder()
  *             .name("marketing")
  *             .storageAccountName(blobaccount.name())
  *             .containerAccessType("private")
  *             .build());
  * 
- *         var terraform = new SecretScope("terraform", SecretScopeArgs.builder()        
+ *         var terraform = new SecretScope("terraform", SecretScopeArgs.builder()
  *             .name("application")
  *             .initialManagePrincipal("users")
  *             .build());
  * 
- *         var storageKey = new Secret("storageKey", SecretArgs.builder()        
+ *         var storageKey = new Secret("storageKey", SecretArgs.builder()
  *             .key("blob_storage_key")
  *             .stringValue(blobaccount.primaryAccessKey())
  *             .scope(terraform.name())
  *             .build());
  * 
- *         var marketingMount = new Mount("marketingMount", MountArgs.builder()        
+ *         var marketingMount = new Mount("marketingMount", MountArgs.builder()
  *             .name("marketing")
  *             .wasb(MountWasbArgs.builder()
  *                 .containerName(marketing.name())
