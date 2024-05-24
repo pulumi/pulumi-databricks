@@ -92,16 +92,16 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var managedServicesCustomerManagedKey = new Key("managedServicesCustomerManagedKey", KeyArgs.builder()        
+ *         var managedServicesCustomerManagedKey = new Key("managedServicesCustomerManagedKey", KeyArgs.builder()
  *             .policy(databricksManagedServicesCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var managedServicesCustomerManagedKeyAlias = new Alias("managedServicesCustomerManagedKeyAlias", AliasArgs.builder()        
+ *         var managedServicesCustomerManagedKeyAlias = new Alias("managedServicesCustomerManagedKeyAlias", AliasArgs.builder()
  *             .name("alias/managed-services-customer-managed-key-alias")
  *             .targetKeyId(managedServicesCustomerManagedKey.keyId())
  *             .build());
  * 
- *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()        
+ *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .awsKeyInfo(MwsCustomerManagedKeysAwsKeyInfoArgs.builder()
  *                 .keyArn(managedServicesCustomerManagedKey.arn())
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
  *         final var cmekResourceId = config.get("cmekResourceId");
- *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()        
+ *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
  *                 .kmsKeyId(cmekResourceId)
@@ -263,16 +263,16 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var storageCustomerManagedKey = new Key("storageCustomerManagedKey", KeyArgs.builder()        
+ *         var storageCustomerManagedKey = new Key("storageCustomerManagedKey", KeyArgs.builder()
  *             .policy(databricksStorageCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var storageCustomerManagedKeyAlias = new Alias("storageCustomerManagedKeyAlias", AliasArgs.builder()        
+ *         var storageCustomerManagedKeyAlias = new Alias("storageCustomerManagedKeyAlias", AliasArgs.builder()
  *             .name("alias/storage-customer-managed-key-alias")
  *             .targetKeyId(storageCustomerManagedKey.keyId())
  *             .build());
  * 
- *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()        
+ *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .awsKeyInfo(MwsCustomerManagedKeysAwsKeyInfoArgs.builder()
  *                 .keyArn(storageCustomerManagedKey.arn())
@@ -316,7 +316,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
  *         final var cmekResourceId = config.get("cmekResourceId");
- *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()        
+ *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
  *                 .kmsKeyId(cmekResourceId)
@@ -420,6 +420,8 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
     }
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+     * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 
      */
     @Export(name="useCases", refs={List.class,String.class}, tree="[0,1]")
@@ -427,6 +429,8 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
 
     /**
      * @return *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
+     * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 
      */
     public Output<List<String>> useCases() {

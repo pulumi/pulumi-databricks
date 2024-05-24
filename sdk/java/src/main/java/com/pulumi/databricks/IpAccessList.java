@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new WorkspaceConf("this", WorkspaceConfArgs.builder()        
+ *         var this_ = new WorkspaceConf("this", WorkspaceConfArgs.builder()
  *             .customConfig(Map.of("enableIpAccessLists", true))
  *             .build());
  * 
- *         var allowed_list = new IpAccessList("allowed-list", IpAccessListArgs.builder()        
+ *         var allowed_list = new IpAccessList("allowed-list", IpAccessListArgs.builder()
  *             .label("allow_in")
  *             .listType("ALLOW")
  *             .ipAddresses(            

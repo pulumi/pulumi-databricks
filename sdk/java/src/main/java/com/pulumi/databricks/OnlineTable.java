@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new OnlineTable("this", OnlineTableArgs.builder()        
+ *         var this_ = new OnlineTable("this", OnlineTableArgs.builder()
  *             .name("main.default.online_table")
  *             .spec(OnlineTableSpecArgs.builder()
  *                 .sourceTableFullName("main.default.source_table")

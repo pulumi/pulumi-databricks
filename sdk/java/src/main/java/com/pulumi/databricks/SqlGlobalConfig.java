@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()        
+ *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()
  *             .securityPolicy("DATA_ACCESS_CONTROL")
  *             .instanceProfileArn("arn:....")
  *             .dataAccessConfig(Map.of("spark.sql.session.timeZone", "UTC"))
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()        
+ *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()
  *             .securityPolicy("DATA_ACCESS_CONTROL")
  *             .dataAccessConfig(Map.ofEntries(
  *                 Map.entry("spark.hadoop.fs.azure.account.auth.type", "OAuth"),

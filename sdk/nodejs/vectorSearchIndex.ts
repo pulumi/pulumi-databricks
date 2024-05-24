@@ -89,10 +89,12 @@ export class VectorSearchIndex extends pulumi.CustomResource {
     public readonly endpointName!: pulumi.Output<string>;
     /**
      * Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      */
     public readonly indexType!: pulumi.Output<string>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -172,10 +174,12 @@ export interface VectorSearchIndexState {
     endpointName?: pulumi.Input<string>;
     /**
      * Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      */
     indexType?: pulumi.Input<string>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
     /**
@@ -206,10 +210,12 @@ export interface VectorSearchIndexArgs {
     endpointName: pulumi.Input<string>;
     /**
      * Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      */
     indexType: pulumi.Input<string>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
     /**

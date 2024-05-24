@@ -76,8 +76,10 @@ type VectorSearchIndex struct {
 	// The name of the Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
 	// Vector Search index type. Currently supported values are:
+	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 	IndexType pulumi.StringOutput `pulumi:"indexType"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The column name that will be used as a primary key.
 	PrimaryKey pulumi.StringOutput `pulumi:"primaryKey"`
@@ -133,8 +135,10 @@ type vectorSearchIndexState struct {
 	// The name of the Vector Search Endpoint that will be used for indexing the data.
 	EndpointName *string `pulumi:"endpointName"`
 	// Vector Search index type. Currently supported values are:
+	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 	IndexType *string `pulumi:"indexType"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 	// The column name that will be used as a primary key.
 	PrimaryKey *string `pulumi:"primaryKey"`
@@ -152,8 +156,10 @@ type VectorSearchIndexState struct {
 	// The name of the Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringPtrInput
 	// Vector Search index type. Currently supported values are:
+	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 	IndexType pulumi.StringPtrInput
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput
 	// The column name that will be used as a primary key.
 	PrimaryKey pulumi.StringPtrInput
@@ -173,8 +179,10 @@ type vectorSearchIndexArgs struct {
 	// The name of the Vector Search Endpoint that will be used for indexing the data.
 	EndpointName string `pulumi:"endpointName"`
 	// Vector Search index type. Currently supported values are:
+	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 	IndexType string `pulumi:"indexType"`
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 	// The column name that will be used as a primary key.
 	PrimaryKey string `pulumi:"primaryKey"`
@@ -189,8 +197,10 @@ type VectorSearchIndexArgs struct {
 	// The name of the Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringInput
 	// Vector Search index type. Currently supported values are:
+	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 	IndexType pulumi.StringInput
-	// The name of the column.
+	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput
 	// The column name that will be used as a primary key.
 	PrimaryKey pulumi.StringInput
@@ -306,11 +316,13 @@ func (o VectorSearchIndexOutput) EndpointName() pulumi.StringOutput {
 }
 
 // Vector Search index type. Currently supported values are:
+// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
 func (o VectorSearchIndexOutput) IndexType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringOutput { return v.IndexType }).(pulumi.StringOutput)
 }
 
-// The name of the column.
+// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

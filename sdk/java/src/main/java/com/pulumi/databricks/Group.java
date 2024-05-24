@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .displayName("Some Group")
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
@@ -98,17 +98,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .displayName("Some Group")
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
- *         var thisUser = new User("thisUser", UserArgs.builder()        
+ *         var thisUser = new User("thisUser", UserArgs.builder()
  *             .userName("someone{@literal @}example.com")
  *             .build());
  * 
- *         var vipMember = new GroupMember("vipMember", GroupMemberArgs.builder()        
+ *         var vipMember = new GroupMember("vipMember", GroupMemberArgs.builder()
  *             .groupId(this_.id())
  *             .memberId(thisUser.id())
  *             .build());
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .displayName("Some Group")
  *             .build());
  * 
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .displayName("Some Group")
  *             .build());
  * 

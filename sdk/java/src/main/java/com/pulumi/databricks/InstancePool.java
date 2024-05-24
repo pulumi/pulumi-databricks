@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var smallest = DatabricksFunctions.getNodeType();
  * 
- *         var smallestNodes = new InstancePool("smallestNodes", InstancePoolArgs.builder()        
+ *         var smallestNodes = new InstancePool("smallestNodes", InstancePoolArgs.builder()
  *             .instancePoolName("Smallest Nodes")
  *             .minIdleInstances(0)
  *             .maxCapacity(300)

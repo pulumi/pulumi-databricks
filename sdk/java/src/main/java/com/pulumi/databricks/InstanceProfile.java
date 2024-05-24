@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var roleForS3Access = new Role("roleForS3Access", RoleArgs.builder()        
+ *         var roleForS3Access = new Role("roleForS3Access", RoleArgs.builder()
  *             .name("shared-ec2-role-for-s3")
  *             .description("Role for shared access")
  *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
@@ -87,23 +87,23 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var passRoleForS3AccessPolicy = new Policy("passRoleForS3AccessPolicy", PolicyArgs.builder()        
+ *         var passRoleForS3AccessPolicy = new Policy("passRoleForS3AccessPolicy", PolicyArgs.builder()
  *             .name("shared-pass-role-for-s3-access")
  *             .path("/")
  *             .policy(passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult).applyValue(passRoleForS3Access -> passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json())))
  *             .build());
  * 
- *         var crossAccount = new RolePolicyAttachment("crossAccount", RolePolicyAttachmentArgs.builder()        
+ *         var crossAccount = new RolePolicyAttachment("crossAccount", RolePolicyAttachmentArgs.builder()
  *             .policyArn(passRoleForS3AccessPolicy.arn())
  *             .role(crossaccountRoleName)
  *             .build());
  * 
- *         var shared = new InstanceProfile("shared", InstanceProfileArgs.builder()        
+ *         var shared = new InstanceProfile("shared", InstanceProfileArgs.builder()
  *             .name("shared-instance-profile")
  *             .role(roleForS3Access.name())
  *             .build());
  * 
- *         var sharedInstanceProfile = new InstanceProfile("sharedInstanceProfile", InstanceProfileArgs.builder()        
+ *         var sharedInstanceProfile = new InstanceProfile("sharedInstanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .localDisk(true)
  *             .build());
  * 
- *         var this_ = new Cluster("this", ClusterArgs.builder()        
+ *         var this_ = new Cluster("this", ClusterArgs.builder()
  *             .clusterName("Shared Autoscaling")
  *             .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
  *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ClusterPolicy("this", ClusterPolicyArgs.builder()        
+ *         var this_ = new ClusterPolicy("this", ClusterPolicyArgs.builder()
  *             .name("Policy with predefined instance profile")
  *             .definition(serializeJson(
  *                 jsonObject(
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new InstanceProfile("this", InstanceProfileArgs.builder()        
+ *         var this_ = new InstanceProfile("this", InstanceProfileArgs.builder()
  *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *             .displayName("users")
  *             .build());
  * 
- *         var all = new GroupInstanceProfile("all", GroupInstanceProfileArgs.builder()        
+ *         var all = new GroupInstanceProfile("all", GroupInstanceProfileArgs.builder()
  *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
  *             .instanceProfileId(this_.id())
  *             .build());
@@ -282,17 +282,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var this_ = new Role("this", RoleArgs.builder()        
+ *         var this_ = new Role("this", RoleArgs.builder()
  *             .name("my-databricks-sql-serverless-role")
  *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         var thisInstanceProfile = new InstanceProfile("thisInstanceProfile", InstanceProfileArgs.builder()        
+ *         var thisInstanceProfile = new InstanceProfile("thisInstanceProfile", InstanceProfileArgs.builder()
  *             .name("my-databricks-sql-serverless-instance-profile")
  *             .role(this_.name())
  *             .build());
  * 
- *         var thisInstanceProfile2 = new InstanceProfile("thisInstanceProfile2", InstanceProfileArgs.builder()        
+ *         var thisInstanceProfile2 = new InstanceProfile("thisInstanceProfile2", InstanceProfileArgs.builder()
  *             .instanceProfileArn(thisInstanceProfile.arn())
  *             .iamRoleArn(this_.arn())
  *             .build());

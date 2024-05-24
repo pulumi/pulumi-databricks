@@ -49,24 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var a = new Group("a", GroupArgs.builder()        
+ *         var a = new Group("a", GroupArgs.builder()
  *             .displayName("A")
  *             .build());
  * 
- *         var b = new Group("b", GroupArgs.builder()        
+ *         var b = new Group("b", GroupArgs.builder()
  *             .displayName("B")
  *             .build());
  * 
- *         var ab = new GroupMember("ab", GroupMemberArgs.builder()        
+ *         var ab = new GroupMember("ab", GroupMemberArgs.builder()
  *             .groupId(a.id())
  *             .memberId(b.id())
  *             .build());
  * 
- *         var bradley = new User("bradley", UserArgs.builder()        
+ *         var bradley = new User("bradley", UserArgs.builder()
  *             .userName("bradley{@literal @}example.com")
  *             .build());
  * 
- *         var bb = new GroupMember("bb", GroupMemberArgs.builder()        
+ *         var bb = new GroupMember("bb", GroupMemberArgs.builder()
  *             .groupId(b.id())
  *             .memberId(bradley.id())
  *             .build());

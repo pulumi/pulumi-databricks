@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()        
+ *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
  *             .servicePrincipalId(this_.id())
  *             .build());
  * 

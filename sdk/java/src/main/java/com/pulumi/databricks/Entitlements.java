@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var meEntitlements = new Entitlements("meEntitlements", EntitlementsArgs.builder()        
+ *         var meEntitlements = new Entitlements("meEntitlements", EntitlementsArgs.builder()
  *             .userId(me.applyValue(getUserResult -> getUserResult.id()))
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .applicationId("11111111-2222-3333-4444-555666777888")
  *             .build());
  * 
- *         var thisEntitlements = new Entitlements("thisEntitlements", EntitlementsArgs.builder()        
+ *         var thisEntitlements = new Entitlements("thisEntitlements", EntitlementsArgs.builder()
  *             .servicePrincipalId(this_.spId())
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *             .displayName("users")
  *             .build());
  * 
- *         var workspace_users = new Entitlements("workspace-users", EntitlementsArgs.builder()        
+ *         var workspace_users = new Entitlements("workspace-users", EntitlementsArgs.builder()
  *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)

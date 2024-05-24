@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()
  *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupInstanceProfile = new GroupInstanceProfile("myGroupInstanceProfile", GroupInstanceProfileArgs.builder()        
+ *         var myGroupInstanceProfile = new GroupInstanceProfile("myGroupInstanceProfile", GroupInstanceProfileArgs.builder()
  *             .groupId(myGroup.id())
  *             .instanceProfileId(instanceProfile.id())
  *             .build());

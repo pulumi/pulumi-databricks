@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .userName("me{@literal @}example.com")
  *             .build());
  * 
- *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()        
+ *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()
  *             .principalId(me.applyValue(getUserResult -> getUserResult.id()))
  *             .permissions("USER")
  *             .build());
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .displayName("Automation-only SP")
  *             .build());
  * 
- *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()        
+ *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()
  *             .principalId(sp.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
  *             .permissions("ADMIN")
  *             .build());
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Use the workspace provider
- *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()        
+ *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()
  *             .principalId(accountLevel.applyValue(getGroupResult -> getGroupResult.id()))
  *             .permissions("USER")
  *             .build());

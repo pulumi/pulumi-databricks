@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
  *             .name("sandbox")
  *             .isolationMode("ISOLATED")
  *             .build());
  * 
- *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", CatalogWorkspaceBindingArgs.builder()        
+ *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", CatalogWorkspaceBindingArgs.builder()
  *             .securableName(sandbox.name())
  *             .workspaceId(other.workspaceId())
  *             .build());

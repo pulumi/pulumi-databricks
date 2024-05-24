@@ -47,17 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new SecretScope("app", SecretScopeArgs.builder()        
+ *         var app = new SecretScope("app", SecretScopeArgs.builder()
  *             .name("application-secret-scope")
  *             .build());
  * 
- *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()        
+ *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()
  *             .key("publishing_api")
  *             .stringValue(example.value())
  *             .scope(app.id())
  *             .build());
  * 
- *         var this_ = new Cluster("this", ClusterArgs.builder()        
+ *         var this_ = new Cluster("this", ClusterArgs.builder()
  *             .sparkConf(Map.of("fs.azure.account.oauth2.client.secret", publishingApi.configReference()))
  *             .build());
  * 

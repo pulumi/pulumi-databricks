@@ -79,33 +79,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()        
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
  *             .name("sandbox")
  *             .comment("this catalog is managed by terraform")
  *             .properties(Map.of("purpose", "testing"))
  *             .build());
  * 
- *         var things = new Schema("things", SchemaArgs.builder()        
+ *         var things = new Schema("things", SchemaArgs.builder()
  *             .catalogName(sandbox.name())
  *             .name("things")
  *             .comment("this schema is managed by terraform")
  *             .properties(Map.of("kind", "various"))
  *             .build());
  * 
- *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name("creds")
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
  *                 .build())
  *             .build());
  * 
- *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()        
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
  *             .name("external-location")
  *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
  *             .credentialName(external.name())
  *             .build());
  * 
- *         var this_ = new Volume("this", VolumeArgs.builder()        
+ *         var this_ = new Volume("this", VolumeArgs.builder()
  *             .name("quickstart_volume")
  *             .catalogName(sandbox.name())
  *             .schemaName(things.name())

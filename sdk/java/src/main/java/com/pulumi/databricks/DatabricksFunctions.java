@@ -195,7 +195,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -204,19 +204,19 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
@@ -283,7 +283,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -292,19 +292,19 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
@@ -371,7 +371,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -380,19 +380,19 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
@@ -459,7 +459,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -468,19 +468,19 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()        
+     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
-     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()        
+     *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format("%s-creds", prefix))
      *             .roleArn(crossAccount.arn())
@@ -536,7 +536,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
      *             .acl("private")
      *             .forceDestroy(true)
@@ -546,7 +546,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -595,7 +595,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
      *             .acl("private")
      *             .forceDestroy(true)
@@ -605,7 +605,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -654,7 +654,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
      *             .acl("private")
      *             .forceDestroy(true)
@@ -664,7 +664,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -713,7 +713,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()        
+     *         var this_ = new BucketV2("this", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
      *             .acl("private")
      *             .forceDestroy(true)
@@ -723,7 +723,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -1132,12 +1132,12 @@ public final class DatabricksFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
@@ -1227,12 +1227,12 @@ public final class DatabricksFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
@@ -1322,12 +1322,12 @@ public final class DatabricksFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
@@ -1417,12 +1417,12 @@ public final class DatabricksFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()        
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()        
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
@@ -1473,7 +1473,7 @@ public final class DatabricksFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -1533,7 +1533,7 @@ public final class DatabricksFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -1593,7 +1593,7 @@ public final class DatabricksFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -1653,7 +1653,7 @@ public final class DatabricksFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -2172,7 +2172,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -2224,7 +2224,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -2276,7 +2276,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -2328,7 +2328,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -2380,7 +2380,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -2432,7 +2432,7 @@ public final class DatabricksFunctions {
      *             .name("Personal Compute")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
      *             .build());
      * 
@@ -4536,11 +4536,11 @@ public final class DatabricksFunctions {
      *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User("me", UserArgs.builder()        
+     *         var me = new User("me", UserArgs.builder()
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
@@ -4606,11 +4606,11 @@ public final class DatabricksFunctions {
      *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User("me", UserArgs.builder()        
+     *         var me = new User("me", UserArgs.builder()
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
@@ -4676,11 +4676,11 @@ public final class DatabricksFunctions {
      *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User("me", UserArgs.builder()        
+     *         var me = new User("me", UserArgs.builder()
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
@@ -4746,11 +4746,11 @@ public final class DatabricksFunctions {
      *             .displayName("admins")
      *             .build());
      * 
-     *         var me = new User("me", UserArgs.builder()        
+     *         var me = new User("me", UserArgs.builder()
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.id())
      *             .build());
@@ -4814,7 +4814,7 @@ public final class DatabricksFunctions {
      *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
@@ -4866,7 +4866,7 @@ public final class DatabricksFunctions {
      *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
@@ -4918,7 +4918,7 @@ public final class DatabricksFunctions {
      *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
@@ -4970,7 +4970,7 @@ public final class DatabricksFunctions {
      *             .name("All spot")
      *             .build());
      * 
-     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()        
+     *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
      *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
@@ -5603,7 +5603,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -5704,7 +5704,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -5805,7 +5805,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -5906,7 +5906,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -6007,7 +6007,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -6108,7 +6108,7 @@ public final class DatabricksFunctions {
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
-     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()                
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
      *                         .groupName("users")
@@ -6202,7 +6202,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6262,7 +6262,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6322,7 +6322,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6382,7 +6382,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6442,7 +6442,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6502,7 +6502,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()        
+     *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
      *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
@@ -6913,7 +6913,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()
      *             .name("My MLflow Model")
      *             .description("My MLflow model description")
      *             .tags(            
@@ -6968,7 +6968,7 @@ public final class DatabricksFunctions {
      *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()
      *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
@@ -7024,7 +7024,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()
      *             .name("My MLflow Model")
      *             .description("My MLflow model description")
      *             .tags(            
@@ -7079,7 +7079,7 @@ public final class DatabricksFunctions {
      *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()
      *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
@@ -7135,7 +7135,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()
      *             .name("My MLflow Model")
      *             .description("My MLflow model description")
      *             .tags(            
@@ -7190,7 +7190,7 @@ public final class DatabricksFunctions {
      *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()
      *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
@@ -7246,7 +7246,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()        
+     *         var thisMlflowModel = new MlflowModel("thisMlflowModel", MlflowModelArgs.builder()
      *             .name("My MLflow Model")
      *             .description("My MLflow model description")
      *             .tags(            
@@ -7301,7 +7301,7 @@ public final class DatabricksFunctions {
      *             .name("My MLflow Model with multiple versions")
      *             .build());
      * 
-     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()        
+     *         var thisModelServing = new ModelServing("thisModelServing", ModelServingArgs.builder()
      *             .name("model-serving-endpoint")
      *             .config(ModelServingConfigArgs.builder()
      *                 .servedModels(ModelServingConfigServedModelArgs.builder()
@@ -8044,7 +8044,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -8123,7 +8123,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -8202,7 +8202,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -8281,7 +8281,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -8360,7 +8360,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -8439,7 +8439,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -9835,7 +9835,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -9906,7 +9906,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -9977,7 +9977,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -10048,7 +10048,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -10119,7 +10119,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -10190,7 +10190,7 @@ public final class DatabricksFunctions {
      *             .applicationId("11111111-2222-3333-4444-555666777888")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
      *             .build());
@@ -10920,7 +10920,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -10999,7 +10999,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -11078,7 +11078,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -11157,7 +11157,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -11236,7 +11236,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -11315,7 +11315,7 @@ public final class DatabricksFunctions {
      *             .ml(true)
      *             .build());
      * 
-     *         var research = new Cluster("research", ClusterArgs.builder()        
+     *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
      *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
      *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
@@ -12581,7 +12581,7 @@ public final class DatabricksFunctions {
      *             .name("main.certified.fct_transactions")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -12643,7 +12643,7 @@ public final class DatabricksFunctions {
      *             .name("main.certified.fct_transactions")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -12705,7 +12705,7 @@ public final class DatabricksFunctions {
      *             .name("main.certified.fct_transactions")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -12767,7 +12767,7 @@ public final class DatabricksFunctions {
      *             .name("main.certified.fct_transactions")
      *             .build());
      * 
-     *         var things = new Grants("things", GrantsArgs.builder()        
+     *         var things = new Grants("things", GrantsArgs.builder()
      *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
@@ -12834,7 +12834,7 @@ public final class DatabricksFunctions {
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
      *                         .principal("sensitive")
@@ -12907,7 +12907,7 @@ public final class DatabricksFunctions {
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
      *                         .principal("sensitive")
@@ -12980,7 +12980,7 @@ public final class DatabricksFunctions {
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
      *                         .principal("sensitive")
@@ -13053,7 +13053,7 @@ public final class DatabricksFunctions {
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
      *                         .principal("sensitive")
@@ -13129,7 +13129,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13201,7 +13201,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13273,7 +13273,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13345,7 +13345,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13417,7 +13417,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13489,7 +13489,7 @@ public final class DatabricksFunctions {
      *             .userName("me{@literal @}example.com")
      *             .build());
      * 
-     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()        
+     *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
      *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
@@ -13524,60 +13524,6 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetViewsArgs;
-     * import com.pulumi.databricks.Grants;
-     * import com.pulumi.databricks.GrantsArgs;
-     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName("sandbox")
-     *             .schemaName("things")
-     *             .build());
-     * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -> {
-     *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
-     *                     .view(range.value())
-     *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal("sensitive")
-     *                         .privileges(                        
-     *                             "SELECT",
-     *                             "MODIFY")
-     *                         .build())
-     *                     .build());
-     * 
-     *                 resources.add(resource);
-     *             }
-     * 
-     *             return resources;
-     *         });
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -13597,60 +13543,6 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetViewsArgs;
-     * import com.pulumi.databricks.Grants;
-     * import com.pulumi.databricks.GrantsArgs;
-     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName("sandbox")
-     *             .schemaName("things")
-     *             .build());
-     * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -> {
-     *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
-     *                     .view(range.value())
-     *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal("sensitive")
-     *                         .privileges(                        
-     *                             "SELECT",
-     *                             "MODIFY")
-     *                         .build())
-     *                     .build());
-     * 
-     *                 resources.add(resource);
-     *             }
-     * 
-     *             return resources;
-     *         });
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -13670,60 +13562,6 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetViewsArgs;
-     * import com.pulumi.databricks.Grants;
-     * import com.pulumi.databricks.GrantsArgs;
-     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName("sandbox")
-     *             .schemaName("things")
-     *             .build());
-     * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -> {
-     *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
-     *                     .view(range.value())
-     *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal("sensitive")
-     *                         .privileges(                        
-     *                             "SELECT",
-     *                             "MODIFY")
-     *                         .build())
-     *                     .build());
-     * 
-     *                 resources.add(resource);
-     *             }
-     * 
-     *             return resources;
-     *         });
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -13743,60 +13581,6 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetViewsArgs;
-     * import com.pulumi.databricks.Grants;
-     * import com.pulumi.databricks.GrantsArgs;
-     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
-     *             .catalogName("sandbox")
-     *             .schemaName("things")
-     *             .build());
-     * 
-     *         final var thingsGrants = things.applyValue(getViewsResult -> {
-     *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
-     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()                
-     *                     .view(range.value())
-     *                     .grants(GrantsGrantArgs.builder()
-     *                         .principal("sensitive")
-     *                         .privileges(                        
-     *                             "SELECT",
-     *                             "MODIFY")
-     *                         .build())
-     *                     .build());
-     * 
-     *                 resources.add(resource);
-     *             }
-     * 
-     *             return resources;
-     *         });
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources

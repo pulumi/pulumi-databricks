@@ -39,7 +39,7 @@ public final class ClusterWorkloadTypeClients {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .workloadType(ClusterWorkloadTypeArgs.builder()
      *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
      *                     .jobs(false)
@@ -91,7 +91,7 @@ public final class ClusterWorkloadTypeClients {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()        
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
      *             .workloadType(ClusterWorkloadTypeArgs.builder()
      *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
      *                     .jobs(false)

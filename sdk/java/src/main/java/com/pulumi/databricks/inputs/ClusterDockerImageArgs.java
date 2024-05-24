@@ -49,12 +49,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
      *             .build()
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
+     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()
      *             .dockerImage(ClusterDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -106,12 +106,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
      *             .build()
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
-     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
+     *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()
      *             .dockerImage(ClusterDockerImageArgs.builder()
      *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -204,12 +204,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
          *             .build()
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
+         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()
          *             .dockerImage(ClusterDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
@@ -265,12 +265,12 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()        
+         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
          *             .build()
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
-         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()        
+         *         var thisCluster = new Cluster("thisCluster", ClusterArgs.builder()
          *             .dockerImage(ClusterDockerImageArgs.builder()
          *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()

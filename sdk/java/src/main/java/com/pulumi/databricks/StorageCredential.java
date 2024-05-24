@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
  *                 .roleArn(externalDataAccess.arn())
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .comment("Managed by TF")
  *             .build());
  * 
- *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var externalMi = new StorageCredential("externalMi", StorageCredentialArgs.builder()        
+ *         var externalMi = new StorageCredential("externalMi", StorageCredentialArgs.builder()
  *             .name("mi_credential")
  *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
  *                 .accessConnectorId(example.id())
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .comment("Managed identity credential managed by TF")
  *             .build());
  * 
- *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
@@ -161,12 +161,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var external = new StorageCredential("external", StorageCredentialArgs.builder()        
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name("the-creds")
  *             .databricksGcpServiceAccount()
  *             .build());
  * 
- *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()        
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")

@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()        
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
  *             .path("/Shared/Queries")
  *             .build());
  * 
- *         var q1 = new SqlQuery("q1", SqlQueryArgs.builder()        
+ *         var q1 = new SqlQuery("q1", SqlQueryArgs.builder()
  *             .dataSourceId(example.dataSourceId())
  *             .name("My Query Name")
  *             .query("""
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var q1 = new Permissions("q1", PermissionsArgs.builder()        
+ *         var q1 = new Permissions("q1", PermissionsArgs.builder()
  *             .sqlQueryId(q1DatabricksSqlQuery.id())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
