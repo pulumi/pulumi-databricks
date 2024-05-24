@@ -12,11 +12,15 @@ from . import _utilities
 __all__ = [
     'AccessControlRuleSetGrantRuleArgs',
     'ArtifactAllowlistArtifactMatcherArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
     'ClusterAutoscaleArgs',
     'ClusterAwsAttributesArgs',
     'ClusterAzureAttributesArgs',
     'ClusterAzureAttributesLogAnalyticsInfoArgs',
-    'ClusterCloneFromArgs',
     'ClusterClusterLogConfArgs',
     'ClusterClusterLogConfDbfsArgs',
     'ClusterClusterLogConfS3Args',
@@ -43,7 +47,9 @@ __all__ = [
     'ClusterPolicyLibraryPypiArgs',
     'ClusterWorkloadTypeArgs',
     'ClusterWorkloadTypeClientsArgs',
+    'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs',
     'DefaultNamespaceSettingNamespaceArgs',
+    'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
     'ExternalLocationEncryptionDetailsArgs',
     'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs',
     'GrantsGrantArgs',
@@ -75,7 +81,6 @@ __all__ = [
     'JobJobClusterNewClusterAwsAttributesArgs',
     'JobJobClusterNewClusterAzureAttributesArgs',
     'JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs',
-    'JobJobClusterNewClusterCloneFromArgs',
     'JobJobClusterNewClusterClusterLogConfArgs',
     'JobJobClusterNewClusterClusterLogConfDbfsArgs',
     'JobJobClusterNewClusterClusterLogConfS3Args',
@@ -107,7 +112,6 @@ __all__ = [
     'JobNewClusterAwsAttributesArgs',
     'JobNewClusterAzureAttributesArgs',
     'JobNewClusterAzureAttributesLogAnalyticsInfoArgs',
-    'JobNewClusterCloneFromArgs',
     'JobNewClusterClusterLogConfArgs',
     'JobNewClusterClusterLogConfDbfsArgs',
     'JobNewClusterClusterLogConfS3Args',
@@ -164,7 +168,6 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterAwsAttributesArgs',
     'JobTaskForEachTaskTaskNewClusterAzureAttributesArgs',
     'JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
-    'JobTaskForEachTaskTaskNewClusterCloneFromArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args',
@@ -219,7 +222,6 @@ __all__ = [
     'JobTaskNewClusterAwsAttributesArgs',
     'JobTaskNewClusterAzureAttributesArgs',
     'JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
-    'JobTaskNewClusterCloneFromArgs',
     'JobTaskNewClusterClusterLogConfArgs',
     'JobTaskNewClusterClusterLogConfDbfsArgs',
     'JobTaskNewClusterClusterLogConfS3Args',
@@ -366,6 +368,15 @@ __all__ = [
     'PipelineLibraryMavenArgs',
     'PipelineLibraryNotebookArgs',
     'PipelineNotificationArgs',
+    'QualityMonitorCustomMetricArgs',
+    'QualityMonitorDataClassificationConfigArgs',
+    'QualityMonitorInferenceLogArgs',
+    'QualityMonitorNotificationsArgs',
+    'QualityMonitorNotificationsOnFailureArgs',
+    'QualityMonitorNotificationsOnNewClassificationTagDetectedArgs',
+    'QualityMonitorScheduleArgs',
+    'QualityMonitorSnapshotArgs',
+    'QualityMonitorTimeSeriesArgs',
     'RecipientIpAccessListArgs',
     'RecipientPropertiesKvpairsArgs',
     'RecipientTokenArgs',
@@ -781,6 +792,199 @@ class ArtifactAllowlistArtifactMatcherArgs:
 
 
 @pulumi.input_type
+class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs:
+    def __init__(__self__, *,
+                 can_toggle: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 enablement_details: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']] = None,
+                 maintenance_window: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']] = None,
+                 restart_even_if_no_updates_available: Optional[pulumi.Input[bool]] = None):
+        if can_toggle is not None:
+            pulumi.set(__self__, "can_toggle", can_toggle)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enablement_details is not None:
+            pulumi.set(__self__, "enablement_details", enablement_details)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if restart_even_if_no_updates_available is not None:
+            pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
+
+    @property
+    @pulumi.getter(name="canToggle")
+    def can_toggle(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "can_toggle")
+
+    @can_toggle.setter
+    def can_toggle(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_toggle", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="enablementDetails")
+    def enablement_details(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']]:
+        return pulumi.get(self, "enablement_details")
+
+    @enablement_details.setter
+    def enablement_details(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']]):
+        pulumi.set(self, "enablement_details", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="restartEvenIfNoUpdatesAvailable")
+    def restart_even_if_no_updates_available(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "restart_even_if_no_updates_available")
+
+    @restart_even_if_no_updates_available.setter
+    def restart_even_if_no_updates_available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restart_even_if_no_updates_available", value)
+
+
+@pulumi.input_type
+class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
+    def __init__(__self__, *,
+                 forced_for_compliance_mode: Optional[pulumi.Input[bool]] = None,
+                 unavailable_for_disabled_entitlement: Optional[pulumi.Input[bool]] = None,
+                 unavailable_for_non_enterprise_tier: Optional[pulumi.Input[bool]] = None):
+        if forced_for_compliance_mode is not None:
+            pulumi.set(__self__, "forced_for_compliance_mode", forced_for_compliance_mode)
+        if unavailable_for_disabled_entitlement is not None:
+            pulumi.set(__self__, "unavailable_for_disabled_entitlement", unavailable_for_disabled_entitlement)
+        if unavailable_for_non_enterprise_tier is not None:
+            pulumi.set(__self__, "unavailable_for_non_enterprise_tier", unavailable_for_non_enterprise_tier)
+
+    @property
+    @pulumi.getter(name="forcedForComplianceMode")
+    def forced_for_compliance_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "forced_for_compliance_mode")
+
+    @forced_for_compliance_mode.setter
+    def forced_for_compliance_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "forced_for_compliance_mode", value)
+
+    @property
+    @pulumi.getter(name="unavailableForDisabledEntitlement")
+    def unavailable_for_disabled_entitlement(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "unavailable_for_disabled_entitlement")
+
+    @unavailable_for_disabled_entitlement.setter
+    def unavailable_for_disabled_entitlement(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unavailable_for_disabled_entitlement", value)
+
+    @property
+    @pulumi.getter(name="unavailableForNonEnterpriseTier")
+    def unavailable_for_non_enterprise_tier(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "unavailable_for_non_enterprise_tier")
+
+    @unavailable_for_non_enterprise_tier.setter
+    def unavailable_for_non_enterprise_tier(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
+
+
+@pulumi.input_type
+class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 week_day_based_schedule: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']] = None):
+        if week_day_based_schedule is not None:
+            pulumi.set(__self__, "week_day_based_schedule", week_day_based_schedule)
+
+    @property
+    @pulumi.getter(name="weekDayBasedSchedule")
+    def week_day_based_schedule(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']]:
+        return pulumi.get(self, "week_day_based_schedule")
+
+    @week_day_based_schedule.setter
+    def week_day_based_schedule(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']]):
+        pulumi.set(self, "week_day_based_schedule", value)
+
+
+@pulumi.input_type
+class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
+    def __init__(__self__, *,
+                 day_of_week: Optional[pulumi.Input[str]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
+                 window_start_time: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if window_start_time is not None:
+            pulumi.set(__self__, "window_start_time", window_start_time)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="windowStartTime")
+    def window_start_time(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']]:
+        return pulumi.get(self, "window_start_time")
+
+    @window_start_time.setter
+    def window_start_time(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']]):
+        pulumi.set(self, "window_start_time", value)
+
+
+@pulumi.input_type
+class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None):
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+
+@pulumi.input_type
 class ClusterAutoscaleArgs:
     def __init__(__self__, *,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -1130,22 +1334,6 @@ class ClusterAzureAttributesLogAnalyticsInfoArgs:
     @log_analytics_workspace_id.setter
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
-
-
-@pulumi.input_type
-class ClusterCloneFromArgs:
-    def __init__(__self__, *,
-                 source_cluster_id: pulumi.Input[str]):
-        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
-
-    @property
-    @pulumi.getter(name="sourceClusterId")
-    def source_cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source_cluster_id")
-
-    @source_cluster_id.setter
-    def source_cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -2349,6 +2537,35 @@ class ClusterWorkloadTypeClientsArgs:
 
 
 @pulumi.input_type
+class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs:
+    def __init__(__self__, *,
+                 compliance_standards: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "compliance_standards")
+
+    @compliance_standards.setter
+    def compliance_standards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "compliance_standards", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+
+@pulumi.input_type
 class DefaultNamespaceSettingNamespaceArgs:
     def __init__(__self__, *,
                  value: Optional[pulumi.Input[str]] = None):
@@ -2369,6 +2586,23 @@ class DefaultNamespaceSettingNamespaceArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 @pulumi.input_type
@@ -3514,7 +3748,6 @@ class JobJobClusterNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterClusterMountInfoArgs']]]] = None,
@@ -3554,8 +3787,6 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -3660,15 +3891,6 @@ class JobJobClusterNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
-
-    @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['JobJobClusterNewClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -4133,22 +4355,6 @@ class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs:
     @log_analytics_workspace_id.setter
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
-
-
-@pulumi.input_type
-class JobJobClusterNewClusterCloneFromArgs:
-    def __init__(__self__, *,
-                 source_cluster_id: pulumi.Input[str]):
-        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
-
-    @property
-    @pulumi.getter(name="sourceClusterId")
-    def source_cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source_cluster_id")
-
-    @source_cluster_id.setter
-    def source_cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -5192,7 +5398,6 @@ class JobNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobNewClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['JobNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterClusterMountInfoArgs']]]] = None,
@@ -5232,8 +5437,6 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -5338,15 +5541,6 @@ class JobNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
-
-    @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['JobNewClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['JobNewClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -5811,22 +6005,6 @@ class JobNewClusterAzureAttributesLogAnalyticsInfoArgs:
     @log_analytics_workspace_id.setter
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
-
-
-@pulumi.input_type
-class JobNewClusterCloneFromArgs:
-    def __init__(__self__, *,
-                 source_cluster_id: pulumi.Input[str]):
-        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
-
-    @property
-    @pulumi.getter(name="sourceClusterId")
-    def source_cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source_cluster_id")
-
-    @source_cluster_id.setter
-    def source_cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -9021,7 +9199,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs']]]] = None,
@@ -9061,8 +9238,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -9167,15 +9342,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
-
-    @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -9640,22 +9806,6 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     @log_analytics_workspace_id.setter
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
-
-
-@pulumi.input_type
-class JobTaskForEachTaskTaskNewClusterCloneFromArgs:
-    def __init__(__self__, *,
-                 source_cluster_id: pulumi.Input[str]):
-        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
-
-    @property
-    @pulumi.getter(name="sourceClusterId")
-    def source_cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source_cluster_id")
-
-    @source_cluster_id.setter
-    def source_cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -11892,7 +12042,6 @@ class JobTaskNewClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterClusterMountInfoArgs']]]] = None,
@@ -11932,8 +12081,6 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -12038,15 +12185,6 @@ class JobTaskNewClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
-
-    @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['JobTaskNewClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -12511,22 +12649,6 @@ class JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     @log_analytics_workspace_id.setter
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
-
-
-@pulumi.input_type
-class JobTaskNewClusterCloneFromArgs:
-    def __init__(__self__, *,
-                 source_cluster_id: pulumi.Input[str]):
-        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
-
-    @property
-    @pulumi.getter(name="sourceClusterId")
-    def source_cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source_cluster_id")
-
-    @source_cluster_id.setter
-    def source_cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cluster_id", value)
 
 
 @pulumi.input_type
@@ -16312,15 +16434,25 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArg
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
     def __init__(__self__, *,
-                 openai_api_key: pulumi.Input[str],
+                 microsoft_entra_client_id: Optional[pulumi.Input[str]] = None,
+                 microsoft_entra_client_secret: Optional[pulumi.Input[str]] = None,
+                 microsoft_entra_tenant_id: Optional[pulumi.Input[str]] = None,
                  openai_api_base: Optional[pulumi.Input[str]] = None,
+                 openai_api_key: Optional[pulumi.Input[str]] = None,
                  openai_api_type: Optional[pulumi.Input[str]] = None,
                  openai_api_version: Optional[pulumi.Input[str]] = None,
                  openai_deployment_name: Optional[pulumi.Input[str]] = None,
                  openai_organization: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "openai_api_key", openai_api_key)
+        if microsoft_entra_client_id is not None:
+            pulumi.set(__self__, "microsoft_entra_client_id", microsoft_entra_client_id)
+        if microsoft_entra_client_secret is not None:
+            pulumi.set(__self__, "microsoft_entra_client_secret", microsoft_entra_client_secret)
+        if microsoft_entra_tenant_id is not None:
+            pulumi.set(__self__, "microsoft_entra_tenant_id", microsoft_entra_tenant_id)
         if openai_api_base is not None:
             pulumi.set(__self__, "openai_api_base", openai_api_base)
+        if openai_api_key is not None:
+            pulumi.set(__self__, "openai_api_key", openai_api_key)
         if openai_api_type is not None:
             pulumi.set(__self__, "openai_api_type", openai_api_type)
         if openai_api_version is not None:
@@ -16331,13 +16463,31 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
             pulumi.set(__self__, "openai_organization", openai_organization)
 
     @property
-    @pulumi.getter(name="openaiApiKey")
-    def openai_api_key(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "openai_api_key")
+    @pulumi.getter(name="microsoftEntraClientId")
+    def microsoft_entra_client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "microsoft_entra_client_id")
 
-    @openai_api_key.setter
-    def openai_api_key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "openai_api_key", value)
+    @microsoft_entra_client_id.setter
+    def microsoft_entra_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "microsoft_entra_client_id", value)
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientSecret")
+    def microsoft_entra_client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "microsoft_entra_client_secret")
+
+    @microsoft_entra_client_secret.setter
+    def microsoft_entra_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "microsoft_entra_client_secret", value)
+
+    @property
+    @pulumi.getter(name="microsoftEntraTenantId")
+    def microsoft_entra_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "microsoft_entra_tenant_id")
+
+    @microsoft_entra_tenant_id.setter
+    def microsoft_entra_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "microsoft_entra_tenant_id", value)
 
     @property
     @pulumi.getter(name="openaiApiBase")
@@ -16347,6 +16497,15 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
     @openai_api_base.setter
     def openai_api_base(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "openai_api_base", value)
+
+    @property
+    @pulumi.getter(name="openaiApiKey")
+    def openai_api_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "openai_api_key")
+
+    @openai_api_key.setter
+    def openai_api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_api_key", value)
 
     @property
     @pulumi.getter(name="openaiApiType")
@@ -19507,6 +19666,388 @@ class PipelineNotificationArgs:
 
 
 @pulumi.input_type
+class QualityMonitorCustomMetricArgs:
+    def __init__(__self__, *,
+                 definition: pulumi.Input[str],
+                 input_columns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str],
+                 output_data_type: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] definition: [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_columns: Columns on the monitored table to apply the custom metrics to.
+        :param pulumi.Input[str] name: Name of the custom metric.
+        :param pulumi.Input[str] output_data_type: The output type of the custom metric.
+        :param pulumi.Input[str] type: The type of the custom metric.
+        """
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "input_columns", input_columns)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "output_data_type", output_data_type)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> pulumi.Input[str]:
+        """
+        [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="inputColumns")
+    def input_columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Columns on the monitored table to apply the custom metrics to.
+        """
+        return pulumi.get(self, "input_columns")
+
+    @input_columns.setter
+    def input_columns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "input_columns", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the custom metric.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputDataType")
+    def output_data_type(self) -> pulumi.Input[str]:
+        """
+        The output type of the custom metric.
+        """
+        return pulumi.get(self, "output_data_type")
+
+    @output_data_type.setter
+    def output_data_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "output_data_type", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the custom metric.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class QualityMonitorDataClassificationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class QualityMonitorInferenceLogArgs:
+    def __init__(__self__, *,
+                 granularities: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 model_id_col: pulumi.Input[str],
+                 prediction_col: pulumi.Input[str],
+                 problem_type: pulumi.Input[str],
+                 timestamp_col: pulumi.Input[str],
+                 label_col: Optional[pulumi.Input[str]] = None,
+                 prediction_proba_col: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
+        :param pulumi.Input[str] model_id_col: Column of the model id or version
+        :param pulumi.Input[str] prediction_col: Column of the model prediction
+        :param pulumi.Input[str] problem_type: Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        :param pulumi.Input[str] timestamp_col: Column of the timestamp of predictions
+        :param pulumi.Input[str] label_col: Column of the model label
+        :param pulumi.Input[str] prediction_proba_col: Column of the model prediction probabilities
+        """
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "model_id_col", model_id_col)
+        pulumi.set(__self__, "prediction_col", prediction_col)
+        pulumi.set(__self__, "problem_type", problem_type)
+        pulumi.set(__self__, "timestamp_col", timestamp_col)
+        if label_col is not None:
+            pulumi.set(__self__, "label_col", label_col)
+        if prediction_proba_col is not None:
+            pulumi.set(__self__, "prediction_proba_col", prediction_proba_col)
+
+    @property
+    @pulumi.getter
+    def granularities(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "granularities", value)
+
+    @property
+    @pulumi.getter(name="modelIdCol")
+    def model_id_col(self) -> pulumi.Input[str]:
+        """
+        Column of the model id or version
+        """
+        return pulumi.get(self, "model_id_col")
+
+    @model_id_col.setter
+    def model_id_col(self, value: pulumi.Input[str]):
+        pulumi.set(self, "model_id_col", value)
+
+    @property
+    @pulumi.getter(name="predictionCol")
+    def prediction_col(self) -> pulumi.Input[str]:
+        """
+        Column of the model prediction
+        """
+        return pulumi.get(self, "prediction_col")
+
+    @prediction_col.setter
+    def prediction_col(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prediction_col", value)
+
+    @property
+    @pulumi.getter(name="problemType")
+    def problem_type(self) -> pulumi.Input[str]:
+        """
+        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        """
+        return pulumi.get(self, "problem_type")
+
+    @problem_type.setter
+    def problem_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "problem_type", value)
+
+    @property
+    @pulumi.getter(name="timestampCol")
+    def timestamp_col(self) -> pulumi.Input[str]:
+        """
+        Column of the timestamp of predictions
+        """
+        return pulumi.get(self, "timestamp_col")
+
+    @timestamp_col.setter
+    def timestamp_col(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timestamp_col", value)
+
+    @property
+    @pulumi.getter(name="labelCol")
+    def label_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model label
+        """
+        return pulumi.get(self, "label_col")
+
+    @label_col.setter
+    def label_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_col", value)
+
+    @property
+    @pulumi.getter(name="predictionProbaCol")
+    def prediction_proba_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model prediction probabilities
+        """
+        return pulumi.get(self, "prediction_proba_col")
+
+    @prediction_proba_col.setter
+    def prediction_proba_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prediction_proba_col", value)
+
+
+@pulumi.input_type
+class QualityMonitorNotificationsArgs:
+    def __init__(__self__, *,
+                 on_failure: Optional[pulumi.Input['QualityMonitorNotificationsOnFailureArgs']] = None,
+                 on_new_classification_tag_detected: Optional[pulumi.Input['QualityMonitorNotificationsOnNewClassificationTagDetectedArgs']] = None):
+        """
+        :param pulumi.Input['QualityMonitorNotificationsOnFailureArgs'] on_failure: who to send notifications to on monitor failure.
+        :param pulumi.Input['QualityMonitorNotificationsOnNewClassificationTagDetectedArgs'] on_new_classification_tag_detected: Who to send notifications to when new data classification tags are detected.
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_new_classification_tag_detected is not None:
+            pulumi.set(__self__, "on_new_classification_tag_detected", on_new_classification_tag_detected)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input['QualityMonitorNotificationsOnFailureArgs']]:
+        """
+        who to send notifications to on monitor failure.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input['QualityMonitorNotificationsOnFailureArgs']]):
+        pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter(name="onNewClassificationTagDetected")
+    def on_new_classification_tag_detected(self) -> Optional[pulumi.Input['QualityMonitorNotificationsOnNewClassificationTagDetectedArgs']]:
+        """
+        Who to send notifications to when new data classification tags are detected.
+        """
+        return pulumi.get(self, "on_new_classification_tag_detected")
+
+    @on_new_classification_tag_detected.setter
+    def on_new_classification_tag_detected(self, value: Optional[pulumi.Input['QualityMonitorNotificationsOnNewClassificationTagDetectedArgs']]):
+        pulumi.set(self, "on_new_classification_tag_detected", value)
+
+
+@pulumi.input_type
+class QualityMonitorNotificationsOnFailureArgs:
+    def __init__(__self__, *,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+
+@pulumi.input_type
+class QualityMonitorNotificationsOnNewClassificationTagDetectedArgs:
+    def __init__(__self__, *,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+
+@pulumi.input_type
+class QualityMonitorScheduleArgs:
+    def __init__(__self__, *,
+                 quartz_cron_expression: pulumi.Input[str],
+                 timezone_id: pulumi.Input[str],
+                 pause_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] quartz_cron_expression: string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        :param pulumi.Input[str] timezone_id: string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        :param pulumi.Input[str] pause_status: optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        """
+        pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+
+    @property
+    @pulumi.getter(name="quartzCronExpression")
+    def quartz_cron_expression(self) -> pulumi.Input[str]:
+        """
+        string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        """
+        return pulumi.get(self, "quartz_cron_expression")
+
+    @quartz_cron_expression.setter
+    def quartz_cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "quartz_cron_expression", value)
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[str]:
+        """
+        string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timezone_id", value)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        """
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pause_status", value)
+
+
+@pulumi.input_type
+class QualityMonitorSnapshotArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class QualityMonitorTimeSeriesArgs:
+    def __init__(__self__, *,
+                 granularities: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 timestamp_col: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
+        :param pulumi.Input[str] timestamp_col: Column of the timestamp of predictions
+        """
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "timestamp_col", timestamp_col)
+
+    @property
+    @pulumi.getter
+    def granularities(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "granularities", value)
+
+    @property
+    @pulumi.getter(name="timestampCol")
+    def timestamp_col(self) -> pulumi.Input[str]:
+        """
+        Column of the timestamp of predictions
+        """
+        return pulumi.get(self, "timestamp_col")
+
+    @timestamp_col.setter
+    def timestamp_col(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timestamp_col", value)
+
+
+@pulumi.input_type
 class RecipientIpAccessListArgs:
     def __init__(__self__, *,
                  allowed_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -21770,6 +22311,7 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
     def __init__(__self__, *,
                  embedding_source_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]]] = None,
                  embedding_vector_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]] = None,
+                 embedding_writeback_table: Optional[pulumi.Input[str]] = None,
                  pipeline_id: Optional[pulumi.Input[str]] = None,
                  pipeline_type: Optional[pulumi.Input[str]] = None,
                  source_table: Optional[pulumi.Input[str]] = None):
@@ -21782,6 +22324,8 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
             pulumi.set(__self__, "embedding_source_columns", embedding_source_columns)
         if embedding_vector_columns is not None:
             pulumi.set(__self__, "embedding_vector_columns", embedding_vector_columns)
+        if embedding_writeback_table is not None:
+            pulumi.set(__self__, "embedding_writeback_table", embedding_writeback_table)
         if pipeline_id is not None:
             pulumi.set(__self__, "pipeline_id", pipeline_id)
         if pipeline_type is not None:
@@ -21809,6 +22353,15 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
     @embedding_vector_columns.setter
     def embedding_vector_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]]):
         pulumi.set(self, "embedding_vector_columns", value)
+
+    @property
+    @pulumi.getter(name="embeddingWritebackTable")
+    def embedding_writeback_table(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "embedding_writeback_table")
+
+    @embedding_writeback_table.setter
+    def embedding_writeback_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "embedding_writeback_table", value)
 
     @property
     @pulumi.getter(name="pipelineId")
@@ -24439,11 +24992,17 @@ class GetExternalLocationExternalLocationInfoArgs:
         """
         :param str access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param str comment: User-supplied comment.
+        :param int created_at: Time at which this catalog was created, in epoch milliseconds.
+        :param str created_by: Username of catalog creator.
+        :param str credential_id: Unique ID of storage credential.
         :param str credential_name: Name of the StorageCredential to use with this external location.
         :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        :param str name: The name of the storage credential
+        :param str metastore_id: Unique identifier of the parent Metastore.
+        :param str name: The name of the external location
         :param str owner: Username/groupname/sp application_id of the external location owner.
         :param bool read_only: Indicates whether the external location is read-only.
+        :param int updated_at: Time at which this catalog was last modified, in epoch milliseconds.
+        :param str updated_by: Username of user who last modified catalog.
         :param str url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         if access_point is not None:
@@ -24513,6 +25072,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -24522,6 +25084,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Username of catalog creator.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -24531,6 +25096,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> Optional[str]:
+        """
+        Unique ID of storage credential.
+        """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
@@ -24564,6 +25132,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[str]:
+        """
+        Unique identifier of the parent Metastore.
+        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -24574,7 +25145,7 @@ class GetExternalLocationExternalLocationInfoArgs:
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the storage credential
+        The name of the external location
         """
         return pulumi.get(self, "name")
 
@@ -24609,6 +25180,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -24618,6 +25192,9 @@ class GetExternalLocationExternalLocationInfoArgs:
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Username of user who last modified catalog.
+        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
@@ -35967,10 +36544,19 @@ class GetStorageCredentialStorageCredentialInfoArgs:
                  updated_by: Optional[str] = None,
                  used_for_managed_storage: Optional[bool] = None):
         """
+        :param 'GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs' aws_iam_role: credential details for AWS:
+        :param 'GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs' azure_managed_identity: managed identity credential details for Azure
+        :param 'GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs' azure_service_principal: service principal credential details for Azure:
+        :param int created_at: Time at which this catalog was created, in epoch milliseconds.
+        :param str created_by: Username of catalog creator.
+        :param 'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs' databricks_gcp_service_account: credential details for GCP:
+        :param str id: Unique ID of storage credential.
         :param str metastore_id: Unique identifier of the parent Metastore.
         :param str name: The name of the storage credential
         :param str owner: Username/groupname/sp application_id of the storage credential owner.
         :param bool read_only: Indicates whether the storage credential is only usable for read operations.
+        :param int updated_at: Time at which this catalog was last modified, in epoch milliseconds.
+        :param str updated_by: Username of user who last modified catalog.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -36008,6 +36594,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> Optional['GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs']:
+        """
+        credential details for AWS:
+        """
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
@@ -36017,6 +36606,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="azureManagedIdentity")
     def azure_managed_identity(self) -> Optional['GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs']:
+        """
+        managed identity credential details for Azure
+        """
         return pulumi.get(self, "azure_managed_identity")
 
     @azure_managed_identity.setter
@@ -36026,6 +36618,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="azureServicePrincipal")
     def azure_service_principal(self) -> Optional['GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs']:
+        """
+        service principal credential details for Azure:
+        """
         return pulumi.get(self, "azure_service_principal")
 
     @azure_service_principal.setter
@@ -36053,6 +36648,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -36062,6 +36660,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Username of catalog creator.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -36071,6 +36672,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="databricksGcpServiceAccount")
     def databricks_gcp_service_account(self) -> Optional['GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs']:
+        """
+        credential details for GCP:
+        """
         return pulumi.get(self, "databricks_gcp_service_account")
 
     @databricks_gcp_service_account.setter
@@ -36080,6 +36684,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        Unique ID of storage credential.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -36137,6 +36744,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[int]:
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -36146,6 +36756,9 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Username of user who last modified catalog.
+        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter

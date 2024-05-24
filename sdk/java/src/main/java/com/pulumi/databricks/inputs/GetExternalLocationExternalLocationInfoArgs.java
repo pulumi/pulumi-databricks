@@ -55,23 +55,47 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of catalog creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Unique ID of storage credential.
+     * 
+     */
     @Import(name="credentialId")
     private @Nullable Output<String> credentialId;
 
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public Optional<Output<String>> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
@@ -106,22 +130,30 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    /**
+     * Unique identifier of the parent Metastore.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of the parent Metastore.
+     * 
+     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
     /**
-     * The name of the storage credential
+     * The name of the external location
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the storage credential
+     * @return The name of the external location
      * 
      */
     public Optional<Output<String>> name() {
@@ -158,16 +190,32 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of user who last modified catalog.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -276,29 +324,65 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param createdAt Time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy Username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy Username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param credentialId Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(@Nullable Output<String> credentialId) {
             $.credentialId = credentialId;
             return this;
         }
 
+        /**
+         * @param credentialId Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(String credentialId) {
             return credentialId(Output.of(credentialId));
         }
@@ -345,17 +429,29 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
             return encryptionDetails(Output.of(encryptionDetails));
         }
 
+        /**
+         * @param metastoreId Unique identifier of the parent Metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreId Unique identifier of the parent Metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
         /**
-         * @param name The name of the storage credential
+         * @param name The name of the external location
          * 
          * @return builder
          * 
@@ -366,7 +462,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         }
 
         /**
-         * @param name The name of the storage credential
+         * @param name The name of the external location
          * 
          * @return builder
          * 
@@ -417,20 +513,44 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param updatedAt Time at which this catalog was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this catalog was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy Username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

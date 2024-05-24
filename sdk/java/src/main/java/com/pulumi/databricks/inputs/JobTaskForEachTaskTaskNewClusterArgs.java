@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesArgs;
-import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterDockerImageArgs;
@@ -65,13 +64,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
     public Optional<Output<JobTaskForEachTaskTaskNewClusterAzureAttributesArgs>> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
-    }
-
-    @Import(name="cloneFrom")
-    private @Nullable Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs> cloneFrom;
-
-    public Optional<Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs>> cloneFrom() {
-        return Optional.ofNullable(this.cloneFrom);
     }
 
     @Import(name="clusterId")
@@ -272,7 +264,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
-        this.cloneFrom = $.cloneFrom;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
@@ -362,15 +353,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder azureAttributes(JobTaskForEachTaskTaskNewClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
-        }
-
-        public Builder cloneFrom(@Nullable Output<JobTaskForEachTaskTaskNewClusterCloneFromArgs> cloneFrom) {
-            $.cloneFrom = cloneFrom;
-            return this;
-        }
-
-        public Builder cloneFrom(JobTaskForEachTaskTaskNewClusterCloneFromArgs cloneFrom) {
-            return cloneFrom(Output.of(cloneFrom));
         }
 
         public Builder clusterId(@Nullable Output<String> clusterId) {

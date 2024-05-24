@@ -119,6 +119,10 @@ export class ModelServing extends pulumi.CustomResource {
      */
     public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
+     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     */
+    public readonly routeOptimized!: pulumi.Output<boolean | undefined>;
+    /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
+            resourceInputs["routeOptimized"] = state ? state.routeOptimized : undefined;
             resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -153,6 +158,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
+            resourceInputs["routeOptimized"] = args ? args.routeOptimized : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
@@ -177,6 +183,10 @@ export interface ModelServingState {
      * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
+    /**
+     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     */
+    routeOptimized?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
@@ -203,6 +213,10 @@ export interface ModelServingArgs {
      * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
+    /**
+     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     */
+    routeOptimized?: pulumi.Input<boolean>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */

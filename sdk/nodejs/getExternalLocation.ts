@@ -10,12 +10,30 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Getting details of an existing external location in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getExternalLocation({
+ *     name: "this",
+ * });
+ * export const createdBy = _this.then(_this => _this.externalLocationInfo?.createdBy);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getExternalLocations to get names of all external locations
+ * * databricks.ExternalLocation to manage external locations within Unity Catalog.
  */
 export function getExternalLocation(args: GetExternalLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLocationResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalLocation:getExternalLocation", {
         "externalLocationInfo": args.externalLocationInfo,
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -24,9 +42,16 @@ export function getExternalLocation(args: GetExternalLocationArgs, opts?: pulumi
  * A collection of arguments for invoking getExternalLocation.
  */
 export interface GetExternalLocationArgs {
+    /**
+     * array of objects with information about external location:
+     */
     externalLocationInfo?: inputs.GetExternalLocationExternalLocationInfo;
     /**
-     * The name of the storage credential
+     * external location ID - same as name.
+     */
+    id?: string;
+    /**
+     * The name of the external location
      */
     name: string;
 }
@@ -35,9 +60,12 @@ export interface GetExternalLocationArgs {
  * A collection of values returned by getExternalLocation.
  */
 export interface GetExternalLocationResult {
+    /**
+     * array of objects with information about external location:
+     */
     readonly externalLocationInfo: outputs.GetExternalLocationExternalLocationInfo;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * external location ID - same as name.
      */
     readonly id: string;
     readonly name: string;
@@ -46,6 +74,23 @@ export interface GetExternalLocationResult {
  * ## Example Usage
  *
  * Getting details of an existing external location in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getExternalLocation({
+ *     name: "this",
+ * });
+ * export const createdBy = _this.then(_this => _this.externalLocationInfo?.createdBy);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getExternalLocations to get names of all external locations
+ * * databricks.ExternalLocation to manage external locations within Unity Catalog.
  */
 export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLocationResult> {
     return pulumi.output(args).apply((a: any) => getExternalLocation(a, opts))
@@ -55,9 +100,16 @@ export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, o
  * A collection of arguments for invoking getExternalLocation.
  */
 export interface GetExternalLocationOutputArgs {
+    /**
+     * array of objects with information about external location:
+     */
     externalLocationInfo?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoArgs>;
     /**
-     * The name of the storage credential
+     * external location ID - same as name.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the external location
      */
     name: pulumi.Input<string>;
 }

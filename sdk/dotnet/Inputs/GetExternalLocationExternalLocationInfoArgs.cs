@@ -27,12 +27,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
 
@@ -48,11 +57,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("encryptionDetails")]
         public Input<Inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsInputArgs>? EncryptionDetails { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore.
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// The name of the storage credential
+        /// The name of the external location
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -69,9 +81,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

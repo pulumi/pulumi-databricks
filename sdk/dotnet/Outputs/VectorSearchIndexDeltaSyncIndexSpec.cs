@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> EmbeddingSourceColumns;
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> EmbeddingVectorColumns;
+        public readonly string? EmbeddingWritebackTable;
         /// <summary>
         /// ID of the associated Delta Live Table pipeline.
         /// </summary>
@@ -34,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns,
 
+            string? embeddingWritebackTable,
+
             string? pipelineId,
 
             string? pipelineType,
@@ -42,6 +45,7 @@ namespace Pulumi.Databricks.Outputs
         {
             EmbeddingSourceColumns = embeddingSourceColumns;
             EmbeddingVectorColumns = embeddingVectorColumns;
+            EmbeddingWritebackTable = embeddingWritebackTable;
             PipelineId = pipelineId;
             PipelineType = pipelineType;
             SourceTable = sourceTable;

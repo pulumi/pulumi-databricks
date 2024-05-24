@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterAzureAttributesArgs;
-import com.pulumi.databricks.inputs.JobTaskNewClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterDockerImageArgs;
@@ -65,13 +64,6 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<JobTaskNewClusterAzureAttributesArgs>> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
-    }
-
-    @Import(name="cloneFrom")
-    private @Nullable Output<JobTaskNewClusterCloneFromArgs> cloneFrom;
-
-    public Optional<Output<JobTaskNewClusterCloneFromArgs>> cloneFrom() {
-        return Optional.ofNullable(this.cloneFrom);
     }
 
     @Import(name="clusterId")
@@ -272,7 +264,6 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
-        this.cloneFrom = $.cloneFrom;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
@@ -362,15 +353,6 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder azureAttributes(JobTaskNewClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
-        }
-
-        public Builder cloneFrom(@Nullable Output<JobTaskNewClusterCloneFromArgs> cloneFrom) {
-            $.cloneFrom = cloneFrom;
-            return this;
-        }
-
-        public Builder cloneFrom(JobTaskNewClusterCloneFromArgs cloneFrom) {
-            return cloneFrom(Output.of(cloneFrom));
         }
 
         public Builder clusterId(@Nullable Output<String> clusterId) {

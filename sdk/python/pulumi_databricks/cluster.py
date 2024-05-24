@@ -22,7 +22,6 @@ class ClusterArgs:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['ClusterCloneFromArgs']] = None,
                  cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
@@ -128,8 +127,6 @@ class ClusterArgs:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
@@ -243,15 +240,6 @@ class ClusterArgs:
     @azure_attributes.setter
     def azure_attributes(self, value: Optional[pulumi.Input['ClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
-
-    @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['ClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['ClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
 
     @property
     @pulumi.getter(name="clusterLogConf")
@@ -584,12 +572,10 @@ class _ClusterState:
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-                 clone_from: Optional[pulumi.Input['ClusterCloneFromArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 cluster_source: Optional[pulumi.Input[str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -697,8 +683,6 @@ class _ClusterState:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
             pulumi.set(__self__, "azure_attributes", azure_attributes)
-        if clone_from is not None:
-            pulumi.set(__self__, "clone_from", clone_from)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
@@ -707,8 +691,6 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
-        if cluster_source is not None:
-            pulumi.set(__self__, "cluster_source", cluster_source)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
@@ -814,15 +796,6 @@ class _ClusterState:
         pulumi.set(self, "azure_attributes", value)
 
     @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> Optional[pulumi.Input['ClusterCloneFromArgs']]:
-        return pulumi.get(self, "clone_from")
-
-    @clone_from.setter
-    def clone_from(self, value: Optional[pulumi.Input['ClusterCloneFromArgs']]):
-        pulumi.set(self, "clone_from", value)
-
-    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cluster_id")
@@ -860,15 +833,6 @@ class _ClusterState:
     @cluster_name.setter
     def cluster_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_name", value)
-
-    @property
-    @pulumi.getter(name="clusterSource")
-    def cluster_source(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "cluster_source")
-
-    @cluster_source.setter
-    def cluster_source(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cluster_source", value)
 
     @property
     @pulumi.getter(name="customTags")
@@ -1218,7 +1182,6 @@ class Cluster(pulumi.CustomResource):
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
                  azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
-                 clone_from: Optional[pulumi.Input[pulumi.InputType['ClusterCloneFromArgs']]] = None,
                  cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
@@ -1461,7 +1424,6 @@ class Cluster(pulumi.CustomResource):
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
                  azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
-                 clone_from: Optional[pulumi.Input[pulumi.InputType['ClusterCloneFromArgs']]] = None,
                  cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
@@ -1502,7 +1464,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["autotermination_minutes"] = autotermination_minutes
             __props__.__dict__["aws_attributes"] = aws_attributes
             __props__.__dict__["azure_attributes"] = azure_attributes
-            __props__.__dict__["clone_from"] = clone_from
             __props__.__dict__["cluster_log_conf"] = cluster_log_conf
             __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
             __props__.__dict__["cluster_name"] = cluster_name
@@ -1532,7 +1493,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["cluster_id"] = None
-            __props__.__dict__["cluster_source"] = None
             __props__.__dict__["default_tags"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["url"] = None
@@ -1551,12 +1511,10 @@ class Cluster(pulumi.CustomResource):
             autotermination_minutes: Optional[pulumi.Input[int]] = None,
             aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
             azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
-            clone_from: Optional[pulumi.Input[pulumi.InputType['ClusterCloneFromArgs']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
             cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
-            cluster_source: Optional[pulumi.Input[str]] = None,
             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             data_security_mode: Optional[pulumi.Input[str]] = None,
             default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1668,12 +1626,10 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["autotermination_minutes"] = autotermination_minutes
         __props__.__dict__["aws_attributes"] = aws_attributes
         __props__.__dict__["azure_attributes"] = azure_attributes
-        __props__.__dict__["clone_from"] = clone_from
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_log_conf"] = cluster_log_conf
         __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
         __props__.__dict__["cluster_name"] = cluster_name
-        __props__.__dict__["cluster_source"] = cluster_source
         __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["data_security_mode"] = data_security_mode
         __props__.__dict__["default_tags"] = default_tags
@@ -1734,11 +1690,6 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "azure_attributes")
 
     @property
-    @pulumi.getter(name="cloneFrom")
-    def clone_from(self) -> pulumi.Output[Optional['outputs.ClusterCloneFrom']]:
-        return pulumi.get(self, "clone_from")
-
-    @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_id")
@@ -1760,11 +1711,6 @@ class Cluster(pulumi.CustomResource):
         Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         """
         return pulumi.get(self, "cluster_name")
-
-    @property
-    @pulumi.getter(name="clusterSource")
-    def cluster_source(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "cluster_source")
 
     @property
     @pulumi.getter(name="customTags")

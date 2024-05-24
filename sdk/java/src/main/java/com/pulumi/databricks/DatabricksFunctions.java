@@ -4177,6 +4177,47 @@ public final class DatabricksFunctions {
      * 
      * Getting details of an existing external location in the metastore
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalLocation(GetExternalLocationArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.externalLocationInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getExternalLocations to get names of all external locations
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
      */
     public static Output<GetExternalLocationResult> getExternalLocation(GetExternalLocationArgs args) {
         return getExternalLocation(args, InvokeOptions.Empty);
@@ -4185,6 +4226,47 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalLocation(GetExternalLocationArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.externalLocationInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getExternalLocations to get names of all external locations
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetExternalLocationResult> getExternalLocationPlain(GetExternalLocationPlainArgs args) {
@@ -4195,6 +4277,47 @@ public final class DatabricksFunctions {
      * 
      * Getting details of an existing external location in the metastore
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalLocation(GetExternalLocationArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.externalLocationInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getExternalLocations to get names of all external locations
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
      */
     public static Output<GetExternalLocationResult> getExternalLocation(GetExternalLocationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
@@ -4203,6 +4326,47 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalLocation(GetExternalLocationArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.externalLocationInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getExternalLocations to get names of all external locations
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetExternalLocationResult> getExternalLocationPlain(GetExternalLocationPlainArgs args, InvokeOptions options) {
@@ -12227,6 +12391,47 @@ public final class DatabricksFunctions {
      * 
      * Getting details of an existing storage credential in the metastore
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getStorageCredential(GetStorageCredentialArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.storageCredentialInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
      */
     public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args) {
         return getStorageCredential(args, InvokeOptions.Empty);
@@ -12235,6 +12440,47 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getStorageCredential(GetStorageCredentialArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.storageCredentialInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args) {
@@ -12245,6 +12491,47 @@ public final class DatabricksFunctions {
      * 
      * Getting details of an existing storage credential in the metastore
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getStorageCredential(GetStorageCredentialArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.storageCredentialInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
      */
     public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
@@ -12253,6 +12540,47 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getStorageCredential(GetStorageCredentialArgs.builder()
+     *             .name("this")
+     *             .build());
+     * 
+     *         ctx.export("createdBy", this_.storageCredentialInfo().createdBy());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args, InvokeOptions options) {

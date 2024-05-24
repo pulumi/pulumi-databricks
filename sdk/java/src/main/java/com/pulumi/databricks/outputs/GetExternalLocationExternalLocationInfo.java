@@ -25,8 +25,20 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable String comment;
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer createdAt;
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     private @Nullable String credentialId;
     /**
      * @return Name of the databricks.StorageCredential to use with this external location.
@@ -38,9 +50,13 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
+    /**
+     * @return Unique identifier of the parent Metastore.
+     * 
+     */
     private @Nullable String metastoreId;
     /**
-     * @return The name of the storage credential
+     * @return The name of the external location
      * 
      */
     private @Nullable String name;
@@ -54,7 +70,15 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable Boolean readOnly;
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer updatedAt;
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     private @Nullable String updatedBy;
     /**
      * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -80,12 +104,24 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public Optional<String> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
@@ -103,11 +139,15 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
+    /**
+     * @return Unique identifier of the parent Metastore.
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
     /**
-     * @return The name of the storage credential
+     * @return The name of the external location
      * 
      */
     public Optional<String> name() {
@@ -127,9 +167,17 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

@@ -13,14 +13,35 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetStorageCredentialStorageCredentialInfoResult
     {
+        /// <summary>
+        /// credential details for AWS:
+        /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleResult? AwsIamRole;
+        /// <summary>
+        /// managed identity credential details for Azure
+        /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityResult? AzureManagedIdentity;
+        /// <summary>
+        /// service principal credential details for Azure:
+        /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalResult? AzureServicePrincipal;
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenResult? CloudflareApiToken;
         public readonly string? Comment;
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         public readonly int? CreatedAt;
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// credential details for GCP:
+        /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountResult? DatabricksGcpServiceAccount;
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         public readonly string? Id;
         /// <summary>
         /// Unique identifier of the parent Metastore.
@@ -38,7 +59,13 @@ namespace Pulumi.Databricks.Outputs
         /// Indicates whether the storage credential is only usable for read operations.
         /// </summary>
         public readonly bool? ReadOnly;
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         public readonly int? UpdatedAt;
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         public readonly string? UpdatedBy;
         public readonly bool? UsedForManagedStorage;
 

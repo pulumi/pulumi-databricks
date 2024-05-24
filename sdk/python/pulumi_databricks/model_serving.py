@@ -19,12 +19,14 @@ class ModelServingArgs:
                  config: pulumi.Input['ModelServingConfigArgs'],
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
+                 route_optimized: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServing resource.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         pulumi.set(__self__, "config", config)
@@ -32,6 +34,8 @@ class ModelServingArgs:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
             pulumi.set(__self__, "rate_limits", rate_limits)
+        if route_optimized is not None:
+            pulumi.set(__self__, "route_optimized", route_optimized)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -72,6 +76,18 @@ class ModelServingArgs:
         pulumi.set(self, "rate_limits", value)
 
     @property
+    @pulumi.getter(name="routeOptimized")
+    def route_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        """
+        return pulumi.get(self, "route_optimized")
+
+    @route_optimized.setter
+    def route_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_optimized", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
         """
@@ -90,6 +106,7 @@ class _ModelServingState:
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
+                 route_optimized: Optional[pulumi.Input[bool]] = None,
                  serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
@@ -97,6 +114,7 @@ class _ModelServingState:
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -106,6 +124,8 @@ class _ModelServingState:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
             pulumi.set(__self__, "rate_limits", rate_limits)
+        if route_optimized is not None:
+            pulumi.set(__self__, "route_optimized", route_optimized)
         if serving_endpoint_id is not None:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if tags is not None:
@@ -148,6 +168,18 @@ class _ModelServingState:
         pulumi.set(self, "rate_limits", value)
 
     @property
+    @pulumi.getter(name="routeOptimized")
+    def route_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        """
+        return pulumi.get(self, "route_optimized")
+
+    @route_optimized.setter
+    def route_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_optimized", value)
+
+    @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -180,6 +212,7 @@ class ModelServing(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+                 route_optimized: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         """
@@ -258,6 +291,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
@@ -355,6 +389,7 @@ class ModelServing(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+                 route_optimized: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -370,6 +405,7 @@ class ModelServing(pulumi.CustomResource):
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_limits"] = rate_limits
+            __props__.__dict__["route_optimized"] = route_optimized
             __props__.__dict__["tags"] = tags
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
@@ -385,6 +421,7 @@ class ModelServing(pulumi.CustomResource):
             config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+            route_optimized: Optional[pulumi.Input[bool]] = None,
             serving_endpoint_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None) -> 'ModelServing':
         """
@@ -397,6 +434,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -407,6 +445,7 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_limits"] = rate_limits
+        __props__.__dict__["route_optimized"] = route_optimized
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
         return ModelServing(resource_name, opts=opts, __props__=__props__)
@@ -434,6 +473,14 @@ class ModelServing(pulumi.CustomResource):
         A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
         """
         return pulumi.get(self, "rate_limits")
+
+    @property
+    @pulumi.getter(name="routeOptimized")
+    def route_optimized(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        """
+        return pulumi.get(self, "route_optimized")
 
     @property
     @pulumi.getter(name="servingEndpointId")

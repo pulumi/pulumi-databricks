@@ -34,6 +34,35 @@ export interface ArtifactAllowlistArtifactMatcher {
     matchType: string;
 }
 
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
+    canToggle?: boolean;
+    enabled?: boolean;
+    enablementDetails: outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails;
+    maintenanceWindow?: outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails {
+    forcedForComplianceMode?: boolean;
+    unavailableForDisabledEntitlement?: boolean;
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    dayOfWeek?: string;
+    frequency?: string;
+    windowStartTime?: outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: number;
+    minutes?: number;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -134,10 +163,6 @@ export interface ClusterAzureAttributes {
 export interface ClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: string;
     logAnalyticsWorkspaceId?: string;
-}
-
-export interface ClusterCloneFrom {
-    sourceClusterId: string;
 }
 
 export interface ClusterClusterLogConf {
@@ -395,11 +420,20 @@ export interface ClusterWorkloadTypeClients {
     notebooks?: boolean;
 }
 
+export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
+    complianceStandards?: string[];
+    isEnabled?: boolean;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
      */
     value?: string;
+}
+
+export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
+    isEnabled?: boolean;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -847,8 +881,17 @@ export interface GetExternalLocationExternalLocationInfo {
      * User-supplied comment.
      */
     comment?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: string;
+    /**
+     * Unique ID of storage credential.
+     */
     credentialId?: string;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
@@ -858,9 +901,12 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
     metastoreId?: string;
     /**
-     * The name of the storage credential
+     * The name of the external location
      */
     name?: string;
     /**
@@ -871,7 +917,13 @@ export interface GetExternalLocationExternalLocationInfo {
      * Indicates whether the external location is read-only.
      */
     readOnly?: boolean;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: string;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -2500,14 +2552,35 @@ export interface GetSqlWarehouseTagsCustomTag {
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
+    /**
+     * credential details for AWS:
+     */
     awsIamRole?: outputs.GetStorageCredentialStorageCredentialInfoAwsIamRole;
+    /**
+     * managed identity credential details for Azure
+     */
     azureManagedIdentity?: outputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentity;
+    /**
+     * service principal credential details for Azure:
+     */
     azureServicePrincipal?: outputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipal;
     cloudflareApiToken?: outputs.GetStorageCredentialStorageCredentialInfoCloudflareApiToken;
     comment?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: string;
+    /**
+     * credential details for GCP:
+     */
     databricksGcpServiceAccount?: outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    /**
+     * Unique ID of storage credential.
+     */
     id?: string;
     /**
      * Unique identifier of the parent Metastore.
@@ -2525,7 +2598,13 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * Indicates whether the storage credential is only usable for read operations.
      */
     readOnly?: boolean;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: string;
     usedForManagedStorage?: boolean;
 }
@@ -3022,7 +3101,6 @@ export interface JobJobClusterNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
     azureAttributes?: outputs.JobJobClusterNewClusterAzureAttributes;
-    cloneFrom?: outputs.JobJobClusterNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobJobClusterNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobJobClusterNewClusterClusterMountInfo[];
@@ -3082,10 +3160,6 @@ export interface JobJobClusterNewClusterAzureAttributes {
 export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: string;
     logAnalyticsWorkspaceId?: string;
-}
-
-export interface JobJobClusterNewClusterCloneFrom {
-    sourceClusterId: string;
 }
 
 export interface JobJobClusterNewClusterClusterLogConf {
@@ -3254,7 +3328,6 @@ export interface JobNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobNewClusterAwsAttributes;
     azureAttributes?: outputs.JobNewClusterAzureAttributes;
-    cloneFrom?: outputs.JobNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobNewClusterClusterMountInfo[];
@@ -3314,10 +3387,6 @@ export interface JobNewClusterAzureAttributes {
 export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: string;
     logAnalyticsWorkspaceId?: string;
-}
-
-export interface JobNewClusterCloneFrom {
-    sourceClusterId: string;
 }
 
 export interface JobNewClusterClusterLogConf {
@@ -4024,7 +4093,6 @@ export interface JobTaskForEachTaskTaskNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes;
-    cloneFrom?: outputs.JobTaskForEachTaskTaskNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo[];
@@ -4084,10 +4152,6 @@ export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: string;
     logAnalyticsWorkspaceId?: string;
-}
-
-export interface JobTaskForEachTaskTaskNewClusterCloneFrom {
-    sourceClusterId: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
@@ -4586,7 +4650,6 @@ export interface JobTaskNewCluster {
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskNewClusterAzureAttributes;
-    cloneFrom?: outputs.JobTaskNewClusterCloneFrom;
     clusterId?: string;
     clusterLogConf?: outputs.JobTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskNewClusterClusterMountInfo[];
@@ -4646,10 +4709,6 @@ export interface JobTaskNewClusterAzureAttributes {
 export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: string;
     logAnalyticsWorkspaceId?: string;
-}
-
-export interface JobTaskNewClusterCloneFrom {
-    sourceClusterId: string;
 }
 
 export interface JobTaskNewClusterClusterLogConf {
@@ -5526,8 +5585,11 @@ export interface ModelServingConfigServedEntityExternalModelDatabricksModelServi
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    microsoftEntraClientId?: string;
+    microsoftEntraClientSecret?: string;
+    microsoftEntraTenantId?: string;
     openaiApiBase?: string;
-    openaiApiKey: string;
+    openaiApiKey?: string;
     openaiApiType?: string;
     openaiApiVersion?: string;
     openaiDeploymentName?: string;
@@ -6095,6 +6157,112 @@ export interface PipelineNotification {
     emailRecipients: string[];
 }
 
+export interface QualityMonitorCustomMetric {
+    /**
+     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: string;
+    /**
+     * Columns on the monitored table to apply the custom metrics to.
+     */
+    inputColumns: string[];
+    /**
+     * Name of the custom metric.
+     */
+    name: string;
+    /**
+     * The output type of the custom metric.
+     */
+    outputDataType: string;
+    /**
+     * The type of the custom metric.
+     */
+    type: string;
+}
+
+export interface QualityMonitorDataClassificationConfig {
+    enabled?: boolean;
+}
+
+export interface QualityMonitorInferenceLog {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities: string[];
+    /**
+     * Column of the model label
+     */
+    labelCol?: string;
+    /**
+     * Column of the model id or version
+     */
+    modelIdCol: string;
+    /**
+     * Column of the model prediction
+     */
+    predictionCol: string;
+    /**
+     * Column of the model prediction probabilities
+     */
+    predictionProbaCol?: string;
+    /**
+     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: string;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol: string;
+}
+
+export interface QualityMonitorNotifications {
+    /**
+     * who to send notifications to on monitor failure.
+     */
+    onFailure?: outputs.QualityMonitorNotificationsOnFailure;
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     */
+    onNewClassificationTagDetected?: outputs.QualityMonitorNotificationsOnNewClassificationTagDetected;
+}
+
+export interface QualityMonitorNotificationsOnFailure {
+    emailAddresses?: string[];
+}
+
+export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
+    emailAddresses?: string[];
+}
+
+export interface QualityMonitorSchedule {
+    /**
+     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     */
+    pauseStatus?: string;
+    /**
+     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     */
+    quartzCronExpression: string;
+    /**
+     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     */
+    timezoneId: string;
+}
+
+export interface QualityMonitorSnapshot {
+}
+
+export interface QualityMonitorTimeSeries {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities: string[];
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol: string;
+}
+
 export interface RecipientIpAccessList {
     allowedIpAddresses?: string[];
 }
@@ -6441,7 +6609,7 @@ export interface SqlTableColumn {
     /**
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      */
-    type?: string;
+    type: string;
 }
 
 export interface SqlWidgetParameter {
@@ -6553,6 +6721,7 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
     embeddingVectorColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    embeddingWritebackTable?: string;
     /**
      * ID of the associated Delta Live Table pipeline.
      */

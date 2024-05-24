@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.ModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -66,6 +67,21 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * 
+     */
+    @Import(name="routeOptimized")
+    private @Nullable Output<Boolean> routeOptimized;
+
+    /**
+     * @return A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * 
+     */
+    public Optional<Output<Boolean>> routeOptimized() {
+        return Optional.ofNullable(this.routeOptimized);
+    }
+
+    /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      * 
      */
@@ -86,6 +102,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         this.config = $.config;
         this.name = $.name;
         this.rateLimits = $.rateLimits;
+        this.routeOptimized = $.routeOptimized;
         this.tags = $.tags;
     }
 
@@ -178,6 +195,27 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rateLimits(ModelServingRateLimitArgs... rateLimits) {
             return rateLimits(List.of(rateLimits));
+        }
+
+        /**
+         * @param routeOptimized A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeOptimized(@Nullable Output<Boolean> routeOptimized) {
+            $.routeOptimized = routeOptimized;
+            return this;
+        }
+
+        /**
+         * @param routeOptimized A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeOptimized(Boolean routeOptimized) {
+            return routeOptimized(Output.of(routeOptimized));
         }
 
         /**

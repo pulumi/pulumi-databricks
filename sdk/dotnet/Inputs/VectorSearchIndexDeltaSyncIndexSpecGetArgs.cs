@@ -32,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
             set => _embeddingVectorColumns = value;
         }
 
+        [Input("embeddingWritebackTable")]
+        public Input<string>? EmbeddingWritebackTable { get; set; }
+
         /// <summary>
         /// ID of the associated Delta Live Table pipeline.
         /// </summary>

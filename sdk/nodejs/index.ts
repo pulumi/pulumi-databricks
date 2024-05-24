@@ -15,6 +15,11 @@ export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
 export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
 utilities.lazyLoad(exports, ["ArtifactAllowlist"], () => require("./artifactAllowlist"));
 
+export { AutomaticClusterUpdateWorkspaceSettingArgs, AutomaticClusterUpdateWorkspaceSettingState } from "./automaticClusterUpdateWorkspaceSetting";
+export type AutomaticClusterUpdateWorkspaceSetting = import("./automaticClusterUpdateWorkspaceSetting").AutomaticClusterUpdateWorkspaceSetting;
+export const AutomaticClusterUpdateWorkspaceSetting: typeof import("./automaticClusterUpdateWorkspaceSetting").AutomaticClusterUpdateWorkspaceSetting = null as any;
+utilities.lazyLoad(exports, ["AutomaticClusterUpdateWorkspaceSetting"], () => require("./automaticClusterUpdateWorkspaceSetting"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -35,6 +40,11 @@ export type ClusterPolicy = import("./clusterPolicy").ClusterPolicy;
 export const ClusterPolicy: typeof import("./clusterPolicy").ClusterPolicy = null as any;
 utilities.lazyLoad(exports, ["ClusterPolicy"], () => require("./clusterPolicy"));
 
+export { ComplianceSecurityProfileWorkspaceSettingArgs, ComplianceSecurityProfileWorkspaceSettingState } from "./complianceSecurityProfileWorkspaceSetting";
+export type ComplianceSecurityProfileWorkspaceSetting = import("./complianceSecurityProfileWorkspaceSetting").ComplianceSecurityProfileWorkspaceSetting;
+export const ComplianceSecurityProfileWorkspaceSetting: typeof import("./complianceSecurityProfileWorkspaceSetting").ComplianceSecurityProfileWorkspaceSetting = null as any;
+utilities.lazyLoad(exports, ["ComplianceSecurityProfileWorkspaceSetting"], () => require("./complianceSecurityProfileWorkspaceSetting"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -54,6 +64,11 @@ export { DirectoryArgs, DirectoryState } from "./directory";
 export type Directory = import("./directory").Directory;
 export const Directory: typeof import("./directory").Directory = null as any;
 utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
+
+export { EnhancedSecurityMonitoringWorkspaceSettingArgs, EnhancedSecurityMonitoringWorkspaceSettingState } from "./enhancedSecurityMonitoringWorkspaceSetting";
+export type EnhancedSecurityMonitoringWorkspaceSetting = import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting;
+export const EnhancedSecurityMonitoringWorkspaceSetting: typeof import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting = null as any;
+utilities.lazyLoad(exports, ["EnhancedSecurityMonitoringWorkspaceSetting"], () => require("./enhancedSecurityMonitoringWorkspaceSetting"));
 
 export { EntitlementsArgs, EntitlementsState } from "./entitlements";
 export type Entitlements = import("./entitlements").Entitlements;
@@ -520,6 +535,11 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { QualityMonitorArgs, QualityMonitorState } from "./qualityMonitor";
+export type QualityMonitor = import("./qualityMonitor").QualityMonitor;
+export const QualityMonitor: typeof import("./qualityMonitor").QualityMonitor = null as any;
+utilities.lazyLoad(exports, ["QualityMonitor"], () => require("./qualityMonitor"));
+
 export { RecipientArgs, RecipientState } from "./recipient";
 export type Recipient = import("./recipient").Recipient;
 export const Recipient: typeof import("./recipient").Recipient = null as any;
@@ -703,6 +723,8 @@ const _module = {
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
+            case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
+                return new AutomaticClusterUpdateWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -711,6 +733,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "databricks:index/clusterPolicy:ClusterPolicy":
                 return new ClusterPolicy(name, <any>undefined, { urn })
+            case "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting":
+                return new ComplianceSecurityProfileWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
@@ -719,6 +743,8 @@ const _module = {
                 return new DefaultNamespaceSetting(name, <any>undefined, { urn })
             case "databricks:index/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
+            case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
+                return new EnhancedSecurityMonitoringWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/entitlements:Entitlements":
                 return new Entitlements(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
@@ -807,6 +833,8 @@ const _module = {
                 return new Permissions(name, <any>undefined, { urn })
             case "databricks:index/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
+            case "databricks:index/qualityMonitor:QualityMonitor":
+                return new QualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/recipient:Recipient":
                 return new Recipient(name, <any>undefined, { urn })
             case "databricks:index/registeredModel:RegisteredModel":
@@ -880,14 +908,17 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/complianceSecurityProfileWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
@@ -932,6 +963,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/onlineTable", _module
 pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)

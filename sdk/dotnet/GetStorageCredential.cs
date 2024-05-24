@@ -15,6 +15,33 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Getting details of an existing storage credential in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     {
+        ///         Name = "this",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["createdBy"] = @this.Apply(@this =&gt; @this.Apply(getStorageCredentialResult =&gt; getStorageCredentialResult.StorageCredentialInfo?.CreatedBy)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getStorageCredentials to get names of all credentials
+        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
         /// </summary>
         public static Task<GetStorageCredentialResult> InvokeAsync(GetStorageCredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Getting details of an existing storage credential in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     {
+        ///         Name = "this",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["createdBy"] = @this.Apply(@this =&gt; @this.Apply(getStorageCredentialResult =&gt; getStorageCredentialResult.StorageCredentialInfo?.CreatedBy)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getStorageCredentials to get names of all credentials
+        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
         /// </summary>
         public static Output<GetStorageCredentialResult> Invoke(GetStorageCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialInvokeArgs(), options.WithDefaults());
@@ -32,11 +86,20 @@ namespace Pulumi.Databricks
     public sealed class GetStorageCredentialArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// The name of the storage credential
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// array of objects with information about storage credential.
+        /// </summary>
         [Input("storageCredentialInfo")]
         public Inputs.GetStorageCredentialStorageCredentialInfoArgs? StorageCredentialInfo { get; set; }
 
@@ -49,11 +112,20 @@ namespace Pulumi.Databricks
     public sealed class GetStorageCredentialInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// The name of the storage credential
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// array of objects with information about storage credential.
+        /// </summary>
         [Input("storageCredentialInfo")]
         public Input<Inputs.GetStorageCredentialStorageCredentialInfoInputArgs>? StorageCredentialInfo { get; set; }
 
@@ -68,10 +140,13 @@ namespace Pulumi.Databricks
     public sealed class GetStorageCredentialResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Unique ID of storage credential.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// array of objects with information about storage credential.
+        /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoResult StorageCredentialInfo;
 
         [OutputConstructor]

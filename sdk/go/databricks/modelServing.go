@@ -106,6 +106,8 @@ type ModelServing struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayOutput `pulumi:"rateLimits"`
+	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	RouteOptimized pulumi.BoolPtrOutput `pulumi:"routeOptimized"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringOutput `pulumi:"servingEndpointId"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -151,6 +153,8 @@ type modelServingState struct {
 	Name *string `pulumi:"name"`
 	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
+	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	RouteOptimized *bool `pulumi:"routeOptimized"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId *string `pulumi:"servingEndpointId"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -164,6 +168,8 @@ type ModelServingState struct {
 	Name pulumi.StringPtrInput
 	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayInput
+	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	RouteOptimized pulumi.BoolPtrInput
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -181,6 +187,8 @@ type modelServingArgs struct {
 	Name *string `pulumi:"name"`
 	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
+	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	RouteOptimized *bool `pulumi:"routeOptimized"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 	Tags []ModelServingTag `pulumi:"tags"`
 }
@@ -193,6 +201,8 @@ type ModelServingArgs struct {
 	Name pulumi.StringPtrInput
 	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayInput
+	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	RouteOptimized pulumi.BoolPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 	Tags ModelServingTagArrayInput
 }
@@ -297,6 +307,11 @@ func (o ModelServingOutput) Name() pulumi.StringOutput {
 // A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 func (o ModelServingOutput) RateLimits() ModelServingRateLimitArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingRateLimitArrayOutput { return v.RateLimits }).(ModelServingRateLimitArrayOutput)
+}
+
+// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+func (o ModelServingOutput) RouteOptimized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ModelServing) pulumi.BoolPtrOutput { return v.RouteOptimized }).(pulumi.BoolPtrOutput)
 }
 
 // Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

@@ -38,7 +38,7 @@ class GetStorageCredentialResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Unique ID of storage credential.
         """
         return pulumi.get(self, "id")
 
@@ -50,6 +50,9 @@ class GetStorageCredentialResult:
     @property
     @pulumi.getter(name="storageCredentialInfo")
     def storage_credential_info(self) -> 'outputs.GetStorageCredentialStorageCredentialInfoResult':
+        """
+        array of objects with information about storage credential.
+        """
         return pulumi.get(self, "storage_credential_info")
 
 
@@ -64,7 +67,8 @@ class AwaitableGetStorageCredentialResult(GetStorageCredentialResult):
             storage_credential_info=self.storage_credential_info)
 
 
-def get_storage_credential(name: Optional[str] = None,
+def get_storage_credential(id: Optional[str] = None,
+                           name: Optional[str] = None,
                            storage_credential_info: Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
@@ -72,10 +76,28 @@ def get_storage_credential(name: Optional[str] = None,
 
     Getting details of an existing storage credential in the metastore
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
+    this = databricks.get_storage_credential(name="this")
+    pulumi.export("createdBy", this.storage_credential_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_storage_credentials to get names of all credentials
+    * StorageCredential to manage Storage Credentials within Unity Catalog.
+
+
+    :param str id: Unique ID of storage credential.
     :param str name: The name of the storage credential
+    :param pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
     __args__['storageCredentialInfo'] = storage_credential_info
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -88,7 +110,8 @@ def get_storage_credential(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_storage_credential)
-def get_storage_credential_output(name: Optional[pulumi.Input[str]] = None,
+def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name: Optional[pulumi.Input[str]] = None,
                                   storage_credential_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
@@ -96,7 +119,24 @@ def get_storage_credential_output(name: Optional[pulumi.Input[str]] = None,
 
     Getting details of an existing storage credential in the metastore
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
+    this = databricks.get_storage_credential(name="this")
+    pulumi.export("createdBy", this.storage_credential_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_storage_credentials to get names of all credentials
+    * StorageCredential to manage Storage Credentials within Unity Catalog.
+
+
+    :param str id: Unique ID of storage credential.
     :param str name: The name of the storage credential
+    :param pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs'] storage_credential_info: array of objects with information about storage credential.
     """
     ...

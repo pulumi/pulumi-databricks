@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,19 +11,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    private @Nullable String microsoftEntraClientId;
+    private @Nullable String microsoftEntraClientSecret;
+    private @Nullable String microsoftEntraTenantId;
     private @Nullable String openaiApiBase;
-    private String openaiApiKey;
+    private @Nullable String openaiApiKey;
     private @Nullable String openaiApiType;
     private @Nullable String openaiApiVersion;
     private @Nullable String openaiDeploymentName;
     private @Nullable String openaiOrganization;
 
     private ModelServingConfigServedEntityExternalModelOpenaiConfig() {}
+    public Optional<String> microsoftEntraClientId() {
+        return Optional.ofNullable(this.microsoftEntraClientId);
+    }
+    public Optional<String> microsoftEntraClientSecret() {
+        return Optional.ofNullable(this.microsoftEntraClientSecret);
+    }
+    public Optional<String> microsoftEntraTenantId() {
+        return Optional.ofNullable(this.microsoftEntraTenantId);
+    }
     public Optional<String> openaiApiBase() {
         return Optional.ofNullable(this.openaiApiBase);
     }
-    public String openaiApiKey() {
-        return this.openaiApiKey;
+    public Optional<String> openaiApiKey() {
+        return Optional.ofNullable(this.openaiApiKey);
     }
     public Optional<String> openaiApiType() {
         return Optional.ofNullable(this.openaiApiType);
@@ -48,8 +59,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String microsoftEntraClientId;
+        private @Nullable String microsoftEntraClientSecret;
+        private @Nullable String microsoftEntraTenantId;
         private @Nullable String openaiApiBase;
-        private String openaiApiKey;
+        private @Nullable String openaiApiKey;
         private @Nullable String openaiApiType;
         private @Nullable String openaiApiVersion;
         private @Nullable String openaiDeploymentName;
@@ -57,6 +71,9 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelOpenaiConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.microsoftEntraClientId = defaults.microsoftEntraClientId;
+    	      this.microsoftEntraClientSecret = defaults.microsoftEntraClientSecret;
+    	      this.microsoftEntraTenantId = defaults.microsoftEntraTenantId;
     	      this.openaiApiBase = defaults.openaiApiBase;
     	      this.openaiApiKey = defaults.openaiApiKey;
     	      this.openaiApiType = defaults.openaiApiType;
@@ -66,16 +83,32 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
         }
 
         @CustomType.Setter
+        public Builder microsoftEntraClientId(@Nullable String microsoftEntraClientId) {
+
+            this.microsoftEntraClientId = microsoftEntraClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder microsoftEntraClientSecret(@Nullable String microsoftEntraClientSecret) {
+
+            this.microsoftEntraClientSecret = microsoftEntraClientSecret;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder microsoftEntraTenantId(@Nullable String microsoftEntraTenantId) {
+
+            this.microsoftEntraTenantId = microsoftEntraTenantId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder openaiApiBase(@Nullable String openaiApiBase) {
 
             this.openaiApiBase = openaiApiBase;
             return this;
         }
         @CustomType.Setter
-        public Builder openaiApiKey(String openaiApiKey) {
-            if (openaiApiKey == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelOpenaiConfig", "openaiApiKey");
-            }
+        public Builder openaiApiKey(@Nullable String openaiApiKey) {
+
             this.openaiApiKey = openaiApiKey;
             return this;
         }
@@ -105,6 +138,9 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
         }
         public ModelServingConfigServedEntityExternalModelOpenaiConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelOpenaiConfig();
+            _resultValue.microsoftEntraClientId = microsoftEntraClientId;
+            _resultValue.microsoftEntraClientSecret = microsoftEntraClientSecret;
+            _resultValue.microsoftEntraTenantId = microsoftEntraTenantId;
             _resultValue.openaiApiBase = openaiApiBase;
             _resultValue.openaiApiKey = openaiApiKey;
             _resultValue.openaiApiType = openaiApiType;

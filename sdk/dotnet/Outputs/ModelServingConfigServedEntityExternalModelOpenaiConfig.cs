@@ -13,8 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelOpenaiConfig
     {
+        public readonly string? MicrosoftEntraClientId;
+        public readonly string? MicrosoftEntraClientSecret;
+        public readonly string? MicrosoftEntraTenantId;
         public readonly string? OpenaiApiBase;
-        public readonly string OpenaiApiKey;
+        public readonly string? OpenaiApiKey;
         public readonly string? OpenaiApiType;
         public readonly string? OpenaiApiVersion;
         public readonly string? OpenaiDeploymentName;
@@ -22,9 +25,15 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfigServedEntityExternalModelOpenaiConfig(
+            string? microsoftEntraClientId,
+
+            string? microsoftEntraClientSecret,
+
+            string? microsoftEntraTenantId,
+
             string? openaiApiBase,
 
-            string openaiApiKey,
+            string? openaiApiKey,
 
             string? openaiApiType,
 
@@ -34,6 +43,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? openaiOrganization)
         {
+            MicrosoftEntraClientId = microsoftEntraClientId;
+            MicrosoftEntraClientSecret = microsoftEntraClientSecret;
+            MicrosoftEntraTenantId = microsoftEntraTenantId;
             OpenaiApiBase = openaiApiBase;
             OpenaiApiKey = openaiApiKey;
             OpenaiApiType = openaiApiType;

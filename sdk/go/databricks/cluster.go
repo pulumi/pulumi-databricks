@@ -106,13 +106,11 @@ type Cluster struct {
 	AutoterminationMinutes pulumi.IntPtrOutput                `pulumi:"autoterminationMinutes"`
 	AwsAttributes          ClusterAwsAttributesPtrOutput      `pulumi:"awsAttributes"`
 	AzureAttributes        ClusterAzureAttributesPtrOutput    `pulumi:"azureAttributes"`
-	CloneFrom              ClusterCloneFromPtrOutput          `pulumi:"cloneFrom"`
 	ClusterId              pulumi.StringOutput                `pulumi:"clusterId"`
 	ClusterLogConf         ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos      ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName   pulumi.StringPtrOutput `pulumi:"clusterName"`
-	ClusterSource pulumi.StringOutput    `pulumi:"clusterSource"`
+	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -282,13 +280,11 @@ type clusterState struct {
 	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
-	CloneFrom              *ClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId              *string                   `pulumi:"clusterId"`
 	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName   *string `pulumi:"clusterName"`
-	ClusterSource *string `pulumi:"clusterSource"`
+	ClusterName *string `pulumi:"clusterName"`
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -426,13 +422,11 @@ type ClusterState struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
-	CloneFrom              ClusterCloneFromPtrInput
 	ClusterId              pulumi.StringPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
 	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName   pulumi.StringPtrInput
-	ClusterSource pulumi.StringPtrInput
+	ClusterName pulumi.StringPtrInput
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -574,7 +568,6 @@ type clusterArgs struct {
 	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
-	CloneFrom              *ClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -712,7 +705,6 @@ type ClusterArgs struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
-	CloneFrom              ClusterCloneFromPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
 	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -950,10 +942,6 @@ func (o ClusterOutput) AzureAttributes() ClusterAzureAttributesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAzureAttributesPtrOutput { return v.AzureAttributes }).(ClusterAzureAttributesPtrOutput)
 }
 
-func (o ClusterOutput) CloneFrom() ClusterCloneFromPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterCloneFromPtrOutput { return v.CloneFrom }).(ClusterCloneFromPtrOutput)
-}
-
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -969,10 +957,6 @@ func (o ClusterOutput) ClusterMountInfos() ClusterClusterMountInfoArrayOutput {
 // Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 func (o ClusterOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterName }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterOutput) ClusterSource() pulumi.StringOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSource }).(pulumi.StringOutput)
 }
 
 // should have tag `ResourceClass` set to value `Serverless`

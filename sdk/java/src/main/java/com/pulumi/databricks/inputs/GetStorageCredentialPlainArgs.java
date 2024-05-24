@@ -17,6 +17,21 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
     public static final GetStorageCredentialPlainArgs Empty = new GetStorageCredentialPlainArgs();
 
     /**
+     * Unique ID of storage credential.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * The name of the storage credential
      * 
      */
@@ -31,9 +46,17 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
         return this.name;
     }
 
+    /**
+     * array of objects with information about storage credential.
+     * 
+     */
     @Import(name="storageCredentialInfo")
     private @Nullable GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
 
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     public Optional<GetStorageCredentialStorageCredentialInfo> storageCredentialInfo() {
         return Optional.ofNullable(this.storageCredentialInfo);
     }
@@ -41,6 +64,7 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
     private GetStorageCredentialPlainArgs() {}
 
     private GetStorageCredentialPlainArgs(GetStorageCredentialPlainArgs $) {
+        this.id = $.id;
         this.name = $.name;
         this.storageCredentialInfo = $.storageCredentialInfo;
     }
@@ -64,6 +88,17 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
         }
 
         /**
+         * @param id Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
          * @param name The name of the storage credential
          * 
          * @return builder
@@ -74,6 +109,12 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param storageCredentialInfo array of objects with information about storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCredentialInfo(@Nullable GetStorageCredentialStorageCredentialInfo storageCredentialInfo) {
             $.storageCredentialInfo = storageCredentialInfo;
             return this;

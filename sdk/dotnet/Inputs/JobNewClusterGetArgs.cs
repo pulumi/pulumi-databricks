@@ -27,9 +27,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("azureAttributes")]
         public Input<Inputs.JobNewClusterAzureAttributesGetArgs>? AzureAttributes { get; set; }
 
-        [Input("cloneFrom")]
-        public Input<Inputs.JobNewClusterCloneFromGetArgs>? CloneFrom { get; set; }
-
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
