@@ -262,6 +262,9 @@ export interface ClusterGcpAttributes {
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     /**
      * Identifier for the availability zone in which the cluster resides. This can be one of the following:
+     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -7780,37 +7783,16 @@ export interface ModelServingConfigServedEntity {
 }
 
 export interface ModelServingConfigServedEntityExternalModel {
-    /**
-     * AI21Labs Config
-     */
     ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig>;
-    /**
-     * Amazon Bedrock Config
-     */
     amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig>;
-    /**
-     * Anthropic Config
-     */
     anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig>;
-    /**
-     * Cohere Config
-     */
     cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
-    /**
-     * Databricks Model Serving Config
-     */
     databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
     /**
      * The name of the external model.
      */
     name: pulumi.Input<string>;
-    /**
-     * OpenAI Config
-     */
     openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig>;
-    /**
-     * PaLM Config
-     */
     palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig>;
     /**
      * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
@@ -8108,6 +8090,9 @@ export interface MwsWorkspacesCloudResourceContainer {
 }
 
 export interface MwsWorkspacesCloudResourceContainerGcp {
+    /**
+     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+     */
     projectId: pulumi.Input<string>;
 }
 
@@ -8613,13 +8598,6 @@ export interface SqlPermissionsPrivilegeAssignment {
      * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: pulumi.Input<string>;
-    /**
-     * set of available privilege names in upper case.
-     *
-     *
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-     */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -8890,23 +8868,17 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
-    /**
-     * The name of the embedding model endpoint
-     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
-    /**
-     * Dimension of the embedding vector.
-     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
@@ -8924,23 +8896,17 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
-    /**
-     * The name of the embedding model endpoint
-     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
-    /**
-     * Dimension of the embedding vector.
-     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }

@@ -16,30 +16,22 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
 
     public static final VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs Empty = new VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs();
 
-    /**
-     * Dimension of the embedding vector.
-     * 
-     */
     @Import(name="embeddingDimension")
     private @Nullable Output<Integer> embeddingDimension;
 
-    /**
-     * @return Dimension of the embedding vector.
-     * 
-     */
     public Optional<Output<Integer>> embeddingDimension() {
         return Optional.ofNullable(this.embeddingDimension);
     }
 
     /**
-     * The name of the column.
+     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the column.
+     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,29 +63,17 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
             $ = new VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param embeddingDimension Dimension of the embedding vector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingDimension(@Nullable Output<Integer> embeddingDimension) {
             $.embeddingDimension = embeddingDimension;
             return this;
         }
 
-        /**
-         * @param embeddingDimension Dimension of the embedding vector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingDimension(Integer embeddingDimension) {
             return embeddingDimension(Output.of(embeddingDimension));
         }
 
         /**
-         * @param name The name of the column.
+         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 
@@ -104,7 +84,7 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
         }
 
         /**
-         * @param name The name of the column.
+         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 

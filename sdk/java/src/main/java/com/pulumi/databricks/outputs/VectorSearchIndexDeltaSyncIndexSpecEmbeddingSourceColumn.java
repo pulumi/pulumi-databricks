@@ -11,27 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
-    /**
-     * @return The name of the embedding model endpoint
-     * 
-     */
     private @Nullable String embeddingModelEndpointName;
     /**
-     * @return The name of the column.
+     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     private @Nullable String name;
 
     private VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn() {}
-    /**
-     * @return The name of the embedding model endpoint
-     * 
-     */
     public Optional<String> embeddingModelEndpointName() {
         return Optional.ofNullable(this.embeddingModelEndpointName);
     }
     /**
-     * @return The name of the column.
+     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Optional<String> name() {

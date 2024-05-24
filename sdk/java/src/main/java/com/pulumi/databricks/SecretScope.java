@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SecretScope("this", SecretScopeArgs.builder()        
+ *         var this_ = new SecretScope("this", SecretScopeArgs.builder()
  *             .name("terraform-demo-scope")
  *             .build());
  * 

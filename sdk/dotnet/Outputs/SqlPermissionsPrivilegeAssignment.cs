@@ -17,13 +17,6 @@ namespace Pulumi.Databricks.Outputs
         /// `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
         /// </summary>
         public readonly string Principal;
-        /// <summary>
-        /// set of available privilege names in upper case.
-        /// 
-        /// 
-        /// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        /// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
-        /// </summary>
         public readonly ImmutableArray<string> Privileges;
 
         [OutputConstructor]

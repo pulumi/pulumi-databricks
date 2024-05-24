@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new DefaultNamespaceSetting("this", DefaultNamespaceSettingArgs.builder()        
+ *         var this_ = new DefaultNamespaceSetting("this", DefaultNamespaceSettingArgs.builder()
  *             .namespace(DefaultNamespaceSettingNamespaceArgs.builder()
  *                 .value("namespace_value")
  *                 .build())

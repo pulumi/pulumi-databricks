@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()        
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
- *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()
  *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupInstanceProfile = new GroupRole("myGroupInstanceProfile", GroupRoleArgs.builder()        
+ *         var myGroupInstanceProfile = new GroupRole("myGroupInstanceProfile", GroupRoleArgs.builder()
  *             .groupId(myGroup.id())
  *             .role(instanceProfile.id())
  *             .build());
@@ -93,11 +93,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGroup = new Group("myGroup", GroupArgs.builder()        
+ *         var myGroup = new Group("myGroup", GroupArgs.builder()
  *             .displayName("my_group_name")
  *             .build());
  * 
- *         var myGroupAccountAdmin = new GroupRole("myGroupAccountAdmin", GroupRoleArgs.builder()        
+ *         var myGroupAccountAdmin = new GroupRole("myGroupAccountAdmin", GroupRoleArgs.builder()
  *             .groupId(myGroup.id())
  *             .role("account_admin")
  *             .build());

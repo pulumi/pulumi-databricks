@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql = new Connection("mysql", ConnectionArgs.builder()        
+ *         var mysql = new Connection("mysql", ConnectionArgs.builder()
  *             .name("mysql_connection")
  *             .connectionType("MYSQL")
  *             .comment("this is a connection to mysql db")
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bigquery = new Connection("bigquery", ConnectionArgs.builder()        
+ *         var bigquery = new Connection("bigquery", ConnectionArgs.builder()
  *             .name("bq_connection")
  *             .connectionType("BIGQUERY")
  *             .comment("this is a connection to BQ")
