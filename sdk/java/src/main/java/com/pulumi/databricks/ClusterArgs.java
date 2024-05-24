@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.ClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.ClusterAzureAttributesArgs;
-import com.pulumi.databricks.inputs.ClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.ClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -81,13 +80,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<ClusterAzureAttributesArgs>> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
-    }
-
-    @Import(name="cloneFrom")
-    private @Nullable Output<ClusterCloneFromArgs> cloneFrom;
-
-    public Optional<Output<ClusterCloneFromArgs>> cloneFrom() {
-        return Optional.ofNullable(this.cloneFrom);
     }
 
     @Import(name="clusterLogConf")
@@ -632,7 +624,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
-        this.cloneFrom = $.cloneFrom;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
         this.clusterName = $.clusterName;
@@ -746,15 +737,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder azureAttributes(ClusterAzureAttributesArgs azureAttributes) {
             return azureAttributes(Output.of(azureAttributes));
-        }
-
-        public Builder cloneFrom(@Nullable Output<ClusterCloneFromArgs> cloneFrom) {
-            $.cloneFrom = cloneFrom;
-            return this;
-        }
-
-        public Builder cloneFrom(ClusterCloneFromArgs cloneFrom) {
-            return cloneFrom(Output.of(cloneFrom));
         }
 
         public Builder clusterLogConf(@Nullable Output<ClusterClusterLogConfArgs> clusterLogConf) {

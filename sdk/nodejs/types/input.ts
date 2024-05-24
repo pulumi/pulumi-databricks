@@ -34,6 +34,35 @@ export interface ArtifactAllowlistArtifactMatcher {
     matchType: pulumi.Input<string>;
 }
 
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
+    canToggle?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails>;
+    maintenanceWindow?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails {
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    dayOfWeek?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: pulumi.Input<number>;
+    minutes?: pulumi.Input<number>;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -134,10 +163,6 @@ export interface ClusterAzureAttributes {
 export interface ClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: pulumi.Input<string>;
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
-}
-
-export interface ClusterCloneFrom {
-    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface ClusterClusterLogConf {
@@ -395,11 +420,20 @@ export interface ClusterWorkloadTypeClients {
     notebooks?: pulumi.Input<boolean>;
 }
 
+export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
+    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
+    isEnabled?: pulumi.Input<boolean>;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
+    isEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -1257,8 +1291,17 @@ export interface GetExternalLocationExternalLocationInfo {
      * User-supplied comment.
      */
     comment?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: string;
+    /**
+     * Unique ID of storage credential.
+     */
     credentialId?: string;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
@@ -1268,9 +1311,12 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
     metastoreId?: string;
     /**
-     * The name of the storage credential
+     * The name of the external location
      */
     name?: string;
     /**
@@ -1281,7 +1327,13 @@ export interface GetExternalLocationExternalLocationInfo {
      * Indicates whether the external location is read-only.
      */
     readOnly?: boolean;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: string;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -1299,8 +1351,17 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * User-supplied comment.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * Unique ID of storage credential.
+     */
     credentialId?: pulumi.Input<string>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
@@ -1310,9 +1371,12 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
     metastoreId?: pulumi.Input<string>;
     /**
-     * The name of the storage credential
+     * The name of the external location
      */
     name?: pulumi.Input<string>;
     /**
@@ -1323,7 +1387,13 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * Indicates whether the external location is read-only.
      */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: pulumi.Input<string>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -4556,14 +4626,35 @@ export interface GetSqlWarehouseTagsCustomTagArgs {
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
+    /**
+     * credential details for AWS:
+     */
     awsIamRole?: inputs.GetStorageCredentialStorageCredentialInfoAwsIamRole;
+    /**
+     * managed identity credential details for Azure
+     */
     azureManagedIdentity?: inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentity;
+    /**
+     * service principal credential details for Azure:
+     */
     azureServicePrincipal?: inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipal;
     cloudflareApiToken?: inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiToken;
     comment?: string;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: number;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: string;
+    /**
+     * credential details for GCP:
+     */
     databricksGcpServiceAccount?: inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    /**
+     * Unique ID of storage credential.
+     */
     id?: string;
     /**
      * Unique identifier of the parent Metastore.
@@ -4581,20 +4672,47 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * Indicates whether the storage credential is only usable for read operations.
      */
     readOnly?: boolean;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: number;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: string;
     usedForManagedStorage?: boolean;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoArgs {
+    /**
+     * credential details for AWS:
+     */
     awsIamRole?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs>;
+    /**
+     * managed identity credential details for Azure
+     */
     azureManagedIdentity?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs>;
+    /**
+     * service principal credential details for Azure:
+     */
     azureServicePrincipal?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs>;
     cloudflareApiToken?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs>;
     comment?: pulumi.Input<string>;
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Username of catalog creator.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * credential details for GCP:
+     */
     databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>;
+    /**
+     * Unique ID of storage credential.
+     */
     id?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore.
@@ -4612,7 +4730,13 @@ export interface GetStorageCredentialStorageCredentialInfoArgs {
      * Indicates whether the storage credential is only usable for read operations.
      */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified catalog.
+     */
     updatedBy?: pulumi.Input<string>;
     usedForManagedStorage?: pulumi.Input<boolean>;
 }
@@ -5325,7 +5449,6 @@ export interface JobJobClusterNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes>;
-    cloneFrom?: pulumi.Input<inputs.JobJobClusterNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[]>;
@@ -5385,10 +5508,6 @@ export interface JobJobClusterNewClusterAzureAttributes {
 export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: pulumi.Input<string>;
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
-}
-
-export interface JobJobClusterNewClusterCloneFrom {
-    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConf {
@@ -5557,7 +5676,6 @@ export interface JobNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes>;
-    cloneFrom?: pulumi.Input<inputs.JobNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[]>;
@@ -5617,10 +5735,6 @@ export interface JobNewClusterAzureAttributes {
 export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: pulumi.Input<string>;
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
-}
-
-export interface JobNewClusterCloneFrom {
-    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobNewClusterClusterLogConf {
@@ -6327,7 +6441,6 @@ export interface JobTaskForEachTaskTaskNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes>;
-    cloneFrom?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[]>;
@@ -6387,10 +6500,6 @@ export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: pulumi.Input<string>;
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
-}
-
-export interface JobTaskForEachTaskTaskNewClusterCloneFrom {
-    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
@@ -6889,7 +6998,6 @@ export interface JobTaskNewCluster {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes>;
-    cloneFrom?: pulumi.Input<inputs.JobTaskNewClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[]>;
@@ -6949,10 +7057,6 @@ export interface JobTaskNewClusterAzureAttributes {
 export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsPrimaryKey?: pulumi.Input<string>;
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
-}
-
-export interface JobTaskNewClusterCloneFrom {
-    sourceClusterId: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterClusterLogConf {
@@ -7829,8 +7933,11 @@ export interface ModelServingConfigServedEntityExternalModelDatabricksModelServi
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    microsoftEntraClientId?: pulumi.Input<string>;
+    microsoftEntraClientSecret?: pulumi.Input<string>;
+    microsoftEntraTenantId?: pulumi.Input<string>;
     openaiApiBase?: pulumi.Input<string>;
-    openaiApiKey: pulumi.Input<string>;
+    openaiApiKey?: pulumi.Input<string>;
     openaiApiType?: pulumi.Input<string>;
     openaiApiVersion?: pulumi.Input<string>;
     openaiDeploymentName?: pulumi.Input<string>;
@@ -8398,6 +8505,112 @@ export interface PipelineNotification {
     emailRecipients: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface QualityMonitorCustomMetric {
+    /**
+     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: pulumi.Input<string>;
+    /**
+     * Columns on the monitored table to apply the custom metrics to.
+     */
+    inputColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the custom metric.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The output type of the custom metric.
+     */
+    outputDataType: pulumi.Input<string>;
+    /**
+     * The type of the custom metric.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface QualityMonitorDataClassificationConfig {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface QualityMonitorInferenceLog {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Column of the model label
+     */
+    labelCol?: pulumi.Input<string>;
+    /**
+     * Column of the model id or version
+     */
+    modelIdCol: pulumi.Input<string>;
+    /**
+     * Column of the model prediction
+     */
+    predictionCol: pulumi.Input<string>;
+    /**
+     * Column of the model prediction probabilities
+     */
+    predictionProbaCol?: pulumi.Input<string>;
+    /**
+     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: pulumi.Input<string>;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol: pulumi.Input<string>;
+}
+
+export interface QualityMonitorNotifications {
+    /**
+     * who to send notifications to on monitor failure.
+     */
+    onFailure?: pulumi.Input<inputs.QualityMonitorNotificationsOnFailure>;
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     */
+    onNewClassificationTagDetected?: pulumi.Input<inputs.QualityMonitorNotificationsOnNewClassificationTagDetected>;
+}
+
+export interface QualityMonitorNotificationsOnFailure {
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface QualityMonitorSchedule {
+    /**
+     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     */
+    pauseStatus?: pulumi.Input<string>;
+    /**
+     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     */
+    quartzCronExpression: pulumi.Input<string>;
+    /**
+     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     */
+    timezoneId: pulumi.Input<string>;
+}
+
+export interface QualityMonitorSnapshot {
+}
+
+export interface QualityMonitorTimeSeries {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol: pulumi.Input<string>;
+}
+
 export interface RecipientIpAccessList {
     allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -8856,6 +9069,7 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
+    embeddingWritebackTable?: pulumi.Input<string>;
     /**
      * ID of the associated Delta Live Table pipeline.
      */

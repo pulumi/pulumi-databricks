@@ -18,14 +18,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageCredentialStorageCredentialInfo {
+    /**
+     * @return credential details for AWS:
+     * 
+     */
     private @Nullable GetStorageCredentialStorageCredentialInfoAwsIamRole awsIamRole;
+    /**
+     * @return managed identity credential details for Azure
+     * 
+     */
     private @Nullable GetStorageCredentialStorageCredentialInfoAzureManagedIdentity azureManagedIdentity;
+    /**
+     * @return service principal credential details for Azure:
+     * 
+     */
     private @Nullable GetStorageCredentialStorageCredentialInfoAzureServicePrincipal azureServicePrincipal;
     private @Nullable GetStorageCredentialStorageCredentialInfoCloudflareApiToken cloudflareApiToken;
     private @Nullable String comment;
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer createdAt;
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return credential details for GCP:
+     * 
+     */
     private @Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount;
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     private @Nullable String id;
     /**
      * @return Unique identifier of the parent Metastore.
@@ -47,17 +75,37 @@ public final class GetStorageCredentialStorageCredentialInfo {
      * 
      */
     private @Nullable Boolean readOnly;
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer updatedAt;
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     private @Nullable String updatedBy;
     private @Nullable Boolean usedForManagedStorage;
 
     private GetStorageCredentialStorageCredentialInfo() {}
+    /**
+     * @return credential details for AWS:
+     * 
+     */
     public Optional<GetStorageCredentialStorageCredentialInfoAwsIamRole> awsIamRole() {
         return Optional.ofNullable(this.awsIamRole);
     }
+    /**
+     * @return managed identity credential details for Azure
+     * 
+     */
     public Optional<GetStorageCredentialStorageCredentialInfoAzureManagedIdentity> azureManagedIdentity() {
         return Optional.ofNullable(this.azureManagedIdentity);
     }
+    /**
+     * @return service principal credential details for Azure:
+     * 
+     */
     public Optional<GetStorageCredentialStorageCredentialInfoAzureServicePrincipal> azureServicePrincipal() {
         return Optional.ofNullable(this.azureServicePrincipal);
     }
@@ -67,15 +115,31 @@ public final class GetStorageCredentialStorageCredentialInfo {
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return credential details for GCP:
+     * 
+     */
     public Optional<GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -107,9 +171,17 @@ public final class GetStorageCredentialStorageCredentialInfo {
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

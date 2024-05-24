@@ -15,6 +15,33 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Getting details of an existing external location in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetExternalLocation.Invoke(new()
+        ///     {
+        ///         Name = "this",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["createdBy"] = @this.Apply(@this =&gt; @this.Apply(getExternalLocationResult =&gt; getExternalLocationResult.ExternalLocationInfo?.CreatedBy)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getExternalLocations to get names of all external locations
+        /// * databricks.ExternalLocation to manage external locations within Unity Catalog.
         /// </summary>
         public static Task<GetExternalLocationResult> InvokeAsync(GetExternalLocationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLocationResult>("databricks:index/getExternalLocation:getExternalLocation", args ?? new GetExternalLocationArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// Getting details of an existing external location in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetExternalLocation.Invoke(new()
+        ///     {
+        ///         Name = "this",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["createdBy"] = @this.Apply(@this =&gt; @this.Apply(getExternalLocationResult =&gt; getExternalLocationResult.ExternalLocationInfo?.CreatedBy)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getExternalLocations to get names of all external locations
+        /// * databricks.ExternalLocation to manage external locations within Unity Catalog.
         /// </summary>
         public static Output<GetExternalLocationResult> Invoke(GetExternalLocationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLocationResult>("databricks:index/getExternalLocation:getExternalLocation", args ?? new GetExternalLocationInvokeArgs(), options.WithDefaults());
@@ -31,11 +85,20 @@ namespace Pulumi.Databricks
 
     public sealed class GetExternalLocationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// array of objects with information about external location:
+        /// </summary>
         [Input("externalLocationInfo")]
         public Inputs.GetExternalLocationExternalLocationInfoArgs? ExternalLocationInfo { get; set; }
 
         /// <summary>
-        /// The name of the storage credential
+        /// external location ID - same as name.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The name of the external location
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -48,11 +111,20 @@ namespace Pulumi.Databricks
 
     public sealed class GetExternalLocationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// array of objects with information about external location:
+        /// </summary>
         [Input("externalLocationInfo")]
         public Input<Inputs.GetExternalLocationExternalLocationInfoInputArgs>? ExternalLocationInfo { get; set; }
 
         /// <summary>
-        /// The name of the storage credential
+        /// external location ID - same as name.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the external location
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -67,9 +139,12 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetExternalLocationResult
     {
+        /// <summary>
+        /// array of objects with information about external location:
+        /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoResult ExternalLocationInfo;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// external location ID - same as name.
         /// </summary>
         public readonly string Id;
         public readonly string Name;

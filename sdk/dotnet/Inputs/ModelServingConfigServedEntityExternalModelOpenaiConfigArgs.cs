@@ -12,11 +12,20 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("microsoftEntraClientId")]
+        public Input<string>? MicrosoftEntraClientId { get; set; }
+
+        [Input("microsoftEntraClientSecret")]
+        public Input<string>? MicrosoftEntraClientSecret { get; set; }
+
+        [Input("microsoftEntraTenantId")]
+        public Input<string>? MicrosoftEntraTenantId { get; set; }
+
         [Input("openaiApiBase")]
         public Input<string>? OpenaiApiBase { get; set; }
 
-        [Input("openaiApiKey", required: true)]
-        public Input<string> OpenaiApiKey { get; set; } = null!;
+        [Input("openaiApiKey")]
+        public Input<string>? OpenaiApiKey { get; set; }
 
         [Input("openaiApiType")]
         public Input<string>? OpenaiApiType { get; set; }

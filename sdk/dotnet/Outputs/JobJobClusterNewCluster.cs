@@ -18,7 +18,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? AutoterminationMinutes;
         public readonly Outputs.JobJobClusterNewClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.JobJobClusterNewClusterAzureAttributes? AzureAttributes;
-        public readonly Outputs.JobJobClusterNewClusterCloneFrom? CloneFrom;
         public readonly string? ClusterId;
         public readonly Outputs.JobJobClusterNewClusterClusterLogConf? ClusterLogConf;
         public readonly ImmutableArray<Outputs.JobJobClusterNewClusterClusterMountInfo> ClusterMountInfos;
@@ -60,8 +59,6 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobJobClusterNewClusterAwsAttributes? awsAttributes,
 
             Outputs.JobJobClusterNewClusterAzureAttributes? azureAttributes,
-
-            Outputs.JobJobClusterNewClusterCloneFrom? cloneFrom,
 
             string? clusterId,
 
@@ -120,7 +117,6 @@ namespace Pulumi.Databricks.Outputs
             AutoterminationMinutes = autoterminationMinutes;
             AwsAttributes = awsAttributes;
             AzureAttributes = azureAttributes;
-            CloneFrom = cloneFrom;
             ClusterId = clusterId;
             ClusterLogConf = clusterLogConf;
             ClusterMountInfos = clusterMountInfos;

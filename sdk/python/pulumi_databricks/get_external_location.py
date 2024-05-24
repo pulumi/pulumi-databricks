@@ -37,13 +37,16 @@ class GetExternalLocationResult:
     @property
     @pulumi.getter(name="externalLocationInfo")
     def external_location_info(self) -> 'outputs.GetExternalLocationExternalLocationInfoResult':
+        """
+        array of objects with information about external location:
+        """
         return pulumi.get(self, "external_location_info")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        external location ID - same as name.
         """
         return pulumi.get(self, "id")
 
@@ -65,6 +68,7 @@ class AwaitableGetExternalLocationResult(GetExternalLocationResult):
 
 
 def get_external_location(external_location_info: Optional[pulumi.InputType['GetExternalLocationExternalLocationInfoArgs']] = None,
+                          id: Optional[str] = None,
                           name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
@@ -72,11 +76,29 @@ def get_external_location(external_location_info: Optional[pulumi.InputType['Get
 
     Getting details of an existing external location in the metastore
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
-    :param str name: The name of the storage credential
+    this = databricks.get_external_location(name="this")
+    pulumi.export("createdBy", this.external_location_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_external_locations to get names of all external locations
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param pulumi.InputType['GetExternalLocationExternalLocationInfoArgs'] external_location_info: array of objects with information about external location:
+    :param str id: external location ID - same as name.
+    :param str name: The name of the external location
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalLocation:getExternalLocation', __args__, opts=opts, typ=GetExternalLocationResult).value
@@ -89,6 +111,7 @@ def get_external_location(external_location_info: Optional[pulumi.InputType['Get
 
 @_utilities.lift_output_func(get_external_location)
 def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetExternalLocationExternalLocationInfoArgs']]]] = None,
+                                 id: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
@@ -96,7 +119,24 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
 
     Getting details of an existing external location in the metastore
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
-    :param str name: The name of the storage credential
+    this = databricks.get_external_location(name="this")
+    pulumi.export("createdBy", this.external_location_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_external_locations to get names of all external locations
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param pulumi.InputType['GetExternalLocationExternalLocationInfoArgs'] external_location_info: array of objects with information about external location:
+    :param str id: external location ID - same as name.
+    :param str name: The name of the external location
     """
     ...

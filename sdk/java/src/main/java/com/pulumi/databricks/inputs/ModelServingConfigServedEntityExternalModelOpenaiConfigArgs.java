@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +15,27 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
 
     public static final ModelServingConfigServedEntityExternalModelOpenaiConfigArgs Empty = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs();
 
+    @Import(name="microsoftEntraClientId")
+    private @Nullable Output<String> microsoftEntraClientId;
+
+    public Optional<Output<String>> microsoftEntraClientId() {
+        return Optional.ofNullable(this.microsoftEntraClientId);
+    }
+
+    @Import(name="microsoftEntraClientSecret")
+    private @Nullable Output<String> microsoftEntraClientSecret;
+
+    public Optional<Output<String>> microsoftEntraClientSecret() {
+        return Optional.ofNullable(this.microsoftEntraClientSecret);
+    }
+
+    @Import(name="microsoftEntraTenantId")
+    private @Nullable Output<String> microsoftEntraTenantId;
+
+    public Optional<Output<String>> microsoftEntraTenantId() {
+        return Optional.ofNullable(this.microsoftEntraTenantId);
+    }
+
     @Import(name="openaiApiBase")
     private @Nullable Output<String> openaiApiBase;
 
@@ -23,11 +43,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         return Optional.ofNullable(this.openaiApiBase);
     }
 
-    @Import(name="openaiApiKey", required=true)
-    private Output<String> openaiApiKey;
+    @Import(name="openaiApiKey")
+    private @Nullable Output<String> openaiApiKey;
 
-    public Output<String> openaiApiKey() {
-        return this.openaiApiKey;
+    public Optional<Output<String>> openaiApiKey() {
+        return Optional.ofNullable(this.openaiApiKey);
     }
 
     @Import(name="openaiApiType")
@@ -61,6 +81,9 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
     private ModelServingConfigServedEntityExternalModelOpenaiConfigArgs() {}
 
     private ModelServingConfigServedEntityExternalModelOpenaiConfigArgs(ModelServingConfigServedEntityExternalModelOpenaiConfigArgs $) {
+        this.microsoftEntraClientId = $.microsoftEntraClientId;
+        this.microsoftEntraClientSecret = $.microsoftEntraClientSecret;
+        this.microsoftEntraTenantId = $.microsoftEntraTenantId;
         this.openaiApiBase = $.openaiApiBase;
         this.openaiApiKey = $.openaiApiKey;
         this.openaiApiType = $.openaiApiType;
@@ -87,6 +110,33 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
             $ = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder microsoftEntraClientId(@Nullable Output<String> microsoftEntraClientId) {
+            $.microsoftEntraClientId = microsoftEntraClientId;
+            return this;
+        }
+
+        public Builder microsoftEntraClientId(String microsoftEntraClientId) {
+            return microsoftEntraClientId(Output.of(microsoftEntraClientId));
+        }
+
+        public Builder microsoftEntraClientSecret(@Nullable Output<String> microsoftEntraClientSecret) {
+            $.microsoftEntraClientSecret = microsoftEntraClientSecret;
+            return this;
+        }
+
+        public Builder microsoftEntraClientSecret(String microsoftEntraClientSecret) {
+            return microsoftEntraClientSecret(Output.of(microsoftEntraClientSecret));
+        }
+
+        public Builder microsoftEntraTenantId(@Nullable Output<String> microsoftEntraTenantId) {
+            $.microsoftEntraTenantId = microsoftEntraTenantId;
+            return this;
+        }
+
+        public Builder microsoftEntraTenantId(String microsoftEntraTenantId) {
+            return microsoftEntraTenantId(Output.of(microsoftEntraTenantId));
+        }
+
         public Builder openaiApiBase(@Nullable Output<String> openaiApiBase) {
             $.openaiApiBase = openaiApiBase;
             return this;
@@ -96,7 +146,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
             return openaiApiBase(Output.of(openaiApiBase));
         }
 
-        public Builder openaiApiKey(Output<String> openaiApiKey) {
+        public Builder openaiApiKey(@Nullable Output<String> openaiApiKey) {
             $.openaiApiKey = openaiApiKey;
             return this;
         }
@@ -142,9 +192,6 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         public ModelServingConfigServedEntityExternalModelOpenaiConfigArgs build() {
-            if ($.openaiApiKey == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelOpenaiConfigArgs", "openaiApiKey");
-            }
             return $;
         }
     }

@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.ClusterState;
 import com.pulumi.databricks.outputs.ClusterAutoscale;
 import com.pulumi.databricks.outputs.ClusterAwsAttributes;
 import com.pulumi.databricks.outputs.ClusterAzureAttributes;
-import com.pulumi.databricks.outputs.ClusterCloneFrom;
 import com.pulumi.databricks.outputs.ClusterClusterLogConf;
 import com.pulumi.databricks.outputs.ClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.ClusterDockerImage;
@@ -174,12 +173,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<ClusterAzureAttributes>> azureAttributes() {
         return Codegen.optional(this.azureAttributes);
     }
-    @Export(name="cloneFrom", refs={ClusterCloneFrom.class}, tree="[0]")
-    private Output</* @Nullable */ ClusterCloneFrom> cloneFrom;
-
-    public Output<Optional<ClusterCloneFrom>> cloneFrom() {
-        return Codegen.optional(this.cloneFrom);
-    }
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
@@ -211,12 +204,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> clusterName() {
         return Codegen.optional(this.clusterName);
-    }
-    @Export(name="clusterSource", refs={String.class}, tree="[0]")
-    private Output<String> clusterSource;
-
-    public Output<String> clusterSource() {
-        return this.clusterSource;
     }
     /**
      * should have tag `ResourceClass` set to value `Serverless`

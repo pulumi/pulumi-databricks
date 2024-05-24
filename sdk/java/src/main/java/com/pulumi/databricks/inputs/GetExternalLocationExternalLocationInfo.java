@@ -54,23 +54,47 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of catalog creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable String createdBy;
 
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Unique ID of storage credential.
+     * 
+     */
     @Import(name="credentialId")
     private @Nullable String credentialId;
 
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public Optional<String> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
@@ -105,22 +129,30 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    /**
+     * Unique identifier of the parent Metastore.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
+    /**
+     * @return Unique identifier of the parent Metastore.
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
     /**
-     * The name of the storage credential
+     * The name of the external location
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the storage credential
+     * @return The name of the external location
      * 
      */
     public Optional<String> name() {
@@ -157,16 +189,32 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Integer updatedAt;
 
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of user who last modified catalog.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable String updatedBy;
 
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -251,16 +299,34 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdBy Username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable String createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param credentialId Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(@Nullable String credentialId) {
             $.credentialId = credentialId;
             return this;
@@ -288,13 +354,19 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
             return this;
         }
 
+        /**
+         * @param metastoreId Unique identifier of the parent Metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
         /**
-         * @param name The name of the storage credential
+         * @param name The name of the external location
          * 
          * @return builder
          * 
@@ -326,11 +398,23 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this catalog was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Integer updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable String updatedBy) {
             $.updatedBy = updatedBy;
             return this;

@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobNewClusterAutoscale;
 import com.pulumi.databricks.outputs.JobNewClusterAwsAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterAzureAttributes;
-import com.pulumi.databricks.outputs.JobNewClusterCloneFrom;
 import com.pulumi.databricks.outputs.JobNewClusterClusterLogConf;
 import com.pulumi.databricks.outputs.JobNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.JobNewClusterDockerImage;
@@ -33,7 +32,6 @@ public final class JobNewCluster {
     private @Nullable Integer autoterminationMinutes;
     private @Nullable JobNewClusterAwsAttributes awsAttributes;
     private @Nullable JobNewClusterAzureAttributes azureAttributes;
-    private @Nullable JobNewClusterCloneFrom cloneFrom;
     private @Nullable String clusterId;
     private @Nullable JobNewClusterClusterLogConf clusterLogConf;
     private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
@@ -80,9 +78,6 @@ public final class JobNewCluster {
     }
     public Optional<JobNewClusterAzureAttributes> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
-    }
-    public Optional<JobNewClusterCloneFrom> cloneFrom() {
-        return Optional.ofNullable(this.cloneFrom);
     }
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
@@ -181,7 +176,6 @@ public final class JobNewCluster {
         private @Nullable Integer autoterminationMinutes;
         private @Nullable JobNewClusterAwsAttributes awsAttributes;
         private @Nullable JobNewClusterAzureAttributes azureAttributes;
-        private @Nullable JobNewClusterCloneFrom cloneFrom;
         private @Nullable String clusterId;
         private @Nullable JobNewClusterClusterLogConf clusterLogConf;
         private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
@@ -216,7 +210,6 @@ public final class JobNewCluster {
     	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
     	      this.azureAttributes = defaults.azureAttributes;
-    	      this.cloneFrom = defaults.cloneFrom;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterLogConf = defaults.clusterLogConf;
     	      this.clusterMountInfos = defaults.clusterMountInfos;
@@ -273,12 +266,6 @@ public final class JobNewCluster {
         public Builder azureAttributes(@Nullable JobNewClusterAzureAttributes azureAttributes) {
 
             this.azureAttributes = azureAttributes;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder cloneFrom(@Nullable JobNewClusterCloneFrom cloneFrom) {
-
-            this.cloneFrom = cloneFrom;
             return this;
         }
         @CustomType.Setter
@@ -458,7 +445,6 @@ public final class JobNewCluster {
             _resultValue.autoterminationMinutes = autoterminationMinutes;
             _resultValue.awsAttributes = awsAttributes;
             _resultValue.azureAttributes = azureAttributes;
-            _resultValue.cloneFrom = cloneFrom;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterLogConf = clusterLogConf;
             _resultValue.clusterMountInfos = clusterMountInfos;

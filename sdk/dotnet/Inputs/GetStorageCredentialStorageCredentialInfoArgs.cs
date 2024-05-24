@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetStorageCredentialStorageCredentialInfoInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// credential details for AWS:
+        /// </summary>
         [Input("awsIamRole")]
         public Input<Inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleInputArgs>? AwsIamRole { get; set; }
 
+        /// <summary>
+        /// managed identity credential details for Azure
+        /// </summary>
         [Input("azureManagedIdentity")]
         public Input<Inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityInputArgs>? AzureManagedIdentity { get; set; }
 
+        /// <summary>
+        /// service principal credential details for Azure:
+        /// </summary>
         [Input("azureServicePrincipal")]
         public Input<Inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalInputArgs>? AzureServicePrincipal { get; set; }
 
@@ -27,15 +36,27 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// credential details for GCP:
+        /// </summary>
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountInputArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -63,9 +84,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

@@ -604,6 +604,8 @@ class LakehouseMonitor(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        NOTE: This resource has been deprecated and will be removed soon. Please use the QualityMonitor resource instead.
+
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         A `LakehouseMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
@@ -671,6 +673,8 @@ class LakehouseMonitor(pulumi.CustomResource):
                  args: LakehouseMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        NOTE: This resource has been deprecated and will be removed soon. Please use the QualityMonitor resource instead.
+
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         A `LakehouseMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.

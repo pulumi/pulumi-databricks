@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.ClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.ClusterAzureAttributesArgs;
-import com.pulumi.databricks.inputs.ClusterCloneFromArgs;
 import com.pulumi.databricks.inputs.ClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -82,13 +81,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureAttributes);
     }
 
-    @Import(name="cloneFrom")
-    private @Nullable Output<ClusterCloneFromArgs> cloneFrom;
-
-    public Optional<Output<ClusterCloneFromArgs>> cloneFrom() {
-        return Optional.ofNullable(this.cloneFrom);
-    }
-
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
@@ -123,13 +115,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clusterName() {
         return Optional.ofNullable(this.clusterName);
-    }
-
-    @Import(name="clusterSource")
-    private @Nullable Output<String> clusterSource;
-
-    public Optional<Output<String>> clusterSource() {
-        return Optional.ofNullable(this.clusterSource);
     }
 
     /**
@@ -682,12 +667,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
-        this.cloneFrom = $.cloneFrom;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
         this.clusterName = $.clusterName;
-        this.clusterSource = $.clusterSource;
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
         this.defaultTags = $.defaultTags;
@@ -803,15 +786,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return azureAttributes(Output.of(azureAttributes));
         }
 
-        public Builder cloneFrom(@Nullable Output<ClusterCloneFromArgs> cloneFrom) {
-            $.cloneFrom = cloneFrom;
-            return this;
-        }
-
-        public Builder cloneFrom(ClusterCloneFromArgs cloneFrom) {
-            return cloneFrom(Output.of(cloneFrom));
-        }
-
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
@@ -862,15 +836,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
-        }
-
-        public Builder clusterSource(@Nullable Output<String> clusterSource) {
-            $.clusterSource = clusterSource;
-            return this;
-        }
-
-        public Builder clusterSource(String clusterSource) {
-            return clusterSource(Output.of(clusterSource));
         }
 
         /**

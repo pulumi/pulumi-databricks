@@ -118,6 +118,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.ModelServingRateLimit>> RateLimits { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// </summary>
+        [Output("routeOptimized")]
+        public Output<bool?> RouteOptimized { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         /// </summary>
         [Output("servingEndpointId")]
@@ -199,6 +205,12 @@ namespace Pulumi.Databricks
             set => _rateLimits = value;
         }
 
+        /// <summary>
+        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// </summary>
+        [Input("routeOptimized")]
+        public Input<bool>? RouteOptimized { get; set; }
+
         [Input("tags")]
         private InputList<Inputs.ModelServingTagArgs>? _tags;
 
@@ -242,6 +254,12 @@ namespace Pulumi.Databricks
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitGetArgs>());
             set => _rateLimits = value;
         }
+
+        /// <summary>
+        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// </summary>
+        [Input("routeOptimized")]
+        public Input<bool>? RouteOptimized { get; set; }
 
         /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

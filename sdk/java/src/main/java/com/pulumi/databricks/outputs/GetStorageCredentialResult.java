@@ -12,16 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class GetStorageCredentialResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Unique ID of storage credential.
      * 
      */
     private String id;
     private String name;
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     private GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
 
     private GetStorageCredentialResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Unique ID of storage credential.
      * 
      */
     public String id() {
@@ -30,6 +34,10 @@ public final class GetStorageCredentialResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     public GetStorageCredentialStorageCredentialInfo storageCredentialInfo() {
         return this.storageCredentialInfo;
     }

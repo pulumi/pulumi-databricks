@@ -20,6 +20,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
      */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
+    private @Nullable String embeddingWritebackTable;
     /**
      * @return ID of the associated Delta Live Table pipeline.
      * 
@@ -42,6 +43,9 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     }
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
+    }
+    public Optional<String> embeddingWritebackTable() {
+        return Optional.ofNullable(this.embeddingWritebackTable);
     }
     /**
      * @return ID of the associated Delta Live Table pipeline.
@@ -72,6 +76,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public static final class Builder {
         private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
         private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
+        private @Nullable String embeddingWritebackTable;
         private @Nullable String pipelineId;
         private @Nullable String pipelineType;
         private @Nullable String sourceTable;
@@ -80,6 +85,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     	      Objects.requireNonNull(defaults);
     	      this.embeddingSourceColumns = defaults.embeddingSourceColumns;
     	      this.embeddingVectorColumns = defaults.embeddingVectorColumns;
+    	      this.embeddingWritebackTable = defaults.embeddingWritebackTable;
     	      this.pipelineId = defaults.pipelineId;
     	      this.pipelineType = defaults.pipelineType;
     	      this.sourceTable = defaults.sourceTable;
@@ -104,6 +110,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
         }
         @CustomType.Setter
+        public Builder embeddingWritebackTable(@Nullable String embeddingWritebackTable) {
+
+            this.embeddingWritebackTable = embeddingWritebackTable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pipelineId(@Nullable String pipelineId) {
 
             this.pipelineId = pipelineId;
@@ -125,6 +137,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
             final var _resultValue = new VectorSearchIndexDeltaSyncIndexSpec();
             _resultValue.embeddingSourceColumns = embeddingSourceColumns;
             _resultValue.embeddingVectorColumns = embeddingVectorColumns;
+            _resultValue.embeddingWritebackTable = embeddingWritebackTable;
             _resultValue.pipelineId = pipelineId;
             _resultValue.pipelineType = pipelineType;
             _resultValue.sourceTable = sourceTable;

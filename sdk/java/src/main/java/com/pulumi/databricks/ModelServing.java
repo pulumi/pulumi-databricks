@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.ModelServingState;
 import com.pulumi.databricks.outputs.ModelServingConfig;
 import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -158,6 +159,20 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ModelServingRateLimit>>> rateLimits() {
         return Codegen.optional(this.rateLimits);
+    }
+    /**
+     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * 
+     */
+    @Export(name="routeOptimized", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> routeOptimized;
+
+    /**
+     * @return A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * 
+     */
+    public Output<Optional<Boolean>> routeOptimized() {
+        return Codegen.optional(this.routeOptimized);
     }
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

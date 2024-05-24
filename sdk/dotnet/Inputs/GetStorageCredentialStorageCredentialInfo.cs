@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetStorageCredentialStorageCredentialInfoArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// credential details for AWS:
+        /// </summary>
         [Input("awsIamRole")]
         public Inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs? AwsIamRole { get; set; }
 
+        /// <summary>
+        /// managed identity credential details for Azure
+        /// </summary>
         [Input("azureManagedIdentity")]
         public Inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs? AzureManagedIdentity { get; set; }
 
+        /// <summary>
+        /// service principal credential details for Azure:
+        /// </summary>
         [Input("azureServicePrincipal")]
         public Inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs? AzureServicePrincipal { get; set; }
 
@@ -27,15 +36,27 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public string? Comment { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public int? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         [Input("createdBy")]
         public string? CreatedBy { get; set; }
 
+        /// <summary>
+        /// credential details for GCP:
+        /// </summary>
         [Input("databricksGcpServiceAccount")]
         public Inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -63,9 +84,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("readOnly")]
         public bool? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public int? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         [Input("updatedBy")]
         public string? UpdatedBy { get; set; }
 

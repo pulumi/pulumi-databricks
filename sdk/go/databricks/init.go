@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessControlRuleSet{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
+	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
+		r = &AutomaticClusterUpdateWorkspaceSetting{}
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -33,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
 		r = &ClusterPolicy{}
+	case "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting":
+		r = &ComplianceSecurityProfileWorkspaceSetting{}
 	case "databricks:index/connection:Connection":
 		r = &Connection{}
 	case "databricks:index/dbfsFile:DbfsFile":
@@ -41,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultNamespaceSetting{}
 	case "databricks:index/directory:Directory":
 		r = &Directory{}
+	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
+		r = &EnhancedSecurityMonitoringWorkspaceSetting{}
 	case "databricks:index/entitlements:Entitlements":
 		r = &Entitlements{}
 	case "databricks:index/externalLocation:ExternalLocation":
@@ -129,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Permissions{}
 	case "databricks:index/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "databricks:index/qualityMonitor:QualityMonitor":
+		r = &QualityMonitor{}
 	case "databricks:index/recipient:Recipient":
 		r = &Recipient{}
 	case "databricks:index/registeredModel:RegisteredModel":
@@ -238,6 +246,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/automaticClusterUpdateWorkspaceSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/catalog",
 		&module{version},
 	)
@@ -258,6 +271,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/complianceSecurityProfileWorkspaceSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/connection",
 		&module{version},
 	)
@@ -274,6 +292,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/directory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/enhancedSecurityMonitoringWorkspaceSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -494,6 +517,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/qualityMonitor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -18,6 +18,21 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
     public static final GetStorageCredentialArgs Empty = new GetStorageCredentialArgs();
 
     /**
+     * Unique ID of storage credential.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * The name of the storage credential
      * 
      */
@@ -32,9 +47,17 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
         return this.name;
     }
 
+    /**
+     * array of objects with information about storage credential.
+     * 
+     */
     @Import(name="storageCredentialInfo")
     private @Nullable Output<GetStorageCredentialStorageCredentialInfoArgs> storageCredentialInfo;
 
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     public Optional<Output<GetStorageCredentialStorageCredentialInfoArgs>> storageCredentialInfo() {
         return Optional.ofNullable(this.storageCredentialInfo);
     }
@@ -42,6 +65,7 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
     private GetStorageCredentialArgs() {}
 
     private GetStorageCredentialArgs(GetStorageCredentialArgs $) {
+        this.id = $.id;
         this.name = $.name;
         this.storageCredentialInfo = $.storageCredentialInfo;
     }
@@ -65,6 +89,27 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param id Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
          * @param name The name of the storage credential
          * 
          * @return builder
@@ -85,11 +130,23 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
             return name(Output.of(name));
         }
 
+        /**
+         * @param storageCredentialInfo array of objects with information about storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCredentialInfo(@Nullable Output<GetStorageCredentialStorageCredentialInfoArgs> storageCredentialInfo) {
             $.storageCredentialInfo = storageCredentialInfo;
             return this;
         }
 
+        /**
+         * @param storageCredentialInfo array of objects with information about storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCredentialInfo(GetStorageCredentialStorageCredentialInfoArgs storageCredentialInfo) {
             return storageCredentialInfo(Output.of(storageCredentialInfo));
         }

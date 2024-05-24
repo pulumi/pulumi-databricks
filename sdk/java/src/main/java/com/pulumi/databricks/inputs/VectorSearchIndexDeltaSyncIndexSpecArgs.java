@@ -40,6 +40,13 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.embeddingVectorColumns);
     }
 
+    @Import(name="embeddingWritebackTable")
+    private @Nullable Output<String> embeddingWritebackTable;
+
+    public Optional<Output<String>> embeddingWritebackTable() {
+        return Optional.ofNullable(this.embeddingWritebackTable);
+    }
+
     /**
      * ID of the associated Delta Live Table pipeline.
      * 
@@ -82,6 +89,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
     private VectorSearchIndexDeltaSyncIndexSpecArgs(VectorSearchIndexDeltaSyncIndexSpecArgs $) {
         this.embeddingSourceColumns = $.embeddingSourceColumns;
         this.embeddingVectorColumns = $.embeddingVectorColumns;
+        this.embeddingWritebackTable = $.embeddingWritebackTable;
         this.pipelineId = $.pipelineId;
         this.pipelineType = $.pipelineType;
         this.sourceTable = $.sourceTable;
@@ -147,6 +155,15 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
 
         public Builder embeddingVectorColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs... embeddingVectorColumns) {
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
+        }
+
+        public Builder embeddingWritebackTable(@Nullable Output<String> embeddingWritebackTable) {
+            $.embeddingWritebackTable = embeddingWritebackTable;
+            return this;
+        }
+
+        public Builder embeddingWritebackTable(String embeddingWritebackTable) {
+            return embeddingWritebackTable(Output.of(embeddingWritebackTable));
         }
 
         /**

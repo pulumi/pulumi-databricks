@@ -22,8 +22,17 @@ namespace Pulumi.Databricks.Outputs
         /// User-supplied comment.
         /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         public readonly int? CreatedAt;
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         public readonly string? CredentialId;
         /// <summary>
         /// Name of the databricks.StorageCredential to use with this external location.
@@ -33,9 +42,12 @@ namespace Pulumi.Databricks.Outputs
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? EncryptionDetails;
+        /// <summary>
+        /// Unique identifier of the parent Metastore.
+        /// </summary>
         public readonly string? MetastoreId;
         /// <summary>
-        /// The name of the storage credential
+        /// The name of the external location
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -46,7 +58,13 @@ namespace Pulumi.Databricks.Outputs
         /// Indicates whether the external location is read-only.
         /// </summary>
         public readonly bool? ReadOnly;
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         public readonly int? UpdatedAt;
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         public readonly string? UpdatedBy;
         /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).

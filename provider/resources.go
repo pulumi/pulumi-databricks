@@ -139,6 +139,10 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_provider": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreProvider")},
 
 			"databricks_table": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+
+			"databricks_automatic_cluster_update_workspace_setting":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"databricks_compliance_security_profile_workspace_setting":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"databricks_enhanced_security_monitoring_workspace_setting": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {

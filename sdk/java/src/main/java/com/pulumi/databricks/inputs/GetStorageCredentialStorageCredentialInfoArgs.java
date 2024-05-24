@@ -22,23 +22,47 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
 
     public static final GetStorageCredentialStorageCredentialInfoArgs Empty = new GetStorageCredentialStorageCredentialInfoArgs();
 
+    /**
+     * credential details for AWS:
+     * 
+     */
     @Import(name="awsIamRole")
     private @Nullable Output<GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs> awsIamRole;
 
+    /**
+     * @return credential details for AWS:
+     * 
+     */
     public Optional<Output<GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs>> awsIamRole() {
         return Optional.ofNullable(this.awsIamRole);
     }
 
+    /**
+     * managed identity credential details for Azure
+     * 
+     */
     @Import(name="azureManagedIdentity")
     private @Nullable Output<GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs> azureManagedIdentity;
 
+    /**
+     * @return managed identity credential details for Azure
+     * 
+     */
     public Optional<Output<GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs>> azureManagedIdentity() {
         return Optional.ofNullable(this.azureManagedIdentity);
     }
 
+    /**
+     * service principal credential details for Azure:
+     * 
+     */
     @Import(name="azureServicePrincipal")
     private @Nullable Output<GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs> azureServicePrincipal;
 
+    /**
+     * @return service principal credential details for Azure:
+     * 
+     */
     public Optional<Output<GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs>> azureServicePrincipal() {
         return Optional.ofNullable(this.azureServicePrincipal);
     }
@@ -57,30 +81,62 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of catalog creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * credential details for GCP:
+     * 
+     */
     @Import(name="databricksGcpServiceAccount")
     private @Nullable Output<GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount;
 
+    /**
+     * @return credential details for GCP:
+     * 
+     */
     public Optional<Output<GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>> databricksGcpServiceAccount() {
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
+    /**
+     * Unique ID of storage credential.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
@@ -145,16 +201,32 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of user who last modified catalog.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -205,29 +277,65 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
             $ = new GetStorageCredentialStorageCredentialInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsIamRole credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsIamRole(@Nullable Output<GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs> awsIamRole) {
             $.awsIamRole = awsIamRole;
             return this;
         }
 
+        /**
+         * @param awsIamRole credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsIamRole(GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs awsIamRole) {
             return awsIamRole(Output.of(awsIamRole));
         }
 
+        /**
+         * @param azureManagedIdentity managed identity credential details for Azure
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureManagedIdentity(@Nullable Output<GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs> azureManagedIdentity) {
             $.azureManagedIdentity = azureManagedIdentity;
             return this;
         }
 
+        /**
+         * @param azureManagedIdentity managed identity credential details for Azure
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureManagedIdentity(GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs azureManagedIdentity) {
             return azureManagedIdentity(Output.of(azureManagedIdentity));
         }
 
+        /**
+         * @param azureServicePrincipal service principal credential details for Azure:
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureServicePrincipal(@Nullable Output<GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs> azureServicePrincipal) {
             $.azureServicePrincipal = azureServicePrincipal;
             return this;
         }
 
+        /**
+         * @param azureServicePrincipal service principal credential details for Azure:
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureServicePrincipal(GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs azureServicePrincipal) {
             return azureServicePrincipal(Output.of(azureServicePrincipal));
         }
@@ -250,38 +358,86 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param createdAt Time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy Username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy Username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param databricksGcpServiceAccount credential details for GCP:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksGcpServiceAccount(@Nullable Output<GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount) {
             $.databricksGcpServiceAccount = databricksGcpServiceAccount;
             return this;
         }
 
+        /**
+         * @param databricksGcpServiceAccount credential details for GCP:
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksGcpServiceAccount(GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs databricksGcpServiceAccount) {
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
+        /**
+         * @param id Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
@@ -370,20 +526,44 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param updatedAt Time at which this catalog was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this catalog was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy Username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

@@ -7,14 +7,17 @@ import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
 from .artifact_allowlist import *
+from .automatic_cluster_update_workspace_setting import *
 from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
 from .cluster_policy import *
+from .compliance_security_profile_workspace_setting import *
 from .connection import *
 from .dbfs_file import *
 from .default_namespace_setting import *
 from .directory import *
+from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
 from .file import *
@@ -108,6 +111,7 @@ from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
 from .provider import *
+from .quality_monitor import *
 from .recipient import *
 from .registered_model import *
 from .repo import *
@@ -172,6 +176,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/automaticClusterUpdateWorkspaceSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": "AutomaticClusterUpdateWorkspaceSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/catalog",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -204,6 +216,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/complianceSecurityProfileWorkspaceSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting": "ComplianceSecurityProfileWorkspaceSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/connection",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -232,6 +252,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/directory:Directory": "Directory"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/enhancedSecurityMonitoringWorkspaceSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": "EnhancedSecurityMonitoringWorkspaceSetting"
   }
  },
  {
@@ -584,6 +612,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/qualityMonitor",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/qualityMonitor:QualityMonitor": "QualityMonitor"
   }
  },
  {
