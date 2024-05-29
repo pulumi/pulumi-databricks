@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -40,13 +39,13 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="principalId", required=true)
-    private Output<Integer> principalId;
+    private Output<String> principalId;
 
     /**
      * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      * 
      */
-    public Output<Integer> principalId() {
+    public Output<String> principalId() {
         return this.principalId;
     }
 
@@ -134,7 +133,7 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder principalId(Output<Integer> principalId) {
+        public Builder principalId(Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
@@ -145,7 +144,7 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder principalId(Integer principalId) {
+        public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 

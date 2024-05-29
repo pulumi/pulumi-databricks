@@ -192,5 +192,20 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustApplyAutoAliases()
 
+	// principal_id indicates a workspace ID, which is a 64 bit integer and not safe
+	// to treat as a number (float64) in most Pulumi languages.
+	//
+	// Fixes https://github.com/pulumi/pulumi-databricks/issues/476
+	tfbridge.MustTraverseProperties(&prov, "ids",
+		func(info tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+			p := info.SchemaPath()
+
+			if s, ok := p[len(p)-1].(walk.GetAttrStep); ok && s.Name == "principal_id" {
+				info.SchemaInfo().Type = "string"
+				return tfbridge.PropertyVisitResult{HasEffect: true}, nil
+			}
+			return tfbridge.PropertyVisitResult{}, nil
+		})
+
 	return prov
 }

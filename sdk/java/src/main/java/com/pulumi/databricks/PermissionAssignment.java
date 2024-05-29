@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PermissionAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PermissionAssignmentState;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -195,10 +194,10 @@ public class PermissionAssignment extends com.pulumi.resources.CustomResource {
     public Output<List<String>> permissions() {
         return this.permissions;
     }
-    @Export(name="principalId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> principalId;
+    @Export(name="principalId", refs={String.class}, tree="[0]")
+    private Output<String> principalId;
 
-    public Output<Integer> principalId() {
+    public Output<String> principalId() {
         return this.principalId;
     }
 

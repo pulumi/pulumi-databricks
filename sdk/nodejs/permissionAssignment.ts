@@ -115,7 +115,7 @@ export class PermissionAssignment extends pulumi.CustomResource {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     public readonly permissions!: pulumi.Output<string[]>;
-    public readonly principalId!: pulumi.Output<number>;
+    public readonly principalId!: pulumi.Output<string>;
 
     /**
      * Create a PermissionAssignment resource with the given unique name, arguments, and options.
@@ -158,7 +158,7 @@ export interface PermissionAssignmentState {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
-    principalId?: pulumi.Input<number>;
+    principalId?: pulumi.Input<string>;
 }
 
 /**
@@ -171,5 +171,5 @@ export interface PermissionAssignmentArgs {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
-    principalId: pulumi.Input<number>;
+    principalId: pulumi.Input<string>;
 }

@@ -15,14 +15,14 @@ __all__ = ['MwsPermissionAssignmentArgs', 'MwsPermissionAssignment']
 class MwsPermissionAssignmentArgs:
     def __init__(__self__, *,
                  permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 principal_id: pulumi.Input[int],
+                 principal_id: pulumi.Input[str],
                  workspace_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a MwsPermissionAssignment resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Can access the workspace with basic privileges.
                * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-        :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
+        :param pulumi.Input[str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[str] workspace_id: Databricks workspace ID.
         """
         pulumi.set(__self__, "permissions", permissions)
@@ -45,14 +45,14 @@ class MwsPermissionAssignmentArgs:
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> pulumi.Input[int]:
+    def principal_id(self) -> pulumi.Input[str]:
         """
         Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: pulumi.Input[int]):
+    def principal_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "principal_id", value)
 
     @property
@@ -72,14 +72,14 @@ class MwsPermissionAssignmentArgs:
 class _MwsPermissionAssignmentState:
     def __init__(__self__, *,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None,
+                 principal_id: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsPermissionAssignment resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Can access the workspace with basic privileges.
                * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-        :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
+        :param pulumi.Input[str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[str] workspace_id: Databricks workspace ID.
         """
         if permissions is not None:
@@ -105,14 +105,14 @@ class _MwsPermissionAssignmentState:
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[int]]:
+    def principal_id(self) -> Optional[pulumi.Input[str]]:
         """
         Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[int]]):
+    def principal_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "principal_id", value)
 
     @property
@@ -134,7 +134,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None,
+                 principal_id: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -205,7 +205,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Can access the workspace with basic privileges.
                * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-        :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
+        :param pulumi.Input[str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[str] workspace_id: Databricks workspace ID.
         """
         ...
@@ -293,7 +293,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None,
+                 principal_id: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -324,7 +324,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            principal_id: Optional[pulumi.Input[int]] = None,
+            principal_id: Optional[pulumi.Input[str]] = None,
             workspace_id: Optional[pulumi.Input[str]] = None) -> 'MwsPermissionAssignment':
         """
         Get an existing MwsPermissionAssignment resource's state with the given name, id, and optional extra
@@ -336,7 +336,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Can access the workspace with basic privileges.
                * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-        :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
+        :param pulumi.Input[str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[str] workspace_id: Databricks workspace ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -360,7 +360,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> pulumi.Output[int]:
+    def principal_id(self) -> pulumi.Output[str]:
         """
         Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         """

@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -36,9 +35,9 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="principalId", required=true)
-    private Output<Integer> principalId;
+    private Output<String> principalId;
 
-    public Output<Integer> principalId() {
+    public Output<String> principalId() {
         return this.principalId;
     }
 
@@ -104,12 +103,12 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
             return permissions(List.of(permissions));
         }
 
-        public Builder principalId(Output<Integer> principalId) {
+        public Builder principalId(Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
-        public Builder principalId(Integer principalId) {
+        public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 

@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MwsPermissionAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsPermissionAssignmentState;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -193,14 +192,14 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      * 
      */
-    @Export(name="principalId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> principalId;
+    @Export(name="principalId", refs={String.class}, tree="[0]")
+    private Output<String> principalId;
 
     /**
      * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      * 
      */
-    public Output<Integer> principalId() {
+    public Output<String> principalId() {
         return this.principalId;
     }
     /**

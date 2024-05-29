@@ -157,7 +157,7 @@ type PermissionAssignment struct {
 	// * `"USER"` - Can access the workspace with basic privileges.
 	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
-	PrincipalId pulumi.IntOutput         `pulumi:"principalId"`
+	PrincipalId pulumi.StringOutput      `pulumi:"principalId"`
 }
 
 // NewPermissionAssignment registers a new resource with the given unique name, arguments, and options.
@@ -200,7 +200,7 @@ type permissionAssignmentState struct {
 	// * `"USER"` - Can access the workspace with basic privileges.
 	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
-	PrincipalId *int     `pulumi:"principalId"`
+	PrincipalId *string  `pulumi:"principalId"`
 }
 
 type PermissionAssignmentState struct {
@@ -208,7 +208,7 @@ type PermissionAssignmentState struct {
 	// * `"USER"` - Can access the workspace with basic privileges.
 	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
-	PrincipalId pulumi.IntPtrInput
+	PrincipalId pulumi.StringPtrInput
 }
 
 func (PermissionAssignmentState) ElementType() reflect.Type {
@@ -220,7 +220,7 @@ type permissionAssignmentArgs struct {
 	// * `"USER"` - Can access the workspace with basic privileges.
 	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
-	PrincipalId int      `pulumi:"principalId"`
+	PrincipalId string   `pulumi:"principalId"`
 }
 
 // The set of arguments for constructing a PermissionAssignment resource.
@@ -229,7 +229,7 @@ type PermissionAssignmentArgs struct {
 	// * `"USER"` - Can access the workspace with basic privileges.
 	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
-	PrincipalId pulumi.IntInput
+	PrincipalId pulumi.StringInput
 }
 
 func (PermissionAssignmentArgs) ElementType() reflect.Type {
@@ -326,8 +326,8 @@ func (o PermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-func (o PermissionAssignmentOutput) PrincipalId() pulumi.IntOutput {
-	return o.ApplyT(func(v *PermissionAssignment) pulumi.IntOutput { return v.PrincipalId }).(pulumi.IntOutput)
+func (o PermissionAssignmentOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
 type PermissionAssignmentArrayOutput struct{ *pulumi.OutputState }

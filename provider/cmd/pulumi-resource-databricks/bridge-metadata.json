@@ -4331,6 +4331,16 @@
             }
         }
     },
+    "ids": {
+        "resources": {
+            "databricks_mws_permission_assignment": [
+                "principal_id"
+            ],
+            "databricks_permission_assignment": [
+                "principal_id"
+            ]
+        }
+    },
     "renames": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": "databricks_access_control_rule_set",

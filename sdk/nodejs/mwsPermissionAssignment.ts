@@ -107,7 +107,7 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      */
-    public readonly principalId!: pulumi.Output<number>;
+    public readonly principalId!: pulumi.Output<string>;
     /**
      * Databricks workspace ID.
      */
@@ -162,7 +162,7 @@ export interface MwsPermissionAssignmentState {
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      */
-    principalId?: pulumi.Input<number>;
+    principalId?: pulumi.Input<string>;
     /**
      * Databricks workspace ID.
      */
@@ -182,7 +182,7 @@ export interface MwsPermissionAssignmentArgs {
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      */
-    principalId: pulumi.Input<number>;
+    principalId: pulumi.Input<string>;
     /**
      * Databricks workspace ID.
      */

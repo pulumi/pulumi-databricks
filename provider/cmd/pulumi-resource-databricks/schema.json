@@ -20881,7 +20881,7 @@
                     "description": "The list of workspace permissions to assign to the principal:\n* `\"USER\"` - Can access the workspace with basic privileges.\n* `\"ADMIN\"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.\n"
                 },
                 "principalId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.\n"
                 },
                 "workspaceId": {
@@ -20904,7 +20904,7 @@
                     "willReplaceOnChanges": true
                 },
                 "principalId": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.\n",
                     "willReplaceOnChanges": true
                 },
@@ -20931,7 +20931,7 @@
                         "willReplaceOnChanges": true
                     },
                     "principalId": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.\n",
                         "willReplaceOnChanges": true
                     },
@@ -21902,7 +21902,7 @@
                     "description": "The list of workspace permissions to assign to the principal:\n* `\"USER\"` - Can access the workspace with basic privileges.\n* `\"ADMIN\"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.\n"
                 },
                 "principalId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             },
             "required": [
@@ -21919,7 +21919,7 @@
                     "willReplaceOnChanges": true
                 },
                 "principalId": {
-                    "type": "integer",
+                    "type": "string",
                     "willReplaceOnChanges": true
                 }
             },
@@ -21939,7 +21939,7 @@
                         "willReplaceOnChanges": true
                     },
                     "principalId": {
-                        "type": "integer",
+                        "type": "string",
                         "willReplaceOnChanges": true
                     }
                 },
