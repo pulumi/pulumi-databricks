@@ -15,7 +15,7 @@ __all__ = ['PermissionAssignmentArgs', 'PermissionAssignment']
 class PermissionAssignmentArgs:
     def __init__(__self__, *,
                  permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 principal_id: pulumi.Input[int]):
+                 principal_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a PermissionAssignment resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
@@ -41,11 +41,11 @@ class PermissionAssignmentArgs:
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> pulumi.Input[int]:
+    def principal_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: pulumi.Input[int]):
+    def principal_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "principal_id", value)
 
 
@@ -53,7 +53,7 @@ class PermissionAssignmentArgs:
 class _PermissionAssignmentState:
     def __init__(__self__, *,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None):
+                 principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PermissionAssignment resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
@@ -81,11 +81,11 @@ class _PermissionAssignmentState:
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[int]]:
+    def principal_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[int]]):
+    def principal_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "principal_id", value)
 
 
@@ -95,7 +95,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None,
+                 principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         These resources are invoked in the workspace context.
@@ -257,7 +257,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 principal_id: Optional[pulumi.Input[int]] = None,
+                 principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,7 +284,7 @@ class PermissionAssignment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            principal_id: Optional[pulumi.Input[int]] = None) -> 'PermissionAssignment':
+            principal_id: Optional[pulumi.Input[str]] = None) -> 'PermissionAssignment':
         """
         Get an existing PermissionAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -316,6 +316,6 @@ class PermissionAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> pulumi.Output[int]:
+    def principal_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "principal_id")
 

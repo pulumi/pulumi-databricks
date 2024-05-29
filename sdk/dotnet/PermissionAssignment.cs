@@ -139,7 +139,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
         [Output("principalId")]
-        public Output<int> PrincipalId { get; private set; } = null!;
+        public Output<string> PrincipalId { get; private set; } = null!;
 
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Pulumi.Databricks
         }
 
         [Input("principalId", required: true)]
-        public Input<int> PrincipalId { get; set; } = null!;
+        public Input<string> PrincipalId { get; set; } = null!;
 
         public PermissionAssignmentArgs()
         {
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
         }
 
         [Input("principalId")]
-        public Input<int>? PrincipalId { get; set; }
+        public Input<string>? PrincipalId { get; set; }
 
         public PermissionAssignmentState()
         {

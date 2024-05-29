@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,13 +40,13 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
      * 
      */
     @Import(name="principalId")
-    private @Nullable Output<Integer> principalId;
+    private @Nullable Output<String> principalId;
 
     /**
      * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      * 
      */
-    public Optional<Output<Integer>> principalId() {
+    public Optional<Output<String>> principalId() {
         return Optional.ofNullable(this.principalId);
     }
 
@@ -135,7 +134,7 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder principalId(@Nullable Output<Integer> principalId) {
+        public Builder principalId(@Nullable Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
@@ -146,7 +145,7 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder principalId(Integer principalId) {
+        public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 

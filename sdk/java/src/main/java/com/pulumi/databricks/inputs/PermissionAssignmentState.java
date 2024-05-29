@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -37,9 +36,9 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
     }
 
     @Import(name="principalId")
-    private @Nullable Output<Integer> principalId;
+    private @Nullable Output<String> principalId;
 
-    public Optional<Output<Integer>> principalId() {
+    public Optional<Output<String>> principalId() {
         return Optional.ofNullable(this.principalId);
     }
 
@@ -105,12 +104,12 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
             return permissions(List.of(permissions));
         }
 
-        public Builder principalId(@Nullable Output<Integer> principalId) {
+        public Builder principalId(@Nullable Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
-        public Builder principalId(Integer principalId) {
+        public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 

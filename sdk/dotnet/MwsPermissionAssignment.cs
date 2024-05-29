@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
         /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
         /// </summary>
         [Output("principalId")]
-        public Output<int> PrincipalId { get; private set; } = null!;
+        public Output<string> PrincipalId { get; private set; } = null!;
 
         /// <summary>
         /// Databricks workspace ID.
@@ -204,7 +204,7 @@ namespace Pulumi.Databricks
         /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
         /// </summary>
         [Input("principalId", required: true)]
-        public Input<int> PrincipalId { get; set; } = null!;
+        public Input<string> PrincipalId { get; set; } = null!;
 
         /// <summary>
         /// Databricks workspace ID.
@@ -238,7 +238,7 @@ namespace Pulumi.Databricks
         /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
         /// </summary>
         [Input("principalId")]
-        public Input<int>? PrincipalId { get; set; }
+        public Input<string>? PrincipalId { get; set; }
 
         /// <summary>
         /// Databricks workspace ID.
