@@ -18,62 +18,30 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
 
     public static final JobTriggerTableUpdateArgs Empty = new JobTriggerTableUpdateArgs();
 
-    /**
-     * The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-     * 
-     */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
-    /**
-     * @return The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-     * 
-     */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="minTimeBetweenTriggersSeconds")
     private @Nullable Output<Integer> minTimeBetweenTriggersSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
 
-    /**
-     * A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-     * 
-     */
     @Import(name="tableNames", required=true)
     private Output<List<String>> tableNames;
 
-    /**
-     * @return A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-     * 
-     */
     public Output<List<String>> tableNames() {
         return this.tableNames;
     }
 
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="waitAfterLastChangeSeconds")
     private @Nullable Output<Integer> waitAfterLastChangeSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> waitAfterLastChangeSeconds() {
         return Optional.ofNullable(this.waitAfterLastChangeSeconds);
     }
@@ -105,96 +73,42 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
             $ = new JobTriggerTableUpdateArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param condition The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
-        /**
-         * @param condition The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(@Nullable Output<Integer> minTimeBetweenTriggersSeconds) {
             $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(Integer minTimeBetweenTriggersSeconds) {
             return minTimeBetweenTriggersSeconds(Output.of(minTimeBetweenTriggersSeconds));
         }
 
-        /**
-         * @param tableNames A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableNames(Output<List<String>> tableNames) {
             $.tableNames = tableNames;
             return this;
         }
 
-        /**
-         * @param tableNames A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableNames(List<String> tableNames) {
             return tableNames(Output.of(tableNames));
         }
 
-        /**
-         * @param tableNames A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableNames(String... tableNames) {
             return tableNames(List.of(tableNames));
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(@Nullable Output<Integer> waitAfterLastChangeSeconds) {
             $.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return this;
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(Integer waitAfterLastChangeSeconds) {
             return waitAfterLastChangeSeconds(Output.of(waitAfterLastChangeSeconds));
         }

@@ -12,14 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskHealthRuleArgs : global::Pulumi.InvokeArgs
     {
-        [Input("metric")]
-        public string? Metric { get; set; }
+        [Input("metric", required: true)]
+        public string Metric { get; set; } = null!;
 
-        [Input("op")]
-        public string? Op { get; set; }
+        [Input("op", required: true)]
+        public string Op { get; set; } = null!;
 
-        [Input("value")]
-        public int? Value { get; set; }
+        [Input("value", required: true)]
+        public int Value { get; set; }
 
         public GetJobJobSettingsSettingsTaskHealthRuleArgs()
         {

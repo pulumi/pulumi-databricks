@@ -211,11 +211,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         return Optional.ofNullable(this.sqlTask);
     }
 
-    @Import(name="taskKey")
-    private @Nullable String taskKey;
+    @Import(name="taskKey", required=true)
+    private String taskKey;
 
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
 
     @Import(name="timeoutSeconds")
@@ -416,7 +416,7 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
             return this;
         }
 
-        public Builder taskKey(@Nullable String taskKey) {
+        public Builder taskKey(String taskKey) {
             $.taskKey = taskKey;
             return this;
         }
@@ -434,6 +434,9 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         public GetJobJobSettingsSettingsTask build() {
             if ($.retryOnTimeout == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTask", "retryOnTimeout");
+            }
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTask", "taskKey");
             }
             return $;
         }

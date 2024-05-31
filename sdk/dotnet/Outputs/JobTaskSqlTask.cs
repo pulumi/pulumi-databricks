@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
         /// </summary>
-        public readonly string? WarehouseId;
+        public readonly string WarehouseId;
 
         [OutputConstructor]
         private JobTaskSqlTask(
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskSqlTaskQuery? query,
 
-            string? warehouseId)
+            string warehouseId)
         {
             Alert = alert;
             Dashboard = dashboard;

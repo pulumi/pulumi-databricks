@@ -15,14 +15,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         /// </summary>
-        [Input("jobClusterKey")]
-        public Input<string>? JobClusterKey { get; set; }
+        [Input("jobClusterKey", required: true)]
+        public Input<string> JobClusterKey { get; set; } = null!;
 
         /// <summary>
         /// Same set of parameters as for databricks.Cluster resource.
         /// </summary>
-        [Input("newCluster")]
-        public Input<Inputs.JobJobClusterNewClusterArgs>? NewCluster { get; set; }
+        [Input("newCluster", required: true)]
+        public Input<Inputs.JobJobClusterNewClusterArgs> NewCluster { get; set; } = null!;
 
         public JobJobClusterArgs()
         {

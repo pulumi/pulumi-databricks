@@ -4,36 +4,35 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskHealthRule extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskHealthRule Empty = new GetJobJobSettingsSettingsTaskHealthRule();
 
-    @Import(name="metric")
-    private @Nullable String metric;
+    @Import(name="metric", required=true)
+    private String metric;
 
-    public Optional<String> metric() {
-        return Optional.ofNullable(this.metric);
+    public String metric() {
+        return this.metric;
     }
 
-    @Import(name="op")
-    private @Nullable String op;
+    @Import(name="op", required=true)
+    private String op;
 
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
 
-    @Import(name="value")
-    private @Nullable Integer value;
+    @Import(name="value", required=true)
+    private Integer value;
 
-    public Optional<Integer> value() {
-        return Optional.ofNullable(this.value);
+    public Integer value() {
+        return this.value;
     }
 
     private GetJobJobSettingsSettingsTaskHealthRule() {}
@@ -62,22 +61,31 @@ public final class GetJobJobSettingsSettingsTaskHealthRule extends com.pulumi.re
             $ = new GetJobJobSettingsSettingsTaskHealthRule(Objects.requireNonNull(defaults));
         }
 
-        public Builder metric(@Nullable String metric) {
+        public Builder metric(String metric) {
             $.metric = metric;
             return this;
         }
 
-        public Builder op(@Nullable String op) {
+        public Builder op(String op) {
             $.op = op;
             return this;
         }
 
-        public Builder value(@Nullable Integer value) {
+        public Builder value(Integer value) {
             $.value = value;
             return this;
         }
 
         public GetJobJobSettingsSettingsTaskHealthRule build() {
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRule", "metric");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRule", "op");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRule", "value");
+            }
             return $;
         }
     }

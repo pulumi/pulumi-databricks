@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileResult? File;
         public readonly ImmutableDictionary<string, object>? Parameters;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryResult? Query;
-        public readonly string? WarehouseId;
+        public readonly string WarehouseId;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskResult(
@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryResult? query,
 
-            string? warehouseId)
+            string warehouseId)
         {
             Alert = alert;
             Dashboard = dashboard;

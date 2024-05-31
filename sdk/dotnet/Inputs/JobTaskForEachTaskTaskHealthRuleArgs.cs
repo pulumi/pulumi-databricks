@@ -15,20 +15,20 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         /// </summary>
-        [Input("metric")]
-        public Input<string>? Metric { get; set; }
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
 
         /// <summary>
         /// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         /// </summary>
-        [Input("op")]
-        public Input<string>? Op { get; set; }
+        [Input("op", required: true)]
+        public Input<string> Op { get; set; } = null!;
 
         /// <summary>
         /// integer value used to compare to the given metric.
         /// </summary>
-        [Input("value")]
-        public Input<int>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<int> Value { get; set; } = null!;
 
         public JobTaskForEachTaskTaskHealthRuleArgs()
         {

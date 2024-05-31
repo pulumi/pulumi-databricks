@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsJobClusterArgs : global::Pulumi.InvokeArgs
     {
-        [Input("jobClusterKey")]
-        public string? JobClusterKey { get; set; }
+        [Input("jobClusterKey", required: true)]
+        public string JobClusterKey { get; set; } = null!;
 
-        [Input("newCluster")]
-        public Inputs.GetJobJobSettingsSettingsJobClusterNewClusterArgs? NewCluster { get; set; }
+        [Input("newCluster", required: true)]
+        public Inputs.GetJobJobSettingsSettingsJobClusterNewClusterArgs NewCluster { get; set; } = null!;
 
         public GetJobJobSettingsSettingsJobClusterArgs()
         {

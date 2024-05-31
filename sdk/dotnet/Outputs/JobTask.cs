@@ -84,7 +84,7 @@ namespace Pulumi.Databricks.Outputs
         /// string specifying an unique key for a given task.
         /// * `*_task` - (Required) one of the specific task blocks described below:
         /// </summary>
-        public readonly string? TaskKey;
+        public readonly string TaskKey;
         /// <summary>
         /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         /// </summary>
@@ -148,7 +148,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskSqlTask? sqlTask,
 
-            string? taskKey,
+            string taskKey,
 
             int? timeoutSeconds,
 

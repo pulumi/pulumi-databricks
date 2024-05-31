@@ -32,8 +32,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("query")]
         public Input<Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryInputArgs>? Query { get; set; }
 
-        [Input("warehouseId")]
-        public Input<string>? WarehouseId { get; set; }
+        [Input("warehouseId", required: true)]
+        public Input<string> WarehouseId { get; set; } = null!;
 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskInputArgs()
         {

@@ -56,7 +56,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask {
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask sparkPythonTask;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask sparkSubmitTask;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask sqlTask;
-    private @Nullable String taskKey;
+    private String taskKey;
     private @Nullable Integer timeoutSeconds;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
@@ -133,8 +133,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask {
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask> sqlTask() {
         return Optional.ofNullable(this.sqlTask);
     }
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
@@ -176,7 +176,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask {
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask sparkPythonTask;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask sparkSubmitTask;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask sqlTask;
-        private @Nullable String taskKey;
+        private String taskKey;
         private @Nullable Integer timeoutSeconds;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications webhookNotifications;
         public Builder() {}
@@ -364,8 +364,10 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask {
             return this;
         }
         @CustomType.Setter
-        public Builder taskKey(@Nullable String taskKey) {
-
+        public Builder taskKey(String taskKey) {
+            if (taskKey == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTask", "taskKey");
+            }
             this.taskKey = taskKey;
             return this;
         }

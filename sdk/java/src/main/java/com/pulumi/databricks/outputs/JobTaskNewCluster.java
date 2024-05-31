@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
 public final class JobTaskNewCluster {
     private @Nullable Boolean applyPolicyDefaultValues;
     private @Nullable JobTaskNewClusterAutoscale autoscale;
-    private @Nullable Integer autoterminationMinutes;
     private @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
     private @Nullable JobTaskNewClusterAzureAttributes azureAttributes;
     private @Nullable String clusterId;
@@ -69,9 +68,6 @@ public final class JobTaskNewCluster {
     }
     public Optional<JobTaskNewClusterAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
-    }
-    public Optional<Integer> autoterminationMinutes() {
-        return Optional.ofNullable(this.autoterminationMinutes);
     }
     public Optional<JobTaskNewClusterAwsAttributes> awsAttributes() {
         return Optional.ofNullable(this.awsAttributes);
@@ -173,7 +169,6 @@ public final class JobTaskNewCluster {
     public static final class Builder {
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobTaskNewClusterAutoscale autoscale;
-        private @Nullable Integer autoterminationMinutes;
         private @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
         private @Nullable JobTaskNewClusterAzureAttributes azureAttributes;
         private @Nullable String clusterId;
@@ -207,7 +202,6 @@ public final class JobTaskNewCluster {
     	      Objects.requireNonNull(defaults);
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
-    	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
     	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterId = defaults.clusterId;
@@ -248,12 +242,6 @@ public final class JobTaskNewCluster {
         public Builder autoscale(@Nullable JobTaskNewClusterAutoscale autoscale) {
 
             this.autoscale = autoscale;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
-
-            this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
         @CustomType.Setter
@@ -442,7 +430,6 @@ public final class JobTaskNewCluster {
             final var _resultValue = new JobTaskNewCluster();
             _resultValue.applyPolicyDefaultValues = applyPolicyDefaultValues;
             _resultValue.autoscale = autoscale;
-            _resultValue.autoterminationMinutes = autoterminationMinutes;
             _resultValue.awsAttributes = awsAttributes;
             _resultValue.azureAttributes = azureAttributes;
             _resultValue.clusterId = clusterId;

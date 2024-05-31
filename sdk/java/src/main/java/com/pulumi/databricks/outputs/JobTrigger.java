@@ -25,10 +25,6 @@ public final class JobTrigger {
      */
     private @Nullable String pauseStatus;
     private @Nullable JobTriggerTable table;
-    /**
-     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
-     * 
-     */
     private @Nullable JobTriggerTableUpdate tableUpdate;
 
     private JobTrigger() {}
@@ -49,10 +45,6 @@ public final class JobTrigger {
     public Optional<JobTriggerTable> table() {
         return Optional.ofNullable(this.table);
     }
-    /**
-     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
-     * 
-     */
     public Optional<JobTriggerTableUpdate> tableUpdate() {
         return Optional.ofNullable(this.tableUpdate);
     }

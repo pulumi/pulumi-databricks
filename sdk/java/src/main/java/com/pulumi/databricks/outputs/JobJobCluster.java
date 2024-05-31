@@ -5,10 +5,9 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobJobClusterNewCluster;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobJobCluster {
@@ -16,27 +15,27 @@ public final class JobJobCluster {
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    private @Nullable String jobClusterKey;
+    private String jobClusterKey;
     /**
      * @return Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    private @Nullable JobJobClusterNewCluster newCluster;
+    private JobJobClusterNewCluster newCluster;
 
     private JobJobCluster() {}
     /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    public Optional<String> jobClusterKey() {
-        return Optional.ofNullable(this.jobClusterKey);
+    public String jobClusterKey() {
+        return this.jobClusterKey;
     }
     /**
      * @return Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    public Optional<JobJobClusterNewCluster> newCluster() {
-        return Optional.ofNullable(this.newCluster);
+    public JobJobClusterNewCluster newCluster() {
+        return this.newCluster;
     }
 
     public static Builder builder() {
@@ -48,8 +47,8 @@ public final class JobJobCluster {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String jobClusterKey;
-        private @Nullable JobJobClusterNewCluster newCluster;
+        private String jobClusterKey;
+        private JobJobClusterNewCluster newCluster;
         public Builder() {}
         public Builder(JobJobCluster defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,14 +57,18 @@ public final class JobJobCluster {
         }
 
         @CustomType.Setter
-        public Builder jobClusterKey(@Nullable String jobClusterKey) {
-
+        public Builder jobClusterKey(String jobClusterKey) {
+            if (jobClusterKey == null) {
+              throw new MissingRequiredPropertyException("JobJobCluster", "jobClusterKey");
+            }
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
-        public Builder newCluster(@Nullable JobJobClusterNewCluster newCluster) {
-
+        public Builder newCluster(JobJobClusterNewCluster newCluster) {
+            if (newCluster == null) {
+              throw new MissingRequiredPropertyException("JobJobCluster", "newCluster");
+            }
             this.newCluster = newCluster;
             return this;
         }

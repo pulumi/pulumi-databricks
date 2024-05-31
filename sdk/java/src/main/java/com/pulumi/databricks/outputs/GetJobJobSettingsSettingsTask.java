@@ -58,7 +58,7 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTask sqlTask;
-    private @Nullable String taskKey;
+    private String taskKey;
     private @Nullable Integer timeoutSeconds;
     private @Nullable GetJobJobSettingsSettingsTaskWebhookNotifications webhookNotifications;
 
@@ -138,8 +138,8 @@ public final class GetJobJobSettingsSettingsTask {
     public Optional<GetJobJobSettingsSettingsTaskSqlTask> sqlTask() {
         return Optional.ofNullable(this.sqlTask);
     }
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
@@ -182,7 +182,7 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTask sqlTask;
-        private @Nullable String taskKey;
+        private String taskKey;
         private @Nullable Integer timeoutSeconds;
         private @Nullable GetJobJobSettingsSettingsTaskWebhookNotifications webhookNotifications;
         public Builder() {}
@@ -377,8 +377,10 @@ public final class GetJobJobSettingsSettingsTask {
             return this;
         }
         @CustomType.Setter
-        public Builder taskKey(@Nullable String taskKey) {
-
+        public Builder taskKey(String taskKey) {
+            if (taskKey == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTask", "taskKey");
+            }
             this.taskKey = taskKey;
             return this;
         }

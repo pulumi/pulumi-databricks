@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("autoscale")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterAutoscaleGetArgs>? Autoscale { get; set; }
 
-        [Input("autoterminationMinutes")]
-        public Input<int>? AutoterminationMinutes { get; set; }
-
         [Input("awsAttributes")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterAwsAttributesGetArgs>? AwsAttributes { get; set; }
 

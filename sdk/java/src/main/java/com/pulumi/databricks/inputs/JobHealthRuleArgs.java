@@ -5,11 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,45 +19,45 @@ public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      * 
      */
-    @Import(name="metric")
-    private @Nullable Output<String> metric;
+    @Import(name="metric", required=true)
+    private Output<String> metric;
 
     /**
      * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      * 
      */
-    public Optional<Output<String>> metric() {
-        return Optional.ofNullable(this.metric);
+    public Output<String> metric() {
+        return this.metric;
     }
 
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      * 
      */
-    @Import(name="op")
-    private @Nullable Output<String> op;
+    @Import(name="op", required=true)
+    private Output<String> op;
 
     /**
      * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      * 
      */
-    public Optional<Output<String>> op() {
-        return Optional.ofNullable(this.op);
+    public Output<String> op() {
+        return this.op;
     }
 
     /**
      * integer value used to compare to the given metric.
      * 
      */
-    @Import(name="value")
-    private @Nullable Output<Integer> value;
+    @Import(name="value", required=true)
+    private Output<Integer> value;
 
     /**
      * @return integer value used to compare to the given metric.
      * 
      */
-    public Optional<Output<Integer>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<Integer> value() {
+        return this.value;
     }
 
     private JobHealthRuleArgs() {}
@@ -93,7 +92,7 @@ public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metric(@Nullable Output<String> metric) {
+        public Builder metric(Output<String> metric) {
             $.metric = metric;
             return this;
         }
@@ -114,7 +113,7 @@ public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder op(@Nullable Output<String> op) {
+        public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
@@ -135,7 +134,7 @@ public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<Integer> value) {
+        public Builder value(Output<Integer> value) {
             $.value = value;
             return this;
         }
@@ -151,6 +150,15 @@ public final class JobHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobHealthRuleArgs build() {
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("JobHealthRuleArgs", "metric");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("JobHealthRuleArgs", "op");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("JobHealthRuleArgs", "value");
+            }
             return $;
         }
     }

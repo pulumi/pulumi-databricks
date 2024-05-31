@@ -6481,7 +6481,7 @@ type GetJobJobSettingsSettingsTask struct {
 	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask      `pulumi:"sparkSubmitTask"`
 	SqlTask                *GetJobJobSettingsSettingsTaskSqlTask              `pulumi:"sqlTask"`
-	TaskKey                *string                                            `pulumi:"taskKey"`
+	TaskKey                string                                             `pulumi:"taskKey"`
 	TimeoutSeconds         *int                                               `pulumi:"timeoutSeconds"`
 	WebhookNotifications   *GetJobJobSettingsSettingsTaskWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -6523,7 +6523,7 @@ type GetJobJobSettingsSettingsTaskArgs struct {
 	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
 	SqlTask                GetJobJobSettingsSettingsTaskSqlTaskPtrInput              `pulumi:"sqlTask"`
-	TaskKey                pulumi.StringPtrInput                                     `pulumi:"taskKey"`
+	TaskKey                pulumi.StringInput                                        `pulumi:"taskKey"`
 	TimeoutSeconds         pulumi.IntPtrInput                                        `pulumi:"timeoutSeconds"`
 	WebhookNotifications   GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
@@ -6697,8 +6697,8 @@ func (o GetJobJobSettingsSettingsTaskOutput) SqlTask() GetJobJobSettingsSettings
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskSqlTask { return v.SqlTask }).(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskOutput) TimeoutSeconds() pulumi.IntPtrOutput {
@@ -7602,7 +7602,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTask struct {
 	SparkPythonTask        *GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        *GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask      `pulumi:"sparkSubmitTask"`
 	SqlTask                *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask              `pulumi:"sqlTask"`
-	TaskKey                *string                                                           `pulumi:"taskKey"`
+	TaskKey                string                                                            `pulumi:"taskKey"`
 	TimeoutSeconds         *int                                                              `pulumi:"timeoutSeconds"`
 	WebhookNotifications   *GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -7643,7 +7643,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskArgs struct {
 	SparkPythonTask        GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
 	SqlTask                GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrInput              `pulumi:"sqlTask"`
-	TaskKey                pulumi.StringPtrInput                                                    `pulumi:"taskKey"`
+	TaskKey                pulumi.StringInput                                                       `pulumi:"taskKey"`
 	TimeoutSeconds         pulumi.IntPtrInput                                                       `pulumi:"timeoutSeconds"`
 	WebhookNotifications   GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
@@ -7853,8 +7853,8 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskOutput) SqlTask() GetJobJobS
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTask) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskOutput) TimeoutSeconds() pulumi.IntPtrOutput {
@@ -8112,7 +8112,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPtrOutput) TaskKey() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.TaskKey
+		return &v.TaskKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8953,9 +8953,9 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) Rules() Get
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule struct {
-	Metric *string `pulumi:"metric"`
-	Op     *string `pulumi:"op"`
-	Value  *int    `pulumi:"value"`
+	Metric string `pulumi:"metric"`
+	Op     string `pulumi:"op"`
+	Value  int    `pulumi:"value"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput values.
@@ -8970,9 +8970,9 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs struct {
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	Op     pulumi.StringPtrInput `pulumi:"op"`
-	Value  pulumi.IntPtrInput    `pulumi:"value"`
+	Metric pulumi.StringInput `pulumi:"metric"`
+	Op     pulumi.StringInput `pulumi:"op"`
+	Value  pulumi.IntInput    `pulumi:"value"`
 }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs) ElementType() reflect.Type {
@@ -9026,16 +9026,16 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) ToGetJobJo
 	return o
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -14793,7 +14793,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask struct {
 	File        *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile      `pulumi:"file"`
 	Parameters  map[string]interface{}                                        `pulumi:"parameters"`
 	Query       *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery     `pulumi:"query"`
-	WarehouseId *string                                                       `pulumi:"warehouseId"`
+	WarehouseId string                                                        `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput values.
@@ -14813,7 +14813,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs struct {
 	File        GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrInput      `pulumi:"file"`
 	Parameters  pulumi.MapInput                                                      `pulumi:"parameters"`
 	Query       GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryPtrInput     `pulumi:"query"`
-	WarehouseId pulumi.StringPtrInput                                                `pulumi:"warehouseId"`
+	WarehouseId pulumi.StringInput                                                   `pulumi:"warehouseId"`
 }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs) ElementType() reflect.Type {
@@ -14923,8 +14923,8 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) Query() GetJo
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) string { return v.WarehouseId }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
@@ -15001,7 +15001,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput) WarehouseI
 		if v == nil {
 			return nil
 		}
-		return v.WarehouseId
+		return &v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16551,9 +16551,9 @@ func (o GetJobJobSettingsSettingsTaskHealthPtrOutput) Rules() GetJobJobSettingsS
 }
 
 type GetJobJobSettingsSettingsTaskHealthRule struct {
-	Metric *string `pulumi:"metric"`
-	Op     *string `pulumi:"op"`
-	Value  *int    `pulumi:"value"`
+	Metric string `pulumi:"metric"`
+	Op     string `pulumi:"op"`
+	Value  int    `pulumi:"value"`
 }
 
 // GetJobJobSettingsSettingsTaskHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsTaskHealthRuleArgs and GetJobJobSettingsSettingsTaskHealthRuleOutput values.
@@ -16568,9 +16568,9 @@ type GetJobJobSettingsSettingsTaskHealthRuleInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskHealthRuleArgs struct {
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	Op     pulumi.StringPtrInput `pulumi:"op"`
-	Value  pulumi.IntPtrInput    `pulumi:"value"`
+	Metric pulumi.StringInput `pulumi:"metric"`
+	Op     pulumi.StringInput `pulumi:"op"`
+	Value  pulumi.IntInput    `pulumi:"value"`
 }
 
 func (GetJobJobSettingsSettingsTaskHealthRuleArgs) ElementType() reflect.Type {
@@ -16624,16 +16624,16 @@ func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) ToGetJobJobSettingsSettin
 	return o
 }
 
-func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type GetJobJobSettingsSettingsTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -22291,7 +22291,7 @@ type GetJobJobSettingsSettingsTaskSqlTask struct {
 	File        *GetJobJobSettingsSettingsTaskSqlTaskFile      `pulumi:"file"`
 	Parameters  map[string]interface{}                         `pulumi:"parameters"`
 	Query       *GetJobJobSettingsSettingsTaskSqlTaskQuery     `pulumi:"query"`
-	WarehouseId *string                                        `pulumi:"warehouseId"`
+	WarehouseId string                                         `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskSqlTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskArgs and GetJobJobSettingsSettingsTaskSqlTaskOutput values.
@@ -22311,7 +22311,7 @@ type GetJobJobSettingsSettingsTaskSqlTaskArgs struct {
 	File        GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput      `pulumi:"file"`
 	Parameters  pulumi.MapInput                                       `pulumi:"parameters"`
 	Query       GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput     `pulumi:"query"`
-	WarehouseId pulumi.StringPtrInput                                 `pulumi:"warehouseId"`
+	WarehouseId pulumi.StringInput                                    `pulumi:"warehouseId"`
 }
 
 func (GetJobJobSettingsSettingsTaskSqlTaskArgs) ElementType() reflect.Type {
@@ -22417,8 +22417,8 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Query() GetJobJobSettingsSet
 	}).(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) string { return v.WarehouseId }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
@@ -22495,7 +22495,7 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) WarehouseId() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return v.WarehouseId
+		return &v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 

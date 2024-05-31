@@ -147,8 +147,8 @@ namespace Pulumi.Databricks.Inputs
         /// string specifying an unique key for a given task.
         /// * `*_task` - (Required) one of the specific task blocks described below:
         /// </summary>
-        [Input("taskKey")]
-        public Input<string>? TaskKey { get; set; }
+        [Input("taskKey", required: true)]
+        public Input<string> TaskKey { get; set; } = null!;
 
         /// <summary>
         /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
