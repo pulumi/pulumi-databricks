@@ -1285,7 +1285,12 @@
                     "description": "integer value used to compare to the given metric.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/JobJobCluster:JobJobCluster": {
             "properties": {
@@ -1298,7 +1303,11 @@
                     "description": "Same set of parameters as for databricks.Cluster resource.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "jobClusterKey",
+                "newCluster"
+            ]
         },
         "databricks:index/JobJobClusterNewCluster:JobJobClusterNewCluster": {
             "properties": {
@@ -1307,9 +1316,6 @@
                 },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterAutoscale:JobJobClusterNewClusterAutoscale"
-                },
-                "autoterminationMinutes": {
-                    "type": "integer"
                 },
                 "awsAttributes": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterAwsAttributes:JobJobClusterNewClusterAwsAttributes"
@@ -1946,9 +1952,6 @@
                 },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobNewClusterAutoscale:JobNewClusterAutoscale"
-                },
-                "autoterminationMinutes": {
-                    "type": "integer"
                 },
                 "awsAttributes": {
                     "$ref": "#/types/databricks:index/JobNewClusterAwsAttributes:JobNewClusterAwsAttributes"
@@ -2836,10 +2839,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "taskKey"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "retryOnTimeout"
+                        "retryOnTimeout",
+                        "taskKey"
                     ]
                 }
             }
@@ -3088,10 +3095,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "taskKey"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "retryOnTimeout"
+                        "retryOnTimeout",
+                        "taskKey"
                     ]
                 }
             }
@@ -3239,7 +3250,12 @@
                     "description": "integer value used to compare to the given metric.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/JobTaskForEachTaskTaskLibrary:JobTaskForEachTaskTaskLibrary": {
             "properties": {
@@ -3322,9 +3338,6 @@
                 },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterAutoscale:JobTaskForEachTaskTaskNewClusterAutoscale"
-                },
-                "autoterminationMinutes": {
-                    "type": "integer"
                 },
                 "awsAttributes": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterAwsAttributes:JobTaskForEachTaskTaskNewClusterAwsAttributes"
@@ -4123,7 +4136,10 @@
                     "description": "ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless \u0026 Pro warehouses are supported right now.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "warehouseId"
+            ]
         },
         "databricks:index/JobTaskForEachTaskTaskSqlTaskAlert:JobTaskForEachTaskTaskSqlTaskAlert": {
             "properties": {
@@ -4336,7 +4352,12 @@
                     "description": "integer value used to compare to the given metric.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/JobTaskLibrary:JobTaskLibrary": {
             "properties": {
@@ -4419,9 +4440,6 @@
                 },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterAutoscale:JobTaskNewClusterAutoscale"
-                },
-                "autoterminationMinutes": {
-                    "type": "integer"
                 },
                 "awsAttributes": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterAwsAttributes:JobTaskNewClusterAwsAttributes"
@@ -5220,7 +5238,10 @@
                     "description": "ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless \u0026 Pro warehouses are supported right now.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "warehouseId"
+            ]
         },
         "databricks:index/JobTaskSqlTaskAlert:JobTaskSqlTaskAlert": {
             "properties": {
@@ -5417,8 +5438,7 @@
                     "$ref": "#/types/databricks:index/JobTriggerTable:JobTriggerTable"
                 },
                 "tableUpdate": {
-                    "$ref": "#/types/databricks:index/JobTriggerTableUpdate:JobTriggerTableUpdate",
-                    "description": "configuration block to define a trigger for Table Update events consisting of following attributes:\n"
+                    "$ref": "#/types/databricks:index/JobTriggerTableUpdate:JobTriggerTableUpdate"
                 }
             },
             "type": "object"
@@ -5466,23 +5486,19 @@
         "databricks:index/JobTriggerTableUpdate:JobTriggerTableUpdate": {
             "properties": {
                 "condition": {
-                    "type": "string",
-                    "description": "The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.\n"
+                    "type": "string"
                 },
                 "minTimeBetweenTriggersSeconds": {
-                    "type": "integer",
-                    "description": "If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.\n"
+                    "type": "integer"
                 },
                 "tableNames": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.\n"
+                    }
                 },
                 "waitAfterLastChangeSeconds": {
-                    "type": "integer",
-                    "description": "If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.\n"
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -6078,7 +6094,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "name"
+                        "name",
+                        "workloadSize",
+                        "workloadType"
                     ]
                 }
             }
@@ -10371,7 +10389,12 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsJobCluster:getJobJobSettingsSettingsJobCluster": {
             "properties": {
@@ -10382,7 +10405,11 @@
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewCluster:getJobJobSettingsSettingsJobClusterNewCluster"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "jobClusterKey",
+                "newCluster"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsJobClusterNewCluster:getJobJobSettingsSettingsJobClusterNewCluster": {
             "properties": {
@@ -11671,11 +11698,14 @@
             },
             "type": "object",
             "required": [
-                "retryOnTimeout"
+                "retryOnTimeout",
+                "taskKey"
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "taskKey"
+                    ]
                 }
             }
         },
@@ -11886,11 +11916,14 @@
             },
             "type": "object",
             "required": [
-                "retryOnTimeout"
+                "retryOnTimeout",
+                "taskKey"
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "taskKey"
+                    ]
                 }
             }
         },
@@ -12017,7 +12050,12 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskLibrary:getJobJobSettingsSettingsTaskForEachTaskTaskLibrary": {
             "properties": {
@@ -12719,7 +12757,10 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "warehouseId"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert": {
             "properties": {
@@ -12915,7 +12956,12 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metric",
+                "op",
+                "value"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskLibrary:getJobJobSettingsSettingsTaskLibrary": {
             "properties": {
@@ -13617,7 +13663,10 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "warehouseId"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlert:getJobJobSettingsSettingsTaskSqlTaskAlert": {
             "properties": {
