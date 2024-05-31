@@ -6,10 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,30 +19,30 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    @Import(name="jobClusterKey")
-    private @Nullable Output<String> jobClusterKey;
+    @Import(name="jobClusterKey", required=true)
+    private Output<String> jobClusterKey;
 
     /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    public Optional<Output<String>> jobClusterKey() {
-        return Optional.ofNullable(this.jobClusterKey);
+    public Output<String> jobClusterKey() {
+        return this.jobClusterKey;
     }
 
     /**
      * Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    @Import(name="newCluster")
-    private @Nullable Output<JobJobClusterNewClusterArgs> newCluster;
+    @Import(name="newCluster", required=true)
+    private Output<JobJobClusterNewClusterArgs> newCluster;
 
     /**
      * @return Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    public Optional<Output<JobJobClusterNewClusterArgs>> newCluster() {
-        return Optional.ofNullable(this.newCluster);
+    public Output<JobJobClusterNewClusterArgs> newCluster() {
+        return this.newCluster;
     }
 
     private JobJobClusterArgs() {}
@@ -77,7 +76,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder jobClusterKey(@Nullable Output<String> jobClusterKey) {
+        public Builder jobClusterKey(Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
         }
@@ -98,7 +97,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder newCluster(@Nullable Output<JobJobClusterNewClusterArgs> newCluster) {
+        public Builder newCluster(Output<JobJobClusterNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
@@ -114,6 +113,12 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobJobClusterArgs build() {
+            if ($.jobClusterKey == null) {
+                throw new MissingRequiredPropertyException("JobJobClusterArgs", "jobClusterKey");
+            }
+            if ($.newCluster == null) {
+                throw new MissingRequiredPropertyException("JobJobClusterArgs", "newCluster");
+            }
             return $;
         }
     }

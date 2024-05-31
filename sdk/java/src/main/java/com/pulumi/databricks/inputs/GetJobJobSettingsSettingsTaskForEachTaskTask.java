@@ -203,11 +203,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
         return Optional.ofNullable(this.sqlTask);
     }
 
-    @Import(name="taskKey")
-    private @Nullable String taskKey;
+    @Import(name="taskKey", required=true)
+    private String taskKey;
 
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
 
     @Import(name="timeoutSeconds")
@@ -402,7 +402,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
             return this;
         }
 
-        public Builder taskKey(@Nullable String taskKey) {
+        public Builder taskKey(String taskKey) {
             $.taskKey = taskKey;
             return this;
         }
@@ -420,6 +420,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
         public GetJobJobSettingsSettingsTaskForEachTaskTask build() {
             if ($.retryOnTimeout == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTask", "retryOnTimeout");
+            }
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTask", "taskKey");
             }
             return $;
         }

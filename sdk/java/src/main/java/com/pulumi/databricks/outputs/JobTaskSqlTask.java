@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.JobTaskSqlTaskAlert;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskDashboard;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskQuery;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -46,7 +47,7 @@ public final class JobTaskSqlTask {
      * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
-    private @Nullable String warehouseId;
+    private String warehouseId;
 
     private JobTaskSqlTask() {}
     /**
@@ -88,8 +89,8 @@ public final class JobTaskSqlTask {
      * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public String warehouseId() {
+        return this.warehouseId;
     }
 
     public static Builder builder() {
@@ -106,7 +107,7 @@ public final class JobTaskSqlTask {
         private @Nullable JobTaskSqlTaskFile file;
         private @Nullable Map<String,Object> parameters;
         private @Nullable JobTaskSqlTaskQuery query;
-        private @Nullable String warehouseId;
+        private String warehouseId;
         public Builder() {}
         public Builder(JobTaskSqlTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -149,8 +150,10 @@ public final class JobTaskSqlTask {
             return this;
         }
         @CustomType.Setter
-        public Builder warehouseId(@Nullable String warehouseId) {
-
+        public Builder warehouseId(String warehouseId) {
+            if (warehouseId == null) {
+              throw new MissingRequiredPropertyException("JobTaskSqlTask", "warehouseId");
+            }
             this.warehouseId = warehouseId;
             return this;
         }

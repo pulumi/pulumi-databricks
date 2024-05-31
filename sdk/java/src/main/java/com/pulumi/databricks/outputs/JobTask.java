@@ -22,6 +22,7 @@ import com.pulumi.databricks.outputs.JobTaskSparkPythonTask;
 import com.pulumi.databricks.outputs.JobTaskSparkSubmitTask;
 import com.pulumi.databricks.outputs.JobTaskSqlTask;
 import com.pulumi.databricks.outputs.JobTaskWebhookNotifications;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -117,7 +118,7 @@ public final class JobTask {
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    private @Nullable String taskKey;
+    private String taskKey;
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      * 
@@ -267,8 +268,8 @@ public final class JobTask {
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -320,7 +321,7 @@ public final class JobTask {
         private @Nullable JobTaskSparkPythonTask sparkPythonTask;
         private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
         private @Nullable JobTaskSqlTask sqlTask;
-        private @Nullable String taskKey;
+        private String taskKey;
         private @Nullable Integer timeoutSeconds;
         private @Nullable JobTaskWebhookNotifications webhookNotifications;
         public Builder() {}
@@ -520,8 +521,10 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
-        public Builder taskKey(@Nullable String taskKey) {
-
+        public Builder taskKey(String taskKey) {
+            if (taskKey == null) {
+              throw new MissingRequiredPropertyException("JobTask", "taskKey");
+            }
             this.taskKey = taskKey;
             return this;
         }

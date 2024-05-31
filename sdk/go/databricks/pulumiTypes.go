@@ -10614,11 +10614,11 @@ func (o JobHealthPtrOutput) Rules() JobHealthRuleArrayOutput {
 
 type JobHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric *string `pulumi:"metric"`
+	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op *string `pulumi:"op"`
+	Op string `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value *int `pulumi:"value"`
+	Value int `pulumi:"value"`
 }
 
 // JobHealthRuleInput is an input type that accepts JobHealthRuleArgs and JobHealthRuleOutput values.
@@ -10634,11 +10634,11 @@ type JobHealthRuleInput interface {
 
 type JobHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op pulumi.StringInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value pulumi.IntPtrInput `pulumi:"value"`
+	Value pulumi.IntInput `pulumi:"value"`
 }
 
 func (JobHealthRuleArgs) ElementType() reflect.Type {
@@ -10693,18 +10693,18 @@ func (o JobHealthRuleOutput) ToJobHealthRuleOutputWithContext(ctx context.Contex
 }
 
 // string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-func (o JobHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o JobHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v JobHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
 // string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-func (o JobHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o JobHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v JobHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
 // integer value used to compare to the given metric.
-func (o JobHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o JobHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v JobHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type JobHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -10729,9 +10729,9 @@ func (o JobHealthRuleArrayOutput) Index(i pulumi.IntInput) JobHealthRuleOutput {
 
 type JobJobCluster struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-	JobClusterKey *string `pulumi:"jobClusterKey"`
+	JobClusterKey string `pulumi:"jobClusterKey"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster *JobJobClusterNewCluster `pulumi:"newCluster"`
+	NewCluster JobJobClusterNewCluster `pulumi:"newCluster"`
 }
 
 // JobJobClusterInput is an input type that accepts JobJobClusterArgs and JobJobClusterOutput values.
@@ -10747,9 +10747,9 @@ type JobJobClusterInput interface {
 
 type JobJobClusterArgs struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
+	JobClusterKey pulumi.StringInput `pulumi:"jobClusterKey"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster JobJobClusterNewClusterPtrInput `pulumi:"newCluster"`
+	NewCluster JobJobClusterNewClusterInput `pulumi:"newCluster"`
 }
 
 func (JobJobClusterArgs) ElementType() reflect.Type {
@@ -10804,13 +10804,13 @@ func (o JobJobClusterOutput) ToJobJobClusterOutputWithContext(ctx context.Contex
 }
 
 // Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-func (o JobJobClusterOutput) JobClusterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobJobCluster) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
+func (o JobJobClusterOutput) JobClusterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobCluster) string { return v.JobClusterKey }).(pulumi.StringOutput)
 }
 
 // Same set of parameters as for Cluster resource.
-func (o JobJobClusterOutput) NewCluster() JobJobClusterNewClusterPtrOutput {
-	return o.ApplyT(func(v JobJobCluster) *JobJobClusterNewCluster { return v.NewCluster }).(JobJobClusterNewClusterPtrOutput)
+func (o JobJobClusterOutput) NewCluster() JobJobClusterNewClusterOutput {
+	return o.ApplyT(func(v JobJobCluster) JobJobClusterNewCluster { return v.NewCluster }).(JobJobClusterNewClusterOutput)
 }
 
 type JobJobClusterArrayOutput struct{ *pulumi.OutputState }
@@ -10836,7 +10836,6 @@ func (o JobJobClusterArrayOutput) Index(i pulumi.IntInput) JobJobClusterOutput {
 type JobJobClusterNewCluster struct {
 	ApplyPolicyDefaultValues  *bool                                     `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobJobClusterNewClusterAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobJobClusterNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobJobClusterNewClusterAzureAttributes   `pulumi:"azureAttributes"`
 	ClusterId                 *string                                   `pulumi:"clusterId"`
@@ -10882,7 +10881,6 @@ type JobJobClusterNewClusterInput interface {
 type JobJobClusterNewClusterArgs struct {
 	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                               `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobJobClusterNewClusterAutoscalePtrInput          `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                                `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobJobClusterNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobJobClusterNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
 	ClusterId                 pulumi.StringPtrInput                             `pulumi:"clusterId"`
@@ -10926,47 +10924,6 @@ func (i JobJobClusterNewClusterArgs) ToJobJobClusterNewClusterOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterOutput)
 }
 
-func (i JobJobClusterNewClusterArgs) ToJobJobClusterNewClusterPtrOutput() JobJobClusterNewClusterPtrOutput {
-	return i.ToJobJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i JobJobClusterNewClusterArgs) ToJobJobClusterNewClusterPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterOutput).ToJobJobClusterNewClusterPtrOutputWithContext(ctx)
-}
-
-// JobJobClusterNewClusterPtrInput is an input type that accepts JobJobClusterNewClusterArgs, JobJobClusterNewClusterPtr and JobJobClusterNewClusterPtrOutput values.
-// You can construct a concrete instance of `JobJobClusterNewClusterPtrInput` via:
-//
-//	        JobJobClusterNewClusterArgs{...}
-//
-//	or:
-//
-//	        nil
-type JobJobClusterNewClusterPtrInput interface {
-	pulumi.Input
-
-	ToJobJobClusterNewClusterPtrOutput() JobJobClusterNewClusterPtrOutput
-	ToJobJobClusterNewClusterPtrOutputWithContext(context.Context) JobJobClusterNewClusterPtrOutput
-}
-
-type jobJobClusterNewClusterPtrType JobJobClusterNewClusterArgs
-
-func JobJobClusterNewClusterPtr(v *JobJobClusterNewClusterArgs) JobJobClusterNewClusterPtrInput {
-	return (*jobJobClusterNewClusterPtrType)(v)
-}
-
-func (*jobJobClusterNewClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobJobClusterNewCluster)(nil)).Elem()
-}
-
-func (i *jobJobClusterNewClusterPtrType) ToJobJobClusterNewClusterPtrOutput() JobJobClusterNewClusterPtrOutput {
-	return i.ToJobJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *jobJobClusterNewClusterPtrType) ToJobJobClusterNewClusterPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterPtrOutput)
-}
-
 type JobJobClusterNewClusterOutput struct{ *pulumi.OutputState }
 
 func (JobJobClusterNewClusterOutput) ElementType() reflect.Type {
@@ -10981,26 +10938,12 @@ func (o JobJobClusterNewClusterOutput) ToJobJobClusterNewClusterOutputWithContex
 	return o
 }
 
-func (o JobJobClusterNewClusterOutput) ToJobJobClusterNewClusterPtrOutput() JobJobClusterNewClusterPtrOutput {
-	return o.ToJobJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (o JobJobClusterNewClusterOutput) ToJobJobClusterNewClusterPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewCluster) *JobJobClusterNewCluster {
-		return &v
-	}).(JobJobClusterNewClusterPtrOutput)
-}
-
 func (o JobJobClusterNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) Autoscale() JobJobClusterNewClusterAutoscalePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *JobJobClusterNewClusterAutoscale { return v.Autoscale }).(JobJobClusterNewClusterAutoscalePtrOutput)
-}
-
-func (o JobJobClusterNewClusterOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) AwsAttributes() JobJobClusterNewClusterAwsAttributesPtrOutput {
@@ -11114,310 +11057,6 @@ func (o JobJobClusterNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput 
 
 func (o JobJobClusterNewClusterOutput) WorkloadType() JobJobClusterNewClusterWorkloadTypePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *JobJobClusterNewClusterWorkloadType { return v.WorkloadType }).(JobJobClusterNewClusterWorkloadTypePtrOutput)
-}
-
-type JobJobClusterNewClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (JobJobClusterNewClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobJobClusterNewCluster)(nil)).Elem()
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ToJobJobClusterNewClusterPtrOutput() JobJobClusterNewClusterPtrOutput {
-	return o
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ToJobJobClusterNewClusterPtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterPtrOutput {
-	return o
-}
-
-func (o JobJobClusterNewClusterPtrOutput) Elem() JobJobClusterNewClusterOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) JobJobClusterNewCluster {
-		if v != nil {
-			return *v
-		}
-		var ret JobJobClusterNewCluster
-		return ret
-	}).(JobJobClusterNewClusterOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ApplyPolicyDefaultValues
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) Autoscale() JobJobClusterNewClusterAutoscalePtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterAutoscale {
-		if v == nil {
-			return nil
-		}
-		return v.Autoscale
-	}).(JobJobClusterNewClusterAutoscalePtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) AwsAttributes() JobJobClusterNewClusterAwsAttributesPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterAwsAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAttributes
-	}).(JobJobClusterNewClusterAwsAttributesPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) AzureAttributes() JobJobClusterNewClusterAzureAttributesPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterAzureAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AzureAttributes
-	}).(JobJobClusterNewClusterAzureAttributesPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ClusterLogConf() JobJobClusterNewClusterClusterLogConfPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterClusterLogConf {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogConf
-	}).(JobJobClusterNewClusterClusterLogConfPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ClusterMountInfos() JobJobClusterNewClusterClusterMountInfoArrayOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) []JobJobClusterNewClusterClusterMountInfo {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterMountInfos
-	}).(JobJobClusterNewClusterClusterMountInfoArrayOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.CustomTags
-	}).(pulumi.MapOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DataSecurityMode
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) DockerImage() JobJobClusterNewClusterDockerImagePtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterDockerImage {
-		if v == nil {
-			return nil
-		}
-		return v.DockerImage
-	}).(JobJobClusterNewClusterDockerImagePtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DriverInstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DriverNodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableElasticDisk
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableLocalDiskEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) GcpAttributes() JobJobClusterNewClusterGcpAttributesPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterGcpAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.GcpAttributes
-	}).(JobJobClusterNewClusterGcpAttributesPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) IdempotencyToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdempotencyToken
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) InitScripts() JobJobClusterNewClusterInitScriptArrayOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) []JobJobClusterNewClusterInitScript {
-		if v == nil {
-			return nil
-		}
-		return v.InitScripts
-	}).(JobJobClusterNewClusterInitScriptArrayOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-func (o JobJobClusterNewClusterPtrOutput) Libraries() JobJobClusterNewClusterLibraryArrayOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) []JobJobClusterNewClusterLibrary {
-		if v == nil {
-			return nil
-		}
-		return v.Libraries
-	}).(JobJobClusterNewClusterLibraryArrayOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeEngine
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) SingleUserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SingleUserName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SparkConf
-	}).(pulumi.MapOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SshPublicKeys
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o JobJobClusterNewClusterPtrOutput) WorkloadType() JobJobClusterNewClusterWorkloadTypePtrOutput {
-	return o.ApplyT(func(v *JobJobClusterNewCluster) *JobJobClusterNewClusterWorkloadType {
-		if v == nil {
-			return nil
-		}
-		return v.WorkloadType
-	}).(JobJobClusterNewClusterWorkloadTypePtrOutput)
 }
 
 type JobJobClusterNewClusterAutoscale struct {
@@ -15967,7 +15606,6 @@ func (o JobLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 type JobNewCluster struct {
 	ApplyPolicyDefaultValues  *bool                           `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobNewClusterAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                            `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobNewClusterAzureAttributes   `pulumi:"azureAttributes"`
 	ClusterId                 *string                         `pulumi:"clusterId"`
@@ -16013,7 +15651,6 @@ type JobNewClusterInput interface {
 type JobNewClusterArgs struct {
 	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                     `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobNewClusterAutoscalePtrInput          `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
 	ClusterId                 pulumi.StringPtrInput                   `pulumi:"clusterId"`
@@ -16128,10 +15765,6 @@ func (o JobNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
 
 func (o JobNewClusterOutput) Autoscale() JobNewClusterAutoscalePtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *JobNewClusterAutoscale { return v.Autoscale }).(JobNewClusterAutoscalePtrOutput)
-}
-
-func (o JobNewClusterOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobNewCluster) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
 }
 
 func (o JobNewClusterOutput) AwsAttributes() JobNewClusterAwsAttributesPtrOutput {
@@ -16287,15 +15920,6 @@ func (o JobNewClusterPtrOutput) Autoscale() JobNewClusterAutoscalePtrOutput {
 		}
 		return v.Autoscale
 	}).(JobNewClusterAutoscalePtrOutput)
-}
-
-func (o JobNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobNewClusterPtrOutput) AwsAttributes() JobNewClusterAwsAttributesPtrOutput {
@@ -22579,7 +22203,7 @@ type JobTask struct {
 	SqlTask         *JobTaskSqlTask         `pulumi:"sqlTask"`
 	// string specifying an unique key for a given task.
 	// * `*_task` - (Required) one of the specific task blocks described below:
-	TaskKey *string `pulumi:"taskKey"`
+	TaskKey string `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -22641,7 +22265,7 @@ type JobTaskArgs struct {
 	SqlTask         JobTaskSqlTaskPtrInput         `pulumi:"sqlTask"`
 	// string specifying an unique key for a given task.
 	// * `*_task` - (Required) one of the specific task blocks described below:
-	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
+	TaskKey pulumi.StringInput `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -22820,8 +22444,8 @@ func (o JobTaskOutput) SqlTask() JobTaskSqlTaskPtrOutput {
 
 // string specifying an unique key for a given task.
 // * `*_task` - (Required) one of the specific task blocks described below:
-func (o JobTaskOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o JobTaskOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTask) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 // (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -23846,7 +23470,7 @@ type JobTaskForEachTaskTask struct {
 	SqlTask         *JobTaskForEachTaskTaskSqlTask         `pulumi:"sqlTask"`
 	// string specifying an unique key for a given task.
 	// * `*_task` - (Required) one of the specific task blocks described below:
-	TaskKey *string `pulumi:"taskKey"`
+	TaskKey string `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -23907,7 +23531,7 @@ type JobTaskForEachTaskTaskArgs struct {
 	SqlTask         JobTaskForEachTaskTaskSqlTaskPtrInput         `pulumi:"sqlTask"`
 	// string specifying an unique key for a given task.
 	// * `*_task` - (Required) one of the specific task blocks described below:
-	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
+	TaskKey pulumi.StringInput `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -24110,8 +23734,8 @@ func (o JobTaskForEachTaskTaskOutput) SqlTask() JobTaskForEachTaskTaskSqlTaskPtr
 
 // string specifying an unique key for a given task.
 // * `*_task` - (Required) one of the specific task blocks described below:
-func (o JobTaskForEachTaskTaskOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o JobTaskForEachTaskTaskOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 // (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -24397,7 +24021,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) TaskKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.TaskKey
+		return &v.TaskKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25336,11 +24960,11 @@ func (o JobTaskForEachTaskTaskHealthPtrOutput) Rules() JobTaskForEachTaskTaskHea
 
 type JobTaskForEachTaskTaskHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric *string `pulumi:"metric"`
+	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op *string `pulumi:"op"`
+	Op string `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value *int `pulumi:"value"`
+	Value int `pulumi:"value"`
 }
 
 // JobTaskForEachTaskTaskHealthRuleInput is an input type that accepts JobTaskForEachTaskTaskHealthRuleArgs and JobTaskForEachTaskTaskHealthRuleOutput values.
@@ -25356,11 +24980,11 @@ type JobTaskForEachTaskTaskHealthRuleInput interface {
 
 type JobTaskForEachTaskTaskHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op pulumi.StringInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value pulumi.IntPtrInput `pulumi:"value"`
+	Value pulumi.IntInput `pulumi:"value"`
 }
 
 func (JobTaskForEachTaskTaskHealthRuleArgs) ElementType() reflect.Type {
@@ -25415,18 +25039,18 @@ func (o JobTaskForEachTaskTaskHealthRuleOutput) ToJobTaskForEachTaskTaskHealthRu
 }
 
 // string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-func (o JobTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o JobTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
 // string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-func (o JobTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o JobTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
 // integer value used to compare to the given metric.
-func (o JobTaskForEachTaskTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o JobTaskForEachTaskTaskHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type JobTaskForEachTaskTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -26041,7 +25665,6 @@ func (o JobTaskForEachTaskTaskLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutpu
 type JobTaskForEachTaskTaskNewCluster struct {
 	ApplyPolicyDefaultValues  *bool                                              `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobTaskForEachTaskTaskNewClusterAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                                               `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobTaskForEachTaskTaskNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobTaskForEachTaskTaskNewClusterAzureAttributes   `pulumi:"azureAttributes"`
 	ClusterId                 *string                                            `pulumi:"clusterId"`
@@ -26087,7 +25710,6 @@ type JobTaskForEachTaskTaskNewClusterInput interface {
 type JobTaskForEachTaskTaskNewClusterArgs struct {
 	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                                        `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobTaskForEachTaskTaskNewClusterAutoscalePtrInput          `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                                         `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobTaskForEachTaskTaskNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobTaskForEachTaskTaskNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
 	ClusterId                 pulumi.StringPtrInput                                      `pulumi:"clusterId"`
@@ -26204,10 +25826,6 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) Autoscale() JobTaskForEachTaskTa
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *JobTaskForEachTaskTaskNewClusterAutoscale {
 		return v.Autoscale
 	}).(JobTaskForEachTaskTaskNewClusterAutoscalePtrOutput)
-}
-
-func (o JobTaskForEachTaskTaskNewClusterOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterOutput) AwsAttributes() JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput {
@@ -26379,15 +25997,6 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) Autoscale() JobTaskForEachTas
 		}
 		return v.Autoscale
 	}).(JobTaskForEachTaskTaskNewClusterAutoscalePtrOutput)
-}
-
-func (o JobTaskForEachTaskTaskNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) AwsAttributes() JobTaskForEachTaskTaskNewClusterAwsAttributesPtrOutput {
@@ -32263,7 +31872,7 @@ type JobTaskForEachTaskTaskSqlTask struct {
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query *JobTaskForEachTaskTaskSqlTaskQuery `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-	WarehouseId *string `pulumi:"warehouseId"`
+	WarehouseId string `pulumi:"warehouseId"`
 }
 
 // JobTaskForEachTaskTaskSqlTaskInput is an input type that accepts JobTaskForEachTaskTaskSqlTaskArgs and JobTaskForEachTaskTaskSqlTaskOutput values.
@@ -32289,7 +31898,7 @@ type JobTaskForEachTaskTaskSqlTaskArgs struct {
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query JobTaskForEachTaskTaskSqlTaskQueryPtrInput `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
+	WarehouseId pulumi.StringInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskForEachTaskTaskSqlTaskArgs) ElementType() reflect.Type {
@@ -32395,8 +32004,8 @@ func (o JobTaskForEachTaskTaskSqlTaskOutput) Query() JobTaskForEachTaskTaskSqlTa
 }
 
 // ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-func (o JobTaskForEachTaskTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+func (o JobTaskForEachTaskTaskSqlTaskOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTask) string { return v.WarehouseId }).(pulumi.StringOutput)
 }
 
 type JobTaskForEachTaskTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
@@ -32479,7 +32088,7 @@ func (o JobTaskForEachTaskTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return v.WarehouseId
+		return &v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34346,11 +33955,11 @@ func (o JobTaskHealthPtrOutput) Rules() JobTaskHealthRuleArrayOutput {
 
 type JobTaskHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric *string `pulumi:"metric"`
+	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op *string `pulumi:"op"`
+	Op string `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value *int `pulumi:"value"`
+	Value int `pulumi:"value"`
 }
 
 // JobTaskHealthRuleInput is an input type that accepts JobTaskHealthRuleArgs and JobTaskHealthRuleOutput values.
@@ -34366,11 +33975,11 @@ type JobTaskHealthRuleInput interface {
 
 type JobTaskHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op pulumi.StringInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
-	Value pulumi.IntPtrInput `pulumi:"value"`
+	Value pulumi.IntInput `pulumi:"value"`
 }
 
 func (JobTaskHealthRuleArgs) ElementType() reflect.Type {
@@ -34425,18 +34034,18 @@ func (o JobTaskHealthRuleOutput) ToJobTaskHealthRuleOutputWithContext(ctx contex
 }
 
 // string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-func (o JobTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o JobTaskHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
 // string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-func (o JobTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o JobTaskHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
 // integer value used to compare to the given metric.
-func (o JobTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o JobTaskHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type JobTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -35051,7 +34660,6 @@ func (o JobTaskLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 type JobTaskNewCluster struct {
 	ApplyPolicyDefaultValues  *bool                               `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobTaskNewClusterAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                                `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobTaskNewClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes           *JobTaskNewClusterAzureAttributes   `pulumi:"azureAttributes"`
 	ClusterId                 *string                             `pulumi:"clusterId"`
@@ -35097,7 +34705,6 @@ type JobTaskNewClusterInput interface {
 type JobTaskNewClusterArgs struct {
 	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                         `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobTaskNewClusterAutoscalePtrInput          `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                          `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobTaskNewClusterAwsAttributesPtrInput      `pulumi:"awsAttributes"`
 	AzureAttributes           JobTaskNewClusterAzureAttributesPtrInput    `pulumi:"azureAttributes"`
 	ClusterId                 pulumi.StringPtrInput                       `pulumi:"clusterId"`
@@ -35212,10 +34819,6 @@ func (o JobTaskNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput
 
 func (o JobTaskNewClusterOutput) Autoscale() JobTaskNewClusterAutoscalePtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *JobTaskNewClusterAutoscale { return v.Autoscale }).(JobTaskNewClusterAutoscalePtrOutput)
-}
-
-func (o JobTaskNewClusterOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskNewClusterOutput) AwsAttributes() JobTaskNewClusterAwsAttributesPtrOutput {
@@ -35371,15 +34974,6 @@ func (o JobTaskNewClusterPtrOutput) Autoscale() JobTaskNewClusterAutoscalePtrOut
 		}
 		return v.Autoscale
 	}).(JobTaskNewClusterAutoscalePtrOutput)
-}
-
-func (o JobTaskNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobTaskNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) AwsAttributes() JobTaskNewClusterAwsAttributesPtrOutput {
@@ -41217,7 +40811,7 @@ type JobTaskSqlTask struct {
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query *JobTaskSqlTaskQuery `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-	WarehouseId *string `pulumi:"warehouseId"`
+	WarehouseId string `pulumi:"warehouseId"`
 }
 
 // JobTaskSqlTaskInput is an input type that accepts JobTaskSqlTaskArgs and JobTaskSqlTaskOutput values.
@@ -41243,7 +40837,7 @@ type JobTaskSqlTaskArgs struct {
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
+	WarehouseId pulumi.StringInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskSqlTaskArgs) ElementType() reflect.Type {
@@ -41349,8 +40943,8 @@ func (o JobTaskSqlTaskOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 }
 
 // ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-func (o JobTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+func (o JobTaskSqlTaskOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) string { return v.WarehouseId }).(pulumi.StringOutput)
 }
 
 type JobTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
@@ -41433,7 +41027,7 @@ func (o JobTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.WarehouseId
+		return &v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43153,9 +42747,8 @@ type JobTrigger struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival *JobTriggerFileArrival `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus *string          `pulumi:"pauseStatus"`
-	Table       *JobTriggerTable `pulumi:"table"`
-	// configuration block to define a trigger for Table Update events consisting of following attributes:
+	PauseStatus *string                `pulumi:"pauseStatus"`
+	Table       *JobTriggerTable       `pulumi:"table"`
 	TableUpdate *JobTriggerTableUpdate `pulumi:"tableUpdate"`
 }
 
@@ -43174,9 +42767,8 @@ type JobTriggerArgs struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival JobTriggerFileArrivalPtrInput `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus pulumi.StringPtrInput   `pulumi:"pauseStatus"`
-	Table       JobTriggerTablePtrInput `pulumi:"table"`
-	// configuration block to define a trigger for Table Update events consisting of following attributes:
+	PauseStatus pulumi.StringPtrInput         `pulumi:"pauseStatus"`
+	Table       JobTriggerTablePtrInput       `pulumi:"table"`
 	TableUpdate JobTriggerTableUpdatePtrInput `pulumi:"tableUpdate"`
 }
 
@@ -43271,7 +42863,6 @@ func (o JobTriggerOutput) Table() JobTriggerTablePtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerTable { return v.Table }).(JobTriggerTablePtrOutput)
 }
 
-// configuration block to define a trigger for Table Update events consisting of following attributes:
 func (o JobTriggerOutput) TableUpdate() JobTriggerTableUpdatePtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerTableUpdate { return v.TableUpdate }).(JobTriggerTableUpdatePtrOutput)
 }
@@ -43329,7 +42920,6 @@ func (o JobTriggerPtrOutput) Table() JobTriggerTablePtrOutput {
 	}).(JobTriggerTablePtrOutput)
 }
 
-// configuration block to define a trigger for Table Update events consisting of following attributes:
 func (o JobTriggerPtrOutput) TableUpdate() JobTriggerTableUpdatePtrOutput {
 	return o.ApplyT(func(v *JobTrigger) *JobTriggerTableUpdate {
 		if v == nil {
@@ -43693,14 +43283,10 @@ func (o JobTriggerTablePtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutp
 }
 
 type JobTriggerTableUpdate struct {
-	// The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-	Condition *string `pulumi:"condition"`
-	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
-	// A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-	TableNames []string `pulumi:"tableNames"`
-	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
+	Condition                     *string  `pulumi:"condition"`
+	MinTimeBetweenTriggersSeconds *int     `pulumi:"minTimeBetweenTriggersSeconds"`
+	TableNames                    []string `pulumi:"tableNames"`
+	WaitAfterLastChangeSeconds    *int     `pulumi:"waitAfterLastChangeSeconds"`
 }
 
 // JobTriggerTableUpdateInput is an input type that accepts JobTriggerTableUpdateArgs and JobTriggerTableUpdateOutput values.
@@ -43715,14 +43301,10 @@ type JobTriggerTableUpdateInput interface {
 }
 
 type JobTriggerTableUpdateArgs struct {
-	// The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
-	// A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-	TableNames pulumi.StringArrayInput `pulumi:"tableNames"`
-	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
+	Condition                     pulumi.StringPtrInput   `pulumi:"condition"`
+	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput      `pulumi:"minTimeBetweenTriggersSeconds"`
+	TableNames                    pulumi.StringArrayInput `pulumi:"tableNames"`
+	WaitAfterLastChangeSeconds    pulumi.IntPtrInput      `pulumi:"waitAfterLastChangeSeconds"`
 }
 
 func (JobTriggerTableUpdateArgs) ElementType() reflect.Type {
@@ -43802,22 +43384,18 @@ func (o JobTriggerTableUpdateOutput) ToJobTriggerTableUpdatePtrOutputWithContext
 	}).(JobTriggerTableUpdatePtrOutput)
 }
 
-// The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
 func (o JobTriggerTableUpdateOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTriggerTableUpdate) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 func (o JobTriggerTableUpdateOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTriggerTableUpdate) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
-// A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
 func (o JobTriggerTableUpdateOutput) TableNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTriggerTableUpdate) []string { return v.TableNames }).(pulumi.StringArrayOutput)
 }
 
-// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 func (o JobTriggerTableUpdateOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTriggerTableUpdate) *int { return v.WaitAfterLastChangeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -43846,7 +43424,6 @@ func (o JobTriggerTableUpdatePtrOutput) Elem() JobTriggerTableUpdateOutput {
 	}).(JobTriggerTableUpdateOutput)
 }
 
-// The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
 func (o JobTriggerTableUpdatePtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerTableUpdate) *string {
 		if v == nil {
@@ -43856,7 +43433,6 @@ func (o JobTriggerTableUpdatePtrOutput) Condition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 func (o JobTriggerTableUpdatePtrOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTriggerTableUpdate) *int {
 		if v == nil {
@@ -43866,7 +43442,6 @@ func (o JobTriggerTableUpdatePtrOutput) MinTimeBetweenTriggersSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
 func (o JobTriggerTableUpdatePtrOutput) TableNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTriggerTableUpdate) []string {
 		if v == nil {
@@ -43876,7 +43451,6 @@ func (o JobTriggerTableUpdatePtrOutput) TableNames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 func (o JobTriggerTableUpdatePtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTriggerTableUpdate) *int {
 		if v == nil {
@@ -80125,9 +79699,9 @@ func (o GetJobJobSettingsSettingsHealthPtrOutput) Rules() GetJobJobSettingsSetti
 }
 
 type GetJobJobSettingsSettingsHealthRule struct {
-	Metric *string `pulumi:"metric"`
-	Op     *string `pulumi:"op"`
-	Value  *int    `pulumi:"value"`
+	Metric string `pulumi:"metric"`
+	Op     string `pulumi:"op"`
+	Value  int    `pulumi:"value"`
 }
 
 // GetJobJobSettingsSettingsHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsHealthRuleArgs and GetJobJobSettingsSettingsHealthRuleOutput values.
@@ -80142,9 +79716,9 @@ type GetJobJobSettingsSettingsHealthRuleInput interface {
 }
 
 type GetJobJobSettingsSettingsHealthRuleArgs struct {
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	Op     pulumi.StringPtrInput `pulumi:"op"`
-	Value  pulumi.IntPtrInput    `pulumi:"value"`
+	Metric pulumi.StringInput `pulumi:"metric"`
+	Op     pulumi.StringInput `pulumi:"op"`
+	Value  pulumi.IntInput    `pulumi:"value"`
 }
 
 func (GetJobJobSettingsSettingsHealthRuleArgs) ElementType() reflect.Type {
@@ -80198,16 +79772,16 @@ func (o GetJobJobSettingsSettingsHealthRuleOutput) ToGetJobJobSettingsSettingsHe
 	return o
 }
 
-func (o GetJobJobSettingsSettingsHealthRuleOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsHealthRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsHealthRuleOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) int { return v.Value }).(pulumi.IntOutput)
 }
 
 type GetJobJobSettingsSettingsHealthRuleArrayOutput struct{ *pulumi.OutputState }
@@ -80231,8 +79805,8 @@ func (o GetJobJobSettingsSettingsHealthRuleArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetJobJobSettingsSettingsJobCluster struct {
-	JobClusterKey *string                                        `pulumi:"jobClusterKey"`
-	NewCluster    *GetJobJobSettingsSettingsJobClusterNewCluster `pulumi:"newCluster"`
+	JobClusterKey string                                        `pulumi:"jobClusterKey"`
+	NewCluster    GetJobJobSettingsSettingsJobClusterNewCluster `pulumi:"newCluster"`
 }
 
 // GetJobJobSettingsSettingsJobClusterInput is an input type that accepts GetJobJobSettingsSettingsJobClusterArgs and GetJobJobSettingsSettingsJobClusterOutput values.
@@ -80247,8 +79821,8 @@ type GetJobJobSettingsSettingsJobClusterInput interface {
 }
 
 type GetJobJobSettingsSettingsJobClusterArgs struct {
-	JobClusterKey pulumi.StringPtrInput                                 `pulumi:"jobClusterKey"`
-	NewCluster    GetJobJobSettingsSettingsJobClusterNewClusterPtrInput `pulumi:"newCluster"`
+	JobClusterKey pulumi.StringInput                                 `pulumi:"jobClusterKey"`
+	NewCluster    GetJobJobSettingsSettingsJobClusterNewClusterInput `pulumi:"newCluster"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterArgs) ElementType() reflect.Type {
@@ -80302,14 +79876,14 @@ func (o GetJobJobSettingsSettingsJobClusterOutput) ToGetJobJobSettingsSettingsJo
 	return o
 }
 
-func (o GetJobJobSettingsSettingsJobClusterOutput) JobClusterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobCluster) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsJobClusterOutput) JobClusterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobCluster) string { return v.JobClusterKey }).(pulumi.StringOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterOutput) NewCluster() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobCluster) *GetJobJobSettingsSettingsJobClusterNewCluster {
+func (o GetJobJobSettingsSettingsJobClusterOutput) NewCluster() GetJobJobSettingsSettingsJobClusterNewClusterOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobCluster) GetJobJobSettingsSettingsJobClusterNewCluster {
 		return v.NewCluster
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput)
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterArrayOutput struct{ *pulumi.OutputState }
@@ -80421,47 +79995,6 @@ func (i GetJobJobSettingsSettingsJobClusterNewClusterArgs) ToGetJobJobSettingsSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterOutput)
 }
 
-func (i GetJobJobSettingsSettingsJobClusterNewClusterArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i GetJobJobSettingsSettingsJobClusterNewClusterArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(ctx)
-}
-
-// GetJobJobSettingsSettingsJobClusterNewClusterPtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterArgs, GetJobJobSettingsSettingsJobClusterNewClusterPtr and GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput values.
-// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterPtrInput` via:
-//
-//	        GetJobJobSettingsSettingsJobClusterNewClusterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetJobJobSettingsSettingsJobClusterNewClusterPtrInput interface {
-	pulumi.Input
-
-	ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput
-	ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput
-}
-
-type getJobJobSettingsSettingsJobClusterNewClusterPtrType GetJobJobSettingsSettingsJobClusterNewClusterArgs
-
-func GetJobJobSettingsSettingsJobClusterNewClusterPtr(v *GetJobJobSettingsSettingsJobClusterNewClusterArgs) GetJobJobSettingsSettingsJobClusterNewClusterPtrInput {
-	return (*getJobJobSettingsSettingsJobClusterNewClusterPtrType)(v)
-}
-
-func (*getJobJobSettingsSettingsJobClusterNewClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewCluster)(nil)).Elem()
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *getJobJobSettingsSettingsJobClusterNewClusterPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput)
-}
-
 type GetJobJobSettingsSettingsJobClusterNewClusterOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterOutput) ElementType() reflect.Type {
@@ -80474,16 +80007,6 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ToGetJobJobSettings
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterOutput {
 	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(context.Background())
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewCluster {
-		return &v
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
@@ -80620,300 +80143,6 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SshPublicKeys() pul
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) WorkloadType() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
-		return v.WorkloadType
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput)
-}
-
-type GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewCluster)(nil)).Elem()
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput {
-	return o
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) GetJobJobSettingsSettingsJobClusterNewCluster {
-		if v != nil {
-			return *v
-		}
-		var ret GetJobJobSettingsSettingsJobClusterNewCluster
-		return ret
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ApplyPolicyDefaultValues
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) Autoscale() GetJobJobSettingsSettingsJobClusterNewClusterAutoscalePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterAutoscale {
-		if v == nil {
-			return nil
-		}
-		return v.Autoscale
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterAutoscalePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoterminationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) AwsAttributes() GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAttributes
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) AzureAttributes() GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AzureAttributes
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ClusterLogConf() GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogConf
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ClusterMountInfos() GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) []GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterMountInfos
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.CustomTags
-	}).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DataSecurityMode
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) DockerImage() GetJobJobSettingsSettingsJobClusterNewClusterDockerImagePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
-		if v == nil {
-			return nil
-		}
-		return v.DockerImage
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterDockerImagePtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DriverInstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DriverNodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableElasticDisk
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableLocalDiskEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) GcpAttributes() GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.GcpAttributes
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) IdempotencyToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdempotencyToken
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) InitScripts() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) []GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
-		if v == nil {
-			return nil
-		}
-		return v.InitScripts
-	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstancePoolId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeEngine
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) SingleUserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SingleUserName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SparkConf
-	}).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SshPublicKeys
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput) WorkloadType() GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewCluster) *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
-		if v == nil {
-			return nil
-		}
 		return v.WorkloadType
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput)
 }
@@ -83958,7 +83187,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterInput)(nil)).Elem(), JobJobClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterArrayInput)(nil)).Elem(), JobJobClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInput)(nil)).Elem(), JobJobClusterNewClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterPtrInput)(nil)).Elem(), JobJobClusterNewClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAutoscaleInput)(nil)).Elem(), JobJobClusterNewClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAutoscalePtrInput)(nil)).Elem(), JobJobClusterNewClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterAwsAttributesInput)(nil)).Elem(), JobJobClusterNewClusterAwsAttributesArgs{})
@@ -84782,7 +84010,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterAutoscalePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs{})
@@ -84952,7 +84179,6 @@ func init() {
 	pulumi.RegisterOutputType(JobJobClusterOutput{})
 	pulumi.RegisterOutputType(JobJobClusterArrayOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterOutput{})
-	pulumi.RegisterOutputType(JobJobClusterNewClusterPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAutoscaleOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterAwsAttributesOutput{})
@@ -85776,7 +85002,6 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterOutput{})
-	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesOutput{})

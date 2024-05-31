@@ -4,11 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskHealthRule {
@@ -16,39 +15,39 @@ public final class JobTaskForEachTaskTaskHealthRule {
      * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      * 
      */
-    private @Nullable String metric;
+    private String metric;
     /**
      * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      * 
      */
-    private @Nullable String op;
+    private String op;
     /**
      * @return integer value used to compare to the given metric.
      * 
      */
-    private @Nullable Integer value;
+    private Integer value;
 
     private JobTaskForEachTaskTaskHealthRule() {}
     /**
      * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      * 
      */
-    public Optional<String> metric() {
-        return Optional.ofNullable(this.metric);
+    public String metric() {
+        return this.metric;
     }
     /**
      * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      * 
      */
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
     /**
      * @return integer value used to compare to the given metric.
      * 
      */
-    public Optional<Integer> value() {
-        return Optional.ofNullable(this.value);
+    public Integer value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -60,9 +59,9 @@ public final class JobTaskForEachTaskTaskHealthRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String metric;
-        private @Nullable String op;
-        private @Nullable Integer value;
+        private String metric;
+        private String op;
+        private Integer value;
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskHealthRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,20 +71,26 @@ public final class JobTaskForEachTaskTaskHealthRule {
         }
 
         @CustomType.Setter
-        public Builder metric(@Nullable String metric) {
-
+        public Builder metric(String metric) {
+            if (metric == null) {
+              throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskHealthRule", "metric");
+            }
             this.metric = metric;
             return this;
         }
         @CustomType.Setter
-        public Builder op(@Nullable String op) {
-
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskHealthRule", "op");
+            }
             this.op = op;
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable Integer value) {
-
+        public Builder value(Integer value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskHealthRule", "value");
+            }
             this.value = value;
             return this;
         }

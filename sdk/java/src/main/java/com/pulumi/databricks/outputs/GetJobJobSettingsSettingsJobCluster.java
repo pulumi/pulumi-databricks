@@ -5,22 +5,21 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewCluster;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsJobCluster {
-    private @Nullable String jobClusterKey;
-    private @Nullable GetJobJobSettingsSettingsJobClusterNewCluster newCluster;
+    private String jobClusterKey;
+    private GetJobJobSettingsSettingsJobClusterNewCluster newCluster;
 
     private GetJobJobSettingsSettingsJobCluster() {}
-    public Optional<String> jobClusterKey() {
-        return Optional.ofNullable(this.jobClusterKey);
+    public String jobClusterKey() {
+        return this.jobClusterKey;
     }
-    public Optional<GetJobJobSettingsSettingsJobClusterNewCluster> newCluster() {
-        return Optional.ofNullable(this.newCluster);
+    public GetJobJobSettingsSettingsJobClusterNewCluster newCluster() {
+        return this.newCluster;
     }
 
     public static Builder builder() {
@@ -32,8 +31,8 @@ public final class GetJobJobSettingsSettingsJobCluster {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String jobClusterKey;
-        private @Nullable GetJobJobSettingsSettingsJobClusterNewCluster newCluster;
+        private String jobClusterKey;
+        private GetJobJobSettingsSettingsJobClusterNewCluster newCluster;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsJobCluster defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,14 +41,18 @@ public final class GetJobJobSettingsSettingsJobCluster {
         }
 
         @CustomType.Setter
-        public Builder jobClusterKey(@Nullable String jobClusterKey) {
-
+        public Builder jobClusterKey(String jobClusterKey) {
+            if (jobClusterKey == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobCluster", "jobClusterKey");
+            }
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
-        public Builder newCluster(@Nullable GetJobJobSettingsSettingsJobClusterNewCluster newCluster) {
-
+        public Builder newCluster(GetJobJobSettingsSettingsJobClusterNewCluster newCluster) {
+            if (newCluster == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobCluster", "newCluster");
+            }
             this.newCluster = newCluster;
             return this;
         }

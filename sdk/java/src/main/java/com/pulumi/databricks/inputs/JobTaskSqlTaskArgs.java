@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskFileArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -100,15 +101,15 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
-    @Import(name="warehouseId")
-    private @Nullable Output<String> warehouseId;
+    @Import(name="warehouseId", required=true)
+    private Output<String> warehouseId;
 
     /**
      * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
-    public Optional<Output<String>> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public Output<String> warehouseId() {
+        return this.warehouseId;
     }
 
     private JobTaskSqlTaskArgs() {}
@@ -251,7 +252,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+        public Builder warehouseId(Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
@@ -267,6 +268,9 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public JobTaskSqlTaskArgs build() {
+            if ($.warehouseId == null) {
+                throw new MissingRequiredPropertyException("JobTaskSqlTaskArgs", "warehouseId");
+            }
             return $;
         }
     }

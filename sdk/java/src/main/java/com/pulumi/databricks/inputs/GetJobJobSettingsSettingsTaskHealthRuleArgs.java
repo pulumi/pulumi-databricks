@@ -5,36 +5,35 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskHealthRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskHealthRuleArgs Empty = new GetJobJobSettingsSettingsTaskHealthRuleArgs();
 
-    @Import(name="metric")
-    private @Nullable Output<String> metric;
+    @Import(name="metric", required=true)
+    private Output<String> metric;
 
-    public Optional<Output<String>> metric() {
-        return Optional.ofNullable(this.metric);
+    public Output<String> metric() {
+        return this.metric;
     }
 
-    @Import(name="op")
-    private @Nullable Output<String> op;
+    @Import(name="op", required=true)
+    private Output<String> op;
 
-    public Optional<Output<String>> op() {
-        return Optional.ofNullable(this.op);
+    public Output<String> op() {
+        return this.op;
     }
 
-    @Import(name="value")
-    private @Nullable Output<Integer> value;
+    @Import(name="value", required=true)
+    private Output<Integer> value;
 
-    public Optional<Output<Integer>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<Integer> value() {
+        return this.value;
     }
 
     private GetJobJobSettingsSettingsTaskHealthRuleArgs() {}
@@ -63,7 +62,7 @@ public final class GetJobJobSettingsSettingsTaskHealthRuleArgs extends com.pulum
             $ = new GetJobJobSettingsSettingsTaskHealthRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder metric(@Nullable Output<String> metric) {
+        public Builder metric(Output<String> metric) {
             $.metric = metric;
             return this;
         }
@@ -72,7 +71,7 @@ public final class GetJobJobSettingsSettingsTaskHealthRuleArgs extends com.pulum
             return metric(Output.of(metric));
         }
 
-        public Builder op(@Nullable Output<String> op) {
+        public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
@@ -81,7 +80,7 @@ public final class GetJobJobSettingsSettingsTaskHealthRuleArgs extends com.pulum
             return op(Output.of(op));
         }
 
-        public Builder value(@Nullable Output<Integer> value) {
+        public Builder value(Output<Integer> value) {
             $.value = value;
             return this;
         }
@@ -91,6 +90,15 @@ public final class GetJobJobSettingsSettingsTaskHealthRuleArgs extends com.pulum
         }
 
         public GetJobJobSettingsSettingsTaskHealthRuleArgs build() {
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRuleArgs", "metric");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRuleArgs", "op");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealthRuleArgs", "value");
+            }
             return $;
         }
     }

@@ -6,28 +6,27 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsJobClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsJobClusterArgs Empty = new GetJobJobSettingsSettingsJobClusterArgs();
 
-    @Import(name="jobClusterKey")
-    private @Nullable Output<String> jobClusterKey;
+    @Import(name="jobClusterKey", required=true)
+    private Output<String> jobClusterKey;
 
-    public Optional<Output<String>> jobClusterKey() {
-        return Optional.ofNullable(this.jobClusterKey);
+    public Output<String> jobClusterKey() {
+        return this.jobClusterKey;
     }
 
-    @Import(name="newCluster")
-    private @Nullable Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs> newCluster;
+    @Import(name="newCluster", required=true)
+    private Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs> newCluster;
 
-    public Optional<Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs>> newCluster() {
-        return Optional.ofNullable(this.newCluster);
+    public Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs> newCluster() {
+        return this.newCluster;
     }
 
     private GetJobJobSettingsSettingsJobClusterArgs() {}
@@ -55,7 +54,7 @@ public final class GetJobJobSettingsSettingsJobClusterArgs extends com.pulumi.re
             $ = new GetJobJobSettingsSettingsJobClusterArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder jobClusterKey(@Nullable Output<String> jobClusterKey) {
+        public Builder jobClusterKey(Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
         }
@@ -64,7 +63,7 @@ public final class GetJobJobSettingsSettingsJobClusterArgs extends com.pulumi.re
             return jobClusterKey(Output.of(jobClusterKey));
         }
 
-        public Builder newCluster(@Nullable Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs> newCluster) {
+        public Builder newCluster(Output<GetJobJobSettingsSettingsJobClusterNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
@@ -74,6 +73,12 @@ public final class GetJobJobSettingsSettingsJobClusterArgs extends com.pulumi.re
         }
 
         public GetJobJobSettingsSettingsJobClusterArgs build() {
+            if ($.jobClusterKey == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterArgs", "jobClusterKey");
+            }
+            if ($.newCluster == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterArgs", "newCluster");
+            }
             return $;
         }
     }

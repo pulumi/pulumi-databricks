@@ -16,23 +16,23 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         /// </summary>
-        public readonly string? Metric;
+        public readonly string Metric;
         /// <summary>
         /// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         /// </summary>
-        public readonly string? Op;
+        public readonly string Op;
         /// <summary>
         /// integer value used to compare to the given metric.
         /// </summary>
-        public readonly int? Value;
+        public readonly int Value;
 
         [OutputConstructor]
         private JobTaskHealthRule(
-            string? metric,
+            string metric,
 
-            string? op,
+            string op,
 
-            int? value)
+            int value)
         {
             Metric = metric;
             Op = op;

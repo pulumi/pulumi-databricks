@@ -204,11 +204,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
         return Optional.ofNullable(this.sqlTask);
     }
 
-    @Import(name="taskKey")
-    private @Nullable Output<String> taskKey;
+    @Import(name="taskKey", required=true)
+    private Output<String> taskKey;
 
-    public Optional<Output<String>> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public Output<String> taskKey() {
+        return this.taskKey;
     }
 
     @Import(name="timeoutSeconds")
@@ -499,7 +499,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
             return sqlTask(Output.of(sqlTask));
         }
 
-        public Builder taskKey(@Nullable Output<String> taskKey) {
+        public Builder taskKey(Output<String> taskKey) {
             $.taskKey = taskKey;
             return this;
         }
@@ -529,6 +529,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
         public GetJobJobSettingsSettingsTaskForEachTaskTaskArgs build() {
             if ($.retryOnTimeout == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskArgs", "retryOnTimeout");
+            }
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskArgs", "taskKey");
             }
             return $;
         }

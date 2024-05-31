@@ -4,27 +4,26 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
-    private @Nullable String metric;
-    private @Nullable String op;
-    private @Nullable Integer value;
+    private String metric;
+    private String op;
+    private Integer value;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule() {}
-    public Optional<String> metric() {
-        return Optional.ofNullable(this.metric);
+    public String metric() {
+        return this.metric;
     }
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
-    public Optional<Integer> value() {
-        return Optional.ofNullable(this.value);
+    public Integer value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -36,9 +35,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String metric;
-        private @Nullable String op;
-        private @Nullable Integer value;
+        private String metric;
+        private String op;
+        private Integer value;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -48,20 +47,26 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
         }
 
         @CustomType.Setter
-        public Builder metric(@Nullable String metric) {
-
+        public Builder metric(String metric) {
+            if (metric == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule", "metric");
+            }
             this.metric = metric;
             return this;
         }
         @CustomType.Setter
-        public Builder op(@Nullable String op) {
-
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule", "op");
+            }
             this.op = op;
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable Integer value) {
-
+        public Builder value(Integer value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule", "value");
+            }
             this.value = value;
             return this;
         }

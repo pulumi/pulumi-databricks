@@ -3648,94 +3648,89 @@ class JobHealthArgs:
 @pulumi.input_type
 class JobHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[int]] = None):
+                 metric: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 value: pulumi.Input[int]):
         """
         :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[str]]:
+    def metric(self) -> pulumi.Input[str]:
         """
         string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         """
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[str]]):
+    def metric(self, value: pulumi.Input[str]):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> pulumi.Input[str]:
         """
         string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: pulumi.Input[str]):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[int]]:
+    def value(self) -> pulumi.Input[int]:
         """
         integer value used to compare to the given metric.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[int]]):
+    def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class JobJobClusterArgs:
     def __init__(__self__, *,
-                 job_cluster_key: Optional[pulumi.Input[str]] = None,
-                 new_cluster: Optional[pulumi.Input['JobJobClusterNewClusterArgs']] = None):
+                 job_cluster_key: pulumi.Input[str],
+                 new_cluster: pulumi.Input['JobJobClusterNewClusterArgs']):
         """
         :param pulumi.Input[str] job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         :param pulumi.Input['JobJobClusterNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         """
-        if job_cluster_key is not None:
-            pulumi.set(__self__, "job_cluster_key", job_cluster_key)
-        if new_cluster is not None:
-            pulumi.set(__self__, "new_cluster", new_cluster)
+        pulumi.set(__self__, "job_cluster_key", job_cluster_key)
+        pulumi.set(__self__, "new_cluster", new_cluster)
 
     @property
     @pulumi.getter(name="jobClusterKey")
-    def job_cluster_key(self) -> Optional[pulumi.Input[str]]:
+    def job_cluster_key(self) -> pulumi.Input[str]:
         """
         Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         """
         return pulumi.get(self, "job_cluster_key")
 
     @job_cluster_key.setter
-    def job_cluster_key(self, value: Optional[pulumi.Input[str]]):
+    def job_cluster_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "job_cluster_key", value)
 
     @property
     @pulumi.getter(name="newCluster")
-    def new_cluster(self) -> Optional[pulumi.Input['JobJobClusterNewClusterArgs']]:
+    def new_cluster(self) -> pulumi.Input['JobJobClusterNewClusterArgs']:
         """
         Same set of parameters as for Cluster resource.
         """
         return pulumi.get(self, "new_cluster")
 
     @new_cluster.setter
-    def new_cluster(self, value: Optional[pulumi.Input['JobJobClusterNewClusterArgs']]):
+    def new_cluster(self, value: pulumi.Input['JobJobClusterNewClusterArgs']):
         pulumi.set(self, "new_cluster", value)
 
 
@@ -3745,7 +3740,6 @@ class JobJobClusterNewClusterArgs:
                  spark_version: pulumi.Input[str],
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobJobClusterNewClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -3781,8 +3775,6 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
-        if autotermination_minutes is not None:
-            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
@@ -3864,15 +3856,6 @@ class JobJobClusterNewClusterArgs:
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input['JobJobClusterNewClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
-
-    @property
-    @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "autotermination_minutes")
-
-    @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "autotermination_minutes", value)
 
     @property
     @pulumi.getter(name="awsAttributes")
@@ -5395,7 +5378,6 @@ class JobNewClusterArgs:
                  spark_version: pulumi.Input[str],
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobNewClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobNewClusterAzureAttributesArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -5431,8 +5413,6 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
-        if autotermination_minutes is not None:
-            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
@@ -5514,15 +5494,6 @@ class JobNewClusterArgs:
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input['JobNewClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
-
-    @property
-    @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "autotermination_minutes")
-
-    @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "autotermination_minutes", value)
 
     @property
     @pulumi.getter(name="awsAttributes")
@@ -7426,6 +7397,7 @@ class JobSparkSubmitTaskArgs:
 @pulumi.input_type
 class JobTaskArgs:
     def __init__(__self__, *,
+                 task_key: pulumi.Input[str],
                  condition_task: Optional[pulumi.Input['JobTaskConditionTaskArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
@@ -7452,10 +7424,11 @@ class JobTaskArgs:
                  spark_python_task: Optional[pulumi.Input['JobTaskSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobTaskSparkSubmitTaskArgs']] = None,
                  sql_task: Optional[pulumi.Input['JobTaskSqlTaskArgs']] = None,
-                 task_key: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  webhook_notifications: Optional[pulumi.Input['JobTaskWebhookNotificationsArgs']] = None):
         """
+        :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
+               * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -7471,11 +7444,10 @@ class JobTaskArgs:
         :param pulumi.Input['JobTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-        :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
-               * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTaskWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
+        pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -7528,12 +7500,23 @@ class JobTaskArgs:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if sql_task is not None:
             pulumi.set(__self__, "sql_task", sql_task)
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
+
+    @property
+    @pulumi.getter(name="taskKey")
+    def task_key(self) -> pulumi.Input[str]:
+        """
+        string specifying an unique key for a given task.
+        * `*_task` - (Required) one of the specific task blocks described below:
+        """
+        return pulumi.get(self, "task_key")
+
+    @task_key.setter
+    def task_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -7809,19 +7792,6 @@ class JobTaskArgs:
     @sql_task.setter
     def sql_task(self, value: Optional[pulumi.Input['JobTaskSqlTaskArgs']]):
         pulumi.set(self, "sql_task", value)
-
-    @property
-    @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        string specifying an unique key for a given task.
-        * `*_task` - (Required) one of the specific task blocks described below:
-        """
-        return pulumi.get(self, "task_key")
-
-    @task_key.setter
-    def task_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -8211,6 +8181,7 @@ class JobTaskForEachTaskArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskArgs:
     def __init__(__self__, *,
+                 task_key: pulumi.Input[str],
                  condition_task: Optional[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]]] = None,
@@ -8236,10 +8207,11 @@ class JobTaskForEachTaskTaskArgs:
                  spark_python_task: Optional[pulumi.Input['JobTaskForEachTaskTaskSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobTaskForEachTaskTaskSparkSubmitTaskArgs']] = None,
                  sql_task: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskArgs']] = None,
-                 task_key: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  webhook_notifications: Optional[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsArgs']] = None):
         """
+        :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
+               * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -8255,11 +8227,10 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input['JobTaskForEachTaskTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-        :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
-               * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
+        pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -8310,12 +8281,23 @@ class JobTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if sql_task is not None:
             pulumi.set(__self__, "sql_task", sql_task)
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
+
+    @property
+    @pulumi.getter(name="taskKey")
+    def task_key(self) -> pulumi.Input[str]:
+        """
+        string specifying an unique key for a given task.
+        * `*_task` - (Required) one of the specific task blocks described below:
+        """
+        return pulumi.get(self, "task_key")
+
+    @task_key.setter
+    def task_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -8582,19 +8564,6 @@ class JobTaskForEachTaskTaskArgs:
     @sql_task.setter
     def sql_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskArgs']]):
         pulumi.set(self, "sql_task", value)
-
-    @property
-    @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        string specifying an unique key for a given task.
-        * `*_task` - (Required) one of the specific task blocks described below:
-        """
-        return pulumi.get(self, "task_key")
-
-    @task_key.setter
-    def task_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -8953,55 +8922,52 @@ class JobTaskForEachTaskTaskHealthArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[int]] = None):
+                 metric: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 value: pulumi.Input[int]):
         """
         :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[str]]:
+    def metric(self) -> pulumi.Input[str]:
         """
         string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         """
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[str]]):
+    def metric(self, value: pulumi.Input[str]):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> pulumi.Input[str]:
         """
         string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: pulumi.Input[str]):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[int]]:
+    def value(self) -> pulumi.Input[int]:
         """
         integer value used to compare to the given metric.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[int]]):
+    def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
 
@@ -9196,7 +9162,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  spark_version: pulumi.Input[str],
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -9232,8 +9197,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
-        if autotermination_minutes is not None:
-            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
@@ -9315,15 +9278,6 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
-
-    @property
-    @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "autotermination_minutes")
-
-    @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "autotermination_minutes", value)
 
     @property
     @pulumi.getter(name="awsAttributes")
@@ -11179,20 +11133,21 @@ class JobTaskForEachTaskTaskSparkSubmitTaskArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskArgs:
     def __init__(__self__, *,
+                 warehouse_id: pulumi.Input[str],
                  alert: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertArgs']] = None,
                  dashboard: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgs']] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 query: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[str]] = None):
+                 query: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs']] = None):
         """
+        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertArgs'] alert: block consisting of following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgs'] file: block consisting of single string fields:
         :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
-        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         """
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
@@ -11203,8 +11158,18 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
             pulumi.set(__self__, "query", query)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> pulumi.Input[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "warehouse_id", value)
 
     @property
     @pulumi.getter
@@ -11265,18 +11230,6 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
     @query.setter
     def query(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs']]):
         pulumi.set(self, "query", value)
-
-    @property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-        """
-        return pulumi.get(self, "warehouse_id")
-
-    @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
@@ -11796,55 +11749,52 @@ class JobTaskHealthArgs:
 @pulumi.input_type
 class JobTaskHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[int]] = None):
+                 metric: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 value: pulumi.Input[int]):
         """
         :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[str]]:
+    def metric(self) -> pulumi.Input[str]:
         """
         string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         """
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[str]]):
+    def metric(self, value: pulumi.Input[str]):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> pulumi.Input[str]:
         """
         string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: pulumi.Input[str]):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[int]]:
+    def value(self) -> pulumi.Input[int]:
         """
         integer value used to compare to the given metric.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[int]]):
+    def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
 
@@ -12039,7 +11989,6 @@ class JobTaskNewClusterArgs:
                  spark_version: pulumi.Input[str],
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobTaskNewClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskNewClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['JobTaskNewClusterAzureAttributesArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -12075,8 +12024,6 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
-        if autotermination_minutes is not None:
-            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
@@ -12158,15 +12105,6 @@ class JobTaskNewClusterArgs:
     @autoscale.setter
     def autoscale(self, value: Optional[pulumi.Input['JobTaskNewClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
-
-    @property
-    @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "autotermination_minutes")
-
-    @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "autotermination_minutes", value)
 
     @property
     @pulumi.getter(name="awsAttributes")
@@ -14022,20 +13960,21 @@ class JobTaskSparkSubmitTaskArgs:
 @pulumi.input_type
 class JobTaskSqlTaskArgs:
     def __init__(__self__, *,
+                 warehouse_id: pulumi.Input[str],
                  alert: Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']] = None,
                  dashboard: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskSqlTaskFileArgs']] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[str]] = None):
+                 query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None):
         """
+        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         :param pulumi.Input['JobTaskSqlTaskAlertArgs'] alert: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskFileArgs'] file: block consisting of single string fields:
         :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
-        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         """
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
@@ -14046,8 +13985,18 @@ class JobTaskSqlTaskArgs:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
             pulumi.set(__self__, "query", query)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> pulumi.Input[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "warehouse_id", value)
 
     @property
     @pulumi.getter
@@ -14108,18 +14057,6 @@ class JobTaskSqlTaskArgs:
     @query.setter
     def query(self, value: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']]):
         pulumi.set(self, "query", value)
-
-    @property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-        """
-        return pulumi.get(self, "warehouse_id")
-
-    @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
@@ -14624,7 +14561,6 @@ class JobTriggerArgs:
         """
         :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         :param pulumi.Input[str] pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-        :param pulumi.Input['JobTriggerTableUpdateArgs'] table_update: configuration block to define a trigger for Table Update events consisting of following attributes:
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
@@ -14671,9 +14607,6 @@ class JobTriggerArgs:
     @property
     @pulumi.getter(name="tableUpdate")
     def table_update(self) -> Optional[pulumi.Input['JobTriggerTableUpdateArgs']]:
-        """
-        configuration block to define a trigger for Table Update events consisting of following attributes:
-        """
         return pulumi.get(self, "table_update")
 
     @table_update.setter
@@ -14795,12 +14728,6 @@ class JobTriggerTableUpdateArgs:
                  condition: Optional[pulumi.Input[str]] = None,
                  min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
                  wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] table_names: A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-        :param pulumi.Input[str] condition: The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-        :param pulumi.Input[int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        """
         pulumi.set(__self__, "table_names", table_names)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -14812,9 +14739,6 @@ class JobTriggerTableUpdateArgs:
     @property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-        """
         return pulumi.get(self, "table_names")
 
     @table_names.setter
@@ -14824,9 +14748,6 @@ class JobTriggerTableUpdateArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
-        """
-        The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14836,9 +14757,6 @@ class JobTriggerTableUpdateArgs:
     @property
     @pulumi.getter(name="minTimeBetweenTriggersSeconds")
     def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        """
         return pulumi.get(self, "min_time_between_triggers_seconds")
 
     @min_time_between_triggers_seconds.setter
@@ -14848,9 +14766,6 @@ class JobTriggerTableUpdateArgs:
     @property
     @pulumi.getter(name="waitAfterLastChangeSeconds")
     def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        """
         return pulumi.get(self, "wait_after_last_change_seconds")
 
     @wait_after_last_change_seconds.setter
@@ -26846,70 +26761,65 @@ class GetJobJobSettingsSettingsHealthArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[str] = None,
-                 op: Optional[str] = None,
-                 value: Optional[int] = None):
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 metric: str,
+                 op: str,
+                 value: int):
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[str]:
+    def metric(self) -> str:
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[str]):
+    def metric(self, value: str):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[str]:
+    def op(self) -> str:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[str]):
+    def op(self, value: str):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[int]:
+    def value(self) -> int:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[int]):
+    def value(self, value: int):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterArgs:
     def __init__(__self__, *,
-                 job_cluster_key: Optional[str] = None,
-                 new_cluster: Optional['GetJobJobSettingsSettingsJobClusterNewClusterArgs'] = None):
-        if job_cluster_key is not None:
-            pulumi.set(__self__, "job_cluster_key", job_cluster_key)
-        if new_cluster is not None:
-            pulumi.set(__self__, "new_cluster", new_cluster)
+                 job_cluster_key: str,
+                 new_cluster: 'GetJobJobSettingsSettingsJobClusterNewClusterArgs'):
+        pulumi.set(__self__, "job_cluster_key", job_cluster_key)
+        pulumi.set(__self__, "new_cluster", new_cluster)
 
     @property
     @pulumi.getter(name="jobClusterKey")
-    def job_cluster_key(self) -> Optional[str]:
+    def job_cluster_key(self) -> str:
         return pulumi.get(self, "job_cluster_key")
 
     @job_cluster_key.setter
-    def job_cluster_key(self, value: Optional[str]):
+    def job_cluster_key(self, value: str):
         pulumi.set(self, "job_cluster_key", value)
 
     @property
     @pulumi.getter(name="newCluster")
-    def new_cluster(self) -> Optional['GetJobJobSettingsSettingsJobClusterNewClusterArgs']:
+    def new_cluster(self) -> 'GetJobJobSettingsSettingsJobClusterNewClusterArgs':
         return pulumi.get(self, "new_cluster")
 
     @new_cluster.setter
-    def new_cluster(self, value: Optional['GetJobJobSettingsSettingsJobClusterNewClusterArgs']):
+    def new_cluster(self, value: 'GetJobJobSettingsSettingsJobClusterNewClusterArgs'):
         pulumi.set(self, "new_cluster", value)
 
 
@@ -29865,6 +29775,7 @@ class GetJobJobSettingsSettingsSparkSubmitTaskArgs:
 class GetJobJobSettingsSettingsTaskArgs:
     def __init__(__self__, *,
                  retry_on_timeout: bool,
+                 task_key: str,
                  condition_task: Optional['GetJobJobSettingsSettingsTaskConditionTaskArgs'] = None,
                  dbt_task: Optional['GetJobJobSettingsSettingsTaskDbtTaskArgs'] = None,
                  depends_ons: Optional[Sequence['GetJobJobSettingsSettingsTaskDependsOnArgs']] = None,
@@ -29889,10 +29800,10 @@ class GetJobJobSettingsSettingsTaskArgs:
                  spark_python_task: Optional['GetJobJobSettingsSettingsTaskSparkPythonTaskArgs'] = None,
                  spark_submit_task: Optional['GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs'] = None,
                  sql_task: Optional['GetJobJobSettingsSettingsTaskSqlTaskArgs'] = None,
-                 task_key: Optional[str] = None,
                  timeout_seconds: Optional[int] = None,
                  webhook_notifications: Optional['GetJobJobSettingsSettingsTaskWebhookNotificationsArgs'] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -29941,8 +29852,6 @@ class GetJobJobSettingsSettingsTaskArgs:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if sql_task is not None:
             pulumi.set(__self__, "sql_task", sql_task)
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if webhook_notifications is not None:
@@ -29956,6 +29865,15 @@ class GetJobJobSettingsSettingsTaskArgs:
     @retry_on_timeout.setter
     def retry_on_timeout(self, value: bool):
         pulumi.set(self, "retry_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="taskKey")
+    def task_key(self) -> str:
+        return pulumi.get(self, "task_key")
+
+    @task_key.setter
+    def task_key(self, value: str):
+        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -30172,15 +30090,6 @@ class GetJobJobSettingsSettingsTaskArgs:
     @sql_task.setter
     def sql_task(self, value: Optional['GetJobJobSettingsSettingsTaskSqlTaskArgs']):
         pulumi.set(self, "sql_task", value)
-
-    @property
-    @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[str]:
-        return pulumi.get(self, "task_key")
-
-    @task_key.setter
-    def task_key(self, value: Optional[str]):
-        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -30463,6 +30372,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskArgs:
 class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
     def __init__(__self__, *,
                  retry_on_timeout: bool,
+                 task_key: str,
                  condition_task: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs'] = None,
                  dbt_task: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs'] = None,
                  depends_ons: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs']] = None,
@@ -30486,10 +30396,10 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
                  spark_python_task: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs'] = None,
                  spark_submit_task: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs'] = None,
                  sql_task: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs'] = None,
-                 task_key: Optional[str] = None,
                  timeout_seconds: Optional[int] = None,
                  webhook_notifications: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs'] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -30536,8 +30446,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if sql_task is not None:
             pulumi.set(__self__, "sql_task", sql_task)
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if webhook_notifications is not None:
@@ -30551,6 +30459,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
     @retry_on_timeout.setter
     def retry_on_timeout(self, value: bool):
         pulumi.set(self, "retry_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="taskKey")
+    def task_key(self) -> str:
+        return pulumi.get(self, "task_key")
+
+    @task_key.setter
+    def task_key(self, value: str):
+        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -30758,15 +30675,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
     @sql_task.setter
     def sql_task(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs']):
         pulumi.set(self, "sql_task", value)
-
-    @property
-    @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[str]:
-        return pulumi.get(self, "task_key")
-
-    @task_key.setter
-    def task_key(self, value: Optional[str]):
-        pulumi.set(self, "task_key", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -31025,41 +30933,38 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[str] = None,
-                 op: Optional[str] = None,
-                 value: Optional[int] = None):
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 metric: str,
+                 op: str,
+                 value: int):
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[str]:
+    def metric(self) -> str:
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[str]):
+    def metric(self, value: str):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[str]:
+    def op(self) -> str:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[str]):
+    def op(self, value: str):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[int]:
+    def value(self) -> int:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[int]):
+    def value(self, value: int):
         pulumi.set(self, "value", value)
 
 
@@ -32730,12 +32635,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
     def __init__(__self__, *,
+                 warehouse_id: str,
                  alert: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs'] = None,
                  dashboard: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs'] = None,
                  parameters: Optional[Mapping[str, Any]] = None,
-                 query: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs'] = None,
-                 warehouse_id: Optional[str] = None):
+                 query: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs'] = None):
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
@@ -32746,8 +32652,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
             pulumi.set(__self__, "query", query)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> str:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: str):
+        pulumi.set(self, "warehouse_id", value)
 
     @property
     @pulumi.getter
@@ -32793,15 +32706,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
     @query.setter
     def query(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs']):
         pulumi.set(self, "query", value)
-
-    @property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[str]:
-        return pulumi.get(self, "warehouse_id")
-
-    @warehouse_id.setter
-    def warehouse_id(self, value: Optional[str]):
-        pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
@@ -33157,41 +33061,38 @@ class GetJobJobSettingsSettingsTaskHealthArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskHealthRuleArgs:
     def __init__(__self__, *,
-                 metric: Optional[str] = None,
-                 op: Optional[str] = None,
-                 value: Optional[int] = None):
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 metric: str,
+                 op: str,
+                 value: int):
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[str]:
+    def metric(self) -> str:
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[str]):
+    def metric(self, value: str):
         pulumi.set(self, "metric", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[str]:
+    def op(self) -> str:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[str]):
+    def op(self, value: str):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[int]:
+    def value(self) -> int:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[int]):
+    def value(self, value: int):
         pulumi.set(self, "value", value)
 
 
@@ -34862,12 +34763,13 @@ class GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskArgs:
     def __init__(__self__, *,
+                 warehouse_id: str,
                  alert: Optional['GetJobJobSettingsSettingsTaskSqlTaskAlertArgs'] = None,
                  dashboard: Optional['GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsTaskSqlTaskFileArgs'] = None,
                  parameters: Optional[Mapping[str, Any]] = None,
-                 query: Optional['GetJobJobSettingsSettingsTaskSqlTaskQueryArgs'] = None,
-                 warehouse_id: Optional[str] = None):
+                 query: Optional['GetJobJobSettingsSettingsTaskSqlTaskQueryArgs'] = None):
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
@@ -34878,8 +34780,15 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
             pulumi.set(__self__, "query", query)
-        if warehouse_id is not None:
-            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> str:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: str):
+        pulumi.set(self, "warehouse_id", value)
 
     @property
     @pulumi.getter
@@ -34925,15 +34834,6 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
     @query.setter
     def query(self, value: Optional['GetJobJobSettingsSettingsTaskSqlTaskQueryArgs']):
         pulumi.set(self, "query", value)
-
-    @property
-    @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[str]:
-        return pulumi.get(self, "warehouse_id")
-
-    @warehouse_id.setter
-    def warehouse_id(self, value: Optional[str]):
-        pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type

@@ -94,8 +94,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("sqlTask")]
         public Input<Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskInputArgs>? SqlTask { get; set; }
 
-        [Input("taskKey")]
-        public Input<string>? TaskKey { get; set; }
+        [Input("taskKey", required: true)]
+        public Input<string> TaskKey { get; set; } = null!;
 
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

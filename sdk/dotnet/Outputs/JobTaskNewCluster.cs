@@ -15,7 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly bool? ApplyPolicyDefaultValues;
         public readonly Outputs.JobTaskNewClusterAutoscale? Autoscale;
-        public readonly int? AutoterminationMinutes;
         public readonly Outputs.JobTaskNewClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.JobTaskNewClusterAzureAttributes? AzureAttributes;
         public readonly string? ClusterId;
@@ -53,8 +52,6 @@ namespace Pulumi.Databricks.Outputs
             bool? applyPolicyDefaultValues,
 
             Outputs.JobTaskNewClusterAutoscale? autoscale,
-
-            int? autoterminationMinutes,
 
             Outputs.JobTaskNewClusterAwsAttributes? awsAttributes,
 
@@ -114,7 +111,6 @@ namespace Pulumi.Databricks.Outputs
         {
             ApplyPolicyDefaultValues = applyPolicyDefaultValues;
             Autoscale = autoscale;
-            AutoterminationMinutes = autoterminationMinutes;
             AwsAttributes = awsAttributes;
             AzureAttributes = azureAttributes;
             ClusterId = clusterId;

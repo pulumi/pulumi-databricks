@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskSparkPythonTaskResult? SparkPythonTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskResult? SparkSubmitTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskSqlTaskResult? SqlTask;
-        public readonly string? TaskKey;
+        public readonly string TaskKey;
         public readonly int? TimeoutSeconds;
         public readonly Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult? WebhookNotifications;
 
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskSqlTaskResult? sqlTask,
 
-            string? taskKey,
+            string taskKey,
 
             int? timeoutSeconds,
 

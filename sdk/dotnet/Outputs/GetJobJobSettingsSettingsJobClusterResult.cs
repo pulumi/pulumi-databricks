@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsJobClusterResult
     {
-        public readonly string? JobClusterKey;
-        public readonly Outputs.GetJobJobSettingsSettingsJobClusterNewClusterResult? NewCluster;
+        public readonly string JobClusterKey;
+        public readonly Outputs.GetJobJobSettingsSettingsJobClusterNewClusterResult NewCluster;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsJobClusterResult(
-            string? jobClusterKey,
+            string jobClusterKey,
 
-            Outputs.GetJobJobSettingsSettingsJobClusterNewClusterResult? newCluster)
+            Outputs.GetJobJobSettingsSettingsJobClusterNewClusterResult newCluster)
         {
             JobClusterKey = jobClusterKey;
             NewCluster = newCluster;

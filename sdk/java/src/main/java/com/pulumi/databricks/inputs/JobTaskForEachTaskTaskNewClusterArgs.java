@@ -45,13 +45,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.autoscale);
     }
 
-    @Import(name="autoterminationMinutes")
-    private @Nullable Output<Integer> autoterminationMinutes;
-
-    public Optional<Output<Integer>> autoterminationMinutes() {
-        return Optional.ofNullable(this.autoterminationMinutes);
-    }
-
     @Import(name="awsAttributes")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterAwsAttributesArgs> awsAttributes;
 
@@ -261,7 +254,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
     private JobTaskForEachTaskTaskNewClusterArgs(JobTaskForEachTaskTaskNewClusterArgs $) {
         this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
-        this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
         this.azureAttributes = $.azureAttributes;
         this.clusterId = $.clusterId;
@@ -326,15 +318,6 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder autoscale(JobTaskForEachTaskTaskNewClusterAutoscaleArgs autoscale) {
             return autoscale(Output.of(autoscale));
-        }
-
-        public Builder autoterminationMinutes(@Nullable Output<Integer> autoterminationMinutes) {
-            $.autoterminationMinutes = autoterminationMinutes;
-            return this;
-        }
-
-        public Builder autoterminationMinutes(Integer autoterminationMinutes) {
-            return autoterminationMinutes(Output.of(autoterminationMinutes));
         }
 
         public Builder awsAttributes(@Nullable Output<JobTaskForEachTaskTaskNewClusterAwsAttributesArgs> awsAttributes) {

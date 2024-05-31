@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTask
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -55,11 +56,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask extends c
         return Optional.ofNullable(this.query);
     }
 
-    @Import(name="warehouseId")
-    private @Nullable String warehouseId;
+    @Import(name="warehouseId", required=true)
+    private String warehouseId;
 
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public String warehouseId() {
+        return this.warehouseId;
     }
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask() {}
@@ -116,12 +117,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask extends c
             return this;
         }
 
-        public Builder warehouseId(@Nullable String warehouseId) {
+        public Builder warehouseId(String warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask build() {
+            if ($.warehouseId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask", "warehouseId");
+            }
             return $;
         }
     }

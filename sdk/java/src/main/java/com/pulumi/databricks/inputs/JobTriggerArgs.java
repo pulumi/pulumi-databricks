@@ -55,17 +55,9 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.table);
     }
 
-    /**
-     * configuration block to define a trigger for Table Update events consisting of following attributes:
-     * 
-     */
     @Import(name="tableUpdate")
     private @Nullable Output<JobTriggerTableUpdateArgs> tableUpdate;
 
-    /**
-     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
-     * 
-     */
     public Optional<Output<JobTriggerTableUpdateArgs>> tableUpdate() {
         return Optional.ofNullable(this.tableUpdate);
     }
@@ -148,23 +140,11 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             return table(Output.of(table));
         }
 
-        /**
-         * @param tableUpdate configuration block to define a trigger for Table Update events consisting of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableUpdate(@Nullable Output<JobTriggerTableUpdateArgs> tableUpdate) {
             $.tableUpdate = tableUpdate;
             return this;
         }
 
-        /**
-         * @param tableUpdate configuration block to define a trigger for Table Update events consisting of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableUpdate(JobTriggerTableUpdateArgs tableUpdate) {
             return tableUpdate(Output.of(tableUpdate));
         }

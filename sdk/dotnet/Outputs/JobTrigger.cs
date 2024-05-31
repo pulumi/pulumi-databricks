@@ -22,9 +22,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? PauseStatus;
         public readonly Outputs.JobTriggerTable? Table;
-        /// <summary>
-        /// configuration block to define a trigger for Table Update events consisting of following attributes:
-        /// </summary>
         public readonly Outputs.JobTriggerTableUpdate? TableUpdate;
 
         [OutputConstructor]

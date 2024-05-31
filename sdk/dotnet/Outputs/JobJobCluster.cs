@@ -16,17 +16,17 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         /// </summary>
-        public readonly string? JobClusterKey;
+        public readonly string JobClusterKey;
         /// <summary>
         /// Same set of parameters as for databricks.Cluster resource.
         /// </summary>
-        public readonly Outputs.JobJobClusterNewCluster? NewCluster;
+        public readonly Outputs.JobJobClusterNewCluster NewCluster;
 
         [OutputConstructor]
         private JobJobCluster(
-            string? jobClusterKey,
+            string jobClusterKey,
 
-            Outputs.JobJobClusterNewCluster? newCluster)
+            Outputs.JobJobClusterNewCluster newCluster)
         {
             JobClusterKey = jobClusterKey;
             NewCluster = newCluster;

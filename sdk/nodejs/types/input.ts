@@ -1844,25 +1844,25 @@ export interface GetJobJobSettingsSettingsHealthArgs {
 }
 
 export interface GetJobJobSettingsSettingsHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsHealthRuleArgs {
-    metric?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    value?: pulumi.Input<number>;
+    metric: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    value: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsJobCluster {
-    jobClusterKey?: string;
-    newCluster?: inputs.GetJobJobSettingsSettingsJobClusterNewCluster;
+    jobClusterKey: string;
+    newCluster: inputs.GetJobJobSettingsSettingsJobClusterNewCluster;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterArgs {
-    jobClusterKey?: pulumi.Input<string>;
-    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterArgs>;
+    jobClusterKey: pulumi.Input<string>;
+    newCluster: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterArgs>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewCluster {
@@ -2707,7 +2707,7 @@ export interface GetJobJobSettingsSettingsTask {
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
     sparkSubmitTask?: inputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
     sqlTask?: inputs.GetJobJobSettingsSettingsTaskSqlTask;
-    taskKey?: string;
+    taskKey: string;
     timeoutSeconds?: number;
     webhookNotifications?: inputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
 }
@@ -2738,7 +2738,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs>;
     sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs>;
     sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs>;
-    taskKey?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
     timeoutSeconds?: pulumi.Input<number>;
     webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsArgs>;
 }
@@ -2838,7 +2838,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask;
     sparkSubmitTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask;
     sqlTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask;
-    taskKey?: string;
+    taskKey: string;
     timeoutSeconds?: number;
     webhookNotifications?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications;
 }
@@ -2868,7 +2868,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs>;
     sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs>;
     sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs>;
-    taskKey?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
     timeoutSeconds?: pulumi.Input<number>;
     webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs>;
 }
@@ -2940,15 +2940,15 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs {
-    metric?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    value?: pulumi.Input<number>;
+    metric: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    value: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
@@ -3415,7 +3415,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     file?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
@@ -3424,7 +3424,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs>;
     parameters?: pulumi.Input<{[key: string]: any}>;
     query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs>;
-    warehouseId?: pulumi.Input<string>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
@@ -3570,15 +3570,15 @@ export interface GetJobJobSettingsSettingsTaskHealthArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsTaskHealthRuleArgs {
-    metric?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    value?: pulumi.Input<number>;
+    metric: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    value: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibrary {
@@ -4045,7 +4045,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
     file?: inputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: inputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
@@ -4054,7 +4054,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs>;
     parameters?: pulumi.Input<{[key: string]: any}>;
     query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs>;
-    warehouseId?: pulumi.Input<string>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
@@ -5421,32 +5421,31 @@ export interface JobHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: pulumi.Input<string>;
+    op: pulumi.Input<string>;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: pulumi.Input<number>;
+    value: pulumi.Input<number>;
 }
 
 export interface JobJobCluster {
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      */
-    jobClusterKey?: pulumi.Input<string>;
+    jobClusterKey: pulumi.Input<string>;
     /**
      * Same set of parameters as for databricks.Cluster resource.
      */
-    newCluster?: pulumi.Input<inputs.JobJobClusterNewCluster>;
+    newCluster: pulumi.Input<inputs.JobJobClusterNewCluster>;
 }
 
 export interface JobJobClusterNewCluster {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale>;
-    autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
@@ -5673,7 +5672,6 @@ export interface JobLibraryPypi {
 export interface JobNewCluster {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobNewClusterAutoscale>;
-    autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
@@ -6109,7 +6107,7 @@ export interface JobTask {
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
      */
-    taskKey?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
@@ -6291,7 +6289,7 @@ export interface JobTaskForEachTaskTask {
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
      */
-    taskKey?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
@@ -6398,15 +6396,15 @@ export interface JobTaskForEachTaskTaskHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: pulumi.Input<string>;
+    op: pulumi.Input<string>;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: pulumi.Input<number>;
+    value: pulumi.Input<number>;
 }
 
 export interface JobTaskForEachTaskTaskLibrary {
@@ -6438,7 +6436,6 @@ export interface JobTaskForEachTaskTaskLibraryPypi {
 export interface JobTaskForEachTaskTaskNewCluster {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAutoscale>;
-    autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
@@ -6785,7 +6782,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlert {
@@ -6955,15 +6952,15 @@ export interface JobTaskHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: pulumi.Input<string>;
+    op: pulumi.Input<string>;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: pulumi.Input<number>;
+    value: pulumi.Input<number>;
 }
 
 export interface JobTaskLibrary {
@@ -6995,7 +6992,6 @@ export interface JobTaskLibraryPypi {
 export interface JobTaskNewCluster {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale>;
-    autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
@@ -7342,7 +7338,7 @@ export interface JobTaskSqlTask {
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskAlert {
@@ -7511,9 +7507,6 @@ export interface JobTrigger {
      */
     pauseStatus?: pulumi.Input<string>;
     table?: pulumi.Input<inputs.JobTriggerTable>;
-    /**
-     * configuration block to define a trigger for Table Update events consisting of following attributes:
-     */
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
 }
 
@@ -7540,21 +7533,9 @@ export interface JobTriggerTable {
 }
 
 export interface JobTriggerTableUpdate {
-    /**
-     * The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-     */
     condition?: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
-    /**
-     * A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-     */
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 

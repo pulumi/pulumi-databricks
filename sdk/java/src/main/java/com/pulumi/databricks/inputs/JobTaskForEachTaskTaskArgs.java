@@ -22,6 +22,7 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSqlTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskWebhookNotificationsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -323,16 +324,16 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    @Import(name="taskKey")
-    private @Nullable Output<String> taskKey;
+    @Import(name="taskKey", required=true)
+    private Output<String> taskKey;
 
     /**
      * @return string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    public Optional<Output<String>> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public Output<String> taskKey() {
+        return this.taskKey;
     }
 
     /**
@@ -828,7 +829,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder taskKey(@Nullable Output<String> taskKey) {
+        public Builder taskKey(Output<String> taskKey) {
             $.taskKey = taskKey;
             return this;
         }
@@ -887,6 +888,9 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         public JobTaskForEachTaskTaskArgs build() {
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskArgs", "taskKey");
+            }
             return $;
         }
     }

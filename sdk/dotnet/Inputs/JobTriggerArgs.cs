@@ -27,9 +27,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("table")]
         public Input<Inputs.JobTriggerTableArgs>? Table { get; set; }
 
-        /// <summary>
-        /// configuration block to define a trigger for Table Update events consisting of following attributes:
-        /// </summary>
         [Input("tableUpdate")]
         public Input<Inputs.JobTriggerTableUpdateArgs>? TableUpdate { get; set; }
 

@@ -1153,14 +1153,14 @@ export interface GetJobJobSettingsSettingsHealth {
 }
 
 export interface GetJobJobSettingsSettingsHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsJobCluster {
-    jobClusterKey?: string;
-    newCluster?: outputs.GetJobJobSettingsSettingsJobClusterNewCluster;
+    jobClusterKey: string;
+    newCluster: outputs.GetJobJobSettingsSettingsJobClusterNewCluster;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewCluster {
@@ -1597,7 +1597,7 @@ export interface GetJobJobSettingsSettingsTask {
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
     sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
     sqlTask?: outputs.GetJobJobSettingsSettingsTaskSqlTask;
-    taskKey?: string;
+    taskKey: string;
     timeoutSeconds?: number;
     webhookNotifications?: outputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
 }
@@ -1662,7 +1662,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask;
     sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask;
     sqlTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask;
-    taskKey?: string;
+    taskKey: string;
     timeoutSeconds?: number;
     webhookNotifications?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications;
 }
@@ -1701,9 +1701,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
@@ -1941,7 +1941,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     file?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
@@ -2016,9 +2016,9 @@ export interface GetJobJobSettingsSettingsTaskHealth {
 }
 
 export interface GetJobJobSettingsSettingsTaskHealthRule {
-    metric?: string;
-    op?: string;
-    value?: number;
+    metric: string;
+    op: string;
+    value: number;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibrary {
@@ -2256,7 +2256,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
     file?: outputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
@@ -3073,32 +3073,31 @@ export interface JobHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: string;
+    metric: string;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: string;
+    op: string;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: number;
+    value: number;
 }
 
 export interface JobJobCluster {
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      */
-    jobClusterKey?: string;
+    jobClusterKey: string;
     /**
      * Same set of parameters as for databricks.Cluster resource.
      */
-    newCluster?: outputs.JobJobClusterNewCluster;
+    newCluster: outputs.JobJobClusterNewCluster;
 }
 
 export interface JobJobClusterNewCluster {
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobJobClusterNewClusterAutoscale;
-    autoterminationMinutes?: number;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
     azureAttributes?: outputs.JobJobClusterNewClusterAzureAttributes;
     clusterId?: string;
@@ -3325,7 +3324,6 @@ export interface JobLibraryPypi {
 export interface JobNewCluster {
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobNewClusterAutoscale;
-    autoterminationMinutes?: number;
     awsAttributes?: outputs.JobNewClusterAwsAttributes;
     azureAttributes?: outputs.JobNewClusterAzureAttributes;
     clusterId?: string;
@@ -3761,7 +3759,7 @@ export interface JobTask {
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
      */
-    taskKey?: string;
+    taskKey: string;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
@@ -3943,7 +3941,7 @@ export interface JobTaskForEachTaskTask {
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
      */
-    taskKey?: string;
+    taskKey: string;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
@@ -4050,15 +4048,15 @@ export interface JobTaskForEachTaskTaskHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: string;
+    metric: string;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: string;
+    op: string;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: number;
+    value: number;
 }
 
 export interface JobTaskForEachTaskTaskLibrary {
@@ -4090,7 +4088,6 @@ export interface JobTaskForEachTaskTaskLibraryPypi {
 export interface JobTaskForEachTaskTaskNewCluster {
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobTaskForEachTaskTaskNewClusterAutoscale;
-    autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes;
     clusterId?: string;
@@ -4437,7 +4434,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlert {
@@ -4607,15 +4604,15 @@ export interface JobTaskHealthRule {
     /**
      * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      */
-    metric?: string;
+    metric: string;
     /**
      * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
-    op?: string;
+    op: string;
     /**
      * integer value used to compare to the given metric.
      */
-    value?: number;
+    value: number;
 }
 
 export interface JobTaskLibrary {
@@ -4647,7 +4644,6 @@ export interface JobTaskLibraryPypi {
 export interface JobTaskNewCluster {
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobTaskNewClusterAutoscale;
-    autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;
     azureAttributes?: outputs.JobTaskNewClusterAzureAttributes;
     clusterId?: string;
@@ -4994,7 +4990,7 @@ export interface JobTaskSqlTask {
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
 export interface JobTaskSqlTaskAlert {
@@ -5163,9 +5159,6 @@ export interface JobTrigger {
      */
     pauseStatus?: string;
     table?: outputs.JobTriggerTable;
-    /**
-     * configuration block to define a trigger for Table Update events consisting of following attributes:
-     */
     tableUpdate?: outputs.JobTriggerTableUpdate;
 }
 
@@ -5192,21 +5185,9 @@ export interface JobTriggerTable {
 }
 
 export interface JobTriggerTableUpdate {
-    /**
-     * The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
-     */
     condition?: string;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: number;
-    /**
-     * A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
-     */
     tableNames: string[];
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: number;
 }
 
@@ -5531,11 +5512,11 @@ export interface ModelServingConfigServedEntity {
     /**
      * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
      */
-    workloadSize?: string;
+    workloadSize: string;
     /**
      * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
      */
-    workloadType?: string;
+    workloadType: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModel {

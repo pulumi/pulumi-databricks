@@ -13,17 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleResult
     {
-        public readonly string? Metric;
-        public readonly string? Op;
-        public readonly int? Value;
+        public readonly string Metric;
+        public readonly string Op;
+        public readonly int Value;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleResult(
-            string? metric,
+            string metric,
 
-            string? op,
+            string op,
 
-            int? value)
+            int value)
         {
             Metric = metric;
             Op = op;

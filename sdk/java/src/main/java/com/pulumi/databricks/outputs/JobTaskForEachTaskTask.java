@@ -21,6 +21,7 @@ import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskSparkPythonTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskSparkSubmitTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskSqlTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotifications;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -115,7 +116,7 @@ public final class JobTaskForEachTaskTask {
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    private @Nullable String taskKey;
+    private String taskKey;
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      * 
@@ -262,8 +263,8 @@ public final class JobTaskForEachTaskTask {
      * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public String taskKey() {
+        return this.taskKey;
     }
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -314,7 +315,7 @@ public final class JobTaskForEachTaskTask {
         private @Nullable JobTaskForEachTaskTaskSparkPythonTask sparkPythonTask;
         private @Nullable JobTaskForEachTaskTaskSparkSubmitTask sparkSubmitTask;
         private @Nullable JobTaskForEachTaskTaskSqlTask sqlTask;
-        private @Nullable String taskKey;
+        private String taskKey;
         private @Nullable Integer timeoutSeconds;
         private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
         public Builder() {}
@@ -507,8 +508,10 @@ public final class JobTaskForEachTaskTask {
             return this;
         }
         @CustomType.Setter
-        public Builder taskKey(@Nullable String taskKey) {
-
+        public Builder taskKey(String taskKey) {
+            if (taskKey == null) {
+              throw new MissingRequiredPropertyException("JobTaskForEachTaskTask", "taskKey");
+            }
             this.taskKey = taskKey;
             return this;
         }

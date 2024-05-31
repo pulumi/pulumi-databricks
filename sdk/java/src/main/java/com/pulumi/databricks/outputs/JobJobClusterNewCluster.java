@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
 public final class JobJobClusterNewCluster {
     private @Nullable Boolean applyPolicyDefaultValues;
     private @Nullable JobJobClusterNewClusterAutoscale autoscale;
-    private @Nullable Integer autoterminationMinutes;
     private @Nullable JobJobClusterNewClusterAwsAttributes awsAttributes;
     private @Nullable JobJobClusterNewClusterAzureAttributes azureAttributes;
     private @Nullable String clusterId;
@@ -69,9 +68,6 @@ public final class JobJobClusterNewCluster {
     }
     public Optional<JobJobClusterNewClusterAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
-    }
-    public Optional<Integer> autoterminationMinutes() {
-        return Optional.ofNullable(this.autoterminationMinutes);
     }
     public Optional<JobJobClusterNewClusterAwsAttributes> awsAttributes() {
         return Optional.ofNullable(this.awsAttributes);
@@ -173,7 +169,6 @@ public final class JobJobClusterNewCluster {
     public static final class Builder {
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobJobClusterNewClusterAutoscale autoscale;
-        private @Nullable Integer autoterminationMinutes;
         private @Nullable JobJobClusterNewClusterAwsAttributes awsAttributes;
         private @Nullable JobJobClusterNewClusterAzureAttributes azureAttributes;
         private @Nullable String clusterId;
@@ -207,7 +202,6 @@ public final class JobJobClusterNewCluster {
     	      Objects.requireNonNull(defaults);
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
-    	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
     	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterId = defaults.clusterId;
@@ -248,12 +242,6 @@ public final class JobJobClusterNewCluster {
         public Builder autoscale(@Nullable JobJobClusterNewClusterAutoscale autoscale) {
 
             this.autoscale = autoscale;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
-
-            this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
         @CustomType.Setter
@@ -442,7 +430,6 @@ public final class JobJobClusterNewCluster {
             final var _resultValue = new JobJobClusterNewCluster();
             _resultValue.applyPolicyDefaultValues = applyPolicyDefaultValues;
             _resultValue.autoscale = autoscale;
-            _resultValue.autoterminationMinutes = autoterminationMinutes;
             _resultValue.awsAttributes = awsAttributes;
             _resultValue.azureAttributes = azureAttributes;
             _resultValue.clusterId = clusterId;

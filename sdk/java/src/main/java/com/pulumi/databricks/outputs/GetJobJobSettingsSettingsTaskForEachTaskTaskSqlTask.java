@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTas
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -22,7 +23,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile file;
     private @Nullable Map<String,Object> parameters;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery query;
-    private @Nullable String warehouseId;
+    private String warehouseId;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask() {}
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert> alert() {
@@ -40,8 +41,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery> query() {
         return Optional.ofNullable(this.query);
     }
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public String warehouseId() {
+        return this.warehouseId;
     }
 
     public static Builder builder() {
@@ -58,7 +59,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile file;
         private @Nullable Map<String,Object> parameters;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery query;
-        private @Nullable String warehouseId;
+        private String warehouseId;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -101,8 +102,10 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
             return this;
         }
         @CustomType.Setter
-        public Builder warehouseId(@Nullable String warehouseId) {
-
+        public Builder warehouseId(String warehouseId) {
+            if (warehouseId == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask", "warehouseId");
+            }
             this.warehouseId = warehouseId;
             return this;
         }
