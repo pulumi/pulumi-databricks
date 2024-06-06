@@ -98,6 +98,27 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Python requirements files
+    /// 
+    /// Installing Python libraries listed in the `requirements.txt` file.  Only Workspace paths and Unity Catalog Volumes paths are supported.  Requires a cluster with DBR 15.0+.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var libraries = new Databricks.Library("libraries", new()
+    ///     {
+    ///         ClusterId = @this.Id,
+    ///         Requirements = "/Workspace/path/to/requirements.txt",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## R CRan
     /// 
     /// Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.

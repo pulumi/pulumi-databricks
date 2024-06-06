@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
+ * $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
  * ```
  */
 export class SystemSchema extends pulumi.CustomResource {
@@ -60,9 +60,13 @@ export class SystemSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === SystemSchema.__pulumiType;
     }
 
+    /**
+     * the full name of the system schema, in form of `system.<schema>`.
+     */
+    public /*out*/ readonly fullName!: pulumi.Output<string>;
     public /*out*/ readonly metastoreId!: pulumi.Output<string>;
     /**
-     * Full name of the system schema.
+     * name of the system schema.
      */
     public readonly schema!: pulumi.Output<string | undefined>;
     /**
@@ -83,6 +87,7 @@ export class SystemSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemSchemaState | undefined;
+            resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -90,6 +95,7 @@ export class SystemSchema extends pulumi.CustomResource {
             const args = argsOrState as SystemSchemaArgs | undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -101,9 +107,13 @@ export class SystemSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SystemSchema resources.
  */
 export interface SystemSchemaState {
+    /**
+     * the full name of the system schema, in form of `system.<schema>`.
+     */
+    fullName?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Full name of the system schema.
+     * name of the system schema.
      */
     schema?: pulumi.Input<string>;
     /**
@@ -117,7 +127,7 @@ export interface SystemSchemaState {
  */
 export interface SystemSchemaArgs {
     /**
-     * Full name of the system schema.
+     * name of the system schema.
      */
     schema?: pulumi.Input<string>;
     /**

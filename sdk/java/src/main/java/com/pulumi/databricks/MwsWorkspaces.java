@@ -477,6 +477,20 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gcpManagedNetworkConfig);
     }
     /**
+     * (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
+    @Export(name="gcpWorkspaceSa", refs={String.class}, tree="[0]")
+    private Output<String> gcpWorkspaceSa;
+
+    /**
+     * @return (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
+    public Output<String> gcpWorkspaceSa() {
+        return this.gcpWorkspaceSa;
+    }
+    /**
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      */

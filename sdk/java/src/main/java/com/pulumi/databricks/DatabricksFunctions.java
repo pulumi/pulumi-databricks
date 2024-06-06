@@ -12,6 +12,8 @@ import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
+import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetCatalogArgs;
@@ -101,6 +103,7 @@ import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
+import com.pulumi.databricks.outputs.GetAwsUnityCatalogAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsUnityCatalogPolicyResult;
 import com.pulumi.databricks.outputs.GetCatalogResult;
 import com.pulumi.databricks.outputs.GetCatalogsResult;
@@ -1059,9 +1062,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
      * 
      * ## Example Usage
      * 
@@ -1075,8 +1078,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
      * import com.pulumi.aws.iam.Policy;
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
@@ -1097,39 +1099,14 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
-     *             .roleName("databricks-role")
+     *             .roleName(String.format("%s-uc-access", prefix))
      *             .kmsName("databricks-kms")
      *             .build());
      * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
-     *                         .type("AWS")
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("StringEquals")
-     *                         .variable("sts:ExternalId")
-     *                         .values(databricksAccountId)
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid("ExplicitSelfRoleAssumption")
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type("AWS")
-     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("ArnLike")
-     *                         .variable("aws:PrincipalArn")
-     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
-     *                         .build())
-     *                     .build())
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
      *             .build());
      * 
      *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
@@ -1139,7 +1116,283 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+     *             .assumeRolePolicy(passroleForUc.json())
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAwsUnityCatalogAssumeRolePolicyResult> getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs args) {
+        return getAwsUnityCatalogAssumeRolePolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+     * 
+     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName("databricks-bucket")
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .kmsName("databricks-kms")
+     *             .build());
+     * 
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.json())
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAwsUnityCatalogAssumeRolePolicyResult> getAwsUnityCatalogAssumeRolePolicyPlain(GetAwsUnityCatalogAssumeRolePolicyPlainArgs args) {
+        return getAwsUnityCatalogAssumeRolePolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+     * 
+     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName("databricks-bucket")
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .kmsName("databricks-kms")
+     *             .build());
+     * 
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.json())
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAwsUnityCatalogAssumeRolePolicyResult> getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", TypeShape.of(GetAwsUnityCatalogAssumeRolePolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+     * 
+     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName("databricks-bucket")
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .kmsName("databricks-kms")
+     *             .build());
+     * 
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.json())
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAwsUnityCatalogAssumeRolePolicyResult> getAwsUnityCatalogAssumeRolePolicyPlain(GetAwsUnityCatalogAssumeRolePolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", TypeShape.of(GetAwsUnityCatalogAssumeRolePolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+     * 
+     * This data source constructs necessary AWS Unity Catalog policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName("databricks-bucket")
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .kmsName("databricks-kms")
+     *             .build());
+     * 
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *             .name(String.format("%s-uc-access", prefix))
+     *             .assumeRolePolicy(passroleForUc.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1154,9 +1407,9 @@ public final class DatabricksFunctions {
         return getAwsUnityCatalogPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * This data source constructs necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1170,8 +1423,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
      * import com.pulumi.aws.iam.Policy;
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
@@ -1192,39 +1444,14 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
-     *             .roleName("databricks-role")
+     *             .roleName(String.format("%s-uc-access", prefix))
      *             .kmsName("databricks-kms")
      *             .build());
      * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
-     *                         .type("AWS")
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("StringEquals")
-     *                         .variable("sts:ExternalId")
-     *                         .values(databricksAccountId)
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid("ExplicitSelfRoleAssumption")
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type("AWS")
-     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("ArnLike")
-     *                         .variable("aws:PrincipalArn")
-     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
-     *                         .build())
-     *                     .build())
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
      *             .build());
      * 
      *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
@@ -1234,7 +1461,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+     *             .assumeRolePolicy(passroleForUc.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1249,9 +1476,9 @@ public final class DatabricksFunctions {
         return getAwsUnityCatalogPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * This data source constructs necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1265,8 +1492,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
      * import com.pulumi.aws.iam.Policy;
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
@@ -1287,39 +1513,14 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
-     *             .roleName("databricks-role")
+     *             .roleName(String.format("%s-uc-access", prefix))
      *             .kmsName("databricks-kms")
      *             .build());
      * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
-     *                         .type("AWS")
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("StringEquals")
-     *                         .variable("sts:ExternalId")
-     *                         .values(databricksAccountId)
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid("ExplicitSelfRoleAssumption")
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type("AWS")
-     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("ArnLike")
-     *                         .variable("aws:PrincipalArn")
-     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
-     *                         .build())
-     *                     .build())
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
      *             .build());
      * 
      *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
@@ -1329,7 +1530,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+     *             .assumeRolePolicy(passroleForUc.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1344,9 +1545,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * This data source constructs necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1360,8 +1561,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
      * import com.pulumi.aws.iam.Policy;
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
@@ -1382,39 +1582,14 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
-     *             .roleName("databricks-role")
+     *             .roleName(String.format("%s-uc-access", prefix))
      *             .kmsName("databricks-kms")
      *             .build());
      * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers("arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL")
-     *                         .type("AWS")
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("StringEquals")
-     *                         .variable("sts:ExternalId")
-     *                         .values(databricksAccountId)
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid("ExplicitSelfRoleAssumption")
-     *                     .effect("Allow")
-     *                     .actions("sts:AssumeRole")
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type("AWS")
-     *                         .identifiers(String.format("arn:aws:iam::%s:root", awsAccountId))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test("ArnLike")
-     *                         .variable("aws:PrincipalArn")
-     *                         .values(String.format("arn:aws:iam::%s:role/%s-uc-access", awsAccountId,prefix))
-     *                         .build())
-     *                     .build())
+     *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .roleName(String.format("%s-uc-access", prefix))
+     *             .externalId("12345")
      *             .build());
      * 
      *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
@@ -1424,7 +1599,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+     *             .assumeRolePolicy(passroleForUc.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 

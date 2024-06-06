@@ -427,6 +427,7 @@ class _MwsWorkspacesState:
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
                  gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
+                 gcp_workspace_sa: Optional[pulumi.Input[str]] = None,
                  gke_config: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']] = None,
                  is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -450,6 +451,7 @@ class _MwsWorkspacesState:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
@@ -489,6 +491,8 @@ class _MwsWorkspacesState:
             pulumi.set(__self__, "external_customer_info", external_customer_info)
         if gcp_managed_network_config is not None:
             pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if gcp_workspace_sa is not None:
+            pulumi.set(__self__, "gcp_workspace_sa", gcp_workspace_sa)
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -639,6 +643,18 @@ class _MwsWorkspacesState:
     @gcp_managed_network_config.setter
     def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
         pulumi.set(self, "gcp_managed_network_config", value)
+
+    @property
+    @pulumi.getter(name="gcpWorkspaceSa")
+    def gcp_workspace_sa(self) -> Optional[pulumi.Input[str]]:
+        """
+        (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+        """
+        return pulumi.get(self, "gcp_workspace_sa")
+
+    @gcp_workspace_sa.setter
+    def gcp_workspace_sa(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_workspace_sa", value)
 
     @property
     @pulumi.getter(name="gkeConfig")
@@ -1315,6 +1331,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["workspace_status"] = workspace_status
             __props__.__dict__["workspace_status_message"] = workspace_status_message
             __props__.__dict__["workspace_url"] = workspace_url
+            __props__.__dict__["gcp_workspace_sa"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsWorkspaces, __self__).__init__(
@@ -1338,6 +1355,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             deployment_name: Optional[pulumi.Input[str]] = None,
             external_customer_info: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesExternalCustomerInfoArgs']]] = None,
             gcp_managed_network_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGcpManagedNetworkConfigArgs']]] = None,
+            gcp_workspace_sa: Optional[pulumi.Input[str]] = None,
             gke_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']]] = None,
             is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1366,6 +1384,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
@@ -1395,6 +1414,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         __props__.__dict__["deployment_name"] = deployment_name
         __props__.__dict__["external_customer_info"] = external_customer_info
         __props__.__dict__["gcp_managed_network_config"] = gcp_managed_network_config
+        __props__.__dict__["gcp_workspace_sa"] = gcp_workspace_sa
         __props__.__dict__["gke_config"] = gke_config
         __props__.__dict__["is_no_public_ip_enabled"] = is_no_public_ip_enabled
         __props__.__dict__["location"] = location
@@ -1487,6 +1507,14 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="gcpManagedNetworkConfig")
     def gcp_managed_network_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGcpManagedNetworkConfig']]:
         return pulumi.get(self, "gcp_managed_network_config")
+
+    @property
+    @pulumi.getter(name="gcpWorkspaceSa")
+    def gcp_workspace_sa(self) -> pulumi.Output[str]:
+        """
+        (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+        """
+        return pulumi.get(self, "gcp_workspace_sa")
 
     @property
     @pulumi.getter(name="gkeConfig")

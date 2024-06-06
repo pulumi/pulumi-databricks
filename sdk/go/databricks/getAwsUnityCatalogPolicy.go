@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+// > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 //
-// This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+// This data source constructs necessary AWS Unity Catalog policy for you.
 //
 // ## Example Usage
 //
@@ -29,91 +29,47 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// this, err := databricks.GetAwsUnityCatalogPolicy(ctx, &databricks.GetAwsUnityCatalogPolicyArgs{
-// AwsAccountId: awsAccountId,
-// BucketName: "databricks-bucket",
-// RoleName: "databricks-role",
-// KmsName: pulumi.StringRef("databricks-kms"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// passroleForUc, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// Statements: []iam.GetPolicyDocumentStatement{
-// {
-// Effect: pulumi.StringRef("Allow"),
-// Actions: []string{
-// "sts:AssumeRole",
-// },
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Identifiers: []string{
-// "arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL",
-// },
-// Type: "AWS",
-// },
-// },
-// Conditions: []iam.GetPolicyDocumentStatementCondition{
-// {
-// Test: "StringEquals",
-// Variable: "sts:ExternalId",
-// Values: interface{}{
-// databricksAccountId,
-// },
-// },
-// },
-// },
-// {
-// Sid: pulumi.StringRef("ExplicitSelfRoleAssumption"),
-// Effect: pulumi.StringRef("Allow"),
-// Actions: []string{
-// "sts:AssumeRole",
-// },
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: []string{
-// fmt.Sprintf("arn:aws:iam::%v:root", awsAccountId),
-// },
-// },
-// },
-// Conditions: []iam.GetPolicyDocumentStatementCondition{
-// {
-// Test: "ArnLike",
-// Variable: "aws:PrincipalArn",
-// Values: []string{
-// fmt.Sprintf("arn:aws:iam::%v:role/%v-uc-access", awsAccountId, prefix),
-// },
-// },
-// },
-// },
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
-// Name: pulumi.String(fmt.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix)),
-// Policy: pulumi.String(this.Json),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
-// Name: pulumi.String(fmt.Sprintf("%v-uc-access", prefix)),
-// AssumeRolePolicy: pulumi.String(passroleForUc.Json),
-// ManagedPolicyArns: pulumi.StringArray{
-// unityMetastore.Arn,
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetAwsUnityCatalogPolicy(ctx, &databricks.GetAwsUnityCatalogPolicyArgs{
+//				AwsAccountId: awsAccountId,
+//				BucketName:   "databricks-bucket",
+//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
+//				KmsName:      pulumi.StringRef("databricks-kms"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetAwsUnityCatalogAssumeRolePolicy(ctx, &databricks.GetAwsUnityCatalogAssumeRolePolicyArgs{
+//				AwsAccountId: awsAccountId,
+//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
+//				ExternalId:   "12345",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
+//				Name:   pulumi.String(fmt.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix)),
+//				Policy: pulumi.String(this.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
+//				Name:             pulumi.String(fmt.Sprintf("%v-uc-access", prefix)),
+//				AssumeRolePolicy: pulumi.Any(passroleForUc.Json),
+//				ManagedPolicyArns: pulumi.StringArray{
+//					unityMetastore.Arn,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAwsUnityCatalogPolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsUnityCatalogPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

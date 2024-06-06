@@ -172,6 +172,21 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.skipValidation);
     }
 
+    /**
+     * Unique ID of storage credential.
+     * 
+     */
+    @Import(name="storageCredentialId")
+    private @Nullable Output<String> storageCredentialId;
+
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
+    public Optional<Output<String>> storageCredentialId() {
+        return Optional.ofNullable(this.storageCredentialId);
+    }
+
     private StorageCredentialState() {}
 
     private StorageCredentialState(StorageCredentialState $) {
@@ -188,6 +203,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.owner = $.owner;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
+        this.storageCredentialId = $.storageCredentialId;
     }
 
     public static Builder builder() {
@@ -411,6 +427,27 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
          */
         public Builder skipValidation(Boolean skipValidation) {
             return skipValidation(Output.of(skipValidation));
+        }
+
+        /**
+         * @param storageCredentialId Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageCredentialId(@Nullable Output<String> storageCredentialId) {
+            $.storageCredentialId = storageCredentialId;
+            return this;
+        }
+
+        /**
+         * @param storageCredentialId Unique ID of storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageCredentialId(String storageCredentialId) {
+            return storageCredentialId(Output.of(storageCredentialId));
         }
 
         public StorageCredentialState build() {

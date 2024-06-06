@@ -18,7 +18,7 @@ class SystemSchemaArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SystemSchema resource.
-        :param pulumi.Input[str] schema: Full name of the system schema.
+        :param pulumi.Input[str] schema: name of the system schema.
         :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         if schema is not None:
@@ -30,7 +30,7 @@ class SystemSchemaArgs:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of the system schema.
+        name of the system schema.
         """
         return pulumi.get(self, "schema")
 
@@ -54,20 +54,36 @@ class SystemSchemaArgs:
 @pulumi.input_type
 class _SystemSchemaState:
     def __init__(__self__, *,
+                 full_name: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SystemSchema resources.
-        :param pulumi.Input[str] schema: Full name of the system schema.
+        :param pulumi.Input[str] full_name: the full name of the system schema, in form of `system.<schema>`.
+        :param pulumi.Input[str] schema: name of the system schema.
         :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        the full name of the system schema, in form of `system.<schema>`.
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "full_name", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -82,7 +98,7 @@ class _SystemSchemaState:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of the system schema.
+        name of the system schema.
         """
         return pulumi.get(self, "schema")
 
@@ -136,12 +152,12 @@ class SystemSchema(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
+        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] schema: Full name of the system schema.
+        :param pulumi.Input[str] schema: name of the system schema.
         :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         ...
@@ -175,7 +191,7 @@ class SystemSchema(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
+        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,6 +222,7 @@ class SystemSchema(pulumi.CustomResource):
 
             __props__.__dict__["schema"] = schema
             __props__.__dict__["state"] = state
+            __props__.__dict__["full_name"] = None
             __props__.__dict__["metastore_id"] = None
         super(SystemSchema, __self__).__init__(
             'databricks:index/systemSchema:SystemSchema',
@@ -217,6 +234,7 @@ class SystemSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            full_name: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'SystemSchema':
@@ -227,17 +245,27 @@ class SystemSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] schema: Full name of the system schema.
+        :param pulumi.Input[str] full_name: the full name of the system schema, in form of `system.<schema>`.
+        :param pulumi.Input[str] schema: name of the system schema.
         :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SystemSchemaState.__new__(_SystemSchemaState)
 
+        __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["schema"] = schema
         __props__.__dict__["state"] = state
         return SystemSchema(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Output[str]:
+        """
+        the full name of the system schema, in form of `system.<schema>`.
+        """
+        return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -248,7 +276,7 @@ class SystemSchema(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
         """
-        Full name of the system schema.
+        name of the system schema.
         """
         return pulumi.get(self, "schema")
 

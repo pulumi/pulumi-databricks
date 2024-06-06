@@ -183,6 +183,8 @@ type StorageCredential struct {
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	// Unique ID of storage credential.
+	StorageCredentialId pulumi.StringOutput `pulumi:"storageCredentialId"`
 }
 
 // NewStorageCredential registers a new resource with the given unique name, arguments, and options.
@@ -237,6 +239,8 @@ type storageCredentialState struct {
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
 	SkipValidation *bool `pulumi:"skipValidation"`
+	// Unique ID of storage credential.
+	StorageCredentialId *string `pulumi:"storageCredentialId"`
 }
 
 type StorageCredentialState struct {
@@ -262,6 +266,8 @@ type StorageCredentialState struct {
 	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the storage credential.
 	SkipValidation pulumi.BoolPtrInput
+	// Unique ID of storage credential.
+	StorageCredentialId pulumi.StringPtrInput
 }
 
 func (StorageCredentialState) ElementType() reflect.Type {
@@ -473,6 +479,11 @@ func (o StorageCredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
 // Suppress validation errors if any & force save the storage credential.
 func (o StorageCredentialOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Unique ID of storage credential.
+func (o StorageCredentialOutput) StorageCredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.StorageCredentialId }).(pulumi.StringOutput)
 }
 
 type StorageCredentialArrayOutput struct{ *pulumi.OutputState }

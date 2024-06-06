@@ -270,6 +270,10 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
     public readonly gcpManagedNetworkConfig!: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
+     * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+     */
+    public /*out*/ readonly gcpWorkspaceSa!: pulumi.Output<string>;
+    /**
      * A block that specifies GKE configuration for the Databricks workspace:
      */
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
@@ -348,6 +352,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["deploymentName"] = state ? state.deploymentName : undefined;
             resourceInputs["externalCustomerInfo"] = state ? state.externalCustomerInfo : undefined;
             resourceInputs["gcpManagedNetworkConfig"] = state ? state.gcpManagedNetworkConfig : undefined;
+            resourceInputs["gcpWorkspaceSa"] = state ? state.gcpWorkspaceSa : undefined;
             resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
             resourceInputs["isNoPublicIpEnabled"] = state ? state.isNoPublicIpEnabled : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -397,6 +402,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["workspaceStatus"] = args ? args.workspaceStatus : undefined;
             resourceInputs["workspaceStatusMessage"] = args ? args.workspaceStatusMessage : undefined;
             resourceInputs["workspaceUrl"] = args ? args.workspaceUrl : undefined;
+            resourceInputs["gcpWorkspaceSa"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountId"] };
@@ -441,6 +447,10 @@ export interface MwsWorkspacesState {
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
+    /**
+     * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+     */
+    gcpWorkspaceSa?: pulumi.Input<string>;
     /**
      * A block that specifies GKE configuration for the Databricks workspace:
      */

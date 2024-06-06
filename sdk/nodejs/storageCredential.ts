@@ -153,6 +153,10 @@ export class StorageCredential extends pulumi.CustomResource {
      * Suppress validation errors if any & force save the storage credential.
      */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    /**
+     * Unique ID of storage credential.
+     */
+    public /*out*/ readonly storageCredentialId!: pulumi.Output<string>;
 
     /**
      * Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -180,6 +184,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
+            resourceInputs["storageCredentialId"] = state ? state.storageCredentialId : undefined;
         } else {
             const args = argsOrState as StorageCredentialArgs | undefined;
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
@@ -195,6 +200,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
+            resourceInputs["storageCredentialId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageCredential.__pulumiType, name, resourceInputs, opts);
@@ -241,6 +247,10 @@ export interface StorageCredentialState {
      * Suppress validation errors if any & force save the storage credential.
      */
     skipValidation?: pulumi.Input<boolean>;
+    /**
+     * Unique ID of storage credential.
+     */
+    storageCredentialId?: pulumi.Input<string>;
 }
 
 /**

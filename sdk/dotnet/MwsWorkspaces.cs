@@ -353,6 +353,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsWorkspacesGcpManagedNetworkConfig?> GcpManagedNetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;@prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+        /// </summary>
+        [Output("gcpWorkspaceSa")]
+        public Output<string> GcpWorkspaceSa { get; private set; } = null!;
+
+        /// <summary>
         /// A block that specifies GKE configuration for the Databricks workspace:
         /// </summary>
         [Output("gkeConfig")]
@@ -711,6 +717,12 @@ namespace Pulumi.Databricks
 
         [Input("gcpManagedNetworkConfig")]
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigGetArgs>? GcpManagedNetworkConfig { get; set; }
+
+        /// <summary>
+        /// (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;@prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+        /// </summary>
+        [Input("gcpWorkspaceSa")]
+        public Input<string>? GcpWorkspaceSa { get; set; }
 
         /// <summary>
         /// A block that specifies GKE configuration for the Databricks workspace:

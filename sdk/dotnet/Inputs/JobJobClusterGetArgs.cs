@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> JobClusterKey { get; set; } = null!;
 
         /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
+        /// Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
         /// </summary>
         [Input("newCluster", required: true)]
         public Input<Inputs.JobJobClusterNewClusterGetArgs> NewCluster { get; set; } = null!;

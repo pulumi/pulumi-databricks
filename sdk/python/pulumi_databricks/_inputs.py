@@ -3704,7 +3704,7 @@ class JobJobClusterArgs:
                  new_cluster: pulumi.Input['JobJobClusterNewClusterArgs']):
         """
         :param pulumi.Input[str] job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        :param pulumi.Input['JobJobClusterNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
+        :param pulumi.Input['JobJobClusterNewClusterArgs'] new_cluster: Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
         """
         pulumi.set(__self__, "job_cluster_key", job_cluster_key)
         pulumi.set(__self__, "new_cluster", new_cluster)
@@ -3725,7 +3725,7 @@ class JobJobClusterArgs:
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> pulumi.Input['JobJobClusterNewClusterArgs']:
         """
-        Same set of parameters as for Cluster resource.
+        Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
         """
         return pulumi.get(self, "new_cluster")
 
@@ -3769,6 +3769,7 @@ class JobJobClusterNewClusterArgs:
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -4097,6 +4098,9 @@ class JobJobClusterNewClusterArgs:
     @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']]:
+        """
+        isn't supported
+        """
         return pulumi.get(self, "workload_type")
 
     @workload_type.setter
@@ -7440,7 +7444,7 @@ class JobTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param pulumi.Input['JobTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        :param pulumi.Input['JobTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         :param pulumi.Input['JobTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
@@ -7677,7 +7681,7 @@ class JobTaskArgs:
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional[pulumi.Input['JobTaskNewClusterArgs']]:
         """
-        Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         """
         return pulumi.get(self, "new_cluster")
 
@@ -8223,7 +8227,7 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param pulumi.Input['JobTaskForEachTaskTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        :param pulumi.Input['JobTaskForEachTaskTaskNewClusterArgs'] new_cluster: Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         :param pulumi.Input['JobTaskForEachTaskTaskNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
@@ -8449,7 +8453,7 @@ class JobTaskForEachTaskTaskArgs:
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterArgs']]:
         """
-        Task will run on a dedicated cluster.  See Cluster documentation for specification.
+        Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         """
         return pulumi.get(self, "new_cluster")
 
@@ -14621,7 +14625,7 @@ class JobTriggerFileArrivalArgs:
                  min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
                  wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        :param pulumi.Input[str] url: URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
         :param pulumi.Input[int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
@@ -14635,7 +14639,7 @@ class JobTriggerFileArrivalArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 

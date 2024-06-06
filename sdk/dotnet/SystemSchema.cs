@@ -43,17 +43,23 @@ namespace Pulumi.Databricks
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;
+    /// $ pulumi import databricks:index/systemSchema:SystemSchema this '&lt;metastore_id&gt;|&lt;schema_name&gt;'
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/systemSchema:SystemSchema")]
     public partial class SystemSchema : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
+        /// </summary>
+        [Output("fullName")]
+        public Output<string> FullName { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Full name of the system schema.
+        /// name of the system schema.
         /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
@@ -111,7 +117,7 @@ namespace Pulumi.Databricks
     public sealed class SystemSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full name of the system schema.
+        /// name of the system schema.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
@@ -130,11 +136,17 @@ namespace Pulumi.Databricks
 
     public sealed class SystemSchemaState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
+        /// </summary>
+        [Input("fullName")]
+        public Input<string>? FullName { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Full name of the system schema.
+        /// name of the system schema.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

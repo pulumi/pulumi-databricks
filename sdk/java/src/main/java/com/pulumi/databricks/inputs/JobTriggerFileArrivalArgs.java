@@ -33,14 +33,14 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * @return URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
      * 
      */
     public Output<String> url() {
@@ -110,7 +110,7 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+         * @param url URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+         * @param url URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
          * 
          * @return builder
          * 

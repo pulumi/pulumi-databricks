@@ -93,7 +93,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
         /// <summary>
-        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterArgs>? NewCluster { get; set; }

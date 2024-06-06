@@ -224,7 +224,8 @@ class _StorageCredentialState:
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
-                 skip_validation: Optional[pulumi.Input[bool]] = None):
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
+                 storage_credential_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
@@ -236,6 +237,7 @@ class _StorageCredentialState:
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
+        :param pulumi.Input[str] storage_credential_id: Unique ID of storage credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -263,6 +265,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+        if storage_credential_id is not None:
+            pulumi.set(__self__, "storage_credential_id", storage_credential_id)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -403,6 +407,18 @@ class _StorageCredentialState:
     @skip_validation.setter
     def skip_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_validation", value)
+
+    @property
+    @pulumi.getter(name="storageCredentialId")
+    def storage_credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of storage credential.
+        """
+        return pulumi.get(self, "storage_credential_id")
+
+    @storage_credential_id.setter
+    def storage_credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_credential_id", value)
 
 
 class StorageCredential(pulumi.CustomResource):
@@ -646,6 +662,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["skip_validation"] = skip_validation
+            __props__.__dict__["storage_credential_id"] = None
         super(StorageCredential, __self__).__init__(
             'databricks:index/storageCredential:StorageCredential',
             resource_name,
@@ -668,7 +685,8 @@ class StorageCredential(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             read_only: Optional[pulumi.Input[bool]] = None,
-            skip_validation: Optional[pulumi.Input[bool]] = None) -> 'StorageCredential':
+            skip_validation: Optional[pulumi.Input[bool]] = None,
+            storage_credential_id: Optional[pulumi.Input[str]] = None) -> 'StorageCredential':
         """
         Get an existing StorageCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -685,6 +703,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
+        :param pulumi.Input[str] storage_credential_id: Unique ID of storage credential.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -703,6 +722,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
+        __props__.__dict__["storage_credential_id"] = storage_credential_id
         return StorageCredential(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -792,4 +812,12 @@ class StorageCredential(pulumi.CustomResource):
         Suppress validation errors if any & force save the storage credential.
         """
         return pulumi.get(self, "skip_validation")
+
+    @property
+    @pulumi.getter(name="storageCredentialId")
+    def storage_credential_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID of storage credential.
+        """
+        return pulumi.get(self, "storage_credential_id")
 

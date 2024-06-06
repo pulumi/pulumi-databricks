@@ -349,6 +349,8 @@ type MwsWorkspaces struct {
 	DeploymentName          pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
@@ -440,6 +442,8 @@ type mwsWorkspacesState struct {
 	DeploymentName          *string                               `pulumi:"deploymentName"`
 	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
@@ -489,6 +493,8 @@ type MwsWorkspacesState struct {
 	DeploymentName          pulumi.StringPtrInput
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa pulumi.StringPtrInput
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
@@ -758,6 +764,11 @@ func (o MwsWorkspacesOutput) ExternalCustomerInfo() MwsWorkspacesExternalCustome
 
 func (o MwsWorkspacesOutput) GcpManagedNetworkConfig() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGcpManagedNetworkConfigPtrOutput { return v.GcpManagedNetworkConfig }).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
+}
+
+// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.GcpWorkspaceSa }).(pulumi.StringOutput)
 }
 
 // A block that specifies GKE configuration for the Databricks workspace:

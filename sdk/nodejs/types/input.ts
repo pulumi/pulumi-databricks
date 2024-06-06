@@ -5438,7 +5438,7 @@ export interface JobJobCluster {
      */
     jobClusterKey: pulumi.Input<string>;
     /**
-     * Same set of parameters as for databricks.Cluster resource.
+     * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster: pulumi.Input<inputs.JobJobClusterNewCluster>;
 }
@@ -5476,6 +5476,9 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * isn't supported
+     */
     workloadType?: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadType>;
 }
 
@@ -6080,7 +6083,7 @@ export interface JobTask {
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
     newCluster?: pulumi.Input<inputs.JobTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask>;
@@ -6262,7 +6265,7 @@ export interface JobTaskForEachTaskTask {
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
     newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask>;
@@ -7516,7 +7519,7 @@ export interface JobTriggerFileArrival {
      */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
      */
     url: pulumi.Input<string>;
     /**

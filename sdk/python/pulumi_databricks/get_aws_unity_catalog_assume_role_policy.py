@@ -10,36 +10,36 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'GetAwsUnityCatalogPolicyResult',
-    'AwaitableGetAwsUnityCatalogPolicyResult',
-    'get_aws_unity_catalog_policy',
-    'get_aws_unity_catalog_policy_output',
+    'GetAwsUnityCatalogAssumeRolePolicyResult',
+    'AwaitableGetAwsUnityCatalogAssumeRolePolicyResult',
+    'get_aws_unity_catalog_assume_role_policy',
+    'get_aws_unity_catalog_assume_role_policy_output',
 ]
 
 @pulumi.output_type
-class GetAwsUnityCatalogPolicyResult:
+class GetAwsUnityCatalogAssumeRolePolicyResult:
     """
-    A collection of values returned by getAwsUnityCatalogPolicy.
+    A collection of values returned by getAwsUnityCatalogAssumeRolePolicy.
     """
-    def __init__(__self__, aws_account_id=None, bucket_name=None, id=None, json=None, kms_name=None, role_name=None):
+    def __init__(__self__, aws_account_id=None, external_id=None, id=None, json=None, role_name=None, unity_catalog_iam_arn=None):
         if aws_account_id and not isinstance(aws_account_id, str):
             raise TypeError("Expected argument 'aws_account_id' to be a str")
         pulumi.set(__self__, "aws_account_id", aws_account_id)
-        if bucket_name and not isinstance(bucket_name, str):
-            raise TypeError("Expected argument 'bucket_name' to be a str")
-        pulumi.set(__self__, "bucket_name", bucket_name)
+        if external_id and not isinstance(external_id, str):
+            raise TypeError("Expected argument 'external_id' to be a str")
+        pulumi.set(__self__, "external_id", external_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if json and not isinstance(json, str):
             raise TypeError("Expected argument 'json' to be a str")
         pulumi.set(__self__, "json", json)
-        if kms_name and not isinstance(kms_name, str):
-            raise TypeError("Expected argument 'kms_name' to be a str")
-        pulumi.set(__self__, "kms_name", kms_name)
         if role_name and not isinstance(role_name, str):
             raise TypeError("Expected argument 'role_name' to be a str")
         pulumi.set(__self__, "role_name", role_name)
+        if unity_catalog_iam_arn and not isinstance(unity_catalog_iam_arn, str):
+            raise TypeError("Expected argument 'unity_catalog_iam_arn' to be a str")
+        pulumi.set(__self__, "unity_catalog_iam_arn", unity_catalog_iam_arn)
 
     @property
     @pulumi.getter(name="awsAccountId")
@@ -47,60 +47,57 @@ class GetAwsUnityCatalogPolicyResult:
         return pulumi.get(self, "aws_account_id")
 
     @property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> str:
-        return pulumi.get(self, "bucket_name")
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def json(self) -> str:
         """
-        AWS IAM Policy JSON document
+        AWS IAM Policy JSON document for assume role
         """
         return pulumi.get(self, "json")
-
-    @property
-    @pulumi.getter(name="kmsName")
-    def kms_name(self) -> Optional[str]:
-        return pulumi.get(self, "kms_name")
 
     @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> str:
         return pulumi.get(self, "role_name")
 
+    @property
+    @pulumi.getter(name="unityCatalogIamArn")
+    def unity_catalog_iam_arn(self) -> str:
+        return pulumi.get(self, "unity_catalog_iam_arn")
 
-class AwaitableGetAwsUnityCatalogPolicyResult(GetAwsUnityCatalogPolicyResult):
+
+class AwaitableGetAwsUnityCatalogAssumeRolePolicyResult(GetAwsUnityCatalogAssumeRolePolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetAwsUnityCatalogPolicyResult(
+        return GetAwsUnityCatalogAssumeRolePolicyResult(
             aws_account_id=self.aws_account_id,
-            bucket_name=self.bucket_name,
+            external_id=self.external_id,
             id=self.id,
             json=self.json,
-            kms_name=self.kms_name,
-            role_name=self.role_name)
+            role_name=self.role_name,
+            unity_catalog_iam_arn=self.unity_catalog_iam_arn)
 
 
-def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
-                                 bucket_name: Optional[str] = None,
-                                 kms_name: Optional[str] = None,
-                                 role_name: Optional[str] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsUnityCatalogPolicyResult:
+def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = None,
+                                             external_id: Optional[str] = None,
+                                             role_name: Optional[str] = None,
+                                             unity_catalog_iam_arn: Optional[str] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsUnityCatalogAssumeRolePolicyResult:
     """
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
-    This data source constructs necessary AWS Unity Catalog policy for you.
+    This data source constructs necessary AWS Unity Catalog assume role policy for you.
 
     ## Example Usage
 
@@ -127,37 +124,37 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-    :param str kms_name: If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+    :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
-    __args__['bucketName'] = bucket_name
-    __args__['kmsName'] = kms_name
+    __args__['externalId'] = external_id
     __args__['roleName'] = role_name
+    __args__['unityCatalogIamArn'] = unity_catalog_iam_arn
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy', __args__, opts=opts, typ=GetAwsUnityCatalogPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy', __args__, opts=opts, typ=GetAwsUnityCatalogAssumeRolePolicyResult).value
 
-    return AwaitableGetAwsUnityCatalogPolicyResult(
+    return AwaitableGetAwsUnityCatalogAssumeRolePolicyResult(
         aws_account_id=pulumi.get(__ret__, 'aws_account_id'),
-        bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        external_id=pulumi.get(__ret__, 'external_id'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'),
-        kms_name=pulumi.get(__ret__, 'kms_name'),
-        role_name=pulumi.get(__ret__, 'role_name'))
+        role_name=pulumi.get(__ret__, 'role_name'),
+        unity_catalog_iam_arn=pulumi.get(__ret__, 'unity_catalog_iam_arn'))
 
 
-@_utilities.lift_output_func(get_aws_unity_catalog_policy)
-def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
-                                        bucket_name: Optional[pulumi.Input[str]] = None,
-                                        kms_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                        role_name: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsUnityCatalogPolicyResult]:
+@_utilities.lift_output_func(get_aws_unity_catalog_assume_role_policy)
+def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
+                                                    external_id: Optional[pulumi.Input[str]] = None,
+                                                    role_name: Optional[pulumi.Input[str]] = None,
+                                                    unity_catalog_iam_arn: Optional[pulumi.Input[Optional[str]]] = None,
+                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsUnityCatalogAssumeRolePolicyResult]:
     """
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
-    This data source constructs necessary AWS Unity Catalog policy for you.
+    This data source constructs necessary AWS Unity Catalog assume role policy for you.
 
     ## Example Usage
 
@@ -184,8 +181,8 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-    :param str kms_name: If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+    :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
     """
     ...
