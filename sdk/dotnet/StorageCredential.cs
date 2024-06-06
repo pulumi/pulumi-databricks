@@ -207,6 +207,12 @@ namespace Pulumi.Databricks
         [Output("skipValidation")]
         public Output<bool?> SkipValidation { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
+        [Output("storageCredentialId")]
+        public Output<string> StorageCredentialId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -384,6 +390,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
+
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
+        [Input("storageCredentialId")]
+        public Input<string>? StorageCredentialId { get; set; }
 
         public StorageCredentialState()
         {

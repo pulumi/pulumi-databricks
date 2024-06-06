@@ -86,7 +86,7 @@ public final class JobTask {
      */
     private @Nullable Integer minRetryIntervalMillis;
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     private @Nullable JobTaskNewCluster newCluster;
@@ -212,7 +212,7 @@ public final class JobTask {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     public Optional<JobTaskNewCluster> newCluster() {

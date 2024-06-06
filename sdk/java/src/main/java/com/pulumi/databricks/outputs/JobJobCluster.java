@@ -17,7 +17,7 @@ public final class JobJobCluster {
      */
     private String jobClusterKey;
     /**
-     * @return Same set of parameters as for databricks.Cluster resource.
+     * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
     private JobJobClusterNewCluster newCluster;
@@ -31,7 +31,7 @@ public final class JobJobCluster {
         return this.jobClusterKey;
     }
     /**
-     * @return Same set of parameters as for databricks.Cluster resource.
+     * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
     public JobJobClusterNewCluster newCluster() {

@@ -204,14 +204,14 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     @Import(name="newCluster")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterArgs> newCluster;
 
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterArgs>> newCluster() {
@@ -667,7 +667,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
          * 
          * @return builder
          * 

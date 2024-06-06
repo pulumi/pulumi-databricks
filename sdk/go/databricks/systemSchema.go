@@ -52,13 +52,15 @@ import (
 // bash
 //
 // ```sh
-// $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
+// $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
 // ```
 type SystemSchema struct {
 	pulumi.CustomResourceState
 
+	// the full name of the system schema, in form of `system.<schema>`.
+	FullName    pulumi.StringOutput `pulumi:"fullName"`
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Full name of the system schema.
+	// name of the system schema.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// The current state of enablement for the system schema.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -94,16 +96,20 @@ func GetSystemSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SystemSchema resources.
 type systemSchemaState struct {
+	// the full name of the system schema, in form of `system.<schema>`.
+	FullName    *string `pulumi:"fullName"`
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Full name of the system schema.
+	// name of the system schema.
 	Schema *string `pulumi:"schema"`
 	// The current state of enablement for the system schema.
 	State *string `pulumi:"state"`
 }
 
 type SystemSchemaState struct {
+	// the full name of the system schema, in form of `system.<schema>`.
+	FullName    pulumi.StringPtrInput
 	MetastoreId pulumi.StringPtrInput
-	// Full name of the system schema.
+	// name of the system schema.
 	Schema pulumi.StringPtrInput
 	// The current state of enablement for the system schema.
 	State pulumi.StringPtrInput
@@ -114,7 +120,7 @@ func (SystemSchemaState) ElementType() reflect.Type {
 }
 
 type systemSchemaArgs struct {
-	// Full name of the system schema.
+	// name of the system schema.
 	Schema *string `pulumi:"schema"`
 	// The current state of enablement for the system schema.
 	State *string `pulumi:"state"`
@@ -122,7 +128,7 @@ type systemSchemaArgs struct {
 
 // The set of arguments for constructing a SystemSchema resource.
 type SystemSchemaArgs struct {
-	// Full name of the system schema.
+	// name of the system schema.
 	Schema pulumi.StringPtrInput
 	// The current state of enablement for the system schema.
 	State pulumi.StringPtrInput
@@ -215,11 +221,16 @@ func (o SystemSchemaOutput) ToSystemSchemaOutputWithContext(ctx context.Context)
 	return o
 }
 
+// the full name of the system schema, in form of `system.<schema>`.
+func (o SystemSchemaOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
+}
+
 func (o SystemSchemaOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Full name of the system schema.
+// name of the system schema.
 func (o SystemSchemaOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }

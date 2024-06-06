@@ -3090,7 +3090,7 @@ export interface JobJobCluster {
      */
     jobClusterKey: string;
     /**
-     * Same set of parameters as for databricks.Cluster resource.
+     * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      */
     newCluster: outputs.JobJobClusterNewCluster;
 }
@@ -3128,6 +3128,9 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: {[key: string]: any};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    /**
+     * isn't supported
+     */
     workloadType?: outputs.JobJobClusterNewClusterWorkloadType;
 }
 
@@ -3732,7 +3735,7 @@ export interface JobTask {
      */
     minRetryIntervalMillis?: number;
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
     newCluster?: outputs.JobTaskNewCluster;
     notebookTask?: outputs.JobTaskNotebookTask;
@@ -3914,7 +3917,7 @@ export interface JobTaskForEachTaskTask {
      */
     minRetryIntervalMillis?: number;
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
     newCluster?: outputs.JobTaskForEachTaskTaskNewCluster;
     notebookTask?: outputs.JobTaskForEachTaskTaskNotebookTask;
@@ -5168,7 +5171,7 @@ export interface JobTriggerFileArrival {
      */
     minTimeBetweenTriggersSeconds?: number;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
      */
     url: string;
     /**

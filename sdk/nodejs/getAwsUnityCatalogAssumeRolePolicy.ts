@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
  *
- * This data source constructs necessary AWS Unity Catalog policy for you.
+ * This data source constructs necessary AWS Unity Catalog assume role policy for you.
  *
  * ## Example Usage
  *
@@ -38,60 +38,57 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAwsUnityCatalogPolicy(args: GetAwsUnityCatalogPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsUnityCatalogPolicyResult> {
+export function getAwsUnityCatalogAssumeRolePolicy(args: GetAwsUnityCatalogAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsUnityCatalogAssumeRolePolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
+    return pulumi.runtime.invoke("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", {
         "awsAccountId": args.awsAccountId,
-        "bucketName": args.bucketName,
-        "kmsName": args.kmsName,
+        "externalId": args.externalId,
         "roleName": args.roleName,
+        "unityCatalogIamArn": args.unityCatalogIamArn,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getAwsUnityCatalogPolicy.
+ * A collection of arguments for invoking getAwsUnityCatalogAssumeRolePolicy.
  */
-export interface GetAwsUnityCatalogPolicyArgs {
+export interface GetAwsUnityCatalogAssumeRolePolicyArgs {
     /**
      * The Account ID of the current AWS account (not your Databricks account).
      */
     awsAccountId: string;
     /**
-     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * The storage credential external id.
      */
-    bucketName: string;
-    /**
-     * If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-     */
-    kmsName?: string;
+    externalId: string;
     /**
      * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      */
     roleName: string;
+    /**
+     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+     */
+    unityCatalogIamArn?: string;
 }
 
 /**
- * A collection of values returned by getAwsUnityCatalogPolicy.
+ * A collection of values returned by getAwsUnityCatalogAssumeRolePolicy.
  */
-export interface GetAwsUnityCatalogPolicyResult {
+export interface GetAwsUnityCatalogAssumeRolePolicyResult {
     readonly awsAccountId: string;
-    readonly bucketName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
+    readonly externalId: string;
     readonly id: string;
     /**
-     * AWS IAM Policy JSON document
+     * AWS IAM Policy JSON document for assume role
      */
     readonly json: string;
-    readonly kmsName?: string;
     readonly roleName: string;
+    readonly unityCatalogIamArn: string;
 }
 /**
  * > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
  *
- * This data source constructs necessary AWS Unity Catalog policy for you.
+ * This data source constructs necessary AWS Unity Catalog assume role policy for you.
  *
  * ## Example Usage
  *
@@ -122,28 +119,28 @@ export interface GetAwsUnityCatalogPolicyResult {
  * });
  * ```
  */
-export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsUnityCatalogPolicy(a, opts))
+export function getAwsUnityCatalogAssumeRolePolicyOutput(args: GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogAssumeRolePolicyResult> {
+    return pulumi.output(args).apply((a: any) => getAwsUnityCatalogAssumeRolePolicy(a, opts))
 }
 
 /**
- * A collection of arguments for invoking getAwsUnityCatalogPolicy.
+ * A collection of arguments for invoking getAwsUnityCatalogAssumeRolePolicy.
  */
-export interface GetAwsUnityCatalogPolicyOutputArgs {
+export interface GetAwsUnityCatalogAssumeRolePolicyOutputArgs {
     /**
      * The Account ID of the current AWS account (not your Databricks account).
      */
     awsAccountId: pulumi.Input<string>;
     /**
-     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * The storage credential external id.
      */
-    bucketName: pulumi.Input<string>;
-    /**
-     * If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-     */
-    kmsName?: pulumi.Input<string>;
+    externalId: pulumi.Input<string>;
     /**
      * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      */
     roleName: pulumi.Input<string>;
+    /**
+     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+     */
+    unityCatalogIamArn?: pulumi.Input<string>;
 }

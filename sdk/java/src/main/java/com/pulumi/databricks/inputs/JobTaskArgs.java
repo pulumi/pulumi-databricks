@@ -212,14 +212,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     @Import(name="newCluster")
     private @Nullable Output<JobTaskNewClusterArgs> newCluster;
 
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
      * 
      */
     public Optional<Output<JobTaskNewClusterArgs>> newCluster() {
@@ -685,7 +685,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
          * 
          * @return builder
          * 

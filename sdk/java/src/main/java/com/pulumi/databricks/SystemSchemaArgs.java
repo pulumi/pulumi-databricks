@@ -16,14 +16,14 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
     public static final SystemSchemaArgs Empty = new SystemSchemaArgs();
 
     /**
-     * Full name of the system schema.
+     * name of the system schema.
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return Full name of the system schema.
+     * @return name of the system schema.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -71,7 +71,7 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema Full name of the system schema.
+         * @param schema name of the system schema.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema Full name of the system schema.
+         * @param schema name of the system schema.
          * 
          * @return builder
          * 

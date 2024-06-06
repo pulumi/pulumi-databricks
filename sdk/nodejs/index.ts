@@ -100,6 +100,11 @@ export const getAwsCrossAccountPolicy: typeof import("./getAwsCrossAccountPolicy
 export const getAwsCrossAccountPolicyOutput: typeof import("./getAwsCrossAccountPolicy").getAwsCrossAccountPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsCrossAccountPolicy","getAwsCrossAccountPolicyOutput"], () => require("./getAwsCrossAccountPolicy"));
 
+export { GetAwsUnityCatalogAssumeRolePolicyArgs, GetAwsUnityCatalogAssumeRolePolicyResult, GetAwsUnityCatalogAssumeRolePolicyOutputArgs } from "./getAwsUnityCatalogAssumeRolePolicy";
+export const getAwsUnityCatalogAssumeRolePolicy: typeof import("./getAwsUnityCatalogAssumeRolePolicy").getAwsUnityCatalogAssumeRolePolicy = null as any;
+export const getAwsUnityCatalogAssumeRolePolicyOutput: typeof import("./getAwsUnityCatalogAssumeRolePolicy").getAwsUnityCatalogAssumeRolePolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsUnityCatalogAssumeRolePolicy","getAwsUnityCatalogAssumeRolePolicyOutput"], () => require("./getAwsUnityCatalogAssumeRolePolicy"));
+
 export { GetAwsUnityCatalogPolicyArgs, GetAwsUnityCatalogPolicyResult, GetAwsUnityCatalogPolicyOutputArgs } from "./getAwsUnityCatalogPolicy";
 export const getAwsUnityCatalogPolicy: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicy = null as any;
 export const getAwsUnityCatalogPolicyOutput: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicyOutput = null as any;

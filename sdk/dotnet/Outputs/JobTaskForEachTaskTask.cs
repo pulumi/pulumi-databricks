@@ -56,7 +56,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MinRetryIntervalMillis;
         /// <summary>
-        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification.
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskForEachTaskTaskNotebookTask? NotebookTask;

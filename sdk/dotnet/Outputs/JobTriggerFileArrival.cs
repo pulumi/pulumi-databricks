@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MinTimeBetweenTriggersSeconds;
         /// <summary>
-        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        /// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
         /// </summary>
         public readonly string Url;
         /// <summary>

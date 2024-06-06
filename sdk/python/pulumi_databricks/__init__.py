@@ -24,6 +24,7 @@ from .file import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
+from .get_aws_unity_catalog_assume_role_policy import *
 from .get_aws_unity_catalog_policy import *
 from .get_catalog import *
 from .get_catalogs import *

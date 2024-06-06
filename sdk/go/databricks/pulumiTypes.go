@@ -10730,7 +10730,7 @@ func (o JobHealthRuleArrayOutput) Index(i pulumi.IntInput) JobHealthRuleOutput {
 type JobJobCluster struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey string `pulumi:"jobClusterKey"`
-	// Same set of parameters as for Cluster resource.
+	// Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
 	NewCluster JobJobClusterNewCluster `pulumi:"newCluster"`
 }
 
@@ -10748,7 +10748,7 @@ type JobJobClusterInput interface {
 type JobJobClusterArgs struct {
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey pulumi.StringInput `pulumi:"jobClusterKey"`
-	// Same set of parameters as for Cluster resource.
+	// Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
 	NewCluster JobJobClusterNewClusterInput `pulumi:"newCluster"`
 }
 
@@ -10808,7 +10808,7 @@ func (o JobJobClusterOutput) JobClusterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v JobJobCluster) string { return v.JobClusterKey }).(pulumi.StringOutput)
 }
 
-// Same set of parameters as for Cluster resource.
+// Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
 func (o JobJobClusterOutput) NewCluster() JobJobClusterNewClusterOutput {
 	return o.ApplyT(func(v JobJobCluster) JobJobClusterNewCluster { return v.NewCluster }).(JobJobClusterNewClusterOutput)
 }
@@ -10854,17 +10854,18 @@ type JobJobClusterNewCluster struct {
 	InitScripts               []JobJobClusterNewClusterInitScript       `pulumi:"initScripts"`
 	InstancePoolId            *string                                   `pulumi:"instancePoolId"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-	Libraries      []JobJobClusterNewClusterLibrary     `pulumi:"libraries"`
-	NodeTypeId     *string                              `pulumi:"nodeTypeId"`
-	NumWorkers     *int                                 `pulumi:"numWorkers"`
-	PolicyId       *string                              `pulumi:"policyId"`
-	RuntimeEngine  *string                              `pulumi:"runtimeEngine"`
-	SingleUserName *string                              `pulumi:"singleUserName"`
-	SparkConf      map[string]interface{}               `pulumi:"sparkConf"`
-	SparkEnvVars   map[string]interface{}               `pulumi:"sparkEnvVars"`
-	SparkVersion   string                               `pulumi:"sparkVersion"`
-	SshPublicKeys  []string                             `pulumi:"sshPublicKeys"`
-	WorkloadType   *JobJobClusterNewClusterWorkloadType `pulumi:"workloadType"`
+	Libraries      []JobJobClusterNewClusterLibrary `pulumi:"libraries"`
+	NodeTypeId     *string                          `pulumi:"nodeTypeId"`
+	NumWorkers     *int                             `pulumi:"numWorkers"`
+	PolicyId       *string                          `pulumi:"policyId"`
+	RuntimeEngine  *string                          `pulumi:"runtimeEngine"`
+	SingleUserName *string                          `pulumi:"singleUserName"`
+	SparkConf      map[string]interface{}           `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]interface{}           `pulumi:"sparkEnvVars"`
+	SparkVersion   string                           `pulumi:"sparkVersion"`
+	SshPublicKeys  []string                         `pulumi:"sshPublicKeys"`
+	// isn't supported
+	WorkloadType *JobJobClusterNewClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // JobJobClusterNewClusterInput is an input type that accepts JobJobClusterNewClusterArgs and JobJobClusterNewClusterOutput values.
@@ -10899,17 +10900,18 @@ type JobJobClusterNewClusterArgs struct {
 	InitScripts               JobJobClusterNewClusterInitScriptArrayInput       `pulumi:"initScripts"`
 	InstancePoolId            pulumi.StringPtrInput                             `pulumi:"instancePoolId"`
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-	Libraries      JobJobClusterNewClusterLibraryArrayInput    `pulumi:"libraries"`
-	NodeTypeId     pulumi.StringPtrInput                       `pulumi:"nodeTypeId"`
-	NumWorkers     pulumi.IntPtrInput                          `pulumi:"numWorkers"`
-	PolicyId       pulumi.StringPtrInput                       `pulumi:"policyId"`
-	RuntimeEngine  pulumi.StringPtrInput                       `pulumi:"runtimeEngine"`
-	SingleUserName pulumi.StringPtrInput                       `pulumi:"singleUserName"`
-	SparkConf      pulumi.MapInput                             `pulumi:"sparkConf"`
-	SparkEnvVars   pulumi.MapInput                             `pulumi:"sparkEnvVars"`
-	SparkVersion   pulumi.StringInput                          `pulumi:"sparkVersion"`
-	SshPublicKeys  pulumi.StringArrayInput                     `pulumi:"sshPublicKeys"`
-	WorkloadType   JobJobClusterNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
+	Libraries      JobJobClusterNewClusterLibraryArrayInput `pulumi:"libraries"`
+	NodeTypeId     pulumi.StringPtrInput                    `pulumi:"nodeTypeId"`
+	NumWorkers     pulumi.IntPtrInput                       `pulumi:"numWorkers"`
+	PolicyId       pulumi.StringPtrInput                    `pulumi:"policyId"`
+	RuntimeEngine  pulumi.StringPtrInput                    `pulumi:"runtimeEngine"`
+	SingleUserName pulumi.StringPtrInput                    `pulumi:"singleUserName"`
+	SparkConf      pulumi.MapInput                          `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.MapInput                          `pulumi:"sparkEnvVars"`
+	SparkVersion   pulumi.StringInput                       `pulumi:"sparkVersion"`
+	SshPublicKeys  pulumi.StringArrayInput                  `pulumi:"sshPublicKeys"`
+	// isn't supported
+	WorkloadType JobJobClusterNewClusterWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (JobJobClusterNewClusterArgs) ElementType() reflect.Type {
@@ -11055,6 +11057,7 @@ func (o JobJobClusterNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v JobJobClusterNewCluster) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
 }
 
+// isn't supported
 func (o JobJobClusterNewClusterOutput) WorkloadType() JobJobClusterNewClusterWorkloadTypePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *JobJobClusterNewClusterWorkloadType { return v.WorkloadType }).(JobJobClusterNewClusterWorkloadTypePtrOutput)
 }
@@ -22185,7 +22188,7 @@ type JobTask struct {
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
-	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 	NewCluster   *JobTaskNewCluster   `pulumi:"newCluster"`
 	NotebookTask *JobTaskNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
@@ -22247,7 +22250,7 @@ type JobTaskArgs struct {
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
-	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 	NewCluster   JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
 	NotebookTask JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
@@ -22390,7 +22393,7 @@ func (o JobTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
-// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 func (o JobTaskOutput) NewCluster() JobTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNewCluster { return v.NewCluster }).(JobTaskNewClusterPtrOutput)
 }
@@ -23452,7 +23455,7 @@ type JobTaskForEachTaskTask struct {
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
-	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 	NewCluster   *JobTaskForEachTaskTaskNewCluster   `pulumi:"newCluster"`
 	NotebookTask *JobTaskForEachTaskTaskNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
@@ -23513,7 +23516,7 @@ type JobTaskForEachTaskTaskArgs struct {
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
-	// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+	// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 	NewCluster   JobTaskForEachTaskTaskNewClusterPtrInput   `pulumi:"newCluster"`
 	NotebookTask JobTaskForEachTaskTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
@@ -23678,7 +23681,7 @@ func (o JobTaskForEachTaskTaskOutput) MinRetryIntervalMillis() pulumi.IntPtrOutp
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
-// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 func (o JobTaskForEachTaskTaskOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster { return v.NewCluster }).(JobTaskForEachTaskTaskNewClusterPtrOutput)
 }
@@ -23902,7 +23905,7 @@ func (o JobTaskForEachTaskTaskPtrOutput) MinRetryIntervalMillis() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Task will run on a dedicated cluster.  See Cluster documentation for specification.
+// Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
 func (o JobTaskForEachTaskTaskPtrOutput) NewCluster() JobTaskForEachTaskTaskNewClusterPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskNewCluster {
 		if v == nil {
@@ -42932,7 +42935,7 @@ func (o JobTriggerPtrOutput) TableUpdate() JobTriggerTableUpdatePtrOutput {
 type JobTriggerFileArrival struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
@@ -42952,7 +42955,7 @@ type JobTriggerFileArrivalInput interface {
 type JobTriggerFileArrivalArgs struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
@@ -43040,7 +43043,7 @@ func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntP
 	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
 func (o JobTriggerFileArrivalOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -43084,7 +43087,7 @@ func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
 func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *string {
 		if v == nil {

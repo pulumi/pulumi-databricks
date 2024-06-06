@@ -31,14 +31,14 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Same set of parameters as for databricks.Cluster resource.
+     * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
     @Import(name="newCluster", required=true)
     private Output<JobJobClusterNewClusterArgs> newCluster;
 
     /**
-     * @return Same set of parameters as for databricks.Cluster resource.
+     * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
      * 
      */
     public Output<JobJobClusterNewClusterArgs> newCluster() {
@@ -92,7 +92,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
+         * @param newCluster Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
+         * @param newCluster Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
          * 
          * @return builder
          * 

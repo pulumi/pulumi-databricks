@@ -290,6 +290,19 @@ class Library(pulumi.CustomResource):
             ))
         ```
 
+        ## Python requirements files
+
+        Installing Python libraries listed in the `requirements.txt` file.  Only Workspace paths and Unity Catalog Volumes paths are supported.  Requires a cluster with DBR 15.0+.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        libraries = databricks.Library("libraries",
+            cluster_id=this["id"],
+            requirements="/Workspace/path/to/requirements.txt")
+        ```
+
         ## R CRan
 
         Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
@@ -389,6 +402,19 @@ class Library(pulumi.CustomResource):
             pypi=databricks.LibraryPypiArgs(
                 package="fbprophet==0.6",
             ))
+        ```
+
+        ## Python requirements files
+
+        Installing Python libraries listed in the `requirements.txt` file.  Only Workspace paths and Unity Catalog Volumes paths are supported.  Requires a cluster with DBR 15.0+.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        libraries = databricks.Library("libraries",
+            cluster_id=this["id"],
+            requirements="/Workspace/path/to/requirements.txt")
         ```
 
         ## R CRan

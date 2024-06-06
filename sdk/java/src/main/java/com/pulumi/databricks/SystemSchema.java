@@ -65,12 +65,26 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;
+ * $ pulumi import databricks:index/systemSchema:SystemSchema this &#39;&lt;metastore_id&gt;|&lt;schema_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="databricks:index/systemSchema:SystemSchema")
 public class SystemSchema extends com.pulumi.resources.CustomResource {
+    /**
+     * the full name of the system schema, in form of `system.&lt;schema&gt;`.
+     * 
+     */
+    @Export(name="fullName", refs={String.class}, tree="[0]")
+    private Output<String> fullName;
+
+    /**
+     * @return the full name of the system schema, in form of `system.&lt;schema&gt;`.
+     * 
+     */
+    public Output<String> fullName() {
+        return this.fullName;
+    }
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
@@ -78,14 +92,14 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
         return this.metastoreId;
     }
     /**
-     * Full name of the system schema.
+     * name of the system schema.
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     /**
-     * @return Full name of the system schema.
+     * @return name of the system schema.
      * 
      */
     public Output<Optional<String>> schema() {

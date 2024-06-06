@@ -162,6 +162,21 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
+    @Import(name="gcpWorkspaceSa")
+    private @Nullable Output<String> gcpWorkspaceSa;
+
+    /**
+     * @return (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
+    public Optional<Output<String>> gcpWorkspaceSa() {
+        return Optional.ofNullable(this.gcpWorkspaceSa);
+    }
+
+    /**
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
@@ -384,6 +399,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         this.deploymentName = $.deploymentName;
         this.externalCustomerInfo = $.externalCustomerInfo;
         this.gcpManagedNetworkConfig = $.gcpManagedNetworkConfig;
+        this.gcpWorkspaceSa = $.gcpWorkspaceSa;
         this.gkeConfig = $.gkeConfig;
         this.isNoPublicIpEnabled = $.isNoPublicIpEnabled;
         this.location = $.location;
@@ -604,6 +620,27 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
 
         public Builder gcpManagedNetworkConfig(MwsWorkspacesGcpManagedNetworkConfigArgs gcpManagedNetworkConfig) {
             return gcpManagedNetworkConfig(Output.of(gcpManagedNetworkConfig));
+        }
+
+        /**
+         * @param gcpWorkspaceSa (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpWorkspaceSa(@Nullable Output<String> gcpWorkspaceSa) {
+            $.gcpWorkspaceSa = gcpWorkspaceSa;
+            return this;
+        }
+
+        /**
+         * @param gcpWorkspaceSa (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpWorkspaceSa(String gcpWorkspaceSa) {
+            return gcpWorkspaceSa(Output.of(gcpWorkspaceSa));
         }
 
         /**

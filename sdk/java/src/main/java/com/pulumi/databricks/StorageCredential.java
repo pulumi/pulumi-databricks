@@ -331,6 +331,20 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> skipValidation() {
         return Codegen.optional(this.skipValidation);
     }
+    /**
+     * Unique ID of storage credential.
+     * 
+     */
+    @Export(name="storageCredentialId", refs={String.class}, tree="[0]")
+    private Output<String> storageCredentialId;
+
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
+    public Output<String> storageCredentialId() {
+        return this.storageCredentialId;
+    }
 
     /**
      *
