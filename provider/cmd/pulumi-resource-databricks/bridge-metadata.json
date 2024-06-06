@@ -2681,6 +2681,10 @@
                     }
                 }
             },
+            "databricks_aws_unity_catalog_assume_role_policy": {
+                "current": "databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy",
+                "majorVersion": 1
+            },
             "databricks_aws_unity_catalog_policy": {
                 "current": "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy",
                 "majorVersion": 1
