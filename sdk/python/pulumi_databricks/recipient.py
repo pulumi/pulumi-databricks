@@ -498,7 +498,7 @@ class Recipient(pulumi.CustomResource):
         current = databricks.get_current_user()
         db2open = databricks.Recipient("db2open",
             name=f"{current.alphanumeric}-recipient",
-            comment="made by terraform",
+            comment="Made by Pulumi",
             authentication_type="TOKEN",
             sharing_code=db2opensharecode["result"],
             ip_access_list=databricks.RecipientIpAccessListArgs(
@@ -551,7 +551,7 @@ class Recipient(pulumi.CustomResource):
         current = databricks.get_current_user()
         db2open = databricks.Recipient("db2open",
             name=f"{current.alphanumeric}-recipient",
-            comment="made by terraform",
+            comment="Made by Pulumi",
             authentication_type="TOKEN",
             sharing_code=db2opensharecode["result"],
             ip_access_list=databricks.RecipientIpAccessListArgs(
