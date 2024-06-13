@@ -16,7 +16,7 @@ import (
 //
 // ### Creating a Databricks on AWS workspace
 //
-// !Simplest multiworkspace
+// #### Simplest Multiworkspace
 //
 // To get workspace running, you have to configure a couple of things:
 //
