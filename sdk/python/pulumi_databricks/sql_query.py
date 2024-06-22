@@ -152,10 +152,8 @@ class SqlQueryArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
     def schedule(self) -> Optional[pulumi.Input['SqlQueryScheduleArgs']]:
-        warnings.warn("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""", DeprecationWarning)
-        pulumi.log.warn("""schedule is deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
-
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -322,10 +320,8 @@ class _SqlQueryState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
     def schedule(self) -> Optional[pulumi.Input['SqlQueryScheduleArgs']]:
-        warnings.warn("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""", DeprecationWarning)
-        pulumi.log.warn("""schedule is deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
-
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -765,10 +761,8 @@ class SqlQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
     def schedule(self) -> pulumi.Output[Optional['outputs.SqlQuerySchedule']]:
-        warnings.warn("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""", DeprecationWarning)
-        pulumi.log.warn("""schedule is deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
-
         return pulumi.get(self, "schedule")
 
     @property

@@ -1893,10 +1893,8 @@ class ClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.ClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property
@@ -4710,10 +4708,8 @@ class JobJobClusterNewClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property
@@ -6140,10 +6136,8 @@ class JobNewClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.JobNewClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property
@@ -9641,10 +9635,8 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property
@@ -12313,10 +12305,8 @@ class JobTaskNewClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.JobTaskNewClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property
@@ -15192,13 +15182,11 @@ class ModelServingConfig(dict):
 
     @property
     @pulumi.getter(name="servedModels")
+    @_utilities.deprecated("""Please use 'config.served_entities' instead of 'config.served_models'.""")
     def served_models(self) -> Optional[Sequence['outputs.ModelServingConfigServedModel']]:
         """
         Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         """
-        warnings.warn("""Please use 'config.served_entities' instead of 'config.served_models'.""", DeprecationWarning)
-        pulumi.log.warn("""served_models is deprecated: Please use 'config.served_entities' instead of 'config.served_models'.""")
-
         return pulumi.get(self, "served_models")
 
     @property
@@ -18718,10 +18706,8 @@ class PipelineClusterInitScript(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
     def dbfs(self) -> Optional['outputs.PipelineClusterInitScriptDbfs']:
-        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
-        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
-
         return pulumi.get(self, "dbfs")
 
     @property

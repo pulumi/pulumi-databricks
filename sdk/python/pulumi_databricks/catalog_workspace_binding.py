@@ -54,10 +54,8 @@ class CatalogWorkspaceBindingArgs:
 
     @property
     @pulumi.getter(name="catalogName")
+    @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
-        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
-
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -144,10 +142,8 @@ class _CatalogWorkspaceBindingState:
 
     @property
     @pulumi.getter(name="catalogName")
+    @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
-        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
-
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -343,10 +339,8 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="catalogName")
+    @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
     def catalog_name(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
-        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
-
         return pulumi.get(self, "catalog_name")
 
     @property
