@@ -210,10 +210,8 @@ class MwsWorkspacesArgs:
 
     @property
     @pulumi.getter(name="customerManagedKeyId")
+    @_utilities.deprecated("""Use managed_services_customer_managed_key_id instead""")
     def customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
-        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
-
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
@@ -604,10 +602,8 @@ class _MwsWorkspacesState:
 
     @property
     @pulumi.getter(name="customerManagedKeyId")
+    @_utilities.deprecated("""Use managed_services_customer_managed_key_id instead""")
     def customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
-        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
-
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
@@ -970,12 +966,12 @@ class MwsWorkspaces(pulumi.CustomResource):
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
         this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
         root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
@@ -1178,12 +1174,12 @@ class MwsWorkspaces(pulumi.CustomResource):
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
         this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
         root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
@@ -1484,10 +1480,8 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerManagedKeyId")
+    @_utilities.deprecated("""Use managed_services_customer_managed_key_id instead""")
     def customer_managed_key_id(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
-        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
-
         return pulumi.get(self, "customer_managed_key_id")
 
     @property

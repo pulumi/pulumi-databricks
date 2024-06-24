@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var db2open = new Recipient("db2open", RecipientArgs.builder()
  *             .name(String.format("%s-recipient", current.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
- *             .comment("made by terraform")
+ *             .comment("Made by Pulumi")
  *             .authenticationType("TOKEN")
  *             .sharingCode(db2opensharecode.result())
  *             .ipAccessList(RecipientIpAccessListArgs.builder()

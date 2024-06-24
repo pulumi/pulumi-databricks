@@ -73,10 +73,8 @@ class GetSparkVersionResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Not required anymore - it's automatically enabled on the Graviton-based node types""")
     def graviton(self) -> Optional[bool]:
-        warnings.warn("""Not required anymore - it's automatically enabled on the Graviton-based node types""", DeprecationWarning)
-        pulumi.log.warn("""graviton is deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types""")
-
         return pulumi.get(self, "graviton")
 
     @property
@@ -104,10 +102,8 @@ class GetSparkVersionResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Specify runtime_engine=\"PHOTON\" in the cluster configuration""")
     def photon(self) -> Optional[bool]:
-        warnings.warn("""Specify runtime_engine=\"PHOTON\" in the cluster configuration""", DeprecationWarning)
-        pulumi.log.warn("""photon is deprecated: Specify runtime_engine=\"PHOTON\" in the cluster configuration""")
-
         return pulumi.get(self, "photon")
 
     @property
