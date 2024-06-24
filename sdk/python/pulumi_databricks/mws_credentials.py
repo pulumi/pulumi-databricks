@@ -59,10 +59,8 @@ class MwsCredentialsArgs:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -135,10 +133,8 @@ class _MwsCredentialsState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -360,10 +356,8 @@ class MwsCredentials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
-
         return pulumi.get(self, "account_id")
 
     @property

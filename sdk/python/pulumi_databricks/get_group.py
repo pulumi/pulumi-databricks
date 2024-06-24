@@ -144,10 +144,8 @@ class GetGroupResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Please use `users`, `service_principals`, and `child_groups` instead""")
     def members(self) -> Sequence[str]:
-        warnings.warn("""Please use `users`, `service_principals`, and `child_groups` instead""", DeprecationWarning)
-        pulumi.log.warn("""members is deprecated: Please use `users`, `service_principals`, and `child_groups` instead""")
-
         return pulumi.get(self, "members")
 
     @property

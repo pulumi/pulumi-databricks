@@ -184,7 +184,7 @@ class IpAccessList(pulumi.CustomResource):
                 "1.2.3.0/24",
                 "1.2.5.0/24",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[this]))
+            opts = pulumi.ResourceOptions(depends_on=[this]))
         ```
 
         ## Related Resources
@@ -243,7 +243,7 @@ class IpAccessList(pulumi.CustomResource):
                 "1.2.3.0/24",
                 "1.2.5.0/24",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[this]))
+            opts = pulumi.ResourceOptions(depends_on=[this]))
         ```
 
         ## Related Resources

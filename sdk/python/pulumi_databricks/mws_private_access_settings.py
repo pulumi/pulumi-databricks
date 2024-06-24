@@ -72,10 +72,8 @@ class MwsPrivateAccessSettingsArgs:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -170,10 +168,8 @@ class _MwsPrivateAccessSettingsState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -300,7 +296,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="ENTERPRISE",
-            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
 
         ## Databricks on GCP usage
@@ -326,7 +322,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
 
         ## Related Resources
@@ -394,7 +390,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="ENTERPRISE",
-            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
 
         ## Databricks on GCP usage
@@ -420,7 +416,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
 
         ## Related Resources
@@ -527,10 +523,8 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
     def account_id(self) -> pulumi.Output[str]:
-        warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
-
         return pulumi.get(self, "account_id")
 
     @property

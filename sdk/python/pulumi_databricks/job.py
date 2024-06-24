@@ -196,13 +196,11 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="alwaysRunning")
+    @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> Optional[pulumi.Input[bool]]:
         """
         (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         """
-        warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
-
         return pulumi.get(self, "always_running")
 
     @always_running.setter
@@ -237,10 +235,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="dbtTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def dbt_task(self) -> Optional[pulumi.Input['JobDbtTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""dbt_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "dbt_task")
 
     @dbt_task.setter
@@ -378,10 +374,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="maxRetries")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
@@ -390,13 +384,11 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="minRetryIntervalMillis")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> Optional[pulumi.Input[int]]:
         """
         (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         """
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""min_retry_interval_millis is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "min_retry_interval_millis")
 
     @min_retry_interval_millis.setter
@@ -426,10 +418,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="notebookTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def notebook_task(self) -> Optional[pulumi.Input['JobNotebookTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""notebook_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "notebook_task")
 
     @notebook_task.setter
@@ -462,10 +452,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="pipelineTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "pipeline_task")
 
     @pipeline_task.setter
@@ -474,10 +462,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="pythonWheelTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def python_wheel_task(self) -> Optional[pulumi.Input['JobPythonWheelTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""python_wheel_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "python_wheel_task")
 
     @python_wheel_task.setter
@@ -498,10 +484,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="retryOnTimeout")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "retry_on_timeout")
 
     @retry_on_timeout.setter
@@ -522,10 +506,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="runJobTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def run_job_task(self) -> Optional[pulumi.Input['JobRunJobTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""run_job_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "run_job_task")
 
     @run_job_task.setter
@@ -546,10 +528,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="sparkJarTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_jar_task(self) -> Optional[pulumi.Input['JobSparkJarTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_jar_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_jar_task")
 
     @spark_jar_task.setter
@@ -558,10 +538,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="sparkPythonTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_python_task(self) -> Optional[pulumi.Input['JobSparkPythonTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_python_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_python_task")
 
     @spark_python_task.setter
@@ -570,10 +548,8 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="sparkSubmitTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_submit_task(self) -> Optional[pulumi.Input['JobSparkSubmitTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_submit_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_submit_task")
 
     @spark_submit_task.setter
@@ -828,13 +804,11 @@ class _JobState:
 
     @property
     @pulumi.getter(name="alwaysRunning")
+    @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> Optional[pulumi.Input[bool]]:
         """
         (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         """
-        warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
-
         return pulumi.get(self, "always_running")
 
     @always_running.setter
@@ -869,10 +843,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="dbtTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def dbt_task(self) -> Optional[pulumi.Input['JobDbtTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""dbt_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "dbt_task")
 
     @dbt_task.setter
@@ -1010,10 +982,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="maxRetries")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
@@ -1022,13 +992,11 @@ class _JobState:
 
     @property
     @pulumi.getter(name="minRetryIntervalMillis")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> Optional[pulumi.Input[int]]:
         """
         (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         """
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""min_retry_interval_millis is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "min_retry_interval_millis")
 
     @min_retry_interval_millis.setter
@@ -1058,10 +1026,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="notebookTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def notebook_task(self) -> Optional[pulumi.Input['JobNotebookTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""notebook_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "notebook_task")
 
     @notebook_task.setter
@@ -1094,10 +1060,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="pipelineTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "pipeline_task")
 
     @pipeline_task.setter
@@ -1106,10 +1070,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="pythonWheelTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def python_wheel_task(self) -> Optional[pulumi.Input['JobPythonWheelTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""python_wheel_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "python_wheel_task")
 
     @python_wheel_task.setter
@@ -1130,10 +1092,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="retryOnTimeout")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "retry_on_timeout")
 
     @retry_on_timeout.setter
@@ -1154,10 +1114,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="runJobTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def run_job_task(self) -> Optional[pulumi.Input['JobRunJobTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""run_job_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "run_job_task")
 
     @run_job_task.setter
@@ -1178,10 +1136,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="sparkJarTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_jar_task(self) -> Optional[pulumi.Input['JobSparkJarTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_jar_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_jar_task")
 
     @spark_jar_task.setter
@@ -1190,10 +1146,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="sparkPythonTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_python_task(self) -> Optional[pulumi.Input['JobSparkPythonTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_python_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_python_task")
 
     @spark_python_task.setter
@@ -1202,10 +1156,8 @@ class _JobState:
 
     @property
     @pulumi.getter(name="sparkSubmitTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_submit_task(self) -> Optional[pulumi.Input['JobSparkSubmitTaskArgs']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_submit_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_submit_task")
 
     @spark_submit_task.setter
@@ -1614,13 +1566,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alwaysRunning")
+    @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> pulumi.Output[Optional[bool]]:
         """
         (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         """
-        warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
-
         return pulumi.get(self, "always_running")
 
     @property
@@ -1643,10 +1593,8 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbtTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def dbt_task(self) -> pulumi.Output[Optional['outputs.JobDbtTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""dbt_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "dbt_task")
 
     @property
@@ -1732,21 +1680,17 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def max_retries(self) -> pulumi.Output[Optional[int]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "max_retries")
 
     @property
     @pulumi.getter(name="minRetryIntervalMillis")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> pulumi.Output[Optional[int]]:
         """
         (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         """
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""min_retry_interval_millis is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "min_retry_interval_millis")
 
     @property
@@ -1764,10 +1708,8 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notebookTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def notebook_task(self) -> pulumi.Output[Optional['outputs.JobNotebookTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""notebook_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "notebook_task")
 
     @property
@@ -1788,18 +1730,14 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> pulumi.Output[Optional['outputs.JobPipelineTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "pipeline_task")
 
     @property
     @pulumi.getter(name="pythonWheelTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def python_wheel_task(self) -> pulumi.Output[Optional['outputs.JobPythonWheelTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""python_wheel_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "python_wheel_task")
 
     @property
@@ -1812,10 +1750,8 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retryOnTimeout")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def retry_on_timeout(self) -> pulumi.Output[Optional[bool]]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "retry_on_timeout")
 
     @property
@@ -1828,10 +1764,8 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runJobTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def run_job_task(self) -> pulumi.Output[Optional['outputs.JobRunJobTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""run_job_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "run_job_task")
 
     @property
@@ -1844,26 +1778,20 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sparkJarTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_jar_task(self) -> pulumi.Output[Optional['outputs.JobSparkJarTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_jar_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_jar_task")
 
     @property
     @pulumi.getter(name="sparkPythonTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_python_task(self) -> pulumi.Output[Optional['outputs.JobSparkPythonTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_python_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_python_task")
 
     @property
     @pulumi.getter(name="sparkSubmitTask")
+    @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def spark_submit_task(self) -> pulumi.Output[Optional['outputs.JobSparkSubmitTask']]:
-        warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
-        pulumi.log.warn("""spark_submit_task is deprecated: should be used inside a task block and not inside a job block""")
-
         return pulumi.get(self, "spark_submit_task")
 
     @property

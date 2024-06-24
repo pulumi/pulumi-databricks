@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * const current = databricks.getCurrentUser({});
  * const db2open = new databricks.Recipient("db2open", {
  *     name: current.then(current => `${current.alphanumeric}-recipient`),
- *     comment: "made by terraform",
+ *     comment: "Made by Pulumi",
  *     authenticationType: "TOKEN",
  *     sharingCode: db2opensharecode.result,
  *     ipAccessList: {

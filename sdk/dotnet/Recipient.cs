@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
     ///     var db2open = new Databricks.Recipient("db2open", new()
     ///     {
     ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
-    ///         Comment = "made by terraform",
+    ///         Comment = "Made by Pulumi",
     ///         AuthenticationType = "TOKEN",
     ///         SharingCode = db2opensharecode.Result,
     ///         IpAccessList = new Databricks.Inputs.RecipientIpAccessListArgs
