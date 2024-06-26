@@ -48,7 +48,7 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * MwsWorkspaces to manage Databricks E2 Workspaces.
+// * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
 // * MetastoreAssignment
 func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

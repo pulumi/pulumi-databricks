@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+ * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment
  */
 export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
@@ -85,7 +85,7 @@ export interface GetMwsWorkspacesResult {
  *
  * The following resources are used in the same context:
  *
- * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+ * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment
  */
 export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsWorkspacesResult> {

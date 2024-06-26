@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
         return Optional.ofNullable(this.onStarts);
     }
 
+    @Import(name="onStreamingBacklogExceededs")
+    private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>> onStreamingBacklogExceededs() {
+        return Optional.ofNullable(this.onStreamingBacklogExceededs);
+    }
+
     @Import(name="onSuccesses")
     private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess> onSuccesses;
 
@@ -52,6 +60,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
+        this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
     }
 
@@ -98,6 +107,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
 
         public Builder onStarts(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart... onStarts) {
             return onStarts(List.of(onStarts));
+        }
+
+        public Builder onStreamingBacklogExceededs(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs) {
+            $.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+
+        public Builder onStreamingBacklogExceededs(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
         }
 
         public Builder onSuccesses(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess> onSuccesses) {

@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
         public string? DatabricksAccountId { get; set; }
 
         /// <summary>
-        /// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+        /// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
         /// </summary>
         [Input("databricksE2AccountId")]
         public string? DatabricksE2AccountId { get; set; }
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
         public Input<string>? DatabricksAccountId { get; set; }
 
         /// <summary>
-        /// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+        /// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
         /// </summary>
         [Input("databricksE2AccountId")]
         public Input<string>? DatabricksE2AccountId { get; set; }

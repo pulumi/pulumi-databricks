@@ -45,7 +45,7 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
 // * getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
 // * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.

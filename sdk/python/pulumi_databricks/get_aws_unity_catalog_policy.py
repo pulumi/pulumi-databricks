@@ -100,7 +100,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
     """
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
-    This data source constructs necessary AWS Unity Catalog policy for you.
+    This data source constructs the necessary AWS Unity Catalog policy for you.
 
     ## Example Usage
 
@@ -121,7 +121,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=passrole_for_uc["json"],
+        assume_role_policy=this_aws_iam_policy_document["json"],
         managed_policy_arns=[unity_metastore.arn])
     ```
 
@@ -157,7 +157,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     """
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
-    This data source constructs necessary AWS Unity Catalog policy for you.
+    This data source constructs the necessary AWS Unity Catalog policy for you.
 
     ## Example Usage
 
@@ -178,7 +178,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=passrole_for_uc["json"],
+        assume_role_policy=this_aws_iam_policy_document["json"],
         managed_policy_arns=[unity_metastore.arn])
     ```
 

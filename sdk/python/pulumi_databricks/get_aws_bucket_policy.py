@@ -102,7 +102,7 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
-    :param str databricks_e2_account_id: Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+    :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param str full_access_role: Data access role that can have full access for this bucket
     """
     __args__ = dict()
@@ -133,7 +133,7 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
-    :param str databricks_e2_account_id: Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+    :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param str full_access_role: Data access role that can have full access for this bucket
     """
     ...

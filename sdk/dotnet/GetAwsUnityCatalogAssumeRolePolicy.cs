@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
-        /// This data source constructs necessary AWS Unity Catalog assume role policy for you.
+        /// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
         ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = passroleForUc.Json,
+        ///         AssumeRolePolicy = thisAwsIamPolicyDocument.Json,
         ///         ManagedPolicyArns = new[]
         ///         {
         ///             unityMetastore.Arn,
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
-        /// This data source constructs necessary AWS Unity Catalog assume role policy for you.
+        /// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
         /// 
         /// ## Example Usage
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
         ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = passroleForUc.Json,
+        ///         AssumeRolePolicy = thisAwsIamPolicyDocument.Json,
         ///         ManagedPolicyArns = new[]
         ///         {
         ///             unityMetastore.Arn,
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
         public string ExternalId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+        /// The name of the AWS IAM role to be created for Unity Catalog.
         /// </summary>
         [Input("roleName", required: true)]
         public string RoleName { get; set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         public Input<string> ExternalId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+        /// The name of the AWS IAM role to be created for Unity Catalog.
         /// </summary>
         [Input("roleName", required: true)]
         public Input<string> RoleName { get; set; } = null!;

@@ -110,6 +110,9 @@ export class SqlPermissions extends pulumi.CustomResource {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     public readonly catalog!: pulumi.Output<boolean | undefined>;
+    /**
+     * Id of an existing databricks_cluster, otherwise resource creation will fail.
+     */
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * Name of the database. Has default value of `default`.
@@ -178,6 +181,9 @@ export interface SqlPermissionsState {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
+    /**
+     * Id of an existing databricks_cluster, otherwise resource creation will fail.
+     */
     clusterId?: pulumi.Input<string>;
     /**
      * Name of the database. Has default value of `default`.
@@ -210,6 +216,9 @@ export interface SqlPermissionsArgs {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
+    /**
+     * Id of an existing databricks_cluster, otherwise resource creation will fail.
+     */
     clusterId?: pulumi.Input<string>;
     /**
      * Name of the database. Has default value of `default`.

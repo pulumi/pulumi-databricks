@@ -116,6 +116,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('retryTimeoutSeconds')
 
     @property
+    def serverless_compute_id(self) -> Optional[str]:
+        return __config__.get('serverlessComputeId')
+
+    @property
     def skip_verify(self) -> Optional[bool]:
         return __config__.get_bool('skipVerify')
 

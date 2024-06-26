@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult> OnDurationWarningThresholdExceededs;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult> OnFailures;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult> OnStarts;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult> OnStreamingBacklogExceededs;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult> OnSuccesses;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult> onStarts,
 
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededResult> onStreamingBacklogExceededs,
+
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult> onSuccesses)
         {
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
             OnStarts = onStarts;
+            OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;
         }
     }

@@ -13,6 +13,628 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput` via:
+//
+//	GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs{...}
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput)
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs, GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtr and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput
+}
+
+type getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrType GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs
+
+func GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtr(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput {
+	return (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs {
+		return &v
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs
+		return ret
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 struct {
+	CannedAcl        *string `pulumi:"cannedAcl"`
+	Destination      string  `pulumi:"destination"`
+	EnableEncryption *bool   `pulumi:"enableEncryption"`
+	EncryptionType   *string `pulumi:"encryptionType"`
+	Endpoint         *string `pulumi:"endpoint"`
+	KmsKey           *string `pulumi:"kmsKey"`
+	Region           *string `pulumi:"region"`
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Input is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Input` via:
+//
+//	GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{...}
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Input interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3OutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args struct {
+	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	Destination      pulumi.StringInput    `pulumi:"destination"`
+	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
+	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3OutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output)
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output).ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args, GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Ptr and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput` via:
+//
+//	        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput
+}
+
+type getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrType GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args
+
+func GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Ptr(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput {
+	return (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3OutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
+		return &v
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3
+		return ret
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CannedAcl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesInput` via:
+//
+//	GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs{...}
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput)
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs, GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtr and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput
+}
+
+type getJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrType GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs
+
+func GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtr(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrInput {
+	return (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
+		return &v
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes
+		return ret
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput` via:
+//
+//	GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{...}
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs, GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtr and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput
+}
+
+type getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs
+
+func GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtr(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput {
+	return (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+		return &v
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace
+		return ret
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType struct {
 	Clients GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -7222,6 +7844,7 @@ type GetJobJobSettingsSettingsTaskEmailNotifications struct {
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []string `pulumi:"onFailures"`
 	OnStarts                            []string `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         []string `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
@@ -7241,6 +7864,7 @@ type GetJobJobSettingsSettingsTaskEmailNotificationsArgs struct {
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
 	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         pulumi.StringArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
@@ -7339,6 +7963,10 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnStarts() pulumi
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string { return v.OnStreamingBacklogExceededs }).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -7400,6 +8028,15 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnStarts() pul
 			return nil
 		}
 		return v.OnStarts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnStreamingBacklogExceededs
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -8625,6 +9262,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications struct {
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []string `pulumi:"onFailures"`
 	OnStarts                            []string `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         []string `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
@@ -8644,6 +9282,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs struct {
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
 	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         pulumi.StringArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
@@ -8744,6 +9383,12 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) On
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		return v.OnStreamingBacklogExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
 }
@@ -8805,6 +9450,15 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput)
 			return nil
 		}
 		return v.OnStarts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnStreamingBacklogExceededs
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -15845,6 +16499,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications struct {
 	OnDurationWarningThresholdExceededs []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure                          `pulumi:"onFailures"`
 	OnStarts                            []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess                          `pulumi:"onSuccesses"`
 }
 
@@ -15863,6 +16518,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs struct
 	OnDurationWarningThresholdExceededs GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArrayInput                          `pulumi:"onFailures"`
 	OnStarts                            GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArrayInput                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayInput                          `pulumi:"onSuccesses"`
 }
 
@@ -15961,6 +16617,12 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOutput) 
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOutput) OnSuccesses() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
 		return v.OnSuccesses
@@ -16016,6 +16678,15 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsPtrOutpu
 		}
 		return v.OnStarts
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnSuccesses() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayOutput {
@@ -16318,6 +16989,105 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
 		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart)[vs[1].(int)]
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
+	Id string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray and GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray{ GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs{...} }
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray []GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededInput
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput)
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess struct {
@@ -23329,6 +24099,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotifications struct {
 	OnDurationWarningThresholdExceededs []GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure                          `pulumi:"onFailures"`
 	OnStarts                            []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess                          `pulumi:"onSuccesses"`
 }
 
@@ -23347,6 +24118,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsArgs struct {
 	OnDurationWarningThresholdExceededs GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput                          `pulumi:"onFailures"`
 	OnStarts                            GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput                          `pulumi:"onSuccesses"`
 }
 
@@ -23445,6 +24217,12 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnStarts() GetJ
 	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnSuccesses() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
 		return v.OnSuccesses
@@ -23500,6 +24278,15 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnStarts() G
 		}
 		return v.OnStarts
 	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnSuccesses() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
@@ -23802,6 +24589,105 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
 		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)[vs[1].(int)]
 	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
+	Id string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray and GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray{ GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs{...} }
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededInput
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
+		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput)
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess struct {
@@ -24413,6 +25299,7 @@ type GetJobJobSettingsSettingsWebhookNotifications struct {
 	OnDurationWarningThresholdExceededs []GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []GetJobJobSettingsSettingsWebhookNotificationsOnFailure                          `pulumi:"onFailures"`
 	OnStarts                            []GetJobJobSettingsSettingsWebhookNotificationsOnStart                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         []GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         []GetJobJobSettingsSettingsWebhookNotificationsOnSuccess                          `pulumi:"onSuccesses"`
 }
 
@@ -24431,6 +25318,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsArgs struct {
 	OnDurationWarningThresholdExceededs GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayInput                          `pulumi:"onFailures"`
 	OnStarts                            GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayInput                            `pulumi:"onStarts"`
+	OnStreamingBacklogExceededs         GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayInput         `pulumi:"onStreamingBacklogExceededs"`
 	OnSuccesses                         GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput                          `pulumi:"onSuccesses"`
 }
 
@@ -24529,6 +25417,12 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) OnStarts() GetJobJo
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput)
 }
 
+func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) OnSuccesses() GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
 		return v.OnSuccesses
@@ -24584,6 +25478,15 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnStarts() GetJo
 		}
 		return v.OnStarts
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnStreamingBacklogExceededs
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
 }
 
 func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnSuccesses() GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput {
@@ -24886,6 +25789,103 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsWebhookNotificationsOnStart {
 		return vs[0].([]GetJobJobSettingsSettingsWebhookNotificationsOnStart)[vs[1].(int)]
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
+	Id string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs and GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInput` via:
+//
+//	GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs{...}
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return i.ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput)
+}
+
+// GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray and GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayInput` via:
+//
+//	GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray{ GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs{...} }
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray []GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInput
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return i.ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
+		return vs[0].([]GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccess struct {
@@ -27293,7 +28293,8 @@ type GetStorageCredentialStorageCredentialInfo struct {
 	// credential details for GCP:
 	DatabricksGcpServiceAccount *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	// Unique ID of storage credential.
-	Id *string `pulumi:"id"`
+	Id            *string `pulumi:"id"`
+	IsolationMode *string `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// The name of the storage credential
@@ -27336,7 +28337,8 @@ type GetStorageCredentialStorageCredentialInfoArgs struct {
 	// credential details for GCP:
 	DatabricksGcpServiceAccount GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrInput `pulumi:"databricksGcpServiceAccount"`
 	// Unique ID of storage credential.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore.
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
 	// The name of the storage credential
@@ -27482,6 +28484,10 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) Id() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+func (o GetStorageCredentialStorageCredentialInfoOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
 // Unique identifier of the parent Metastore.
 func (o GetStorageCredentialStorageCredentialInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
@@ -27625,6 +28631,15 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Id() pulumi.StringPt
 			return nil
 		}
 		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetStorageCredentialStorageCredentialInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsolationMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31309,6 +32324,14 @@ func (o GetTableTableInfoViewDependenciesDependencyTablePtrOutput) TableFullName
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Input)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{})
@@ -31503,6 +32526,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskHealthArgs{})
@@ -31598,6 +32623,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
@@ -31614,6 +32641,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnFailureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStartInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnSuccessInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreMetastoreInfoInput)(nil)).Elem(), GetMetastoreMetastoreInfoArgs{})
@@ -31690,6 +32719,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoViewDependenciesDependencyFunctionPtrInput)(nil)).Elem(), GetTableTableInfoViewDependenciesDependencyFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoViewDependenciesDependencyTableInput)(nil)).Elem(), GetTableTableInfoViewDependenciesDependencyTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoViewDependenciesDependencyTablePtrInput)(nil)).Elem(), GetTableTableInfoViewDependenciesDependencyTableArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput{})
@@ -31884,6 +32921,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskHealthOutput{})
@@ -31979,6 +33018,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerOutput{})
@@ -31995,6 +33036,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreMetastoreInfoOutput{})

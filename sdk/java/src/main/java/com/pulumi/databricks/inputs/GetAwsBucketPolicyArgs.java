@@ -39,14 +39,14 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
      * 
      */
     @Import(name="databricksE2AccountId")
     private @Nullable Output<String> databricksE2AccountId;
 
     /**
-     * @return Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * @return Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
      * 
      */
     public Optional<Output<String>> databricksE2AccountId() {
@@ -126,7 +126,7 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param databricksE2AccountId Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * @param databricksE2AccountId Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param databricksE2AccountId Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * @param databricksE2AccountId Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
          * 
          * @return builder
          * 

@@ -42,6 +42,7 @@ namespace Pulumi.Databricks.Outputs
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? EncryptionDetails;
+        public readonly string? IsolationMode;
         /// <summary>
         /// Unique identifier of the parent Metastore.
         /// </summary>
@@ -89,6 +90,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? encryptionDetails,
 
+            string? isolationMode,
+
             string? metastoreId,
 
             string? name,
@@ -111,6 +114,7 @@ namespace Pulumi.Databricks.Outputs
             CredentialId = credentialId;
             CredentialName = credentialName;
             EncryptionDetails = encryptionDetails;
+            IsolationMode = isolationMode;
             MetastoreId = metastoreId;
             Name = name;
             Owner = owner;

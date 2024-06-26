@@ -130,6 +130,13 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
+
     /**
      * Unique identifier of the parent Metastore.
      * 
@@ -246,6 +253,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.encryptionDetails = $.encryptionDetails;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -427,6 +435,15 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
          */
         public Builder encryptionDetails(GetExternalLocationExternalLocationInfoEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
+        }
+
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
         }
 
         /**

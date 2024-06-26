@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs;
 import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsOnFailureArgs;
 import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsOnStartArgs;
+import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs;
 import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsOnSuccessArgs;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,13 @@ public final class JobTaskWebhookNotificationsArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.onStarts);
     }
 
+    @Import(name="onStreamingBacklogExceededs")
+    private @Nullable Output<List<JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs>> onStreamingBacklogExceededs;
+
+    public Optional<Output<List<JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs>>> onStreamingBacklogExceededs() {
+        return Optional.ofNullable(this.onStreamingBacklogExceededs);
+    }
+
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
@@ -93,6 +101,7 @@ public final class JobTaskWebhookNotificationsArgs extends com.pulumi.resources.
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
+        this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
     }
 
@@ -217,6 +226,19 @@ public final class JobTaskWebhookNotificationsArgs extends com.pulumi.resources.
          */
         public Builder onStarts(JobTaskWebhookNotificationsOnStartArgs... onStarts) {
             return onStarts(List.of(onStarts));
+        }
+
+        public Builder onStreamingBacklogExceededs(@Nullable Output<List<JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs>> onStreamingBacklogExceededs) {
+            $.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+
+        public Builder onStreamingBacklogExceededs(List<JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs> onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(Output.of(onStreamingBacklogExceededs));
+        }
+
+        public Builder onStreamingBacklogExceededs(JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
         }
 
         /**

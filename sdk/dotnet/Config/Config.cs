@@ -207,6 +207,13 @@ namespace Pulumi.Databricks
             set => _retryTimeoutSeconds.Set(value);
         }
 
+        private static readonly __Value<string?> _serverlessComputeId = new __Value<string?>(() => __config.Get("serverlessComputeId"));
+        public static string? ServerlessComputeId
+        {
+            get => _serverlessComputeId.Get();
+            set => _serverlessComputeId.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipVerify = new __Value<bool?>(() => __config.GetBoolean("skipVerify"));
         public static bool? SkipVerify
         {

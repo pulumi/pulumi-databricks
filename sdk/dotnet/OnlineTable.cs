@@ -72,6 +72,9 @@ namespace Pulumi.Databricks
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.OnlineTableStatus>> Statuses { get; private set; } = null!;
 
+        [Output("tableServingUrl")]
+        public Output<string?> TableServingUrl { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -130,6 +133,9 @@ namespace Pulumi.Databricks
         [Input("spec")]
         public Input<Inputs.OnlineTableSpecArgs>? Spec { get; set; }
 
+        [Input("tableServingUrl")]
+        public Input<string>? TableServingUrl { get; set; }
+
         public OnlineTableArgs()
         {
         }
@@ -161,6 +167,9 @@ namespace Pulumi.Databricks
             get => _statuses ?? (_statuses = new InputList<Inputs.OnlineTableStatusGetArgs>());
             set => _statuses = value;
         }
+
+        [Input("tableServingUrl")]
+        public Input<string>? TableServingUrl { get; set; }
 
         public OnlineTableState()
         {

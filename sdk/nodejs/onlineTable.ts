@@ -77,6 +77,7 @@ export class OnlineTable extends pulumi.CustomResource {
      * object describing status of the online table:
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.OnlineTableStatus[]>;
+    public readonly tableServingUrl!: pulumi.Output<string | undefined>;
 
     /**
      * Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -94,10 +95,12 @@ export class OnlineTable extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["tableServingUrl"] = state ? state.tableServingUrl : undefined;
         } else {
             const args = argsOrState as OnlineTableArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["tableServingUrl"] = args ? args.tableServingUrl : undefined;
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -121,6 +124,7 @@ export interface OnlineTableState {
      * object describing status of the online table:
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.OnlineTableStatus>[]>;
+    tableServingUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -135,4 +139,5 @@ export interface OnlineTableArgs {
      * object containing specification of the online table:
      */
     spec?: pulumi.Input<inputs.OnlineTableSpec>;
+    tableServingUrl?: pulumi.Input<string>;
 }

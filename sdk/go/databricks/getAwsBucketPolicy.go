@@ -27,7 +27,7 @@ type GetAwsBucketPolicyArgs struct {
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket              string  `pulumi:"bucket"`
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
-	// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
 	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
 	// Data access role that can have full access for this bucket
 	FullAccessRole *string `pulumi:"fullAccessRole"`
@@ -63,7 +63,7 @@ type GetAwsBucketPolicyOutputArgs struct {
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket              pulumi.StringInput    `pulumi:"bucket"`
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
-	// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
 	DatabricksE2AccountId pulumi.StringPtrInput `pulumi:"databricksE2AccountId"`
 	// Data access role that can have full access for this bucket
 	FullAccessRole pulumi.StringPtrInput `pulumi:"fullAccessRole"`

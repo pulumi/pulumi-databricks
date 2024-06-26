@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnFailure;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnStart;
+import com.pulumi.databricks.outputs.JobWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnSuccess;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,7 @@ public final class JobWebhookNotifications {
      * 
      */
     private @Nullable List<JobWebhookNotificationsOnStart> onStarts;
+    private @Nullable List<JobWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
     /**
      * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
@@ -65,6 +67,9 @@ public final class JobWebhookNotifications {
     public List<JobWebhookNotificationsOnStart> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
+    public List<JobWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs() {
+        return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
+    }
     /**
      * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
@@ -85,6 +90,7 @@ public final class JobWebhookNotifications {
         private @Nullable List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<JobWebhookNotificationsOnFailure> onFailures;
         private @Nullable List<JobWebhookNotificationsOnStart> onStarts;
+        private @Nullable List<JobWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
         private @Nullable List<JobWebhookNotificationsOnSuccess> onSuccesses;
         public Builder() {}
         public Builder(JobWebhookNotifications defaults) {
@@ -92,6 +98,7 @@ public final class JobWebhookNotifications {
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
+    	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
@@ -123,6 +130,15 @@ public final class JobWebhookNotifications {
             return onStarts(List.of(onStarts));
         }
         @CustomType.Setter
+        public Builder onStreamingBacklogExceededs(@Nullable List<JobWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs) {
+
+            this.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+        public Builder onStreamingBacklogExceededs(JobWebhookNotificationsOnStreamingBacklogExceeded... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
+        }
+        @CustomType.Setter
         public Builder onSuccesses(@Nullable List<JobWebhookNotificationsOnSuccess> onSuccesses) {
 
             this.onSuccesses = onSuccesses;
@@ -136,6 +152,7 @@ public final class JobWebhookNotifications {
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;
+            _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;
             return _resultValue;
         }

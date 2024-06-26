@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * The following resources are used in the same context:
  *
  * * Provisioning Databricks on AWS guide.
- * * Provisioning Databricks on AWS with PrivateLink guide.
+ * * Provisioning Databricks on AWS with Private Link guide.
  * * databricks.MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
  * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
  * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
- * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  *
  * ## Import
  *

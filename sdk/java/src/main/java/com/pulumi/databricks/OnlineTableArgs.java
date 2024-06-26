@@ -46,11 +46,19 @@ public final class OnlineTableArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.spec);
     }
 
+    @Import(name="tableServingUrl")
+    private @Nullable Output<String> tableServingUrl;
+
+    public Optional<Output<String>> tableServingUrl() {
+        return Optional.ofNullable(this.tableServingUrl);
+    }
+
     private OnlineTableArgs() {}
 
     private OnlineTableArgs(OnlineTableArgs $) {
         this.name = $.name;
         this.spec = $.spec;
+        this.tableServingUrl = $.tableServingUrl;
     }
 
     public static Builder builder() {
@@ -111,6 +119,15 @@ public final class OnlineTableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spec(OnlineTableSpecArgs spec) {
             return spec(Output.of(spec));
+        }
+
+        public Builder tableServingUrl(@Nullable Output<String> tableServingUrl) {
+            $.tableServingUrl = tableServingUrl;
+            return this;
+        }
+
+        public Builder tableServingUrl(String tableServingUrl) {
+            return tableServingUrl(Output.of(tableServingUrl));
         }
 
         public OnlineTableArgs build() {

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
  *
- * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+ * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
  *
  * ## Example Usage
  *
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * });
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: passroleForUc.json,
+ *     assumeRolePolicy: thisAwsIamPolicyDocument.json,
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```
@@ -62,7 +62,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyArgs {
      */
     externalId: string;
     /**
-     * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * The name of the AWS IAM role to be created for Unity Catalog.
      */
     roleName: string;
     /**
@@ -88,7 +88,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
 /**
  * > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
  *
- * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+ * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
  *
  * ## Example Usage
  *
@@ -114,7 +114,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
  * });
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: passroleForUc.json,
+ *     assumeRolePolicy: thisAwsIamPolicyDocument.json,
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```
@@ -136,7 +136,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyOutputArgs {
      */
     externalId: pulumi.Input<string>;
     /**
-     * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * The name of the AWS IAM role to be created for Unity Catalog.
      */
     roleName: pulumi.Input<string>;
     /**

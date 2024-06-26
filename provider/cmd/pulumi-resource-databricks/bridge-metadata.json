@@ -437,6 +437,9 @@
                                 "on_start": {
                                     "maxItemsOne": false
                                 },
+                                "on_streaming_backlog_exceeded": {
+                                    "maxItemsOne": false
+                                },
                                 "on_success": {
                                     "maxItemsOne": false
                                 }
@@ -856,6 +859,9 @@
                                             "on_start": {
                                                 "maxItemsOne": false
                                             },
+                                            "on_streaming_backlog_exceeded": {
+                                                "maxItemsOne": false
+                                            },
                                             "on_success": {
                                                 "maxItemsOne": false
                                             }
@@ -897,6 +903,9 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_streaming_backlog_exceeded": {
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_success": {
@@ -1176,6 +1185,9 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_streaming_backlog_exceeded": {
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_success": {
@@ -1463,6 +1475,9 @@
                                             "on_start": {
                                                 "maxItemsOne": false
                                             },
+                                            "on_streaming_backlog_exceeded": {
+                                                "maxItemsOne": false
+                                            },
                                             "on_success": {
                                                 "maxItemsOne": false
                                             }
@@ -1477,6 +1492,9 @@
                         "elem": {
                             "fields": {
                                 "file_arrival": {
+                                    "maxItemsOne": true
+                                },
+                                "periodic": {
                                     "maxItemsOne": true
                                 },
                                 "table": {
@@ -1513,6 +1531,9 @@
                                     "maxItemsOne": false
                                 },
                                 "on_start": {
+                                    "maxItemsOne": false
+                                },
+                                "on_streaming_backlog_exceeded": {
                                     "maxItemsOne": false
                                 },
                                 "on_success": {
@@ -3039,6 +3060,9 @@
                                                         "on_start": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "on_streaming_backlog_exceeded": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "on_success": {
                                                             "maxItemsOne": false
                                                         }
@@ -3395,6 +3419,9 @@
                                                                     "on_start": {
                                                                         "maxItemsOne": false
                                                                     },
+                                                                    "on_streaming_backlog_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "on_success": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -3436,6 +3463,9 @@
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_start": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_streaming_backlog_exceeded": {
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_success": {
@@ -3666,6 +3696,9 @@
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_start": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_streaming_backlog_exceeded": {
                                                                                                 "maxItemsOne": false
                                                                                             },
                                                                                             "on_success": {
@@ -3904,6 +3937,9 @@
                                                                     "on_start": {
                                                                         "maxItemsOne": false
                                                                     },
+                                                                    "on_streaming_backlog_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "on_success": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -3944,6 +3980,9 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "on_start": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "on_streaming_backlog_exceeded": {
                                                             "maxItemsOne": false
                                                         },
                                                         "on_success": {

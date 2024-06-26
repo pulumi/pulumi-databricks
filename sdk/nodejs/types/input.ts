@@ -1311,6 +1311,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -1371,6 +1372,7 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
+    isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -1774,6 +1776,7 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -1782,6 +1785,7 @@ export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -2790,6 +2794,7 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -2798,6 +2803,7 @@ export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -2920,6 +2926,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -2928,6 +2935,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsA
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -3495,6 +3503,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
     onStarts?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
 }
 
@@ -3502,6 +3511,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>[]>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>[]>;
 }
 
@@ -3541,6 +3551,20 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -4125,6 +4149,7 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
     onStarts?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
 }
 
@@ -4132,6 +4157,7 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs>[]>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs>[]>;
 }
 
@@ -4171,6 +4197,20 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -4233,6 +4273,7 @@ export interface GetJobJobSettingsSettingsWebhookNotifications {
     onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
     onStarts?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
 }
 
@@ -4240,6 +4281,7 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[]>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[]>;
 }
 
@@ -4279,6 +4321,20 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -4656,6 +4712,7 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * Unique ID of storage credential.
      */
     id?: string;
+    isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -4714,6 +4771,7 @@ export interface GetStorageCredentialStorageCredentialInfoArgs {
      * Unique ID of storage credential.
      */
     id?: pulumi.Input<string>;
+    isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -5359,6 +5417,7 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -6200,6 +6259,7 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -6382,6 +6442,7 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -6910,6 +6971,7 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -6931,6 +6993,13 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * ID of the job
      */
@@ -7466,6 +7535,7 @@ export interface JobTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -7493,6 +7563,13 @@ export interface JobTaskWebhookNotificationsOnStart {
     id: pulumi.Input<string>;
 }
 
+export interface JobTaskWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface JobTaskWebhookNotificationsOnSuccess {
     /**
      * ID of the job
@@ -7509,6 +7586,7 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
+    periodic?: pulumi.Input<inputs.JobTriggerPeriodic>;
     table?: pulumi.Input<inputs.JobTriggerTable>;
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
 }
@@ -7526,6 +7604,11 @@ export interface JobTriggerFileArrival {
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
+}
+
+export interface JobTriggerPeriodic {
+    interval: pulumi.Input<number>;
+    unit: pulumi.Input<string>;
 }
 
 export interface JobTriggerTable {
@@ -7559,6 +7642,7 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -7580,6 +7664,13 @@ export interface JobWebhookNotificationsOnFailure {
 }
 
 export interface JobWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * ID of the job
      */

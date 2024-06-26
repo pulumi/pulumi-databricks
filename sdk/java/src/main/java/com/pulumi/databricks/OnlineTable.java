@@ -119,6 +119,12 @@ public class OnlineTable extends com.pulumi.resources.CustomResource {
     public Output<List<OnlineTableStatus>> statuses() {
         return this.statuses;
     }
+    @Export(name="tableServingUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tableServingUrl;
+
+    public Output<Optional<String>> tableServingUrl() {
+        return Codegen.optional(this.tableServingUrl);
+    }
 
     /**
      *

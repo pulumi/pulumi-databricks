@@ -13,7 +13,7 @@ import (
 
 // > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 //
-// This data source constructs necessary AWS Unity Catalog assume role policy for you.
+// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
 //
 // ## Example Usage
 //
@@ -58,7 +58,7 @@ import (
 //			}
 //			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
 //				Name:             pulumi.String(fmt.Sprintf("%v-uc-access", prefix)),
-//				AssumeRolePolicy: pulumi.Any(passroleForUc.Json),
+//				AssumeRolePolicy: pulumi.Any(thisAwsIamPolicyDocument.Json),
 //				ManagedPolicyArns: pulumi.StringArray{
 //					unityMetastore.Arn,
 //				},
@@ -87,7 +87,7 @@ type GetAwsUnityCatalogAssumeRolePolicyArgs struct {
 	AwsAccountId string `pulumi:"awsAccountId"`
 	// The storage credential external id.
 	ExternalId string `pulumi:"externalId"`
-	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+	// The name of the AWS IAM role to be created for Unity Catalog.
 	RoleName string `pulumi:"roleName"`
 	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
 	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
@@ -123,7 +123,7 @@ type GetAwsUnityCatalogAssumeRolePolicyOutputArgs struct {
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
 	// The storage credential external id.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+	// The name of the AWS IAM role to be created for Unity Catalog.
 	RoleName pulumi.StringInput `pulumi:"roleName"`
 	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
 	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`

@@ -65,7 +65,8 @@ type OnlineTable struct {
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrOutput `pulumi:"spec"`
 	// object describing status of the online table:
-	Statuses OnlineTableStatusArrayOutput `pulumi:"statuses"`
+	Statuses        OnlineTableStatusArrayOutput `pulumi:"statuses"`
+	TableServingUrl pulumi.StringPtrOutput       `pulumi:"tableServingUrl"`
 }
 
 // NewOnlineTable registers a new resource with the given unique name, arguments, and options.
@@ -103,7 +104,8 @@ type onlineTableState struct {
 	// object containing specification of the online table:
 	Spec *OnlineTableSpec `pulumi:"spec"`
 	// object describing status of the online table:
-	Statuses []OnlineTableStatus `pulumi:"statuses"`
+	Statuses        []OnlineTableStatus `pulumi:"statuses"`
+	TableServingUrl *string             `pulumi:"tableServingUrl"`
 }
 
 type OnlineTableState struct {
@@ -112,7 +114,8 @@ type OnlineTableState struct {
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrInput
 	// object describing status of the online table:
-	Statuses OnlineTableStatusArrayInput
+	Statuses        OnlineTableStatusArrayInput
+	TableServingUrl pulumi.StringPtrInput
 }
 
 func (OnlineTableState) ElementType() reflect.Type {
@@ -123,7 +126,8 @@ type onlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name *string `pulumi:"name"`
 	// object containing specification of the online table:
-	Spec *OnlineTableSpec `pulumi:"spec"`
+	Spec            *OnlineTableSpec `pulumi:"spec"`
+	TableServingUrl *string          `pulumi:"tableServingUrl"`
 }
 
 // The set of arguments for constructing a OnlineTable resource.
@@ -131,7 +135,8 @@ type OnlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name pulumi.StringPtrInput
 	// object containing specification of the online table:
-	Spec OnlineTableSpecPtrInput
+	Spec            OnlineTableSpecPtrInput
+	TableServingUrl pulumi.StringPtrInput
 }
 
 func (OnlineTableArgs) ElementType() reflect.Type {
@@ -234,6 +239,10 @@ func (o OnlineTableOutput) Spec() OnlineTableSpecPtrOutput {
 // object describing status of the online table:
 func (o OnlineTableOutput) Statuses() OnlineTableStatusArrayOutput {
 	return o.ApplyT(func(v *OnlineTable) OnlineTableStatusArrayOutput { return v.Statuses }).(OnlineTableStatusArrayOutput)
+}
+
+func (o OnlineTableOutput) TableServingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnlineTable) pulumi.StringPtrOutput { return v.TableServingUrl }).(pulumi.StringPtrOutput)
 }
 
 type OnlineTableArrayOutput struct{ *pulumi.OutputState }

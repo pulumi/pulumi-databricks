@@ -17,6 +17,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     private @Nullable List<String> onDurationWarningThresholdExceededs;
     private @Nullable List<String> onFailures;
     private @Nullable List<String> onStarts;
+    private @Nullable List<String> onStreamingBacklogExceededs;
     private @Nullable List<String> onSuccesses;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications() {}
@@ -31,6 +32,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     }
     public List<String> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
+    }
+    public List<String> onStreamingBacklogExceededs() {
+        return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
     }
     public List<String> onSuccesses() {
         return this.onSuccesses == null ? List.of() : this.onSuccesses;
@@ -49,6 +53,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
+        private @Nullable List<String> onStreamingBacklogExceededs;
         private @Nullable List<String> onSuccesses;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications defaults) {
@@ -57,6 +62,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
+    	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
@@ -94,6 +100,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
             return onStarts(List.of(onStarts));
         }
         @CustomType.Setter
+        public Builder onStreamingBacklogExceededs(@Nullable List<String> onStreamingBacklogExceededs) {
+
+            this.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+        public Builder onStreamingBacklogExceededs(String... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
+        }
+        @CustomType.Setter
         public Builder onSuccesses(@Nullable List<String> onSuccesses) {
 
             this.onSuccesses = onSuccesses;
@@ -108,6 +123,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;
+            _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;
             return _resultValue;
         }

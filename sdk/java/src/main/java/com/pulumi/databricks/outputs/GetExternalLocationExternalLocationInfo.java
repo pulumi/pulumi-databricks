@@ -50,6 +50,7 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
+    private @Nullable String isolationMode;
     /**
      * @return Unique identifier of the parent Metastore.
      * 
@@ -139,6 +140,9 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
+    public Optional<String> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
     /**
      * @return Unique identifier of the parent Metastore.
      * 
@@ -206,6 +210,7 @@ public final class GetExternalLocationExternalLocationInfo {
         private @Nullable String credentialId;
         private @Nullable String credentialName;
         private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
+        private @Nullable String isolationMode;
         private @Nullable String metastoreId;
         private @Nullable String name;
         private @Nullable String owner;
@@ -224,6 +229,7 @@ public final class GetExternalLocationExternalLocationInfo {
     	      this.credentialId = defaults.credentialId;
     	      this.credentialName = defaults.credentialName;
     	      this.encryptionDetails = defaults.encryptionDetails;
+    	      this.isolationMode = defaults.isolationMode;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
@@ -282,6 +288,12 @@ public final class GetExternalLocationExternalLocationInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder isolationMode(@Nullable String isolationMode) {
+
+            this.isolationMode = isolationMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metastoreId(@Nullable String metastoreId) {
 
             this.metastoreId = metastoreId;
@@ -333,6 +345,7 @@ public final class GetExternalLocationExternalLocationInfo {
             _resultValue.credentialId = credentialId;
             _resultValue.credentialName = credentialName;
             _resultValue.encryptionDetails = encryptionDetails;
+            _resultValue.isolationMode = isolationMode;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
             _resultValue.owner = owner;

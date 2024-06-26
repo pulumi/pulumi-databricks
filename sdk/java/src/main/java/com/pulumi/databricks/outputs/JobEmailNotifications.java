@@ -35,6 +35,7 @@ public final class JobEmailNotifications {
      * 
      */
     private @Nullable List<String> onStarts;
+    private @Nullable List<String> onStreamingBacklogExceededs;
     /**
      * @return (List) list of emails to notify when the run completes successfully.
      * 
@@ -72,6 +73,9 @@ public final class JobEmailNotifications {
     public List<String> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
+    public List<String> onStreamingBacklogExceededs() {
+        return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
+    }
     /**
      * @return (List) list of emails to notify when the run completes successfully.
      * 
@@ -93,6 +97,7 @@ public final class JobEmailNotifications {
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
+        private @Nullable List<String> onStreamingBacklogExceededs;
         private @Nullable List<String> onSuccesses;
         public Builder() {}
         public Builder(JobEmailNotifications defaults) {
@@ -101,6 +106,7 @@ public final class JobEmailNotifications {
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
+    	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
@@ -138,6 +144,15 @@ public final class JobEmailNotifications {
             return onStarts(List.of(onStarts));
         }
         @CustomType.Setter
+        public Builder onStreamingBacklogExceededs(@Nullable List<String> onStreamingBacklogExceededs) {
+
+            this.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+        public Builder onStreamingBacklogExceededs(String... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
+        }
+        @CustomType.Setter
         public Builder onSuccesses(@Nullable List<String> onSuccesses) {
 
             this.onSuccesses = onSuccesses;
@@ -152,6 +167,7 @@ public final class JobEmailNotifications {
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;
+            _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;
             return _resultValue;
         }

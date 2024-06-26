@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// </summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// </summary>

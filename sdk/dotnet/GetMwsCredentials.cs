@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
         /// * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
         /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
         /// * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-        /// * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+        /// * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
         /// </summary>
         public static Task<GetMwsCredentialsResult> InvokeAsync(GetMwsCredentialsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsArgs(), options.WithDefaults());
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         /// * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
         /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
         /// * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-        /// * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+        /// * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
         /// </summary>
         public static Output<GetMwsCredentialsResult> Invoke(GetMwsCredentialsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsInvokeArgs(), options.WithDefaults());
