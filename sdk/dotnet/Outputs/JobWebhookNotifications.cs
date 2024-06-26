@@ -29,6 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobWebhookNotificationsOnStart> OnStarts;
+        public readonly ImmutableArray<Outputs.JobWebhookNotificationsOnStreamingBacklogExceeded> OnStreamingBacklogExceededs;
         /// <summary>
         /// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         /// </summary>
@@ -42,11 +43,14 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.JobWebhookNotificationsOnStart> onStarts,
 
+            ImmutableArray<Outputs.JobWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs,
+
             ImmutableArray<Outputs.JobWebhookNotificationsOnSuccess> onSuccesses)
         {
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
             OnStarts = onStarts;
+            OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;
         }
     }

@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly metadataServiceUrl!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly profile!: pulumi.Output<string | undefined>;
+    public readonly serverlessComputeId!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<string | undefined>;
     public readonly username!: pulumi.Output<string | undefined>;
     public readonly warehouseId!: pulumi.Output<string | undefined>;
@@ -84,6 +85,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["rateLimit"] = pulumi.output(args ? args.rateLimit : undefined).apply(JSON.stringify);
             resourceInputs["retryTimeoutSeconds"] = pulumi.output(args ? args.retryTimeoutSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["serverlessComputeId"] = args ? args.serverlessComputeId : undefined;
             resourceInputs["skipVerify"] = pulumi.output(args ? args.skipVerify : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -125,6 +127,7 @@ export interface ProviderArgs {
     profile?: pulumi.Input<string>;
     rateLimit?: pulumi.Input<number>;
     retryTimeoutSeconds?: pulumi.Input<number>;
+    serverlessComputeId?: pulumi.Input<string>;
     skipVerify?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
     username?: pulumi.Input<string>;

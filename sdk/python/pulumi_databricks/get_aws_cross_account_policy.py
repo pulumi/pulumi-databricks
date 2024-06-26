@@ -137,7 +137,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
 
     The following resources are used in the same context:
 
-    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
@@ -200,7 +200,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
 
     The following resources are used in the same context:
 
-    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.

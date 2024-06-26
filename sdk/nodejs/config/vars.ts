@@ -207,6 +207,14 @@ Object.defineProperty(exports, "retryTimeoutSeconds", {
     enumerable: true,
 });
 
+export declare const serverlessComputeId: string | undefined;
+Object.defineProperty(exports, "serverlessComputeId", {
+    get() {
+        return __config.get("serverlessComputeId");
+    },
+    enumerable: true,
+});
+
 export declare const skipVerify: boolean | undefined;
 Object.defineProperty(exports, "skipVerify", {
     get() {

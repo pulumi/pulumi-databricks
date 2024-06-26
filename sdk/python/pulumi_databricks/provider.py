@@ -39,6 +39,7 @@ class ProviderArgs:
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 serverless_compute_id: Optional[pulumi.Input[str]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -96,6 +97,8 @@ class ProviderArgs:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if retry_timeout_seconds is not None:
             pulumi.set(__self__, "retry_timeout_seconds", retry_timeout_seconds)
+        if serverless_compute_id is not None:
+            pulumi.set(__self__, "serverless_compute_id", serverless_compute_id)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
         if token is not None:
@@ -331,6 +334,15 @@ class ProviderArgs:
         pulumi.set(self, "retry_timeout_seconds", value)
 
     @property
+    @pulumi.getter(name="serverlessComputeId")
+    def serverless_compute_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serverless_compute_id")
+
+    @serverless_compute_id.setter
+    def serverless_compute_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_compute_id", value)
+
+    @property
     @pulumi.getter(name="skipVerify")
     def skip_verify(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "skip_verify")
@@ -397,6 +409,7 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 serverless_compute_id: Optional[pulumi.Input[str]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -463,6 +476,7 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 serverless_compute_id: Optional[pulumi.Input[str]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -501,6 +515,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
             __props__.__dict__["retry_timeout_seconds"] = pulumi.Output.from_input(retry_timeout_seconds).apply(pulumi.runtime.to_json) if retry_timeout_seconds is not None else None
+            __props__.__dict__["serverless_compute_id"] = serverless_compute_id
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["username"] = username
@@ -607,6 +622,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def profile(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter(name="serverlessComputeId")
+    def serverless_compute_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "serverless_compute_id")
 
     @property
     @pulumi.getter

@@ -235,7 +235,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -323,7 +323,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -411,7 +411,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -499,7 +499,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -787,7 +787,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -840,7 +840,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -893,7 +893,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -946,7 +946,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -999,7 +999,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -1052,7 +1052,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -1064,7 +1064,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
      * 
      * ## Example Usage
      * 
@@ -1116,7 +1116,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1133,7 +1133,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
      * 
      * ## Example Usage
      * 
@@ -1185,7 +1185,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1202,7 +1202,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
      * 
      * ## Example Usage
      * 
@@ -1254,7 +1254,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1271,7 +1271,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog assume role policy for you.
+     * This data source constructs the necessary AWS Unity Catalog assume role policy for you.
      * 
      * ## Example Usage
      * 
@@ -1323,7 +1323,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1340,7 +1340,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you.
+     * This data source constructs the necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1392,7 +1392,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1409,7 +1409,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you.
+     * This data source constructs the necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1461,7 +1461,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1478,7 +1478,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you.
+     * This data source constructs the necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1530,7 +1530,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1547,7 +1547,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
      * 
-     * This data source constructs necessary AWS Unity Catalog policy for you.
+     * This data source constructs the necessary AWS Unity Catalog policy for you.
      * 
      * ## Example Usage
      * 
@@ -1599,7 +1599,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(passroleForUc.json())
+     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -7715,7 +7715,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static Output<GetMwsCredentialsResult> getMwsCredentials() {
@@ -7773,7 +7773,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain() {
@@ -7831,7 +7831,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static Output<GetMwsCredentialsResult> getMwsCredentials(GetMwsCredentialsArgs args) {
@@ -7889,7 +7889,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args) {
@@ -7947,7 +7947,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static Output<GetMwsCredentialsResult> getMwsCredentials(GetMwsCredentialsArgs args, InvokeOptions options) {
@@ -8005,7 +8005,7 @@ public final class DatabricksFunctions {
      * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
      * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
      * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
      * 
      */
     public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args, InvokeOptions options) {
@@ -8058,7 +8058,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */
@@ -8112,7 +8112,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */
@@ -8166,7 +8166,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */
@@ -8220,7 +8220,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */
@@ -8274,7 +8274,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */
@@ -8328,7 +8328,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
      * * databricks.MetastoreAssignment
      * 
      */

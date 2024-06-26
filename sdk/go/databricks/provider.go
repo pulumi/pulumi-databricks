@@ -37,6 +37,7 @@ type Provider struct {
 	MetadataServiceUrl       pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
 	Password                 pulumi.StringPtrOutput `pulumi:"password"`
 	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
+	ServerlessComputeId      pulumi.StringPtrOutput `pulumi:"serverlessComputeId"`
 	Token                    pulumi.StringPtrOutput `pulumi:"token"`
 	Username                 pulumi.StringPtrOutput `pulumi:"username"`
 	WarehouseId              pulumi.StringPtrOutput `pulumi:"warehouseId"`
@@ -111,6 +112,7 @@ type providerArgs struct {
 	Profile                  *string `pulumi:"profile"`
 	RateLimit                *int    `pulumi:"rateLimit"`
 	RetryTimeoutSeconds      *int    `pulumi:"retryTimeoutSeconds"`
+	ServerlessComputeId      *string `pulumi:"serverlessComputeId"`
 	SkipVerify               *bool   `pulumi:"skipVerify"`
 	Token                    *string `pulumi:"token"`
 	Username                 *string `pulumi:"username"`
@@ -144,6 +146,7 @@ type ProviderArgs struct {
 	Profile                  pulumi.StringPtrInput
 	RateLimit                pulumi.IntPtrInput
 	RetryTimeoutSeconds      pulumi.IntPtrInput
+	ServerlessComputeId      pulumi.StringPtrInput
 	SkipVerify               pulumi.BoolPtrInput
 	Token                    pulumi.StringPtrInput
 	Username                 pulumi.StringPtrInput
@@ -261,6 +264,10 @@ func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ServerlessComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServerlessComputeId }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {

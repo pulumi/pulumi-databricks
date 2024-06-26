@@ -29,6 +29,7 @@ class SqlPermissionsArgs:
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
         :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[str] cluster_id: Id of an existing databricks_cluster, otherwise resource creation will fail.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
@@ -89,6 +90,9 @@ class SqlPermissionsArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of an existing databricks_cluster, otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -157,6 +161,7 @@ class _SqlPermissionsState:
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
         :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[str] cluster_id: Id of an existing databricks_cluster, otherwise resource creation will fail.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
@@ -217,6 +222,9 @@ class _SqlPermissionsState:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of an existing databricks_cluster, otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -351,6 +359,7 @@ class SqlPermissions(pulumi.CustomResource):
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
         :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[str] cluster_id: Id of an existing databricks_cluster, otherwise resource creation will fail.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
@@ -492,6 +501,7 @@ class SqlPermissions(pulumi.CustomResource):
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
         :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[str] cluster_id: Id of an existing databricks_cluster, otherwise resource creation will fail.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
@@ -537,6 +547,9 @@ class SqlPermissions(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
+        """
+        Id of an existing databricks_cluster, otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property

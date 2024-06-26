@@ -149,9 +149,17 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> catalog() {
         return Codegen.optional(this.catalog);
     }
+    /**
+     * Id of an existing databricks_cluster, otherwise resource creation will fail.
+     * 
+     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
+    /**
+     * @return Id of an existing databricks_cluster, otherwise resource creation will fail.
+     * 
+     */
     public Output<String> clusterId() {
         return this.clusterId;
     }

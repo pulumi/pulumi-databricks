@@ -210,6 +210,7 @@ __all__ = [
     'JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
     'JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs',
     'JobTaskHealthArgs',
     'JobTaskHealthRuleArgs',
@@ -264,15 +265,18 @@ __all__ = [
     'JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'JobTaskWebhookNotificationsOnFailureArgs',
     'JobTaskWebhookNotificationsOnStartArgs',
+    'JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
     'JobTaskWebhookNotificationsOnSuccessArgs',
     'JobTriggerArgs',
     'JobTriggerFileArrivalArgs',
+    'JobTriggerPeriodicArgs',
     'JobTriggerTableArgs',
     'JobTriggerTableUpdateArgs',
     'JobWebhookNotificationsArgs',
     'JobWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'JobWebhookNotificationsOnFailureArgs',
     'JobWebhookNotificationsOnStartArgs',
+    'JobWebhookNotificationsOnStreamingBacklogExceededArgs',
     'JobWebhookNotificationsOnSuccessArgs',
     'LakehouseMonitorCustomMetricArgs',
     'LakehouseMonitorDataClassificationConfigArgs',
@@ -607,6 +611,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsTaskHealthArgs',
     'GetJobJobSettingsSettingsTaskHealthRuleArgs',
@@ -655,6 +660,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsTriggerArgs',
     'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
@@ -663,6 +669,7 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
     'GetMetastoreMetastoreInfoArgs',
     'GetMlflowExperimentTagArgs',
@@ -3315,6 +3322,7 @@ class JobEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
@@ -3333,6 +3341,8 @@ class JobEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -3385,6 +3395,15 @@ class JobEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -8039,6 +8058,7 @@ class JobTaskEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
@@ -8057,6 +8077,8 @@ class JobTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -8109,6 +8131,15 @@ class JobTaskEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -8811,6 +8842,7 @@ class JobTaskForEachTaskTaskEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
@@ -8829,6 +8861,8 @@ class JobTaskForEachTaskTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -8881,6 +8915,15 @@ class JobTaskForEachTaskTaskEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -11559,6 +11602,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs']]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs']]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']]] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -11576,6 +11620,8 @@ class JobTaskForEachTaskTaskWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -11618,6 +11664,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs']]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -11678,6 +11733,28 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
@@ -14384,6 +14461,7 @@ class JobTaskWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnFailureArgs']]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStartArgs']]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnSuccessArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']]] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -14401,6 +14479,8 @@ class JobTaskWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -14443,6 +14523,15 @@ class JobTaskWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStartArgs']]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -14524,6 +14613,28 @@ class JobTaskWebhookNotificationsOnStartArgs:
 
 
 @pulumi.input_type
+class JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
 class JobTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
@@ -14550,6 +14661,7 @@ class JobTriggerArgs:
     def __init__(__self__, *,
                  file_arrival: Optional[pulumi.Input['JobTriggerFileArrivalArgs']] = None,
                  pause_status: Optional[pulumi.Input[str]] = None,
+                 periodic: Optional[pulumi.Input['JobTriggerPeriodicArgs']] = None,
                  table: Optional[pulumi.Input['JobTriggerTableArgs']] = None,
                  table_update: Optional[pulumi.Input['JobTriggerTableUpdateArgs']] = None):
         """
@@ -14560,6 +14672,8 @@ class JobTriggerArgs:
             pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if periodic is not None:
+            pulumi.set(__self__, "periodic", periodic)
         if table is not None:
             pulumi.set(__self__, "table", table)
         if table_update is not None:
@@ -14588,6 +14702,15 @@ class JobTriggerArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter
+    def periodic(self) -> Optional[pulumi.Input['JobTriggerPeriodicArgs']]:
+        return pulumi.get(self, "periodic")
+
+    @periodic.setter
+    def periodic(self, value: Optional[pulumi.Input['JobTriggerPeriodicArgs']]):
+        pulumi.set(self, "periodic", value)
 
     @property
     @pulumi.getter
@@ -14660,6 +14783,33 @@ class JobTriggerFileArrivalArgs:
     @wait_after_last_change_seconds.setter
     def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+@pulumi.input_type
+class JobTriggerPeriodicArgs:
+    def __init__(__self__, *,
+                 interval: pulumi.Input[int],
+                 unit: pulumi.Input[str]):
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[int]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: pulumi.Input[str]):
+        pulumi.set(self, "unit", value)
 
 
 @pulumi.input_type
@@ -14773,6 +14923,7 @@ class JobWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnDurationWarningThresholdExceededArgs']]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgs']]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]]] = None,
+                 on_streaming_backlog_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStreamingBacklogExceededArgs']]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnDurationWarningThresholdExceededArgs']]] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -14790,6 +14941,8 @@ class JobWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -14832,6 +14985,15 @@ class JobWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStreamingBacklogExceededArgs']]]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStreamingBacklogExceededArgs']]]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -14892,6 +15054,28 @@ class JobWebhookNotificationsOnFailureArgs:
 
 @pulumi.input_type
 class JobWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of the job
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class JobWebhookNotificationsOnStreamingBacklogExceededArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
@@ -24887,6 +25071,7 @@ class GetExternalLocationExternalLocationInfoArgs:
                  credential_id: Optional[str] = None,
                  credential_name: Optional[str] = None,
                  encryption_details: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs'] = None,
+                 isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
                  owner: Optional[str] = None,
@@ -24926,6 +25111,8 @@ class GetExternalLocationExternalLocationInfoArgs:
             pulumi.set(__self__, "credential_name", credential_name)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -25033,6 +25220,15 @@ class GetExternalLocationExternalLocationInfoArgs:
     @encryption_details.setter
     def encryption_details(self, value: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs']):
         pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[str]:
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[str]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -26503,6 +26699,7 @@ class GetJobJobSettingsSettingsEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
@@ -26512,6 +26709,8 @@ class GetJobJobSettingsSettingsEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -26550,6 +26749,15 @@ class GetJobJobSettingsSettingsEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -30261,6 +30469,7 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
@@ -30270,6 +30479,8 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -30308,6 +30519,15 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -30846,6 +31066,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
@@ -30855,6 +31076,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -30893,6 +31116,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -32897,6 +33129,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']] = None,
                  on_failures: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs']] = None,
                  on_starts: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs']] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']] = None,
                  on_successes: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs']] = None):
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
@@ -32904,6 +33137,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -32933,6 +33168,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs']]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -32990,6 +33234,28 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureA
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
     def __init__(__self__, *,
                  id: str):
         """
@@ -35025,6 +35291,7 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs']] = None,
                  on_failures: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs']] = None,
                  on_starts: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs']] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs']] = None,
                  on_successes: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs']] = None):
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
@@ -35032,6 +35299,8 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -35061,6 +35330,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs']]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs']]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -35118,6 +35396,28 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs:
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
     def __init__(__self__, *,
                  id: str):
         """
@@ -35299,6 +35599,7 @@ class GetJobJobSettingsSettingsWebhookNotificationsArgs:
                  on_duration_warning_threshold_exceededs: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs']] = None,
                  on_failures: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs']] = None,
                  on_starts: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs']] = None,
+                 on_streaming_backlog_exceededs: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs']] = None,
                  on_successes: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs']] = None):
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
@@ -35306,6 +35607,8 @@ class GetJobJobSettingsSettingsWebhookNotificationsArgs:
             pulumi.set(__self__, "on_failures", on_failures)
         if on_starts is not None:
             pulumi.set(__self__, "on_starts", on_starts)
+        if on_streaming_backlog_exceededs is not None:
+            pulumi.set(__self__, "on_streaming_backlog_exceededs", on_streaming_backlog_exceededs)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
 
@@ -35335,6 +35638,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsArgs:
     @on_starts.setter
     def on_starts(self, value: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs']]):
         pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onStreamingBacklogExceededs")
+    def on_streaming_backlog_exceededs(self) -> Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs']]:
+        return pulumi.get(self, "on_streaming_backlog_exceededs")
+
+    @on_streaming_backlog_exceededs.setter
+    def on_streaming_backlog_exceededs(self, value: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs']]):
+        pulumi.set(self, "on_streaming_backlog_exceededs", value)
 
     @property
     @pulumi.getter(name="onSuccesses")
@@ -35392,6 +35704,28 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs:
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs:
     def __init__(__self__, *,
                  id: str):
         """
@@ -36426,6 +36760,7 @@ class GetStorageCredentialStorageCredentialInfoArgs:
                  created_by: Optional[str] = None,
                  databricks_gcp_service_account: Optional['GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs'] = None,
                  id: Optional[str] = None,
+                 isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
                  owner: Optional[str] = None,
@@ -36466,6 +36801,8 @@ class GetStorageCredentialStorageCredentialInfoArgs:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -36582,6 +36919,15 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @id.setter
     def id(self, value: Optional[str]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[str]:
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[str]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")

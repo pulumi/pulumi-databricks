@@ -55,6 +55,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
      * 
      */
     private @Nullable String id;
+    private @Nullable String isolationMode;
     /**
      * @return Unique identifier of the parent Metastore.
      * 
@@ -143,6 +144,9 @@ public final class GetStorageCredentialStorageCredentialInfo {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    public Optional<String> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
     /**
      * @return Unique identifier of the parent Metastore.
      * 
@@ -207,6 +211,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
         private @Nullable String createdBy;
         private @Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount;
         private @Nullable String id;
+        private @Nullable String isolationMode;
         private @Nullable String metastoreId;
         private @Nullable String name;
         private @Nullable String owner;
@@ -226,6 +231,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
     	      this.createdBy = defaults.createdBy;
     	      this.databricksGcpServiceAccount = defaults.databricksGcpServiceAccount;
     	      this.id = defaults.id;
+    	      this.isolationMode = defaults.isolationMode;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
@@ -290,6 +296,12 @@ public final class GetStorageCredentialStorageCredentialInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder isolationMode(@Nullable String isolationMode) {
+
+            this.isolationMode = isolationMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metastoreId(@Nullable String metastoreId) {
 
             this.metastoreId = metastoreId;
@@ -342,6 +354,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
             _resultValue.createdBy = createdBy;
             _resultValue.databricksGcpServiceAccount = databricksGcpServiceAccount;
             _resultValue.id = id;
+            _resultValue.isolationMode = isolationMode;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
             _resultValue.owner = owner;

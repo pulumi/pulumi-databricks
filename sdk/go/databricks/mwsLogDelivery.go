@@ -97,7 +97,7 @@ import (
 // * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
 // * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
 // * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-// * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+// * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 //
 // ## Import
 //
@@ -125,7 +125,7 @@ type MwsLogDelivery struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
 	StorageConfigurationId pulumi.StringOutput `pulumi:"storageConfigurationId"`
-	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 	WorkspaceIdsFilters pulumi.IntArrayOutput `pulumi:"workspaceIdsFilters"`
 }
 
@@ -194,7 +194,7 @@ type mwsLogDeliveryState struct {
 	Status *string `pulumi:"status"`
 	// The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
 	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
-	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 	WorkspaceIdsFilters []int `pulumi:"workspaceIdsFilters"`
 }
 
@@ -219,7 +219,7 @@ type MwsLogDeliveryState struct {
 	Status pulumi.StringPtrInput
 	// The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
 	StorageConfigurationId pulumi.StringPtrInput
-	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 	WorkspaceIdsFilters pulumi.IntArrayInput
 }
 
@@ -248,7 +248,7 @@ type mwsLogDeliveryArgs struct {
 	Status *string `pulumi:"status"`
 	// The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
 	StorageConfigurationId string `pulumi:"storageConfigurationId"`
-	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 	WorkspaceIdsFilters []int `pulumi:"workspaceIdsFilters"`
 }
 
@@ -274,7 +274,7 @@ type MwsLogDeliveryArgs struct {
 	Status pulumi.StringPtrInput
 	// The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
 	StorageConfigurationId pulumi.StringInput
-	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+	// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 	WorkspaceIdsFilters pulumi.IntArrayInput
 }
 
@@ -415,7 +415,7 @@ func (o MwsLogDeliveryOutput) StorageConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsLogDelivery) pulumi.StringOutput { return v.StorageConfigurationId }).(pulumi.StringOutput)
 }
 
-// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
+// By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
 func (o MwsLogDeliveryOutput) WorkspaceIdsFilters() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *MwsLogDelivery) pulumi.IntArrayOutput { return v.WorkspaceIdsFilters }).(pulumi.IntArrayOutput)
 }

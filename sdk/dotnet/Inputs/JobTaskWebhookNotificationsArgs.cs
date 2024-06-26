@@ -52,6 +52,14 @@ namespace Pulumi.Databricks.Inputs
             set => _onStarts = value;
         }
 
+        [Input("onStreamingBacklogExceededs")]
+        private InputList<Inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs>? _onStreamingBacklogExceededs;
+        public InputList<Inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs> OnStreamingBacklogExceededs
+        {
+            get => _onStreamingBacklogExceededs ?? (_onStreamingBacklogExceededs = new InputList<Inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs>());
+            set => _onStreamingBacklogExceededs = value;
+        }
+
         [Input("onSuccesses")]
         private InputList<Inputs.JobTaskWebhookNotificationsOnSuccessArgs>? _onSuccesses;
 

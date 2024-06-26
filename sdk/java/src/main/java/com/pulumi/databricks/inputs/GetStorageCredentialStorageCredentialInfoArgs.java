@@ -141,6 +141,13 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         return Optional.ofNullable(this.id);
     }
 
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
+
     /**
      * Unique identifier of the parent Metastore.
      * 
@@ -250,6 +257,7 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         this.createdBy = $.createdBy;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.id = $.id;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -440,6 +448,15 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
         }
 
         /**

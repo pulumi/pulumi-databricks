@@ -87,6 +87,9 @@ public final class Config {
     public Optional<Integer> retryTimeoutSeconds() {
         return Codegen.integerProp("retryTimeoutSeconds").config(config).get();
     }
+    public Optional<String> serverlessComputeId() {
+        return Codegen.stringProp("serverlessComputeId").config(config).get();
+    }
     public Optional<Boolean> skipVerify() {
         return Codegen.booleanProp("skipVerify").config(config).get();
     }

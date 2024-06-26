@@ -87,7 +87,7 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
 // * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 // * getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsAssumeRolePolicyResult, error) {

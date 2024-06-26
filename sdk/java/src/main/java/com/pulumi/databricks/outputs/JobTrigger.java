@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
+import com.pulumi.databricks.outputs.JobTriggerPeriodic;
 import com.pulumi.databricks.outputs.JobTriggerTable;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
@@ -24,6 +25,7 @@ public final class JobTrigger {
      * 
      */
     private @Nullable String pauseStatus;
+    private @Nullable JobTriggerPeriodic periodic;
     private @Nullable JobTriggerTable table;
     private @Nullable JobTriggerTableUpdate tableUpdate;
 
@@ -41,6 +43,9 @@ public final class JobTrigger {
      */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
+    }
+    public Optional<JobTriggerPeriodic> periodic() {
+        return Optional.ofNullable(this.periodic);
     }
     public Optional<JobTriggerTable> table() {
         return Optional.ofNullable(this.table);
@@ -60,6 +65,7 @@ public final class JobTrigger {
     public static final class Builder {
         private @Nullable JobTriggerFileArrival fileArrival;
         private @Nullable String pauseStatus;
+        private @Nullable JobTriggerPeriodic periodic;
         private @Nullable JobTriggerTable table;
         private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
@@ -67,6 +73,7 @@ public final class JobTrigger {
     	      Objects.requireNonNull(defaults);
     	      this.fileArrival = defaults.fileArrival;
     	      this.pauseStatus = defaults.pauseStatus;
+    	      this.periodic = defaults.periodic;
     	      this.table = defaults.table;
     	      this.tableUpdate = defaults.tableUpdate;
         }
@@ -81,6 +88,12 @@ public final class JobTrigger {
         public Builder pauseStatus(@Nullable String pauseStatus) {
 
             this.pauseStatus = pauseStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder periodic(@Nullable JobTriggerPeriodic periodic) {
+
+            this.periodic = periodic;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +112,7 @@ public final class JobTrigger {
             final var _resultValue = new JobTrigger();
             _resultValue.fileArrival = fileArrival;
             _resultValue.pauseStatus = pauseStatus;
+            _resultValue.periodic = periodic;
             _resultValue.table = table;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;

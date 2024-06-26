@@ -47,14 +47,14 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
     }
 
     /**
-     * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * The name of the AWS IAM role to be created for Unity Catalog.
      * 
      */
     @Import(name="roleName", required=true)
     private Output<String> roleName;
 
     /**
-     * @return The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * @return The name of the AWS IAM role to be created for Unity Catalog.
      * 
      */
     public Output<String> roleName() {
@@ -146,7 +146,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param roleName The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+         * @param roleName The name of the AWS IAM role to be created for Unity Catalog.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param roleName The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+         * @param roleName The name of the AWS IAM role to be created for Unity Catalog.
          * 
          * @return builder
          * 

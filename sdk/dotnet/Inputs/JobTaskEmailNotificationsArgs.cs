@@ -56,6 +56,14 @@ namespace Pulumi.Databricks.Inputs
             set => _onStarts = value;
         }
 
+        [Input("onStreamingBacklogExceededs")]
+        private InputList<string>? _onStreamingBacklogExceededs;
+        public InputList<string> OnStreamingBacklogExceededs
+        {
+            get => _onStreamingBacklogExceededs ?? (_onStreamingBacklogExceededs = new InputList<string>());
+            set => _onStreamingBacklogExceededs = value;
+        }
+
         [Input("onSuccesses")]
         private InputList<string>? _onSuccesses;
 

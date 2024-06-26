@@ -17,7 +17,8 @@ __all__ = ['OnlineTableArgs', 'OnlineTable']
 class OnlineTableArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None):
+                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
+                 table_serving_url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OnlineTable resource.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
@@ -27,6 +28,8 @@ class OnlineTableArgs:
             pulumi.set(__self__, "name", name)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if table_serving_url is not None:
+            pulumi.set(__self__, "table_serving_url", table_serving_url)
 
     @property
     @pulumi.getter
@@ -52,13 +55,23 @@ class OnlineTableArgs:
     def spec(self, value: Optional[pulumi.Input['OnlineTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
+    @property
+    @pulumi.getter(name="tableServingUrl")
+    def table_serving_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "table_serving_url")
+
+    @table_serving_url.setter
+    def table_serving_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_serving_url", value)
+
 
 @pulumi.input_type
 class _OnlineTableState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None,
+                 table_serving_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OnlineTable resources.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
@@ -71,6 +84,8 @@ class _OnlineTableState:
             pulumi.set(__self__, "spec", spec)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if table_serving_url is not None:
+            pulumi.set(__self__, "table_serving_url", table_serving_url)
 
     @property
     @pulumi.getter
@@ -108,6 +123,15 @@ class _OnlineTableState:
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
+    @property
+    @pulumi.getter(name="tableServingUrl")
+    def table_serving_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "table_serving_url")
+
+    @table_serving_url.setter
+    def table_serving_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_serving_url", value)
+
 
 class OnlineTable(pulumi.CustomResource):
     @overload
@@ -116,6 +140,7 @@ class OnlineTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
+                 table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > **Note** This resource could be only used on Unity Catalog-enabled workspace!
@@ -205,6 +230,7 @@ class OnlineTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
+                 table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,6 +242,7 @@ class OnlineTable(pulumi.CustomResource):
 
             __props__.__dict__["name"] = name
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["table_serving_url"] = table_serving_url
             __props__.__dict__["statuses"] = None
         super(OnlineTable, __self__).__init__(
             'databricks:index/onlineTable:OnlineTable',
@@ -229,7 +256,8 @@ class OnlineTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OnlineTableStatusArgs']]]]] = None) -> 'OnlineTable':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OnlineTableStatusArgs']]]]] = None,
+            table_serving_url: Optional[pulumi.Input[str]] = None) -> 'OnlineTable':
         """
         Get an existing OnlineTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -248,6 +276,7 @@ class OnlineTable(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["spec"] = spec
         __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["table_serving_url"] = table_serving_url
         return OnlineTable(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -273,4 +302,9 @@ class OnlineTable(pulumi.CustomResource):
         object describing status of the online table:
         """
         return pulumi.get(self, "statuses")
+
+    @property
+    @pulumi.getter(name="tableServingUrl")
+    def table_serving_url(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "table_serving_url")
 

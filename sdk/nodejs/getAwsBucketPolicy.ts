@@ -28,7 +28,7 @@ export interface GetAwsBucketPolicyArgs {
     bucket: string;
     databricksAccountId?: string;
     /**
-     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
      */
     databricksE2AccountId?: string;
     /**
@@ -71,7 +71,7 @@ export interface GetAwsBucketPolicyOutputArgs {
     bucket: pulumi.Input<string>;
     databricksAccountId?: pulumi.Input<string>;
     /**
-     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
      */
     databricksE2AccountId?: pulumi.Input<string>;
     /**

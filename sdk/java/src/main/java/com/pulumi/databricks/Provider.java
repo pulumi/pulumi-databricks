@@ -137,6 +137,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> profile() {
         return Codegen.optional(this.profile);
     }
+    @Export(name="serverlessComputeId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serverlessComputeId;
+
+    public Output<Optional<String>> serverlessComputeId() {
+        return Codegen.optional(this.serverlessComputeId);
+    }
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 

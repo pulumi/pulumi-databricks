@@ -31,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
         /// (List) list of emails to notify when the run starts.
         /// </summary>
         public readonly ImmutableArray<string> OnStarts;
+        public readonly ImmutableArray<string> OnStreamingBacklogExceededs;
         /// <summary>
         /// (List) list of emails to notify when the run completes successfully.
         /// </summary>
@@ -46,12 +47,15 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> onStarts,
 
+            ImmutableArray<string> onStreamingBacklogExceededs,
+
             ImmutableArray<string> onSuccesses)
         {
             NoAlertForSkippedRuns = noAlertForSkippedRuns;
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
             OnStarts = onStarts;
+            OnStreamingBacklogExceededs = onStreamingBacklogExceededs;
             OnSuccesses = onSuccesses;
         }
     }

@@ -60,6 +60,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
+
         /// <summary>
         /// Unique identifier of the parent Metastore.
         /// </summary>

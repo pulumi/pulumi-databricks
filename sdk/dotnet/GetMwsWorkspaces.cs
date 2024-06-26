@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+        /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment
         /// </summary>
         public static Task<GetMwsWorkspacesResult> InvokeAsync(GetMwsWorkspacesArgs? args = null, InvokeOptions? options = null)
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+        /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment
         /// </summary>
         public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs? args = null, InvokeOptions? options = null)

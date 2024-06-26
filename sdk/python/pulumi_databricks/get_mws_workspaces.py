@@ -81,7 +81,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
 
     The following resources are used in the same context:
 
-    * MwsWorkspaces to manage Databricks E2 Workspaces.
+    * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment
 
 
@@ -123,7 +123,7 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, A
 
     The following resources are used in the same context:
 
-    * MwsWorkspaces to manage Databricks E2 Workspaces.
+    * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment
 
 

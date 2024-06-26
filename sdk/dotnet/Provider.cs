@@ -75,6 +75,9 @@ namespace Pulumi.Databricks
         [Output("profile")]
         public Output<string?> Profile { get; private set; } = null!;
 
+        [Output("serverlessComputeId")]
+        public Output<string?> ServerlessComputeId { get; private set; } = null!;
+
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
 
@@ -240,6 +243,9 @@ namespace Pulumi.Databricks
 
         [Input("retryTimeoutSeconds", json: true)]
         public Input<int>? RetryTimeoutSeconds { get; set; }
+
+        [Input("serverlessComputeId")]
+        public Input<string>? ServerlessComputeId { get; set; }
 
         [Input("skipVerify", json: true)]
         public Input<bool>? SkipVerify { get; set; }

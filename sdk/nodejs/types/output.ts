@@ -901,6 +901,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -1120,6 +1121,7 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -1628,6 +1630,7 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -1693,6 +1696,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     onSuccesses?: string[];
 }
 
@@ -1980,6 +1984,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
     onStarts?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
 }
 
@@ -1998,6 +2003,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -2295,6 +2307,7 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
     onStarts?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
 }
 
@@ -2313,6 +2326,13 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -2349,6 +2369,7 @@ export interface GetJobJobSettingsSettingsWebhookNotifications {
     onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
     onStarts?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
 }
 
@@ -2367,6 +2388,13 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
@@ -2582,6 +2610,7 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * Unique ID of storage credential.
      */
     id?: string;
+    isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
      */
@@ -3011,6 +3040,7 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -3852,6 +3882,7 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -4034,6 +4065,7 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: string[];
+    onStreamingBacklogExceededs?: string[];
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
@@ -4562,6 +4594,7 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -4583,6 +4616,13 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * ID of the job
      */
@@ -5118,6 +5158,7 @@ export interface JobTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: outputs.JobTaskWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded[];
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -5145,6 +5186,13 @@ export interface JobTaskWebhookNotificationsOnStart {
     id: string;
 }
 
+export interface JobTaskWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
 export interface JobTaskWebhookNotificationsOnSuccess {
     /**
      * ID of the job
@@ -5161,6 +5209,7 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: string;
+    periodic?: outputs.JobTriggerPeriodic;
     table?: outputs.JobTriggerTable;
     tableUpdate?: outputs.JobTriggerTableUpdate;
 }
@@ -5178,6 +5227,11 @@ export interface JobTriggerFileArrival {
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
     waitAfterLastChangeSeconds?: number;
+}
+
+export interface JobTriggerPeriodic {
+    interval: number;
+    unit: string;
 }
 
 export interface JobTriggerTable {
@@ -5211,6 +5265,7 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: outputs.JobWebhookNotificationsOnStart[];
+    onStreamingBacklogExceededs?: outputs.JobWebhookNotificationsOnStreamingBacklogExceeded[];
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
@@ -5232,6 +5287,13 @@ export interface JobWebhookNotificationsOnFailure {
 }
 
 export interface JobWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id: string;
+}
+
+export interface JobWebhookNotificationsOnStreamingBacklogExceeded {
     /**
      * ID of the job
      */

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,7 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
      * 
      */
     private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts;
+    private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
     /**
      * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
@@ -65,6 +67,9 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     public List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
+    public List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs() {
+        return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
+    }
     /**
      * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
@@ -85,6 +90,7 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnFailure> onFailures;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts;
+        private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
         private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccess> onSuccesses;
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskWebhookNotifications defaults) {
@@ -92,6 +98,7 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
+    	      this.onStreamingBacklogExceededs = defaults.onStreamingBacklogExceededs;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
@@ -123,6 +130,15 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
             return onStarts(List.of(onStarts));
         }
         @CustomType.Setter
+        public Builder onStreamingBacklogExceededs(@Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs) {
+
+            this.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+        public Builder onStreamingBacklogExceededs(JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
+        }
+        @CustomType.Setter
         public Builder onSuccesses(@Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccess> onSuccesses) {
 
             this.onSuccesses = onSuccesses;
@@ -136,6 +152,7 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;
+            _resultValue.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             _resultValue.onSuccesses = onSuccesses;
             return _resultValue;
         }

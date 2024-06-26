@@ -45,6 +45,13 @@ public final class GetJobJobSettingsSettingsTaskEmailNotificationsArgs extends c
         return Optional.ofNullable(this.onStarts);
     }
 
+    @Import(name="onStreamingBacklogExceededs")
+    private @Nullable Output<List<String>> onStreamingBacklogExceededs;
+
+    public Optional<Output<List<String>>> onStreamingBacklogExceededs() {
+        return Optional.ofNullable(this.onStreamingBacklogExceededs);
+    }
+
     @Import(name="onSuccesses")
     private @Nullable Output<List<String>> onSuccesses;
 
@@ -59,6 +66,7 @@ public final class GetJobJobSettingsSettingsTaskEmailNotificationsArgs extends c
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
+        this.onStreamingBacklogExceededs = $.onStreamingBacklogExceededs;
         this.onSuccesses = $.onSuccesses;
     }
 
@@ -126,6 +134,19 @@ public final class GetJobJobSettingsSettingsTaskEmailNotificationsArgs extends c
 
         public Builder onStarts(String... onStarts) {
             return onStarts(List.of(onStarts));
+        }
+
+        public Builder onStreamingBacklogExceededs(@Nullable Output<List<String>> onStreamingBacklogExceededs) {
+            $.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
+            return this;
+        }
+
+        public Builder onStreamingBacklogExceededs(List<String> onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(Output.of(onStreamingBacklogExceededs));
+        }
+
+        public Builder onStreamingBacklogExceededs(String... onStreamingBacklogExceededs) {
+            return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
         }
 
         public Builder onSuccesses(@Nullable Output<List<String>> onSuccesses) {

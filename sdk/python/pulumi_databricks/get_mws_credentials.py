@@ -86,7 +86,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
     * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
     * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
     * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-    * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+    * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 
 
     :param Mapping[str, Any] ids: name-to-id map for all of the credentials in the account
@@ -132,7 +132,7 @@ def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, 
     * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
     * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
     * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-    * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+    * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 
 
     :param Mapping[str, Any] ids: name-to-id map for all of the credentials in the account

@@ -59,6 +59,8 @@ rateLimit: Optional[int]
 
 retryTimeoutSeconds: Optional[int]
 
+serverlessComputeId: Optional[str]
+
 skipVerify: Optional[bool]
 
 token: Optional[str]

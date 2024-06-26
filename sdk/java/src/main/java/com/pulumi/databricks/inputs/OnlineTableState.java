@@ -63,12 +63,20 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.statuses);
     }
 
+    @Import(name="tableServingUrl")
+    private @Nullable Output<String> tableServingUrl;
+
+    public Optional<Output<String>> tableServingUrl() {
+        return Optional.ofNullable(this.tableServingUrl);
+    }
+
     private OnlineTableState() {}
 
     private OnlineTableState(OnlineTableState $) {
         this.name = $.name;
         this.spec = $.spec;
         this.statuses = $.statuses;
+        this.tableServingUrl = $.tableServingUrl;
     }
 
     public static Builder builder() {
@@ -160,6 +168,15 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder statuses(OnlineTableStatusArgs... statuses) {
             return statuses(List.of(statuses));
+        }
+
+        public Builder tableServingUrl(@Nullable Output<String> tableServingUrl) {
+            $.tableServingUrl = tableServingUrl;
+            return this;
+        }
+
+        public Builder tableServingUrl(String tableServingUrl) {
+            return tableServingUrl(Output.of(tableServingUrl));
         }
 
         public OnlineTableState build() {

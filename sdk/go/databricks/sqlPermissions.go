@@ -98,8 +98,9 @@ type SqlPermissions struct {
 	// If this access control for reading/writing any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrOutput `pulumi:"anyFile"`
 	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrOutput `pulumi:"catalog"`
-	ClusterId pulumi.StringOutput  `pulumi:"clusterId"`
+	Catalog pulumi.BoolPtrOutput `pulumi:"catalog"`
+	// Id of an existing databricks_cluster, otherwise resource creation will fail.
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
 	Database             pulumi.StringPtrOutput                       `pulumi:"database"`
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayOutput `pulumi:"privilegeAssignments"`
@@ -144,7 +145,8 @@ type sqlPermissionsState struct {
 	// If this access control for reading/writing any file. Defaults to `false`.
 	AnyFile *bool `pulumi:"anyFile"`
 	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   *bool   `pulumi:"catalog"`
+	Catalog *bool `pulumi:"catalog"`
+	// Id of an existing databricks_cluster, otherwise resource creation will fail.
 	ClusterId *string `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
 	Database             *string                             `pulumi:"database"`
@@ -161,7 +163,8 @@ type SqlPermissionsState struct {
 	// If this access control for reading/writing any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrInput
 	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrInput
+	Catalog pulumi.BoolPtrInput
+	// Id of an existing databricks_cluster, otherwise resource creation will fail.
 	ClusterId pulumi.StringPtrInput
 	// Name of the database. Has default value of `default`.
 	Database             pulumi.StringPtrInput
@@ -182,7 +185,8 @@ type sqlPermissionsArgs struct {
 	// If this access control for reading/writing any file. Defaults to `false`.
 	AnyFile *bool `pulumi:"anyFile"`
 	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   *bool   `pulumi:"catalog"`
+	Catalog *bool `pulumi:"catalog"`
+	// Id of an existing databricks_cluster, otherwise resource creation will fail.
 	ClusterId *string `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
 	Database             *string                             `pulumi:"database"`
@@ -200,7 +204,8 @@ type SqlPermissionsArgs struct {
 	// If this access control for reading/writing any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrInput
 	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrInput
+	Catalog pulumi.BoolPtrInput
+	// Id of an existing databricks_cluster, otherwise resource creation will fail.
 	ClusterId pulumi.StringPtrInput
 	// Name of the database. Has default value of `default`.
 	Database             pulumi.StringPtrInput
@@ -313,6 +318,7 @@ func (o SqlPermissionsOutput) Catalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.Catalog }).(pulumi.BoolPtrOutput)
 }
 
+// Id of an existing databricks_cluster, otherwise resource creation will fail.
 func (o SqlPermissionsOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }

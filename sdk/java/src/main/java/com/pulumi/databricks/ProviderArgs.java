@@ -192,6 +192,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryTimeoutSeconds);
     }
 
+    @Import(name="serverlessComputeId")
+    private @Nullable Output<String> serverlessComputeId;
+
+    public Optional<Output<String>> serverlessComputeId() {
+        return Optional.ofNullable(this.serverlessComputeId);
+    }
+
     @Import(name="skipVerify", json=true)
     private @Nullable Output<Boolean> skipVerify;
 
@@ -248,6 +255,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.profile = $.profile;
         this.rateLimit = $.rateLimit;
         this.retryTimeoutSeconds = $.retryTimeoutSeconds;
+        this.serverlessComputeId = $.serverlessComputeId;
         this.skipVerify = $.skipVerify;
         this.token = $.token;
         this.username = $.username;
@@ -495,6 +503,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder retryTimeoutSeconds(Integer retryTimeoutSeconds) {
             return retryTimeoutSeconds(Output.of(retryTimeoutSeconds));
+        }
+
+        public Builder serverlessComputeId(@Nullable Output<String> serverlessComputeId) {
+            $.serverlessComputeId = serverlessComputeId;
+            return this;
+        }
+
+        public Builder serverlessComputeId(String serverlessComputeId) {
+            return serverlessComputeId(Output.of(serverlessComputeId));
         }
 
         public Builder skipVerify(@Nullable Output<Boolean> skipVerify) {

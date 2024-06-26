@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.

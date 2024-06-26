@@ -43,6 +43,7 @@ namespace Pulumi.Databricks.Outputs
         /// Unique ID of storage credential.
         /// </summary>
         public readonly string? Id;
+        public readonly string? IsolationMode;
         /// <summary>
         /// Unique identifier of the parent Metastore.
         /// </summary>
@@ -89,6 +90,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? id,
 
+            string? isolationMode,
+
             string? metastoreId,
 
             string? name,
@@ -112,6 +115,7 @@ namespace Pulumi.Databricks.Outputs
             CreatedBy = createdBy;
             DatabricksGcpServiceAccount = databricksGcpServiceAccount;
             Id = id;
+            IsolationMode = isolationMode;
             MetastoreId = metastoreId;
             Name = name;
             Owner = owner;
