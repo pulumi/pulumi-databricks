@@ -114,9 +114,6 @@ namespace Pulumi.Databricks
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-        /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.ClusterPolicyLibrary>> Libraries { get; private set; } = null!;
 
@@ -210,10 +207,6 @@ namespace Pulumi.Databricks
 
         [Input("libraries")]
         private InputList<Inputs.ClusterPolicyLibraryArgs>? _libraries;
-
-        /// <summary>
-        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-        /// </summary>
         public InputList<Inputs.ClusterPolicyLibraryArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.ClusterPolicyLibraryArgs>());
@@ -266,10 +259,6 @@ namespace Pulumi.Databricks
 
         [Input("libraries")]
         private InputList<Inputs.ClusterPolicyLibraryGetArgs>? _libraries;
-
-        /// <summary>
-        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-        /// </summary>
         public InputList<Inputs.ClusterPolicyLibraryGetArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.ClusterPolicyLibraryGetArgs>());

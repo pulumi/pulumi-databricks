@@ -143,17 +143,9 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     * 
-     */
     @Export(name="libraries", refs={List.class,ClusterPolicyLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterPolicyLibrary>> libraries;
 
-    /**
-     * @return blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     * 
-     */
     public Output<Optional<List<ClusterPolicyLibrary>>> libraries() {
         return Codegen.optional(this.libraries);
     }
