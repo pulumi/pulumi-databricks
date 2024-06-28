@@ -120,9 +120,6 @@ export class ClusterPolicy extends pulumi.CustomResource {
      * Additional human-readable description of the cluster policy.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     */
     public readonly libraries!: pulumi.Output<outputs.ClusterPolicyLibrary[] | undefined>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -194,9 +191,6 @@ export interface ClusterPolicyState {
      * Additional human-readable description of the cluster policy.
      */
     description?: pulumi.Input<string>;
-    /**
-     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     */
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterPolicyLibrary>[]>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -232,9 +226,6 @@ export interface ClusterPolicyArgs {
      * Additional human-readable description of the cluster policy.
      */
     description?: pulumi.Input<string>;
-    /**
-     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     */
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterPolicyLibrary>[]>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.

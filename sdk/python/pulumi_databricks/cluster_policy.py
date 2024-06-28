@@ -27,7 +27,6 @@ class ClusterPolicyArgs:
         The set of arguments for constructing a ClusterPolicy resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]] libraries: blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
@@ -75,9 +74,6 @@ class ClusterPolicyArgs:
     @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
-        """
-        blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
-        """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
@@ -148,7 +144,6 @@ class _ClusterPolicyState:
         Input properties used for looking up and filtering ClusterPolicy resources.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]] libraries: blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
@@ -199,9 +194,6 @@ class _ClusterPolicyState:
     @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
-        """
-        blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
-        """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
@@ -364,7 +356,6 @@ class ClusterPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPolicyLibraryArgs']]]] libraries: blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
@@ -520,7 +511,6 @@ class ClusterPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPolicyLibraryArgs']]]] libraries: blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
@@ -560,9 +550,6 @@ class ClusterPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterPolicyLibrary']]]:
-        """
-        blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
-        """
         return pulumi.get(self, "libraries")
 
     @property

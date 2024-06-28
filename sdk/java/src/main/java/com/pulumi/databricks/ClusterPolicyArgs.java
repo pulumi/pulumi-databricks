@@ -48,17 +48,9 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     * 
-     */
     @Import(name="libraries")
     private @Nullable Output<List<ClusterPolicyLibraryArgs>> libraries;
 
-    /**
-     * @return blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-     * 
-     */
     public Optional<Output<List<ClusterPolicyLibraryArgs>>> libraries() {
         return Optional.ofNullable(this.libraries);
     }
@@ -195,33 +187,15 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        /**
-         * @param libraries blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(@Nullable Output<List<ClusterPolicyLibraryArgs>> libraries) {
             $.libraries = libraries;
             return this;
         }
 
-        /**
-         * @param libraries blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(List<ClusterPolicyLibraryArgs> libraries) {
             return libraries(Output.of(libraries));
         }
 
-        /**
-         * @param libraries blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(ClusterPolicyLibraryArgs... libraries) {
             return libraries(List.of(libraries));
         }
