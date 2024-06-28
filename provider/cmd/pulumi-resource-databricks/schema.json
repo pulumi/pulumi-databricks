@@ -16170,8 +16170,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ClusterPolicyLibrary:ClusterPolicyLibrary"
-                    },
-                    "description": "blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.\n"
+                    }
                 },
                 "maxClustersPerUser": {
                     "type": "integer",
@@ -16212,8 +16211,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ClusterPolicyLibrary:ClusterPolicyLibrary"
-                    },
-                    "description": "blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.\n"
+                    }
                 },
                 "maxClustersPerUser": {
                     "type": "integer",
@@ -16247,8 +16245,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/databricks:index/ClusterPolicyLibrary:ClusterPolicyLibrary"
-                        },
-                        "description": "blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.\n"
+                        }
                     },
                     "maxClustersPerUser": {
                         "type": "integer",
