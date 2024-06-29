@@ -5493,7 +5493,8 @@
                     "description": "Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.\n"
                 },
                 "periodic": {
-                    "$ref": "#/types/databricks:index/JobTriggerPeriodic:JobTriggerPeriodic"
+                    "$ref": "#/types/databricks:index/JobTriggerPeriodic:JobTriggerPeriodic",
+                    "description": "configuration block to define a trigger for Periodic Triggers consisting of the following attributes:\n"
                 },
                 "table": {
                     "$ref": "#/types/databricks:index/JobTriggerTable:JobTriggerTable"
@@ -5527,10 +5528,12 @@
         "databricks:index/JobTriggerPeriodic:JobTriggerPeriodic": {
             "properties": {
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the interval at which the job should run. This value is required.\n"
                 },
                 "unit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Options are {\"DAYS\", \"HOURS\", \"WEEKS\"}.\n"
                 }
             },
             "type": "object",
@@ -13995,6 +13998,9 @@
                 "pauseStatus": {
                     "type": "string"
                 },
+                "periodic": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTriggerPeriodic:getJobJobSettingsSettingsTriggerPeriodic"
+                },
                 "tableUpdate": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTriggerTableUpdate:getJobJobSettingsSettingsTriggerTableUpdate"
                 }
@@ -14016,6 +14022,21 @@
             "type": "object",
             "required": [
                 "url"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTriggerPeriodic:getJobJobSettingsSettingsTriggerPeriodic": {
+            "properties": {
+                "interval": {
+                    "type": "integer"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "interval",
+                "unit"
             ]
         },
         "databricks:index/getJobJobSettingsSettingsTriggerTableUpdate:getJobJobSettingsSettingsTriggerTableUpdate": {
@@ -16841,6 +16862,10 @@
                     "type": "boolean",
                     "description": "Update external location regardless of its dependents.\n"
                 },
+                "isolationMode": {
+                    "type": "string",
+                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
+                },
                 "metastoreId": {
                     "type": "string"
                 },
@@ -16867,6 +16892,7 @@
             },
             "required": [
                 "credentialName",
+                "isolationMode",
                 "metastoreId",
                 "name",
                 "owner",
@@ -16896,6 +16922,10 @@
                 "forceUpdate": {
                     "type": "boolean",
                     "description": "Update external location regardless of its dependents.\n"
+                },
+                "isolationMode": {
+                    "type": "string",
+                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -16952,6 +16982,10 @@
                     "forceUpdate": {
                         "type": "boolean",
                         "description": "Update external location regardless of its dependents.\n"
+                    },
+                    "isolationMode": {
+                        "type": "string",
+                        "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -19446,6 +19480,9 @@
                     "type": "boolean",
                     "description": "whether to set this credential as the default for the metastore. In practice, this should always be true.\n"
                 },
+                "isolationMode": {
+                    "type": "string"
+                },
                 "metastoreId": {
                     "type": "string"
                 },
@@ -19464,6 +19501,7 @@
             },
             "required": [
                 "databricksGcpServiceAccount",
+                "isolationMode",
                 "metastoreId",
                 "name",
                 "owner"
@@ -19504,6 +19542,9 @@
                     "type": "boolean",
                     "description": "whether to set this credential as the default for the metastore. In practice, this should always be true.\n",
                     "willReplaceOnChanges": true
+                },
+                "isolationMode": {
+                    "type": "string"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -19562,6 +19603,9 @@
                         "type": "boolean",
                         "description": "whether to set this credential as the default for the metastore. In practice, this should always be true.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "isolationMode": {
+                        "type": "string"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -25596,10 +25640,14 @@
                 },
                 "forceUpdate": {
                     "type": "boolean",
-                    "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Update storage credential regardless of its dependents.\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
+                },
+                "isolationMode": {
+                    "type": "string",
+                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "metastoreId": {
                     "type": "string",
@@ -25628,6 +25676,7 @@
             },
             "required": [
                 "databricksGcpServiceAccount",
+                "isolationMode",
                 "metastoreId",
                 "name",
                 "owner",
@@ -25655,10 +25704,14 @@
                 },
                 "forceUpdate": {
                     "type": "boolean",
-                    "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Update storage credential regardless of its dependents.\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
+                },
+                "isolationMode": {
+                    "type": "string",
+                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "metastoreId": {
                     "type": "string",
@@ -25706,10 +25759,14 @@
                     },
                     "forceUpdate": {
                         "type": "boolean",
-                        "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                        "description": "Update storage credential regardless of its dependents.\n"
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
+                    },
+                    "isolationMode": {
+                        "type": "string",
+                        "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                     },
                     "metastoreId": {
                         "type": "string",

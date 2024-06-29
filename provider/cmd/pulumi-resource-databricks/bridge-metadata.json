@@ -3956,6 +3956,9 @@
                                                         "file_arrival": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "periodic": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "table_update": {
                                                             "maxItemsOne": true,
                                                             "elem": {
