@@ -74,16 +74,12 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Update storage credential regardless of its dependents.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Import(name="forceUpdate")
     private @Nullable Output<Boolean> forceUpdate;
 
     /**
      * @return Update storage credential regardless of its dependents.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<Boolean>> forceUpdate() {
@@ -95,6 +91,25 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<StorageCredentialGcpServiceAccountKeyArgs>> gcpServiceAccountKey() {
         return Optional.ofNullable(this.gcpServiceAccountKey);
+    }
+
+    /**
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    /**
+     * @return Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
     }
 
     /**
@@ -198,6 +213,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -293,8 +309,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param forceUpdate Update storage credential regardless of its dependents.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -305,8 +319,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         /**
          * @param forceUpdate Update storage credential regardless of its dependents.
-         * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
@@ -322,6 +334,31 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         public Builder gcpServiceAccountKey(StorageCredentialGcpServiceAccountKeyArgs gcpServiceAccountKey) {
             return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
+        }
+
+        /**
+         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        /**
+         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
         }
 
         /**

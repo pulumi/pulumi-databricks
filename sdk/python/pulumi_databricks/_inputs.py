@@ -664,6 +664,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsTriggerArgs',
     'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
+    'GetJobJobSettingsSettingsTriggerPeriodicArgs',
     'GetJobJobSettingsSettingsTriggerTableUpdateArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs',
@@ -14667,6 +14668,7 @@ class JobTriggerArgs:
         """
         :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         :param pulumi.Input[str] pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        :param pulumi.Input['JobTriggerPeriodicArgs'] periodic: configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
@@ -14706,6 +14708,9 @@ class JobTriggerArgs:
     @property
     @pulumi.getter
     def periodic(self) -> Optional[pulumi.Input['JobTriggerPeriodicArgs']]:
+        """
+        configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+        """
         return pulumi.get(self, "periodic")
 
     @periodic.setter
@@ -14790,12 +14795,19 @@ class JobTriggerPeriodicArgs:
     def __init__(__self__, *,
                  interval: pulumi.Input[int],
                  unit: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] interval: Specifies the interval at which the job should run. This value is required.
+        :param pulumi.Input[str] unit: Options are {"DAYS", "HOURS", "WEEKS"}.
+        """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter
     def interval(self) -> pulumi.Input[int]:
+        """
+        Specifies the interval at which the job should run. This value is required.
+        """
         return pulumi.get(self, "interval")
 
     @interval.setter
@@ -14805,6 +14817,9 @@ class JobTriggerPeriodicArgs:
     @property
     @pulumi.getter
     def unit(self) -> pulumi.Input[str]:
+        """
+        Options are {"DAYS", "HOURS", "WEEKS"}.
+        """
         return pulumi.get(self, "unit")
 
     @unit.setter
@@ -35465,11 +35480,14 @@ class GetJobJobSettingsSettingsTriggerArgs:
     def __init__(__self__, *,
                  file_arrival: Optional['GetJobJobSettingsSettingsTriggerFileArrivalArgs'] = None,
                  pause_status: Optional[str] = None,
+                 periodic: Optional['GetJobJobSettingsSettingsTriggerPeriodicArgs'] = None,
                  table_update: Optional['GetJobJobSettingsSettingsTriggerTableUpdateArgs'] = None):
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if periodic is not None:
+            pulumi.set(__self__, "periodic", periodic)
         if table_update is not None:
             pulumi.set(__self__, "table_update", table_update)
 
@@ -35490,6 +35508,15 @@ class GetJobJobSettingsSettingsTriggerArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter
+    def periodic(self) -> Optional['GetJobJobSettingsSettingsTriggerPeriodicArgs']:
+        return pulumi.get(self, "periodic")
+
+    @periodic.setter
+    def periodic(self, value: Optional['GetJobJobSettingsSettingsTriggerPeriodicArgs']):
+        pulumi.set(self, "periodic", value)
 
     @property
     @pulumi.getter(name="tableUpdate")
@@ -35539,6 +35566,33 @@ class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
     @wait_after_last_change_seconds.setter
     def wait_after_last_change_seconds(self, value: Optional[int]):
         pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTriggerPeriodicArgs:
+    def __init__(__self__, *,
+                 interval: int,
+                 unit: str):
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> int:
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: int):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: str):
+        pulumi.set(self, "unit", value)
 
 
 @pulumi.input_type

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTriggerFileArrival;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTriggerPeriodic;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTrigger {
     private @Nullable GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
     private @Nullable String pauseStatus;
+    private @Nullable GetJobJobSettingsSettingsTriggerPeriodic periodic;
     private @Nullable GetJobJobSettingsSettingsTriggerTableUpdate tableUpdate;
 
     private GetJobJobSettingsSettingsTrigger() {}
@@ -23,6 +25,9 @@ public final class GetJobJobSettingsSettingsTrigger {
     }
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
+    }
+    public Optional<GetJobJobSettingsSettingsTriggerPeriodic> periodic() {
+        return Optional.ofNullable(this.periodic);
     }
     public Optional<GetJobJobSettingsSettingsTriggerTableUpdate> tableUpdate() {
         return Optional.ofNullable(this.tableUpdate);
@@ -39,12 +44,14 @@ public final class GetJobJobSettingsSettingsTrigger {
     public static final class Builder {
         private @Nullable GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
         private @Nullable String pauseStatus;
+        private @Nullable GetJobJobSettingsSettingsTriggerPeriodic periodic;
         private @Nullable GetJobJobSettingsSettingsTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileArrival = defaults.fileArrival;
     	      this.pauseStatus = defaults.pauseStatus;
+    	      this.periodic = defaults.periodic;
     	      this.tableUpdate = defaults.tableUpdate;
         }
 
@@ -61,6 +68,12 @@ public final class GetJobJobSettingsSettingsTrigger {
             return this;
         }
         @CustomType.Setter
+        public Builder periodic(@Nullable GetJobJobSettingsSettingsTriggerPeriodic periodic) {
+
+            this.periodic = periodic;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableUpdate(@Nullable GetJobJobSettingsSettingsTriggerTableUpdate tableUpdate) {
 
             this.tableUpdate = tableUpdate;
@@ -70,6 +83,7 @@ public final class GetJobJobSettingsSettingsTrigger {
             final var _resultValue = new GetJobJobSettingsSettingsTrigger();
             _resultValue.fileArrival = fileArrival;
             _resultValue.pauseStatus = pauseStatus;
+            _resultValue.periodic = periodic;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;
         }

@@ -4234,12 +4234,14 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs 
 export interface GetJobJobSettingsSettingsTrigger {
     fileArrival?: inputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
+    periodic?: inputs.GetJobJobSettingsSettingsTriggerPeriodic;
     tableUpdate?: inputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 }
 
 export interface GetJobJobSettingsSettingsTriggerArgs {
     fileArrival?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs>;
     pauseStatus?: pulumi.Input<string>;
+    periodic?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerPeriodicArgs>;
     tableUpdate?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs>;
 }
 
@@ -4253,6 +4255,16 @@ export interface GetJobJobSettingsSettingsTriggerFileArrivalArgs {
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     url: pulumi.Input<string>;
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
+}
+
+export interface GetJobJobSettingsSettingsTriggerPeriodic {
+    interval: number;
+    unit: string;
+}
+
+export interface GetJobJobSettingsSettingsTriggerPeriodicArgs {
+    interval: pulumi.Input<number>;
+    unit: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTriggerTableUpdate {
@@ -7586,6 +7598,9 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
+    /**
+     * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     */
     periodic?: pulumi.Input<inputs.JobTriggerPeriodic>;
     table?: pulumi.Input<inputs.JobTriggerTable>;
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
@@ -7607,7 +7622,13 @@ export interface JobTriggerFileArrival {
 }
 
 export interface JobTriggerPeriodic {
+    /**
+     * Specifies the interval at which the job should run. This value is required.
+     */
     interval: pulumi.Input<number>;
+    /**
+     * Options are {"DAYS", "HOURS", "WEEKS"}.
+     */
     unit: pulumi.Input<string>;
 }
 

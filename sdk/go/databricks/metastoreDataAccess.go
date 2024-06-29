@@ -84,6 +84,7 @@ type MetastoreDataAccess struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault      pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	IsolationMode  pulumi.StringOutput  `pulumi:"isolationMode"`
 	MetastoreId    pulumi.StringOutput  `pulumi:"metastoreId"`
 	Name           pulumi.StringOutput  `pulumi:"name"`
 	Owner          pulumi.StringOutput  `pulumi:"owner"`
@@ -131,6 +132,7 @@ type metastoreDataAccessState struct {
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault      *bool   `pulumi:"isDefault"`
+	IsolationMode  *string `pulumi:"isolationMode"`
 	MetastoreId    *string `pulumi:"metastoreId"`
 	Name           *string `pulumi:"name"`
 	Owner          *string `pulumi:"owner"`
@@ -149,6 +151,7 @@ type MetastoreDataAccessState struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault      pulumi.BoolPtrInput
+	IsolationMode  pulumi.StringPtrInput
 	MetastoreId    pulumi.StringPtrInput
 	Name           pulumi.StringPtrInput
 	Owner          pulumi.StringPtrInput
@@ -171,6 +174,7 @@ type metastoreDataAccessArgs struct {
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault      *bool   `pulumi:"isDefault"`
+	IsolationMode  *string `pulumi:"isolationMode"`
 	MetastoreId    *string `pulumi:"metastoreId"`
 	Name           *string `pulumi:"name"`
 	Owner          *string `pulumi:"owner"`
@@ -190,6 +194,7 @@ type MetastoreDataAccessArgs struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault      pulumi.BoolPtrInput
+	IsolationMode  pulumi.StringPtrInput
 	MetastoreId    pulumi.StringPtrInput
 	Name           pulumi.StringPtrInput
 	Owner          pulumi.StringPtrInput
@@ -327,6 +332,10 @@ func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcp
 // whether to set this credential as the default for the metastore. In practice, this should always be true.
 func (o MetastoreDataAccessOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetastoreDataAccessOutput) IsolationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
 
 func (o MetastoreDataAccessOutput) MetastoreId() pulumi.StringOutput {

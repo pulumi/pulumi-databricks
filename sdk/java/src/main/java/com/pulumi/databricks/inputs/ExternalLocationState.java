@@ -107,6 +107,21 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.forceUpdate);
     }
 
+    /**
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     */
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    /**
+     * @return Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     */
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
+
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
@@ -198,6 +213,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         this.encryptionDetails = $.encryptionDetails;
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -348,6 +364,27 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
+        }
+
+        /**
+         * @param isolationMode Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        /**
+         * @param isolationMode Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
         }
 
         public Builder metastoreId(@Nullable Output<String> metastoreId) {

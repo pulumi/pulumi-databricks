@@ -94,6 +94,9 @@ namespace Pulumi.Databricks
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
+        [Output("isolationMode")]
+        public Output<string> IsolationMode { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -185,6 +188,9 @@ namespace Pulumi.Databricks
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -237,6 +243,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
+
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult? FileArrival;
         public readonly string? PauseStatus;
+        public readonly Outputs.GetJobJobSettingsSettingsTriggerPeriodicResult? Periodic;
         public readonly Outputs.GetJobJobSettingsSettingsTriggerTableUpdateResult? TableUpdate;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? pauseStatus,
 
+            Outputs.GetJobJobSettingsSettingsTriggerPeriodicResult? periodic,
+
             Outputs.GetJobJobSettingsSettingsTriggerTableUpdateResult? tableUpdate)
         {
             FileArrival = fileArrival;
             PauseStatus = pauseStatus;
+            Periodic = periodic;
             TableUpdate = tableUpdate;
         }
     }

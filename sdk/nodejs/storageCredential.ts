@@ -128,11 +128,15 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * Update storage credential regardless of its dependents.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
+    /**
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    public readonly isolationMode!: pulumi.Output<string>;
     /**
      * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      */
@@ -179,6 +183,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
+            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -195,6 +200,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
+            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -222,11 +228,15 @@ export interface StorageCredentialState {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * Update storage credential regardless of its dependents.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
+    /**
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      */
@@ -268,11 +278,15 @@ export interface StorageCredentialArgs {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * Update storage credential regardless of its dependents.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
+    /**
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      */

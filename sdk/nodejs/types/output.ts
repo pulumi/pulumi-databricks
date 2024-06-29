@@ -2349,6 +2349,7 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
 export interface GetJobJobSettingsSettingsTrigger {
     fileArrival?: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
+    periodic?: outputs.GetJobJobSettingsSettingsTriggerPeriodic;
     tableUpdate?: outputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 }
 
@@ -2356,6 +2357,11 @@ export interface GetJobJobSettingsSettingsTriggerFileArrival {
     minTimeBetweenTriggersSeconds?: number;
     url: string;
     waitAfterLastChangeSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsTriggerPeriodic {
+    interval: number;
+    unit: string;
 }
 
 export interface GetJobJobSettingsSettingsTriggerTableUpdate {
@@ -5209,6 +5215,9 @@ export interface JobTrigger {
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: string;
+    /**
+     * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     */
     periodic?: outputs.JobTriggerPeriodic;
     table?: outputs.JobTriggerTable;
     tableUpdate?: outputs.JobTriggerTableUpdate;
@@ -5230,7 +5239,13 @@ export interface JobTriggerFileArrival {
 }
 
 export interface JobTriggerPeriodic {
+    /**
+     * Specifies the interval at which the job should run. This value is required.
+     */
     interval: number;
+    /**
+     * Options are {"DAYS", "HOURS", "WEEKS"}.
+     */
     unit: string;
 }
 

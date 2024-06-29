@@ -49,9 +49,17 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    /**
+     * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     * 
+     */
     @Import(name="periodic")
     private @Nullable Output<JobTriggerPeriodicArgs> periodic;
 
+    /**
+     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     * 
+     */
     public Optional<Output<JobTriggerPeriodicArgs>> periodic() {
         return Optional.ofNullable(this.periodic);
     }
@@ -140,11 +148,23 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             return pauseStatus(Output.of(pauseStatus));
         }
 
+        /**
+         * @param periodic configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodic(@Nullable Output<JobTriggerPeriodicArgs> periodic) {
             $.periodic = periodic;
             return this;
         }
 
+        /**
+         * @param periodic configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder periodic(JobTriggerPeriodicArgs periodic) {
             return periodic(Output.of(periodic));
         }

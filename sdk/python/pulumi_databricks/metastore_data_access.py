@@ -25,6 +25,7 @@ class MetastoreDataAccessArgs:
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,8 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -146,6 +149,15 @@ class MetastoreDataAccessArgs:
     @is_default.setter
     def is_default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_default", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -205,6 +217,7 @@ class _MetastoreDataAccessState:
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -232,6 +245,8 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -326,6 +341,15 @@ class _MetastoreDataAccessState:
     @is_default.setter
     def is_default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_default", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -387,6 +411,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -507,6 +532,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -530,6 +556,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["is_default"] = is_default
+            __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -554,6 +581,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             force_update: Optional[pulumi.Input[bool]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
+            isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -581,6 +609,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["force_update"] = force_update
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["is_default"] = is_default
+        __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -635,6 +664,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
         whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "isolation_mode")
 
     @property
     @pulumi.getter(name="metastoreId")
