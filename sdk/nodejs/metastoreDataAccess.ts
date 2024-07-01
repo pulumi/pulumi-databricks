@@ -88,6 +88,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly owner!: pulumi.Output<string>;
@@ -116,6 +117,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
+            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -132,6 +134,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = args ? args.isDefault : undefined;
+            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -159,6 +162,7 @@ export interface MetastoreDataAccessState {
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
     isDefault?: pulumi.Input<boolean>;
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
@@ -182,6 +186,7 @@ export interface MetastoreDataAccessArgs {
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
     isDefault?: pulumi.Input<boolean>;
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;

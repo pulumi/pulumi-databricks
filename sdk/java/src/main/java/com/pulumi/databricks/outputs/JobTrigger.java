@@ -25,6 +25,10 @@ public final class JobTrigger {
      * 
      */
     private @Nullable String pauseStatus;
+    /**
+     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     * 
+     */
     private @Nullable JobTriggerPeriodic periodic;
     private @Nullable JobTriggerTable table;
     private @Nullable JobTriggerTableUpdate tableUpdate;
@@ -44,6 +48,10 @@ public final class JobTrigger {
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
+    /**
+     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+     * 
+     */
     public Optional<JobTriggerPeriodic> periodic() {
         return Optional.ofNullable(this.periodic);
     }

@@ -10,30 +10,14 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class JobTriggerPeriodic {
-    /**
-     * @return Specifies the interval at which the job should run. This value is required.
-     * 
-     */
+public final class GetJobJobSettingsSettingsTriggerPeriodic {
     private Integer interval;
-    /**
-     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-     * 
-     */
     private String unit;
 
-    private JobTriggerPeriodic() {}
-    /**
-     * @return Specifies the interval at which the job should run. This value is required.
-     * 
-     */
+    private GetJobJobSettingsSettingsTriggerPeriodic() {}
     public Integer interval() {
         return this.interval;
     }
-    /**
-     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-     * 
-     */
     public String unit() {
         return this.unit;
     }
@@ -42,7 +26,7 @@ public final class JobTriggerPeriodic {
         return new Builder();
     }
 
-    public static Builder builder(JobTriggerPeriodic defaults) {
+    public static Builder builder(GetJobJobSettingsSettingsTriggerPeriodic defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -50,7 +34,7 @@ public final class JobTriggerPeriodic {
         private Integer interval;
         private String unit;
         public Builder() {}
-        public Builder(JobTriggerPeriodic defaults) {
+        public Builder(GetJobJobSettingsSettingsTriggerPeriodic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interval = defaults.interval;
     	      this.unit = defaults.unit;
@@ -59,7 +43,7 @@ public final class JobTriggerPeriodic {
         @CustomType.Setter
         public Builder interval(Integer interval) {
             if (interval == null) {
-              throw new MissingRequiredPropertyException("JobTriggerPeriodic", "interval");
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTriggerPeriodic", "interval");
             }
             this.interval = interval;
             return this;
@@ -67,13 +51,13 @@ public final class JobTriggerPeriodic {
         @CustomType.Setter
         public Builder unit(String unit) {
             if (unit == null) {
-              throw new MissingRequiredPropertyException("JobTriggerPeriodic", "unit");
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTriggerPeriodic", "unit");
             }
             this.unit = unit;
             return this;
         }
-        public JobTriggerPeriodic build() {
-            final var _resultValue = new JobTriggerPeriodic();
+        public GetJobJobSettingsSettingsTriggerPeriodic build() {
+            final var _resultValue = new GetJobJobSettingsSettingsTriggerPeriodic();
             _resultValue.interval = interval;
             _resultValue.unit = unit;
             return _resultValue;

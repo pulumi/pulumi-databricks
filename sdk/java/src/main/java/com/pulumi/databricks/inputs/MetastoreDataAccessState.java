@@ -92,6 +92,13 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.isDefault);
     }
 
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
+
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
@@ -139,6 +146,7 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         this.forceUpdate = $.forceUpdate;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.isDefault = $.isDefault;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -255,6 +263,15 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
          */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
+        }
+
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
         }
 
         public Builder metastoreId(@Nullable Output<String> metastoreId) {

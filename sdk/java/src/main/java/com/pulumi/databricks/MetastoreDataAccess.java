@@ -155,6 +155,12 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isDefault() {
         return Codegen.optional(this.isDefault);
     }
+    @Export(name="isolationMode", refs={String.class}, tree="[0]")
+    private Output<String> isolationMode;
+
+    public Output<String> isolationMode() {
+        return this.isolationMode;
+    }
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 

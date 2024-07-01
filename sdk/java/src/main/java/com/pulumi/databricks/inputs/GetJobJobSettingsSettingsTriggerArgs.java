@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerPeriodicArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,13 @@ public final class GetJobJobSettingsSettingsTriggerArgs extends com.pulumi.resou
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    @Import(name="periodic")
+    private @Nullable Output<GetJobJobSettingsSettingsTriggerPeriodicArgs> periodic;
+
+    public Optional<Output<GetJobJobSettingsSettingsTriggerPeriodicArgs>> periodic() {
+        return Optional.ofNullable(this.periodic);
+    }
+
     @Import(name="tableUpdate")
     private @Nullable Output<GetJobJobSettingsSettingsTriggerTableUpdateArgs> tableUpdate;
 
@@ -43,6 +51,7 @@ public final class GetJobJobSettingsSettingsTriggerArgs extends com.pulumi.resou
     private GetJobJobSettingsSettingsTriggerArgs(GetJobJobSettingsSettingsTriggerArgs $) {
         this.fileArrival = $.fileArrival;
         this.pauseStatus = $.pauseStatus;
+        this.periodic = $.periodic;
         this.tableUpdate = $.tableUpdate;
     }
 
@@ -80,6 +89,15 @@ public final class GetJobJobSettingsSettingsTriggerArgs extends com.pulumi.resou
 
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
+        }
+
+        public Builder periodic(@Nullable Output<GetJobJobSettingsSettingsTriggerPeriodicArgs> periodic) {
+            $.periodic = periodic;
+            return this;
+        }
+
+        public Builder periodic(GetJobJobSettingsSettingsTriggerPeriodicArgs periodic) {
+            return periodic(Output.of(periodic));
         }
 
         public Builder tableUpdate(@Nullable Output<GetJobJobSettingsSettingsTriggerTableUpdateArgs> tableUpdate) {

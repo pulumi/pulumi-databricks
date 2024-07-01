@@ -169,10 +169,12 @@ type StorageCredential struct {
 	// Delete storage credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Update storage credential regardless of its dependents.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceUpdate          pulumi.BoolPtrOutput                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -225,10 +227,12 @@ type storageCredentialState struct {
 	// Delete storage credential regardless of its dependencies.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update storage credential regardless of its dependents.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode *string `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -252,10 +256,12 @@ type StorageCredentialState struct {
 	// Delete storage credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update storage credential regardless of its dependents.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -283,10 +289,12 @@ type storageCredentialArgs struct {
 	// Delete storage credential regardless of its dependencies.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update storage credential regardless of its dependents.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode *string `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -309,10 +317,12 @@ type StorageCredentialArgs struct {
 	// Delete storage credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update storage credential regardless of its dependents.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -444,8 +454,6 @@ func (o StorageCredentialOutput) ForceDestroy() pulumi.BoolPtrOutput {
 }
 
 // Update storage credential regardless of its dependents.
-//
-// `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
@@ -454,6 +462,13 @@ func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServ
 	return o.ApplyT(func(v *StorageCredential) StorageCredentialGcpServiceAccountKeyPtrOutput {
 		return v.GcpServiceAccountKey
 	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
+}
+
+// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
+func (o StorageCredentialOutput) IsolationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.

@@ -43023,7 +43023,8 @@ type JobTrigger struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival *JobTriggerFileArrival `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus *string                `pulumi:"pauseStatus"`
+	PauseStatus *string `pulumi:"pauseStatus"`
+	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic    *JobTriggerPeriodic    `pulumi:"periodic"`
 	Table       *JobTriggerTable       `pulumi:"table"`
 	TableUpdate *JobTriggerTableUpdate `pulumi:"tableUpdate"`
@@ -43044,7 +43045,8 @@ type JobTriggerArgs struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival JobTriggerFileArrivalPtrInput `pulumi:"fileArrival"`
 	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-	PauseStatus pulumi.StringPtrInput         `pulumi:"pauseStatus"`
+	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
+	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic    JobTriggerPeriodicPtrInput    `pulumi:"periodic"`
 	Table       JobTriggerTablePtrInput       `pulumi:"table"`
 	TableUpdate JobTriggerTableUpdatePtrInput `pulumi:"tableUpdate"`
@@ -43137,6 +43139,7 @@ func (o JobTriggerOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTrigger) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
 }
 
+// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 func (o JobTriggerOutput) Periodic() JobTriggerPeriodicPtrOutput {
 	return o.ApplyT(func(v JobTrigger) *JobTriggerPeriodic { return v.Periodic }).(JobTriggerPeriodicPtrOutput)
 }
@@ -43193,6 +43196,7 @@ func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 func (o JobTriggerPtrOutput) Periodic() JobTriggerPeriodicPtrOutput {
 	return o.ApplyT(func(v *JobTrigger) *JobTriggerPeriodic {
 		if v == nil {
@@ -43396,8 +43400,10 @@ func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntP
 }
 
 type JobTriggerPeriodic struct {
-	Interval int    `pulumi:"interval"`
-	Unit     string `pulumi:"unit"`
+	// Specifies the interval at which the job should run. This value is required.
+	Interval int `pulumi:"interval"`
+	// Options are {"DAYS", "HOURS", "WEEKS"}.
+	Unit string `pulumi:"unit"`
 }
 
 // JobTriggerPeriodicInput is an input type that accepts JobTriggerPeriodicArgs and JobTriggerPeriodicOutput values.
@@ -43412,8 +43418,10 @@ type JobTriggerPeriodicInput interface {
 }
 
 type JobTriggerPeriodicArgs struct {
-	Interval pulumi.IntInput    `pulumi:"interval"`
-	Unit     pulumi.StringInput `pulumi:"unit"`
+	// Specifies the interval at which the job should run. This value is required.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// Options are {"DAYS", "HOURS", "WEEKS"}.
+	Unit pulumi.StringInput `pulumi:"unit"`
 }
 
 func (JobTriggerPeriodicArgs) ElementType() reflect.Type {
@@ -43493,10 +43501,12 @@ func (o JobTriggerPeriodicOutput) ToJobTriggerPeriodicPtrOutputWithContext(ctx c
 	}).(JobTriggerPeriodicPtrOutput)
 }
 
+// Specifies the interval at which the job should run. This value is required.
 func (o JobTriggerPeriodicOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v JobTriggerPeriodic) int { return v.Interval }).(pulumi.IntOutput)
 }
 
+// Options are {"DAYS", "HOURS", "WEEKS"}.
 func (o JobTriggerPeriodicOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTriggerPeriodic) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -43525,6 +43535,7 @@ func (o JobTriggerPeriodicPtrOutput) Elem() JobTriggerPeriodicOutput {
 	}).(JobTriggerPeriodicOutput)
 }
 
+// Specifies the interval at which the job should run. This value is required.
 func (o JobTriggerPeriodicPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTriggerPeriodic) *int {
 		if v == nil {
@@ -43534,6 +43545,7 @@ func (o JobTriggerPeriodicPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Options are {"DAYS", "HOURS", "WEEKS"}.
 func (o JobTriggerPeriodicPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerPeriodic) *string {
 		if v == nil {

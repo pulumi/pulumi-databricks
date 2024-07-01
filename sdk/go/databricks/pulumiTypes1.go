@@ -24790,6 +24790,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput) I
 type GetJobJobSettingsSettingsTrigger struct {
 	FileArrival *GetJobJobSettingsSettingsTriggerFileArrival `pulumi:"fileArrival"`
 	PauseStatus *string                                      `pulumi:"pauseStatus"`
+	Periodic    *GetJobJobSettingsSettingsTriggerPeriodic    `pulumi:"periodic"`
 	TableUpdate *GetJobJobSettingsSettingsTriggerTableUpdate `pulumi:"tableUpdate"`
 }
 
@@ -24807,6 +24808,7 @@ type GetJobJobSettingsSettingsTriggerInput interface {
 type GetJobJobSettingsSettingsTriggerArgs struct {
 	FileArrival GetJobJobSettingsSettingsTriggerFileArrivalPtrInput `pulumi:"fileArrival"`
 	PauseStatus pulumi.StringPtrInput                               `pulumi:"pauseStatus"`
+	Periodic    GetJobJobSettingsSettingsTriggerPeriodicPtrInput    `pulumi:"periodic"`
 	TableUpdate GetJobJobSettingsSettingsTriggerTableUpdatePtrInput `pulumi:"tableUpdate"`
 }
 
@@ -24897,6 +24899,10 @@ func (o GetJobJobSettingsSettingsTriggerOutput) PauseStatus() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTrigger) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTriggerOutput) Periodic() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTrigger) *GetJobJobSettingsSettingsTriggerPeriodic { return v.Periodic }).(GetJobJobSettingsSettingsTriggerPeriodicPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTriggerOutput) TableUpdate() GetJobJobSettingsSettingsTriggerTableUpdatePtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTrigger) *GetJobJobSettingsSettingsTriggerTableUpdate {
 		return v.TableUpdate
@@ -24943,6 +24949,15 @@ func (o GetJobJobSettingsSettingsTriggerPtrOutput) PauseStatus() pulumi.StringPt
 		}
 		return v.PauseStatus
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) Periodic() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTrigger) *GetJobJobSettingsSettingsTriggerPeriodic {
+		if v == nil {
+			return nil
+		}
+		return v.Periodic
+	}).(GetJobJobSettingsSettingsTriggerPeriodicPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTriggerPtrOutput) TableUpdate() GetJobJobSettingsSettingsTriggerTableUpdatePtrOutput {
@@ -25115,6 +25130,154 @@ func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) WaitAfterLastChang
 		}
 		return v.WaitAfterLastChangeSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerPeriodic struct {
+	Interval int    `pulumi:"interval"`
+	Unit     string `pulumi:"unit"`
+}
+
+// GetJobJobSettingsSettingsTriggerPeriodicInput is an input type that accepts GetJobJobSettingsSettingsTriggerPeriodicArgs and GetJobJobSettingsSettingsTriggerPeriodicOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerPeriodicInput` via:
+//
+//	GetJobJobSettingsSettingsTriggerPeriodicArgs{...}
+type GetJobJobSettingsSettingsTriggerPeriodicInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerPeriodicOutput() GetJobJobSettingsSettingsTriggerPeriodicOutput
+	ToGetJobJobSettingsSettingsTriggerPeriodicOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerPeriodicOutput
+}
+
+type GetJobJobSettingsSettingsTriggerPeriodicArgs struct {
+	Interval pulumi.IntInput    `pulumi:"interval"`
+	Unit     pulumi.StringInput `pulumi:"unit"`
+}
+
+func (GetJobJobSettingsSettingsTriggerPeriodicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPeriodic)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTriggerPeriodicArgs) ToGetJobJobSettingsSettingsTriggerPeriodicOutput() GetJobJobSettingsSettingsTriggerPeriodicOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerPeriodicOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerPeriodicArgs) ToGetJobJobSettingsSettingsTriggerPeriodicOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerPeriodicOutput)
+}
+
+func (i GetJobJobSettingsSettingsTriggerPeriodicArgs) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutput() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerPeriodicArgs) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerPeriodicOutput).ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTriggerPeriodicPtrInput is an input type that accepts GetJobJobSettingsSettingsTriggerPeriodicArgs, GetJobJobSettingsSettingsTriggerPeriodicPtr and GetJobJobSettingsSettingsTriggerPeriodicPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerPeriodicPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTriggerPeriodicArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTriggerPeriodicPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutput() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput
+	ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerPeriodicPtrOutput
+}
+
+type getJobJobSettingsSettingsTriggerPeriodicPtrType GetJobJobSettingsSettingsTriggerPeriodicArgs
+
+func GetJobJobSettingsSettingsTriggerPeriodicPtr(v *GetJobJobSettingsSettingsTriggerPeriodicArgs) GetJobJobSettingsSettingsTriggerPeriodicPtrInput {
+	return (*getJobJobSettingsSettingsTriggerPeriodicPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTriggerPeriodicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTriggerPeriodic)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTriggerPeriodicPtrType) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutput() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTriggerPeriodicPtrType) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerPeriodicPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerPeriodicOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerPeriodicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPeriodic)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) ToGetJobJobSettingsSettingsTriggerPeriodicOutput() GetJobJobSettingsSettingsTriggerPeriodicOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) ToGetJobJobSettingsSettingsTriggerPeriodicOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutput() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTriggerPeriodic) *GetJobJobSettingsSettingsTriggerPeriodic {
+		return &v
+	}).(GetJobJobSettingsSettingsTriggerPeriodicPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerPeriodic) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerPeriodic) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerPeriodicPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTriggerPeriodic)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutput() GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) ToGetJobJobSettingsSettingsTriggerPeriodicPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPeriodicPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) Elem() GetJobJobSettingsSettingsTriggerPeriodicOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerPeriodic) GetJobJobSettingsSettingsTriggerPeriodic {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTriggerPeriodic
+		return ret
+	}).(GetJobJobSettingsSettingsTriggerPeriodicOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerPeriodic) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPeriodicPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerPeriodic) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsTriggerTableUpdate struct {
@@ -32631,6 +32794,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPeriodicInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerPeriodicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPeriodicPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerPeriodicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerTableUpdateInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerTableUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerTableUpdatePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerTableUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsArgs{})
@@ -33026,6 +33191,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerPeriodicOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerPeriodicPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerTableUpdateOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerTableUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOutput{})

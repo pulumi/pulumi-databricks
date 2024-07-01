@@ -111,6 +111,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Update external location regardless of its dependents.
      */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     */
+    public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -152,6 +156,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["encryptionDetails"] = state ? state.encryptionDetails : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
+            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -172,6 +177,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["encryptionDetails"] = args ? args.encryptionDetails : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
+            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -212,6 +218,10 @@ export interface ExternalLocationState {
      * Update external location regardless of its dependents.
      */
     forceUpdate?: pulumi.Input<boolean>;
+    /**
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     */
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -263,6 +273,10 @@ export interface ExternalLocationArgs {
      * Update external location regardless of its dependents.
      */
     forceUpdate?: pulumi.Input<boolean>;
+    /**
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     */
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.

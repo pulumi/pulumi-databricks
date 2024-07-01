@@ -666,6 +666,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult',
     'GetJobJobSettingsSettingsTriggerResult',
     'GetJobJobSettingsSettingsTriggerFileArrivalResult',
+    'GetJobJobSettingsSettingsTriggerPeriodicResult',
     'GetJobJobSettingsSettingsTriggerTableUpdateResult',
     'GetJobJobSettingsSettingsWebhookNotificationsResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededResult',
@@ -13961,6 +13962,7 @@ class JobTrigger(dict):
         """
         :param 'JobTriggerFileArrivalArgs' file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         :param str pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        :param 'JobTriggerPeriodicArgs' periodic: configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
@@ -13992,6 +13994,9 @@ class JobTrigger(dict):
     @property
     @pulumi.getter
     def periodic(self) -> Optional['outputs.JobTriggerPeriodic']:
+        """
+        configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+        """
         return pulumi.get(self, "periodic")
 
     @property
@@ -14071,17 +14076,27 @@ class JobTriggerPeriodic(dict):
     def __init__(__self__, *,
                  interval: int,
                  unit: str):
+        """
+        :param int interval: Specifies the interval at which the job should run. This value is required.
+        :param str unit: Options are {"DAYS", "HOURS", "WEEKS"}.
+        """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter
     def interval(self) -> int:
+        """
+        Specifies the interval at which the job should run. This value is required.
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter
     def unit(self) -> str:
+        """
+        Options are {"DAYS", "HOURS", "WEEKS"}.
+        """
         return pulumi.get(self, "unit")
 
 
@@ -31127,11 +31142,14 @@ class GetJobJobSettingsSettingsTriggerResult(dict):
     def __init__(__self__, *,
                  file_arrival: Optional['outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult'] = None,
                  pause_status: Optional[str] = None,
+                 periodic: Optional['outputs.GetJobJobSettingsSettingsTriggerPeriodicResult'] = None,
                  table_update: Optional['outputs.GetJobJobSettingsSettingsTriggerTableUpdateResult'] = None):
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if periodic is not None:
+            pulumi.set(__self__, "periodic", periodic)
         if table_update is not None:
             pulumi.set(__self__, "table_update", table_update)
 
@@ -31144,6 +31162,11 @@ class GetJobJobSettingsSettingsTriggerResult(dict):
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[str]:
         return pulumi.get(self, "pause_status")
+
+    @property
+    @pulumi.getter
+    def periodic(self) -> Optional['outputs.GetJobJobSettingsSettingsTriggerPeriodicResult']:
+        return pulumi.get(self, "periodic")
 
     @property
     @pulumi.getter(name="tableUpdate")
@@ -31177,6 +31200,25 @@ class GetJobJobSettingsSettingsTriggerFileArrivalResult(dict):
     @pulumi.getter(name="waitAfterLastChangeSeconds")
     def wait_after_last_change_seconds(self) -> Optional[int]:
         return pulumi.get(self, "wait_after_last_change_seconds")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTriggerPeriodicResult(dict):
+    def __init__(__self__, *,
+                 interval: int,
+                 unit: str):
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> int:
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        return pulumi.get(self, "unit")
 
 
 @pulumi.output_type

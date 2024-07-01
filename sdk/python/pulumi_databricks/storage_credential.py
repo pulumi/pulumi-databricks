@@ -24,6 +24,7 @@ class StorageCredentialArgs:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class StorageCredentialArgs:
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -57,6 +59,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "force_update", force_update)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -130,8 +134,6 @@ class StorageCredentialArgs:
     def force_update(self) -> Optional[pulumi.Input[bool]]:
         """
         Update storage credential regardless of its dependents.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_update")
 
@@ -147,6 +149,20 @@ class StorageCredentialArgs:
     @gcp_service_account_key.setter
     def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
         pulumi.set(self, "gcp_service_account_key", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -220,6 +236,7 @@ class _StorageCredentialState:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -230,6 +247,7 @@ class _StorageCredentialState:
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -255,6 +273,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "force_update", force_update)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -330,8 +350,6 @@ class _StorageCredentialState:
     def force_update(self) -> Optional[pulumi.Input[bool]]:
         """
         Update storage credential regardless of its dependents.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_update")
 
@@ -347,6 +365,20 @@ class _StorageCredentialState:
     @gcp_service_account_key.setter
     def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
         pulumi.set(self, "gcp_service_account_key", value)
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -434,6 +466,7 @@ class StorageCredential(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -521,6 +554,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -635,6 +669,7 @@ class StorageCredential(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -657,6 +692,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
+            __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -681,6 +717,7 @@ class StorageCredential(pulumi.CustomResource):
             force_destroy: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+            isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -696,6 +733,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -717,6 +755,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["force_update"] = force_update
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
+        __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -763,8 +802,6 @@ class StorageCredential(pulumi.CustomResource):
     def force_update(self) -> pulumi.Output[Optional[bool]]:
         """
         Update storage credential regardless of its dependents.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_update")
 
@@ -772,6 +809,16 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter(name="gcpServiceAccountKey")
     def gcp_service_account_key(self) -> pulumi.Output[Optional['outputs.StorageCredentialGcpServiceAccountKey']]:
         return pulumi.get(self, "gcp_service_account_key")
+
+    @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> pulumi.Output[str]:
+        """
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "isolation_mode")
 
     @property
     @pulumi.getter(name="metastoreId")

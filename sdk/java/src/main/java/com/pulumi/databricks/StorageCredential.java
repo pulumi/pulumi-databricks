@@ -240,16 +240,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * Update storage credential regardless of its dependents.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
     /**
      * @return Update storage credential regardless of its dependents.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<Optional<Boolean>> forceUpdate() {
@@ -260,6 +256,24 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<StorageCredentialGcpServiceAccountKey>> gcpServiceAccountKey() {
         return Codegen.optional(this.gcpServiceAccountKey);
+    }
+    /**
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    @Export(name="isolationMode", refs={String.class}, tree="[0]")
+    private Output<String> isolationMode;
+
+    /**
+     * @return Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    public Output<String> isolationMode() {
+        return this.isolationMode;
     }
     /**
      * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.

@@ -118,6 +118,12 @@ namespace Pulumi.Databricks
         [Output("forceUpdate")]
         public Output<bool?> ForceUpdate { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// </summary>
+        [Output("isolationMode")]
+        public Output<string> IsolationMode { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -233,6 +239,12 @@ namespace Pulumi.Databricks
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
 
+        /// <summary>
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// </summary>
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -309,6 +321,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// </summary>
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

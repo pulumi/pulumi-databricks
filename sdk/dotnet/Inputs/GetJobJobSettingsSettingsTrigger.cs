@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseStatus")]
         public string? PauseStatus { get; set; }
 
+        [Input("periodic")]
+        public Inputs.GetJobJobSettingsSettingsTriggerPeriodicArgs? Periodic { get; set; }
+
         [Input("tableUpdate")]
         public Inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs? TableUpdate { get; set; }
 
