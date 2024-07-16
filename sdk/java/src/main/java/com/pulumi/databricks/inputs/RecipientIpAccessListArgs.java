@@ -16,9 +16,17 @@ public final class RecipientIpAccessListArgs extends com.pulumi.resources.Resour
 
     public static final RecipientIpAccessListArgs Empty = new RecipientIpAccessListArgs();
 
+    /**
+     * Allowed IP Addresses in CIDR notation. Limit of 100.
+     * 
+     */
     @Import(name="allowedIpAddresses")
     private @Nullable Output<List<String>> allowedIpAddresses;
 
+    /**
+     * @return Allowed IP Addresses in CIDR notation. Limit of 100.
+     * 
+     */
     public Optional<Output<List<String>>> allowedIpAddresses() {
         return Optional.ofNullable(this.allowedIpAddresses);
     }
@@ -47,15 +55,33 @@ public final class RecipientIpAccessListArgs extends com.pulumi.resources.Resour
             $ = new RecipientIpAccessListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedIpAddresses Allowed IP Addresses in CIDR notation. Limit of 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpAddresses(@Nullable Output<List<String>> allowedIpAddresses) {
             $.allowedIpAddresses = allowedIpAddresses;
             return this;
         }
 
+        /**
+         * @param allowedIpAddresses Allowed IP Addresses in CIDR notation. Limit of 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpAddresses(List<String> allowedIpAddresses) {
             return allowedIpAddresses(Output.of(allowedIpAddresses));
         }
 
+        /**
+         * @param allowedIpAddresses Allowed IP Addresses in CIDR notation. Limit of 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpAddresses(String... allowedIpAddresses) {
             return allowedIpAddresses(List.of(allowedIpAddresses));
         }

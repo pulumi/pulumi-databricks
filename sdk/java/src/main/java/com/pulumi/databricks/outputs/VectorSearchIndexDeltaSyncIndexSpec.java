@@ -26,6 +26,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
      * 
      */
     private @Nullable String pipelineId;
+    /**
+     * @return Pipeline execution mode. Possible values are:
+     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+     * 
+     */
     private @Nullable String pipelineType;
     /**
      * @return The name of the source table.
@@ -54,6 +60,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
+    /**
+     * @return Pipeline execution mode. Possible values are:
+     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+     * 
+     */
     public Optional<String> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }

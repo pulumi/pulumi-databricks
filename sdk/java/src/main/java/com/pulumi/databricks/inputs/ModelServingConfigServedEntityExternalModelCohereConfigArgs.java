@@ -14,9 +14,17 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
 
     public static final ModelServingConfigServedEntityExternalModelCohereConfigArgs Empty = new ModelServingConfigServedEntityExternalModelCohereConfigArgs();
 
+    /**
+     * The Databricks secret key reference for a Cohere API key.
+     * 
+     */
     @Import(name="cohereApiKey", required=true)
     private Output<String> cohereApiKey;
 
+    /**
+     * @return The Databricks secret key reference for a Cohere API key.
+     * 
+     */
     public Output<String> cohereApiKey() {
         return this.cohereApiKey;
     }
@@ -45,11 +53,23 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
             $ = new ModelServingConfigServedEntityExternalModelCohereConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cohereApiKey The Databricks secret key reference for a Cohere API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKey(Output<String> cohereApiKey) {
             $.cohereApiKey = cohereApiKey;
             return this;
         }
 
+        /**
+         * @param cohereApiKey The Databricks secret key reference for a Cohere API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKey(String cohereApiKey) {
             return cohereApiKey(Output.of(cohereApiKey));
         }

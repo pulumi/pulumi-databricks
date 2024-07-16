@@ -14,16 +14,32 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
 
     public static final ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs Empty = new ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs();
 
+    /**
+     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     * 
+     */
     @Import(name="databricksApiToken", required=true)
     private Output<String> databricksApiToken;
 
+    /**
+     * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     * 
+     */
     public Output<String> databricksApiToken() {
         return this.databricksApiToken;
     }
 
+    /**
+     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     * 
+     */
     @Import(name="databricksWorkspaceUrl", required=true)
     private Output<String> databricksWorkspaceUrl;
 
+    /**
+     * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     * 
+     */
     public Output<String> databricksWorkspaceUrl() {
         return this.databricksWorkspaceUrl;
     }
@@ -53,20 +69,44 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
             $ = new ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param databricksApiToken The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksApiToken(Output<String> databricksApiToken) {
             $.databricksApiToken = databricksApiToken;
             return this;
         }
 
+        /**
+         * @param databricksApiToken The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksApiToken(String databricksApiToken) {
             return databricksApiToken(Output.of(databricksApiToken));
         }
 
+        /**
+         * @param databricksWorkspaceUrl The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksWorkspaceUrl(Output<String> databricksWorkspaceUrl) {
             $.databricksWorkspaceUrl = databricksWorkspaceUrl;
             return this;
         }
 
+        /**
+         * @param databricksWorkspaceUrl The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksWorkspaceUrl(String databricksWorkspaceUrl) {
             return databricksWorkspaceUrl(Output.of(databricksWorkspaceUrl));
         }

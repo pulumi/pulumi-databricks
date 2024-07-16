@@ -14,9 +14,17 @@ public final class ClusterClusterLogConfDbfsArgs extends com.pulumi.resources.Re
 
     public static final ClusterClusterLogConfDbfsArgs Empty = new ClusterClusterLogConfDbfsArgs();
 
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
+    /**
+     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     public Output<String> destination() {
         return this.destination;
     }
@@ -45,11 +53,23 @@ public final class ClusterClusterLogConfDbfsArgs extends com.pulumi.resources.Re
             $ = new ClusterClusterLogConfDbfsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
+        /**
+         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }

@@ -45,6 +45,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, object>? SparkEnvVars;
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
+        /// <summary>
+        /// isn't supported
+        /// </summary>
         public readonly Outputs.JobNewClusterWorkloadType? WorkloadType;
 
         [OutputConstructor]

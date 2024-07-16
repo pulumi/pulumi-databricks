@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlQueryParameterNumberArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default value for this parameter.
+        /// </summary>
         [Input("value", required: true)]
         public Input<double> Value { get; set; } = null!;
 

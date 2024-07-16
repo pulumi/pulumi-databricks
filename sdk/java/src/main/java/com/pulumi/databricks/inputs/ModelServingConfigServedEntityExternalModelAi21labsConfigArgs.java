@@ -14,9 +14,17 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
 
     public static final ModelServingConfigServedEntityExternalModelAi21labsConfigArgs Empty = new ModelServingConfigServedEntityExternalModelAi21labsConfigArgs();
 
+    /**
+     * The Databricks secret key reference for an AI21Labs API key.
+     * 
+     */
     @Import(name="ai21labsApiKey", required=true)
     private Output<String> ai21labsApiKey;
 
+    /**
+     * @return The Databricks secret key reference for an AI21Labs API key.
+     * 
+     */
     public Output<String> ai21labsApiKey() {
         return this.ai21labsApiKey;
     }
@@ -45,11 +53,23 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
             $ = new ModelServingConfigServedEntityExternalModelAi21labsConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ai21labsApiKey The Databricks secret key reference for an AI21Labs API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKey(Output<String> ai21labsApiKey) {
             $.ai21labsApiKey = ai21labsApiKey;
             return this;
         }
 
+        /**
+         * @param ai21labsApiKey The Databricks secret key reference for an AI21Labs API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKey(String ai21labsApiKey) {
             return ai21labsApiKey(Output.of(ai21labsApiKey));
         }

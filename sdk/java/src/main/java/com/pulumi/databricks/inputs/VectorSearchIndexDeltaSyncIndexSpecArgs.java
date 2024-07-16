@@ -62,9 +62,21 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.pipelineId);
     }
 
+    /**
+     * Pipeline execution mode. Possible values are:
+     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+     * 
+     */
     @Import(name="pipelineType")
     private @Nullable Output<String> pipelineType;
 
+    /**
+     * @return Pipeline execution mode. Possible values are:
+     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+     * 
+     */
     public Optional<Output<String>> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }
@@ -187,11 +199,27 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return pipelineId(Output.of(pipelineId));
         }
 
+        /**
+         * @param pipelineType Pipeline execution mode. Possible values are:
+         * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+         * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineType(@Nullable Output<String> pipelineType) {
             $.pipelineType = pipelineType;
             return this;
         }
 
+        /**
+         * @param pipelineType Pipeline execution mode. Possible values are:
+         * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+         * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineType(String pipelineType) {
             return pipelineType(Output.of(pipelineType));
         }

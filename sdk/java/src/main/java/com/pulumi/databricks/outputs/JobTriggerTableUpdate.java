@@ -15,20 +15,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTriggerTableUpdate {
     private @Nullable String condition;
+    /**
+     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     * 
+     */
     private @Nullable Integer minTimeBetweenTriggersSeconds;
     private List<String> tableNames;
+    /**
+     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     * 
+     */
     private @Nullable Integer waitAfterLastChangeSeconds;
 
     private JobTriggerTableUpdate() {}
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
+    /**
+     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     * 
+     */
     public Optional<Integer> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
     public List<String> tableNames() {
         return this.tableNames;
     }
+    /**
+     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     * 
+     */
     public Optional<Integer> waitAfterLastChangeSeconds() {
         return Optional.ofNullable(this.waitAfterLastChangeSeconds);
     }

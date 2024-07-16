@@ -32,9 +32,17 @@ public final class SqlQueryParameterEnumArgs extends com.pulumi.resources.Resour
         return this.options;
     }
 
+    /**
+     * The default value for this parameter.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -95,11 +103,23 @@ public final class SqlQueryParameterEnumArgs extends com.pulumi.resources.Resour
             return options(List.of(options));
         }
 
+        /**
+         * @param value The default value for this parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The default value for this parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

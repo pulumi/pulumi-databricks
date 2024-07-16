@@ -171,16 +171,40 @@ export interface ClusterClusterLogConf {
 }
 
 export interface ClusterClusterLogConfDbfs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterClusterLogConfS3 {
+    /**
+     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     */
     cannedAcl?: pulumi.Input<string>;
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
+    /**
+     * Enable server-side encryption, false by default.
+     */
     enableEncryption?: pulumi.Input<boolean>;
+    /**
+     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     */
     encryptionType?: pulumi.Input<string>;
+    /**
+     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     */
     endpoint?: pulumi.Input<string>;
+    /**
+     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     */
     region?: pulumi.Input<string>;
 }
 
@@ -308,36 +332,75 @@ export interface ClusterInitScript {
 }
 
 export interface ClusterInitScriptAbfss {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptDbfs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptFile {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptGcs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptS3 {
+    /**
+     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     */
     cannedAcl?: pulumi.Input<string>;
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
+    /**
+     * Enable server-side encryption, false by default.
+     */
     enableEncryption?: pulumi.Input<boolean>;
+    /**
+     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     */
     encryptionType?: pulumi.Input<string>;
+    /**
+     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     */
     endpoint?: pulumi.Input<string>;
+    /**
+     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     */
     region?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptVolumes {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptWorkspace {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
@@ -5641,6 +5704,9 @@ export interface JobJobClusterNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string fields:
+     */
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
@@ -5776,6 +5842,9 @@ export interface JobNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * isn't supported
+     */
     workloadType?: pulumi.Input<inputs.JobNewClusterWorkloadType>;
 }
 
@@ -5867,6 +5936,9 @@ export interface JobNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string fields:
+     */
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
@@ -6542,6 +6614,9 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * isn't supported
+     */
     workloadType?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadType>;
 }
 
@@ -6633,6 +6708,9 @@ export interface JobTaskForEachTaskTaskNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string fields:
+     */
     file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptS3>;
@@ -6797,6 +6875,11 @@ export interface JobTaskForEachTaskTaskRunJobTask {
 }
 
 export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
     fullRefresh?: pulumi.Input<boolean>;
 }
 
@@ -6878,6 +6961,9 @@ export interface JobTaskForEachTaskTaskSqlTaskAlert {
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
     destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -6902,6 +6988,9 @@ export interface JobTaskForEachTaskTaskSqlTaskDashboard {
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
     destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -7106,6 +7195,9 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * isn't supported
+     */
     workloadType?: pulumi.Input<inputs.JobTaskNewClusterWorkloadType>;
 }
 
@@ -7197,6 +7289,9 @@ export interface JobTaskNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string fields:
+     */
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
@@ -7361,6 +7456,11 @@ export interface JobTaskRunJobTask {
 }
 
 export interface JobTaskRunJobTaskPipelineParams {
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
     fullRefresh?: pulumi.Input<boolean>;
 }
 
@@ -7442,6 +7542,9 @@ export interface JobTaskSqlTaskAlert {
 
 export interface JobTaskSqlTaskAlertSubscription {
     destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -7466,6 +7569,9 @@ export interface JobTaskSqlTaskDashboard {
 
 export interface JobTaskSqlTaskDashboardSubscription {
     destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -7634,15 +7740,27 @@ export interface JobTriggerPeriodic {
 
 export interface JobTriggerTable {
     condition?: pulumi.Input<string>;
+    /**
+     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     tableNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
 export interface JobTriggerTableUpdate {
     condition?: pulumi.Input<string>;
+    /**
+     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
@@ -7983,16 +8101,37 @@ export interface ModelServingConfigServedEntity {
 }
 
 export interface ModelServingConfigServedEntityExternalModel {
+    /**
+     * AI21Labs Config
+     */
     ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig>;
+    /**
+     * Amazon Bedrock Config
+     */
     amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig>;
+    /**
+     * Anthropic Config
+     */
     anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig>;
+    /**
+     * Cohere Config
+     */
     cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
+    /**
+     * Databricks Model Serving Config
+     */
     databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
     /**
      * The name of the external model.
      */
     name: pulumi.Input<string>;
+    /**
+     * OpenAI Config
+     */
     openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig>;
+    /**
+     * PaLM Config
+     */
     palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig>;
     /**
      * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
@@ -8005,26 +8144,54 @@ export interface ModelServingConfigServedEntityExternalModel {
 }
 
 export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
+    /**
+     * The Databricks secret key reference for an AI21Labs API key.
+     */
     ai21labsApiKey: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
+    /**
+     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+     */
     awsAccessKeyId: pulumi.Input<string>;
+    /**
+     * The AWS region to use. Bedrock has to be enabled there.
+     */
     awsRegion: pulumi.Input<string>;
+    /**
+     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+     */
     awsSecretAccessKey: pulumi.Input<string>;
+    /**
+     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+     */
     bedrockProvider: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
+    /**
+     * The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     */
     anthropicApiKey: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
+    /**
+     * The Databricks secret key reference for a Cohere API key.
+     */
     cohereApiKey: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
+    /**
+     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     */
     databricksApiToken: pulumi.Input<string>;
+    /**
+     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     */
     databricksWorkspaceUrl: pulumi.Input<string>;
 }
 
@@ -8032,15 +8199,36 @@ export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
     microsoftEntraClientId?: pulumi.Input<string>;
     microsoftEntraClientSecret?: pulumi.Input<string>;
     microsoftEntraTenantId?: pulumi.Input<string>;
+    /**
+     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     */
     openaiApiBase?: pulumi.Input<string>;
+    /**
+     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+     */
     openaiApiKey?: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     */
     openaiApiType?: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     */
     openaiApiVersion?: pulumi.Input<string>;
+    /**
+     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+     */
     openaiDeploymentName?: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+     */
     openaiOrganization?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelPalmConfig {
+    /**
+     * The Databricks secret key reference for a PaLM API key.
+     */
     palmApiKey: pulumi.Input<string>;
 }
 
@@ -8430,9 +8618,23 @@ export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
 }
 
 export interface PermissionsAccessControl {
+    /**
+     * name of the group. We recommend setting permissions on groups.
+     */
     groupName?: pulumi.Input<string>;
+    /**
+     * permission level according to specific resource. See examples above for the reference.
+     *
+     * Exactly one of the below arguments is required:
+     */
     permissionLevel: pulumi.Input<string>;
+    /**
+     * Application ID of the service_principal.
+     */
     servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * name of the user.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -8708,6 +8910,9 @@ export interface QualityMonitorTimeSeries {
 }
 
 export interface RecipientIpAccessList {
+    /**
+     * Allowed IP Addresses in CIDR notation. Limit of 100.
+     */
     allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -8811,6 +9016,9 @@ export interface ShareObject {
 }
 
 export interface ShareObjectPartition {
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+     */
     values: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
 }
 
@@ -8938,11 +9146,17 @@ export interface SqlQueryParameter {
 }
 
 export interface SqlQueryParameterDate {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDateRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -8952,11 +9166,17 @@ export interface SqlQueryParameterDateRangeRange {
 }
 
 export interface SqlQueryParameterDatetime {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimeRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -8966,11 +9186,17 @@ export interface SqlQueryParameterDatetimeRangeRange {
 }
 
 export interface SqlQueryParameterDatetimesec {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimesecRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -8982,6 +9208,9 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 export interface SqlQueryParameterEnum {
     multiple?: pulumi.Input<inputs.SqlQueryParameterEnumMultiple>;
     options: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -8993,12 +9222,18 @@ export interface SqlQueryParameterEnumMultiple {
 }
 
 export interface SqlQueryParameterNumber {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<number>;
 }
 
 export interface SqlQueryParameterQuery {
     multiple?: pulumi.Input<inputs.SqlQueryParameterQueryMultiple>;
     queryId: pulumi.Input<string>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -9010,6 +9245,9 @@ export interface SqlQueryParameterQueryMultiple {
 }
 
 export interface SqlQueryParameterText {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
@@ -9170,6 +9408,11 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * ID of the associated Delta Live Table pipeline.
      */
     pipelineId?: pulumi.Input<string>;
+    /**
+     * Pipeline execution mode. Possible values are:
+     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+     */
     pipelineType?: pulumi.Input<string>;
     /**
      * The name of the source table.

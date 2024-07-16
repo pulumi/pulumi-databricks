@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss? Abfss;
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs? Dbfs;
+        /// <summary>
+        /// block consisting of single string fields:
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile? File;
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs? Gcs;
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterInitScriptS3? S3;
