@@ -14,6 +14,12 @@ var _ = internal.GetEnvOrDefault
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:accountId")
 }
+func GetActionsIdTokenRequestToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:actionsIdTokenRequestToken")
+}
+func GetActionsIdTokenRequestUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:actionsIdTokenRequestUrl")
+}
 func GetAuthType(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:authType")
 }

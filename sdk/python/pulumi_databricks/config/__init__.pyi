@@ -11,6 +11,10 @@ from .. import _utilities
 
 accountId: Optional[str]
 
+actionsIdTokenRequestToken: Optional[str]
+
+actionsIdTokenRequestUrl: Optional[str]
+
 authType: Optional[str]
 
 azureClientId: Optional[str]

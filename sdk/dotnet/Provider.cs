@@ -21,6 +21,12 @@ namespace Pulumi.Databricks
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        [Output("actionsIdTokenRequestToken")]
+        public Output<string?> ActionsIdTokenRequestToken { get; private set; } = null!;
+
+        [Output("actionsIdTokenRequestUrl")]
+        public Output<string?> ActionsIdTokenRequestUrl { get; private set; } = null!;
+
         [Output("authType")]
         public Output<string?> AuthType { get; private set; } = null!;
 
@@ -126,6 +132,12 @@ namespace Pulumi.Databricks
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("actionsIdTokenRequestToken")]
+        public Input<string>? ActionsIdTokenRequestToken { get; set; }
+
+        [Input("actionsIdTokenRequestUrl")]
+        public Input<string>? ActionsIdTokenRequestUrl { get; set; }
 
         [Input("authType")]
         public Input<string>? AuthType { get; set; }

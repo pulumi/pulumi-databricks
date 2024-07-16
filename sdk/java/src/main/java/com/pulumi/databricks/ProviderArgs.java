@@ -24,6 +24,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="actionsIdTokenRequestToken")
+    private @Nullable Output<String> actionsIdTokenRequestToken;
+
+    public Optional<Output<String>> actionsIdTokenRequestToken() {
+        return Optional.ofNullable(this.actionsIdTokenRequestToken);
+    }
+
+    @Import(name="actionsIdTokenRequestUrl")
+    private @Nullable Output<String> actionsIdTokenRequestUrl;
+
+    public Optional<Output<String>> actionsIdTokenRequestUrl() {
+        return Optional.ofNullable(this.actionsIdTokenRequestUrl);
+    }
+
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
@@ -231,6 +245,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.accountId = $.accountId;
+        this.actionsIdTokenRequestToken = $.actionsIdTokenRequestToken;
+        this.actionsIdTokenRequestUrl = $.actionsIdTokenRequestUrl;
         this.authType = $.authType;
         this.azureClientId = $.azureClientId;
         this.azureClientSecret = $.azureClientSecret;
@@ -287,6 +303,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder actionsIdTokenRequestToken(@Nullable Output<String> actionsIdTokenRequestToken) {
+            $.actionsIdTokenRequestToken = actionsIdTokenRequestToken;
+            return this;
+        }
+
+        public Builder actionsIdTokenRequestToken(String actionsIdTokenRequestToken) {
+            return actionsIdTokenRequestToken(Output.of(actionsIdTokenRequestToken));
+        }
+
+        public Builder actionsIdTokenRequestUrl(@Nullable Output<String> actionsIdTokenRequestUrl) {
+            $.actionsIdTokenRequestUrl = actionsIdTokenRequestUrl;
+            return this;
+        }
+
+        public Builder actionsIdTokenRequestUrl(String actionsIdTokenRequestUrl) {
+            return actionsIdTokenRequestUrl(Output.of(actionsIdTokenRequestUrl));
         }
 
         public Builder authType(@Nullable Output<String> authType) {
