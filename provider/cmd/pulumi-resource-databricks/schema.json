@@ -60,6 +60,12 @@
             "accountId": {
                 "type": "string"
             },
+            "actionsIdTokenRequestToken": {
+                "type": "string"
+            },
+            "actionsIdTokenRequestUrl": {
+                "type": "string"
+            },
             "authType": {
                 "type": "string"
             },
@@ -15034,6 +15040,12 @@
             "accountId": {
                 "type": "string"
             },
+            "actionsIdTokenRequestToken": {
+                "type": "string"
+            },
+            "actionsIdTokenRequestUrl": {
+                "type": "string"
+            },
             "authType": {
                 "type": "string"
             },
@@ -15130,6 +15142,12 @@
         },
         "inputProperties": {
             "accountId": {
+                "type": "string"
+            },
+            "actionsIdTokenRequestToken": {
+                "type": "string"
+            },
+            "actionsIdTokenRequestUrl": {
                 "type": "string"
             },
             "authType": {

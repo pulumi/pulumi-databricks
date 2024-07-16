@@ -15,6 +15,22 @@ Object.defineProperty(exports, "accountId", {
     enumerable: true,
 });
 
+export declare const actionsIdTokenRequestToken: string | undefined;
+Object.defineProperty(exports, "actionsIdTokenRequestToken", {
+    get() {
+        return __config.get("actionsIdTokenRequestToken");
+    },
+    enumerable: true,
+});
+
+export declare const actionsIdTokenRequestUrl: string | undefined;
+Object.defineProperty(exports, "actionsIdTokenRequestUrl", {
+    get() {
+        return __config.get("actionsIdTokenRequestUrl");
+    },
+    enumerable: true,
+});
+
 export declare const authType: string | undefined;
 Object.defineProperty(exports, "authType", {
     get() {

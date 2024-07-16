@@ -15,6 +15,12 @@ public final class Config {
     public Optional<String> accountId() {
         return Codegen.stringProp("accountId").config(config).get();
     }
+    public Optional<String> actionsIdTokenRequestToken() {
+        return Codegen.stringProp("actionsIdTokenRequestToken").config(config).get();
+    }
+    public Optional<String> actionsIdTokenRequestUrl() {
+        return Codegen.stringProp("actionsIdTokenRequestUrl").config(config).get();
+    }
     public Optional<String> authType() {
         return Codegen.stringProp("authType").config(config).get();
     }

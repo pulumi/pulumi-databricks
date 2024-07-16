@@ -39,6 +39,20 @@ namespace Pulumi.Databricks
             set => _accountId.Set(value);
         }
 
+        private static readonly __Value<string?> _actionsIdTokenRequestToken = new __Value<string?>(() => __config.Get("actionsIdTokenRequestToken"));
+        public static string? ActionsIdTokenRequestToken
+        {
+            get => _actionsIdTokenRequestToken.Get();
+            set => _actionsIdTokenRequestToken.Set(value);
+        }
+
+        private static readonly __Value<string?> _actionsIdTokenRequestUrl = new __Value<string?>(() => __config.Get("actionsIdTokenRequestUrl"));
+        public static string? ActionsIdTokenRequestUrl
+        {
+            get => _actionsIdTokenRequestUrl.Get();
+            set => _actionsIdTokenRequestUrl.Set(value);
+        }
+
         private static readonly __Value<string?> _authType = new __Value<string?>(() => __config.Get("authType"));
         public static string? AuthType
         {

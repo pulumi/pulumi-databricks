@@ -1334,10 +1334,10 @@ github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46t
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53EtKeQYTC3kyg=
 github.com/cyphar/filepath-securejoin v0.2.4/go.mod h1:aPGpWjXOXUn2NCNjFvBE6aRxGGx79pTxQpKOJNYHHl4=
-github.com/databricks/databricks-sdk-go v0.43.0 h1:x4laolWhYlsQg2t8yWEGyRPZy4/Wv3pKnLEoJfVin7I=
-github.com/databricks/databricks-sdk-go v0.43.0/go.mod h1:a9rr0FOHLL26kOjQjZZVFjIYmRABCbrAWVeundDEVG8=
-github.com/databricks/terraform-provider-databricks v1.48.2 h1:Dh9jXy2WtaoW6tzlAn/9X1Yizi6BZ/2rPePPFc0i1Fc=
-github.com/databricks/terraform-provider-databricks v1.48.2/go.mod h1:LtCv5f2Vfoyv9aBy3CY1PYgRovuE/tDoYt64hdS4Uts=
+github.com/databricks/databricks-sdk-go v0.43.2 h1:4B+sHAYO5kFqwZNQRmsF70eecqsFX6i/0KfXoDFQT/E=
+github.com/databricks/databricks-sdk-go v0.43.2/go.mod h1:nlzeOEgJ1Tmb5HyknBJ3GEorCZKWqEBoHprvPmTSNq8=
+github.com/databricks/terraform-provider-databricks v1.48.3 h1:GMo0P9LgCnspp4KkyJSBLldcgM55vNXajTBsVr9JLWM=
+github.com/databricks/terraform-provider-databricks v1.48.3/go.mod h1:lms6vXkeihL/TrKyme3GEbRi5lcySbHzMm0UJL52Lp4=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

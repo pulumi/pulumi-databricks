@@ -18,29 +18,31 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	AccountId                pulumi.StringPtrOutput `pulumi:"accountId"`
-	AuthType                 pulumi.StringPtrOutput `pulumi:"authType"`
-	AzureClientId            pulumi.StringPtrOutput `pulumi:"azureClientId"`
-	AzureClientSecret        pulumi.StringPtrOutput `pulumi:"azureClientSecret"`
-	AzureEnvironment         pulumi.StringPtrOutput `pulumi:"azureEnvironment"`
-	AzureLoginAppId          pulumi.StringPtrOutput `pulumi:"azureLoginAppId"`
-	AzureTenantId            pulumi.StringPtrOutput `pulumi:"azureTenantId"`
-	AzureWorkspaceResourceId pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
-	ClientId                 pulumi.StringPtrOutput `pulumi:"clientId"`
-	ClientSecret             pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	ClusterId                pulumi.StringPtrOutput `pulumi:"clusterId"`
-	ConfigFile               pulumi.StringPtrOutput `pulumi:"configFile"`
-	DatabricksCliPath        pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
-	GoogleCredentials        pulumi.StringPtrOutput `pulumi:"googleCredentials"`
-	GoogleServiceAccount     pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
-	Host                     pulumi.StringPtrOutput `pulumi:"host"`
-	MetadataServiceUrl       pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
-	Password                 pulumi.StringPtrOutput `pulumi:"password"`
-	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
-	ServerlessComputeId      pulumi.StringPtrOutput `pulumi:"serverlessComputeId"`
-	Token                    pulumi.StringPtrOutput `pulumi:"token"`
-	Username                 pulumi.StringPtrOutput `pulumi:"username"`
-	WarehouseId              pulumi.StringPtrOutput `pulumi:"warehouseId"`
+	AccountId                  pulumi.StringPtrOutput `pulumi:"accountId"`
+	ActionsIdTokenRequestToken pulumi.StringPtrOutput `pulumi:"actionsIdTokenRequestToken"`
+	ActionsIdTokenRequestUrl   pulumi.StringPtrOutput `pulumi:"actionsIdTokenRequestUrl"`
+	AuthType                   pulumi.StringPtrOutput `pulumi:"authType"`
+	AzureClientId              pulumi.StringPtrOutput `pulumi:"azureClientId"`
+	AzureClientSecret          pulumi.StringPtrOutput `pulumi:"azureClientSecret"`
+	AzureEnvironment           pulumi.StringPtrOutput `pulumi:"azureEnvironment"`
+	AzureLoginAppId            pulumi.StringPtrOutput `pulumi:"azureLoginAppId"`
+	AzureTenantId              pulumi.StringPtrOutput `pulumi:"azureTenantId"`
+	AzureWorkspaceResourceId   pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
+	ClientId                   pulumi.StringPtrOutput `pulumi:"clientId"`
+	ClientSecret               pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	ClusterId                  pulumi.StringPtrOutput `pulumi:"clusterId"`
+	ConfigFile                 pulumi.StringPtrOutput `pulumi:"configFile"`
+	DatabricksCliPath          pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
+	GoogleCredentials          pulumi.StringPtrOutput `pulumi:"googleCredentials"`
+	GoogleServiceAccount       pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
+	Host                       pulumi.StringPtrOutput `pulumi:"host"`
+	MetadataServiceUrl         pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
+	Password                   pulumi.StringPtrOutput `pulumi:"password"`
+	Profile                    pulumi.StringPtrOutput `pulumi:"profile"`
+	ServerlessComputeId        pulumi.StringPtrOutput `pulumi:"serverlessComputeId"`
+	Token                      pulumi.StringPtrOutput `pulumi:"token"`
+	Username                   pulumi.StringPtrOutput `pulumi:"username"`
+	WarehouseId                pulumi.StringPtrOutput `pulumi:"warehouseId"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -87,70 +89,74 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	AccountId                *string `pulumi:"accountId"`
-	AuthType                 *string `pulumi:"authType"`
-	AzureClientId            *string `pulumi:"azureClientId"`
-	AzureClientSecret        *string `pulumi:"azureClientSecret"`
-	AzureEnvironment         *string `pulumi:"azureEnvironment"`
-	AzureLoginAppId          *string `pulumi:"azureLoginAppId"`
-	AzureTenantId            *string `pulumi:"azureTenantId"`
-	AzureUseMsi              *bool   `pulumi:"azureUseMsi"`
-	AzureWorkspaceResourceId *string `pulumi:"azureWorkspaceResourceId"`
-	ClientId                 *string `pulumi:"clientId"`
-	ClientSecret             *string `pulumi:"clientSecret"`
-	ClusterId                *string `pulumi:"clusterId"`
-	ConfigFile               *string `pulumi:"configFile"`
-	DatabricksCliPath        *string `pulumi:"databricksCliPath"`
-	DebugHeaders             *bool   `pulumi:"debugHeaders"`
-	DebugTruncateBytes       *int    `pulumi:"debugTruncateBytes"`
-	GoogleCredentials        *string `pulumi:"googleCredentials"`
-	GoogleServiceAccount     *string `pulumi:"googleServiceAccount"`
-	Host                     *string `pulumi:"host"`
-	HttpTimeoutSeconds       *int    `pulumi:"httpTimeoutSeconds"`
-	MetadataServiceUrl       *string `pulumi:"metadataServiceUrl"`
-	Password                 *string `pulumi:"password"`
-	Profile                  *string `pulumi:"profile"`
-	RateLimit                *int    `pulumi:"rateLimit"`
-	RetryTimeoutSeconds      *int    `pulumi:"retryTimeoutSeconds"`
-	ServerlessComputeId      *string `pulumi:"serverlessComputeId"`
-	SkipVerify               *bool   `pulumi:"skipVerify"`
-	Token                    *string `pulumi:"token"`
-	Username                 *string `pulumi:"username"`
-	WarehouseId              *string `pulumi:"warehouseId"`
+	AccountId                  *string `pulumi:"accountId"`
+	ActionsIdTokenRequestToken *string `pulumi:"actionsIdTokenRequestToken"`
+	ActionsIdTokenRequestUrl   *string `pulumi:"actionsIdTokenRequestUrl"`
+	AuthType                   *string `pulumi:"authType"`
+	AzureClientId              *string `pulumi:"azureClientId"`
+	AzureClientSecret          *string `pulumi:"azureClientSecret"`
+	AzureEnvironment           *string `pulumi:"azureEnvironment"`
+	AzureLoginAppId            *string `pulumi:"azureLoginAppId"`
+	AzureTenantId              *string `pulumi:"azureTenantId"`
+	AzureUseMsi                *bool   `pulumi:"azureUseMsi"`
+	AzureWorkspaceResourceId   *string `pulumi:"azureWorkspaceResourceId"`
+	ClientId                   *string `pulumi:"clientId"`
+	ClientSecret               *string `pulumi:"clientSecret"`
+	ClusterId                  *string `pulumi:"clusterId"`
+	ConfigFile                 *string `pulumi:"configFile"`
+	DatabricksCliPath          *string `pulumi:"databricksCliPath"`
+	DebugHeaders               *bool   `pulumi:"debugHeaders"`
+	DebugTruncateBytes         *int    `pulumi:"debugTruncateBytes"`
+	GoogleCredentials          *string `pulumi:"googleCredentials"`
+	GoogleServiceAccount       *string `pulumi:"googleServiceAccount"`
+	Host                       *string `pulumi:"host"`
+	HttpTimeoutSeconds         *int    `pulumi:"httpTimeoutSeconds"`
+	MetadataServiceUrl         *string `pulumi:"metadataServiceUrl"`
+	Password                   *string `pulumi:"password"`
+	Profile                    *string `pulumi:"profile"`
+	RateLimit                  *int    `pulumi:"rateLimit"`
+	RetryTimeoutSeconds        *int    `pulumi:"retryTimeoutSeconds"`
+	ServerlessComputeId        *string `pulumi:"serverlessComputeId"`
+	SkipVerify                 *bool   `pulumi:"skipVerify"`
+	Token                      *string `pulumi:"token"`
+	Username                   *string `pulumi:"username"`
+	WarehouseId                *string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	AccountId                pulumi.StringPtrInput
-	AuthType                 pulumi.StringPtrInput
-	AzureClientId            pulumi.StringPtrInput
-	AzureClientSecret        pulumi.StringPtrInput
-	AzureEnvironment         pulumi.StringPtrInput
-	AzureLoginAppId          pulumi.StringPtrInput
-	AzureTenantId            pulumi.StringPtrInput
-	AzureUseMsi              pulumi.BoolPtrInput
-	AzureWorkspaceResourceId pulumi.StringPtrInput
-	ClientId                 pulumi.StringPtrInput
-	ClientSecret             pulumi.StringPtrInput
-	ClusterId                pulumi.StringPtrInput
-	ConfigFile               pulumi.StringPtrInput
-	DatabricksCliPath        pulumi.StringPtrInput
-	DebugHeaders             pulumi.BoolPtrInput
-	DebugTruncateBytes       pulumi.IntPtrInput
-	GoogleCredentials        pulumi.StringPtrInput
-	GoogleServiceAccount     pulumi.StringPtrInput
-	Host                     pulumi.StringPtrInput
-	HttpTimeoutSeconds       pulumi.IntPtrInput
-	MetadataServiceUrl       pulumi.StringPtrInput
-	Password                 pulumi.StringPtrInput
-	Profile                  pulumi.StringPtrInput
-	RateLimit                pulumi.IntPtrInput
-	RetryTimeoutSeconds      pulumi.IntPtrInput
-	ServerlessComputeId      pulumi.StringPtrInput
-	SkipVerify               pulumi.BoolPtrInput
-	Token                    pulumi.StringPtrInput
-	Username                 pulumi.StringPtrInput
-	WarehouseId              pulumi.StringPtrInput
+	AccountId                  pulumi.StringPtrInput
+	ActionsIdTokenRequestToken pulumi.StringPtrInput
+	ActionsIdTokenRequestUrl   pulumi.StringPtrInput
+	AuthType                   pulumi.StringPtrInput
+	AzureClientId              pulumi.StringPtrInput
+	AzureClientSecret          pulumi.StringPtrInput
+	AzureEnvironment           pulumi.StringPtrInput
+	AzureLoginAppId            pulumi.StringPtrInput
+	AzureTenantId              pulumi.StringPtrInput
+	AzureUseMsi                pulumi.BoolPtrInput
+	AzureWorkspaceResourceId   pulumi.StringPtrInput
+	ClientId                   pulumi.StringPtrInput
+	ClientSecret               pulumi.StringPtrInput
+	ClusterId                  pulumi.StringPtrInput
+	ConfigFile                 pulumi.StringPtrInput
+	DatabricksCliPath          pulumi.StringPtrInput
+	DebugHeaders               pulumi.BoolPtrInput
+	DebugTruncateBytes         pulumi.IntPtrInput
+	GoogleCredentials          pulumi.StringPtrInput
+	GoogleServiceAccount       pulumi.StringPtrInput
+	Host                       pulumi.StringPtrInput
+	HttpTimeoutSeconds         pulumi.IntPtrInput
+	MetadataServiceUrl         pulumi.StringPtrInput
+	Password                   pulumi.StringPtrInput
+	Profile                    pulumi.StringPtrInput
+	RateLimit                  pulumi.IntPtrInput
+	RetryTimeoutSeconds        pulumi.IntPtrInput
+	ServerlessComputeId        pulumi.StringPtrInput
+	SkipVerify                 pulumi.BoolPtrInput
+	Token                      pulumi.StringPtrInput
+	Username                   pulumi.StringPtrInput
+	WarehouseId                pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -192,6 +198,14 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 
 func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ActionsIdTokenRequestToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ActionsIdTokenRequestToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ActionsIdTokenRequestUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ActionsIdTokenRequestUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) AuthType() pulumi.StringPtrOutput {
