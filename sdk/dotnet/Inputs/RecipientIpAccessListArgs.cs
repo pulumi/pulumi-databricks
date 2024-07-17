@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("allowedIpAddresses")]
         private InputList<string>? _allowedIpAddresses;
+
+        /// <summary>
+        /// Allowed IP Addresses in CIDR notation. Limit of 100.
+        /// </summary>
         public InputList<string> AllowedIpAddresses
         {
             get => _allowedIpAddresses ?? (_allowedIpAddresses = new InputList<string>());

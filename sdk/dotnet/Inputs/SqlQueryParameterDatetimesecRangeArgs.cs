@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("range")]
         public Input<Inputs.SqlQueryParameterDatetimesecRangeRangeArgs>? Range { get; set; }
 
+        /// <summary>
+        /// The default value for this parameter.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

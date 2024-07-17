@@ -47,9 +47,17 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
         return Optional.ofNullable(this.dbfs);
     }
 
+    /**
+     * block consisting of single string fields:
+     * 
+     */
     @Import(name="file")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptFileArgs> file;
 
+    /**
+     * @return block consisting of single string fields:
+     * 
+     */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterInitScriptFileArgs>> file() {
         return Optional.ofNullable(this.file);
     }
@@ -146,11 +154,23 @@ public final class JobTaskForEachTaskTaskNewClusterInitScriptArgs extends com.pu
             return dbfs(Output.of(dbfs));
         }
 
+        /**
+         * @param file block consisting of single string fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(@Nullable Output<JobTaskForEachTaskTaskNewClusterInitScriptFileArgs> file) {
             $.file = file;
             return this;
         }
 
+        /**
+         * @param file block consisting of single string fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(JobTaskForEachTaskTaskNewClusterInitScriptFileArgs file) {
             return file(Output.of(file));
         }

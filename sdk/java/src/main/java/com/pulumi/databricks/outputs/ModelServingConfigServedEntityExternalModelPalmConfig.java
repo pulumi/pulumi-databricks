@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelPalmConfig {
+    /**
+     * @return The Databricks secret key reference for a PaLM API key.
+     * 
+     */
     private String palmApiKey;
 
     private ModelServingConfigServedEntityExternalModelPalmConfig() {}
+    /**
+     * @return The Databricks secret key reference for a PaLM API key.
+     * 
+     */
     public String palmApiKey() {
         return this.palmApiKey;
     }

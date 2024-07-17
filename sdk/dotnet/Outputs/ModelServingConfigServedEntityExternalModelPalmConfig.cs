@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelPalmConfig
     {
+        /// <summary>
+        /// The Databricks secret key reference for a PaLM API key.
+        /// </summary>
         public readonly string PalmApiKey;
 
         [OutputConstructor]

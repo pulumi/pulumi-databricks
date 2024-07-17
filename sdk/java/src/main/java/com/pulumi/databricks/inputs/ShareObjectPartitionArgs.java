@@ -15,9 +15,17 @@ public final class ShareObjectPartitionArgs extends com.pulumi.resources.Resourc
 
     public static final ShareObjectPartitionArgs Empty = new ShareObjectPartitionArgs();
 
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     @Import(name="values", required=true)
     private Output<List<ShareObjectPartitionValueArgs>> values;
 
+    /**
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     public Output<List<ShareObjectPartitionValueArgs>> values() {
         return this.values;
     }
@@ -46,15 +54,33 @@ public final class ShareObjectPartitionArgs extends com.pulumi.resources.Resourc
             $ = new ShareObjectPartitionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param values The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(Output<List<ShareObjectPartitionValueArgs>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<ShareObjectPartitionValueArgs> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(ShareObjectPartitionValueArgs... values) {
             return values(List.of(values));
         }

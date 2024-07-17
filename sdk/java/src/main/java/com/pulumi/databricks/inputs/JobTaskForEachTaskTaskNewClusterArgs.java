@@ -242,9 +242,17 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    /**
+     * isn&#39;t supported
+     * 
+     */
     @Import(name="workloadType")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs> workloadType;
 
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs>> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -597,11 +605,23 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
             return sshPublicKeys(List.of(sshPublicKeys));
         }
 
+        /**
+         * @param workloadType isn&#39;t supported
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadType(@Nullable Output<JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs> workloadType) {
             $.workloadType = workloadType;
             return this;
         }
 
+        /**
+         * @param workloadType isn&#39;t supported
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadType(JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs workloadType) {
             return workloadType(Output.of(workloadType));
         }

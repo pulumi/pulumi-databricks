@@ -10,9 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
+    /**
+     * @return The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     private String anthropicApiKey;
 
     private ModelServingConfigServedEntityExternalModelAnthropicConfig() {}
+    /**
+     * @return The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     public String anthropicApiKey() {
         return this.anthropicApiKey;
     }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterText {
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     private String value;
 
     private SqlQueryParameterText() {}
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     public String value() {
         return this.value;
     }

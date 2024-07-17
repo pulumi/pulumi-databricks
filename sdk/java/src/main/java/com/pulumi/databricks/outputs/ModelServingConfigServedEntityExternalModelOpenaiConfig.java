@@ -14,11 +14,35 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     private @Nullable String microsoftEntraClientId;
     private @Nullable String microsoftEntraClientSecret;
     private @Nullable String microsoftEntraTenantId;
+    /**
+     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     * 
+     */
     private @Nullable String openaiApiBase;
+    /**
+     * @return The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+     * 
+     */
     private @Nullable String openaiApiKey;
+    /**
+     * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     * 
+     */
     private @Nullable String openaiApiType;
+    /**
+     * @return This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     * 
+     */
     private @Nullable String openaiApiVersion;
+    /**
+     * @return This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+     * 
+     */
     private @Nullable String openaiDeploymentName;
+    /**
+     * @return This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+     * 
+     */
     private @Nullable String openaiOrganization;
 
     private ModelServingConfigServedEntityExternalModelOpenaiConfig() {}
@@ -31,21 +55,45 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     public Optional<String> microsoftEntraTenantId() {
         return Optional.ofNullable(this.microsoftEntraTenantId);
     }
+    /**
+     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     * 
+     */
     public Optional<String> openaiApiBase() {
         return Optional.ofNullable(this.openaiApiBase);
     }
+    /**
+     * @return The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+     * 
+     */
     public Optional<String> openaiApiKey() {
         return Optional.ofNullable(this.openaiApiKey);
     }
+    /**
+     * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     * 
+     */
     public Optional<String> openaiApiType() {
         return Optional.ofNullable(this.openaiApiType);
     }
+    /**
+     * @return This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     * 
+     */
     public Optional<String> openaiApiVersion() {
         return Optional.ofNullable(this.openaiApiVersion);
     }
+    /**
+     * @return This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+     * 
+     */
     public Optional<String> openaiDeploymentName() {
         return Optional.ofNullable(this.openaiDeploymentName);
     }
+    /**
+     * @return This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+     * 
+     */
     public Optional<String> openaiOrganization() {
         return Optional.ofNullable(this.openaiOrganization);
     }

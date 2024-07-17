@@ -12,6 +12,10 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Databricks secret key reference for an Anthropic API key.
+        /// The Databricks secret key reference for an Anthropic API key.
+        /// </summary>
         [Input("anthropicApiKey", required: true)]
         public Input<string> AnthropicApiKey { get; set; } = null!;
 
