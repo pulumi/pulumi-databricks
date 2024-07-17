@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelAi21labsConfig
     {
+        /// <summary>
+        /// The Databricks secret key reference for an AI21Labs API key.
+        /// </summary>
         public readonly string Ai21labsApiKey;
 
         [OutputConstructor]

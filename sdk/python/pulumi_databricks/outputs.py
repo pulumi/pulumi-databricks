@@ -1417,11 +1417,17 @@ class ClusterClusterLogConf(dict):
 class ClusterClusterLogConfDbfs(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -1458,6 +1464,15 @@ class ClusterClusterLogConfS3(dict):
                  endpoint: Optional[str] = None,
                  kms_key: Optional[str] = None,
                  region: Optional[str] = None):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        :param str canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        :param bool enable_encryption: Enable server-side encryption, false by default.
+        :param str encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        :param str endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        :param str kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        :param str region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -1475,36 +1490,57 @@ class ClusterClusterLogConfS3(dict):
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[str]:
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
         return pulumi.get(self, "canned_acl")
 
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[bool]:
+        """
+        Enable server-side encryption, false by default.
+        """
         return pulumi.get(self, "enable_encryption")
 
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[str]:
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
         return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
         return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "region")
 
 
@@ -1935,11 +1971,17 @@ class ClusterInitScript(dict):
 class ClusterInitScriptAbfss(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -1947,11 +1989,17 @@ class ClusterInitScriptAbfss(dict):
 class ClusterInitScriptDbfs(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -1959,11 +2007,17 @@ class ClusterInitScriptDbfs(dict):
 class ClusterInitScriptFile(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -1971,11 +2025,17 @@ class ClusterInitScriptFile(dict):
 class ClusterInitScriptGcs(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -2012,6 +2072,15 @@ class ClusterInitScriptS3(dict):
                  endpoint: Optional[str] = None,
                  kms_key: Optional[str] = None,
                  region: Optional[str] = None):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        :param str canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        :param bool enable_encryption: Enable server-side encryption, false by default.
+        :param str encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        :param str endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        :param str kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        :param str region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -2029,36 +2098,57 @@ class ClusterInitScriptS3(dict):
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[str]:
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
         return pulumi.get(self, "canned_acl")
 
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[bool]:
+        """
+        Enable server-side encryption, false by default.
+        """
         return pulumi.get(self, "enable_encryption")
 
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[str]:
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
         return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
         return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "region")
 
 
@@ -2066,11 +2156,17 @@ class ClusterInitScriptS3(dict):
 class ClusterInitScriptVolumes(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -2078,11 +2174,17 @@ class ClusterInitScriptVolumes(dict):
 class ClusterInitScriptWorkspace(dict):
     def __init__(__self__, *,
                  destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
 
@@ -4704,6 +4806,9 @@ class JobJobClusterNewClusterInitScript(dict):
                  s3: Optional['outputs.JobJobClusterNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobJobClusterNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobJobClusterNewClusterInitScriptWorkspace'] = None):
+        """
+        :param 'JobJobClusterNewClusterInitScriptFileArgs' file: block consisting of single string fields:
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -4733,6 +4838,9 @@ class JobJobClusterNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptFile']:
+        """
+        block consisting of single string fields:
+        """
         return pulumi.get(self, "file")
 
     @property
@@ -5308,6 +5416,7 @@ class JobNewCluster(dict):
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param 'JobNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -5520,6 +5629,9 @@ class JobNewCluster(dict):
     @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional['outputs.JobNewClusterWorkloadType']:
+        """
+        isn't supported
+        """
         return pulumi.get(self, "workload_type")
 
 
@@ -6132,6 +6244,9 @@ class JobNewClusterInitScript(dict):
                  s3: Optional['outputs.JobNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobNewClusterInitScriptWorkspace'] = None):
+        """
+        :param 'JobNewClusterInitScriptFileArgs' file: block consisting of single string fields:
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -6161,6 +6276,9 @@ class JobNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobNewClusterInitScriptFile']:
+        """
+        block consisting of single string fields:
+        """
         return pulumi.get(self, "file")
 
     @property
@@ -8827,6 +8945,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskForEachTaskTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param 'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -9039,6 +9158,9 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType']:
+        """
+        isn't supported
+        """
         return pulumi.get(self, "workload_type")
 
 
@@ -9651,6 +9773,9 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
                  s3: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace'] = None):
+        """
+        :param 'JobTaskForEachTaskTaskNewClusterInitScriptFileArgs' file: block consisting of single string fields:
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -9680,6 +9805,9 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile']:
+        """
+        block consisting of single string fields:
+        """
         return pulumi.get(self, "file")
 
     @property
@@ -10442,12 +10570,22 @@ class JobTaskForEachTaskTaskRunJobTaskPipelineParams(dict):
 
     def __init__(__self__, *,
                  full_refresh: Optional[bool] = None):
+        """
+        :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
+               
+               > **Note** The following configuration blocks are only supported inside a `task` block
+        """
         if full_refresh is not None:
             pulumi.set(__self__, "full_refresh", full_refresh)
 
     @property
     @pulumi.getter(name="fullRefresh")
     def full_refresh(self) -> Optional[bool]:
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > **Note** The following configuration blocks are only supported inside a `task` block
+        """
         return pulumi.get(self, "full_refresh")
 
 
@@ -10766,6 +10904,9 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
+        """
+        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -10779,6 +10920,9 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -10881,6 +11025,9 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
+        """
+        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -10894,6 +11041,9 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -11525,6 +11675,7 @@ class JobTaskNewCluster(dict):
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param 'JobTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -11737,6 +11888,9 @@ class JobTaskNewCluster(dict):
     @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional['outputs.JobTaskNewClusterWorkloadType']:
+        """
+        isn't supported
+        """
         return pulumi.get(self, "workload_type")
 
 
@@ -12349,6 +12503,9 @@ class JobTaskNewClusterInitScript(dict):
                  s3: Optional['outputs.JobTaskNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobTaskNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobTaskNewClusterInitScriptWorkspace'] = None):
+        """
+        :param 'JobTaskNewClusterInitScriptFileArgs' file: block consisting of single string fields:
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -12378,6 +12535,9 @@ class JobTaskNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobTaskNewClusterInitScriptFile']:
+        """
+        block consisting of single string fields:
+        """
         return pulumi.get(self, "file")
 
     @property
@@ -13140,12 +13300,22 @@ class JobTaskRunJobTaskPipelineParams(dict):
 
     def __init__(__self__, *,
                  full_refresh: Optional[bool] = None):
+        """
+        :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
+               
+               > **Note** The following configuration blocks are only supported inside a `task` block
+        """
         if full_refresh is not None:
             pulumi.set(__self__, "full_refresh", full_refresh)
 
     @property
     @pulumi.getter(name="fullRefresh")
     def full_refresh(self) -> Optional[bool]:
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > **Note** The following configuration blocks are only supported inside a `task` block
+        """
         return pulumi.get(self, "full_refresh")
 
 
@@ -13464,6 +13634,9 @@ class JobTaskSqlTaskAlertSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
+        """
+        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -13477,6 +13650,9 @@ class JobTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -13579,6 +13755,9 @@ class JobTaskSqlTaskDashboardSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
+        """
+        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -13592,6 +13771,9 @@ class JobTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -14128,6 +14310,10 @@ class JobTriggerTable(dict):
                  min_time_between_triggers_seconds: Optional[int] = None,
                  table_names: Optional[Sequence[str]] = None,
                  wait_after_last_change_seconds: Optional[int] = None):
+        """
+        :param int min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        :param int wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if min_time_between_triggers_seconds is not None:
@@ -14145,6 +14331,9 @@ class JobTriggerTable(dict):
     @property
     @pulumi.getter(name="minTimeBetweenTriggersSeconds")
     def min_time_between_triggers_seconds(self) -> Optional[int]:
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
         return pulumi.get(self, "min_time_between_triggers_seconds")
 
     @property
@@ -14155,6 +14344,9 @@ class JobTriggerTable(dict):
     @property
     @pulumi.getter(name="waitAfterLastChangeSeconds")
     def wait_after_last_change_seconds(self) -> Optional[int]:
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
         return pulumi.get(self, "wait_after_last_change_seconds")
 
 
@@ -14186,6 +14378,10 @@ class JobTriggerTableUpdate(dict):
                  condition: Optional[str] = None,
                  min_time_between_triggers_seconds: Optional[int] = None,
                  wait_after_last_change_seconds: Optional[int] = None):
+        """
+        :param int min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        :param int wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
         pulumi.set(__self__, "table_names", table_names)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -14207,11 +14403,17 @@ class JobTriggerTableUpdate(dict):
     @property
     @pulumi.getter(name="minTimeBetweenTriggersSeconds")
     def min_time_between_triggers_seconds(self) -> Optional[int]:
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
         return pulumi.get(self, "min_time_between_triggers_seconds")
 
     @property
     @pulumi.getter(name="waitAfterLastChangeSeconds")
     def wait_after_last_change_seconds(self) -> Optional[int]:
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
         return pulumi.get(self, "wait_after_last_change_seconds")
 
 
@@ -15657,6 +15859,13 @@ class ModelServingConfigServedEntityExternalModel(dict):
         :param str name: The name of the external model.
         :param str provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
         :param str task: The task type of the external model.
+        :param 'ModelServingConfigServedEntityExternalModelAi21labsConfigArgs' ai21labs_config: AI21Labs Config
+        :param 'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs' amazon_bedrock_config: Amazon Bedrock Config
+        :param 'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs' anthropic_config: Anthropic Config
+        :param 'ModelServingConfigServedEntityExternalModelCohereConfigArgs' cohere_config: Cohere Config
+        :param 'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs' databricks_model_serving_config: Databricks Model Serving Config
+        :param 'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs' openai_config: OpenAI Config
+        :param 'ModelServingConfigServedEntityExternalModelPalmConfigArgs' palm_config: PaLM Config
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "provider", provider)
@@ -15703,36 +15912,57 @@ class ModelServingConfigServedEntityExternalModel(dict):
     @property
     @pulumi.getter(name="ai21labsConfig")
     def ai21labs_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelAi21labsConfig']:
+        """
+        AI21Labs Config
+        """
         return pulumi.get(self, "ai21labs_config")
 
     @property
     @pulumi.getter(name="amazonBedrockConfig")
     def amazon_bedrock_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig']:
+        """
+        Amazon Bedrock Config
+        """
         return pulumi.get(self, "amazon_bedrock_config")
 
     @property
     @pulumi.getter(name="anthropicConfig")
     def anthropic_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig']:
+        """
+        Anthropic Config
+        """
         return pulumi.get(self, "anthropic_config")
 
     @property
     @pulumi.getter(name="cohereConfig")
     def cohere_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelCohereConfig']:
+        """
+        Cohere Config
+        """
         return pulumi.get(self, "cohere_config")
 
     @property
     @pulumi.getter(name="databricksModelServingConfig")
     def databricks_model_serving_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig']:
+        """
+        Databricks Model Serving Config
+        """
         return pulumi.get(self, "databricks_model_serving_config")
 
     @property
     @pulumi.getter(name="openaiConfig")
     def openai_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig']:
+        """
+        OpenAI Config
+        """
         return pulumi.get(self, "openai_config")
 
     @property
     @pulumi.getter(name="palmConfig")
     def palm_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelPalmConfig']:
+        """
+        PaLM Config
+        """
         return pulumi.get(self, "palm_config")
 
 
@@ -15757,11 +15987,17 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
 
     def __init__(__self__, *,
                  ai21labs_api_key: str):
+        """
+        :param str ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
+        """
         pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
 
     @property
     @pulumi.getter(name="ai21labsApiKey")
     def ai21labs_api_key(self) -> str:
+        """
+        The Databricks secret key reference for an AI21Labs API key.
+        """
         return pulumi.get(self, "ai21labs_api_key")
 
 
@@ -15795,6 +16031,12 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
                  aws_region: str,
                  aws_secret_access_key: str,
                  bedrock_provider: str):
+        """
+        :param str aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        :param str aws_region: The AWS region to use. Bedrock has to be enabled there.
+        :param str aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        :param str bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        """
         pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
@@ -15803,21 +16045,33 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
     @property
     @pulumi.getter(name="awsAccessKeyId")
     def aws_access_key_id(self) -> str:
+        """
+        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        """
         return pulumi.get(self, "aws_access_key_id")
 
     @property
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> str:
+        """
+        The AWS region to use. Bedrock has to be enabled there.
+        """
         return pulumi.get(self, "aws_region")
 
     @property
     @pulumi.getter(name="awsSecretAccessKey")
     def aws_secret_access_key(self) -> str:
+        """
+        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        """
         return pulumi.get(self, "aws_secret_access_key")
 
     @property
     @pulumi.getter(name="bedrockProvider")
     def bedrock_provider(self) -> str:
+        """
+        The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        """
         return pulumi.get(self, "bedrock_provider")
 
 
@@ -15842,11 +16096,19 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
 
     def __init__(__self__, *,
                  anthropic_api_key: str):
+        """
+        :param str anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
+               The Databricks secret key reference for an Anthropic API key.
+        """
         pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
 
     @property
     @pulumi.getter(name="anthropicApiKey")
     def anthropic_api_key(self) -> str:
+        """
+        The Databricks secret key reference for an Anthropic API key.
+        The Databricks secret key reference for an Anthropic API key.
+        """
         return pulumi.get(self, "anthropic_api_key")
 
 
@@ -15871,11 +16133,17 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
 
     def __init__(__self__, *,
                  cohere_api_key: str):
+        """
+        :param str cohere_api_key: The Databricks secret key reference for a Cohere API key.
+        """
         pulumi.set(__self__, "cohere_api_key", cohere_api_key)
 
     @property
     @pulumi.getter(name="cohereApiKey")
     def cohere_api_key(self) -> str:
+        """
+        The Databricks secret key reference for a Cohere API key.
+        """
         return pulumi.get(self, "cohere_api_key")
 
 
@@ -15903,17 +16171,27 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
     def __init__(__self__, *,
                  databricks_api_token: str,
                  databricks_workspace_url: str):
+        """
+        :param str databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        :param str databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        """
         pulumi.set(__self__, "databricks_api_token", databricks_api_token)
         pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
 
     @property
     @pulumi.getter(name="databricksApiToken")
     def databricks_api_token(self) -> str:
+        """
+        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        """
         return pulumi.get(self, "databricks_api_token")
 
     @property
     @pulumi.getter(name="databricksWorkspaceUrl")
     def databricks_workspace_url(self) -> str:
+        """
+        The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        """
         return pulumi.get(self, "databricks_workspace_url")
 
 
@@ -15962,6 +16240,14 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
                  openai_api_version: Optional[str] = None,
                  openai_deployment_name: Optional[str] = None,
                  openai_organization: Optional[str] = None):
+        """
+        :param str openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        :param str openai_api_key: The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+        :param str openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        :param str openai_api_version: This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        :param str openai_deployment_name: This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+        :param str openai_organization: This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+        """
         if microsoft_entra_client_id is not None:
             pulumi.set(__self__, "microsoft_entra_client_id", microsoft_entra_client_id)
         if microsoft_entra_client_secret is not None:
@@ -15999,31 +16285,49 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @property
     @pulumi.getter(name="openaiApiBase")
     def openai_api_base(self) -> Optional[str]:
+        """
+        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        """
         return pulumi.get(self, "openai_api_base")
 
     @property
     @pulumi.getter(name="openaiApiKey")
     def openai_api_key(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+        """
         return pulumi.get(self, "openai_api_key")
 
     @property
     @pulumi.getter(name="openaiApiType")
     def openai_api_type(self) -> Optional[str]:
+        """
+        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        """
         return pulumi.get(self, "openai_api_type")
 
     @property
     @pulumi.getter(name="openaiApiVersion")
     def openai_api_version(self) -> Optional[str]:
+        """
+        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        """
         return pulumi.get(self, "openai_api_version")
 
     @property
     @pulumi.getter(name="openaiDeploymentName")
     def openai_deployment_name(self) -> Optional[str]:
+        """
+        This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+        """
         return pulumi.get(self, "openai_deployment_name")
 
     @property
     @pulumi.getter(name="openaiOrganization")
     def openai_organization(self) -> Optional[str]:
+        """
+        This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+        """
         return pulumi.get(self, "openai_organization")
 
 
@@ -16048,11 +16352,17 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
 
     def __init__(__self__, *,
                  palm_api_key: str):
+        """
+        :param str palm_api_key: The Databricks secret key reference for a PaLM API key.
+        """
         pulumi.set(__self__, "palm_api_key", palm_api_key)
 
     @property
     @pulumi.getter(name="palmApiKey")
     def palm_api_key(self) -> str:
+        """
+        The Databricks secret key reference for a PaLM API key.
+        """
         return pulumi.get(self, "palm_api_key")
 
 
@@ -18234,6 +18544,14 @@ class PermissionsAccessControl(dict):
                  group_name: Optional[str] = None,
                  service_principal_name: Optional[str] = None,
                  user_name: Optional[str] = None):
+        """
+        :param str permission_level: permission level according to specific resource. See examples above for the reference.
+               
+               Exactly one of the below arguments is required:
+        :param str group_name: name of the group. We recommend setting permissions on groups.
+        :param str service_principal_name: Application ID of the service_principal.
+        :param str user_name: name of the user.
+        """
         pulumi.set(__self__, "permission_level", permission_level)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
@@ -18245,21 +18563,35 @@ class PermissionsAccessControl(dict):
     @property
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> str:
+        """
+        permission level according to specific resource. See examples above for the reference.
+
+        Exactly one of the below arguments is required:
+        """
         return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
+        """
+        name of the group. We recommend setting permissions on groups.
+        """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[str]:
+        """
+        Application ID of the service_principal.
+        """
         return pulumi.get(self, "service_principal_name")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        name of the user.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -19716,12 +20048,18 @@ class RecipientIpAccessList(dict):
 
     def __init__(__self__, *,
                  allowed_ip_addresses: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_ip_addresses: Allowed IP Addresses in CIDR notation. Limit of 100.
+        """
         if allowed_ip_addresses is not None:
             pulumi.set(__self__, "allowed_ip_addresses", allowed_ip_addresses)
 
     @property
     @pulumi.getter(name="allowedIpAddresses")
     def allowed_ip_addresses(self) -> Optional[Sequence[str]]:
+        """
+        Allowed IP Addresses in CIDR notation. Limit of 100.
+        """
         return pulumi.get(self, "allowed_ip_addresses")
 
 
@@ -20101,11 +20439,17 @@ class ShareObject(dict):
 class ShareObjectPartition(dict):
     def __init__(__self__, *,
                  values: Sequence['outputs.ShareObjectPartitionValue']):
+        """
+        :param Sequence['ShareObjectPartitionValueArgs'] values: The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Sequence['outputs.ShareObjectPartitionValue']:
+        """
+        The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
         return pulumi.get(self, "values")
 
 
@@ -20679,11 +21023,17 @@ class SqlQueryParameter(dict):
 class SqlQueryParameterDate(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20692,6 +21042,9 @@ class SqlQueryParameterDateRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDateRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -20705,6 +21058,9 @@ class SqlQueryParameterDateRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20731,11 +21087,17 @@ class SqlQueryParameterDateRangeRange(dict):
 class SqlQueryParameterDatetime(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20744,6 +21106,9 @@ class SqlQueryParameterDatetimeRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimeRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -20757,6 +21122,9 @@ class SqlQueryParameterDatetimeRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20783,11 +21151,17 @@ class SqlQueryParameterDatetimeRangeRange(dict):
 class SqlQueryParameterDatetimesec(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20796,6 +21170,9 @@ class SqlQueryParameterDatetimesecRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimesecRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -20809,6 +21186,9 @@ class SqlQueryParameterDatetimesecRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20838,6 +21218,9 @@ class SqlQueryParameterEnum(dict):
                  multiple: Optional['outputs.SqlQueryParameterEnumMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "options", options)
         if multiple is not None:
             pulumi.set(__self__, "multiple", multiple)
@@ -20859,6 +21242,9 @@ class SqlQueryParameterEnum(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
     @property
@@ -20899,11 +21285,17 @@ class SqlQueryParameterEnumMultiple(dict):
 class SqlQueryParameterNumber(dict):
     def __init__(__self__, *,
                  value: float):
+        """
+        :param float value: The default value for this parameter.
+        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> float:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -20931,6 +21323,9 @@ class SqlQueryParameterQuery(dict):
                  multiple: Optional['outputs.SqlQueryParameterQueryMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "query_id", query_id)
         if multiple is not None:
             pulumi.set(__self__, "multiple", multiple)
@@ -20952,6 +21347,9 @@ class SqlQueryParameterQuery(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
     @property
@@ -20992,11 +21390,17 @@ class SqlQueryParameterQueryMultiple(dict):
 class SqlQueryParameterText(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -21837,6 +22241,9 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
         """
         :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
         :param str pipeline_id: ID of the associated Delta Live Table pipeline.
+        :param str pipeline_type: Pipeline execution mode. Possible values are:
+               * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+               * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
         :param str source_table: The name of the source table.
         """
         if embedding_source_columns is not None:
@@ -21881,6 +22288,11 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
     @property
     @pulumi.getter(name="pipelineType")
     def pipeline_type(self) -> Optional[str]:
+        """
+        Pipeline execution mode. Possible values are:
+        * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+        * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+        """
         return pulumi.get(self, "pipeline_type")
 
     @property

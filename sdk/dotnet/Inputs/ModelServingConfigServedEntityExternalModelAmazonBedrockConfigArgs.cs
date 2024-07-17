@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        /// </summary>
         [Input("awsAccessKeyId", required: true)]
         public Input<string> AwsAccessKeyId { get; set; } = null!;
 
+        /// <summary>
+        /// The AWS region to use. Bedrock has to be enabled there.
+        /// </summary>
         [Input("awsRegion", required: true)]
         public Input<string> AwsRegion { get; set; } = null!;
 
+        /// <summary>
+        /// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        /// </summary>
         [Input("awsSecretAccessKey", required: true)]
         public Input<string> AwsSecretAccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        /// </summary>
         [Input("bedrockProvider", required: true)]
         public Input<string> BedrockProvider { get; set; } = null!;
 

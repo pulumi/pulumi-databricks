@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskRunJobTaskPipelineParams {
+    /**
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     private @Nullable Boolean fullRefresh;
 
     private JobTaskForEachTaskTaskRunJobTaskPipelineParams() {}
+    /**
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     public Optional<Boolean> fullRefresh() {
         return Optional.ofNullable(this.fullRefresh);
     }

@@ -13,12 +13,33 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ClusterClusterLogConfS3
     {
+        /// <summary>
+        /// Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        /// </summary>
         public readonly string? CannedAcl;
+        /// <summary>
+        /// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        /// </summary>
         public readonly string Destination;
+        /// <summary>
+        /// Enable server-side encryption, false by default.
+        /// </summary>
         public readonly bool? EnableEncryption;
+        /// <summary>
+        /// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        /// </summary>
         public readonly string? EncryptionType;
+        /// <summary>
+        /// S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        /// </summary>
         public readonly string? Endpoint;
+        /// <summary>
+        /// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        /// </summary>
         public readonly string? KmsKey;
+        /// <summary>
+        /// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        /// </summary>
         public readonly string? Region;
 
         [OutputConstructor]

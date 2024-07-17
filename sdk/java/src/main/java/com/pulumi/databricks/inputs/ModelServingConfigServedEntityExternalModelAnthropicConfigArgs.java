@@ -14,9 +14,19 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
 
     public static final ModelServingConfigServedEntityExternalModelAnthropicConfigArgs Empty = new ModelServingConfigServedEntityExternalModelAnthropicConfigArgs();
 
+    /**
+     * The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     @Import(name="anthropicApiKey", required=true)
     private Output<String> anthropicApiKey;
 
+    /**
+     * @return The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     public Output<String> anthropicApiKey() {
         return this.anthropicApiKey;
     }
@@ -45,11 +55,25 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
             $ = new ModelServingConfigServedEntityExternalModelAnthropicConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param anthropicApiKey The Databricks secret key reference for an Anthropic API key.
+         * The Databricks secret key reference for an Anthropic API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropicApiKey(Output<String> anthropicApiKey) {
             $.anthropicApiKey = anthropicApiKey;
             return this;
         }
 
+        /**
+         * @param anthropicApiKey The Databricks secret key reference for an Anthropic API key.
+         * The Databricks secret key reference for an Anthropic API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropicApiKey(String anthropicApiKey) {
             return anthropicApiKey(Output.of(anthropicApiKey));
         }

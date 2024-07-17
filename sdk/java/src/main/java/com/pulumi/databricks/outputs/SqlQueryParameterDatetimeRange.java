@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SqlQueryParameterDatetimeRange {
     private @Nullable SqlQueryParameterDatetimeRangeRange range;
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     private @Nullable String value;
 
     private SqlQueryParameterDatetimeRange() {}
     public Optional<SqlQueryParameterDatetimeRangeRange> range() {
         return Optional.ofNullable(this.range);
     }
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

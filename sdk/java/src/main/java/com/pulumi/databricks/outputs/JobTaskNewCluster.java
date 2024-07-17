@@ -60,6 +60,10 @@ public final class JobTaskNewCluster {
     private @Nullable Map<String,Object> sparkEnvVars;
     private String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     private @Nullable JobTaskNewClusterWorkloadType workloadType;
 
     private JobTaskNewCluster() {}
@@ -154,6 +158,10 @@ public final class JobTaskNewCluster {
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
     }
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     public Optional<JobTaskNewClusterWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }

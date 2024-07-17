@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("values", required: true)]
         private InputList<Inputs.ShareObjectPartitionValueGetArgs>? _values;
+
+        /// <summary>
+        /// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        /// </summary>
         public InputList<Inputs.ShareObjectPartitionValueGetArgs> Values
         {
             get => _values ?? (_values = new InputList<Inputs.ShareObjectPartitionValueGetArgs>());
