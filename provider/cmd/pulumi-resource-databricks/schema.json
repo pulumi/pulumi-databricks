@@ -372,7 +372,8 @@
         "databricks:index/ClusterClusterLogConfDbfs:ClusterClusterLogConfDbfs": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -383,25 +384,32 @@
         "databricks:index/ClusterClusterLogConfS3:ClusterClusterLogConfS3": {
             "properties": {
                 "cannedAcl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.\n"
                 },
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 },
                 "enableEncryption": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable server-side encryption, false by default.\n"
                 },
                 "encryptionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.\n"
                 },
                 "endpoint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 endpoint, e.g. \u003chttps://s3-us-west-2.amazonaws.com\u003e. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.\n"
                 },
                 "kmsKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "KMS key used if encryption is enabled and encryption type is set to `sse-kms`.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.\n"
                 }
             },
             "type": "object",
@@ -537,7 +545,8 @@
         "databricks:index/ClusterInitScriptAbfss:ClusterInitScriptAbfss": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -548,7 +557,8 @@
         "databricks:index/ClusterInitScriptDbfs:ClusterInitScriptDbfs": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -559,7 +569,8 @@
         "databricks:index/ClusterInitScriptFile:ClusterInitScriptFile": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -570,7 +581,8 @@
         "databricks:index/ClusterInitScriptGcs:ClusterInitScriptGcs": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -581,25 +593,32 @@
         "databricks:index/ClusterInitScriptS3:ClusterInitScriptS3": {
             "properties": {
                 "cannedAcl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.\n"
                 },
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 },
                 "enableEncryption": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable server-side encryption, false by default.\n"
                 },
                 "encryptionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.\n"
                 },
                 "endpoint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 endpoint, e.g. \u003chttps://s3-us-west-2.amazonaws.com\u003e. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.\n"
                 },
                 "kmsKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "KMS key used if encryption is enabled and encryption type is set to `sse-kms`.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.\n"
                 }
             },
             "type": "object",
@@ -610,7 +629,8 @@
         "databricks:index/ClusterInitScriptVolumes:ClusterInitScriptVolumes": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -621,7 +641,8 @@
         "databricks:index/ClusterInitScriptWorkspace:ClusterInitScriptWorkspace": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
             "type": "object",
@@ -1679,7 +1700,8 @@
                     "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptFile:JobJobClusterNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptFile:JobJobClusterNewClusterInitScriptFile",
+                    "description": "block consisting of single string fields:\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptGcs:JobJobClusterNewClusterInitScriptGcs"
@@ -2074,7 +2096,8 @@
                     }
                 },
                 "workloadType": {
-                    "$ref": "#/types/databricks:index/JobNewClusterWorkloadType:JobNewClusterWorkloadType"
+                    "$ref": "#/types/databricks:index/JobNewClusterWorkloadType:JobNewClusterWorkloadType",
+                    "description": "isn't supported\n"
                 }
             },
             "type": "object",
@@ -2315,7 +2338,8 @@
                     "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobNewClusterInitScriptFile:JobNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobNewClusterInitScriptFile:JobNewClusterInitScriptFile",
+                    "description": "block consisting of single string fields:\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptGcs:JobNewClusterInitScriptGcs"
@@ -3472,7 +3496,8 @@
                     }
                 },
                 "workloadType": {
-                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterWorkloadType:JobTaskForEachTaskTaskNewClusterWorkloadType"
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterWorkloadType:JobTaskForEachTaskTaskNewClusterWorkloadType",
+                    "description": "isn't supported\n"
                 }
             },
             "type": "object",
@@ -3713,7 +3738,8 @@
                     "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptFile:JobTaskForEachTaskTaskNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptFile:JobTaskForEachTaskTaskNewClusterInitScriptFile",
+                    "description": "block consisting of single string fields:\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptGcs:JobTaskForEachTaskTaskNewClusterInitScriptGcs"
@@ -4075,7 +4101,8 @@
         "databricks:index/JobTaskForEachTaskTaskRunJobTaskPipelineParams:JobTaskForEachTaskTaskRunJobTaskPipelineParams": {
             "properties": {
                 "fullRefresh": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(Bool) Specifies if there should be full refresh of the pipeline.\n\n\u003e **Note** The following configuration blocks are only supported inside a `task` block\n"
                 }
             },
             "type": "object"
@@ -4199,7 +4226,8 @@
                     "type": "string"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
                 }
             },
             "type": "object"
@@ -4237,7 +4265,8 @@
                     "type": "string"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
                 }
             },
             "type": "object"
@@ -4592,7 +4621,8 @@
                     }
                 },
                 "workloadType": {
-                    "$ref": "#/types/databricks:index/JobTaskNewClusterWorkloadType:JobTaskNewClusterWorkloadType"
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterWorkloadType:JobTaskNewClusterWorkloadType",
+                    "description": "isn't supported\n"
                 }
             },
             "type": "object",
@@ -4833,7 +4863,8 @@
                     "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptFile:JobTaskNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptFile:JobTaskNewClusterInitScriptFile",
+                    "description": "block consisting of single string fields:\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptGcs:JobTaskNewClusterInitScriptGcs"
@@ -5195,7 +5226,8 @@
         "databricks:index/JobTaskRunJobTaskPipelineParams:JobTaskRunJobTaskPipelineParams": {
             "properties": {
                 "fullRefresh": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(Bool) Specifies if there should be full refresh of the pipeline.\n\n\u003e **Note** The following configuration blocks are only supported inside a `task` block\n"
                 }
             },
             "type": "object"
@@ -5319,7 +5351,8 @@
                     "type": "string"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
                 }
             },
             "type": "object"
@@ -5357,7 +5390,8 @@
                     "type": "string"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
                 }
             },
             "type": "object"
@@ -5554,7 +5588,8 @@
                     "type": "string"
                 },
                 "minTimeBetweenTriggersSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.\n"
                 },
                 "tableNames": {
                     "type": "array",
@@ -5563,7 +5598,8 @@
                     }
                 },
                 "waitAfterLastChangeSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.\n"
                 }
             },
             "type": "object"
@@ -5574,7 +5610,8 @@
                     "type": "string"
                 },
                 "minTimeBetweenTriggersSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.\n"
                 },
                 "tableNames": {
                     "type": "array",
@@ -5583,7 +5620,8 @@
                     }
                 },
                 "waitAfterLastChangeSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.\n"
                 }
             },
             "type": "object",
@@ -6207,29 +6245,36 @@
         "databricks:index/ModelServingConfigServedEntityExternalModel:ModelServingConfigServedEntityExternalModel": {
             "properties": {
                 "ai21labsConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAi21labsConfig:ModelServingConfigServedEntityExternalModelAi21labsConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAi21labsConfig:ModelServingConfigServedEntityExternalModelAi21labsConfig",
+                    "description": "AI21Labs Config\n"
                 },
                 "amazonBedrockConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAmazonBedrockConfig:ModelServingConfigServedEntityExternalModelAmazonBedrockConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAmazonBedrockConfig:ModelServingConfigServedEntityExternalModelAmazonBedrockConfig",
+                    "description": "Amazon Bedrock Config\n"
                 },
                 "anthropicConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAnthropicConfig:ModelServingConfigServedEntityExternalModelAnthropicConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelAnthropicConfig:ModelServingConfigServedEntityExternalModelAnthropicConfig",
+                    "description": "Anthropic Config\n"
                 },
                 "cohereConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelCohereConfig:ModelServingConfigServedEntityExternalModelCohereConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelCohereConfig:ModelServingConfigServedEntityExternalModelCohereConfig",
+                    "description": "Cohere Config\n"
                 },
                 "databricksModelServingConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig:ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig:ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig",
+                    "description": "Databricks Model Serving Config\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The name of the external model.\n"
                 },
                 "openaiConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelOpenaiConfig:ModelServingConfigServedEntityExternalModelOpenaiConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelOpenaiConfig:ModelServingConfigServedEntityExternalModelOpenaiConfig",
+                    "description": "OpenAI Config\n"
                 },
                 "palmConfig": {
-                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelPalmConfig:ModelServingConfigServedEntityExternalModelPalmConfig"
+                    "$ref": "#/types/databricks:index/ModelServingConfigServedEntityExternalModelPalmConfig:ModelServingConfigServedEntityExternalModelPalmConfig",
+                    "description": "PaLM Config\n"
                 },
                 "provider": {
                     "type": "string",
@@ -6250,7 +6295,8 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelAi21labsConfig:ModelServingConfigServedEntityExternalModelAi21labsConfig": {
             "properties": {
                 "ai21labsApiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for an AI21Labs API key.\n"
                 }
             },
             "type": "object",
@@ -6261,16 +6307,20 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelAmazonBedrockConfig:ModelServingConfigServedEntityExternalModelAmazonBedrockConfig": {
             "properties": {
                 "awsAccessKeyId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.\n"
                 },
                 "awsRegion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The AWS region to use. Bedrock has to be enabled there.\n"
                 },
                 "awsSecretAccessKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.\n"
                 },
                 "bedrockProvider": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.\n"
                 }
             },
             "type": "object",
@@ -6284,7 +6334,8 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelAnthropicConfig:ModelServingConfigServedEntityExternalModelAnthropicConfig": {
             "properties": {
                 "anthropicApiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for an Anthropic API key.\nThe Databricks secret key reference for an Anthropic API key.\n"
                 }
             },
             "type": "object",
@@ -6295,7 +6346,8 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelCohereConfig:ModelServingConfigServedEntityExternalModelCohereConfig": {
             "properties": {
                 "cohereApiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for a Cohere API key.\n"
                 }
             },
             "type": "object",
@@ -6306,10 +6358,12 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig:ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig": {
             "properties": {
                 "databricksApiToken": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.\n"
                 },
                 "databricksWorkspaceUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.\n"
                 }
             },
             "type": "object",
@@ -6330,22 +6384,28 @@
                     "type": "string"
                 },
                 "openaiApiBase": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This is the base URL for the OpenAI API (default: \"https://api.openai.com/v1\"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.\n"
                 },
                 "openaiApiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for an OpenAI or Azure OpenAI API key.\n"
                 },
                 "openaiApiType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.\n"
                 },
                 "openaiApiVersion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.\n"
                 },
                 "openaiDeploymentName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.\n"
                 },
                 "openaiOrganization": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This is an optional field to specify the organization in OpenAI or Azure OpenAI.\n"
                 }
             },
             "type": "object"
@@ -6353,7 +6413,8 @@
         "databricks:index/ModelServingConfigServedEntityExternalModelPalmConfig:ModelServingConfigServedEntityExternalModelPalmConfig": {
             "properties": {
                 "palmApiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Databricks secret key reference for a PaLM API key.\n"
                 }
             },
             "type": "object",
@@ -7227,16 +7288,20 @@
         "databricks:index/PermissionsAccessControl:PermissionsAccessControl": {
             "properties": {
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "name of the group. We recommend setting permissions on groups.\n"
                 },
                 "permissionLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "permission level according to specific resource. See examples above for the reference.\n\nExactly one of the below arguments is required:\n"
                 },
                 "servicePrincipalName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Application ID of the service_principal.\n"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "name of the user.\n"
                 }
             },
             "type": "object",
@@ -7861,7 +7926,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Allowed IP Addresses in CIDR notation. Limit of 100.\n"
                 }
             },
             "type": "object"
@@ -8041,7 +8107,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ShareObjectPartitionValue:ShareObjectPartitionValue"
-                    }
+                    },
+                    "description": "The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.\n"
                 }
             },
             "type": "object",
@@ -8273,7 +8340,8 @@
         "databricks:index/SqlQueryParameterDate:SqlQueryParameterDate": {
             "properties": {
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object",
@@ -8287,7 +8355,8 @@
                     "$ref": "#/types/databricks:index/SqlQueryParameterDateRangeRange:SqlQueryParameterDateRangeRange"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object"
@@ -8310,7 +8379,8 @@
         "databricks:index/SqlQueryParameterDatetime:SqlQueryParameterDatetime": {
             "properties": {
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object",
@@ -8324,7 +8394,8 @@
                     "$ref": "#/types/databricks:index/SqlQueryParameterDatetimeRangeRange:SqlQueryParameterDatetimeRangeRange"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object"
@@ -8347,7 +8418,8 @@
         "databricks:index/SqlQueryParameterDatetimesec:SqlQueryParameterDatetimesec": {
             "properties": {
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object",
@@ -8361,7 +8433,8 @@
                     "$ref": "#/types/databricks:index/SqlQueryParameterDatetimesecRangeRange:SqlQueryParameterDatetimesecRangeRange"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object"
@@ -8393,7 +8466,8 @@
                     }
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 },
                 "values": {
                     "type": "array",
@@ -8427,7 +8501,8 @@
         "databricks:index/SqlQueryParameterNumber:SqlQueryParameterNumber": {
             "properties": {
                 "value": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object",
@@ -8444,7 +8519,8 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 },
                 "values": {
                     "type": "array",
@@ -8478,7 +8554,8 @@
         "databricks:index/SqlQueryParameterText:SqlQueryParameterText": {
             "properties": {
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default value for this parameter.\n"
                 }
             },
             "type": "object",
@@ -8841,6 +8918,7 @@
                 },
                 "pipelineType": {
                     "type": "string",
+                    "description": "Pipeline execution mode. Possible values are:\n* `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.\n* `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.\n",
                     "willReplaceOnChanges": true
                 },
                 "sourceTable": {
