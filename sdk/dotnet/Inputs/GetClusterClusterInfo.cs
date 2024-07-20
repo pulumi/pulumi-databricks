@@ -51,8 +51,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("clusterName")]
         public string? ClusterName { get; set; }
 
-        [Input("clusterSource", required: true)]
-        public string ClusterSource { get; set; } = null!;
+        [Input("clusterSource")]
+        public string? ClusterSource { get; set; }
 
         [Input("creatorUserName")]
         public string? CreatorUserName { get; set; }
@@ -75,7 +75,7 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataSecurityMode")]
         public string? DataSecurityMode { get; set; }
 
-        [Input("defaultTags", required: true)]
+        [Input("defaultTags")]
         private Dictionary<string, object>? _defaultTags;
         public Dictionary<string, object> DefaultTags
         {
@@ -92,8 +92,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// similar to `instance_pool_id`, but for driver node.
         /// </summary>
-        [Input("driverInstancePoolId", required: true)]
-        public string DriverInstancePoolId { get; set; } = null!;
+        [Input("driverInstancePoolId")]
+        public string? DriverInstancePoolId { get; set; }
 
         /// <summary>
         /// The node type of the Spark driver.
@@ -141,8 +141,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("jdbcPort")]
         public int? JdbcPort { get; set; }
 
-        [Input("lastActivityTime")]
-        public int? LastActivityTime { get; set; }
+        [Input("lastRestartedTime")]
+        public int? LastRestartedTime { get; set; }
 
         [Input("lastStateLossTime")]
         public int? LastStateLossTime { get; set; }
@@ -204,8 +204,11 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         /// </summary>
-        [Input("sparkVersion", required: true)]
-        public string SparkVersion { get; set; } = null!;
+        [Input("sparkVersion")]
+        public string? SparkVersion { get; set; }
+
+        [Input("spec")]
+        public Inputs.GetClusterClusterInfoSpecArgs? Spec { get; set; }
 
         [Input("sshPublicKeys")]
         private List<string>? _sshPublicKeys;
@@ -222,17 +225,20 @@ namespace Pulumi.Databricks.Inputs
         [Input("startTime")]
         public int? StartTime { get; set; }
 
-        [Input("state", required: true)]
-        public string State { get; set; } = null!;
+        [Input("state")]
+        public string? State { get; set; }
 
         [Input("stateMessage")]
         public string? StateMessage { get; set; }
 
-        [Input("terminateTime")]
-        public int? TerminateTime { get; set; }
+        [Input("terminatedTime")]
+        public int? TerminatedTime { get; set; }
 
         [Input("terminationReason")]
         public Inputs.GetClusterClusterInfoTerminationReasonArgs? TerminationReason { get; set; }
+
+        [Input("workloadType")]
+        public Inputs.GetClusterClusterInfoWorkloadTypeArgs? WorkloadType { get; set; }
 
         public GetClusterClusterInfoArgs()
         {

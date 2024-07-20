@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfo;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -30,6 +31,13 @@ public final class GetClusterClusterInfoAzureAttributes extends com.pulumi.resou
         return Optional.ofNullable(this.firstOnDemand);
     }
 
+    @Import(name="logAnalyticsInfo")
+    private @Nullable GetClusterClusterInfoAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
+
+    public Optional<GetClusterClusterInfoAzureAttributesLogAnalyticsInfo> logAnalyticsInfo() {
+        return Optional.ofNullable(this.logAnalyticsInfo);
+    }
+
     @Import(name="spotBidMaxPrice")
     private @Nullable Double spotBidMaxPrice;
 
@@ -42,6 +50,7 @@ public final class GetClusterClusterInfoAzureAttributes extends com.pulumi.resou
     private GetClusterClusterInfoAzureAttributes(GetClusterClusterInfoAzureAttributes $) {
         this.availability = $.availability;
         this.firstOnDemand = $.firstOnDemand;
+        this.logAnalyticsInfo = $.logAnalyticsInfo;
         this.spotBidMaxPrice = $.spotBidMaxPrice;
     }
 
@@ -70,6 +79,11 @@ public final class GetClusterClusterInfoAzureAttributes extends com.pulumi.resou
 
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
             $.firstOnDemand = firstOnDemand;
+            return this;
+        }
+
+        public Builder logAnalyticsInfo(@Nullable GetClusterClusterInfoAzureAttributesLogAnalyticsInfo logAnalyticsInfo) {
+            $.logAnalyticsInfo = logAnalyticsInfo;
             return this;
         }
 

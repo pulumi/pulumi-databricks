@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
  *
- * Allows you to create a [Network Connectivity Config] that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+ * Allows you to create a Network Connectivity Config that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
  *
  * ## Example Usage
  *
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const region = config.requireObject("region");
  * const prefix = config.requireObject("prefix");
  * const ncc = new databricks.MwsNetworkConnectivityConfig("ncc", {
- *     name: `Network Connectivity Config for ${prefix}`,
+ *     name: `ncc-for-${prefix}`,
  *     region: region,
  * });
  * const nccBinding = new databricks.MwsNccBinding("ncc_binding", {

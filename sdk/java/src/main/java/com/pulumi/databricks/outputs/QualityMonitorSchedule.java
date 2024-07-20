@@ -12,10 +12,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QualityMonitorSchedule {
-    /**
-     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     * 
-     */
     private @Nullable String pauseStatus;
     /**
      * @return string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
@@ -29,10 +25,6 @@ public final class QualityMonitorSchedule {
     private String timezoneId;
 
     private QualityMonitorSchedule() {}
-    /**
-     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     * 
-     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }

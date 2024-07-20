@@ -18,8 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("ebsVolumeCount")]
         public int? EbsVolumeCount { get; set; }
 
+        [Input("ebsVolumeIops")]
+        public int? EbsVolumeIops { get; set; }
+
         [Input("ebsVolumeSize")]
         public int? EbsVolumeSize { get; set; }
+
+        [Input("ebsVolumeThroughput")]
+        public int? EbsVolumeThroughput { get; set; }
 
         [Input("ebsVolumeType")]
         public string? EbsVolumeType { get; set; }

@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClustersResult {
     private @Nullable String clusterNameContains;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return list of databricks.Cluster ids
@@ -29,10 +25,6 @@ public final class GetClustersResult {
     public Optional<String> clusterNameContains() {
         return Optional.ofNullable(this.clusterNameContains);
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

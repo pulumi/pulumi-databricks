@@ -14,17 +14,28 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("subnets")]
         private InputList<string>? _subnets;
+
+        /// <summary>
+        /// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+        /// </summary>
         public InputList<string> Subnets
         {
             get => _subnets ?? (_subnets = new InputList<string>());
             set => _subnets = value;
         }
 
+        /// <summary>
+        /// the Azure region in which this service endpoint rule applies.
+        /// </summary>
         [Input("targetRegion")]
         public Input<string>? TargetRegion { get; set; }
 
         [Input("targetServices")]
         private InputList<string>? _targetServices;
+
+        /// <summary>
+        /// the Azure services to which this service endpoint rule applies to.
+        /// </summary>
         public InputList<string> TargetServices
         {
             get => _targetServices ?? (_targetServices = new InputList<string>());

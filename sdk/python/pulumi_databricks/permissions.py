@@ -20,6 +20,7 @@ class PermissionsArgs:
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  directory_path: Optional[pulumi.Input[str]] = None,
                  experiment_id: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_policy_id is not None:
             pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -124,6 +127,15 @@ class PermissionsArgs:
     @cluster_policy_id.setter
     def cluster_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_policy_id", value)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard_id", value)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -307,6 +319,7 @@ class _PermissionsState:
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  directory_path: Optional[pulumi.Input[str]] = None,
                  experiment_id: Optional[pulumi.Input[str]] = None,
@@ -338,6 +351,8 @@ class _PermissionsState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_policy_id is not None:
             pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -412,6 +427,15 @@ class _PermissionsState:
     @cluster_policy_id.setter
     def cluster_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_policy_id", value)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard_id", value)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -597,6 +621,7 @@ class Permissions(pulumi.CustomResource):
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  directory_path: Optional[pulumi.Input[str]] = None,
                  experiment_id: Optional[pulumi.Input[str]] = None,
@@ -724,6 +749,7 @@ class Permissions(pulumi.CustomResource):
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  directory_path: Optional[pulumi.Input[str]] = None,
                  experiment_id: Optional[pulumi.Input[str]] = None,
@@ -758,6 +784,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_policy_id"] = cluster_policy_id
+            __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["directory_path"] = directory_path
             __props__.__dict__["experiment_id"] = experiment_id
@@ -791,6 +818,7 @@ class Permissions(pulumi.CustomResource):
             authorization: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_policy_id: Optional[pulumi.Input[str]] = None,
+            dashboard_id: Optional[pulumi.Input[str]] = None,
             directory_id: Optional[pulumi.Input[str]] = None,
             directory_path: Optional[pulumi.Input[str]] = None,
             experiment_id: Optional[pulumi.Input[str]] = None,
@@ -827,6 +855,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_policy_id"] = cluster_policy_id
+        __props__.__dict__["dashboard_id"] = dashboard_id
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["directory_path"] = directory_path
         __props__.__dict__["experiment_id"] = experiment_id
@@ -867,6 +896,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="clusterPolicyId")
     def cluster_policy_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cluster_policy_id")
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dashboard_id")
 
     @property
     @pulumi.getter(name="directoryId")

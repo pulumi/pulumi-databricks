@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("firstOnDemand")]
         public int? FirstOnDemand { get; set; }
 
+        [Input("logAnalyticsInfo")]
+        public Inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs? LogAnalyticsInfo { get; set; }
+
         [Input("spotBidMaxPrice")]
         public double? SpotBidMaxPrice { get; set; }
 

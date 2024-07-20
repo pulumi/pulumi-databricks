@@ -68,7 +68,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    public readonly securableName!: pulumi.Output<string | undefined>;
+    public readonly securableName!: pulumi.Output<string>;
     /**
      * Type of securable. Default to `catalog`. Change forces creation of a new resource.
      */

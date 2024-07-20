@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         /// The exact name of the cluster to search
         /// </summary>
         public readonly string? ClusterName;
-        public readonly string ClusterSource;
+        public readonly string? ClusterSource;
         public readonly string? CreatorUserName;
         /// <summary>
         /// Additional tags for cluster resources.
@@ -42,13 +42,13 @@ namespace Pulumi.Databricks.Outputs
         /// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         /// </summary>
         public readonly string? DataSecurityMode;
-        public readonly ImmutableDictionary<string, object> DefaultTags;
+        public readonly ImmutableDictionary<string, object>? DefaultTags;
         public readonly Outputs.GetClusterClusterInfoDockerImageResult? DockerImage;
         public readonly Outputs.GetClusterClusterInfoDriverResult? Driver;
         /// <summary>
         /// similar to `instance_pool_id`, but for driver node.
         /// </summary>
-        public readonly string DriverInstancePoolId;
+        public readonly string? DriverInstancePoolId;
         /// <summary>
         /// The node type of the Spark driver.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? InstancePoolId;
         public readonly int? JdbcPort;
-        public readonly int? LastActivityTime;
+        public readonly int? LastRestartedTime;
         public readonly int? LastStateLossTime;
         /// <summary>
         /// Any supported databricks.getNodeType id.
@@ -100,16 +100,18 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         /// </summary>
-        public readonly string SparkVersion;
+        public readonly string? SparkVersion;
+        public readonly Outputs.GetClusterClusterInfoSpecResult? Spec;
         /// <summary>
         /// SSH public key contents that will be added to each Spark node in this cluster.
         /// </summary>
         public readonly ImmutableArray<string> SshPublicKeys;
         public readonly int? StartTime;
-        public readonly string State;
+        public readonly string? State;
         public readonly string? StateMessage;
-        public readonly int? TerminateTime;
+        public readonly int? TerminatedTime;
         public readonly Outputs.GetClusterClusterInfoTerminationReasonResult? TerminationReason;
+        public readonly Outputs.GetClusterClusterInfoWorkloadTypeResult? WorkloadType;
 
         [OutputConstructor]
         private GetClusterClusterInfoResult(
@@ -133,7 +135,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? clusterName,
 
-            string clusterSource,
+            string? clusterSource,
 
             string? creatorUserName,
 
@@ -141,13 +143,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? dataSecurityMode,
 
-            ImmutableDictionary<string, object> defaultTags,
+            ImmutableDictionary<string, object>? defaultTags,
 
             Outputs.GetClusterClusterInfoDockerImageResult? dockerImage,
 
             Outputs.GetClusterClusterInfoDriverResult? driver,
 
-            string driverInstancePoolId,
+            string? driverInstancePoolId,
 
             string? driverNodeTypeId,
 
@@ -165,7 +167,7 @@ namespace Pulumi.Databricks.Outputs
 
             int? jdbcPort,
 
-            int? lastActivityTime,
+            int? lastRestartedTime,
 
             int? lastStateLossTime,
 
@@ -185,19 +187,23 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, object>? sparkEnvVars,
 
-            string sparkVersion,
+            string? sparkVersion,
+
+            Outputs.GetClusterClusterInfoSpecResult? spec,
 
             ImmutableArray<string> sshPublicKeys,
 
             int? startTime,
 
-            string state,
+            string? state,
 
             string? stateMessage,
 
-            int? terminateTime,
+            int? terminatedTime,
 
-            Outputs.GetClusterClusterInfoTerminationReasonResult? terminationReason)
+            Outputs.GetClusterClusterInfoTerminationReasonResult? terminationReason,
+
+            Outputs.GetClusterClusterInfoWorkloadTypeResult? workloadType)
         {
             Autoscale = autoscale;
             AutoterminationMinutes = autoterminationMinutes;
@@ -225,7 +231,7 @@ namespace Pulumi.Databricks.Outputs
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
             JdbcPort = jdbcPort;
-            LastActivityTime = lastActivityTime;
+            LastRestartedTime = lastRestartedTime;
             LastStateLossTime = lastStateLossTime;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
@@ -236,12 +242,14 @@ namespace Pulumi.Databricks.Outputs
             SparkContextId = sparkContextId;
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
+            Spec = spec;
             SshPublicKeys = sshPublicKeys;
             StartTime = startTime;
             State = state;
             StateMessage = stateMessage;
-            TerminateTime = terminateTime;
+            TerminatedTime = terminatedTime;
             TerminationReason = terminationReason;
+            WorkloadType = workloadType;
         }
     }
 }

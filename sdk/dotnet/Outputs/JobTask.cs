@@ -28,6 +28,9 @@ namespace Pulumi.Databricks.Outputs
         /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
+        /// <summary>
+        /// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        /// </summary>
         public readonly string? EnvironmentKey;
         /// <summary>
         /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*

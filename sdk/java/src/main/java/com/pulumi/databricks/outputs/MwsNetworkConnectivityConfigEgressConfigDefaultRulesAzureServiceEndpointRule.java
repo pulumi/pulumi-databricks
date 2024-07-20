@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * @return list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     * 
+     */
     private @Nullable List<String> subnets;
+    /**
+     * @return the Azure region in which this service endpoint rule applies.
+     * 
+     */
     private @Nullable String targetRegion;
+    /**
+     * @return the Azure services to which this service endpoint rule applies to.
+     * 
+     */
     private @Nullable List<String> targetServices;
 
     private MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule() {}
+    /**
+     * @return list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     * 
+     */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
+    /**
+     * @return the Azure region in which this service endpoint rule applies.
+     * 
+     */
     public Optional<String> targetRegion() {
         return Optional.ofNullable(this.targetRegion);
     }
+    /**
+     * @return the Azure services to which this service endpoint rule applies to.
+     * 
+     */
     public List<String> targetServices() {
         return this.targetServices == null ? List.of() : this.targetServices;
     }

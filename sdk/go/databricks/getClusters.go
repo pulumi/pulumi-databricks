@@ -88,13 +88,15 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 type GetClustersArgs struct {
 	// Only return Cluster ids that match the given name string.
 	ClusterNameContains *string `pulumi:"clusterNameContains"`
+	Id                  *string `pulumi:"id"`
+	// list of Cluster ids
+	Ids []string `pulumi:"ids"`
 }
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
 	ClusterNameContains *string `pulumi:"clusterNameContains"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                  string  `pulumi:"id"`
 	// list of Cluster ids
 	Ids []string `pulumi:"ids"`
 }
@@ -116,6 +118,9 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 type GetClustersOutputArgs struct {
 	// Only return Cluster ids that match the given name string.
 	ClusterNameContains pulumi.StringPtrInput `pulumi:"clusterNameContains"`
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
+	// list of Cluster ids
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -141,7 +146,6 @@ func (o GetClustersResultOutput) ClusterNameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterNameContains }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }

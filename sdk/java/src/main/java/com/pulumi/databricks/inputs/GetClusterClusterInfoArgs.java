@@ -15,8 +15,9 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoDriverArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoExecutorArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoGcpAttributesArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptArgs;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoTerminationReasonArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoWorkloadTypeArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -127,11 +128,11 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.clusterName);
     }
 
-    @Import(name="clusterSource", required=true)
-    private Output<String> clusterSource;
+    @Import(name="clusterSource")
+    private @Nullable Output<String> clusterSource;
 
-    public Output<String> clusterSource() {
-        return this.clusterSource;
+    public Optional<Output<String>> clusterSource() {
+        return Optional.ofNullable(this.clusterSource);
     }
 
     @Import(name="creatorUserName")
@@ -171,11 +172,11 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.dataSecurityMode);
     }
 
-    @Import(name="defaultTags", required=true)
-    private Output<Map<String,Object>> defaultTags;
+    @Import(name="defaultTags")
+    private @Nullable Output<Map<String,Object>> defaultTags;
 
-    public Output<Map<String,Object>> defaultTags() {
-        return this.defaultTags;
+    public Optional<Output<Map<String,Object>>> defaultTags() {
+        return Optional.ofNullable(this.defaultTags);
     }
 
     @Import(name="dockerImage")
@@ -196,15 +197,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
      * similar to `instance_pool_id`, but for driver node.
      * 
      */
-    @Import(name="driverInstancePoolId", required=true)
-    private Output<String> driverInstancePoolId;
+    @Import(name="driverInstancePoolId")
+    private @Nullable Output<String> driverInstancePoolId;
 
     /**
      * @return similar to `instance_pool_id`, but for driver node.
      * 
      */
-    public Output<String> driverInstancePoolId() {
-        return this.driverInstancePoolId;
+    public Optional<Output<String>> driverInstancePoolId() {
+        return Optional.ofNullable(this.driverInstancePoolId);
     }
 
     /**
@@ -295,11 +296,11 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.jdbcPort);
     }
 
-    @Import(name="lastActivityTime")
-    private @Nullable Output<Integer> lastActivityTime;
+    @Import(name="lastRestartedTime")
+    private @Nullable Output<Integer> lastRestartedTime;
 
-    public Optional<Output<Integer>> lastActivityTime() {
-        return Optional.ofNullable(this.lastActivityTime);
+    public Optional<Output<Integer>> lastRestartedTime() {
+        return Optional.ofNullable(this.lastRestartedTime);
     }
 
     @Import(name="lastStateLossTime")
@@ -417,15 +418,22 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    @Import(name="sparkVersion", required=true)
-    private Output<String> sparkVersion;
+    @Import(name="sparkVersion")
+    private @Nullable Output<String> sparkVersion;
 
     /**
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    public Output<String> sparkVersion() {
-        return this.sparkVersion;
+    public Optional<Output<String>> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
+    }
+
+    @Import(name="spec")
+    private @Nullable Output<GetClusterClusterInfoSpecArgs> spec;
+
+    public Optional<Output<GetClusterClusterInfoSpecArgs>> spec() {
+        return Optional.ofNullable(this.spec);
     }
 
     /**
@@ -450,11 +458,11 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.startTime);
     }
 
-    @Import(name="state", required=true)
-    private Output<String> state;
+    @Import(name="state")
+    private @Nullable Output<String> state;
 
-    public Output<String> state() {
-        return this.state;
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
     }
 
     @Import(name="stateMessage")
@@ -464,11 +472,11 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.stateMessage);
     }
 
-    @Import(name="terminateTime")
-    private @Nullable Output<Integer> terminateTime;
+    @Import(name="terminatedTime")
+    private @Nullable Output<Integer> terminatedTime;
 
-    public Optional<Output<Integer>> terminateTime() {
-        return Optional.ofNullable(this.terminateTime);
+    public Optional<Output<Integer>> terminatedTime() {
+        return Optional.ofNullable(this.terminatedTime);
     }
 
     @Import(name="terminationReason")
@@ -476,6 +484,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
 
     public Optional<Output<GetClusterClusterInfoTerminationReasonArgs>> terminationReason() {
         return Optional.ofNullable(this.terminationReason);
+    }
+
+    @Import(name="workloadType")
+    private @Nullable Output<GetClusterClusterInfoWorkloadTypeArgs> workloadType;
+
+    public Optional<Output<GetClusterClusterInfoWorkloadTypeArgs>> workloadType() {
+        return Optional.ofNullable(this.workloadType);
     }
 
     private GetClusterClusterInfoArgs() {}
@@ -507,7 +522,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
         this.jdbcPort = $.jdbcPort;
-        this.lastActivityTime = $.lastActivityTime;
+        this.lastRestartedTime = $.lastRestartedTime;
         this.lastStateLossTime = $.lastStateLossTime;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
@@ -518,12 +533,14 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.sparkContextId = $.sparkContextId;
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
+        this.spec = $.spec;
         this.sshPublicKeys = $.sshPublicKeys;
         this.startTime = $.startTime;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
-        this.terminateTime = $.terminateTime;
+        this.terminatedTime = $.terminatedTime;
         this.terminationReason = $.terminationReason;
+        this.workloadType = $.workloadType;
     }
 
     public static Builder builder() {
@@ -670,7 +687,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return clusterName(Output.of(clusterName));
         }
 
-        public Builder clusterSource(Output<String> clusterSource) {
+        public Builder clusterSource(@Nullable Output<String> clusterSource) {
             $.clusterSource = clusterSource;
             return this;
         }
@@ -730,7 +747,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return dataSecurityMode(Output.of(dataSecurityMode));
         }
 
-        public Builder defaultTags(Output<Map<String,Object>> defaultTags) {
+        public Builder defaultTags(@Nullable Output<Map<String,Object>> defaultTags) {
             $.defaultTags = defaultTags;
             return this;
         }
@@ -763,7 +780,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder driverInstancePoolId(Output<String> driverInstancePoolId) {
+        public Builder driverInstancePoolId(@Nullable Output<String> driverInstancePoolId) {
             $.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
@@ -906,13 +923,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return jdbcPort(Output.of(jdbcPort));
         }
 
-        public Builder lastActivityTime(@Nullable Output<Integer> lastActivityTime) {
-            $.lastActivityTime = lastActivityTime;
+        public Builder lastRestartedTime(@Nullable Output<Integer> lastRestartedTime) {
+            $.lastRestartedTime = lastRestartedTime;
             return this;
         }
 
-        public Builder lastActivityTime(Integer lastActivityTime) {
-            return lastActivityTime(Output.of(lastActivityTime));
+        public Builder lastRestartedTime(Integer lastRestartedTime) {
+            return lastRestartedTime(Output.of(lastRestartedTime));
         }
 
         public Builder lastStateLossTime(@Nullable Output<Integer> lastStateLossTime) {
@@ -1074,7 +1091,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder sparkVersion(Output<String> sparkVersion) {
+        public Builder sparkVersion(@Nullable Output<String> sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
@@ -1087,6 +1104,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
          */
         public Builder sparkVersion(String sparkVersion) {
             return sparkVersion(Output.of(sparkVersion));
+        }
+
+        public Builder spec(@Nullable Output<GetClusterClusterInfoSpecArgs> spec) {
+            $.spec = spec;
+            return this;
+        }
+
+        public Builder spec(GetClusterClusterInfoSpecArgs spec) {
+            return spec(Output.of(spec));
         }
 
         /**
@@ -1129,7 +1155,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return startTime(Output.of(startTime));
         }
 
-        public Builder state(Output<String> state) {
+        public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
@@ -1147,13 +1173,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return stateMessage(Output.of(stateMessage));
         }
 
-        public Builder terminateTime(@Nullable Output<Integer> terminateTime) {
-            $.terminateTime = terminateTime;
+        public Builder terminatedTime(@Nullable Output<Integer> terminatedTime) {
+            $.terminatedTime = terminatedTime;
             return this;
         }
 
-        public Builder terminateTime(Integer terminateTime) {
-            return terminateTime(Output.of(terminateTime));
+        public Builder terminatedTime(Integer terminatedTime) {
+            return terminatedTime(Output.of(terminatedTime));
         }
 
         public Builder terminationReason(@Nullable Output<GetClusterClusterInfoTerminationReasonArgs> terminationReason) {
@@ -1165,22 +1191,16 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return terminationReason(Output.of(terminationReason));
         }
 
+        public Builder workloadType(@Nullable Output<GetClusterClusterInfoWorkloadTypeArgs> workloadType) {
+            $.workloadType = workloadType;
+            return this;
+        }
+
+        public Builder workloadType(GetClusterClusterInfoWorkloadTypeArgs workloadType) {
+            return workloadType(Output.of(workloadType));
+        }
+
         public GetClusterClusterInfoArgs build() {
-            if ($.clusterSource == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoArgs", "clusterSource");
-            }
-            if ($.defaultTags == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoArgs", "defaultTags");
-            }
-            if ($.driverInstancePoolId == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoArgs", "driverInstancePoolId");
-            }
-            if ($.sparkVersion == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoArgs", "sparkVersion");
-            }
-            if ($.state == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoArgs", "state");
-            }
             return $;
         }
     }

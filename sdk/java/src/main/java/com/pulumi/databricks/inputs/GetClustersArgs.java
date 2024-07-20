@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,34 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.clusterNameContains);
     }
 
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * list of databricks.Cluster ids
+     * 
+     */
+    @Import(name="ids")
+    private @Nullable Output<List<String>> ids;
+
+    /**
+     * @return list of databricks.Cluster ids
+     * 
+     */
+    public Optional<Output<List<String>>> ids() {
+        return Optional.ofNullable(this.ids);
+    }
+
     private GetClustersArgs() {}
 
     private GetClustersArgs(GetClustersArgs $) {
         this.clusterNameContains = $.clusterNameContains;
+        this.id = $.id;
+        this.ids = $.ids;
     }
 
     public static Builder builder() {
@@ -73,6 +98,46 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder clusterNameContains(String clusterNameContains) {
             return clusterNameContains(Output.of(clusterNameContains));
+        }
+
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param ids list of databricks.Cluster ids
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(@Nullable Output<List<String>> ids) {
+            $.ids = ids;
+            return this;
+        }
+
+        /**
+         * @param ids list of databricks.Cluster ids
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(List<String> ids) {
+            return ids(Output.of(ids));
+        }
+
+        /**
+         * @param ids list of databricks.Cluster ids
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(String... ids) {
+            return ids(List.of(ids));
         }
 
         public GetClustersArgs build() {

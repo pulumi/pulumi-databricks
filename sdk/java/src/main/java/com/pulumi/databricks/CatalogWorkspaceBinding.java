@@ -100,14 +100,14 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="securableName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> securableName;
+    private Output<String> securableName;
 
     /**
      * @return Name of securable. Change forces creation of a new resource.
      * 
      */
-    public Output<Optional<String>> securableName() {
-        return Codegen.optional(this.securableName);
+    public Output<String> securableName() {
+        return this.securableName;
     }
     /**
      * Type of securable. Default to `catalog`. Change forces creation of a new resource.

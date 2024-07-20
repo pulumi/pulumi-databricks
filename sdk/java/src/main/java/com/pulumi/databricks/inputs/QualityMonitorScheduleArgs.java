@@ -16,17 +16,9 @@ public final class QualityMonitorScheduleArgs extends com.pulumi.resources.Resou
 
     public static final QualityMonitorScheduleArgs Empty = new QualityMonitorScheduleArgs();
 
-    /**
-     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     * 
-     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
-    /**
-     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     * 
-     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
@@ -87,23 +79,11 @@ public final class QualityMonitorScheduleArgs extends com.pulumi.resources.Resou
             $ = new QualityMonitorScheduleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param pauseStatus optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
-        /**
-         * @param pauseStatus optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }

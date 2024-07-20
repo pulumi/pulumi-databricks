@@ -238,7 +238,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
 
         > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
 
-        Allows you to create a [Network Connectivity Config] that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+        Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
 
         ## Example Usage
 
@@ -250,7 +250,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         ncc_binding = databricks.MwsNccBinding("ncc_binding",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
@@ -290,7 +290,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
 
         > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
 
-        Allows you to create a [Network Connectivity Config] that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+        Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
 
         ## Example Usage
 
@@ -302,7 +302,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         ncc_binding = databricks.MwsNccBinding("ncc_binding",
             network_connectivity_config_id=ncc.network_connectivity_config_id,

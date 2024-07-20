@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
     ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
     ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
     ///     {
-    ///         Name = $"Network Connectivity Config for {prefix}",
+    ///         Name = $"ncc-for-{prefix}",
     ///         Region = region,
     ///     });
     /// 

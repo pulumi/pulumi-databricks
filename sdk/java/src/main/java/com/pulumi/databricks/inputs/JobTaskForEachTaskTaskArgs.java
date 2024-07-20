@@ -102,9 +102,17 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.emailNotifications);
     }
 
+    /**
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * 
+     */
     @Import(name="environmentKey")
     private @Nullable Output<String> environmentKey;
 
+    /**
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * 
+     */
     public Optional<Output<String>> environmentKey() {
         return Optional.ofNullable(this.environmentKey);
     }
@@ -517,11 +525,23 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return emailNotifications(Output.of(emailNotifications));
         }
 
+        /**
+         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentKey(@Nullable Output<String> environmentKey) {
             $.environmentKey = environmentKey;
             return this;
         }
 
+        /**
+         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentKey(String environmentKey) {
             return environmentKey(Output.of(environmentKey));
         }

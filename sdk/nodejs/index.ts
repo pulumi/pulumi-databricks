@@ -50,6 +50,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { DashboardArgs, DashboardState } from "./dashboard";
+export type Dashboard = import("./dashboard").Dashboard;
+export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
+utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
+
 export { DbfsFileArgs, DbfsFileState } from "./dbfsFile";
 export type DbfsFile = import("./dbfsFile").DbfsFile;
 export const DbfsFile: typeof import("./dbfsFile").DbfsFile = null as any;
@@ -250,6 +255,11 @@ export const getPipelines: typeof import("./getPipelines").getPipelines = null a
 export const getPipelinesOutput: typeof import("./getPipelines").getPipelinesOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelines","getPipelinesOutput"], () => require("./getPipelines"));
 
+export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
+export const getSchema: typeof import("./getSchema").getSchema = null as any;
+export const getSchemaOutput: typeof import("./getSchema").getSchemaOutput = null as any;
+utilities.lazyLoad(exports, ["getSchema","getSchemaOutput"], () => require("./getSchema"));
+
 export { GetSchemasArgs, GetSchemasResult, GetSchemasOutputArgs } from "./getSchemas";
 export const getSchemas: typeof import("./getSchemas").getSchemas = null as any;
 export const getSchemasOutput: typeof import("./getSchemas").getSchemasOutput = null as any;
@@ -319,6 +329,11 @@ export { GetViewsArgs, GetViewsResult, GetViewsOutputArgs } from "./getViews";
 export const getViews: typeof import("./getViews").getViews = null as any;
 export const getViewsOutput: typeof import("./getViews").getViewsOutput = null as any;
 utilities.lazyLoad(exports, ["getViews","getViewsOutput"], () => require("./getViews"));
+
+export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
+export const getVolume: typeof import("./getVolume").getVolume = null as any;
+export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
 
 export { GetVolumesArgs, GetVolumesResult, GetVolumesOutputArgs } from "./getVolumes";
 export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
@@ -700,6 +715,11 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { WorkspaceBindingArgs, WorkspaceBindingState } from "./workspaceBinding";
+export type WorkspaceBinding = import("./workspaceBinding").WorkspaceBinding;
+export const WorkspaceBinding: typeof import("./workspaceBinding").WorkspaceBinding = null as any;
+utilities.lazyLoad(exports, ["WorkspaceBinding"], () => require("./workspaceBinding"));
+
 export { WorkspaceConfArgs, WorkspaceConfState } from "./workspaceConf";
 export type WorkspaceConf = import("./workspaceConf").WorkspaceConf;
 export const WorkspaceConf: typeof import("./workspaceConf").WorkspaceConf = null as any;
@@ -742,6 +762,8 @@ const _module = {
                 return new ComplianceSecurityProfileWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "databricks:index/dashboard:Dashboard":
+                return new Dashboard(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
                 return new DbfsFile(name, <any>undefined, { urn })
             case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
@@ -902,6 +924,8 @@ const _module = {
                 return new VectorSearchIndex(name, <any>undefined, { urn })
             case "databricks:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "databricks:index/workspaceBinding:WorkspaceBinding":
+                return new WorkspaceBinding(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
                 return new WorkspaceConf(name, <any>undefined, { urn })
             case "databricks:index/workspaceFile:WorkspaceFile":
@@ -920,6 +944,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/complianceSecurityProfileWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
@@ -1000,6 +1025,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchIndex", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
 pulumi.runtime.registerResourcePackage("databricks", {

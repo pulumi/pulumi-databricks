@@ -4,21 +4,22 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoDockerImageBasicAuth {
-    private String password;
-    private String username;
+    private @Nullable String password;
+    private @Nullable String username;
 
     private GetClusterClusterInfoDockerImageBasicAuth() {}
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
-    public String username() {
-        return this.username;
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -30,8 +31,8 @@ public final class GetClusterClusterInfoDockerImageBasicAuth {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String password;
-        private String username;
+        private @Nullable String password;
+        private @Nullable String username;
         public Builder() {}
         public Builder(GetClusterClusterInfoDockerImageBasicAuth defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,18 +41,14 @@ public final class GetClusterClusterInfoDockerImageBasicAuth {
         }
 
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuth", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuth", "username");
-            }
+        public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

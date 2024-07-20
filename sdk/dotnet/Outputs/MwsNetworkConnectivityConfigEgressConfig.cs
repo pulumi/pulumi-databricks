@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworkConnectivityConfigEgressConfig
     {
+        /// <summary>
+        /// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+        /// </summary>
         public readonly Outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules? DefaultRules;
+        /// <summary>
+        /// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+        /// </summary>
         public readonly Outputs.MwsNetworkConnectivityConfigEgressConfigTargetRules? TargetRules;
 
         [OutputConstructor]

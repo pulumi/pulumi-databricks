@@ -45,6 +45,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("emailNotifications")]
         public Input<Inputs.JobTaskEmailNotificationsArgs>? EmailNotifications { get; set; }
 
+        /// <summary>
+        /// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        /// </summary>
         [Input("environmentKey")]
         public Input<string>? EnvironmentKey { get; set; }
 

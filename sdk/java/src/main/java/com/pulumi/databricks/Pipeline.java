@@ -230,14 +230,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.development);
     }
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      * 
      */
     @Export(name="edition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edition;
 
     /**
-     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      * 
      */
     public Output<Optional<String>> edition() {
@@ -297,9 +297,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
     }
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * 
+     */
     @Export(name="serverless", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> serverless;
 
+    /**
+     * @return An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * 
+     */
     public Output<Optional<Boolean>> serverless() {
         return Codegen.optional(this.serverless);
     }

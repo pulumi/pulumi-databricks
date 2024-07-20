@@ -442,6 +442,7 @@ __all__ = [
     'GetClusterClusterInfoAutoscaleArgs',
     'GetClusterClusterInfoAwsAttributesArgs',
     'GetClusterClusterInfoAzureAttributesArgs',
+    'GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs',
     'GetClusterClusterInfoClusterLogConfArgs',
     'GetClusterClusterInfoClusterLogConfDbfsArgs',
     'GetClusterClusterInfoClusterLogConfS3Args',
@@ -461,7 +462,36 @@ __all__ = [
     'GetClusterClusterInfoInitScriptS3Args',
     'GetClusterClusterInfoInitScriptVolumesArgs',
     'GetClusterClusterInfoInitScriptWorkspaceArgs',
+    'GetClusterClusterInfoSpecArgs',
+    'GetClusterClusterInfoSpecAutoscaleArgs',
+    'GetClusterClusterInfoSpecAwsAttributesArgs',
+    'GetClusterClusterInfoSpecAzureAttributesArgs',
+    'GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs',
+    'GetClusterClusterInfoSpecClusterLogConfArgs',
+    'GetClusterClusterInfoSpecClusterLogConfDbfsArgs',
+    'GetClusterClusterInfoSpecClusterLogConfS3Args',
+    'GetClusterClusterInfoSpecClusterMountInfoArgs',
+    'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetClusterClusterInfoSpecDockerImageArgs',
+    'GetClusterClusterInfoSpecDockerImageBasicAuthArgs',
+    'GetClusterClusterInfoSpecGcpAttributesArgs',
+    'GetClusterClusterInfoSpecInitScriptArgs',
+    'GetClusterClusterInfoSpecInitScriptAbfssArgs',
+    'GetClusterClusterInfoSpecInitScriptDbfsArgs',
+    'GetClusterClusterInfoSpecInitScriptFileArgs',
+    'GetClusterClusterInfoSpecInitScriptGcsArgs',
+    'GetClusterClusterInfoSpecInitScriptS3Args',
+    'GetClusterClusterInfoSpecInitScriptVolumesArgs',
+    'GetClusterClusterInfoSpecInitScriptWorkspaceArgs',
+    'GetClusterClusterInfoSpecLibraryArgs',
+    'GetClusterClusterInfoSpecLibraryCranArgs',
+    'GetClusterClusterInfoSpecLibraryMavenArgs',
+    'GetClusterClusterInfoSpecLibraryPypiArgs',
+    'GetClusterClusterInfoSpecWorkloadTypeArgs',
+    'GetClusterClusterInfoSpecWorkloadTypeClientsArgs',
     'GetClusterClusterInfoTerminationReasonArgs',
+    'GetClusterClusterInfoWorkloadTypeArgs',
+    'GetClusterClusterInfoWorkloadTypeClientsArgs',
     'GetCurrentMetastoreMetastoreInfoArgs',
     'GetExternalLocationExternalLocationInfoArgs',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs',
@@ -677,6 +707,8 @@ __all__ = [
     'GetMlflowModelLatestVersionArgs',
     'GetMlflowModelLatestVersionTagArgs',
     'GetMlflowModelTagArgs',
+    'GetSchemaSchemaInfoArgs',
+    'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs',
     'GetShareObjectArgs',
     'GetShareObjectPartitionArgs',
     'GetShareObjectPartitionValueArgs',
@@ -708,6 +740,9 @@ __all__ = [
     'GetTableTableInfoViewDependenciesDependencyArgs',
     'GetTableTableInfoViewDependenciesDependencyFunctionArgs',
     'GetTableTableInfoViewDependenciesDependencyTableArgs',
+    'GetVolumeVolumeInfoArgs',
+    'GetVolumeVolumeInfoEncryptionDetailsArgs',
+    'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs',
 ]
 
 @pulumi.input_type
@@ -3526,6 +3561,10 @@ class JobEnvironmentArgs:
     def __init__(__self__, *,
                  environment_key: pulumi.Input[str],
                  spec: Optional[pulumi.Input['JobEnvironmentSpecArgs']] = None):
+        """
+        :param pulumi.Input[str] environment_key: an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+        :param pulumi.Input['JobEnvironmentSpecArgs'] spec: block describing the Environment. Consists of following attributes:
+        """
         pulumi.set(__self__, "environment_key", environment_key)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
@@ -3533,6 +3572,9 @@ class JobEnvironmentArgs:
     @property
     @pulumi.getter(name="environmentKey")
     def environment_key(self) -> pulumi.Input[str]:
+        """
+        an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+        """
         return pulumi.get(self, "environment_key")
 
     @environment_key.setter
@@ -3542,6 +3584,9 @@ class JobEnvironmentArgs:
     @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['JobEnvironmentSpecArgs']]:
+        """
+        block describing the Environment. Consists of following attributes:
+        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -3554,6 +3599,10 @@ class JobEnvironmentSpecArgs:
     def __init__(__self__, *,
                  client: pulumi.Input[str],
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] client: client version used by the environment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+        """
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
@@ -3561,6 +3610,9 @@ class JobEnvironmentSpecArgs:
     @property
     @pulumi.getter
     def client(self) -> pulumi.Input[str]:
+        """
+        client version used by the environment.
+        """
         return pulumi.get(self, "client")
 
     @client.setter
@@ -3570,6 +3622,9 @@ class JobEnvironmentSpecArgs:
     @property
     @pulumi.getter
     def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+        """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
@@ -7568,6 +7623,7 @@ class JobTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param pulumi.Input[str] existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param pulumi.Input['JobTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
                
@@ -7720,6 +7776,9 @@ class JobTaskArgs:
     @property
     @pulumi.getter(name="environmentKey")
     def environment_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        """
         return pulumi.get(self, "environment_key")
 
     @environment_key.setter
@@ -8363,6 +8422,7 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param pulumi.Input[str] existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param pulumi.Input['JobTaskForEachTaskTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
                
@@ -8513,6 +8573,9 @@ class JobTaskForEachTaskTaskArgs:
     @property
     @pulumi.getter(name="environmentKey")
     def environment_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        """
         return pulumi.get(self, "environment_key")
 
     @environment_key.setter
@@ -17649,6 +17712,10 @@ class MwsNetworkConnectivityConfigEgressConfigArgs:
     def __init__(__self__, *,
                  default_rules: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs']] = None,
                  target_rules: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs']] = None):
+        """
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs'] default_rules: block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs'] target_rules: block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+        """
         if default_rules is not None:
             pulumi.set(__self__, "default_rules", default_rules)
         if target_rules is not None:
@@ -17657,6 +17724,9 @@ class MwsNetworkConnectivityConfigEgressConfigArgs:
     @property
     @pulumi.getter(name="defaultRules")
     def default_rules(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs']]:
+        """
+        block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+        """
         return pulumi.get(self, "default_rules")
 
     @default_rules.setter
@@ -17666,6 +17736,9 @@ class MwsNetworkConnectivityConfigEgressConfigArgs:
     @property
     @pulumi.getter(name="targetRules")
     def target_rules(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs']]:
+        """
+        block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+        """
         return pulumi.get(self, "target_rules")
 
     @target_rules.setter
@@ -17679,7 +17752,8 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
                  aws_stable_ip_rule: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs']] = None,
                  azure_service_endpoint_rule: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs']] = None):
         """
-        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs'] azure_service_endpoint_rule: This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs'] aws_stable_ip_rule: (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs'] azure_service_endpoint_rule: (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
         """
         if aws_stable_ip_rule is not None:
             pulumi.set(__self__, "aws_stable_ip_rule", aws_stable_ip_rule)
@@ -17689,6 +17763,9 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
     @property
     @pulumi.getter(name="awsStableIpRule")
     def aws_stable_ip_rule(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs']]:
+        """
+        (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+        """
         return pulumi.get(self, "aws_stable_ip_rule")
 
     @aws_stable_ip_rule.setter
@@ -17699,7 +17776,7 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
     @pulumi.getter(name="azureServiceEndpointRule")
     def azure_service_endpoint_rule(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs']]:
         """
-        This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+        (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
         """
         return pulumi.get(self, "azure_service_endpoint_rule")
 
@@ -17712,12 +17789,18 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
 class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs:
     def __init__(__self__, *,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_blocks: list of IP CIDR blocks.
+        """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
 
     @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of IP CIDR blocks.
+        """
         return pulumi.get(self, "cidr_blocks")
 
     @cidr_blocks.setter
@@ -17731,6 +17814,11 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_region: Optional[pulumi.Input[str]] = None,
                  target_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+        :param pulumi.Input[str] target_region: the Azure region in which this service endpoint rule applies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_services: the Azure services to which this service endpoint rule applies to.
+        """
         if subnets is not None:
             pulumi.set(__self__, "subnets", subnets)
         if target_region is not None:
@@ -17741,6 +17829,9 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
     @property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -17750,6 +17841,9 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
     @property
     @pulumi.getter(name="targetRegion")
     def target_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        the Azure region in which this service endpoint rule applies.
+        """
         return pulumi.get(self, "target_region")
 
     @target_region.setter
@@ -17759,6 +17853,9 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
     @property
     @pulumi.getter(name="targetServices")
     def target_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        the Azure services to which this service endpoint rule applies to.
+        """
         return pulumi.get(self, "target_services")
 
     @target_services.setter
@@ -17770,12 +17867,18 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
 class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs:
     def __init__(__self__, *,
                  azure_private_endpoint_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]] azure_private_endpoint_rules: (Azure only) - list containing information about configure Azure Private Endpoints.
+        """
         if azure_private_endpoint_rules is not None:
             pulumi.set(__self__, "azure_private_endpoint_rules", azure_private_endpoint_rules)
 
     @property
     @pulumi.getter(name="azurePrivateEndpointRules")
     def azure_private_endpoint_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]]]:
+        """
+        (Azure only) - list containing information about configure Azure Private Endpoints.
+        """
         return pulumi.get(self, "azure_private_endpoint_rules")
 
     @azure_private_endpoint_rules.setter
@@ -20396,7 +20499,6 @@ class QualityMonitorScheduleArgs:
         """
         :param pulumi.Input[str] quartz_cron_expression: string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
         :param pulumi.Input[str] timezone_id: string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
-        :param pulumi.Input[str] pause_status: optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
         """
         pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
         pulumi.set(__self__, "timezone_id", timezone_id)
@@ -20430,9 +20532,6 @@ class QualityMonitorScheduleArgs:
     @property
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-        """
         return pulumi.get(self, "pause_status")
 
     @pause_status.setter
@@ -23618,11 +23717,6 @@ class GetCatalogCatalogInfoProvisioningInfoArgs:
 @pulumi.input_type
 class GetClusterClusterInfoArgs:
     def __init__(__self__, *,
-                 cluster_source: str,
-                 default_tags: Mapping[str, Any],
-                 driver_instance_pool_id: str,
-                 spark_version: str,
-                 state: str,
                  autoscale: Optional['GetClusterClusterInfoAutoscaleArgs'] = None,
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['GetClusterClusterInfoAwsAttributesArgs'] = None,
@@ -23633,11 +23727,14 @@ class GetClusterClusterInfoArgs:
                  cluster_log_status: Optional['GetClusterClusterInfoClusterLogStatusArgs'] = None,
                  cluster_memory_mb: Optional[int] = None,
                  cluster_name: Optional[str] = None,
+                 cluster_source: Optional[str] = None,
                  creator_user_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
+                 default_tags: Optional[Mapping[str, Any]] = None,
                  docker_image: Optional['GetClusterClusterInfoDockerImageArgs'] = None,
                  driver: Optional['GetClusterClusterInfoDriverArgs'] = None,
+                 driver_instance_pool_id: Optional[str] = None,
                  driver_node_type_id: Optional[str] = None,
                  enable_elastic_disk: Optional[bool] = None,
                  enable_local_disk_encryption: Optional[bool] = None,
@@ -23646,7 +23743,7 @@ class GetClusterClusterInfoArgs:
                  init_scripts: Optional[Sequence['GetClusterClusterInfoInitScriptArgs']] = None,
                  instance_pool_id: Optional[str] = None,
                  jdbc_port: Optional[int] = None,
-                 last_activity_time: Optional[int] = None,
+                 last_restarted_time: Optional[int] = None,
                  last_state_loss_time: Optional[int] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
@@ -23656,19 +23753,22 @@ class GetClusterClusterInfoArgs:
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_context_id: Optional[int] = None,
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_version: Optional[str] = None,
+                 spec: Optional['GetClusterClusterInfoSpecArgs'] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  start_time: Optional[int] = None,
+                 state: Optional[str] = None,
                  state_message: Optional[str] = None,
-                 terminate_time: Optional[int] = None,
-                 termination_reason: Optional['GetClusterClusterInfoTerminationReasonArgs'] = None):
+                 terminated_time: Optional[int] = None,
+                 termination_reason: Optional['GetClusterClusterInfoTerminationReasonArgs'] = None,
+                 workload_type: Optional['GetClusterClusterInfoWorkloadTypeArgs'] = None):
         """
-        :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
-        :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
         :param str cluster_id: The id of the cluster
         :param str cluster_name: The exact name of the cluster to search
         :param Mapping[str, Any] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
@@ -23679,13 +23779,9 @@ class GetClusterClusterInfoArgs:
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param Mapping[str, Any] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
         :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
-        pulumi.set(__self__, "cluster_source", cluster_source)
-        pulumi.set(__self__, "default_tags", default_tags)
-        pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
-        pulumi.set(__self__, "spark_version", spark_version)
-        pulumi.set(__self__, "state", state)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -23706,16 +23802,22 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "cluster_memory_mb", cluster_memory_mb)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_source is not None:
+            pulumi.set(__self__, "cluster_source", cluster_source)
         if creator_user_name is not None:
             pulumi.set(__self__, "creator_user_name", creator_user_name)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
             pulumi.set(__self__, "data_security_mode", data_security_mode)
+        if default_tags is not None:
+            pulumi.set(__self__, "default_tags", default_tags)
         if docker_image is not None:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver is not None:
             pulumi.set(__self__, "driver", driver)
+        if driver_instance_pool_id is not None:
+            pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -23732,8 +23834,8 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if jdbc_port is not None:
             pulumi.set(__self__, "jdbc_port", jdbc_port)
-        if last_activity_time is not None:
-            pulumi.set(__self__, "last_activity_time", last_activity_time)
+        if last_restarted_time is not None:
+            pulumi.set(__self__, "last_restarted_time", last_restarted_time)
         if last_state_loss_time is not None:
             pulumi.set(__self__, "last_state_loss_time", last_state_loss_time)
         if node_type_id is not None:
@@ -23752,67 +23854,24 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "spark_context_id", spark_context_id)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if state_message is not None:
             pulumi.set(__self__, "state_message", state_message)
-        if terminate_time is not None:
-            pulumi.set(__self__, "terminate_time", terminate_time)
+        if terminated_time is not None:
+            pulumi.set(__self__, "terminated_time", terminated_time)
         if termination_reason is not None:
             pulumi.set(__self__, "termination_reason", termination_reason)
-
-    @property
-    @pulumi.getter(name="clusterSource")
-    def cluster_source(self) -> str:
-        return pulumi.get(self, "cluster_source")
-
-    @cluster_source.setter
-    def cluster_source(self, value: str):
-        pulumi.set(self, "cluster_source", value)
-
-    @property
-    @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Mapping[str, Any]:
-        return pulumi.get(self, "default_tags")
-
-    @default_tags.setter
-    def default_tags(self, value: Mapping[str, Any]):
-        pulumi.set(self, "default_tags", value)
-
-    @property
-    @pulumi.getter(name="driverInstancePoolId")
-    def driver_instance_pool_id(self) -> str:
-        """
-        similar to `instance_pool_id`, but for driver node.
-        """
-        return pulumi.get(self, "driver_instance_pool_id")
-
-    @driver_instance_pool_id.setter
-    def driver_instance_pool_id(self, value: str):
-        pulumi.set(self, "driver_instance_pool_id", value)
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> str:
-        """
-        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        """
-        return pulumi.get(self, "spark_version")
-
-    @spark_version.setter
-    def spark_version(self, value: str):
-        pulumi.set(self, "spark_version", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: str):
-        pulumi.set(self, "state", value)
+        if workload_type is not None:
+            pulumi.set(__self__, "workload_type", workload_type)
 
     @property
     @pulumi.getter
@@ -23914,6 +23973,15 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "cluster_name", value)
 
     @property
+    @pulumi.getter(name="clusterSource")
+    def cluster_source(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_source")
+
+    @cluster_source.setter
+    def cluster_source(self, value: Optional[str]):
+        pulumi.set(self, "cluster_source", value)
+
+    @property
     @pulumi.getter(name="creatorUserName")
     def creator_user_name(self) -> Optional[str]:
         return pulumi.get(self, "creator_user_name")
@@ -23947,6 +24015,15 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "data_security_mode", value)
 
     @property
+    @pulumi.getter(name="defaultTags")
+    def default_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "default_tags")
+
+    @default_tags.setter
+    def default_tags(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "default_tags", value)
+
+    @property
     @pulumi.getter(name="dockerImage")
     def docker_image(self) -> Optional['GetClusterClusterInfoDockerImageArgs']:
         return pulumi.get(self, "docker_image")
@@ -23963,6 +24040,18 @@ class GetClusterClusterInfoArgs:
     @driver.setter
     def driver(self, value: Optional['GetClusterClusterInfoDriverArgs']):
         pulumi.set(self, "driver", value)
+
+    @property
+    @pulumi.getter(name="driverInstancePoolId")
+    def driver_instance_pool_id(self) -> Optional[str]:
+        """
+        similar to `instance_pool_id`, but for driver node.
+        """
+        return pulumi.get(self, "driver_instance_pool_id")
+
+    @driver_instance_pool_id.setter
+    def driver_instance_pool_id(self, value: Optional[str]):
+        pulumi.set(self, "driver_instance_pool_id", value)
 
     @property
     @pulumi.getter(name="driverNodeTypeId")
@@ -24049,13 +24138,13 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "jdbc_port", value)
 
     @property
-    @pulumi.getter(name="lastActivityTime")
-    def last_activity_time(self) -> Optional[int]:
-        return pulumi.get(self, "last_activity_time")
+    @pulumi.getter(name="lastRestartedTime")
+    def last_restarted_time(self) -> Optional[int]:
+        return pulumi.get(self, "last_restarted_time")
 
-    @last_activity_time.setter
-    def last_activity_time(self, value: Optional[int]):
-        pulumi.set(self, "last_activity_time", value)
+    @last_restarted_time.setter
+    def last_restarted_time(self, value: Optional[int]):
+        pulumi.set(self, "last_restarted_time", value)
 
     @property
     @pulumi.getter(name="lastStateLossTime")
@@ -24157,6 +24246,27 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "spark_env_vars", value)
 
     @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[str]:
+        """
+        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        """
+        return pulumi.get(self, "spark_version")
+
+    @spark_version.setter
+    def spark_version(self, value: Optional[str]):
+        pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional['GetClusterClusterInfoSpecArgs']:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional['GetClusterClusterInfoSpecArgs']):
+        pulumi.set(self, "spec", value)
+
+    @property
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[str]]:
         """
@@ -24178,6 +24288,15 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[str]):
+        pulumi.set(self, "state", value)
+
+    @property
     @pulumi.getter(name="stateMessage")
     def state_message(self) -> Optional[str]:
         return pulumi.get(self, "state_message")
@@ -24187,13 +24306,13 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "state_message", value)
 
     @property
-    @pulumi.getter(name="terminateTime")
-    def terminate_time(self) -> Optional[int]:
-        return pulumi.get(self, "terminate_time")
+    @pulumi.getter(name="terminatedTime")
+    def terminated_time(self) -> Optional[int]:
+        return pulumi.get(self, "terminated_time")
 
-    @terminate_time.setter
-    def terminate_time(self, value: Optional[int]):
-        pulumi.set(self, "terminate_time", value)
+    @terminated_time.setter
+    def terminated_time(self, value: Optional[int]):
+        pulumi.set(self, "terminated_time", value)
 
     @property
     @pulumi.getter(name="terminationReason")
@@ -24203,6 +24322,15 @@ class GetClusterClusterInfoArgs:
     @termination_reason.setter
     def termination_reason(self, value: Optional['GetClusterClusterInfoTerminationReasonArgs']):
         pulumi.set(self, "termination_reason", value)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional['GetClusterClusterInfoWorkloadTypeArgs']:
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: Optional['GetClusterClusterInfoWorkloadTypeArgs']):
+        pulumi.set(self, "workload_type", value)
 
 
 @pulumi.input_type
@@ -24239,7 +24367,9 @@ class GetClusterClusterInfoAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -24249,8 +24379,12 @@ class GetClusterClusterInfoAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -24281,6 +24415,15 @@ class GetClusterClusterInfoAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
@@ -24288,6 +24431,15 @@ class GetClusterClusterInfoAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[int]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -24340,11 +24492,14 @@ class GetClusterClusterInfoAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -24367,6 +24522,15 @@ class GetClusterClusterInfoAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional['GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs']):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -24374,6 +24538,35 @@ class GetClusterClusterInfoAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[float]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[str]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[str]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
 
 
 @pulumi.input_type
@@ -24541,20 +24734,12 @@ class GetClusterClusterInfoClusterLogStatusArgs:
 @pulumi.input_type
 class GetClusterClusterInfoDockerImageArgs:
     def __init__(__self__, *,
-                 url: str,
-                 basic_auth: Optional['GetClusterClusterInfoDockerImageBasicAuthArgs'] = None):
-        pulumi.set(__self__, "url", url)
+                 basic_auth: Optional['GetClusterClusterInfoDockerImageBasicAuthArgs'] = None,
+                 url: Optional[str] = None):
         if basic_auth is not None:
             pulumi.set(__self__, "basic_auth", basic_auth)
-
-    @property
-    @pulumi.getter
-    def url(self) -> str:
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: str):
-        pulumi.set(self, "url", value)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="basicAuth")
@@ -24565,31 +24750,42 @@ class GetClusterClusterInfoDockerImageArgs:
     def basic_auth(self, value: Optional['GetClusterClusterInfoDockerImageBasicAuthArgs']):
         pulumi.set(self, "basic_auth", value)
 
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[str]):
+        pulumi.set(self, "url", value)
+
 
 @pulumi.input_type
 class GetClusterClusterInfoDockerImageBasicAuthArgs:
     def __init__(__self__, *,
-                 password: str,
-                 username: str):
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+                 password: Optional[str] = None,
+                 username: Optional[str] = None):
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> Optional[str]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: str):
+    def password(self, value: Optional[str]):
         pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: str):
+    def username(self, value: Optional[str]):
         pulumi.set(self, "username", value)
 
 
@@ -25156,6 +25352,1513 @@ class GetClusterClusterInfoInitScriptWorkspaceArgs:
 
 
 @pulumi.input_type
+class GetClusterClusterInfoSpecArgs:
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 driver_instance_pool_id: str,
+                 driver_node_type_id: str,
+                 enable_elastic_disk: bool,
+                 enable_local_disk_encryption: bool,
+                 node_type_id: str,
+                 spark_version: str,
+                 apply_policy_default_values: Optional[bool] = None,
+                 autoscale: Optional['GetClusterClusterInfoSpecAutoscaleArgs'] = None,
+                 aws_attributes: Optional['GetClusterClusterInfoSpecAwsAttributesArgs'] = None,
+                 azure_attributes: Optional['GetClusterClusterInfoSpecAzureAttributesArgs'] = None,
+                 cluster_log_conf: Optional['GetClusterClusterInfoSpecClusterLogConfArgs'] = None,
+                 cluster_mount_infos: Optional[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgs']] = None,
+                 cluster_name: Optional[str] = None,
+                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 data_security_mode: Optional[str] = None,
+                 docker_image: Optional['GetClusterClusterInfoSpecDockerImageArgs'] = None,
+                 gcp_attributes: Optional['GetClusterClusterInfoSpecGcpAttributesArgs'] = None,
+                 idempotency_token: Optional[str] = None,
+                 init_scripts: Optional[Sequence['GetClusterClusterInfoSpecInitScriptArgs']] = None,
+                 instance_pool_id: Optional[str] = None,
+                 libraries: Optional[Sequence['GetClusterClusterInfoSpecLibraryArgs']] = None,
+                 num_workers: Optional[int] = None,
+                 policy_id: Optional[str] = None,
+                 runtime_engine: Optional[str] = None,
+                 single_user_name: Optional[str] = None,
+                 spark_conf: Optional[Mapping[str, Any]] = None,
+                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 ssh_public_keys: Optional[Sequence[str]] = None,
+                 workload_type: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs'] = None):
+        """
+        :param str cluster_id: The id of the cluster
+        :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
+        :param str driver_node_type_id: The node type of the Spark driver.
+        :param bool enable_elastic_disk: Use autoscaling local storage.
+        :param bool enable_local_disk_encryption: Enable local disk encryption.
+        :param str node_type_id: Any supported get_node_type id.
+        :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        :param str cluster_name: The exact name of the cluster to search
+        :param Mapping[str, Any] custom_tags: Additional tags for cluster resources.
+        :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
+        :param str instance_pool_id: The pool of idle instances the cluster is attached to.
+        :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        :param str runtime_engine: The type of runtime of the cluster
+        :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param Mapping[str, Any] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
+        :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
+        pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
+        pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+        pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
+        if autoscale is not None:
+            pulumi.set(__self__, "autoscale", autoscale)
+        if aws_attributes is not None:
+            pulumi.set(__self__, "aws_attributes", aws_attributes)
+        if azure_attributes is not None:
+            pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if cluster_log_conf is not None:
+            pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if data_security_mode is not None:
+            pulumi.set(__self__, "data_security_mode", data_security_mode)
+        if docker_image is not None:
+            pulumi.set(__self__, "docker_image", docker_image)
+        if gcp_attributes is not None:
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
+        if idempotency_token is not None:
+            pulumi.set(__self__, "idempotency_token", idempotency_token)
+        if init_scripts is not None:
+            pulumi.set(__self__, "init_scripts", init_scripts)
+        if instance_pool_id is not None:
+            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if libraries is not None:
+            pulumi.set(__self__, "libraries", libraries)
+        if num_workers is not None:
+            pulumi.set(__self__, "num_workers", num_workers)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
+        if single_user_name is not None:
+            pulumi.set(__self__, "single_user_name", single_user_name)
+        if spark_conf is not None:
+            pulumi.set(__self__, "spark_conf", spark_conf)
+        if spark_env_vars is not None:
+            pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if ssh_public_keys is not None:
+            pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if workload_type is not None:
+            pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The id of the cluster
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: str):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="driverInstancePoolId")
+    def driver_instance_pool_id(self) -> str:
+        """
+        similar to `instance_pool_id`, but for driver node.
+        """
+        return pulumi.get(self, "driver_instance_pool_id")
+
+    @driver_instance_pool_id.setter
+    def driver_instance_pool_id(self, value: str):
+        pulumi.set(self, "driver_instance_pool_id", value)
+
+    @property
+    @pulumi.getter(name="driverNodeTypeId")
+    def driver_node_type_id(self) -> str:
+        """
+        The node type of the Spark driver.
+        """
+        return pulumi.get(self, "driver_node_type_id")
+
+    @driver_node_type_id.setter
+    def driver_node_type_id(self, value: str):
+        pulumi.set(self, "driver_node_type_id", value)
+
+    @property
+    @pulumi.getter(name="enableElasticDisk")
+    def enable_elastic_disk(self) -> bool:
+        """
+        Use autoscaling local storage.
+        """
+        return pulumi.get(self, "enable_elastic_disk")
+
+    @enable_elastic_disk.setter
+    def enable_elastic_disk(self, value: bool):
+        pulumi.set(self, "enable_elastic_disk", value)
+
+    @property
+    @pulumi.getter(name="enableLocalDiskEncryption")
+    def enable_local_disk_encryption(self) -> bool:
+        """
+        Enable local disk encryption.
+        """
+        return pulumi.get(self, "enable_local_disk_encryption")
+
+    @enable_local_disk_encryption.setter
+    def enable_local_disk_encryption(self, value: bool):
+        pulumi.set(self, "enable_local_disk_encryption", value)
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> str:
+        """
+        Any supported get_node_type id.
+        """
+        return pulumi.get(self, "node_type_id")
+
+    @node_type_id.setter
+    def node_type_id(self, value: str):
+        pulumi.set(self, "node_type_id", value)
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> str:
+        """
+        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        """
+        return pulumi.get(self, "spark_version")
+
+    @spark_version.setter
+    def spark_version(self, value: str):
+        pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[bool]):
+        pulumi.set(self, "apply_policy_default_values", value)
+
+    @property
+    @pulumi.getter
+    def autoscale(self) -> Optional['GetClusterClusterInfoSpecAutoscaleArgs']:
+        return pulumi.get(self, "autoscale")
+
+    @autoscale.setter
+    def autoscale(self, value: Optional['GetClusterClusterInfoSpecAutoscaleArgs']):
+        pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter(name="awsAttributes")
+    def aws_attributes(self) -> Optional['GetClusterClusterInfoSpecAwsAttributesArgs']:
+        return pulumi.get(self, "aws_attributes")
+
+    @aws_attributes.setter
+    def aws_attributes(self, value: Optional['GetClusterClusterInfoSpecAwsAttributesArgs']):
+        pulumi.set(self, "aws_attributes", value)
+
+    @property
+    @pulumi.getter(name="azureAttributes")
+    def azure_attributes(self) -> Optional['GetClusterClusterInfoSpecAzureAttributesArgs']:
+        return pulumi.get(self, "azure_attributes")
+
+    @azure_attributes.setter
+    def azure_attributes(self, value: Optional['GetClusterClusterInfoSpecAzureAttributesArgs']):
+        pulumi.set(self, "azure_attributes", value)
+
+    @property
+    @pulumi.getter(name="clusterLogConf")
+    def cluster_log_conf(self) -> Optional['GetClusterClusterInfoSpecClusterLogConfArgs']:
+        return pulumi.get(self, "cluster_log_conf")
+
+    @cluster_log_conf.setter
+    def cluster_log_conf(self, value: Optional['GetClusterClusterInfoSpecClusterLogConfArgs']):
+        pulumi.set(self, "cluster_log_conf", value)
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgs']]:
+        return pulumi.get(self, "cluster_mount_infos")
+
+    @cluster_mount_infos.setter
+    def cluster_mount_infos(self, value: Optional[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgs']]):
+        pulumi.set(self, "cluster_mount_infos", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The exact name of the cluster to search
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[str]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        Additional tags for cluster resources.
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "custom_tags", value)
+
+    @property
+    @pulumi.getter(name="dataSecurityMode")
+    def data_security_mode(self) -> Optional[str]:
+        """
+        Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        """
+        return pulumi.get(self, "data_security_mode")
+
+    @data_security_mode.setter
+    def data_security_mode(self, value: Optional[str]):
+        pulumi.set(self, "data_security_mode", value)
+
+    @property
+    @pulumi.getter(name="dockerImage")
+    def docker_image(self) -> Optional['GetClusterClusterInfoSpecDockerImageArgs']:
+        return pulumi.get(self, "docker_image")
+
+    @docker_image.setter
+    def docker_image(self, value: Optional['GetClusterClusterInfoSpecDockerImageArgs']):
+        pulumi.set(self, "docker_image", value)
+
+    @property
+    @pulumi.getter(name="gcpAttributes")
+    def gcp_attributes(self) -> Optional['GetClusterClusterInfoSpecGcpAttributesArgs']:
+        return pulumi.get(self, "gcp_attributes")
+
+    @gcp_attributes.setter
+    def gcp_attributes(self, value: Optional['GetClusterClusterInfoSpecGcpAttributesArgs']):
+        pulumi.set(self, "gcp_attributes", value)
+
+    @property
+    @pulumi.getter(name="idempotencyToken")
+    def idempotency_token(self) -> Optional[str]:
+        """
+        An optional token to guarantee the idempotency of cluster creation requests.
+        """
+        return pulumi.get(self, "idempotency_token")
+
+    @idempotency_token.setter
+    def idempotency_token(self, value: Optional[str]):
+        pulumi.set(self, "idempotency_token", value)
+
+    @property
+    @pulumi.getter(name="initScripts")
+    def init_scripts(self) -> Optional[Sequence['GetClusterClusterInfoSpecInitScriptArgs']]:
+        return pulumi.get(self, "init_scripts")
+
+    @init_scripts.setter
+    def init_scripts(self, value: Optional[Sequence['GetClusterClusterInfoSpecInitScriptArgs']]):
+        pulumi.set(self, "init_scripts", value)
+
+    @property
+    @pulumi.getter(name="instancePoolId")
+    def instance_pool_id(self) -> Optional[str]:
+        """
+        The pool of idle instances the cluster is attached to.
+        """
+        return pulumi.get(self, "instance_pool_id")
+
+    @instance_pool_id.setter
+    def instance_pool_id(self, value: Optional[str]):
+        pulumi.set(self, "instance_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[Sequence['GetClusterClusterInfoSpecLibraryArgs']]:
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[Sequence['GetClusterClusterInfoSpecLibraryArgs']]):
+        pulumi.set(self, "libraries", value)
+
+    @property
+    @pulumi.getter(name="numWorkers")
+    def num_workers(self) -> Optional[int]:
+        return pulumi.get(self, "num_workers")
+
+    @num_workers.setter
+    def num_workers(self, value: Optional[int]):
+        pulumi.set(self, "num_workers", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[str]:
+        """
+        Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[str]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[str]:
+        """
+        The type of runtime of the cluster
+        """
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[str]):
+        pulumi.set(self, "runtime_engine", value)
+
+    @property
+    @pulumi.getter(name="singleUserName")
+    def single_user_name(self) -> Optional[str]:
+        """
+        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        """
+        return pulumi.get(self, "single_user_name")
+
+    @single_user_name.setter
+    def single_user_name(self, value: Optional[str]):
+        pulumi.set(self, "single_user_name", value)
+
+    @property
+    @pulumi.getter(name="sparkConf")
+    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map with key-value pairs to fine-tune Spark clusters.
+        """
+        return pulumi.get(self, "spark_conf")
+
+    @spark_conf.setter
+    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "spark_conf", value)
+
+    @property
+    @pulumi.getter(name="sparkEnvVars")
+    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        """
+        return pulumi.get(self, "spark_env_vars")
+
+    @spark_env_vars.setter
+    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "spark_env_vars", value)
+
+    @property
+    @pulumi.getter(name="sshPublicKeys")
+    def ssh_public_keys(self) -> Optional[Sequence[str]]:
+        """
+        SSH public key contents that will be added to each Spark node in this cluster.
+        """
+        return pulumi.get(self, "ssh_public_keys")
+
+    @ssh_public_keys.setter
+    def ssh_public_keys(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "ssh_public_keys", value)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional['GetClusterClusterInfoSpecWorkloadTypeArgs']:
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs']):
+        pulumi.set(self, "workload_type", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecAutoscaleArgs:
+    def __init__(__self__, *,
+                 max_workers: Optional[int] = None,
+                 min_workers: Optional[int] = None):
+        if max_workers is not None:
+            pulumi.set(__self__, "max_workers", max_workers)
+        if min_workers is not None:
+            pulumi.set(__self__, "min_workers", min_workers)
+
+    @property
+    @pulumi.getter(name="maxWorkers")
+    def max_workers(self) -> Optional[int]:
+        return pulumi.get(self, "max_workers")
+
+    @max_workers.setter
+    def max_workers(self, value: Optional[int]):
+        pulumi.set(self, "max_workers", value)
+
+    @property
+    @pulumi.getter(name="minWorkers")
+    def min_workers(self) -> Optional[int]:
+        return pulumi.get(self, "min_workers")
+
+    @min_workers.setter
+    def min_workers(self, value: Optional[int]):
+        pulumi.set(self, "min_workers", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecAwsAttributesArgs:
+    def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
+                 ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
+                 ebs_volume_type: Optional[str] = None,
+                 first_on_demand: Optional[int] = None,
+                 instance_profile_arn: Optional[str] = None,
+                 spot_bid_price_percent: Optional[int] = None,
+                 zone_id: Optional[str] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if ebs_volume_count is not None:
+            pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
+        if ebs_volume_size is not None:
+            pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
+        if ebs_volume_type is not None:
+            pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if spot_bid_price_percent is not None:
+            pulumi.set(__self__, "spot_bid_price_percent", spot_bid_price_percent)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @availability.setter
+    def availability(self, value: Optional[str]):
+        pulumi.set(self, "availability", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeCount")
+    def ebs_volume_count(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_count")
+
+    @ebs_volume_count.setter
+    def ebs_volume_count(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_count", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeSize")
+    def ebs_volume_size(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_size")
+
+    @ebs_volume_size.setter
+    def ebs_volume_size(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[int]):
+        pulumi.set(self, "ebs_volume_throughput", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeType")
+    def ebs_volume_type(self) -> Optional[str]:
+        return pulumi.get(self, "ebs_volume_type")
+
+    @ebs_volume_type.setter
+    def ebs_volume_type(self, value: Optional[str]):
+        pulumi.set(self, "ebs_volume_type", value)
+
+    @property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[int]:
+        return pulumi.get(self, "first_on_demand")
+
+    @first_on_demand.setter
+    def first_on_demand(self, value: Optional[int]):
+        pulumi.set(self, "first_on_demand", value)
+
+    @property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[str]:
+        return pulumi.get(self, "instance_profile_arn")
+
+    @instance_profile_arn.setter
+    def instance_profile_arn(self, value: Optional[str]):
+        pulumi.set(self, "instance_profile_arn", value)
+
+    @property
+    @pulumi.getter(name="spotBidPricePercent")
+    def spot_bid_price_percent(self) -> Optional[int]:
+        return pulumi.get(self, "spot_bid_price_percent")
+
+    @spot_bid_price_percent.setter
+    def spot_bid_price_percent(self, value: Optional[int]):
+        pulumi.set(self, "spot_bid_price_percent", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[str]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecAzureAttributesArgs:
+    def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs'] = None,
+                 spot_bid_max_price: Optional[float] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
+        if spot_bid_max_price is not None:
+            pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @availability.setter
+    def availability(self, value: Optional[str]):
+        pulumi.set(self, "availability", value)
+
+    @property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[int]:
+        return pulumi.get(self, "first_on_demand")
+
+    @first_on_demand.setter
+    def first_on_demand(self, value: Optional[int]):
+        pulumi.set(self, "first_on_demand", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional['GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs']):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
+    @pulumi.getter(name="spotBidMaxPrice")
+    def spot_bid_max_price(self) -> Optional[float]:
+        return pulumi.get(self, "spot_bid_max_price")
+
+    @spot_bid_max_price.setter
+    def spot_bid_max_price(self, value: Optional[float]):
+        pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[str]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[str]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterLogConfArgs:
+    def __init__(__self__, *,
+                 dbfs: Optional['GetClusterClusterInfoSpecClusterLogConfDbfsArgs'] = None,
+                 s3: Optional['GetClusterClusterInfoSpecClusterLogConfS3Args'] = None):
+        if dbfs is not None:
+            pulumi.set(__self__, "dbfs", dbfs)
+        if s3 is not None:
+            pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def dbfs(self) -> Optional['GetClusterClusterInfoSpecClusterLogConfDbfsArgs']:
+        return pulumi.get(self, "dbfs")
+
+    @dbfs.setter
+    def dbfs(self, value: Optional['GetClusterClusterInfoSpecClusterLogConfDbfsArgs']):
+        pulumi.set(self, "dbfs", value)
+
+    @property
+    @pulumi.getter
+    def s3(self) -> Optional['GetClusterClusterInfoSpecClusterLogConfS3Args']:
+        return pulumi.get(self, "s3")
+
+    @s3.setter
+    def s3(self, value: Optional['GetClusterClusterInfoSpecClusterLogConfS3Args']):
+        pulumi.set(self, "s3", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterLogConfDbfsArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterLogConfS3Args:
+    def __init__(__self__, *,
+                 destination: str,
+                 canned_acl: Optional[str] = None,
+                 enable_encryption: Optional[bool] = None,
+                 encryption_type: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 kms_key: Optional[str] = None,
+                 region: Optional[str] = None):
+        pulumi.set(__self__, "destination", destination)
+        if canned_acl is not None:
+            pulumi.set(__self__, "canned_acl", canned_acl)
+        if enable_encryption is not None:
+            pulumi.set(__self__, "enable_encryption", enable_encryption)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="cannedAcl")
+    def canned_acl(self) -> Optional[str]:
+        return pulumi.get(self, "canned_acl")
+
+    @canned_acl.setter
+    def canned_acl(self, value: Optional[str]):
+        pulumi.set(self, "canned_acl", value)
+
+    @property
+    @pulumi.getter(name="enableEncryption")
+    def enable_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_encryption")
+
+    @enable_encryption.setter
+    def enable_encryption(self, value: Optional[bool]):
+        pulumi.set(self, "enable_encryption", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[str]:
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[str]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[str]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[str]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterMountInfoArgs:
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @local_mount_dir_path.setter
+    def local_mount_dir_path(self, value: str):
+        pulumi.set(self, "local_mount_dir_path", value)
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @network_filesystem_info.setter
+    def network_filesystem_info(self, value: 'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs'):
+        pulumi.set(self, "network_filesystem_info", value)
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+    @remote_mount_dir_path.setter
+    def remote_mount_dir_path(self, value: Optional[str]):
+        pulumi.set(self, "remote_mount_dir_path", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs:
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: str):
+        pulumi.set(self, "server_address", value)
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+    @mount_options.setter
+    def mount_options(self, value: Optional[str]):
+        pulumi.set(self, "mount_options", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecDockerImageArgs:
+    def __init__(__self__, *,
+                 url: str,
+                 basic_auth: Optional['GetClusterClusterInfoSpecDockerImageBasicAuthArgs'] = None):
+        pulumi.set(__self__, "url", url)
+        if basic_auth is not None:
+            pulumi.set(__self__, "basic_auth", basic_auth)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> Optional['GetClusterClusterInfoSpecDockerImageBasicAuthArgs']:
+        return pulumi.get(self, "basic_auth")
+
+    @basic_auth.setter
+    def basic_auth(self, value: Optional['GetClusterClusterInfoSpecDockerImageBasicAuthArgs']):
+        pulumi.set(self, "basic_auth", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecDockerImageBasicAuthArgs:
+    def __init__(__self__, *,
+                 password: str,
+                 username: str):
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: str):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecGcpAttributesArgs:
+    def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 boot_disk_size: Optional[int] = None,
+                 google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
+                 use_preemptible_executors: Optional[bool] = None,
+                 zone_id: Optional[str] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if boot_disk_size is not None:
+            pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if google_service_account is not None:
+            pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if use_preemptible_executors is not None:
+            pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @availability.setter
+    def availability(self, value: Optional[str]):
+        pulumi.set(self, "availability", value)
+
+    @property
+    @pulumi.getter(name="bootDiskSize")
+    def boot_disk_size(self) -> Optional[int]:
+        return pulumi.get(self, "boot_disk_size")
+
+    @boot_disk_size.setter
+    def boot_disk_size(self, value: Optional[int]):
+        pulumi.set(self, "boot_disk_size", value)
+
+    @property
+    @pulumi.getter(name="googleServiceAccount")
+    def google_service_account(self) -> Optional[str]:
+        return pulumi.get(self, "google_service_account")
+
+    @google_service_account.setter
+    def google_service_account(self, value: Optional[str]):
+        pulumi.set(self, "google_service_account", value)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: Optional[int]):
+        pulumi.set(self, "local_ssd_count", value)
+
+    @property
+    @pulumi.getter(name="usePreemptibleExecutors")
+    def use_preemptible_executors(self) -> Optional[bool]:
+        return pulumi.get(self, "use_preemptible_executors")
+
+    @use_preemptible_executors.setter
+    def use_preemptible_executors(self, value: Optional[bool]):
+        pulumi.set(self, "use_preemptible_executors", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[str]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptArgs:
+    def __init__(__self__, *,
+                 abfss: Optional['GetClusterClusterInfoSpecInitScriptAbfssArgs'] = None,
+                 dbfs: Optional['GetClusterClusterInfoSpecInitScriptDbfsArgs'] = None,
+                 file: Optional['GetClusterClusterInfoSpecInitScriptFileArgs'] = None,
+                 gcs: Optional['GetClusterClusterInfoSpecInitScriptGcsArgs'] = None,
+                 s3: Optional['GetClusterClusterInfoSpecInitScriptS3Args'] = None,
+                 volumes: Optional['GetClusterClusterInfoSpecInitScriptVolumesArgs'] = None,
+                 workspace: Optional['GetClusterClusterInfoSpecInitScriptWorkspaceArgs'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
+        if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+        if dbfs is not None:
+            pulumi.set(__self__, "dbfs", dbfs)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if s3 is not None:
+            pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['GetClusterClusterInfoSpecInitScriptAbfssArgs']:
+        return pulumi.get(self, "abfss")
+
+    @abfss.setter
+    def abfss(self, value: Optional['GetClusterClusterInfoSpecInitScriptAbfssArgs']):
+        pulumi.set(self, "abfss", value)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+    def dbfs(self) -> Optional['GetClusterClusterInfoSpecInitScriptDbfsArgs']:
+        return pulumi.get(self, "dbfs")
+
+    @dbfs.setter
+    def dbfs(self, value: Optional['GetClusterClusterInfoSpecInitScriptDbfsArgs']):
+        pulumi.set(self, "dbfs", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional['GetClusterClusterInfoSpecInitScriptFileArgs']:
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional['GetClusterClusterInfoSpecInitScriptFileArgs']):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional['GetClusterClusterInfoSpecInitScriptGcsArgs']:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional['GetClusterClusterInfoSpecInitScriptGcsArgs']):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter
+    def s3(self) -> Optional['GetClusterClusterInfoSpecInitScriptS3Args']:
+        return pulumi.get(self, "s3")
+
+    @s3.setter
+    def s3(self, value: Optional['GetClusterClusterInfoSpecInitScriptS3Args']):
+        pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetClusterClusterInfoSpecInitScriptVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetClusterClusterInfoSpecInitScriptVolumesArgs']):
+        pulumi.set(self, "volumes", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional['GetClusterClusterInfoSpecInitScriptWorkspaceArgs']:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional['GetClusterClusterInfoSpecInitScriptWorkspaceArgs']):
+        pulumi.set(self, "workspace", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptAbfssArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptDbfsArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptGcsArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptS3Args:
+    def __init__(__self__, *,
+                 destination: str,
+                 canned_acl: Optional[str] = None,
+                 enable_encryption: Optional[bool] = None,
+                 encryption_type: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 kms_key: Optional[str] = None,
+                 region: Optional[str] = None):
+        pulumi.set(__self__, "destination", destination)
+        if canned_acl is not None:
+            pulumi.set(__self__, "canned_acl", canned_acl)
+        if enable_encryption is not None:
+            pulumi.set(__self__, "enable_encryption", enable_encryption)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="cannedAcl")
+    def canned_acl(self) -> Optional[str]:
+        return pulumi.get(self, "canned_acl")
+
+    @canned_acl.setter
+    def canned_acl(self, value: Optional[str]):
+        pulumi.set(self, "canned_acl", value)
+
+    @property
+    @pulumi.getter(name="enableEncryption")
+    def enable_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_encryption")
+
+    @enable_encryption.setter
+    def enable_encryption(self, value: Optional[bool]):
+        pulumi.set(self, "enable_encryption", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[str]:
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[str]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[str]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[str]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecLibraryArgs:
+    def __init__(__self__, *,
+                 cran: Optional['GetClusterClusterInfoSpecLibraryCranArgs'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['GetClusterClusterInfoSpecLibraryMavenArgs'] = None,
+                 pypi: Optional['GetClusterClusterInfoSpecLibraryPypiArgs'] = None,
+                 requirements: Optional[str] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['GetClusterClusterInfoSpecLibraryCranArgs']:
+        return pulumi.get(self, "cran")
+
+    @cran.setter
+    def cran(self, value: Optional['GetClusterClusterInfoSpecLibraryCranArgs']):
+        pulumi.set(self, "cran", value)
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @egg.setter
+    def egg(self, value: Optional[str]):
+        pulumi.set(self, "egg", value)
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @jar.setter
+    def jar(self, value: Optional[str]):
+        pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['GetClusterClusterInfoSpecLibraryMavenArgs']:
+        return pulumi.get(self, "maven")
+
+    @maven.setter
+    def maven(self, value: Optional['GetClusterClusterInfoSpecLibraryMavenArgs']):
+        pulumi.set(self, "maven", value)
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['GetClusterClusterInfoSpecLibraryPypiArgs']:
+        return pulumi.get(self, "pypi")
+
+    @pypi.setter
+    def pypi(self, value: Optional['GetClusterClusterInfoSpecLibraryPypiArgs']):
+        pulumi.set(self, "pypi", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[str]:
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[str]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+    @whl.setter
+    def whl(self, value: Optional[str]):
+        pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecLibraryCranArgs:
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: str):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[str]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecLibraryMavenArgs:
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @coordinates.setter
+    def coordinates(self, value: str):
+        pulumi.set(self, "coordinates", value)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "exclusions", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[str]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecLibraryPypiArgs:
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @package.setter
+    def package(self, value: str):
+        pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[str]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecWorkloadTypeArgs:
+    def __init__(__self__, *,
+                 clients: 'GetClusterClusterInfoSpecWorkloadTypeClientsArgs'):
+        pulumi.set(__self__, "clients", clients)
+
+    @property
+    @pulumi.getter
+    def clients(self) -> 'GetClusterClusterInfoSpecWorkloadTypeClientsArgs':
+        return pulumi.get(self, "clients")
+
+    @clients.setter
+    def clients(self, value: 'GetClusterClusterInfoSpecWorkloadTypeClientsArgs'):
+        pulumi.set(self, "clients", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecWorkloadTypeClientsArgs:
+    def __init__(__self__, *,
+                 jobs: Optional[bool] = None,
+                 notebooks: Optional[bool] = None):
+        if jobs is not None:
+            pulumi.set(__self__, "jobs", jobs)
+        if notebooks is not None:
+            pulumi.set(__self__, "notebooks", notebooks)
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Optional[bool]:
+        return pulumi.get(self, "jobs")
+
+    @jobs.setter
+    def jobs(self, value: Optional[bool]):
+        pulumi.set(self, "jobs", value)
+
+    @property
+    @pulumi.getter
+    def notebooks(self) -> Optional[bool]:
+        return pulumi.get(self, "notebooks")
+
+    @notebooks.setter
+    def notebooks(self, value: Optional[bool]):
+        pulumi.set(self, "notebooks", value)
+
+
+@pulumi.input_type
 class GetClusterClusterInfoTerminationReasonArgs:
     def __init__(__self__, *,
                  code: Optional[str] = None,
@@ -25194,6 +26897,51 @@ class GetClusterClusterInfoTerminationReasonArgs:
     @type.setter
     def type(self, value: Optional[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoWorkloadTypeArgs:
+    def __init__(__self__, *,
+                 clients: 'GetClusterClusterInfoWorkloadTypeClientsArgs'):
+        pulumi.set(__self__, "clients", clients)
+
+    @property
+    @pulumi.getter
+    def clients(self) -> 'GetClusterClusterInfoWorkloadTypeClientsArgs':
+        return pulumi.get(self, "clients")
+
+    @clients.setter
+    def clients(self, value: 'GetClusterClusterInfoWorkloadTypeClientsArgs'):
+        pulumi.set(self, "clients", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoWorkloadTypeClientsArgs:
+    def __init__(__self__, *,
+                 jobs: Optional[bool] = None,
+                 notebooks: Optional[bool] = None):
+        if jobs is not None:
+            pulumi.set(__self__, "jobs", jobs)
+        if notebooks is not None:
+            pulumi.set(__self__, "notebooks", notebooks)
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Optional[bool]:
+        return pulumi.get(self, "jobs")
+
+    @jobs.setter
+    def jobs(self, value: Optional[bool]):
+        pulumi.set(self, "jobs", value)
+
+    @property
+    @pulumi.getter
+    def notebooks(self) -> Optional[bool]:
+        return pulumi.get(self, "notebooks")
+
+    @notebooks.setter
+    def notebooks(self, value: Optional[bool]):
+        pulumi.set(self, "notebooks", value)
 
 
 @pulumi.input_type
@@ -36756,6 +38504,341 @@ class GetMlflowModelTagArgs:
 
 
 @pulumi.input_type
+class GetSchemaSchemaInfoArgs:
+    def __init__(__self__, *,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 catalog_type: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 effective_predictive_optimization_flag: Optional['GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs'] = None,
+                 enable_predictive_optimization: Optional[str] = None,
+                 full_name: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 properties: Optional[Mapping[str, Any]] = None,
+                 schema_id: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 storage_root: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None):
+        """
+        :param bool browse_only: indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+        :param str catalog_name: the name of the catalog where the schema is.
+        :param str catalog_type: the type of the parent catalog.
+        :param str comment: the comment attached to the volume
+        :param int created_at: time at which this schema was created, in epoch milliseconds.
+        :param str created_by: username of schema creator.
+        :param 'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs' effective_predictive_optimization_flag: information about actual state of predictive optimization.
+        :param str enable_predictive_optimization: whether predictive optimization should be enabled for this object and objects under it.
+        :param str full_name: the two-level (fully qualified) name of the schema
+        :param str metastore_id: the unique identifier of the metastore
+        :param str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        :param str owner: the identifier of the user who owns the schema
+        :param Mapping[str, Any] properties: map of properties set on the schema
+        :param str schema_id: the unique identifier of the volume
+        :param str storage_location: the storage location on the cloud.
+        :param str storage_root: storage root URL for managed tables within schema.
+        :param int updated_at: the timestamp of the last time changes were made to the schema
+        :param str updated_by: the identifier of the user who updated the schema last time
+        """
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if catalog_type is not None:
+            pulumi.set(__self__, "catalog_type", catalog_type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if effective_predictive_optimization_flag is not None:
+            pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        """
+        indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+        """
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[bool]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        the name of the catalog where the schema is.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter(name="catalogType")
+    def catalog_type(self) -> Optional[str]:
+        """
+        the type of the parent catalog.
+        """
+        return pulumi.get(self, "catalog_type")
+
+    @catalog_type.setter
+    def catalog_type(self, value: Optional[str]):
+        pulumi.set(self, "catalog_type", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        the comment attached to the volume
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        time at which this schema was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[int]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        username of schema creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[str]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> Optional['GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs']:
+        """
+        information about actual state of predictive optimization.
+        """
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @effective_predictive_optimization_flag.setter
+    def effective_predictive_optimization_flag(self, value: Optional['GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs']):
+        pulumi.set(self, "effective_predictive_optimization_flag", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[str]:
+        """
+        whether predictive optimization should be enabled for this object and objects under it.
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[str]):
+        pulumi.set(self, "enable_predictive_optimization", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        """
+        the two-level (fully qualified) name of the schema
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        the unique identifier of the metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[str]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        the identifier of the user who owns the schema
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, Any]]:
+        """
+        map of properties set on the schema
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[Mapping[str, Any]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[str]:
+        """
+        the unique identifier of the volume
+        """
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[str]):
+        pulumi.set(self, "schema_id", value)
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        """
+        the storage location on the cloud.
+        """
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[str]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[str]:
+        """
+        storage root URL for managed tables within schema.
+        """
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[str]):
+        pulumi.set(self, "storage_root", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        the timestamp of the last time changes were made to the schema
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[int]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        the identifier of the user who updated the schema last time
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[str]):
+        pulumi.set(self, "updated_by", value)
+
+
+@pulumi.input_type
+class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs:
+    def __init__(__self__, *,
+                 value: str,
+                 inherited_from_name: Optional[str] = None,
+                 inherited_from_type: Optional[str] = None):
+        pulumi.set(__self__, "value", value)
+        if inherited_from_name is not None:
+            pulumi.set(__self__, "inherited_from_name", inherited_from_name)
+        if inherited_from_type is not None:
+            pulumi.set(__self__, "inherited_from_type", inherited_from_type)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromName")
+    def inherited_from_name(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_name")
+
+    @inherited_from_name.setter
+    def inherited_from_name(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_name", value)
+
+    @property
+    @pulumi.getter(name="inheritedFromType")
+    def inherited_from_type(self) -> Optional[str]:
+        return pulumi.get(self, "inherited_from_type")
+
+    @inherited_from_type.setter
+    def inherited_from_type(self, value: Optional[str]):
+        pulumi.set(self, "inherited_from_type", value)
+
+
+@pulumi.input_type
 class GetShareObjectArgs:
     def __init__(__self__, *,
                  added_at: int,
@@ -38677,5 +40760,330 @@ class GetTableTableInfoViewDependenciesDependencyTableArgs:
     @table_full_name.setter
     def table_full_name(self, value: str):
         pulumi.set(self, "table_full_name", value)
+
+
+@pulumi.input_type
+class GetVolumeVolumeInfoArgs:
+    def __init__(__self__, *,
+                 access_point: Optional[str] = None,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 encryption_details: Optional['GetVolumeVolumeInfoEncryptionDetailsArgs'] = None,
+                 full_name: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 schema_name: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None,
+                 volume_id: Optional[str] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param str access_point: the AWS access point to use when accessing s3 bucket for this volume's external location
+        :param bool browse_only: indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+        :param str catalog_name: the name of the catalog where the schema and the volume are
+        :param str comment: the comment attached to the volume
+        :param int created_at: the Unix timestamp at the volume's creation
+        :param str created_by: the identifier of the user who created the volume
+        :param 'GetVolumeVolumeInfoEncryptionDetailsArgs' encryption_details: encryption options that apply to clients connecting to cloud storage
+        :param str full_name: the three-level (fully qualified) name of the volume
+        :param str metastore_id: the unique identifier of the metastore
+        :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        :param str owner: the identifier of the user who owns the volume
+        :param str schema_name: the name of the schema where the volume is
+        :param str storage_location: the storage location on the cloud
+        :param int updated_at: the timestamp of the last time changes were made to the volume
+        :param str updated_by: the identifier of the user who updated the volume last time
+        :param str volume_id: the unique identifier of the volume
+        :param str volume_type: whether the volume is `MANAGED` or `EXTERNAL`
+        """
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if encryption_details is not None:
+            pulumi.set(__self__, "encryption_details", encryption_details)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> Optional[str]:
+        """
+        the AWS access point to use when accessing s3 bucket for this volume's external location
+        """
+        return pulumi.get(self, "access_point")
+
+    @access_point.setter
+    def access_point(self, value: Optional[str]):
+        pulumi.set(self, "access_point", value)
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        """
+        indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+        """
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[bool]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        the name of the catalog where the schema and the volume are
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        the comment attached to the volume
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        the Unix timestamp at the volume's creation
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[int]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        the identifier of the user who created the volume
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[str]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="encryptionDetails")
+    def encryption_details(self) -> Optional['GetVolumeVolumeInfoEncryptionDetailsArgs']:
+        """
+        encryption options that apply to clients connecting to cloud storage
+        """
+        return pulumi.get(self, "encryption_details")
+
+    @encryption_details.setter
+    def encryption_details(self, value: Optional['GetVolumeVolumeInfoEncryptionDetailsArgs']):
+        pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        """
+        the three-level (fully qualified) name of the volume
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        the unique identifier of the metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[str]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        the identifier of the user who owns the volume
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        the name of the schema where the volume is
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[str]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        """
+        the storage location on the cloud
+        """
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[str]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        the timestamp of the last time changes were made to the volume
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[int]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        the identifier of the user who updated the volume last time
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[str]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[str]:
+        """
+        the unique identifier of the volume
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[str]):
+        pulumi.set(self, "volume_id", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        whether the volume is `MANAGED` or `EXTERNAL`
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[str]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class GetVolumeVolumeInfoEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 sse_encryption_details: Optional['GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs'] = None):
+        if sse_encryption_details is not None:
+            pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
+
+    @property
+    @pulumi.getter(name="sseEncryptionDetails")
+    def sse_encryption_details(self) -> Optional['GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs']:
+        return pulumi.get(self, "sse_encryption_details")
+
+    @sse_encryption_details.setter
+    def sse_encryption_details(self, value: Optional['GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs']):
+        pulumi.set(self, "sse_encryption_details", value)
+
+
+@pulumi.input_type
+class GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[str] = None,
+                 aws_kms_key_arn: Optional[str] = None):
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if aws_kms_key_arn is not None:
+            pulumi.set(__self__, "aws_kms_key_arn", aws_kms_key_arn)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="awsKmsKeyArn")
+    def aws_kms_key_arn(self) -> Optional[str]:
+        return pulumi.get(self, "aws_kms_key_arn")
+
+    @aws_kms_key_arn.setter
+    def aws_kms_key_arn(self, value: Optional[str]):
+        pulumi.set(self, "aws_kms_key_arn", value)
 
 

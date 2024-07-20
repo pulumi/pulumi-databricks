@@ -56,6 +56,7 @@ type Permissions struct {
 	Authorization   pulumi.StringPtrOutput              `pulumi:"authorization"`
 	ClusterId       pulumi.StringPtrOutput              `pulumi:"clusterId"`
 	ClusterPolicyId pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
+	DashboardId     pulumi.StringPtrOutput              `pulumi:"dashboardId"`
 	DirectoryId     pulumi.StringPtrOutput              `pulumi:"directoryId"`
 	DirectoryPath   pulumi.StringPtrOutput              `pulumi:"directoryPath"`
 	ExperimentId    pulumi.StringPtrOutput              `pulumi:"experimentId"`
@@ -115,6 +116,7 @@ type permissionsState struct {
 	Authorization   *string                    `pulumi:"authorization"`
 	ClusterId       *string                    `pulumi:"clusterId"`
 	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
+	DashboardId     *string                    `pulumi:"dashboardId"`
 	DirectoryId     *string                    `pulumi:"directoryId"`
 	DirectoryPath   *string                    `pulumi:"directoryPath"`
 	ExperimentId    *string                    `pulumi:"experimentId"`
@@ -142,6 +144,7 @@ type PermissionsState struct {
 	Authorization   pulumi.StringPtrInput
 	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
+	DashboardId     pulumi.StringPtrInput
 	DirectoryId     pulumi.StringPtrInput
 	DirectoryPath   pulumi.StringPtrInput
 	ExperimentId    pulumi.StringPtrInput
@@ -173,6 +176,7 @@ type permissionsArgs struct {
 	Authorization   *string                    `pulumi:"authorization"`
 	ClusterId       *string                    `pulumi:"clusterId"`
 	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
+	DashboardId     *string                    `pulumi:"dashboardId"`
 	DirectoryId     *string                    `pulumi:"directoryId"`
 	DirectoryPath   *string                    `pulumi:"directoryPath"`
 	ExperimentId    *string                    `pulumi:"experimentId"`
@@ -201,6 +205,7 @@ type PermissionsArgs struct {
 	Authorization   pulumi.StringPtrInput
 	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
+	DashboardId     pulumi.StringPtrInput
 	DirectoryId     pulumi.StringPtrInput
 	DirectoryPath   pulumi.StringPtrInput
 	ExperimentId    pulumi.StringPtrInput
@@ -324,6 +329,10 @@ func (o PermissionsOutput) ClusterId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) ClusterPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ClusterPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DashboardId }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) DirectoryId() pulumi.StringPtrOutput {

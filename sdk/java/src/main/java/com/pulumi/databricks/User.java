@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a password reset email. You can also get information about caller identity using databricks.getCurrentUser data source.
+ * This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using databricks.getCurrentUser data source.
  * 
  * &gt; **Note** To assign account level users to workspace use databricks_mws_permission_assignment.
  * 

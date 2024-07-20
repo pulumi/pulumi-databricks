@@ -14,7 +14,9 @@ import javax.annotation.Nullable;
 public final class GetClusterClusterInfoAwsAttributes {
     private @Nullable String availability;
     private @Nullable Integer ebsVolumeCount;
+    private @Nullable Integer ebsVolumeIops;
     private @Nullable Integer ebsVolumeSize;
+    private @Nullable Integer ebsVolumeThroughput;
     private @Nullable String ebsVolumeType;
     private @Nullable Integer firstOnDemand;
     private @Nullable String instanceProfileArn;
@@ -28,8 +30,14 @@ public final class GetClusterClusterInfoAwsAttributes {
     public Optional<Integer> ebsVolumeCount() {
         return Optional.ofNullable(this.ebsVolumeCount);
     }
+    public Optional<Integer> ebsVolumeIops() {
+        return Optional.ofNullable(this.ebsVolumeIops);
+    }
     public Optional<Integer> ebsVolumeSize() {
         return Optional.ofNullable(this.ebsVolumeSize);
+    }
+    public Optional<Integer> ebsVolumeThroughput() {
+        return Optional.ofNullable(this.ebsVolumeThroughput);
     }
     public Optional<String> ebsVolumeType() {
         return Optional.ofNullable(this.ebsVolumeType);
@@ -58,7 +66,9 @@ public final class GetClusterClusterInfoAwsAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer ebsVolumeCount;
+        private @Nullable Integer ebsVolumeIops;
         private @Nullable Integer ebsVolumeSize;
+        private @Nullable Integer ebsVolumeThroughput;
         private @Nullable String ebsVolumeType;
         private @Nullable Integer firstOnDemand;
         private @Nullable String instanceProfileArn;
@@ -69,7 +79,9 @@ public final class GetClusterClusterInfoAwsAttributes {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.ebsVolumeCount = defaults.ebsVolumeCount;
+    	      this.ebsVolumeIops = defaults.ebsVolumeIops;
     	      this.ebsVolumeSize = defaults.ebsVolumeSize;
+    	      this.ebsVolumeThroughput = defaults.ebsVolumeThroughput;
     	      this.ebsVolumeType = defaults.ebsVolumeType;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
@@ -90,9 +102,21 @@ public final class GetClusterClusterInfoAwsAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder ebsVolumeIops(@Nullable Integer ebsVolumeIops) {
+
+            this.ebsVolumeIops = ebsVolumeIops;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ebsVolumeSize(@Nullable Integer ebsVolumeSize) {
 
             this.ebsVolumeSize = ebsVolumeSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ebsVolumeThroughput(@Nullable Integer ebsVolumeThroughput) {
+
+            this.ebsVolumeThroughput = ebsVolumeThroughput;
             return this;
         }
         @CustomType.Setter
@@ -129,7 +153,9 @@ public final class GetClusterClusterInfoAwsAttributes {
             final var _resultValue = new GetClusterClusterInfoAwsAttributes();
             _resultValue.availability = availability;
             _resultValue.ebsVolumeCount = ebsVolumeCount;
+            _resultValue.ebsVolumeIops = ebsVolumeIops;
             _resultValue.ebsVolumeSize = ebsVolumeSize;
+            _resultValue.ebsVolumeThroughput = ebsVolumeThroughput;
             _resultValue.ebsVolumeType = ebsVolumeType;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.instanceProfileArn = instanceProfileArn;

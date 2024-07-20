@@ -45,6 +45,8 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusters:getClusters", {
         "clusterNameContains": args.clusterNameContains,
+        "id": args.id,
+        "ids": args.ids,
     }, opts);
 }
 
@@ -56,6 +58,11 @@ export interface GetClustersArgs {
      * Only return databricks.Cluster ids that match the given name string.
      */
     clusterNameContains?: string;
+    id?: string;
+    /**
+     * list of databricks.Cluster ids
+     */
+    ids?: string[];
 }
 
 /**
@@ -63,9 +70,6 @@ export interface GetClustersArgs {
  */
 export interface GetClustersResult {
     readonly clusterNameContains?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * list of databricks.Cluster ids
@@ -119,4 +123,9 @@ export interface GetClustersOutputArgs {
      * Only return databricks.Cluster ids that match the given name string.
      */
     clusterNameContains?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * list of databricks.Cluster ids
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }

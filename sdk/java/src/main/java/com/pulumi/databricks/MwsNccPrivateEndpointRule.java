@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         final var region = config.get("region");
  *         final var prefix = config.get("prefix");
  *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
- *             .name(String.format("Network Connectivity Config for %s", prefix))
+ *             .name(String.format("ncc-for-%s", prefix))
  *             .region(region)
  *             .build());
  * 

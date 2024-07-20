@@ -135,7 +135,7 @@ type Pipeline struct {
 	Deployment PipelineDeploymentPtrOutput `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
-	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition pulumi.StringPtrOutput   `pulumi:"edition"`
 	Filters PipelineFiltersPtrOutput `pulumi:"filters"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
@@ -144,7 +144,8 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon     pulumi.BoolPtrOutput `pulumi:"photon"`
+	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
@@ -198,7 +199,7 @@ type pipelineState struct {
 	Deployment *PipelineDeployment `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
-	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition *string          `pulumi:"edition"`
 	Filters *PipelineFilters `pulumi:"filters"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
@@ -207,7 +208,8 @@ type pipelineState struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon     *bool `pulumi:"photon"`
+	Photon *bool `pulumi:"photon"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool `pulumi:"serverless"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
@@ -232,7 +234,7 @@ type PipelineState struct {
 	Deployment PipelineDeploymentPtrInput
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
-	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition pulumi.StringPtrInput
 	Filters PipelineFiltersPtrInput
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
@@ -241,7 +243,8 @@ type PipelineState struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon     pulumi.BoolPtrInput
+	Photon pulumi.BoolPtrInput
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
@@ -270,7 +273,7 @@ type pipelineArgs struct {
 	Deployment *PipelineDeployment `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
-	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition *string          `pulumi:"edition"`
 	Filters *PipelineFilters `pulumi:"filters"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
@@ -279,7 +282,8 @@ type pipelineArgs struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon     *bool `pulumi:"photon"`
+	Photon *bool `pulumi:"photon"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool `pulumi:"serverless"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
@@ -303,7 +307,7 @@ type PipelineArgs struct {
 	Deployment PipelineDeploymentPtrInput
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
-	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition pulumi.StringPtrInput
 	Filters PipelineFiltersPtrInput
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
@@ -312,7 +316,8 @@ type PipelineArgs struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon     pulumi.BoolPtrInput
+	Photon pulumi.BoolPtrInput
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
@@ -445,7 +450,7 @@ func (o PipelineOutput) Development() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Development }).(pulumi.BoolPtrOutput)
 }
 
-// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 func (o PipelineOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
@@ -473,6 +478,7 @@ func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
 }
 
+// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 func (o PipelineOutput) Serverless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Serverless }).(pulumi.BoolPtrOutput)
 }

@@ -5,27 +5,28 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClusterClusterInfoDockerImageBasicAuthArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetClusterClusterInfoDockerImageBasicAuthArgs Empty = new GetClusterClusterInfoDockerImageBasicAuthArgs();
 
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
 
-    public Output<String> username() {
-        return this.username;
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private GetClusterClusterInfoDockerImageBasicAuthArgs() {}
@@ -53,7 +54,7 @@ public final class GetClusterClusterInfoDockerImageBasicAuthArgs extends com.pul
             $ = new GetClusterClusterInfoDockerImageBasicAuthArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -62,7 +63,7 @@ public final class GetClusterClusterInfoDockerImageBasicAuthArgs extends com.pul
             return password(Output.of(password));
         }
 
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
@@ -72,12 +73,6 @@ public final class GetClusterClusterInfoDockerImageBasicAuthArgs extends com.pul
         }
 
         public GetClusterClusterInfoDockerImageBasicAuthArgs build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuthArgs", "password");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuthArgs", "username");
-            }
             return $;
         }
     }

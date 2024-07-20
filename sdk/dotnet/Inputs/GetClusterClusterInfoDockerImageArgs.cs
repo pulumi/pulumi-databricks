@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("basicAuth")]
         public Input<Inputs.GetClusterClusterInfoDockerImageBasicAuthInputArgs>? BasicAuth { get; set; }
 
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public GetClusterClusterInfoDockerImageInputArgs()
         {

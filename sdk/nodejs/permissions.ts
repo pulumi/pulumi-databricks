@@ -77,6 +77,7 @@ export class Permissions extends pulumi.CustomResource {
     public readonly authorization!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string | undefined>;
     public readonly clusterPolicyId!: pulumi.Output<string | undefined>;
+    public readonly dashboardId!: pulumi.Output<string | undefined>;
     public readonly directoryId!: pulumi.Output<string | undefined>;
     public readonly directoryPath!: pulumi.Output<string | undefined>;
     public readonly experimentId!: pulumi.Output<string | undefined>;
@@ -117,6 +118,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["authorization"] = state ? state.authorization : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = state ? state.clusterPolicyId : undefined;
+            resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
             resourceInputs["directoryId"] = state ? state.directoryId : undefined;
             resourceInputs["directoryPath"] = state ? state.directoryPath : undefined;
             resourceInputs["experimentId"] = state ? state.experimentId : undefined;
@@ -145,6 +147,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = args ? args.clusterPolicyId : undefined;
+            resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
             resourceInputs["directoryId"] = args ? args.directoryId : undefined;
             resourceInputs["directoryPath"] = args ? args.directoryPath : undefined;
             resourceInputs["experimentId"] = args ? args.experimentId : undefined;
@@ -178,6 +181,7 @@ export interface PermissionsState {
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
@@ -210,6 +214,7 @@ export interface PermissionsArgs {
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;

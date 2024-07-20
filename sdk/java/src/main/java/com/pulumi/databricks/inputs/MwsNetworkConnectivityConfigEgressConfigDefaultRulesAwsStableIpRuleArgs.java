@@ -16,9 +16,17 @@ public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStable
 
     public static final MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs Empty = new MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs();
 
+    /**
+     * list of IP CIDR blocks.
+     * 
+     */
     @Import(name="cidrBlocks")
     private @Nullable Output<List<String>> cidrBlocks;
 
+    /**
+     * @return list of IP CIDR blocks.
+     * 
+     */
     public Optional<Output<List<String>>> cidrBlocks() {
         return Optional.ofNullable(this.cidrBlocks);
     }
@@ -47,15 +55,33 @@ public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStable
             $ = new MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cidrBlocks list of IP CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(@Nullable Output<List<String>> cidrBlocks) {
             $.cidrBlocks = cidrBlocks;
             return this;
         }
 
+        /**
+         * @param cidrBlocks list of IP CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(List<String> cidrBlocks) {
             return cidrBlocks(Output.of(cidrBlocks));
         }
 
+        /**
+         * @param cidrBlocks list of IP CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(String... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
