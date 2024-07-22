@@ -16,7 +16,7 @@ import (
 //
 // > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
 //
-// Allows you to create a [Network Connectivity Config] that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+// Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
 //
 // ## Example Usage
 //
@@ -39,7 +39,7 @@ import (
 //			region := cfg.RequireObject("region")
 //			prefix := cfg.RequireObject("prefix")
 //			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
-//				Name:   pulumi.String(fmt.Sprintf("Network Connectivity Config for %v", prefix)),
+//				Name:   pulumi.String(fmt.Sprintf("ncc-for-%v", prefix)),
 //				Region: pulumi.Any(region),
 //			})
 //			if err != nil {

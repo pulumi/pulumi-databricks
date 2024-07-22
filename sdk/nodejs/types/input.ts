@@ -744,7 +744,7 @@ export interface GetClusterClusterInfo {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
-    defaultTags: {[key: string]: any};
+    defaultTags?: {[key: string]: any};
     dockerImage?: inputs.GetClusterClusterInfoDockerImage;
     driver?: inputs.GetClusterClusterInfoDriver;
     /**
@@ -771,7 +771,7 @@ export interface GetClusterClusterInfo {
      */
     instancePoolId?: string;
     jdbcPort?: number;
-    lastActivityTime?: number;
+    lastRestartedTime?: number;
     lastStateLossTime?: number;
     /**
      * Any supported databricks.getNodeType id.
@@ -802,16 +802,18 @@ export interface GetClusterClusterInfo {
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion: string;
+    sparkVersion?: string;
+    spec?: inputs.GetClusterClusterInfoSpec;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
     startTime?: number;
-    state: string;
+    state?: string;
     stateMessage?: string;
-    terminateTime?: number;
+    terminatedTime?: number;
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+    workloadType?: inputs.GetClusterClusterInfoWorkloadType;
 }
 
 export interface GetClusterClusterInfoArgs {
@@ -844,7 +846,7 @@ export interface GetClusterClusterInfoArgs {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: pulumi.Input<string>;
-    defaultTags: pulumi.Input<{[key: string]: any}>;
+    defaultTags?: pulumi.Input<{[key: string]: any}>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
     driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
     /**
@@ -871,7 +873,7 @@ export interface GetClusterClusterInfoArgs {
      */
     instancePoolId?: pulumi.Input<string>;
     jdbcPort?: pulumi.Input<number>;
-    lastActivityTime?: pulumi.Input<number>;
+    lastRestartedTime?: pulumi.Input<number>;
     lastStateLossTime?: pulumi.Input<number>;
     /**
      * Any supported databricks.getNodeType id.
@@ -902,16 +904,18 @@ export interface GetClusterClusterInfoArgs {
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
+    spec?: pulumi.Input<inputs.GetClusterClusterInfoSpecArgs>;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     startTime?: pulumi.Input<number>;
-    state: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     stateMessage?: pulumi.Input<string>;
-    terminateTime?: pulumi.Input<number>;
+    terminatedTime?: pulumi.Input<number>;
     terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
+    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
 }
 
 export interface GetClusterClusterInfoAutoscale {
@@ -927,7 +931,9 @@ export interface GetClusterClusterInfoAutoscaleArgs {
 export interface GetClusterClusterInfoAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -938,7 +944,9 @@ export interface GetClusterClusterInfoAwsAttributes {
 export interface GetClusterClusterInfoAwsAttributesArgs {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -949,13 +957,25 @@ export interface GetClusterClusterInfoAwsAttributesArgs {
 export interface GetClusterClusterInfoAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
 }
 
 export interface GetClusterClusterInfoAzureAttributesArgs {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoClusterLogConf {
@@ -1008,22 +1028,22 @@ export interface GetClusterClusterInfoClusterLogStatusArgs {
 
 export interface GetClusterClusterInfoDockerImage {
     basicAuth?: inputs.GetClusterClusterInfoDockerImageBasicAuth;
-    url: string;
+    url?: string;
 }
 
 export interface GetClusterClusterInfoDockerImageArgs {
     basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs>;
-    url: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuth {
-    password: string;
-    username: string;
+    password?: string;
+    username?: string;
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuthArgs {
-    password: pulumi.Input<string>;
-    username: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoDriver {
@@ -1188,6 +1208,502 @@ export interface GetClusterClusterInfoInitScriptWorkspaceArgs {
     destination: pulumi.Input<string>;
 }
 
+export interface GetClusterClusterInfoSpec {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: inputs.GetClusterClusterInfoSpecAutoscale;
+    awsAttributes?: inputs.GetClusterClusterInfoSpecAwsAttributes;
+    azureAttributes?: inputs.GetClusterClusterInfoSpecAzureAttributes;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: string;
+    clusterLogConf?: inputs.GetClusterClusterInfoSpecClusterLogConf;
+    clusterMountInfos?: inputs.GetClusterClusterInfoSpecClusterMountInfo[];
+    /**
+     * The exact name of the cluster to search
+     */
+    clusterName?: string;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: {[key: string]: any};
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: string;
+    dockerImage?: inputs.GetClusterClusterInfoSpecDockerImage;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId?: string;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: string;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: boolean;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: boolean;
+    gcpAttributes?: inputs.GetClusterClusterInfoSpecGcpAttributes;
+    /**
+     * An optional token to guarantee the idempotency of cluster creation requests.
+     */
+    idempotencyToken?: string;
+    initScripts?: inputs.GetClusterClusterInfoSpecInitScript[];
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
+    instancePoolId?: string;
+    libraries?: inputs.GetClusterClusterInfoSpecLibrary[];
+    /**
+     * Any supported databricks.getNodeType id.
+     */
+    nodeTypeId?: string;
+    numWorkers?: number;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: string;
+    /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: string;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: string;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: {[key: string]: any};
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: {[key: string]: any};
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: string;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: string[];
+    workloadType?: inputs.GetClusterClusterInfoSpecWorkloadType;
+}
+
+export interface GetClusterClusterInfoSpecArgs {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
+    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoSpecAutoscaleArgs>;
+    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs>;
+    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs>;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: pulumi.Input<string>;
+    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[]>;
+    /**
+     * The exact name of the cluster to search
+     */
+    clusterName?: pulumi.Input<string>;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: pulumi.Input<string>;
+    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageArgs>;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId?: pulumi.Input<string>;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: pulumi.Input<string>;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: pulumi.Input<boolean>;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
+    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecGcpAttributesArgs>;
+    /**
+     * An optional token to guarantee the idempotency of cluster creation requests.
+     */
+    idempotencyToken?: pulumi.Input<string>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptArgs>[]>;
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
+    instancePoolId?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryArgs>[]>;
+    /**
+     * Any supported databricks.getNodeType id.
+     */
+    nodeTypeId?: pulumi.Input<string>;
+    numWorkers?: pulumi.Input<number>;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: pulumi.Input<string>;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: pulumi.Input<string>;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: pulumi.Input<string>;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
+}
+
+export interface GetClusterClusterInfoSpecAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetClusterClusterInfoSpecAutoscaleArgs {
+    maxWorkers?: pulumi.Input<number>;
+    minWorkers?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoSpecAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoSpecAwsAttributesArgs {
+    availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    logAnalyticsInfo?: inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributesArgs {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs>;
+    spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConf {
+    dbfs?: inputs.GetClusterClusterInfoSpecClusterLogConfDbfs;
+    s3?: inputs.GetClusterClusterInfoSpecClusterLogConfS3;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfArgs {
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfDbfsArgs>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfS3Args>;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: inputs.GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfoArgs {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecDockerImage {
+    basicAuth?: inputs.GetClusterClusterInfoSpecDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetClusterClusterInfoSpecDockerImageArgs {
+    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageBasicAuthArgs>;
+    url: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetClusterClusterInfoSpecDockerImageBasicAuthArgs {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    localSsdCount?: number;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoSpecGcpAttributesArgs {
+    availability?: pulumi.Input<string>;
+    bootDiskSize?: pulumi.Input<number>;
+    googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
+    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScript {
+    abfss?: inputs.GetClusterClusterInfoSpecInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
+    dbfs?: inputs.GetClusterClusterInfoSpecInitScriptDbfs;
+    file?: inputs.GetClusterClusterInfoSpecInitScriptFile;
+    gcs?: inputs.GetClusterClusterInfoSpecInitScriptGcs;
+    s3?: inputs.GetClusterClusterInfoSpecInitScriptS3;
+    volumes?: inputs.GetClusterClusterInfoSpecInitScriptVolumes;
+    workspace?: inputs.GetClusterClusterInfoSpecInitScriptWorkspace;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptArgs {
+    abfss?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptAbfssArgs>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptDbfsArgs>;
+    file?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptFileArgs>;
+    gcs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptGcsArgs>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptVolumesArgs>;
+    workspace?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptWorkspaceArgs>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptAbfss {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptAbfssArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptFile {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptFileArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptGcs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptGcsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptVolumes {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptVolumesArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptWorkspace {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptWorkspaceArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecLibrary {
+    cran?: inputs.GetClusterClusterInfoSpecLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: inputs.GetClusterClusterInfoSpecLibraryMaven;
+    pypi?: inputs.GetClusterClusterInfoSpecLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryArgs {
+    cran?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryCranArgs>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryMavenArgs>;
+    pypi?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryPypiArgs>;
+    requirements?: pulumi.Input<string>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryCranArgs {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryMavenArgs {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryPypiArgs {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadType {
+    clients: inputs.GetClusterClusterInfoSpecWorkloadTypeClients;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadTypeArgs {
+    clients: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeClientsArgs>;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadTypeClientsArgs {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
+}
+
 export interface GetClusterClusterInfoTerminationReason {
     code?: string;
     parameters?: {[key: string]: any};
@@ -1198,6 +1714,24 @@ export interface GetClusterClusterInfoTerminationReasonArgs {
     code?: pulumi.Input<string>;
     parameters?: pulumi.Input<{[key: string]: any}>;
     type?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoWorkloadType {
+    clients: inputs.GetClusterClusterInfoWorkloadTypeClients;
+}
+
+export interface GetClusterClusterInfoWorkloadTypeArgs {
+    clients: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeClientsArgs>;
+}
+
+export interface GetClusterClusterInfoWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetClusterClusterInfoWorkloadTypeClientsArgs {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -4606,6 +5140,168 @@ export interface GetMlflowModelTagArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetSchemaSchemaInfo {
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+     */
+    browseOnly?: boolean;
+    /**
+     * the name of the catalog where the schema is.
+     */
+    catalogName?: string;
+    /**
+     * the type of the parent catalog.
+     */
+    catalogType?: string;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: string;
+    /**
+     * time at which this schema was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * username of schema creator.
+     */
+    createdBy?: string;
+    /**
+     * information about actual state of predictive optimization.
+     */
+    effectivePredictiveOptimizationFlag?: inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
+    /**
+     * whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: string;
+    /**
+     * the two-level (fully qualified) name of the schema
+     */
+    fullName?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    /**
+     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     */
+    name?: string;
+    /**
+     * the identifier of the user who owns the schema
+     */
+    owner?: string;
+    /**
+     * map of properties set on the schema
+     */
+    properties?: {[key: string]: any};
+    /**
+     * the unique identifier of the volume
+     */
+    schemaId?: string;
+    /**
+     * the storage location on the cloud.
+     */
+    storageLocation?: string;
+    /**
+     * storage root URL for managed tables within schema.
+     */
+    storageRoot?: string;
+    /**
+     * the timestamp of the last time changes were made to the schema
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the schema last time
+     */
+    updatedBy?: string;
+}
+
+export interface GetSchemaSchemaInfoArgs {
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+     */
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * the name of the catalog where the schema is.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * the type of the parent catalog.
+     */
+    catalogType?: pulumi.Input<string>;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * time at which this schema was created, in epoch milliseconds.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * username of schema creator.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * information about actual state of predictive optimization.
+     */
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs>;
+    /**
+     * whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
+    /**
+     * the two-level (fully qualified) name of the schema
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * the identifier of the user who owns the schema
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * map of properties set on the schema
+     */
+    properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * the unique identifier of the volume
+     */
+    schemaId?: pulumi.Input<string>;
+    /**
+     * the storage location on the cloud.
+     */
+    storageLocation?: pulumi.Input<string>;
+    /**
+     * storage root URL for managed tables within schema.
+     */
+    storageRoot?: pulumi.Input<string>;
+    /**
+     * the timestamp of the last time changes were made to the schema
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * the identifier of the user who updated the schema last time
+     */
+    updatedBy?: pulumi.Input<string>;
+}
+
+export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
+    inheritedFromName?: pulumi.Input<string>;
+    inheritedFromType?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface GetShareObject {
     addedAt?: number;
     addedBy?: string;
@@ -5306,6 +6002,166 @@ export interface GetTableTableInfoViewDependenciesDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
+export interface GetVolumeVolumeInfo {
+    /**
+     * the AWS access point to use when accessing s3 bucket for this volume's external location
+     */
+    accessPoint?: string;
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+     */
+    browseOnly?: boolean;
+    /**
+     * the name of the catalog where the schema and the volume are
+     */
+    catalogName?: string;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: string;
+    /**
+     * the Unix timestamp at the volume's creation
+     */
+    createdAt?: number;
+    /**
+     * the identifier of the user who created the volume
+     */
+    createdBy?: string;
+    /**
+     * encryption options that apply to clients connecting to cloud storage
+     */
+    encryptionDetails?: inputs.GetVolumeVolumeInfoEncryptionDetails;
+    /**
+     * the three-level (fully qualified) name of the volume
+     */
+    fullName?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    /**
+     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+     */
+    name?: string;
+    /**
+     * the identifier of the user who owns the volume
+     */
+    owner?: string;
+    /**
+     * the name of the schema where the volume is
+     */
+    schemaName?: string;
+    /**
+     * the storage location on the cloud
+     */
+    storageLocation?: string;
+    /**
+     * the timestamp of the last time changes were made to the volume
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the volume last time
+     */
+    updatedBy?: string;
+    /**
+     * the unique identifier of the volume
+     */
+    volumeId?: string;
+    /**
+     * whether the volume is `MANAGED` or `EXTERNAL`
+     */
+    volumeType?: string;
+}
+
+export interface GetVolumeVolumeInfoArgs {
+    /**
+     * the AWS access point to use when accessing s3 bucket for this volume's external location
+     */
+    accessPoint?: pulumi.Input<string>;
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+     */
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * the name of the catalog where the schema and the volume are
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * the Unix timestamp at the volume's creation
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * the identifier of the user who created the volume
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * encryption options that apply to clients connecting to cloud storage
+     */
+    encryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsArgs>;
+    /**
+     * the three-level (fully qualified) name of the volume
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * the identifier of the user who owns the volume
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * the name of the schema where the volume is
+     */
+    schemaName?: pulumi.Input<string>;
+    /**
+     * the storage location on the cloud
+     */
+    storageLocation?: pulumi.Input<string>;
+    /**
+     * the timestamp of the last time changes were made to the volume
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * the identifier of the user who updated the volume last time
+     */
+    updatedBy?: pulumi.Input<string>;
+    /**
+     * the unique identifier of the volume
+     */
+    volumeId?: pulumi.Input<string>;
+    /**
+     * whether the volume is `MANAGED` or `EXTERNAL`
+     */
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetails {
+    sseEncryptionDetails?: inputs.GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetailsArgs {
+    sseEncryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs {
+    algorithm?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string>;
+}
+
 export interface GrantsGrant {
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
@@ -5500,12 +6356,24 @@ export interface JobEmailNotifications {
 }
 
 export interface JobEnvironment {
+    /**
+     * an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
+     */
     environmentKey: pulumi.Input<string>;
+    /**
+     * block describing the Environment. Consists of following attributes:
+     */
     spec?: pulumi.Input<inputs.JobEnvironmentSpec>;
 }
 
 export interface JobEnvironmentSpec {
+    /**
+     * client version used by the environment.
+     */
     client: pulumi.Input<string>;
+    /**
+     * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+     */
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -6197,6 +7065,9 @@ export interface JobTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
+    /**
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
+     */
     environmentKey?: pulumi.Input<string>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
@@ -6381,6 +7252,9 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
+    /**
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
+     */
     environmentKey?: pulumi.Input<string>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
@@ -8371,29 +9245,53 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
+    /**
+     * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+     */
     defaultRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules>;
+    /**
+     * block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+     */
     targetRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRules>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    /**
+     * (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+     */
     awsStableIpRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule>;
     /**
-     * This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     * (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
      */
     azureServiceEndpointRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * list of IP CIDR blocks.
+     */
     cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * the Azure region in which this service endpoint rule applies.
+     */
     targetRegion?: pulumi.Input<string>;
+    /**
+     * the Azure services to which this service endpoint rule applies to.
+     */
     targetServices?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * (Azure only) - list containing information about configure Azure Private Endpoints.
+     */
     azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[]>;
 }
 
@@ -8881,9 +9779,6 @@ export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
 }
 
 export interface QualityMonitorSchedule {
-    /**
-     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     */
     pauseStatus?: pulumi.Input<string>;
     /**
      * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.

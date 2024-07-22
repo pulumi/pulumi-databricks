@@ -116,7 +116,7 @@ class MwsNccBinding(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         ncc_binding = databricks.MwsNccBinding("ncc_binding",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
@@ -160,7 +160,7 @@ class MwsNccBinding(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         ncc_binding = databricks.MwsNccBinding("ncc_binding",
             network_connectivity_config_id=ncc.network_connectivity_config_id,

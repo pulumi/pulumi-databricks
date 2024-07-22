@@ -123,6 +123,21 @@ namespace Pulumi.Databricks
         [Input("clusterNameContains")]
         public string? ClusterNameContains { get; set; }
 
+        [Input("id")]
+        public string? Id { get; set; }
+
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// list of databricks.Cluster ids
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
         public GetClustersArgs()
         {
         }
@@ -137,6 +152,21 @@ namespace Pulumi.Databricks
         [Input("clusterNameContains")]
         public Input<string>? ClusterNameContains { get; set; }
 
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// list of databricks.Cluster ids
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
         public GetClustersInvokeArgs()
         {
         }
@@ -148,9 +178,6 @@ namespace Pulumi.Databricks
     public sealed class GetClustersResult
     {
         public readonly string? ClusterNameContains;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// list of databricks.Cluster ids

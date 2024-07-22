@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QualityMonitorSchedule
     {
-        /// <summary>
-        /// optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-        /// </summary>
         public readonly string? PauseStatus;
         /// <summary>
         /// string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.

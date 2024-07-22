@@ -143,7 +143,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly development!: pulumi.Output<boolean | undefined>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     public readonly edition!: pulumi.Output<string | undefined>;
     public readonly filters!: pulumi.Output<outputs.PipelineFilters | undefined>;
@@ -160,6 +160,9 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     public readonly serverless!: pulumi.Output<boolean | undefined>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -262,7 +265,7 @@ export interface PipelineState {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
@@ -279,6 +282,9 @@ export interface PipelineState {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     serverless?: pulumi.Input<boolean>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -325,7 +331,7 @@ export interface PipelineArgs {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
@@ -342,6 +348,9 @@ export interface PipelineArgs {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     serverless?: pulumi.Input<boolean>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).

@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QualityMonitorScheduleGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-        /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 

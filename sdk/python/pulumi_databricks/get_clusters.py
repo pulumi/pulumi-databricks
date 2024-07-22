@@ -40,9 +40,6 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -66,6 +63,8 @@ class AwaitableGetClustersResult(GetClustersResult):
 
 
 def get_clusters(cluster_name_contains: Optional[str] = None,
+                 id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     ## Example Usage
@@ -102,9 +101,12 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
 
 
     :param str cluster_name_contains: Only return Cluster ids that match the given name string.
+    :param Sequence[str] ids: list of Cluster ids
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
+    __args__['id'] = id
+    __args__['ids'] = ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
@@ -116,6 +118,8 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
 
 @_utilities.lift_output_func(get_clusters)
 def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
+                        id: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
     ## Example Usage
@@ -152,5 +156,6 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
 
 
     :param str cluster_name_contains: Only return Cluster ids that match the given name string.
+    :param Sequence[str] ids: list of Cluster ids
     """
     ...

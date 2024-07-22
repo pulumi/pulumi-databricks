@@ -63,6 +63,9 @@ namespace Pulumi.Databricks
         [Output("clusterPolicyId")]
         public Output<string?> ClusterPolicyId { get; private set; } = null!;
 
+        [Output("dashboardId")]
+        public Output<string?> DashboardId { get; private set; } = null!;
+
         [Output("directoryId")]
         public Output<string?> DirectoryId { get; private set; } = null!;
 
@@ -186,6 +189,9 @@ namespace Pulumi.Databricks
         [Input("clusterPolicyId")]
         public Input<string>? ClusterPolicyId { get; set; }
 
+        [Input("dashboardId")]
+        public Input<string>? DashboardId { get; set; }
+
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
@@ -270,6 +276,9 @@ namespace Pulumi.Databricks
 
         [Input("clusterPolicyId")]
         public Input<string>? ClusterPolicyId { get; set; }
+
+        [Input("dashboardId")]
+        public Input<string>? DashboardId { get; set; }
 
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }

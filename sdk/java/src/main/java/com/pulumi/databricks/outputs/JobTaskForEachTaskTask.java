@@ -50,6 +50,10 @@ public final class JobTaskForEachTaskTask {
      * 
      */
     private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
+    /**
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * 
+     */
     private @Nullable String environmentKey;
     /**
      * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
@@ -159,6 +163,10 @@ public final class JobTaskForEachTaskTask {
     public Optional<JobTaskForEachTaskTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
     }
+    /**
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * 
+     */
     public Optional<String> environmentKey() {
         return Optional.ofNullable(this.environmentKey);
     }

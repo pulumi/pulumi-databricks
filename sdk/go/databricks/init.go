@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComplianceSecurityProfileWorkspaceSetting{}
 	case "databricks:index/connection:Connection":
 		r = &Connection{}
+	case "databricks:index/dashboard:Dashboard":
+		r = &Dashboard{}
 	case "databricks:index/dbfsFile:DbfsFile":
 		r = &DbfsFile{}
 	case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
@@ -199,6 +201,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VectorSearchIndex{}
 	case "databricks:index/volume:Volume":
 		r = &Volume{}
+	case "databricks:index/workspaceBinding:WorkspaceBinding":
+		r = &WorkspaceBinding{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
 		r = &WorkspaceConf{}
 	case "databricks:index/workspaceFile:WorkspaceFile":
@@ -277,6 +281,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/dashboard",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -677,6 +686,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

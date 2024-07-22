@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,10 +30,34 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.clusterNameContains);
     }
 
+    @Import(name="id")
+    private @Nullable String id;
+
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * list of databricks.Cluster ids
+     * 
+     */
+    @Import(name="ids")
+    private @Nullable List<String> ids;
+
+    /**
+     * @return list of databricks.Cluster ids
+     * 
+     */
+    public Optional<List<String>> ids() {
+        return Optional.ofNullable(this.ids);
+    }
+
     private GetClustersPlainArgs() {}
 
     private GetClustersPlainArgs(GetClustersPlainArgs $) {
         this.clusterNameContains = $.clusterNameContains;
+        this.id = $.id;
+        this.ids = $.ids;
     }
 
     public static Builder builder() {
@@ -62,6 +87,32 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         public Builder clusterNameContains(@Nullable String clusterNameContains) {
             $.clusterNameContains = clusterNameContains;
             return this;
+        }
+
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param ids list of databricks.Cluster ids
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(@Nullable List<String> ids) {
+            $.ids = ids;
+            return this;
+        }
+
+        /**
+         * @param ids list of databricks.Cluster ids
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(String... ids) {
+            return ids(List.of(ids));
         }
 
         public GetClustersPlainArgs build() {

@@ -14,6 +14,7 @@ from .cluster import *
 from .cluster_policy import *
 from .compliance_security_profile_workspace_setting import *
 from .connection import *
+from .dashboard import *
 from .dbfs_file import *
 from .default_namespace_setting import *
 from .directory import *
@@ -54,6 +55,7 @@ from .get_node_type import *
 from .get_notebook import *
 from .get_notebook_paths import *
 from .get_pipelines import *
+from .get_schema import *
 from .get_schemas import *
 from .get_service_principal import *
 from .get_service_principals import *
@@ -68,6 +70,7 @@ from .get_table import *
 from .get_tables import *
 from .get_user import *
 from .get_views import *
+from .get_volume import *
 from .get_volumes import *
 from .get_zones import *
 from .git_credential import *
@@ -144,6 +147,7 @@ from .user_role import *
 from .vector_search_endpoint import *
 from .vector_search_index import *
 from .volume import *
+from .workspace_binding import *
 from .workspace_conf import *
 from .workspace_file import *
 from ._inputs import *
@@ -229,6 +233,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/dashboard",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/dashboard:Dashboard": "Dashboard"
   }
  },
  {
@@ -869,6 +881,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceBinding",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceBinding:WorkspaceBinding": "WorkspaceBinding"
   }
  },
  {

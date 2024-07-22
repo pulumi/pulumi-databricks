@@ -45,6 +45,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterPolicyId);
     }
 
+    @Import(name="dashboardId")
+    private @Nullable Output<String> dashboardId;
+
+    public Optional<Output<String>> dashboardId() {
+        return Optional.ofNullable(this.dashboardId);
+    }
+
     @Import(name="directoryId")
     private @Nullable Output<String> directoryId;
 
@@ -193,6 +200,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.authorization = $.authorization;
         this.clusterId = $.clusterId;
         this.clusterPolicyId = $.clusterPolicyId;
+        this.dashboardId = $.dashboardId;
         this.directoryId = $.directoryId;
         this.directoryPath = $.directoryPath;
         this.experimentId = $.experimentId;
@@ -270,6 +278,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder clusterPolicyId(String clusterPolicyId) {
             return clusterPolicyId(Output.of(clusterPolicyId));
+        }
+
+        public Builder dashboardId(@Nullable Output<String> dashboardId) {
+            $.dashboardId = dashboardId;
+            return this;
+        }
+
+        public Builder dashboardId(String dashboardId) {
+            return dashboardId(Output.of(dashboardId));
         }
 
         public Builder directoryId(@Nullable Output<String> directoryId) {

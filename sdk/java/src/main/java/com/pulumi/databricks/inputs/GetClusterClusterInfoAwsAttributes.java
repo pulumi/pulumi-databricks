@@ -29,11 +29,25 @@ public final class GetClusterClusterInfoAwsAttributes extends com.pulumi.resourc
         return Optional.ofNullable(this.ebsVolumeCount);
     }
 
+    @Import(name="ebsVolumeIops")
+    private @Nullable Integer ebsVolumeIops;
+
+    public Optional<Integer> ebsVolumeIops() {
+        return Optional.ofNullable(this.ebsVolumeIops);
+    }
+
     @Import(name="ebsVolumeSize")
     private @Nullable Integer ebsVolumeSize;
 
     public Optional<Integer> ebsVolumeSize() {
         return Optional.ofNullable(this.ebsVolumeSize);
+    }
+
+    @Import(name="ebsVolumeThroughput")
+    private @Nullable Integer ebsVolumeThroughput;
+
+    public Optional<Integer> ebsVolumeThroughput() {
+        return Optional.ofNullable(this.ebsVolumeThroughput);
     }
 
     @Import(name="ebsVolumeType")
@@ -76,7 +90,9 @@ public final class GetClusterClusterInfoAwsAttributes extends com.pulumi.resourc
     private GetClusterClusterInfoAwsAttributes(GetClusterClusterInfoAwsAttributes $) {
         this.availability = $.availability;
         this.ebsVolumeCount = $.ebsVolumeCount;
+        this.ebsVolumeIops = $.ebsVolumeIops;
         this.ebsVolumeSize = $.ebsVolumeSize;
+        this.ebsVolumeThroughput = $.ebsVolumeThroughput;
         this.ebsVolumeType = $.ebsVolumeType;
         this.firstOnDemand = $.firstOnDemand;
         this.instanceProfileArn = $.instanceProfileArn;
@@ -112,8 +128,18 @@ public final class GetClusterClusterInfoAwsAttributes extends com.pulumi.resourc
             return this;
         }
 
+        public Builder ebsVolumeIops(@Nullable Integer ebsVolumeIops) {
+            $.ebsVolumeIops = ebsVolumeIops;
+            return this;
+        }
+
         public Builder ebsVolumeSize(@Nullable Integer ebsVolumeSize) {
             $.ebsVolumeSize = ebsVolumeSize;
+            return this;
+        }
+
+        public Builder ebsVolumeThroughput(@Nullable Integer ebsVolumeThroughput) {
+            $.ebsVolumeThroughput = ebsVolumeThroughput;
             return this;
         }
 

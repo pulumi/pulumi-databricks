@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    /**
+     * @return (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+     * 
+     */
     private @Nullable MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule awsStableIpRule;
     /**
-     * @return This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     * @return (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
      * 
      */
     private @Nullable MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule azureServiceEndpointRule;
 
     private MwsNetworkConnectivityConfigEgressConfigDefaultRules() {}
+    /**
+     * @return (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+     * 
+     */
     public Optional<MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule> awsStableIpRule() {
         return Optional.ofNullable(this.awsStableIpRule);
     }
     /**
-     * @return This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     * @return (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
      * 
      */
     public Optional<MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule> azureServiceEndpointRule() {

@@ -14,8 +14,9 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoDriver;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoExecutor;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoGcpAttributes;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScript;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoSpec;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoTerminationReason;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoWorkloadType;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -51,7 +52,7 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String clusterName;
-    private String clusterSource;
+    private @Nullable String clusterSource;
     private @Nullable String creatorUserName;
     /**
      * @return Additional tags for cluster resources.
@@ -63,14 +64,14 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String dataSecurityMode;
-    private Map<String,Object> defaultTags;
+    private @Nullable Map<String,Object> defaultTags;
     private @Nullable GetClusterClusterInfoDockerImage dockerImage;
     private @Nullable GetClusterClusterInfoDriver driver;
     /**
      * @return similar to `instance_pool_id`, but for driver node.
      * 
      */
-    private String driverInstancePoolId;
+    private @Nullable String driverInstancePoolId;
     /**
      * @return The node type of the Spark driver.
      * 
@@ -95,7 +96,7 @@ public final class GetClusterClusterInfo {
      */
     private @Nullable String instancePoolId;
     private @Nullable Integer jdbcPort;
-    private @Nullable Integer lastActivityTime;
+    private @Nullable Integer lastRestartedTime;
     private @Nullable Integer lastStateLossTime;
     /**
      * @return Any supported databricks.getNodeType id.
@@ -133,17 +134,19 @@ public final class GetClusterClusterInfo {
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    private String sparkVersion;
+    private @Nullable String sparkVersion;
+    private @Nullable GetClusterClusterInfoSpec spec;
     /**
      * @return SSH public key contents that will be added to each Spark node in this cluster.
      * 
      */
     private @Nullable List<String> sshPublicKeys;
     private @Nullable Integer startTime;
-    private String state;
+    private @Nullable String state;
     private @Nullable String stateMessage;
-    private @Nullable Integer terminateTime;
+    private @Nullable Integer terminatedTime;
     private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+    private @Nullable GetClusterClusterInfoWorkloadType workloadType;
 
     private GetClusterClusterInfo() {}
     public Optional<GetClusterClusterInfoAutoscale> autoscale() {
@@ -188,8 +191,8 @@ public final class GetClusterClusterInfo {
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
-    public String clusterSource() {
-        return this.clusterSource;
+    public Optional<String> clusterSource() {
+        return Optional.ofNullable(this.clusterSource);
     }
     public Optional<String> creatorUserName() {
         return Optional.ofNullable(this.creatorUserName);
@@ -209,7 +212,7 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.dataSecurityMode);
     }
     public Map<String,Object> defaultTags() {
-        return this.defaultTags;
+        return this.defaultTags == null ? Map.of() : this.defaultTags;
     }
     public Optional<GetClusterClusterInfoDockerImage> dockerImage() {
         return Optional.ofNullable(this.dockerImage);
@@ -221,8 +224,8 @@ public final class GetClusterClusterInfo {
      * @return similar to `instance_pool_id`, but for driver node.
      * 
      */
-    public String driverInstancePoolId() {
-        return this.driverInstancePoolId;
+    public Optional<String> driverInstancePoolId() {
+        return Optional.ofNullable(this.driverInstancePoolId);
     }
     /**
      * @return The node type of the Spark driver.
@@ -264,8 +267,8 @@ public final class GetClusterClusterInfo {
     public Optional<Integer> jdbcPort() {
         return Optional.ofNullable(this.jdbcPort);
     }
-    public Optional<Integer> lastActivityTime() {
-        return Optional.ofNullable(this.lastActivityTime);
+    public Optional<Integer> lastRestartedTime() {
+        return Optional.ofNullable(this.lastRestartedTime);
     }
     public Optional<Integer> lastStateLossTime() {
         return Optional.ofNullable(this.lastStateLossTime);
@@ -322,8 +325,11 @@ public final class GetClusterClusterInfo {
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    public String sparkVersion() {
-        return this.sparkVersion;
+    public Optional<String> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
+    }
+    public Optional<GetClusterClusterInfoSpec> spec() {
+        return Optional.ofNullable(this.spec);
     }
     /**
      * @return SSH public key contents that will be added to each Spark node in this cluster.
@@ -335,17 +341,20 @@ public final class GetClusterClusterInfo {
     public Optional<Integer> startTime() {
         return Optional.ofNullable(this.startTime);
     }
-    public String state() {
-        return this.state;
+    public Optional<String> state() {
+        return Optional.ofNullable(this.state);
     }
     public Optional<String> stateMessage() {
         return Optional.ofNullable(this.stateMessage);
     }
-    public Optional<Integer> terminateTime() {
-        return Optional.ofNullable(this.terminateTime);
+    public Optional<Integer> terminatedTime() {
+        return Optional.ofNullable(this.terminatedTime);
     }
     public Optional<GetClusterClusterInfoTerminationReason> terminationReason() {
         return Optional.ofNullable(this.terminationReason);
+    }
+    public Optional<GetClusterClusterInfoWorkloadType> workloadType() {
+        return Optional.ofNullable(this.workloadType);
     }
 
     public static Builder builder() {
@@ -367,14 +376,14 @@ public final class GetClusterClusterInfo {
         private @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
         private @Nullable Integer clusterMemoryMb;
         private @Nullable String clusterName;
-        private String clusterSource;
+        private @Nullable String clusterSource;
         private @Nullable String creatorUserName;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String dataSecurityMode;
-        private Map<String,Object> defaultTags;
+        private @Nullable Map<String,Object> defaultTags;
         private @Nullable GetClusterClusterInfoDockerImage dockerImage;
         private @Nullable GetClusterClusterInfoDriver driver;
-        private String driverInstancePoolId;
+        private @Nullable String driverInstancePoolId;
         private @Nullable String driverNodeTypeId;
         private @Nullable Boolean enableElasticDisk;
         private @Nullable Boolean enableLocalDiskEncryption;
@@ -383,7 +392,7 @@ public final class GetClusterClusterInfo {
         private @Nullable List<GetClusterClusterInfoInitScript> initScripts;
         private @Nullable String instancePoolId;
         private @Nullable Integer jdbcPort;
-        private @Nullable Integer lastActivityTime;
+        private @Nullable Integer lastRestartedTime;
         private @Nullable Integer lastStateLossTime;
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
@@ -393,13 +402,15 @@ public final class GetClusterClusterInfo {
         private @Nullable Map<String,Object> sparkConf;
         private @Nullable Integer sparkContextId;
         private @Nullable Map<String,Object> sparkEnvVars;
-        private String sparkVersion;
+        private @Nullable String sparkVersion;
+        private @Nullable GetClusterClusterInfoSpec spec;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable Integer startTime;
-        private String state;
+        private @Nullable String state;
         private @Nullable String stateMessage;
-        private @Nullable Integer terminateTime;
+        private @Nullable Integer terminatedTime;
         private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+        private @Nullable GetClusterClusterInfoWorkloadType workloadType;
         public Builder() {}
         public Builder(GetClusterClusterInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -429,7 +440,7 @@ public final class GetClusterClusterInfo {
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
     	      this.jdbcPort = defaults.jdbcPort;
-    	      this.lastActivityTime = defaults.lastActivityTime;
+    	      this.lastRestartedTime = defaults.lastRestartedTime;
     	      this.lastStateLossTime = defaults.lastStateLossTime;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
@@ -440,12 +451,14 @@ public final class GetClusterClusterInfo {
     	      this.sparkContextId = defaults.sparkContextId;
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sparkVersion = defaults.sparkVersion;
+    	      this.spec = defaults.spec;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
     	      this.startTime = defaults.startTime;
     	      this.state = defaults.state;
     	      this.stateMessage = defaults.stateMessage;
-    	      this.terminateTime = defaults.terminateTime;
+    	      this.terminatedTime = defaults.terminatedTime;
     	      this.terminationReason = defaults.terminationReason;
+    	      this.workloadType = defaults.workloadType;
         }
 
         @CustomType.Setter
@@ -509,10 +522,8 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder clusterSource(String clusterSource) {
-            if (clusterSource == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "clusterSource");
-            }
+        public Builder clusterSource(@Nullable String clusterSource) {
+
             this.clusterSource = clusterSource;
             return this;
         }
@@ -535,10 +546,8 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultTags(Map<String,Object> defaultTags) {
-            if (defaultTags == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "defaultTags");
-            }
+        public Builder defaultTags(@Nullable Map<String,Object> defaultTags) {
+
             this.defaultTags = defaultTags;
             return this;
         }
@@ -555,10 +564,8 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder driverInstancePoolId(String driverInstancePoolId) {
-            if (driverInstancePoolId == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "driverInstancePoolId");
-            }
+        public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
+
             this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
@@ -617,9 +624,9 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder lastActivityTime(@Nullable Integer lastActivityTime) {
+        public Builder lastRestartedTime(@Nullable Integer lastRestartedTime) {
 
-            this.lastActivityTime = lastActivityTime;
+            this.lastRestartedTime = lastRestartedTime;
             return this;
         }
         @CustomType.Setter
@@ -677,11 +684,15 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkVersion(String sparkVersion) {
-            if (sparkVersion == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "sparkVersion");
-            }
+        public Builder sparkVersion(@Nullable String sparkVersion) {
+
             this.sparkVersion = sparkVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder spec(@Nullable GetClusterClusterInfoSpec spec) {
+
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
@@ -700,10 +711,8 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder state(String state) {
-            if (state == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "state");
-            }
+        public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
@@ -714,15 +723,21 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder terminateTime(@Nullable Integer terminateTime) {
+        public Builder terminatedTime(@Nullable Integer terminatedTime) {
 
-            this.terminateTime = terminateTime;
+            this.terminatedTime = terminatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder terminationReason(@Nullable GetClusterClusterInfoTerminationReason terminationReason) {
 
             this.terminationReason = terminationReason;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder workloadType(@Nullable GetClusterClusterInfoWorkloadType workloadType) {
+
+            this.workloadType = workloadType;
             return this;
         }
         public GetClusterClusterInfo build() {
@@ -753,7 +768,7 @@ public final class GetClusterClusterInfo {
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
             _resultValue.jdbcPort = jdbcPort;
-            _resultValue.lastActivityTime = lastActivityTime;
+            _resultValue.lastRestartedTime = lastRestartedTime;
             _resultValue.lastStateLossTime = lastStateLossTime;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
@@ -764,12 +779,14 @@ public final class GetClusterClusterInfo {
             _resultValue.sparkContextId = sparkContextId;
             _resultValue.sparkEnvVars = sparkEnvVars;
             _resultValue.sparkVersion = sparkVersion;
+            _resultValue.spec = spec;
             _resultValue.sshPublicKeys = sshPublicKeys;
             _resultValue.startTime = startTime;
             _resultValue.state = state;
             _resultValue.stateMessage = stateMessage;
-            _resultValue.terminateTime = terminateTime;
+            _resultValue.terminatedTime = terminatedTime;
             _resultValue.terminationReason = terminationReason;
+            _resultValue.workloadType = workloadType;
             return _resultValue;
         }
     }

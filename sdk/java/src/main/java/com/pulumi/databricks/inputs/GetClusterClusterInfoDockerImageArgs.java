@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoDockerImageBasicAuthArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,11 +23,11 @@ public final class GetClusterClusterInfoDockerImageArgs extends com.pulumi.resou
         return Optional.ofNullable(this.basicAuth);
     }
 
-    @Import(name="url", required=true)
-    private Output<String> url;
+    @Import(name="url")
+    private @Nullable Output<String> url;
 
-    public Output<String> url() {
-        return this.url;
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     private GetClusterClusterInfoDockerImageArgs() {}
@@ -65,7 +64,7 @@ public final class GetClusterClusterInfoDockerImageArgs extends com.pulumi.resou
             return basicAuth(Output.of(basicAuth));
         }
 
-        public Builder url(Output<String> url) {
+        public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
@@ -75,9 +74,6 @@ public final class GetClusterClusterInfoDockerImageArgs extends com.pulumi.resou
         }
 
         public GetClusterClusterInfoDockerImageArgs build() {
-            if ($.url == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageArgs", "url");
-            }
             return $;
         }
     }

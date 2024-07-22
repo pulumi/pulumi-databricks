@@ -60,7 +60,7 @@ type CatalogWorkspaceBinding struct {
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
-	SecurableName pulumi.StringPtrOutput `pulumi:"securableName"`
+	SecurableName pulumi.StringOutput `pulumi:"securableName"`
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
@@ -251,8 +251,8 @@ func (o CatalogWorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 }
 
 // Name of securable. Change forces creation of a new resource.
-func (o CatalogWorkspaceBindingOutput) SecurableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.SecurableName }).(pulumi.StringPtrOutput)
+func (o CatalogWorkspaceBindingOutput) SecurableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringOutput { return v.SecurableName }).(pulumi.StringOutput)
 }
 
 // Type of securable. Default to `catalog`. Change forces creation of a new resource.

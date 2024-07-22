@@ -5,7 +5,6 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoDockerImageBasicAuth;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterClusterInfoDockerImage {
     private @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth;
-    private String url;
+    private @Nullable String url;
 
     private GetClusterClusterInfoDockerImage() {}
     public Optional<GetClusterClusterInfoDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
-    public String url() {
-        return this.url;
+    public Optional<String> url() {
+        return Optional.ofNullable(this.url);
     }
 
     public static Builder builder() {
@@ -34,7 +33,7 @@ public final class GetClusterClusterInfoDockerImage {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth;
-        private String url;
+        private @Nullable String url;
         public Builder() {}
         public Builder(GetClusterClusterInfoDockerImage defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,10 +48,8 @@ public final class GetClusterClusterInfoDockerImage {
             return this;
         }
         @CustomType.Setter
-        public Builder url(String url) {
-            if (url == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImage", "url");
-            }
+        public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

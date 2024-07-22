@@ -82,6 +82,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> clusterPolicyId() {
         return Codegen.optional(this.clusterPolicyId);
     }
+    @Export(name="dashboardId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dashboardId;
+
+    public Output<Optional<String>> dashboardId() {
+        return Codegen.optional(this.dashboardId);
+    }
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryId;
 

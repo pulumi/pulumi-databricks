@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Public Preview** This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
  * 
- * Allows you to create a [Network Connectivity Config] that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+ * Allows you to create a Network Connectivity Config that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
  * 
  * ## Example Usage
  * 
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var region = config.get("region");
  *         final var prefix = config.get("prefix");
  *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
- *             .name(String.format("Network Connectivity Config for %s", prefix))
+ *             .name(String.format("ncc-for-%s", prefix))
  *             .region(region)
  *             .build());
  * 

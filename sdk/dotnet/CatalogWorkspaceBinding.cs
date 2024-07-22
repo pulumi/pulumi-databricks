@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// Name of securable. Change forces creation of a new resource.
         /// </summary>
         [Output("securableName")]
-        public Output<string?> SecurableName { get; private set; } = null!;
+        public Output<string> SecurableName { get; private set; } = null!;
 
         /// <summary>
         /// Type of securable. Default to `catalog`. Change forces creation of a new resource.

@@ -1203,10 +1203,12 @@
         "databricks:index/JobEnvironment:JobEnvironment": {
             "properties": {
                 "environmentKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.\n"
                 },
                 "spec": {
-                    "$ref": "#/types/databricks:index/JobEnvironmentSpec:JobEnvironmentSpec"
+                    "$ref": "#/types/databricks:index/JobEnvironmentSpec:JobEnvironmentSpec",
+                    "description": "block describing the Environment. Consists of following attributes:\n"
                 }
             },
             "type": "object",
@@ -1217,13 +1219,15 @@
         "databricks:index/JobEnvironmentSpec:JobEnvironmentSpec": {
             "properties": {
                 "client": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "client version used by the environment.\n"
                 },
                 "dependencies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.\n\n"
                 }
             },
             "type": "object",
@@ -2793,7 +2797,8 @@
                     "description": "(List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.\n"
                 },
                 "environmentKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.\n"
                 },
                 "existingClusterId": {
                     "type": "string",
@@ -3058,7 +3063,8 @@
                     "description": "(List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.\n"
                 },
                 "environmentKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.\n"
                 },
                 "existingClusterId": {
                     "type": "string",
@@ -5868,7 +5874,16 @@
             "required": [
                 "quartzCronExpression",
                 "timezoneId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "pauseStatus",
+                        "quartzCronExpression",
+                        "timezoneId"
+                    ]
+                }
+            }
         },
         "databricks:index/LakehouseMonitorSnapshot:LakehouseMonitorSnapshot": {
             "type": "object"
@@ -6179,7 +6194,15 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "tableNamePrefix"
+                    ]
+                }
+            }
         },
         "databricks:index/ModelServingConfigServedEntity:ModelServingConfigServedEntity": {
             "properties": {
@@ -6472,7 +6495,8 @@
                         "modelName",
                         "modelVersion",
                         "name",
-                        "workloadSize"
+                        "workloadSize",
+                        "workloadType"
                     ]
                 }
             }
@@ -6770,10 +6794,12 @@
         "databricks:index/MwsNetworkConnectivityConfigEgressConfig:MwsNetworkConnectivityConfigEgressConfig": {
             "properties": {
                 "defaultRules": {
-                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRules:MwsNetworkConnectivityConfigEgressConfigDefaultRules"
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRules:MwsNetworkConnectivityConfigEgressConfigDefaultRules",
+                    "description": "block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:\n"
                 },
                 "targetRules": {
-                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRules:MwsNetworkConnectivityConfigEgressConfigTargetRules"
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRules:MwsNetworkConnectivityConfigEgressConfigTargetRules",
+                    "description": "block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:\n"
                 }
             },
             "type": "object"
@@ -6781,11 +6807,12 @@
         "databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRules:MwsNetworkConnectivityConfigEgressConfigDefaultRules": {
             "properties": {
                 "awsStableIpRule": {
-                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule"
+                    "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule",
+                    "description": "(AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:\n"
                 },
                 "azureServiceEndpointRule": {
                     "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule:MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule",
-                    "description": "This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.\n"
+                    "description": "(Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:\n"
                 }
             },
             "type": "object"
@@ -6796,7 +6823,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "list of IP CIDR blocks.\n"
                 }
             },
             "type": "object"
@@ -6807,16 +6835,19 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "list of subnets from which Databricks network traffic originates when accessing your Azure resources.\n"
                 },
                 "targetRegion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the Azure region in which this service endpoint rule applies.\n"
                 },
                 "targetServices": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "the Azure services to which this service endpoint rule applies to.\n"
                 }
             },
             "type": "object"
@@ -6827,7 +6858,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule:MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule"
-                    }
+                    },
+                    "description": "(Azure only) - list containing information about configure Azure Private Endpoints.\n"
                 }
             },
             "type": "object"
@@ -7879,8 +7911,7 @@
         "databricks:index/QualityMonitorSchedule:QualityMonitorSchedule": {
             "properties": {
                 "pauseStatus": {
-                    "type": "string",
-                    "description": "optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).\n"
+                    "type": "string"
                 },
                 "quartzCronExpression": {
                     "type": "string",
@@ -7895,7 +7926,16 @@
             "required": [
                 "quartzCronExpression",
                 "timezoneId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "pauseStatus",
+                        "quartzCronExpression",
+                        "timezoneId"
+                    ]
+                }
+            }
         },
         "databricks:index/QualityMonitorSnapshot:QualityMonitorSnapshot": {
             "type": "object"
@@ -9270,7 +9310,7 @@
                 "jdbcPort": {
                     "type": "integer"
                 },
-                "lastActivityTime": {
+                "lastRestartedTime": {
                     "type": "integer"
                 },
                 "lastStateLossTime": {
@@ -9316,6 +9356,9 @@
                     "type": "string",
                     "description": "[Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.\n"
                 },
+                "spec": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpec:getClusterClusterInfoSpec"
+                },
                 "sshPublicKeys": {
                     "type": "array",
                     "items": {
@@ -9332,30 +9375,17 @@
                 "stateMessage": {
                     "type": "string"
                 },
-                "terminateTime": {
+                "terminatedTime": {
                     "type": "integer"
                 },
                 "terminationReason": {
                     "$ref": "#/types/databricks:index/getClusterClusterInfoTerminationReason:getClusterClusterInfoTerminationReason"
+                },
+                "workloadType": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoWorkloadType:getClusterClusterInfoWorkloadType"
                 }
             },
-            "type": "object",
-            "required": [
-                "clusterSource",
-                "defaultTags",
-                "driverInstancePoolId",
-                "sparkVersion",
-                "state"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": [
-                        "defaultTags",
-                        "sparkVersion",
-                        "state"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "databricks:index/getClusterClusterInfoAutoscale:getClusterClusterInfoAutoscale": {
             "properties": {
@@ -9376,7 +9406,13 @@
                 "ebsVolumeCount": {
                     "type": "integer"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
                     "type": "integer"
                 },
                 "ebsVolumeType": {
@@ -9405,8 +9441,22 @@
                 "firstOnDemand": {
                     "type": "integer"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoAzureAttributesLogAnalyticsInfo:getClusterClusterInfoAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoAzureAttributesLogAnalyticsInfo:getClusterClusterInfoAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -9482,26 +9532,18 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "url"
-            ]
+            "type": "object"
         },
         "databricks:index/getClusterClusterInfoDockerImageBasicAuth:getClusterClusterInfoDockerImageBasicAuth": {
             "properties": {
                 "password": {
-                    "type": "string",
-                    "secret": true
+                    "type": "string"
                 },
                 "username": {
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "password",
-                "username"
-            ]
+            "type": "object"
         },
         "databricks:index/getClusterClusterInfoDriver:getClusterClusterInfoDriver": {
             "properties": {
@@ -9715,6 +9757,584 @@
                 "destination"
             ]
         },
+        "databricks:index/getClusterClusterInfoSpec:getClusterClusterInfoSpec": {
+            "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean"
+                },
+                "autoscale": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecAutoscale:getClusterClusterInfoSpecAutoscale"
+                },
+                "awsAttributes": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecAwsAttributes:getClusterClusterInfoSpecAwsAttributes"
+                },
+                "azureAttributes": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecAzureAttributes:getClusterClusterInfoSpecAzureAttributes"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The id of the cluster\n"
+                },
+                "clusterLogConf": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecClusterLogConf:getClusterClusterInfoSpecClusterLogConf"
+                },
+                "clusterMountInfos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getClusterClusterInfoSpecClusterMountInfo:getClusterClusterInfoSpecClusterMountInfo"
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The exact name of the cluster to search\n"
+                },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Additional tags for cluster resources.\n"
+                },
+                "dataSecurityMode": {
+                    "type": "string",
+                    "description": "Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.\n"
+                },
+                "dockerImage": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecDockerImage:getClusterClusterInfoSpecDockerImage"
+                },
+                "driverInstancePoolId": {
+                    "type": "string",
+                    "description": "similar to `instance_pool_id`, but for driver node.\n"
+                },
+                "driverNodeTypeId": {
+                    "type": "string",
+                    "description": "The node type of the Spark driver.\n"
+                },
+                "enableElasticDisk": {
+                    "type": "boolean",
+                    "description": "Use autoscaling local storage.\n"
+                },
+                "enableLocalDiskEncryption": {
+                    "type": "boolean",
+                    "description": "Enable local disk encryption.\n"
+                },
+                "gcpAttributes": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecGcpAttributes:getClusterClusterInfoSpecGcpAttributes"
+                },
+                "idempotencyToken": {
+                    "type": "string",
+                    "description": "An optional token to guarantee the idempotency of cluster creation requests.\n"
+                },
+                "initScripts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScript:getClusterClusterInfoSpecInitScript"
+                    }
+                },
+                "instancePoolId": {
+                    "type": "string",
+                    "description": "The pool of idle instances the cluster is attached to.\n"
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getClusterClusterInfoSpecLibrary:getClusterClusterInfoSpecLibrary"
+                    }
+                },
+                "nodeTypeId": {
+                    "type": "string",
+                    "description": "Any supported databricks.getNodeType id.\n"
+                },
+                "numWorkers": {
+                    "type": "integer"
+                },
+                "policyId": {
+                    "type": "string",
+                    "description": "Identifier of Cluster Policy to validate cluster and preset certain defaults.\n"
+                },
+                "runtimeEngine": {
+                    "type": "string",
+                    "description": "The type of runtime of the cluster\n"
+                },
+                "singleUserName": {
+                    "type": "string",
+                    "description": "The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).\n"
+                },
+                "sparkConf": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map with key-value pairs to fine-tune Spark clusters.\n"
+                },
+                "sparkEnvVars": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.\n"
+                },
+                "sparkVersion": {
+                    "type": "string",
+                    "description": "[Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.\n"
+                },
+                "sshPublicKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SSH public key contents that will be added to each Spark node in this cluster.\n"
+                },
+                "workloadType": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecWorkloadType:getClusterClusterInfoSpecWorkloadType"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterId",
+                "driverInstancePoolId",
+                "driverNodeTypeId",
+                "enableElasticDisk",
+                "enableLocalDiskEncryption",
+                "nodeTypeId",
+                "sparkVersion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "sparkVersion"
+                    ]
+                }
+            }
+        },
+        "databricks:index/getClusterClusterInfoSpecAutoscale:getClusterClusterInfoSpecAutoscale": {
+            "properties": {
+                "maxWorkers": {
+                    "type": "integer"
+                },
+                "minWorkers": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecAwsAttributes:getClusterClusterInfoSpecAwsAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string"
+                },
+                "ebsVolumeCount": {
+                    "type": "integer"
+                },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
+                "ebsVolumeSize": {
+                    "type": "integer"
+                },
+                "ebsVolumeThroughput": {
+                    "type": "integer"
+                },
+                "ebsVolumeType": {
+                    "type": "string"
+                },
+                "firstOnDemand": {
+                    "type": "integer"
+                },
+                "instanceProfileArn": {
+                    "type": "string"
+                },
+                "spotBidPricePercent": {
+                    "type": "integer"
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecAzureAttributes:getClusterClusterInfoSpecAzureAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string"
+                },
+                "firstOnDemand": {
+                    "type": "integer"
+                },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo:getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo"
+                },
+                "spotBidMaxPrice": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo:getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecClusterLogConf:getClusterClusterInfoSpecClusterLogConf": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecClusterLogConfDbfs:getClusterClusterInfoSpecClusterLogConfDbfs"
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecClusterLogConfS3:getClusterClusterInfoSpecClusterLogConfS3"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecClusterLogConfDbfs:getClusterClusterInfoSpecClusterLogConfDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecClusterLogConfS3:getClusterClusterInfoSpecClusterLogConfS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "enableEncryption": {
+                    "type": "boolean"
+                },
+                "encryptionType": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "kmsKey": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecClusterMountInfo:getClusterClusterInfoSpecClusterMountInfo": {
+            "properties": {
+                "localMountDirPath": {
+                    "type": "string"
+                },
+                "networkFilesystemInfo": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo:getClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo"
+                },
+                "remoteMountDirPath": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "localMountDirPath",
+                "networkFilesystemInfo"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo:getClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo": {
+            "properties": {
+                "mountOptions": {
+                    "type": "string"
+                },
+                "serverAddress": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "serverAddress"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecDockerImage:getClusterClusterInfoSpecDockerImage": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecDockerImageBasicAuth:getClusterClusterInfoSpecDockerImageBasicAuth"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecDockerImageBasicAuth:getClusterClusterInfoSpecDockerImageBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecGcpAttributes:getClusterClusterInfoSpecGcpAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string"
+                },
+                "bootDiskSize": {
+                    "type": "integer"
+                },
+                "googleServiceAccount": {
+                    "type": "string"
+                },
+                "localSsdCount": {
+                    "type": "integer"
+                },
+                "usePreemptibleExecutors": {
+                    "type": "boolean"
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScript:getClusterClusterInfoSpecInitScript": {
+            "properties": {
+                "abfss": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptAbfss:getClusterClusterInfoSpecInitScriptAbfss"
+                },
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptDbfs:getClusterClusterInfoSpecInitScriptDbfs",
+                    "deprecationMessage": "For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'."
+                },
+                "file": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptFile:getClusterClusterInfoSpecInitScriptFile"
+                },
+                "gcs": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptGcs:getClusterClusterInfoSpecInitScriptGcs"
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptS3:getClusterClusterInfoSpecInitScriptS3"
+                },
+                "volumes": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptVolumes:getClusterClusterInfoSpecInitScriptVolumes"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecInitScriptWorkspace:getClusterClusterInfoSpecInitScriptWorkspace"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptAbfss:getClusterClusterInfoSpecInitScriptAbfss": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptDbfs:getClusterClusterInfoSpecInitScriptDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptFile:getClusterClusterInfoSpecInitScriptFile": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptGcs:getClusterClusterInfoSpecInitScriptGcs": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptS3:getClusterClusterInfoSpecInitScriptS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "enableEncryption": {
+                    "type": "boolean"
+                },
+                "encryptionType": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "kmsKey": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptVolumes:getClusterClusterInfoSpecInitScriptVolumes": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecInitScriptWorkspace:getClusterClusterInfoSpecInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecLibrary:getClusterClusterInfoSpecLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecLibraryCran:getClusterClusterInfoSpecLibraryCran"
+                },
+                "egg": {
+                    "type": "string"
+                },
+                "jar": {
+                    "type": "string"
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecLibraryMaven:getClusterClusterInfoSpecLibraryMaven"
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecLibraryPypi:getClusterClusterInfoSpecLibraryPypi"
+                },
+                "requirements": {
+                    "type": "string"
+                },
+                "whl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoSpecLibraryCran:getClusterClusterInfoSpecLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecLibraryMaven:getClusterClusterInfoSpecLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string"
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecLibraryPypi:getClusterClusterInfoSpecLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecWorkloadType:getClusterClusterInfoSpecWorkloadType": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoSpecWorkloadTypeClients:getClusterClusterInfoSpecWorkloadTypeClients"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoSpecWorkloadTypeClients:getClusterClusterInfoSpecWorkloadTypeClients": {
+            "properties": {
+                "jobs": {
+                    "type": "boolean"
+                },
+                "notebooks": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/getClusterClusterInfoTerminationReason:getClusterClusterInfoTerminationReason": {
             "properties": {
                 "code": {
@@ -9728,6 +10348,28 @@
                 },
                 "type": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoWorkloadType:getClusterClusterInfoWorkloadType": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoWorkloadTypeClients:getClusterClusterInfoWorkloadTypeClients"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients"
+            ]
+        },
+        "databricks:index/getClusterClusterInfoWorkloadTypeClients:getClusterClusterInfoWorkloadTypeClients": {
+            "properties": {
+                "jobs": {
+                    "type": "boolean"
+                },
+                "notebooks": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -14404,6 +15046,103 @@
             },
             "type": "object"
         },
+        "databricks:index/getSchemaSchemaInfo:getSchemaSchemaInfo": {
+            "properties": {
+                "browseOnly": {
+                    "type": "boolean",
+                    "description": "indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.\n"
+                },
+                "catalogName": {
+                    "type": "string",
+                    "description": "the name of the catalog where the schema is.\n"
+                },
+                "catalogType": {
+                    "type": "string",
+                    "description": "the type of the parent catalog.\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "the comment attached to the volume\n"
+                },
+                "createdAt": {
+                    "type": "integer",
+                    "description": "time at which this schema was created, in epoch milliseconds.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "username of schema creator.\n"
+                },
+                "effectivePredictiveOptimizationFlag": {
+                    "$ref": "#/types/databricks:index/getSchemaSchemaInfoEffectivePredictiveOptimizationFlag:getSchemaSchemaInfoEffectivePredictiveOptimizationFlag",
+                    "description": "information about actual state of predictive optimization.\n"
+                },
+                "enablePredictiveOptimization": {
+                    "type": "string",
+                    "description": "whether predictive optimization should be enabled for this object and objects under it.\n"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "the two-level (fully qualified) name of the schema\n"
+                },
+                "metastoreId": {
+                    "type": "string",
+                    "description": "the unique identifier of the metastore\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "a fully qualified name of databricks_schema: *`catalog`.`schema`*\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "the identifier of the user who owns the schema\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "map of properties set on the schema\n"
+                },
+                "schemaId": {
+                    "type": "string",
+                    "description": "the unique identifier of the volume\n"
+                },
+                "storageLocation": {
+                    "type": "string",
+                    "description": "the storage location on the cloud.\n"
+                },
+                "storageRoot": {
+                    "type": "string",
+                    "description": "storage root URL for managed tables within schema.\n"
+                },
+                "updatedAt": {
+                    "type": "integer",
+                    "description": "the timestamp of the last time changes were made to the schema\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "the identifier of the user who updated the schema last time\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getSchemaSchemaInfoEffectivePredictiveOptimizationFlag:getSchemaSchemaInfoEffectivePredictiveOptimizationFlag": {
+            "properties": {
+                "inheritedFromName": {
+                    "type": "string"
+                },
+                "inheritedFromType": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
         "databricks:index/getShareObject:getShareObject": {
             "properties": {
                 "addedAt": {
@@ -15110,6 +15849,98 @@
             "required": [
                 "tableFullName"
             ]
+        },
+        "databricks:index/getVolumeVolumeInfo:getVolumeVolumeInfo": {
+            "properties": {
+                "accessPoint": {
+                    "type": "string",
+                    "description": "the AWS access point to use when accessing s3 bucket for this volume's external location\n"
+                },
+                "browseOnly": {
+                    "type": "boolean",
+                    "description": "indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.\n"
+                },
+                "catalogName": {
+                    "type": "string",
+                    "description": "the name of the catalog where the schema and the volume are\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "the comment attached to the volume\n"
+                },
+                "createdAt": {
+                    "type": "integer",
+                    "description": "the Unix timestamp at the volume's creation\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "the identifier of the user who created the volume\n"
+                },
+                "encryptionDetails": {
+                    "$ref": "#/types/databricks:index/getVolumeVolumeInfoEncryptionDetails:getVolumeVolumeInfoEncryptionDetails",
+                    "description": "encryption options that apply to clients connecting to cloud storage\n"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "the three-level (fully qualified) name of the volume\n"
+                },
+                "metastoreId": {
+                    "type": "string",
+                    "description": "the unique identifier of the metastore\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "the identifier of the user who owns the volume\n"
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "the name of the schema where the volume is\n"
+                },
+                "storageLocation": {
+                    "type": "string",
+                    "description": "the storage location on the cloud\n"
+                },
+                "updatedAt": {
+                    "type": "integer",
+                    "description": "the timestamp of the last time changes were made to the volume\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "the identifier of the user who updated the volume last time\n"
+                },
+                "volumeId": {
+                    "type": "string",
+                    "description": "the unique identifier of the volume\n"
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "whether the volume is `MANAGED` or `EXTERNAL`\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getVolumeVolumeInfoEncryptionDetails:getVolumeVolumeInfoEncryptionDetails": {
+            "properties": {
+                "sseEncryptionDetails": {
+                    "$ref": "#/types/databricks:index/getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails:getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails:getVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails": {
+            "properties": {
+                "algorithm": {
+                    "type": "string"
+                },
+                "awsKmsKeyArn": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -15747,6 +16578,9 @@
                     "description": "ID of the workspace. Change forces creation of a new resource.\n"
                 }
             },
+            "required": [
+                "securableName"
+            ],
             "inputProperties": {
                 "bindingType": {
                     "type": "string",
@@ -15760,8 +16594,7 @@
                 },
                 "securableName": {
                     "type": "string",
-                    "description": "Name of securable. Change forces creation of a new resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Name of securable. Change forces creation of a new resource.\n"
                 },
                 "securableType": {
                     "type": "string",
@@ -15789,8 +16622,7 @@
                     },
                     "securableName": {
                         "type": "string",
-                        "description": "Name of securable. Change forces creation of a new resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of securable. Change forces creation of a new resource.\n"
                     },
                     "securableType": {
                         "type": "string",
@@ -15851,7 +16683,7 @@
                 },
                 "dataSecurityMode": {
                     "type": "string",
-                    "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
+                    "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
                 },
                 "defaultTags": {
                     "type": "object",
@@ -16013,7 +16845,7 @@
                 },
                 "dataSecurityMode": {
                     "type": "string",
-                    "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
+                    "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
                 },
                 "dockerImage": {
                     "$ref": "#/types/databricks:index/ClusterDockerImage:ClusterDockerImage"
@@ -16158,7 +16990,7 @@
                     },
                     "dataSecurityMode": {
                         "type": "string",
-                        "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
+                        "description": "Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.\n"
                     },
                     "defaultTags": {
                         "type": "object",
@@ -16574,6 +17406,182 @@
                     "readOnly": {
                         "type": "boolean",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/dashboard:Dashboard": {
+            "description": "\n\n## Import\n\nYou can import a `databricks_dashboard` resource with ID like the following:\n\nbash\n\n```sh\n$ pulumi import databricks:index/dashboard:Dashboard this \u003cdashboard-id\u003e\n```\n\n",
+            "properties": {
+                "createTime": {
+                    "type": "string"
+                },
+                "dashboardChangeDetected": {
+                    "type": "boolean"
+                },
+                "dashboardId": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the dashboard.\n"
+                },
+                "embedCredentials": {
+                    "type": "boolean",
+                    "description": "Whether to embed credentials in the dashboard. Default is `true`.\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.\n"
+                },
+                "lifecycleState": {
+                    "type": "string"
+                },
+                "md5": {
+                    "type": "string"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "serializedDashboard": {
+                    "type": "string",
+                    "description": "The contents of the dashboard in serialized string form. Conflicts with `file_path`.\n"
+                },
+                "updateTime": {
+                    "type": "string"
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "The warehouse ID used to run the dashboard.\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "dashboardId",
+                "displayName",
+                "etag",
+                "lifecycleState",
+                "md5",
+                "parentPath",
+                "path",
+                "updateTime",
+                "warehouseId"
+            ],
+            "inputProperties": {
+                "createTime": {
+                    "type": "string"
+                },
+                "dashboardChangeDetected": {
+                    "type": "boolean"
+                },
+                "dashboardId": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the dashboard.\n"
+                },
+                "embedCredentials": {
+                    "type": "boolean",
+                    "description": "Whether to embed credentials in the dashboard. Default is `true`.\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.\n"
+                },
+                "lifecycleState": {
+                    "type": "string"
+                },
+                "md5": {
+                    "type": "string"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n",
+                    "willReplaceOnChanges": true
+                },
+                "path": {
+                    "type": "string"
+                },
+                "serializedDashboard": {
+                    "type": "string",
+                    "description": "The contents of the dashboard in serialized string form. Conflicts with `file_path`.\n"
+                },
+                "updateTime": {
+                    "type": "string"
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "The warehouse ID used to run the dashboard.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "parentPath",
+                "warehouseId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Dashboard resources.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string"
+                    },
+                    "dashboardChangeDetected": {
+                        "type": "boolean"
+                    },
+                    "dashboardId": {
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the dashboard.\n"
+                    },
+                    "embedCredentials": {
+                        "type": "boolean",
+                        "description": "Whether to embed credentials in the dashboard. Default is `true`.\n"
+                    },
+                    "etag": {
+                        "type": "string"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.\n"
+                    },
+                    "lifecycleState": {
+                        "type": "string"
+                    },
+                    "md5": {
+                        "type": "string"
+                    },
+                    "parentPath": {
+                        "type": "string",
+                        "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "serializedDashboard": {
+                        "type": "string",
+                        "description": "The contents of the dashboard in serialized string form. Conflicts with `file_path`.\n"
+                    },
+                    "updateTime": {
+                        "type": "string"
+                    },
+                    "warehouseId": {
+                        "type": "string",
+                        "description": "The warehouse ID used to run the dashboard.\n"
                     }
                 },
                 "type": "object"
@@ -20720,7 +21728,7 @@
             }
         },
         "databricks:index/mwsNccBinding:MwsNccBinding": {
-            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to attach a Network Connectivity Config object to a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).\n\nThe NCC and workspace must be in the same region.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n",
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to attach a Network Connectivity Config object to a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).\n\nThe NCC and workspace must be in the same region.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `ncc-for-${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"ncc-for-{prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"ncc-for-{prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"ncc-for-%v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"ncc-for-%s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: ncc-for-${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n",
             "properties": {
                 "networkConnectivityConfigId": {
                     "type": "string",
@@ -20767,7 +21775,7 @@
             }
         },
         "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule": {
-            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Note** This feature is only available in Azure.\n\nAllows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst storage = new databricks.MwsNccPrivateEndpointRule(\"storage\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    resourceId: \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    groupId: \"blob\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nstorage = databricks.MwsNccPrivateEndpointRule(\"storage\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    resource_id=\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    group_id=\"blob\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var storage = new Databricks.MwsNccPrivateEndpointRule(\"storage\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        ResourceId = \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n        GroupId = \"blob\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccPrivateEndpointRule(ctx, \"storage\", \u0026databricks.MwsNccPrivateEndpointRuleArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tResourceId:                  pulumi.String(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\"),\n\t\t\tGroupId:                     pulumi.String(\"blob\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRule;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var storage = new MwsNccPrivateEndpointRule(\"storage\", MwsNccPrivateEndpointRuleArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .resourceId(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\")\n            .groupId(\"blob\")\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  storage:\n    type: databricks:MwsNccPrivateEndpointRule\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      resourceId: /subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\n      groupId: blob\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule \u003cnetwork_connectivity_config_id\u003e/\u003crule_id\u003e\n```\n\n",
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Note** This feature is only available in Azure.\n\nAllows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `ncc-for-${prefix}`,\n    region: region,\n});\nconst storage = new databricks.MwsNccPrivateEndpointRule(\"storage\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    resourceId: \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    groupId: \"blob\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"ncc-for-{prefix}\",\n    region=region)\nstorage = databricks.MwsNccPrivateEndpointRule(\"storage\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    resource_id=\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n    group_id=\"blob\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"ncc-for-{prefix}\",\n        Region = region,\n    });\n\n    var storage = new Databricks.MwsNccPrivateEndpointRule(\"storage\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        ResourceId = \"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\",\n        GroupId = \"blob\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"ncc-for-%v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccPrivateEndpointRule(ctx, \"storage\", \u0026databricks.MwsNccPrivateEndpointRuleArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tResourceId:                  pulumi.String(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\"),\n\t\t\tGroupId:                     pulumi.String(\"blob\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRule;\nimport com.pulumi.databricks.MwsNccPrivateEndpointRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"ncc-for-%s\", prefix))\n            .region(region)\n            .build());\n\n        var storage = new MwsNccPrivateEndpointRule(\"storage\", MwsNccPrivateEndpointRuleArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .resourceId(\"/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\")\n            .groupId(\"blob\")\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: ncc-for-${prefix}\n      region: ${region}\n  storage:\n    type: databricks:MwsNccPrivateEndpointRule\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      resourceId: /subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa\n      groupId: blob\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule \u003cnetwork_connectivity_config_id\u003e/\u003crule_id\u003e\n```\n\n",
             "properties": {
                 "connectionState": {
                     "type": "string",
@@ -20925,7 +21933,7 @@
             }
         },
         "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig": {
-            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to create a [Network Connectivity Config] that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `Network Connectivity Config for ${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"Network Connectivity Config for {prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"Network Connectivity Config for {prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"Network Connectivity Config for %v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"Network Connectivity Config for %s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: Network Connectivity Config for ${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n* databricks.MwsNccPrivateEndpointRule to create a private endpoint rule.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc \u003caccount_id\u003e/\u003cnetwork_connectivity_config_id\u003e\n```\n\n",
+            "description": "\u003e **Note** Initialize provider with `alias = \"account\"`, `host = \"https://accounts.azuredatabricks.net\"` and use `provider = databricks.account` for all `databricks_mws_*` resources.\n\n\u003e **Public Preview** This feature is available for AWS \u0026 Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.\n\nAllows you to create a Network Connectivity Config that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst config = new pulumi.Config();\nconst region = config.requireObject(\"region\");\nconst prefix = config.requireObject(\"prefix\");\nconst ncc = new databricks.MwsNetworkConnectivityConfig(\"ncc\", {\n    name: `ncc-for-${prefix}`,\n    region: region,\n});\nconst nccBinding = new databricks.MwsNccBinding(\"ncc_binding\", {\n    networkConnectivityConfigId: ncc.networkConnectivityConfigId,\n    workspaceId: databricksWorkspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nconfig = pulumi.Config()\nregion = config.require_object(\"region\")\nprefix = config.require_object(\"prefix\")\nncc = databricks.MwsNetworkConnectivityConfig(\"ncc\",\n    name=f\"ncc-for-{prefix}\",\n    region=region)\nncc_binding = databricks.MwsNccBinding(\"ncc_binding\",\n    network_connectivity_config_id=ncc.network_connectivity_config_id,\n    workspace_id=databricks_workspace_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var region = config.RequireObject\u003cdynamic\u003e(\"region\");\n    var prefix = config.RequireObject\u003cdynamic\u003e(\"prefix\");\n    var ncc = new Databricks.MwsNetworkConnectivityConfig(\"ncc\", new()\n    {\n        Name = $\"ncc-for-{prefix}\",\n        Region = region,\n    });\n\n    var nccBinding = new Databricks.MwsNccBinding(\"ncc_binding\", new()\n    {\n        NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,\n        WorkspaceId = databricksWorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tregion := cfg.RequireObject(\"region\")\n\t\tprefix := cfg.RequireObject(\"prefix\")\n\t\tncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, \"ncc\", \u0026databricks.MwsNetworkConnectivityConfigArgs{\n\t\t\tName:   pulumi.String(fmt.Sprintf(\"ncc-for-%v\", prefix)),\n\t\t\tRegion: pulumi.Any(region),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMwsNccBinding(ctx, \"ncc_binding\", \u0026databricks.MwsNccBindingArgs{\n\t\t\tNetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,\n\t\t\tWorkspaceId:                 pulumi.Any(databricksWorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfig;\nimport com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;\nimport com.pulumi.databricks.MwsNccBinding;\nimport com.pulumi.databricks.MwsNccBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var region = config.get(\"region\");\n        final var prefix = config.get(\"prefix\");\n        var ncc = new MwsNetworkConnectivityConfig(\"ncc\", MwsNetworkConnectivityConfigArgs.builder()\n            .name(String.format(\"ncc-for-%s\", prefix))\n            .region(region)\n            .build());\n\n        var nccBinding = new MwsNccBinding(\"nccBinding\", MwsNccBindingArgs.builder()\n            .networkConnectivityConfigId(ncc.networkConnectivityConfigId())\n            .workspaceId(databricksWorkspaceId)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  region:\n    type: dynamic\n  prefix:\n    type: dynamic\nresources:\n  ncc:\n    type: databricks:MwsNetworkConnectivityConfig\n    properties:\n      name: ncc-for-${prefix}\n      region: ${region}\n  nccBinding:\n    type: databricks:MwsNccBinding\n    name: ncc_binding\n    properties:\n      networkConnectivityConfigId: ${ncc.networkConnectivityConfigId}\n      workspaceId: ${databricksWorkspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n* databricks.MwsNccBinding to attach an NCC to a workspace.\n* databricks.MwsNccPrivateEndpointRule to create a private endpoint rule.\n\n## Import\n\nThis resource can be imported by Databricks account ID and Network Connectivity Config ID.\n\n```sh\n$ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc \u003caccount_id\u003e/\u003cnetwork_connectivity_config_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string"
@@ -21026,7 +22034,7 @@
             }
         },
         "databricks:index/mwsNetworks:MwsNetworks": {
-            "description": "## Databricks on AWS usage\n\n\u003e **Note** Initialize provider with `alias = \"mws\"`, `host  = \"https://accounts.cloud.databricks.com\"` and use `provider = databricks.mws`\n\nUse this resource to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to at least two subnets for each workspace, with each subnet in a different Availability Zone. You cannot specify more than one Databricks workspace subnet per Availability Zone in the Create network configuration API call. You can have more than one subnet per Availability Zone as part of your network setup, but you can choose only one subnet per Availability Zone for the Databricks workspace.\n* Databricks assigns two IP addresses per node, one for management traffic and one for Spark applications. The total number of instances for each subnet is equal to half of the available IP addresses.\n* Each subnet must have a netmask between /17 and /25.\n* Subnets must be private.\n* Subnets must have outbound access to the public network using a aws_nat_gateway, or other similar customer-managed appliance infrastructure.\n* The NAT gateway must be set up in its subnet (public_subnets in the example below) that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure.\n\n\u003e **Note** The NAT gateway needs only one IP address per AZ. Hence, the public subnet only needs two IP addresses. In order to limit the number of IP addresses in the public subnet, you can specify a secondary CIDR block (cidr_block_public) using the argument secondary_cidr_blocks then pass it to the public_subnets argument. Please review the [IPv4 CIDR block association restrictions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) when choosing the secondary cidr block.\n\nPlease follow this complete runnable example \u0026 subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace’s GKE cluster nodes.\n* The subnet must have a netmask between /29 and /9.\n* Databricks must have access to 2 secondary IP ranges, one between /21 to /9 for workspace’s GKE cluster pods, and one between /27 to /16 for workspace’s GKE cluster services.\n* Subnet must have outbound access to the public network using a gcp_compute_router_nat or other similar customer-managed appliance infrastructure.\n\nPlease follow this complete runnable example]\n  private_subnets = [cidrsubnet(var.cidr_block, 3, 1),\n  cidrsubnet(var.cidr_block, 3, 2)]\n\n  default_security_group_egress = [{\n    cidr_blocks = \"0.0.0.0/0\"\n  }]\n\n  default_security_group_ingress = [{\n    description = \"Allow all internal TCP and UDP\"\n    self        = true\n  }]\n}\n\nresource \"databricks.MwsNetworks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n}\n```\n\nIn order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from [mws_vpc_endpoint](mws_vpc_endpoint.md) resources into the [databricks_mws_networks](databricks_mws_networks.md) resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n  depends_on = [aws_vpc_endpoint.workspace, aws_vpc_endpoint.relay]\n}\n```\n\n### Creating a Databricks on GCP workspace\n\n```hcl\nvariable \"databricks_account_id\" {\n  description = \"Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/\"\n}\n\nresource \"google_compute_network\" \"dbx_private_vpc\" {\n  project                 = var.google_project\n  name                    = \"tf-network-${random_string.suffix.result}\"\n  auto_create_subnetworks = false\n}\n\nresource \"google_compute_subnetwork\" \"network-with-private-secondary-ip-ranges\" {\n  name          = \"test-dbx-${random_string.suffix.result}\"\n  ip_cidr_range = \"10.0.0.0/16\"\n  region        = \"us-central1\"\n  network       = google_compute_network.dbx_private_vpc.id\n  secondary_ip_range {\n    range_name    = \"pods\"\n    ip_cidr_range = \"10.1.0.0/16\"\n  }\n  secondary_ip_range {\n    range_name    = \"svc\"\n    ip_cidr_range = \"10.2.0.0/20\"\n  }\n  private_ip_google_access = true\n}\n\nresource \"google_compute_router\" \"router\" {\n  name    = \"my-router-${random_string.suffix.result}\"\n  region  = google_compute_subnetwork.network-with-private-secondary-ip-ranges.region\n  network = google_compute_network.dbx_private_vpc.id\n}\n\nresource \"google_compute_router_nat\" \"nat\" {\n  name                               = \"my-router-nat-${random_string.suffix.result}\"\n  router                             = google_compute_router.router.name\n  region                             = google_compute_router.router.region\n  nat_ip_allocate_option             = \"AUTO_ONLY\"\n  source_subnetwork_ip_ranges_to_nat = \"ALL_SUBNETWORKS_ALL_IP_RANGES\"\n}\n\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n}\n```\n\nIn order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n}\n```\n\n## Modifying networks on running workspaces (AWS only)\n\nDue to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted \u0026 added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:\n\n1. Create a new `databricks.MwsNetworks` resource.\n2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.\n3. Delete the old `databricks.MwsNetworks` resource.\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* Provisioning Databricks on AWS with Private Link guide.\n* Provisioning AWS Databricks workspaces with a Hub \u0026 Spoke firewall for data exfiltration protection guide.\n* Provisioning Databricks on GCP guide.\n* Provisioning Databricks workspaces on GCP with Private Service Connect guide.\n* databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.\n* databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).\n* databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported.\n\n",
+            "description": "## Databricks on AWS usage\n\n\u003e **Note** Initialize provider with `alias = \"mws\"`, `host  = \"https://accounts.cloud.databricks.com\"` and use `provider = databricks.mws`\n\nUse this resource to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to at least two subnets for each workspace, with each subnet in a different Availability Zone. You cannot specify more than one Databricks workspace subnet per Availability Zone in the Create network configuration API call. You can have more than one subnet per Availability Zone as part of your network setup, but you can choose only one subnet per Availability Zone for the Databricks workspace.\n* Databricks assigns two IP addresses per node, one for management traffic and one for Spark applications. The total number of instances for each subnet is equal to half of the available IP addresses.\n* Each subnet must have a netmask between /17 and /25.\n* Subnets must be private.\n* Subnets must have outbound access to the public network using a aws_nat_gateway, or other similar customer-managed appliance infrastructure.\n* The NAT gateway must be set up in its subnet (public_subnets in the example below) that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure.\n\n\u003e **Note** The NAT gateway needs only one IP address per AZ. Hence, the public subnet only needs two IP addresses. In order to limit the number of IP addresses in the public subnet, you can specify a secondary CIDR block (cidr_block_public) using the argument secondary_cidr_blocks then pass it to the public_subnets argument. Please review the [IPv4 CIDR block association restrictions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) when choosing the secondary cidr block.\n\nPlease follow this complete runnable example \u0026 subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.\n\n* Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace’s GKE cluster nodes.\n* The subnet must have a netmask between /29 and /9.\n* Databricks must have access to 2 secondary IP ranges, one between /21 to /9 for workspace’s GKE cluster pods, and one between /27 to /16 for workspace’s GKE cluster services.\n* Subnet must have outbound access to the public network using a gcp_compute_router_nat or other similar customer-managed appliance infrastructure.\n\nPlease follow this complete runnable example]\n  private_subnets = [cidrsubnet(var.cidr_block, 3, 1),\n  cidrsubnet(var.cidr_block, 3, 2)]\n\n  default_security_group_egress = [{\n    cidr_blocks = \"0.0.0.0/0\"\n  }]\n\n  default_security_group_ingress = [{\n    description = \"Allow all internal TCP and UDP\"\n    self        = true\n  }]\n}\n\nresource \"databricks.MwsNetworks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n}\n```\n\nIn order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from [mws_vpc_endpoint](mws_vpc_endpoint.md) resources into the [databricks_mws_networks](mws_networks.md) resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  provider           = databricks.mws\n  account_id         = var.databricks_account_id\n  network_name       = \"${local.prefix}-network\"\n  security_group_ids = [module.vpc.default_security_group_id]\n  subnet_ids         = module.vpc.private_subnets\n  vpc_id             = module.vpc.vpc_id\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n  depends_on = [aws_vpc_endpoint.workspace, aws_vpc_endpoint.relay]\n}\n```\n\n### Creating a Databricks on GCP workspace\n\n```hcl\nvariable \"databricks_account_id\" {\n  description = \"Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/\"\n}\n\nresource \"google_compute_network\" \"dbx_private_vpc\" {\n  project                 = var.google_project\n  name                    = \"tf-network-${random_string.suffix.result}\"\n  auto_create_subnetworks = false\n}\n\nresource \"google_compute_subnetwork\" \"network-with-private-secondary-ip-ranges\" {\n  name          = \"test-dbx-${random_string.suffix.result}\"\n  ip_cidr_range = \"10.0.0.0/16\"\n  region        = \"us-central1\"\n  network       = google_compute_network.dbx_private_vpc.id\n  secondary_ip_range {\n    range_name    = \"pods\"\n    ip_cidr_range = \"10.1.0.0/16\"\n  }\n  secondary_ip_range {\n    range_name    = \"svc\"\n    ip_cidr_range = \"10.2.0.0/20\"\n  }\n  private_ip_google_access = true\n}\n\nresource \"google_compute_router\" \"router\" {\n  name    = \"my-router-${random_string.suffix.result}\"\n  region  = google_compute_subnetwork.network-with-private-secondary-ip-ranges.region\n  network = google_compute_network.dbx_private_vpc.id\n}\n\nresource \"google_compute_router_nat\" \"nat\" {\n  name                               = \"my-router-nat-${random_string.suffix.result}\"\n  router                             = google_compute_router.router.name\n  region                             = google_compute_router.router.region\n  nat_ip_allocate_option             = \"AUTO_ONLY\"\n  source_subnetwork_ip_ranges_to_nat = \"ALL_SUBNETWORKS_ALL_IP_RANGES\"\n}\n\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n}\n```\n\nIn order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:\n\n```hcl\nresource \"databricks_mws_networks\" \"this\" {\n  account_id   = var.databricks_account_id\n  network_name = \"test-demo-${random_string.suffix.result}\"\n  gcp_network_info {\n    network_project_id    = var.google_project\n    vpc_id                = google_compute_network.dbx_private_vpc.name\n    subnet_id             = google_compute_subnetwork.network_with_private_secondary_ip_ranges.name\n    subnet_region         = google_compute_subnetwork.network_with_private_secondary_ip_ranges.region\n    pod_ip_range_name     = \"pods\"\n    service_ip_range_name = \"svc\"\n  }\n  vpc_endpoints {\n    dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]\n    rest_api        = [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id]\n  }\n}\n```\n\n## Modifying networks on running workspaces (AWS only)\n\nDue to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted \u0026 added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:\n\n1. Create a new `databricks.MwsNetworks` resource.\n2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.\n3. Delete the old `databricks.MwsNetworks` resource.\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* Provisioning Databricks on AWS with Private Link guide.\n* Provisioning AWS Databricks workspaces with a Hub \u0026 Spoke firewall for data exfiltration protection guide.\n* Provisioning Databricks on GCP guide.\n* Provisioning Databricks workspaces on GCP with Private Service Connect guide.\n* databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.\n* databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).\n* databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported.\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -22348,6 +23356,9 @@
                 "clusterPolicyId": {
                     "type": "string"
                 },
+                "dashboardId": {
+                    "type": "string"
+                },
                 "directoryId": {
                     "type": "string"
                 },
@@ -22427,6 +23438,10 @@
                     "willReplaceOnChanges": true
                 },
                 "clusterPolicyId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "dashboardId": {
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
@@ -22528,6 +23543,10 @@
                         "willReplaceOnChanges": true
                     },
                     "clusterPolicyId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "dashboardId": {
                         "type": "string",
                         "willReplaceOnChanges": true
                     },
@@ -22652,7 +23671,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
+                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.\n"
                 },
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -22679,7 +23698,8 @@
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                 },
                 "serverless": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.\n"
                 },
                 "storage": {
                     "type": "string",
@@ -22738,7 +23758,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
+                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.\n"
                 },
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -22765,7 +23785,8 @@
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                 },
                 "serverless": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.\n"
                 },
                 "storage": {
                     "type": "string",
@@ -22819,7 +23840,7 @@
                     },
                     "edition": {
                         "type": "string",
-                        "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
+                        "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.\n"
                     },
                     "filters": {
                         "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -22846,7 +23867,8 @@
                         "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                     },
                     "serverless": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.\n"
                     },
                     "storage": {
                         "type": "string",
@@ -23357,7 +24379,7 @@
             }
         },
         "databricks:index/registeredModel:RegisteredModel": {
-            "description": "\u003e **Note** This resource could be only used with workspace-level provider!\n\nThis resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.RegisteredModel(\"this\", {\n    name: \"my_model\",\n    catalogName: \"main\",\n    schemaName: \"default\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.RegisteredModel(\"this\",\n    name=\"my_model\",\n    catalog_name=\"main\",\n    schema_name=\"default\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.RegisteredModel(\"this\", new()\n    {\n        Name = \"my_model\",\n        CatalogName = \"main\",\n        SchemaName = \"default\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewRegisteredModel(ctx, \"this\", \u0026databricks.RegisteredModelArgs{\n\t\t\tName:        pulumi.String(\"my_model\"),\n\t\t\tCatalogName: pulumi.String(\"main\"),\n\t\t\tSchemaName:  pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.RegisteredModel;\nimport com.pulumi.databricks.RegisteredModelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new RegisteredModel(\"this\", RegisteredModelArgs.builder()\n            .name(\"my_model\")\n            .catalogName(\"main\")\n            .schemaName(\"default\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:RegisteredModel\n    properties:\n      name: my_model\n      catalogName: main\n      schemaName: default\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Access Control\n\n* databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.ModelServing to serve this model on a Databricks serving endpoint.\n* databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.\n* databricks.Table data to manage tables within Unity Catalog.\n* databricks.Schema data to manage schemas within Unity Catalog.\n* databricks.Catalog data to manage catalogs within Unity Catalog.\n\n## Import\n\nThe registered model resource can be imported using the full (3-level) name of the model.\n\nbash\n\n```sh\n$ pulumi import databricks:index/registeredModel:RegisteredModel this \u003ccatalog_name.schema_name.model_name\u003e\n```\n\n",
+            "description": "\u003e **Note** This resource could be only used with workspace-level provider!\n\nThis resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.RegisteredModel(\"this\", {\n    name: \"my_model\",\n    catalogName: \"main\",\n    schemaName: \"default\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.RegisteredModel(\"this\",\n    name=\"my_model\",\n    catalog_name=\"main\",\n    schema_name=\"default\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.RegisteredModel(\"this\", new()\n    {\n        Name = \"my_model\",\n        CatalogName = \"main\",\n        SchemaName = \"default\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewRegisteredModel(ctx, \"this\", \u0026databricks.RegisteredModelArgs{\n\t\t\tName:        pulumi.String(\"my_model\"),\n\t\t\tCatalogName: pulumi.String(\"main\"),\n\t\t\tSchemaName:  pulumi.String(\"default\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.RegisteredModel;\nimport com.pulumi.databricks.RegisteredModelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new RegisteredModel(\"this\", RegisteredModelArgs.builder()\n            .name(\"my_model\")\n            .catalogName(\"main\")\n            .schemaName(\"default\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:RegisteredModel\n    properties:\n      name: my_model\n      catalogName: main\n      schemaName: default\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Access Control\n\n* databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.ModelServing to serve this model on a Databricks serving endpoint.\n* databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n\n## Import\n\nThe registered model resource can be imported using the full (3-level) name of the model.\n\nbash\n\n```sh\n$ pulumi import databricks:index/registeredModel:RegisteredModel this \u003ccatalog_name.schema_name.model_name\u003e\n```\n\n",
             "properties": {
                 "catalogName": {
                     "type": "string",
@@ -26196,7 +27218,7 @@
             }
         },
         "databricks:index/user:User": {
-            "description": "This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a password reset email. You can also get information about caller identity using databricks.getCurrentUser data source.\n\n\u003e **Note** To assign account level users to workspace use databricks_mws_permission_assignment.\n\n\u003e **Note** Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.\n\nTo create users in the Databricks account, the provider must be configured with `host = \"https://accounts.cloud.databricks.com\"` on AWS deployments or `host = \"https://accounts.azuredatabricks.net\"` and authenticate using AAD tokens on Azure deployments.\n\nThe default behavior when deleting a `databricks.User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `disable_as_user_deletion = true`.\n\n## Example Usage\n\nCreating regular user:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\", user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\nconst i_am_admin = new databricks.GroupMember(\"i-am-admin\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.User(\"me\", user_name=\"me@example.com\")\ni_am_admin = databricks.GroupMember(\"i-am-admin\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var i_am_admin = new Databricks.GroupMember(\"i-am-admin\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"i-am-admin\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  pulumi.String(admins.Id),\n\t\t\tMemberId: me.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var i_am_admin = new GroupMember(\"i-am-admin\", GroupMemberArgs.builder()\n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n  i-am-admin:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user with cluster create permissions:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n    allowClusterCreate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    allow_cluster_create=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n        AllowClusterCreate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName:           pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName:        pulumi.String(\"Example user\"),\n\t\t\tAllowClusterCreate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .allowClusterCreate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n      allowClusterCreate: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user in AWS Databricks account:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst accountUser = new databricks.User(\"account_user\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naccount_user = databricks.User(\"account_user\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var accountUser = new Databricks.User(\"account_user\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"account_user\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var accountUser = new User(\"accountUser\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  accountUser:\n    type: databricks:User\n    name: account_user\n    properties:\n      userName: me@example.com\n      displayName: Example user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user in Azure Databricks account:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst accountUser = new databricks.User(\"account_user\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naccount_user = databricks.User(\"account_user\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var accountUser = new Databricks.User(\"account_user\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"account_user\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var accountUser = new User(\"accountUser\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  accountUser:\n    type: databricks:User\n    name: account_user\n    properties:\n      userName: me@example.com\n      displayName: Example user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n## Import\n\nThe resource scim user can be imported using id:\n\nbash\n\n```sh\n$ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n",
+            "description": "This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using databricks.getCurrentUser data source.\n\n\u003e **Note** To assign account level users to workspace use databricks_mws_permission_assignment.\n\n\u003e **Note** Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.\n\nTo create users in the Databricks account, the provider must be configured with `host = \"https://accounts.cloud.databricks.com\"` on AWS deployments or `host = \"https://accounts.azuredatabricks.net\"` and authenticate using AAD tokens on Azure deployments.\n\nThe default behavior when deleting a `databricks.User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `disable_as_user_deletion = true`.\n\n## Example Usage\n\nCreating regular user:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\", user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\nconst i_am_admin = new databricks.GroupMember(\"i-am-admin\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.User(\"me\", user_name=\"me@example.com\")\ni_am_admin = databricks.GroupMember(\"i-am-admin\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var i_am_admin = new Databricks.GroupMember(\"i-am-admin\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"i-am-admin\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  pulumi.String(admins.Id),\n\t\t\tMemberId: me.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var i_am_admin = new GroupMember(\"i-am-admin\", GroupMemberArgs.builder()\n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n  i-am-admin:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user with cluster create permissions:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n    allowClusterCreate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    allow_cluster_create=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n        AllowClusterCreate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName:           pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName:        pulumi.String(\"Example user\"),\n\t\t\tAllowClusterCreate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .allowClusterCreate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n      allowClusterCreate: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user in AWS Databricks account:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst accountUser = new databricks.User(\"account_user\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naccount_user = databricks.User(\"account_user\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var accountUser = new Databricks.User(\"account_user\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"account_user\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var accountUser = new User(\"accountUser\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  accountUser:\n    type: databricks:User\n    name: account_user\n    properties:\n      userName: me@example.com\n      displayName: Example user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating user in Azure Databricks account:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst accountUser = new databricks.User(\"account_user\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naccount_user = databricks.User(\"account_user\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var accountUser = new Databricks.User(\"account_user\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"account_user\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var accountUser = new User(\"accountUser\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  accountUser:\n    type: databricks:User\n    name: account_user\n    properties:\n      userName: me@example.com\n      displayName: Example user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n## Import\n\nThe resource scim user can be imported using id:\n\nbash\n\n```sh\n$ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n",
             "properties": {
                 "aclPrincipalId": {
                     "type": "string",
@@ -26862,6 +27884,90 @@
                     "volumeType": {
                         "type": "string",
                         "description": "Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/workspaceBinding:WorkspaceBinding": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    name: \"sandbox\",\n    isolationMode: \"ISOLATED\",\n});\nconst sandboxWorkspaceBinding = new databricks.WorkspaceBinding(\"sandbox\", {\n    securableName: sandbox.name,\n    workspaceId: other.workspaceId,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    name=\"sandbox\",\n    isolation_mode=\"ISOLATED\")\nsandbox_workspace_binding = databricks.WorkspaceBinding(\"sandbox\",\n    securable_name=sandbox.name,\n    workspace_id=other[\"workspaceId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        Name = \"sandbox\",\n        IsolationMode = \"ISOLATED\",\n    });\n\n    var sandboxWorkspaceBinding = new Databricks.WorkspaceBinding(\"sandbox\", new()\n    {\n        SecurableName = sandbox.Name,\n        WorkspaceId = other.WorkspaceId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tName:          pulumi.String(\"sandbox\"),\n\t\t\tIsolationMode: pulumi.String(\"ISOLATED\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewWorkspaceBinding(ctx, \"sandbox\", \u0026databricks.WorkspaceBindingArgs{\n\t\t\tSecurableName: sandbox.Name,\n\t\t\tWorkspaceId:   pulumi.Any(other.WorkspaceId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.WorkspaceBinding;\nimport com.pulumi.databricks.WorkspaceBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()\n            .name(\"sandbox\")\n            .isolationMode(\"ISOLATED\")\n            .build());\n\n        var sandboxWorkspaceBinding = new WorkspaceBinding(\"sandboxWorkspaceBinding\", WorkspaceBindingArgs.builder()\n            .securableName(sandbox.name())\n            .workspaceId(other.workspaceId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      name: sandbox\n      isolationMode: ISOLATED\n  sandboxWorkspaceBinding:\n    type: databricks:WorkspaceBinding\n    name: sandbox\n    properties:\n      securableName: ${sandbox.name}\n      workspaceId: ${other.workspaceId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by using combination of workspace ID, securable type and name:\n\n```sh\n$ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this \"\u003cworkspace_id\u003e|\u003csecurable_type\u003e|\u003csecurable_name\u003e\"\n```\n\n",
+            "properties": {
+                "bindingType": {
+                    "type": "string",
+                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n"
+                },
+                "catalogName": {
+                    "type": "string",
+                    "deprecationMessage": "Please use 'securable_name' and 'securable_type instead."
+                },
+                "securableName": {
+                    "type": "string",
+                    "description": "Name of securable. Change forces creation of a new resource.\n"
+                },
+                "securableType": {
+                    "type": "string",
+                    "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n"
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "ID of the workspace. Change forces creation of a new resource.\n"
+                }
+            },
+            "required": [
+                "securableName"
+            ],
+            "inputProperties": {
+                "bindingType": {
+                    "type": "string",
+                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n",
+                    "willReplaceOnChanges": true
+                },
+                "catalogName": {
+                    "type": "string",
+                    "deprecationMessage": "Please use 'securable_name' and 'securable_type instead.",
+                    "willReplaceOnChanges": true
+                },
+                "securableName": {
+                    "type": "string",
+                    "description": "Name of securable. Change forces creation of a new resource.\n"
+                },
+                "securableType": {
+                    "type": "string",
+                    "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "ID of the workspace. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkspaceBinding resources.\n",
+                "properties": {
+                    "bindingType": {
+                        "type": "string",
+                        "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "catalogName": {
+                        "type": "string",
+                        "deprecationMessage": "Please use 'securable_name' and 'securable_type instead.",
+                        "willReplaceOnChanges": true
+                    },
+                    "securableName": {
+                        "type": "string",
+                        "description": "Name of securable. Change forces creation of a new resource.\n"
+                    },
+                    "securableType": {
+                        "type": "string",
+                        "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workspaceId": {
+                        "type": "string",
+                        "description": "ID of the workspace. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -27562,6 +28668,16 @@
                         "type": "string",
                         "description": "Only return databricks.Cluster ids that match the given name string.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "list of databricks.Cluster ids\n"
                     }
                 },
                 "type": "object"
@@ -27573,7 +28689,6 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
                     },
                     "ids": {
@@ -27585,8 +28700,8 @@
                     }
                 },
                 "required": [
-                    "ids",
-                    "id"
+                    "id",
+                    "ids"
                 ],
                 "type": "object"
             }
@@ -28989,6 +30104,54 @@
                 "type": "object"
             }
         },
+        "databricks:index/getSchema:getSchema": {
+            "description": "## Example Usage\n\n* Retrieve details of all schemas in in a _sandbox_ databricks_catalog:\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSchema.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of this Unity Catalog Schema in form of `\u003ccatalog\u003e.\u003cschema\u003e`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "a fully qualified name of databricks_schema: *`catalog`.`schema`*\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "schemaInfo": {
+                        "$ref": "#/types/databricks:index/getSchemaSchemaInfo:getSchemaSchemaInfo",
+                        "description": "`SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSchema.\n",
+                "properties": {
+                    "id": {
+                        "description": "ID of this Unity Catalog Schema in form of `\u003ccatalog\u003e.\u003cschema\u003e`.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of schema, relative to parent catalog.\n",
+                        "type": "string"
+                    },
+                    "schemaInfo": {
+                        "$ref": "#/types/databricks:index/getSchemaSchemaInfo:getSchemaSchemaInfo",
+                        "description": "`SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:\n"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "schemaInfo"
+                ],
+                "type": "object"
+            }
+        },
         "databricks:index/getSchemas:getSchemas": {
             "description": "## Example Usage\n\nListing all schemas in a _sandbox_ databricks_catalog:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = databricks.getSchemas({\n    catalogName: \"sandbox\",\n});\nexport const allSandboxSchemas = sandbox;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.get_schemas(catalog_name=\"sandbox\")\npulumi.export(\"allSandboxSchemas\", sandbox)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = Databricks.GetSchemas.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allSandboxSchemas\"] = sandbox,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.GetSchemas(ctx, \u0026databricks.GetSchemasArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allSandboxSchemas\", sandbox)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSchemasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()\n            .catalogName(\"sandbox\")\n            .build());\n\n        ctx.export(\"allSandboxSchemas\", sandbox.applyValue(getSchemasResult -\u003e getSchemasResult));\n    }\n}\n```\n```yaml\nvariables:\n  sandbox:\n    fn::invoke:\n      Function: databricks:getSchemas\n      Arguments:\n        catalogName: sandbox\noutputs:\n  allSandboxSchemas: ${sandbox}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
@@ -29590,7 +30753,7 @@
             }
         },
         "databricks:index/getSqlWarehouses:getSqlWarehouses": {
-            "description": "## Example Usage\n\nRetrieve IDs for all SQL warehouses:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getSqlWarehouses({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_sql_warehouses()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetSqlWarehouses.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getSqlWarehouses();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve IDs for all clusters having \"Shared\" in the warehouse name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getSqlWarehouses({\n    warehouseNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_sql_warehouses(warehouse_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetSqlWarehouses.Invoke(new()\n    {\n        WarehouseNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, \u0026databricks.GetSqlWarehousesArgs{\n\t\t\tWarehouseNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()\n            .warehouseNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments:\n        warehouseNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n",
+            "description": "## Example Usage\n\nRetrieve IDs for all SQL warehouses:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getSqlWarehouses({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_sql_warehouses()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetSqlWarehouses.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getSqlWarehouses();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nRetrieve IDs for all clusters having \"Shared\" in the warehouse name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getSqlWarehouses({\n    warehouseNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_sql_warehouses(warehouse_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetSqlWarehouses.Invoke(new()\n    {\n        WarehouseNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetSqlWarehouses(ctx, \u0026databricks.GetSqlWarehousesArgs{\n\t\t\tWarehouseNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSqlWarehousesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()\n            .warehouseNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getSqlWarehouses\n      Arguments:\n        warehouseNameContains: shared\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSqlWarehouses.\n",
                 "properties": {
@@ -29951,6 +31114,54 @@
                     "ids",
                     "schemaName",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "databricks:index/getVolume:getVolume": {
+            "description": "## Example Usage\n\n* Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVolume.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of this Unity Catalog Volume in form of `\u003ccatalog\u003e.\u003cschema\u003e.\u003cname\u003e`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "volumeInfo": {
+                        "$ref": "#/types/databricks:index/getVolumeVolumeInfo:getVolumeVolumeInfo",
+                        "description": "`VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVolume.\n",
+                "properties": {
+                    "id": {
+                        "description": "ID of this Unity Catalog Volume in form of `\u003ccatalog\u003e.\u003cschema\u003e.\u003cname\u003e`.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "the name of the volume\n",
+                        "type": "string"
+                    },
+                    "volumeInfo": {
+                        "$ref": "#/types/databricks:index/getVolumeVolumeInfo:getVolumeVolumeInfo",
+                        "description": "`VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:\n"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "volumeInfo"
                 ],
                 "type": "object"
             }

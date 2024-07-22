@@ -66,9 +66,8 @@ import javax.annotation.Nullable;
  * 
  * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
  * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
- * * databricks.Table data to manage tables within Unity Catalog.
- * * databricks.Schema data to manage schemas within Unity Catalog.
- * * databricks.Catalog data to manage catalogs within Unity Catalog.
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  * 
  * ## Import
  * 

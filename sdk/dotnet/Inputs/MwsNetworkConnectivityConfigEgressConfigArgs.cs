@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsNetworkConnectivityConfigEgressConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+        /// </summary>
         [Input("defaultRules")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>? DefaultRules { get; set; }
 
+        /// <summary>
+        /// block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+        /// </summary>
         [Input("targetRules")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>? TargetRules { get; set; }
 

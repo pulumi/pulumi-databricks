@@ -17,16 +17,32 @@ public final class JobEnvironmentArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final JobEnvironmentArgs Empty = new JobEnvironmentArgs();
 
+    /**
+     * an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * 
+     */
     @Import(name="environmentKey", required=true)
     private Output<String> environmentKey;
 
+    /**
+     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * 
+     */
     public Output<String> environmentKey() {
         return this.environmentKey;
     }
 
+    /**
+     * block describing the Environment. Consists of following attributes:
+     * 
+     */
     @Import(name="spec")
     private @Nullable Output<JobEnvironmentSpecArgs> spec;
 
+    /**
+     * @return block describing the Environment. Consists of following attributes:
+     * 
+     */
     public Optional<Output<JobEnvironmentSpecArgs>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -56,20 +72,44 @@ public final class JobEnvironmentArgs extends com.pulumi.resources.ResourceArgs 
             $ = new JobEnvironmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentKey(Output<String> environmentKey) {
             $.environmentKey = environmentKey;
             return this;
         }
 
+        /**
+         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentKey(String environmentKey) {
             return environmentKey(Output.of(environmentKey));
         }
 
+        /**
+         * @param spec block describing the Environment. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable Output<JobEnvironmentSpecArgs> spec) {
             $.spec = spec;
             return this;
         }
 
+        /**
+         * @param spec block describing the Environment. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(JobEnvironmentSpecArgs spec) {
             return spec(Output.of(spec));
         }

@@ -397,7 +397,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         storage = databricks.MwsNccPrivateEndpointRule("storage",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
@@ -461,7 +461,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         region = config.require_object("region")
         prefix = config.require_object("prefix")
         ncc = databricks.MwsNetworkConnectivityConfig("ncc",
-            name=f"Network Connectivity Config for {prefix}",
+            name=f"ncc-for-{prefix}",
             region=region)
         storage = databricks.MwsNccPrivateEndpointRule("storage",
             network_connectivity_config_id=ncc.network_connectivity_config_id,

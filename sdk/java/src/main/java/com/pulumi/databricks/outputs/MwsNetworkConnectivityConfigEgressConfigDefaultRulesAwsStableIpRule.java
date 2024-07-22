@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * @return list of IP CIDR blocks.
+     * 
+     */
     private @Nullable List<String> cidrBlocks;
 
     private MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule() {}
+    /**
+     * @return list of IP CIDR blocks.
+     * 
+     */
     public List<String> cidrBlocks() {
         return this.cidrBlocks == null ? List.of() : this.cidrBlocks;
     }

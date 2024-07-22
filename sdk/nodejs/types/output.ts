@@ -631,7 +631,7 @@ export interface GetClusterClusterInfo {
      * The exact name of the cluster to search
      */
     clusterName?: string;
-    clusterSource: string;
+    clusterSource?: string;
     creatorUserName?: string;
     /**
      * Additional tags for cluster resources.
@@ -641,13 +641,13 @@ export interface GetClusterClusterInfo {
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
-    defaultTags: {[key: string]: any};
+    defaultTags?: {[key: string]: any};
     dockerImage?: outputs.GetClusterClusterInfoDockerImage;
     driver?: outputs.GetClusterClusterInfoDriver;
     /**
      * similar to `instancePoolId`, but for driver node.
      */
-    driverInstancePoolId: string;
+    driverInstancePoolId?: string;
     /**
      * The node type of the Spark driver.
      */
@@ -668,7 +668,7 @@ export interface GetClusterClusterInfo {
      */
     instancePoolId?: string;
     jdbcPort?: number;
-    lastActivityTime?: number;
+    lastRestartedTime?: number;
     lastStateLossTime?: number;
     /**
      * Any supported databricks.getNodeType id.
@@ -699,16 +699,18 @@ export interface GetClusterClusterInfo {
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion: string;
+    sparkVersion?: string;
+    spec?: outputs.GetClusterClusterInfoSpec;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
     startTime?: number;
-    state: string;
+    state?: string;
     stateMessage?: string;
-    terminateTime?: number;
+    terminatedTime?: number;
     terminationReason?: outputs.GetClusterClusterInfoTerminationReason;
+    workloadType?: outputs.GetClusterClusterInfoWorkloadType;
 }
 
 export interface GetClusterClusterInfoAutoscale {
@@ -719,7 +721,9 @@ export interface GetClusterClusterInfoAutoscale {
 export interface GetClusterClusterInfoAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -730,7 +734,13 @@ export interface GetClusterClusterInfoAwsAttributes {
 export interface GetClusterClusterInfoAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
 }
 
 export interface GetClusterClusterInfoClusterLogConf {
@@ -759,12 +769,12 @@ export interface GetClusterClusterInfoClusterLogStatus {
 
 export interface GetClusterClusterInfoDockerImage {
     basicAuth?: outputs.GetClusterClusterInfoDockerImageBasicAuth;
-    url: string;
+    url?: string;
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuth {
-    password: string;
-    username: string;
+    password?: string;
+    username?: string;
 }
 
 export interface GetClusterClusterInfoDriver {
@@ -848,10 +858,267 @@ export interface GetClusterClusterInfoInitScriptWorkspace {
     destination: string;
 }
 
+export interface GetClusterClusterInfoSpec {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.GetClusterClusterInfoSpecAutoscale;
+    awsAttributes?: outputs.GetClusterClusterInfoSpecAwsAttributes;
+    azureAttributes?: outputs.GetClusterClusterInfoSpecAzureAttributes;
+    /**
+     * The id of the cluster
+     */
+    clusterId: string;
+    clusterLogConf?: outputs.GetClusterClusterInfoSpecClusterLogConf;
+    clusterMountInfos?: outputs.GetClusterClusterInfoSpecClusterMountInfo[];
+    /**
+     * The exact name of the cluster to search
+     */
+    clusterName?: string;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: {[key: string]: any};
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: string;
+    dockerImage?: outputs.GetClusterClusterInfoSpecDockerImage;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId: string;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId: string;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk: boolean;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.GetClusterClusterInfoSpecGcpAttributes;
+    /**
+     * An optional token to guarantee the idempotency of cluster creation requests.
+     */
+    idempotencyToken?: string;
+    initScripts?: outputs.GetClusterClusterInfoSpecInitScript[];
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
+    instancePoolId?: string;
+    libraries?: outputs.GetClusterClusterInfoSpecLibrary[];
+    /**
+     * Any supported databricks.getNodeType id.
+     */
+    nodeTypeId: string;
+    numWorkers?: number;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: string;
+    /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: string;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: string;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: {[key: string]: any};
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: {[key: string]: any};
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: string;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: string[];
+    workloadType?: outputs.GetClusterClusterInfoSpecWorkloadType;
+}
+
+export interface GetClusterClusterInfoSpecAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetClusterClusterInfoSpecAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConf {
+    dbfs?: outputs.GetClusterClusterInfoSpecClusterLogConfDbfs;
+    s3?: outputs.GetClusterClusterInfoSpecClusterLogConfS3;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetClusterClusterInfoSpecDockerImage {
+    basicAuth?: outputs.GetClusterClusterInfoSpecDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetClusterClusterInfoSpecDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetClusterClusterInfoSpecGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    localSsdCount?: number;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScript {
+    abfss?: outputs.GetClusterClusterInfoSpecInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
+    dbfs?: outputs.GetClusterClusterInfoSpecInitScriptDbfs;
+    file?: outputs.GetClusterClusterInfoSpecInitScriptFile;
+    gcs?: outputs.GetClusterClusterInfoSpecInitScriptGcs;
+    s3?: outputs.GetClusterClusterInfoSpecInitScriptS3;
+    volumes?: outputs.GetClusterClusterInfoSpecInitScriptVolumes;
+    workspace?: outputs.GetClusterClusterInfoSpecInitScriptWorkspace;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptAbfss {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptFile {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptGcs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptVolumes {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecInitScriptWorkspace {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecLibrary {
+    cran?: outputs.GetClusterClusterInfoSpecLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.GetClusterClusterInfoSpecLibraryMaven;
+    pypi?: outputs.GetClusterClusterInfoSpecLibraryPypi;
+    requirements?: string;
+    whl?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadType {
+    clients: outputs.GetClusterClusterInfoSpecWorkloadTypeClients;
+}
+
+export interface GetClusterClusterInfoSpecWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
 export interface GetClusterClusterInfoTerminationReason {
     code?: string;
     parameters?: {[key: string]: any};
     type?: string;
+}
+
+export interface GetClusterClusterInfoWorkloadType {
+    clients: outputs.GetClusterClusterInfoWorkloadTypeClients;
+}
+
+export interface GetClusterClusterInfoWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -2573,6 +2840,87 @@ export interface GetNotebookPathsNotebookPathList {
     path?: string;
 }
 
+export interface GetSchemaSchemaInfo {
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+     */
+    browseOnly?: boolean;
+    /**
+     * the name of the catalog where the schema is.
+     */
+    catalogName?: string;
+    /**
+     * the type of the parent catalog.
+     */
+    catalogType?: string;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: string;
+    /**
+     * time at which this schema was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * username of schema creator.
+     */
+    createdBy?: string;
+    /**
+     * information about actual state of predictive optimization.
+     */
+    effectivePredictiveOptimizationFlag?: outputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
+    /**
+     * whether predictive optimization should be enabled for this object and objects under it.
+     */
+    enablePredictiveOptimization?: string;
+    /**
+     * the two-level (fully qualified) name of the schema
+     */
+    fullName?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    /**
+     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     */
+    name?: string;
+    /**
+     * the identifier of the user who owns the schema
+     */
+    owner?: string;
+    /**
+     * map of properties set on the schema
+     */
+    properties?: {[key: string]: any};
+    /**
+     * the unique identifier of the volume
+     */
+    schemaId?: string;
+    /**
+     * the storage location on the cloud.
+     */
+    storageLocation?: string;
+    /**
+     * storage root URL for managed tables within schema.
+     */
+    storageRoot?: string;
+    /**
+     * the timestamp of the last time changes were made to the schema
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the schema last time
+     */
+    updatedBy?: string;
+}
+
+export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
 export interface GetShareObject {
     addedAt: number;
     addedBy: string;
@@ -2923,6 +3271,86 @@ export interface GetTableTableInfoViewDependenciesDependencyTable {
     tableFullName: string;
 }
 
+export interface GetVolumeVolumeInfo {
+    /**
+     * the AWS access point to use when accessing s3 bucket for this volume's external location
+     */
+    accessPoint?: string;
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+     */
+    browseOnly?: boolean;
+    /**
+     * the name of the catalog where the schema and the volume are
+     */
+    catalogName?: string;
+    /**
+     * the comment attached to the volume
+     */
+    comment?: string;
+    /**
+     * the Unix timestamp at the volume's creation
+     */
+    createdAt?: number;
+    /**
+     * the identifier of the user who created the volume
+     */
+    createdBy?: string;
+    /**
+     * encryption options that apply to clients connecting to cloud storage
+     */
+    encryptionDetails?: outputs.GetVolumeVolumeInfoEncryptionDetails;
+    /**
+     * the three-level (fully qualified) name of the volume
+     */
+    fullName?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    /**
+     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+     */
+    name?: string;
+    /**
+     * the identifier of the user who owns the volume
+     */
+    owner?: string;
+    /**
+     * the name of the schema where the volume is
+     */
+    schemaName?: string;
+    /**
+     * the storage location on the cloud
+     */
+    storageLocation?: string;
+    /**
+     * the timestamp of the last time changes were made to the volume
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the volume last time
+     */
+    updatedBy?: string;
+    /**
+     * the unique identifier of the volume
+     */
+    volumeId?: string;
+    /**
+     * whether the volume is `MANAGED` or `EXTERNAL`
+     */
+    volumeType?: string;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetails {
+    sseEncryptionDetails?: outputs.GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
 export interface GrantsGrant {
     principal: string;
     privileges: string[];
@@ -3117,12 +3545,24 @@ export interface JobEmailNotifications {
 }
 
 export interface JobEnvironment {
+    /**
+     * an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
+     */
     environmentKey: string;
+    /**
+     * block describing the Environment. Consists of following attributes:
+     */
     spec?: outputs.JobEnvironmentSpec;
 }
 
 export interface JobEnvironmentSpec {
+    /**
+     * client version used by the environment.
+     */
     client: string;
+    /**
+     * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+     */
     dependencies?: string[];
 }
 
@@ -3814,6 +4254,9 @@ export interface JobTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
+    /**
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
+     */
     environmentKey?: string;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
@@ -3998,6 +4441,9 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskForEachTaskTaskEmailNotifications;
+    /**
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
+     */
     environmentKey?: string;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
@@ -5521,7 +5967,7 @@ export interface LakehouseMonitorSchedule {
     /**
      * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
      */
-    pauseStatus?: string;
+    pauseStatus: string;
     /**
      * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
      */
@@ -5659,7 +6105,7 @@ export interface ModelServingConfigAutoCaptureConfig {
     /**
      * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
      */
@@ -5667,7 +6113,7 @@ export interface ModelServingConfigAutoCaptureConfig {
     /**
      * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
      */
-    tableNamePrefix?: string;
+    tableNamePrefix: string;
 }
 
 export interface ModelServingConfigServedEntity {
@@ -5881,7 +6327,7 @@ export interface ModelServingConfigServedModel {
     /**
      * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
      */
-    workloadType?: string;
+    workloadType: string;
 }
 
 export interface ModelServingConfigTrafficConfig {
@@ -5988,29 +6434,53 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
+    /**
+     * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+     */
     defaultRules?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules;
+    /**
+     * block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+     */
     targetRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRules;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    /**
+     * (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+     */
     awsStableIpRule?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule;
     /**
-     * This provides a list of subnets. These subnets need to be allowed in your Azure resources in order for Databricks to access. See `default_rules.azure_service_endpoint_rule.target_services` for the supported Azure services.
+     * (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
      */
     azureServiceEndpointRule?: outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * list of IP CIDR blocks.
+     */
     cidrBlocks?: string[];
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     */
     subnets?: string[];
+    /**
+     * the Azure region in which this service endpoint rule applies.
+     */
     targetRegion?: string;
+    /**
+     * the Azure services to which this service endpoint rule applies to.
+     */
     targetServices?: string[];
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * (Azure only) - list containing information about configure Azure Private Endpoints.
+     */
     azurePrivateEndpointRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
 }
 
@@ -6498,10 +6968,7 @@ export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
 }
 
 export interface QualityMonitorSchedule {
-    /**
-     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     */
-    pauseStatus?: string;
+    pauseStatus: string;
     /**
      * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
      */

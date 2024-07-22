@@ -70,6 +70,8 @@ import com.pulumi.databricks.inputs.GetNotebookPathsPlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookPlainArgs;
 import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
+import com.pulumi.databricks.inputs.GetSchemaArgs;
+import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
 import com.pulumi.databricks.inputs.GetSchemasPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
@@ -98,6 +100,8 @@ import com.pulumi.databricks.inputs.GetUserArgs;
 import com.pulumi.databricks.inputs.GetUserPlainArgs;
 import com.pulumi.databricks.inputs.GetViewsArgs;
 import com.pulumi.databricks.inputs.GetViewsPlainArgs;
+import com.pulumi.databricks.inputs.GetVolumeArgs;
+import com.pulumi.databricks.inputs.GetVolumePlainArgs;
 import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
@@ -133,6 +137,7 @@ import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
 import com.pulumi.databricks.outputs.GetNotebookResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
+import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalsResult;
@@ -147,6 +152,7 @@ import com.pulumi.databricks.outputs.GetTableResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
 import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
+import com.pulumi.databricks.outputs.GetVolumeResult;
 import com.pulumi.databricks.outputs.GetVolumesResult;
 import com.pulumi.databricks.outputs.GetZonesResult;
 import com.pulumi.deployment.Deployment;
@@ -9934,6 +9940,42 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     */
+    public static Output<GetSchemaResult> getSchema(GetSchemaArgs args) {
+        return getSchema(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     */
+    public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args) {
+        return getSchemaPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     */
+    public static Output<GetSchemaResult> getSchema(GetSchemaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     */
+    public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12129,7 +12171,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -12214,7 +12256,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -12299,7 +12341,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -12384,7 +12426,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -12469,7 +12511,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -12554,7 +12596,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide.
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
      * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
      * 
      */
@@ -14096,6 +14138,42 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetViewsResult> getViewsPlain(GetViewsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
+        return getVolume(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     */
+    public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
+        return getVolumePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     */
+    public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

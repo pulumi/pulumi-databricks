@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const region = config.requireObject("region");
  * const prefix = config.requireObject("prefix");
  * const ncc = new databricks.MwsNetworkConnectivityConfig("ncc", {
- *     name: `Network Connectivity Config for ${prefix}`,
+ *     name: `ncc-for-${prefix}`,
  *     region: region,
  * });
  * const nccBinding = new databricks.MwsNccBinding("ncc_binding", {

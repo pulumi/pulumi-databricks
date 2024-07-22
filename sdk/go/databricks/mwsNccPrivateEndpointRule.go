@@ -39,7 +39,7 @@ import (
 //			region := cfg.RequireObject("region")
 //			prefix := cfg.RequireObject("prefix")
 //			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
-//				Name:   pulumi.String(fmt.Sprintf("Network Connectivity Config for %v", prefix)),
+//				Name:   pulumi.String(fmt.Sprintf("ncc-for-%v", prefix)),
 //				Region: pulumi.Any(region),
 //			})
 //			if err != nil {

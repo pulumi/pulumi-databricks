@@ -256,9 +256,8 @@ class RegisteredModel(pulumi.CustomResource):
 
         * ModelServing to serve this model on a Databricks serving endpoint.
         * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        * Table data to manage tables within Unity Catalog.
-        * Schema data to manage schemas within Unity Catalog.
-        * Catalog data to manage catalogs within Unity Catalog.
+        * Schema to manage schemas within Unity Catalog.
+        * Catalog to manage catalogs within Unity Catalog.
 
         ## Import
 
@@ -312,9 +311,8 @@ class RegisteredModel(pulumi.CustomResource):
 
         * ModelServing to serve this model on a Databricks serving endpoint.
         * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        * Table data to manage tables within Unity Catalog.
-        * Schema data to manage schemas within Unity Catalog.
-        * Catalog data to manage catalogs within Unity Catalog.
+        * Schema to manage schemas within Unity Catalog.
+        * Catalog to manage catalogs within Unity Catalog.
 
         ## Import
 

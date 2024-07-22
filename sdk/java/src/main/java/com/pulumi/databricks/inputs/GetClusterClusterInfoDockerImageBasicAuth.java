@@ -4,27 +4,28 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClusterClusterInfoDockerImageBasicAuth extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClusterClusterInfoDockerImageBasicAuth Empty = new GetClusterClusterInfoDockerImageBasicAuth();
 
-    @Import(name="password", required=true)
-    private String password;
+    @Import(name="password")
+    private @Nullable String password;
 
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
 
-    @Import(name="username", required=true)
-    private String username;
+    @Import(name="username")
+    private @Nullable String username;
 
-    public String username() {
-        return this.username;
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private GetClusterClusterInfoDockerImageBasicAuth() {}
@@ -52,23 +53,17 @@ public final class GetClusterClusterInfoDockerImageBasicAuth extends com.pulumi.
             $ = new GetClusterClusterInfoDockerImageBasicAuth(Objects.requireNonNull(defaults));
         }
 
-        public Builder password(String password) {
+        public Builder password(@Nullable String password) {
             $.password = password;
             return this;
         }
 
-        public Builder username(String username) {
+        public Builder username(@Nullable String username) {
             $.username = username;
             return this;
         }
 
         public GetClusterClusterInfoDockerImageBasicAuth build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuth", "password");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoDockerImageBasicAuth", "username");
-            }
             return $;
         }
     }

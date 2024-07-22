@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Development { get; private set; } = null!;
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         /// </summary>
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
@@ -192,6 +192,9 @@ namespace Pulumi.Databricks
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// </summary>
         [Output("serverless")]
         public Output<bool?> Serverless { get; private set; } = null!;
 
@@ -314,7 +317,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -354,6 +357,9 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        /// <summary>
+        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
 
@@ -432,7 +438,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -472,6 +478,9 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        /// <summary>
+        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
 

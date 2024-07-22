@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetClusterClusterInfoDockerImageBasicAuthResult
     {
-        public readonly string Password;
-        public readonly string Username;
+        public readonly string? Password;
+        public readonly string? Username;
 
         [OutputConstructor]
         private GetClusterClusterInfoDockerImageBasicAuthResult(
-            string password,
+            string? password,
 
-            string username)
+            string? username)
         {
             Password = password;
             Username = username;

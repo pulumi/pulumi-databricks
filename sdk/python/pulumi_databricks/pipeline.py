@@ -41,10 +41,11 @@ class PipelineArgs:
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
-        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
@@ -177,7 +178,7 @@ class PipelineArgs:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
@@ -242,6 +243,9 @@ class PipelineArgs:
     @property
     @pulumi.getter
     def serverless(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
@@ -302,10 +306,11 @@ class _PipelineState:
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
-        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[str] url: URL of the DLT pipeline on the given workspace.
@@ -441,7 +446,7 @@ class _PipelineState:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
@@ -506,6 +511,9 @@ class _PipelineState:
     @property
     @pulumi.getter
     def serverless(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
@@ -661,10 +669,11 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
-        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
@@ -855,10 +864,11 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
-        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[str] url: URL of the DLT pipeline on the given workspace.
@@ -949,7 +959,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def edition(self) -> pulumi.Output[Optional[str]]:
         """
-        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
+        optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
@@ -990,6 +1000,9 @@ class Pipeline(pulumi.CustomResource):
     @property
     @pulumi.getter
     def serverless(self) -> pulumi.Output[Optional[bool]]:
+        """
+        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        """
         return pulumi.get(self, "serverless")
 
     @property

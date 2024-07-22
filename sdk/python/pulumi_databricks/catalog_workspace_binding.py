@@ -345,7 +345,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securableName")
-    def securable_name(self) -> pulumi.Output[Optional[str]]:
+    def securable_name(self) -> pulumi.Output[str]:
         """
         Name of securable. Change forces creation of a new resource.
         """
