@@ -73,7 +73,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("x", fmt.Sprintf("ID of `x` job is %v", this.Ids.X))
+//			ctx.Export("x", pulumi.String(fmt.Sprintf("ID of `x` job is %v", this.Ids.X)))
 //			return nil
 //		})
 //	}

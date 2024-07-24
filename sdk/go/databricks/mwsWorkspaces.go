@@ -214,9 +214,9 @@ import (
 //			}, nil)
 //			_, err = s3.NewBucketPolicy(ctx, "root_bucket_policy", &s3.BucketPolicyArgs{
 //				Bucket: rootStorageBucket.ID(),
-//				Policy: thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//				Policy: pulumi.String(thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
 //					return &thisGetAwsBucketPolicy.Json, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootStorageBucketBucketPublicAccessBlock,
 //			}))
