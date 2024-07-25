@@ -69,7 +69,7 @@ import (
 //				Comment: this.Rfc3339.ApplyT(func(rfc3339 string) (string, error) {
 //					return fmt.Sprintf("Terraform (created: %v)", rfc3339), nil
 //				}).(pulumi.StringOutput),
-//				LifetimeSeconds: 60 * 24 * 60 * 60,
+//				LifetimeSeconds: int(60 * 24 * 60 * 60),
 //			})
 //			if err != nil {
 //				return err

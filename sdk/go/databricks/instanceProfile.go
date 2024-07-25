@@ -78,9 +78,9 @@ import (
 //			passRoleForS3AccessPolicy, err := iam.NewPolicy(ctx, "pass_role_for_s3_access", &iam.PolicyArgs{
 //				Name: pulumi.String("shared-pass-role-for-s3-access"),
 //				Path: pulumi.String("/"),
-//				Policy: passRoleForS3Access.ApplyT(func(passRoleForS3Access iam.GetPolicyDocumentResult) (*string, error) {
+//				Policy: pulumi.String(passRoleForS3Access.ApplyT(func(passRoleForS3Access iam.GetPolicyDocumentResult) (*string, error) {
 //					return &passRoleForS3Access.Json, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err
