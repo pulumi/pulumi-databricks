@@ -17968,7 +17968,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
+                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -18029,7 +18029,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
+                    "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -18089,7 +18089,7 @@
                     },
                     "isolationMode": {
                         "type": "string",
-                        "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.\n"
+                        "description": "Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -19522,7 +19522,7 @@
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",
-                    "description": "(List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.\n"
+                    "description": "An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.\n"
                 },
                 "sparkJarTask": {
                     "$ref": "#/types/databricks:index/JobSparkJarTask:JobSparkJarTask",
@@ -19700,7 +19700,7 @@
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",
-                    "description": "(List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.\n"
+                    "description": "An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.\n"
                 },
                 "sparkJarTask": {
                     "$ref": "#/types/databricks:index/JobSparkJarTask:JobSparkJarTask",
@@ -19870,7 +19870,7 @@
                     },
                     "schedule": {
                         "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",
-                        "description": "(List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.\n"
+                        "description": "An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.\n"
                     },
                     "sparkJarTask": {
                         "$ref": "#/types/databricks:index/JobSparkJarTask:JobSparkJarTask",
@@ -26765,7 +26765,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "metastoreId": {
                     "type": "string",
@@ -26829,7 +26829,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "metastoreId": {
                     "type": "string",
@@ -26884,7 +26884,7 @@
                     },
                     "isolationMode": {
                         "type": "string",
-                        "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                        "description": "Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                     },
                     "metastoreId": {
                         "type": "string",
@@ -27895,7 +27895,7 @@
             "properties": {
                 "bindingType": {
                     "type": "string",
-                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n"
+                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.\n"
                 },
                 "catalogName": {
                     "type": "string",
@@ -27907,7 +27907,7 @@
                 },
                 "securableType": {
                     "type": "string",
-                    "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n"
+                    "description": "Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.\n"
                 },
                 "workspaceId": {
                     "type": "string",
@@ -27920,7 +27920,7 @@
             "inputProperties": {
                 "bindingType": {
                     "type": "string",
-                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n",
+                    "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.\n",
                     "willReplaceOnChanges": true
                 },
                 "catalogName": {
@@ -27934,7 +27934,7 @@
                 },
                 "securableType": {
                     "type": "string",
-                    "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n",
+                    "description": "Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "workspaceId": {
@@ -27948,7 +27948,7 @@
                 "properties": {
                     "bindingType": {
                         "type": "string",
-                        "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified\n",
+                        "description": "Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.\n",
                         "willReplaceOnChanges": true
                     },
                     "catalogName": {
@@ -27962,7 +27962,7 @@
                     },
                     "securableType": {
                         "type": "string",
-                        "description": "Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.\n",
+                        "description": "Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "workspaceId": {
@@ -30468,6 +30468,10 @@
                         "deprecationMessage": "Not required anymore - it's automatically enabled on the Graviton-based node types",
                         "willReplaceOnChanges": true
                     },
+                    "id": {
+                        "type": "string",
+                        "description": "Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.\n"
+                    },
                     "latest": {
                         "type": "boolean",
                         "description": "if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.\n",
@@ -30519,7 +30523,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.\n",
                         "type": "string"
                     },
                     "latest": {
@@ -31226,7 +31230,28 @@
             }
         },
         "databricks:index/getZones:getZones": {
-            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nThis data source allows you to fetch all available AWS availability zones on your workspace on AWS.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst zones = databricks.getZones({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nzones = databricks.get_zones()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var zones = Databricks.GetZones.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetZones(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var zones = DatabricksFunctions.getZones();\n\n    }\n}\n```\n```yaml\nvariables:\n  zones:\n    fn::invoke:\n      Function: databricks:getZones\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nThis data source allows you to fetch all available AWS availability zones on your workspace on AWS.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst zones = databricks.getZones({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nzones = databricks.get_zones()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var zones = Databricks.GetZones.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetZones(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetZonesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var zones = DatabricksFunctions.getZones();\n\n    }\n}\n```\n```yaml\nvariables:\n  zones:\n    fn::invoke:\n      Function: databricks:getZones\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZones.\n",
+                "properties": {
+                    "defaultZone": {
+                        "type": "string",
+                        "description": "This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id for the zone object.\n"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "This is a list of all the zones available for your subnets in your Databricks workspace.\n"
+                    }
+                },
+                "type": "object"
+            },
             "outputs": {
                 "description": "A collection of values returned by getZones.\n",
                 "properties": {
@@ -31235,7 +31260,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The id for the zone object.\n",
                         "type": "string"
                     },
                     "zones": {
@@ -31248,8 +31273,8 @@
                 },
                 "required": [
                     "defaultZone",
-                    "zones",
-                    "id"
+                    "id",
+                    "zones"
                 ],
                 "type": "object"
             }
