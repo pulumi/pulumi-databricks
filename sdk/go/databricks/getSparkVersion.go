@@ -97,6 +97,8 @@ type GetSparkVersionArgs struct {
 	//
 	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton *bool `pulumi:"graviton"`
+	// Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id *string `pulumi:"id"`
 	// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
 	Latest *bool `pulumi:"latest"`
 	// if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
@@ -120,7 +122,7 @@ type GetSparkVersionResult struct {
 	Gpu      *bool `pulumi:"gpu"`
 	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton *bool `pulumi:"graviton"`
-	// The provider-assigned unique ID for this managed resource.
+	// Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id              string `pulumi:"id"`
 	Latest          *bool  `pulumi:"latest"`
 	LongTermSupport *bool  `pulumi:"longTermSupport"`
@@ -156,6 +158,8 @@ type GetSparkVersionOutputArgs struct {
 	//
 	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
+	// Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
@@ -208,7 +212,7 @@ func (o GetSparkVersionResultOutput) Graviton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Graviton }).(pulumi.BoolPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
 func (o GetSparkVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }

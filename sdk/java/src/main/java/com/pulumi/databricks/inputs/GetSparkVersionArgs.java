@@ -85,6 +85,21 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      * 
      */
@@ -189,6 +204,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         this.genomics = $.genomics;
         this.gpu = $.gpu;
         this.graviton = $.graviton;
+        this.id = $.id;
         this.latest = $.latest;
         this.longTermSupport = $.longTermSupport;
         this.ml = $.ml;
@@ -305,6 +321,27 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
         public Builder graviton(Boolean graviton) {
             return graviton(Output.of(graviton));
+        }
+
+        /**
+         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**

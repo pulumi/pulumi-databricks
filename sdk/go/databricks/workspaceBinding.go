@@ -55,13 +55,13 @@ import (
 type WorkspaceBinding struct {
 	pulumi.CustomResourceState
 
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
@@ -97,26 +97,26 @@ func GetWorkspaceBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceBinding resources.
 type workspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type WorkspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrInput
@@ -127,13 +127,13 @@ func (WorkspaceBindingState) ElementType() reflect.Type {
 }
 
 type workspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -141,13 +141,13 @@ type workspaceBindingArgs struct {
 
 // The set of arguments for constructing a WorkspaceBinding resource.
 type WorkspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrInput
@@ -240,7 +240,7 @@ func (o WorkspaceBindingOutput) ToWorkspaceBindingOutputWithContext(ctx context.
 	return o
 }
 
-// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
 func (o WorkspaceBindingOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.BindingType }).(pulumi.StringPtrOutput)
 }
@@ -255,7 +255,7 @@ func (o WorkspaceBindingOutput) SecurableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringOutput { return v.SecurableName }).(pulumi.StringOutput)
 }
 
-// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
 func (o WorkspaceBindingOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.SecurableType }).(pulumi.StringPtrOutput)
 }

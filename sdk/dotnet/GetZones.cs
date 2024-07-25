@@ -31,8 +31,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZonesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -54,8 +54,73 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZonesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+        /// </summary>
+        [Input("defaultZone")]
+        public string? DefaultZone { get; set; }
+
+        /// <summary>
+        /// The id for the zone object.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        [Input("zones")]
+        private List<string>? _zones;
+
+        /// <summary>
+        /// This is a list of all the zones available for your subnets in your Databricks workspace.
+        /// </summary>
+        public List<string> Zones
+        {
+            get => _zones ?? (_zones = new List<string>());
+            set => _zones = value;
+        }
+
+        public GetZonesArgs()
+        {
+        }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
+    }
+
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+        /// </summary>
+        [Input("defaultZone")]
+        public Input<string>? DefaultZone { get; set; }
+
+        /// <summary>
+        /// The id for the zone object.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// This is a list of all the zones available for your subnets in your Databricks workspace.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetZonesInvokeArgs()
+        {
+        }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 
@@ -67,7 +132,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DefaultZone;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The id for the zone object.
         /// </summary>
         public readonly string Id;
         /// <summary>

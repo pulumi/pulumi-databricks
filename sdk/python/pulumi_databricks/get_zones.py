@@ -44,7 +44,7 @@ class GetZonesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The id for the zone object.
         """
         return pulumi.get(self, "id")
 
@@ -68,7 +68,10 @@ class AwaitableGetZonesResult(GetZonesResult):
             zones=self.zones)
 
 
-def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
+def get_zones(default_zone: Optional[str] = None,
+              id: Optional[str] = None,
+              zones: Optional[Sequence[str]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -82,8 +85,16 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
 
     zones = databricks.get_zones()
     ```
+
+
+    :param str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+    :param str id: The id for the zone object.
+    :param Sequence[str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     __args__ = dict()
+    __args__['defaultZone'] = default_zone
+    __args__['id'] = id
+    __args__['zones'] = zones
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
@@ -94,7 +105,10 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
 
 
 @_utilities.lift_output_func(get_zones)
-def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                     id: Optional[pulumi.Input[Optional[str]]] = None,
+                     zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -108,5 +122,10 @@ def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     zones = databricks.get_zones()
     ```
+
+
+    :param str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+    :param str id: The id for the zone object.
+    :param Sequence[str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     ...

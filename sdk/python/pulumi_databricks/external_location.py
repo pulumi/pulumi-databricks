@@ -38,7 +38,7 @@ class ExternalLocationArgs:
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
@@ -157,7 +157,7 @@ class ExternalLocationArgs:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -247,7 +247,7 @@ class _ExternalLocationState:
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
@@ -357,7 +357,7 @@ class _ExternalLocationState:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -512,7 +512,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
@@ -665,7 +665,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
@@ -743,7 +743,7 @@ class ExternalLocation(pulumi.CustomResource):
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> pulumi.Output[str]:
         """
-        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 

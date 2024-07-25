@@ -415,14 +415,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runJobTask);
     }
     /**
-     * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      * 
      */
     @Export(name="schedule", refs={JobSchedule.class}, tree="[0]")
     private Output</* @Nullable */ JobSchedule> schedule;
 
     /**
-     * @return (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      * 
      */
     public Output<Optional<JobSchedule>> schedule() {
