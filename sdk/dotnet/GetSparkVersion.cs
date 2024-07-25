@@ -160,6 +160,12 @@ namespace Pulumi.Databricks
         public bool? Graviton { get; set; }
 
         /// <summary>
+        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
         /// </summary>
         [Input("latest")]
@@ -228,6 +234,12 @@ namespace Pulumi.Databricks
         public Input<bool>? Graviton { get; set; }
 
         /// <summary>
+        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
         /// </summary>
         [Input("latest")]
@@ -278,7 +290,7 @@ namespace Pulumi.Databricks
         public readonly bool? Gpu;
         public readonly bool? Graviton;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
         /// </summary>
         public readonly string Id;
         public readonly bool? Latest;

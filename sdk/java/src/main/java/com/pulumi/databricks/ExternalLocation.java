@@ -188,14 +188,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceUpdate);
     }
     /**
-     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     @Export(name="isolationMode", refs={String.class}, tree="[0]")
     private Output<String> isolationMode;
 
     /**
-     * @return Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * @return Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     public Output<String> isolationMode() {

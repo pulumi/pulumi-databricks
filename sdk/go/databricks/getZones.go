@@ -38,35 +38,61 @@ import (
 //	}
 //
 // ```
-func GetZones(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
+func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
-	err := ctx.Invoke("databricks:index/getZones:getZones", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getZones:getZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getZones.
+type GetZonesArgs struct {
+	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+	DefaultZone *string `pulumi:"defaultZone"`
+	// The id for the zone object.
+	Id *string `pulumi:"id"`
+	// This is a list of all the zones available for your subnets in your Databricks workspace.
+	Zones []string `pulumi:"zones"`
+}
+
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
 	DefaultZone string `pulumi:"defaultZone"`
-	// The provider-assigned unique ID for this managed resource.
+	// The id for the zone object.
 	Id string `pulumi:"id"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones []string `pulumi:"zones"`
 }
 
-func GetZonesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetZonesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetZonesResult, error) {
-		r, err := GetZones(ctx, opts...)
-		var s GetZonesResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
-	}).(GetZonesResultOutput)
+func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZonesResult, error) {
+			args := v.(GetZonesArgs)
+			r, err := GetZones(ctx, &args, opts...)
+			var s GetZonesResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(GetZonesResultOutput)
+}
+
+// A collection of arguments for invoking getZones.
+type GetZonesOutputArgs struct {
+	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+	DefaultZone pulumi.StringPtrInput `pulumi:"defaultZone"`
+	// The id for the zone object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// This is a list of all the zones available for your subnets in your Databricks workspace.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (GetZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getZones.
@@ -89,7 +115,7 @@ func (o GetZonesResultOutput) DefaultZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.DefaultZone }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The id for the zone object.
 func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }

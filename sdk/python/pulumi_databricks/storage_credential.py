@@ -34,7 +34,7 @@ class StorageCredentialArgs:
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -154,7 +154,7 @@ class StorageCredentialArgs:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 
         `aws_iam_role` optional configuration block for credential details for AWS:
         """
@@ -247,7 +247,7 @@ class _StorageCredentialState:
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -370,7 +370,7 @@ class _StorageCredentialState:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 
         `aws_iam_role` optional configuration block for credential details for AWS:
         """
@@ -554,7 +554,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -733,7 +733,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -814,7 +814,7 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> pulumi.Output[str]:
         """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 
         `aws_iam_role` optional configuration block for credential details for AWS:
         """

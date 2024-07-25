@@ -94,7 +94,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      * 
      * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
@@ -103,7 +103,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> isolationMode;
 
     /**
-     * @return Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+     * @return Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      * 
      * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
@@ -321,7 +321,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
          * 
          * `aws_iam_role` optional configuration block for credential details for AWS:
          * 
@@ -334,7 +334,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+         * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
          * 
          * `aws_iam_role` optional configuration block for credential details for AWS:
          * 

@@ -74,7 +74,7 @@ class JobArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -518,7 +518,7 @@ class JobArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
         """
-        (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         """
         return pulumi.get(self, "schedule")
 
@@ -679,7 +679,7 @@ class _JobState:
         :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -1126,7 +1126,7 @@ class _JobState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
         """
-        (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         """
         return pulumi.get(self, "schedule")
 
@@ -1312,7 +1312,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobParameterArgs']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[pulumi.InputType['JobQueueArgs']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[pulumi.InputType['JobRunAsArgs']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -1511,7 +1511,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobParameterArgs']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[pulumi.InputType['JobQueueArgs']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[pulumi.InputType['JobRunAsArgs']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -1772,7 +1772,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.JobSchedule']]:
         """
-        (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         """
         return pulumi.get(self, "schedule")
 

@@ -176,7 +176,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
         /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
@@ -296,7 +296,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
         /// <summary>
-        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
         /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
@@ -372,7 +372,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
         /// <summary>
-        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
         /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>

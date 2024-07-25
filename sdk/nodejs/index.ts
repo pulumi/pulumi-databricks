@@ -340,7 +340,7 @@ export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
 
-export { GetZonesResult } from "./getZones";
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));

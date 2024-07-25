@@ -58,6 +58,7 @@ export function getSparkVersion(args?: GetSparkVersionArgs, opts?: pulumi.Invoke
         "genomics": args.genomics,
         "gpu": args.gpu,
         "graviton": args.graviton,
+        "id": args.id,
         "latest": args.latest,
         "longTermSupport": args.longTermSupport,
         "ml": args.ml,
@@ -89,6 +90,10 @@ export interface GetSparkVersionArgs {
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: boolean;
+    /**
+     * Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     */
+    id?: string;
     /**
      * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      */
@@ -129,7 +134,7 @@ export interface GetSparkVersionResult {
      */
     readonly graviton?: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
      */
     readonly id: string;
     readonly latest?: boolean;
@@ -213,6 +218,10 @@ export interface GetSparkVersionOutputArgs {
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: pulumi.Input<boolean>;
+    /**
+     * Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     */
+    id?: pulumi.Input<string>;
     /**
      * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      */

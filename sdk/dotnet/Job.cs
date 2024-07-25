@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobRunJobTask?> RunJobTask { get; private set; } = null!;
 
         /// <summary>
-        /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.JobSchedule?> Schedule { get; private set; } = null!;
@@ -418,7 +418,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobRunJobTaskArgs>? RunJobTask { get; set; }
 
         /// <summary>
-        /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.JobScheduleArgs>? Schedule { get; set; }
@@ -643,7 +643,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobRunJobTaskGetArgs>? RunJobTask { get; set; }
 
         /// <summary>
-        /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.JobScheduleGetArgs>? Schedule { get; set; }

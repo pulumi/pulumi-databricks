@@ -16,14 +16,14 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
     public static final WorkspaceBindingState Empty = new WorkspaceBindingState();
 
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      * 
      */
     @Import(name="bindingType")
     private @Nullable Output<String> bindingType;
 
     /**
-     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      * 
      */
     public Optional<Output<String>> bindingType() {
@@ -65,14 +65,14 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
     /**
-     * @return Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+     * @return Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> securableType() {
@@ -123,7 +123,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securableType Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+         * @param securableType Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securableType Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+         * @param securableType Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
          * 
          * @return builder
          * 

@@ -112,7 +112,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
     public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
@@ -219,7 +219,7 @@ export interface ExternalLocationState {
      */
     forceUpdate?: pulumi.Input<boolean>;
     /**
-     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
@@ -274,7 +274,7 @@ export interface ExternalLocationArgs {
      */
     forceUpdate?: pulumi.Input<boolean>;
     /**
-     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;

@@ -103,7 +103,7 @@ type ExternalLocation struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
 	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
-	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
 	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -166,7 +166,7 @@ type externalLocationState struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
-	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -194,7 +194,7 @@ type ExternalLocationState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
 	ForceUpdate pulumi.BoolPtrInput
-	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -226,7 +226,7 @@ type externalLocationArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
-	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -255,7 +255,7 @@ type ExternalLocationArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
 	ForceUpdate pulumi.BoolPtrInput
-	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -387,7 +387,7 @@ func (o ExternalLocationOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 func (o ExternalLocationOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }

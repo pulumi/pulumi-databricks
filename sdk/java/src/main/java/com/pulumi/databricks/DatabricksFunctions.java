@@ -104,6 +104,8 @@ import com.pulumi.databricks.inputs.GetVolumeArgs;
 import com.pulumi.databricks.inputs.GetVolumePlainArgs;
 import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
+import com.pulumi.databricks.inputs.GetZonesArgs;
+import com.pulumi.databricks.inputs.GetZonesPlainArgs;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -14399,6 +14401,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14422,7 +14425,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones() {
-        return getZones(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -14440,6 +14443,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14463,7 +14467,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
-        return getZonesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -14481,6 +14485,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14503,7 +14508,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetZonesResult> getZones(InvokeArgs args) {
+    public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
@@ -14522,6 +14527,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14544,7 +14550,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -14563,6 +14569,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14585,7 +14592,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetZonesResult> getZones(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -14604,6 +14611,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14626,7 +14634,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
 }

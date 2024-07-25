@@ -171,7 +171,7 @@ type StorageCredential struct {
 	// Update storage credential regardless of its dependents.
 	ForceUpdate          pulumi.BoolPtrOutput                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
-	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
@@ -229,7 +229,7 @@ type storageCredentialState struct {
 	// Update storage credential regardless of its dependents.
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
-	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
@@ -258,7 +258,7 @@ type StorageCredentialState struct {
 	// Update storage credential regardless of its dependents.
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
-	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
@@ -291,7 +291,7 @@ type storageCredentialArgs struct {
 	// Update storage credential regardless of its dependents.
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
-	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
@@ -319,7 +319,7 @@ type StorageCredentialArgs struct {
 	// Update storage credential regardless of its dependents.
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
-	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
@@ -464,7 +464,7 @@ func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServ
 	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
 }
 
-// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the credential to `ISOLATED` will automatically allow access from the current workspace.
+// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 //
 // `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) IsolationMode() pulumi.StringOutput {

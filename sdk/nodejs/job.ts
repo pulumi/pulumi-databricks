@@ -150,7 +150,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
     /**
-     * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      */
     public readonly schedule!: pulumi.Output<outputs.JobSchedule | undefined>;
     /**
@@ -398,7 +398,7 @@ export interface JobState {
      */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
-     * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      */
     schedule?: pulumi.Input<inputs.JobSchedule>;
     /**
@@ -548,7 +548,7 @@ export interface JobArgs {
      */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
-     * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      */
     schedule?: pulumi.Input<inputs.JobSchedule>;
     /**

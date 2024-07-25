@@ -17,7 +17,7 @@ public final class GetZonesResult {
      */
     private String defaultZone;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id for the zone object.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetZonesResult {
         return this.defaultZone;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id for the zone object.
      * 
      */
     public String id() {

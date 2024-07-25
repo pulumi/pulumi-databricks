@@ -1336,8 +1336,8 @@ github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53E
 github.com/cyphar/filepath-securejoin v0.2.4/go.mod h1:aPGpWjXOXUn2NCNjFvBE6aRxGGx79pTxQpKOJNYHHl4=
 github.com/databricks/databricks-sdk-go v0.43.2 h1:4B+sHAYO5kFqwZNQRmsF70eecqsFX6i/0KfXoDFQT/E=
 github.com/databricks/databricks-sdk-go v0.43.2/go.mod h1:nlzeOEgJ1Tmb5HyknBJ3GEorCZKWqEBoHprvPmTSNq8=
-github.com/databricks/terraform-provider-databricks v1.49.0 h1:Zo7nsWfhiDZXtbnCrF3mKmxAf2ArPGldVkTeSpdl3qk=
-github.com/databricks/terraform-provider-databricks v1.49.0/go.mod h1:59CDq2Sur+sXYDNPJv3ilN5J1N7vXxjojfQhYRrG6Pk=
+github.com/databricks/terraform-provider-databricks v1.49.1 h1:Fk5lAXh246cEnp9VhK41swKZHhw+L2Wqy5SigjlK5w4=
+github.com/databricks/terraform-provider-databricks v1.49.1/go.mod h1:59CDq2Sur+sXYDNPJv3ilN5J1N7vXxjojfQhYRrG6Pk=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

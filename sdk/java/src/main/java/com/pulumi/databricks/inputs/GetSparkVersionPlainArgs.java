@@ -84,6 +84,21 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      * 
      */
@@ -188,6 +203,7 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         this.genomics = $.genomics;
         this.gpu = $.gpu;
         this.graviton = $.graviton;
+        this.id = $.id;
         this.latest = $.latest;
         this.longTermSupport = $.longTermSupport;
         this.ml = $.ml;
@@ -259,6 +275,17 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
         public Builder graviton(@Nullable Boolean graviton) {
             $.graviton = graviton;
+            return this;
+        }
+
+        /**
+         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
             return this;
         }
 

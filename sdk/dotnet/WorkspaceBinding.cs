@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     public partial class WorkspaceBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         /// </summary>
         [Output("bindingType")]
         public Output<string?> BindingType { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         public Output<string> SecurableName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Output("securableType")]
         public Output<string?> SecurableType { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         /// </summary>
         [Input("bindingType")]
         public Input<string>? BindingType { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         /// </summary>
         [Input("bindingType")]
         public Input<string>? BindingType { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }

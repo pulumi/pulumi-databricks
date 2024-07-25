@@ -81,7 +81,7 @@ class GetSparkVersionResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
         """
         return pulumi.get(self, "id")
 
@@ -140,6 +140,7 @@ def get_spark_version(beta: Optional[bool] = None,
                       genomics: Optional[bool] = None,
                       gpu: Optional[bool] = None,
                       graviton: Optional[bool] = None,
+                      id: Optional[str] = None,
                       latest: Optional[bool] = None,
                       long_term_support: Optional[bool] = None,
                       ml: Optional[bool] = None,
@@ -192,6 +193,7 @@ def get_spark_version(beta: Optional[bool] = None,
     :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
     :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
     :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+    :param str id: Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
     :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.
@@ -204,6 +206,7 @@ def get_spark_version(beta: Optional[bool] = None,
     __args__['genomics'] = genomics
     __args__['gpu'] = gpu
     __args__['graviton'] = graviton
+    __args__['id'] = id
     __args__['latest'] = latest
     __args__['longTermSupport'] = long_term_support
     __args__['ml'] = ml
@@ -232,6 +235,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
                              genomics: Optional[pulumi.Input[Optional[bool]]] = None,
                              gpu: Optional[pulumi.Input[Optional[bool]]] = None,
                              graviton: Optional[pulumi.Input[Optional[bool]]] = None,
+                             id: Optional[pulumi.Input[Optional[str]]] = None,
                              latest: Optional[pulumi.Input[Optional[bool]]] = None,
                              long_term_support: Optional[pulumi.Input[Optional[bool]]] = None,
                              ml: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -284,6 +288,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
     :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
     :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
     :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+    :param str id: Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
     :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.

@@ -18,11 +18,33 @@ import * as utilities from "./utilities";
  * const zones = databricks.getZones({});
  * ```
  */
-export function getZones(opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getZones:getZones", {
+        "defaultZone": args.defaultZone,
+        "id": args.id,
+        "zones": args.zones,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesArgs {
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     */
+    defaultZone?: string;
+    /**
+     * The id for the zone object.
+     */
+    id?: string;
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     */
+    zones?: string[];
 }
 
 /**
@@ -34,7 +56,7 @@ export interface GetZonesResult {
      */
     readonly defaultZone: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The id for the zone object.
      */
     readonly id: string;
     /**
@@ -56,6 +78,24 @@ export interface GetZonesResult {
  * const zones = databricks.getZones({});
  * ```
  */
-export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(getZones(opts))
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     */
+    defaultZone?: pulumi.Input<string>;
+    /**
+     * The id for the zone object.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

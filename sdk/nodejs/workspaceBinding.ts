@@ -58,7 +58,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
     public readonly bindingType!: pulumi.Output<string | undefined>;
     /**
@@ -70,7 +70,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
      */
     public readonly securableName!: pulumi.Output<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
      */
     public readonly securableType!: pulumi.Output<string | undefined>;
     /**
@@ -114,7 +114,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
  */
 export interface WorkspaceBindingState {
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
     bindingType?: pulumi.Input<string>;
     /**
@@ -126,7 +126,7 @@ export interface WorkspaceBindingState {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface WorkspaceBindingState {
  */
 export interface WorkspaceBindingArgs {
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. For `catalog`, possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. For `external-location` or `storage-credential`, no binding mode needs to be specified
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
     bindingType?: pulumi.Input<string>;
     /**
@@ -152,7 +152,7 @@ export interface WorkspaceBindingArgs {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-locations` or `storage-credentials`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**

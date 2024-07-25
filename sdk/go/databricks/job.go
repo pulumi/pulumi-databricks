@@ -81,7 +81,7 @@ type Job struct {
 	RunAs JobRunAsOutput `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrOutput `pulumi:"runJobTask"`
-	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule JobSchedulePtrOutput `pulumi:"schedule"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkJarTask JobSparkJarTaskPtrOutput `pulumi:"sparkJarTask"`
@@ -191,7 +191,7 @@ type jobState struct {
 	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
-	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule *JobSchedule `pulumi:"schedule"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkJarTask *JobSparkJarTask `pulumi:"sparkJarTask"`
@@ -272,7 +272,7 @@ type JobState struct {
 	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
-	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule JobSchedulePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkJarTask JobSparkJarTaskPtrInput
@@ -357,7 +357,7 @@ type jobArgs struct {
 	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
-	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule *JobSchedule `pulumi:"schedule"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkJarTask *JobSparkJarTask `pulumi:"sparkJarTask"`
@@ -437,7 +437,7 @@ type JobArgs struct {
 	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
-	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule JobSchedulePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkJarTask JobSparkJarTaskPtrInput
@@ -689,7 +689,7 @@ func (o JobOutput) RunJobTask() JobRunJobTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobRunJobTaskPtrOutput { return v.RunJobTask }).(JobRunJobTaskPtrOutput)
 }
 
-// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 func (o JobOutput) Schedule() JobSchedulePtrOutput {
 	return o.ApplyT(func(v *Job) JobSchedulePtrOutput { return v.Schedule }).(JobSchedulePtrOutput)
 }

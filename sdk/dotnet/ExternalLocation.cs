@@ -119,7 +119,7 @@ namespace Pulumi.Databricks
         public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Databricks
         public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
-        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Databricks
         public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
-        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the external location to `ISOLATED` will automatically allow access from the current workspace.
+        /// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
