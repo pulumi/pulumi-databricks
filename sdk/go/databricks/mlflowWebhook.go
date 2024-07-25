@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			thisJob, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
-//				Name: pulumi.String(fmt.Sprintf("Terraform MLflowWebhook Demo (%v)", me.Alphanumeric)),
+//				Name: pulumi.String(fmt.Sprintf("Pulumi MLflowWebhook Demo (%v)", me.Alphanumeric)),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("task1"),

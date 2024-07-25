@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source could be only used with workspace-level provider!
+//
+// Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+//
 // ## Example Usage
 //
 // # List all external locations in the metastore

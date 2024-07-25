@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and getDbfsFilePaths data sources.
+//
 // ## Import
 //
 // The resource dbfs file can be imported using the path of the file:
@@ -24,6 +26,7 @@ import (
 type DbfsFile struct {
 	pulumi.CustomResourceState
 
+	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	// Path, but with `dbfs:` prefix.
 	DbfsPath pulumi.StringOutput `pulumi:"dbfsPath"`
@@ -69,6 +72,7 @@ func GetDbfsFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbfsFile resources.
 type dbfsFileState struct {
+	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	// Path, but with `dbfs:` prefix.
 	DbfsPath *string `pulumi:"dbfsPath"`
@@ -82,6 +86,7 @@ type dbfsFileState struct {
 }
 
 type DbfsFileState struct {
+	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 pulumi.StringPtrInput
 	// Path, but with `dbfs:` prefix.
 	DbfsPath pulumi.StringPtrInput
@@ -99,6 +104,7 @@ func (DbfsFileState) ElementType() reflect.Type {
 }
 
 type dbfsFileArgs struct {
+	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
 	// The path of the file in which you wish to save.
@@ -109,6 +115,7 @@ type dbfsFileArgs struct {
 
 // The set of arguments for constructing a DbfsFile resource.
 type DbfsFileArgs struct {
+	// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
 	// The path of the file in which you wish to save.
@@ -204,6 +211,7 @@ func (o DbfsFileOutput) ToDbfsFileOutputWithContext(ctx context.Context) DbfsFil
 	return o
 }
 
+// Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
 func (o DbfsFileOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbfsFile) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }

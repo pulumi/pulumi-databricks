@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// create PAT token to provision entities within workspace
 //			pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
-//				Comment:         pulumi.String("Terraform Provisioning"),
+//				Comment:         pulumi.String("Pulumi Provisioning"),
 //				LifetimeSeconds: pulumi.Int(8640000),
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
 //				Comment: this.Rfc3339.ApplyT(func(rfc3339 string) (string, error) {
-//					return fmt.Sprintf("Terraform (created: %v)", rfc3339), nil
+//					return fmt.Sprintf("Pulumi (created: %v)", rfc3339), nil
 //				}).(pulumi.StringOutput),
 //				LifetimeSeconds: int(60 * 24 * 60 * 60),
 //			})

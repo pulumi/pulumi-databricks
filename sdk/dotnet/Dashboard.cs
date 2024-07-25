@@ -10,6 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Dashboard using `serialized_dashboard` attribute:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var starter = Databricks.GetSqlWarehouse.Invoke(new()
+    ///     {
+    ///         Name = "Starter Warehouse",
+    ///     });
+    /// 
+    ///     var dashboard = new Databricks.Dashboard("dashboard", new()
+    ///     {
+    ///         DisplayName = "New Dashboard",
+    ///         WarehouseId = starter.Apply(getSqlWarehouseResult =&gt; getSqlWarehouseResult.Id),
+    ///         SerializedDashboard = "{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}",
+    ///         EmbedCredentials = false,
+    ///         ParentPath = "/Shared/provider-test",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Dashboard using `file_path` attribute:
+    /// 
     /// ## Import
     /// 
     /// You can import a `databricks_dashboard` resource with ID like the following:

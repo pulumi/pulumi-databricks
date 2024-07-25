@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
+ *
  * ## Import
  *
  * The resource dbfs file can be imported using the path of the file:
@@ -43,6 +45,9 @@ export class DbfsFile extends pulumi.CustomResource {
         return obj['__pulumiType'] === DbfsFile.__pulumiType;
     }
 
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
      * Path, but with `dbfs:` prefix.
@@ -102,6 +107,9 @@ export class DbfsFile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DbfsFile resources.
  */
 export interface DbfsFileState {
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     */
     contentBase64?: pulumi.Input<string>;
     /**
      * Path, but with `dbfs:` prefix.
@@ -126,6 +134,9 @@ export interface DbfsFileState {
  * The set of arguments for constructing a DbfsFile resource.
  */
 export interface DbfsFileArgs {
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     */
     contentBase64?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
     /**

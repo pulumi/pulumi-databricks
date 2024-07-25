@@ -12,17 +12,15 @@ namespace Pulumi.Databricks
     public static class GetVolume
     {
         /// <summary>
-        /// ## Example Usage
-        /// 
-        /// * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+        /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
+        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("databricks:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
-        /// 
-        /// * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+        /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
+        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// </summary>
         public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("databricks:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());

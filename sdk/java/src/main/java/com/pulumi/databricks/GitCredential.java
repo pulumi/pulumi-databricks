@@ -16,6 +16,53 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+ * 
+ * ## Example Usage
+ * 
+ * You can declare Pulumi-managed Git credential using following code:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.GitCredential;
+ * import com.pulumi.databricks.GitCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ado = new GitCredential("ado", GitCredentialArgs.builder()
+ *             .gitUsername("myuser")
+ *             .gitProvider("azureDevOpsServices")
+ *             .personalAccessToken("sometoken")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.Repo to manage Databricks Repos.
+ * 
  * ## Import
  * 
  * The resource cluster can be imported using ID of Git credential that could be obtained via REST API:

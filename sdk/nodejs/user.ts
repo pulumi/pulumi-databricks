@@ -161,6 +161,9 @@ export class User extends pulumi.CustomResource {
      * ID of the user in an external identity provider.
      */
     public readonly externalId!: pulumi.Output<string | undefined>;
+    /**
+     * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
@@ -274,6 +277,9 @@ export interface UserState {
      * ID of the user in an external identity provider.
      */
     externalId?: pulumi.Input<string>;
+    /**
+     * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
@@ -334,6 +340,9 @@ export interface UserArgs {
      * ID of the user in an external identity provider.
      */
     externalId?: pulumi.Input<string>;
+    /**
+     * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.

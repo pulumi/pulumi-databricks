@@ -16,6 +16,64 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
+ * 
+ * &gt; **Note** To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use databricks.GitCredential resource.
+ * 
+ * ## Example Usage
+ * 
+ * You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn&#39;t belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn&#39;t provided, then Git folder will be created in the default location:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Repo;
+ * import com.pulumi.databricks.RepoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var nutterInHome = new Repo("nutterInHome", RepoArgs.builder()
+ *             .url("https://github.com/user/demo.git")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Permissions can control which groups or individual users can access repos.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.GitCredential to manage Git credentials.
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ * 
  * ## Import
  * 
  * The resource can be imported using the Git folder ID (obtained via UI or using API)

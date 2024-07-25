@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var thisJob = new Job("thisJob", JobArgs.builder()
- *             .name(String.format("Terraform MLflowWebhook Demo (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("Pulumi MLflowWebhook Demo (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .tasks(JobTaskArgs.builder()
  *                 .taskKey("task1")
  *                 .newCluster(JobTaskNewClusterArgs.builder()

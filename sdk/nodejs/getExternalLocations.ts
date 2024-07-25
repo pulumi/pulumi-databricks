@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
  * ## Example Usage
  *
  * List all external locations in the metastore
@@ -57,6 +61,10 @@ export interface GetExternalLocationsResult {
     readonly names: string[];
 }
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
  * ## Example Usage
  *
  * List all external locations in the metastore

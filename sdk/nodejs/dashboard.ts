@@ -5,6 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+ *
+ * ## Example Usage
+ *
+ * Dashboard using `serializedDashboard` attribute:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const starter = databricks.getSqlWarehouse({
+ *     name: "Starter Warehouse",
+ * });
+ * const dashboard = new databricks.Dashboard("dashboard", {
+ *     displayName: "New Dashboard",
+ *     warehouseId: starter.then(starter => starter.id),
+ *     serializedDashboard: "{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}",
+ *     embedCredentials: false,
+ *     parentPath: "/Shared/provider-test",
+ * });
+ * ```
+ *
+ * Dashboard using `filePath` attribute:
+ *
  * ## Import
  *
  * You can import a `databricks_dashboard` resource with ID like the following:

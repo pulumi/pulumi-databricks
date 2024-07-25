@@ -7,6 +7,38 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
+ *
+ * > **Note** To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use databricks.GitCredential resource.
+ *
+ * ## Example Usage
+ *
+ * You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `gitProvider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn't provided, then Git folder will be created in the default location:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const nutterInHome = new databricks.Repo("nutter_in_home", {url: "https://github.com/user/demo.git"});
+ * ```
+ *
+ * ## Access Control
+ *
+ * * databricks.Permissions can control which groups or individual users can access repos.
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.GitCredential to manage Git credentials.
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ *
  * ## Import
  *
  * The resource can be imported using the Git folder ID (obtained via UI or using API)

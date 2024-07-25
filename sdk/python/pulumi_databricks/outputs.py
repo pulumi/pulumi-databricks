@@ -1219,6 +1219,7 @@ class ClusterAwsAttributes(dict):
         :param int ebs_volume_size: The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         :param str ebs_volume_type: The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
         :param int first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        :param str instance_profile_arn: Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
         :param int spot_bid_price_percent: The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
         :param str zone_id: Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
         """
@@ -1296,6 +1297,9 @@ class ClusterAwsAttributes(dict):
     @property
     @pulumi.getter(name="instanceProfileArn")
     def instance_profile_arn(self) -> Optional[str]:
+        """
+        Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+        """
         return pulumi.get(self, "instance_profile_arn")
 
     @property
@@ -7868,6 +7872,9 @@ class JobTaskDependsOn(dict):
                  outcome: Optional[str] = None):
         """
         :param str task_key: The name of the task this task depends on.
+        :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+               
+               > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -7884,6 +7891,11 @@ class JobTaskDependsOn(dict):
     @property
     @pulumi.getter
     def outcome(self) -> Optional[str]:
+        """
+        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+
+        > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        """
         return pulumi.get(self, "outcome")
 
 
@@ -8590,6 +8602,9 @@ class JobTaskForEachTaskTaskDependsOn(dict):
                  outcome: Optional[str] = None):
         """
         :param str task_key: The name of the task this task depends on.
+        :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+               
+               > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -8606,6 +8621,11 @@ class JobTaskForEachTaskTaskDependsOn(dict):
     @property
     @pulumi.getter
     def outcome(self) -> Optional[str]:
+        """
+        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+
+        > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        """
         return pulumi.get(self, "outcome")
 
 
@@ -17988,6 +18008,7 @@ class MwsWorkspacesToken(dict):
                  token_id: Optional[str] = None,
                  token_value: Optional[str] = None):
         """
+        :param str comment: Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
         :param int lifetime_seconds: Token expiry lifetime. By default its 2592000 (30 days).
         """
         if comment is not None:
@@ -18002,6 +18023,9 @@ class MwsWorkspacesToken(dict):
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
+        """
+        Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
+        """
         return pulumi.get(self, "comment")
 
     @property

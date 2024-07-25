@@ -11,9 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+// Retrieves details about Volume that was created by Pulumi or manually.
+// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using getVolumes data source.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

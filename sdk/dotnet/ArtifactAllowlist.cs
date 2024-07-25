@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note**
+    ///   It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+    /// 
+    /// &gt; **Note** This resource could be only used with workspace-level provider!
+    /// 
+    /// In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

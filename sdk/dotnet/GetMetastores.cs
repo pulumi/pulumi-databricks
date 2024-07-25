@@ -12,6 +12,12 @@ namespace Pulumi.Databricks
     public static class GetMetastores
     {
         /// <summary>
+        /// &gt; **Note** This data source could be only used with account-level provider!
+        /// 
+        /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// 
         /// ## Example Usage
         /// 
         /// Mapping of name to id of all metastores:
@@ -45,6 +51,12 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoresResult>("databricks:index/getMetastores:getMetastores", args ?? new GetMetastoresArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** This data source could be only used with account-level provider!
+        /// 
+        /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// 
         /// ## Example Usage
         /// 
         /// Mapping of name to id of all metastores:

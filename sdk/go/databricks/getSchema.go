@@ -11,9 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+// Retrieves details about Schema that was created by Pulumi or manually.
+// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using getSchemas data source.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult

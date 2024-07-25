@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This resource has an evolving API, which may change in future versions of the provider.
+ *
+ * Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `databricks.WorkspaceConf` per workspace.
+ *
  * ## Example Usage
  *
  * Allows specification of custom configuration properties for expert usage:

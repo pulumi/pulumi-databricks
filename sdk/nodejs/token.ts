@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * // create PAT token to provision entities within workspace
  * const pat = new databricks.Token("pat", {
- *     comment: "Terraform Provisioning",
+ *     comment: "Pulumi Provisioning",
  *     lifetimeSeconds: 8640000,
  * });
  * export const databricksToken = pat.tokenValue;
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * const _this = new time.Rotating("this", {rotationDays: 30});
  * const pat = new databricks.Token("pat", {
- *     comment: pulumi.interpolate`Terraform (created: ${_this.rfc3339})`,
+ *     comment: pulumi.interpolate`Pulumi (created: ${_this.rfc3339})`,
  *     lifetimeSeconds: 60 * 24 * 60 * 60,
  * });
  * ```

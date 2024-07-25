@@ -12,17 +12,17 @@ namespace Pulumi.Databricks
     public static class GetCurrentUser
     {
         /// <summary>
-        /// ## Example Usage
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
-        /// Create personalized databricks.Job and databricks_notebook:
+        /// Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
         /// </summary>
         public static Task<GetCurrentUserResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
-        /// Create personalized databricks.Job and databricks_notebook:
+        /// Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
         /// </summary>
         public static Output<GetCurrentUserResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());

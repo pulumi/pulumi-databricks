@@ -100,6 +100,8 @@ def get_share(created_at: Optional[int] = None,
               objects: Optional[Sequence[pulumi.InputType['GetShareObjectArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
+    Retrieves details about a Share that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing share in the metastore
@@ -149,6 +151,8 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
                      objects: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetShareObjectArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
     """
+    Retrieves details about a Share that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing share in the metastore

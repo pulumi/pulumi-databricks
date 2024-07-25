@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetVolumes
     {
         /// <summary>
+        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
         /// ## Example Usage
         /// 
         /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -49,6 +53,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumesResult>("databricks:index/getVolumes:getVolumes", args ?? new GetVolumesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
         /// ## Example Usage
         /// 
         /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:

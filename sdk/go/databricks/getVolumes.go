@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source could be only used with workspace-level provider!
+//
+// Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+//
 // ## Example Usage
 //
 // Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:

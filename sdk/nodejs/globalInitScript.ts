@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+ *
  * ## Import
  *
  * The resource global init script can be imported using script ID:
@@ -43,6 +45,9 @@ export class GlobalInitScript extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalInitScript.__pulumiType;
     }
 
+    /**
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
      * specifies if the script is enabled for execution, or not
@@ -99,6 +104,9 @@ export class GlobalInitScript extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalInitScript resources.
  */
 export interface GlobalInitScriptState {
+    /**
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     */
     contentBase64?: pulumi.Input<string>;
     /**
      * specifies if the script is enabled for execution, or not
@@ -123,6 +131,9 @@ export interface GlobalInitScriptState {
  * The set of arguments for constructing a GlobalInitScript resource.
  */
 export interface GlobalInitScriptArgs {
+    /**
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     */
     contentBase64?: pulumi.Input<string>;
     /**
      * specifies if the script is enabled for execution, or not

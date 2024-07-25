@@ -72,6 +72,10 @@ def get_external_location(external_location_info: Optional[pulumi.InputType['Get
                           name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing external location in the metastore
@@ -115,6 +119,10 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
                                  name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing external location in the metastore

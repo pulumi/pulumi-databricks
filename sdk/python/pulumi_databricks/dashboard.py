@@ -429,6 +429,27 @@ class Dashboard(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+
+        ## Example Usage
+
+        Dashboard using `serialized_dashboard` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        starter = databricks.get_sql_warehouse(name="Starter Warehouse")
+        dashboard = databricks.Dashboard("dashboard",
+            display_name="New Dashboard",
+            warehouse_id=starter.id,
+            serialized_dashboard="{\\"pages\\":[{\\"name\\":\\"new_name\\",\\"displayName\\":\\"New Page\\"}]}",
+            embed_credentials=False,
+            parent_path="/Shared/provider-test")
+        ```
+
+        Dashboard using `file_path` attribute:
+
         ## Import
 
         You can import a `databricks_dashboard` resource with ID like the following:
@@ -455,6 +476,27 @@ class Dashboard(pulumi.CustomResource):
                  args: DashboardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+
+        ## Example Usage
+
+        Dashboard using `serialized_dashboard` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        starter = databricks.get_sql_warehouse(name="Starter Warehouse")
+        dashboard = databricks.Dashboard("dashboard",
+            display_name="New Dashboard",
+            warehouse_id=starter.id,
+            serialized_dashboard="{\\"pages\\":[{\\"name\\":\\"new_name\\",\\"displayName\\":\\"New Page\\"}]}",
+            embed_credentials=False,
+            parent_path="/Shared/provider-test")
+        ```
+
+        Dashboard using `file_path` attribute:
+
         ## Import
 
         You can import a `databricks_dashboard` resource with ID like the following:

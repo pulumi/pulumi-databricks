@@ -17,6 +17,61 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * 
+ * ## Example Usage
+ * 
+ * You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myCustomDirectory = new Directory("myCustomDirectory", DirectoryArgs.builder()
+ *             .path("/my_custom_directory")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * - databricks.Permissions can control which groups or individual users can access folders.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * - End to end workspace management guide.
+ * - databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * - databricks.Notebook data to export a notebook from Databricks Workspace.
+ * - databricks.getNotebookPaths data to list notebooks in Databricks Workspace.
+ * - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+ * - databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ * 
  * ## Import
  * 
  * The resource directory can be imported using directory path:
@@ -30,9 +85,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/directory:Directory")
 public class Directory extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     @Export(name="deleteRecursive", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteRecursive;
 
+    /**
+     * @return Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     public Output<Optional<Boolean>> deleteRecursive() {
         return Codegen.optional(this.deleteRecursive);
     }

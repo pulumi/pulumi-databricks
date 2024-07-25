@@ -59,6 +59,12 @@ class AwaitableGetJobsResult(GetJobsResult):
 def get_jobs(ids: Optional[Mapping[str, Any]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > **Note** Data resource will error in case of jobs with duplicate names.
+
     ## Example Usage
 
     Granting view Permissions to all Job within the workspace:
@@ -111,6 +117,12 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobsResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > **Note** Data resource will error in case of jobs with duplicate names.
+
     ## Example Usage
 
     Granting view Permissions to all Job within the workspace:

@@ -214,6 +214,68 @@ class File(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        This resource allows uploading and downloading files in databricks_volume.
+
+        Notes:
+
+        * Currently the limit is 5GiB in octet-stream.
+        * Currently, only UC volumes are supported. The list of destinations may change.
+
+        ## Example Usage
+
+        In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            metastore_id=this_databricks_metastore["id"],
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="MANAGED",
+            comment="this volume is managed by terraform")
+        this_file = databricks.File("this",
+            source="/full/path/on/local/system",
+            path=this.volume_path.apply(lambda volume_path: f"{volume_path}/fileName"))
+        ```
+
+        You can also inline sources through `content_base64`  attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        init_script = databricks.File("init_script",
+            content_base64=std.base64encode(input=\"\"\"#!/bin/bash
+        echo "Hello World"
+        \"\"\").result,
+            path=f"{this['volumePath']}/fileName")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * WorkspaceFile
+        * End to end workspace management guide.
+        * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+
         ## Import
 
         The resource `databricks_file` can be imported using the path of the file:
@@ -237,6 +299,68 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows uploading and downloading files in databricks_volume.
+
+        Notes:
+
+        * Currently the limit is 5GiB in octet-stream.
+        * Currently, only UC volumes are supported. The list of destinations may change.
+
+        ## Example Usage
+
+        In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            metastore_id=this_databricks_metastore["id"],
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="MANAGED",
+            comment="this volume is managed by terraform")
+        this_file = databricks.File("this",
+            source="/full/path/on/local/system",
+            path=this.volume_path.apply(lambda volume_path: f"{volume_path}/fileName"))
+        ```
+
+        You can also inline sources through `content_base64`  attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        init_script = databricks.File("init_script",
+            content_base64=std.base64encode(input=\"\"\"#!/bin/bash
+        echo "Hello World"
+        \"\"\").result,
+            path=f"{this['volumePath']}/fileName")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * WorkspaceFile
+        * End to end workspace management guide.
+        * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+
         ## Import
 
         The resource `databricks_file` can be imported using the path of the file:

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This data source could be only used with account-level provider!
+ *
+ * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ *
  * ## Example Usage
  *
  * MetastoreInfo response for a given metastore id
@@ -94,6 +100,12 @@ export interface GetMetastoreResult {
     readonly region: string;
 }
 /**
+ * > **Note** This data source could be only used with account-level provider!
+ *
+ * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ *
  * ## Example Usage
  *
  * MetastoreInfo response for a given metastore id

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
+    /// 
     /// ## Import
     /// 
     /// The resource notebook can be imported using notebook path
@@ -23,6 +25,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/notebook:Notebook")]
     public partial class Notebook : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
@@ -111,6 +116,9 @@ namespace Pulumi.Databricks
 
     public sealed class NotebookArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
@@ -155,6 +163,9 @@ namespace Pulumi.Databricks
 
     public sealed class NotebookState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 

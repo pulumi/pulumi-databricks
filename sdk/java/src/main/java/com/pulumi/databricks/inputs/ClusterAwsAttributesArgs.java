@@ -105,9 +105,17 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.firstOnDemand);
     }
 
+    /**
+     * Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
     @Import(name="instanceProfileArn")
     private @Nullable Output<String> instanceProfileArn;
 
+    /**
+     * @return Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
     public Optional<Output<String>> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
@@ -298,11 +306,23 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
             return firstOnDemand(Output.of(firstOnDemand));
         }
 
+        /**
+         * @param instanceProfileArn Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
             $.instanceProfileArn = instanceProfileArn;
             return this;
         }
 
+        /**
+         * @param instanceProfileArn Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
         }

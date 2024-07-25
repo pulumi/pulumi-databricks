@@ -7,42 +7,708 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace. It would guarantee that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
+ *
+ * > **Note** Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset unless the changes are also reflected in the configuration.
+ *
+ * > **Note** It is not possible to lower permissions for `admins` or your own user anywhere from `CAN_MANAGE` level, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.
+ *
+ * > **Note** If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
+ *
+ * > **Warning** To manage access control on service principals, use databricks_access_control_rule_set.
+ *
+ * ## Cluster usage
+ *
+ * It's possible to separate [cluster access control](https://docs.databricks.com/security/access-control/cluster-acl.html) to three different permission levels: `CAN_ATTACH_TO`, `CAN_RESTART` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const latest = databricks.getSparkVersion({});
+ * const smallest = databricks.getNodeType({
+ *     localDisk: true,
+ * });
+ * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
+ *     clusterName: "Shared Autoscaling",
+ *     sparkVersion: latest.then(latest => latest.id),
+ *     nodeTypeId: smallest.then(smallest => smallest.id),
+ *     autoterminationMinutes: 60,
+ *     autoscale: {
+ *         minWorkers: 1,
+ *         maxWorkers: 10,
+ *     },
+ * });
+ * const clusterUsage = new databricks.Permissions("cluster_usage", {
+ *     clusterId: sharedAutoscaling.id,
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_ATTACH_TO",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_RESTART",
+ *         },
+ *         {
+ *             groupName: ds.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Cluster Policy usage
+ *
+ * Cluster policies allow creation of clusters, that match [given policy](https://docs.databricks.com/administration-guide/clusters/policies.html). It's possible to assign `CAN_USE` permission to users and groups:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const somethingSimple = new databricks.ClusterPolicy("something_simple", {
+ *     name: "Some simple policy",
+ *     definition: JSON.stringify({
+ *         "spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": {
+ *             type: "forbidden",
+ *         },
+ *         "spark_conf.spark.secondkey": {
+ *             type: "forbidden",
+ *         },
+ *     }),
+ * });
+ * const policyUsage = new databricks.Permissions("policy_usage", {
+ *     clusterPolicyId: somethingSimple.id,
+ *     accessControls: [
+ *         {
+ *             groupName: ds.displayName,
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Instance Pool usage
+ *
+ * Instance Pools access control [allows to](https://docs.databricks.com/security/access-control/pool-acl.html) assign `CAN_ATTACH_TO` and `CAN_MANAGE` permissions to users, service principals, and groups. It's also possible to grant creation of Instance Pools to individual groups and users, service principals.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const smallest = databricks.getNodeType({
+ *     localDisk: true,
+ * });
+ * const _this = new databricks.InstancePool("this", {
+ *     instancePoolName: "Reserved Instances",
+ *     idleInstanceAutoterminationMinutes: 60,
+ *     nodeTypeId: smallest.then(smallest => smallest.id),
+ *     minIdleInstances: 0,
+ *     maxCapacity: 10,
+ * });
+ * const poolUsage = new databricks.Permissions("pool_usage", {
+ *     instancePoolId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_ATTACH_TO",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Job usage
+ *
+ * There are four assignable [permission levels](https://docs.databricks.com/security/access-control/jobs-acl.html#job-permissions) for databricks_job: `CAN_VIEW`, `CAN_MANAGE_RUN`, `IS_OWNER`, and `CAN_MANAGE`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+ *
+ * - The creator of a job has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a job would revert ownership to the creator.
+ * - A job must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the job. Nothing would change, per se, if the job was created through Pulumi.
+ * - A job cannot have a group as an owner.
+ * - Jobs triggered through _Run Now_ assume the permissions of the job owner and not the user, and service principal who issued Run Now.
+ * - Read [main documentation](https://docs.databricks.com/security/access-control/jobs-acl.html) for additional detail.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const awsPrincipal = new databricks.ServicePrincipal("aws_principal", {displayName: "main"});
+ * const latest = databricks.getSparkVersion({});
+ * const smallest = databricks.getNodeType({
+ *     localDisk: true,
+ * });
+ * const _this = new databricks.Job("this", {
+ *     name: "Featurization",
+ *     maxConcurrentRuns: 1,
+ *     tasks: [{
+ *         taskKey: "task1",
+ *         newCluster: {
+ *             numWorkers: 300,
+ *             sparkVersion: latest.then(latest => latest.id),
+ *             nodeTypeId: smallest.then(smallest => smallest.id),
+ *         },
+ *         notebookTask: {
+ *             notebookPath: "/Production/MakeFeatures",
+ *         },
+ *     }],
+ * });
+ * const jobUsage = new databricks.Permissions("job_usage", {
+ *     jobId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_VIEW",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_MANAGE_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *         {
+ *             servicePrincipalName: awsPrincipal.applicationId,
+ *             permissionLevel: "IS_OWNER",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Delta Live Tables usage
+ *
+ * There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+ *
+ * - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
+ * - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+ * - A DLT pipeline cannot have a group as an owner.
+ * - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+ * - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const dltDemo = new databricks.Notebook("dlt_demo", {
+ *     contentBase64: std.base64encode({
+ *         input: `import dlt
+ * json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
+ * @dlt.table(
+ *    comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
+ * )
+ * def clickstream_raw():
+ *     return (spark.read.format("json").load(json_path))
+ * `,
+ *     }).then(invoke => invoke.result),
+ *     language: "PYTHON",
+ *     path: `${me.home}/DLT_Demo`,
+ * });
+ * const _this = new databricks.Pipeline("this", {
+ *     name: `DLT Demo Pipeline (${me.alphanumeric})`,
+ *     storage: "/test/tf-pipeline",
+ *     configuration: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ *     libraries: [{
+ *         notebook: {
+ *             path: dltDemo.id,
+ *         },
+ *     }],
+ *     continuous: false,
+ *     filters: {
+ *         includes: ["com.databricks.include"],
+ *         excludes: ["com.databricks.exclude"],
+ *     },
+ * });
+ * const dltUsage = new databricks.Permissions("dlt_usage", {
+ *     pipelineId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_VIEW",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Notebook usage
+ *
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for databricks.Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const _this = new databricks.Notebook("this", {
+ *     contentBase64: std.base64encode({
+ *         input: "# Welcome to your Python notebook",
+ *     }).then(invoke => invoke.result),
+ *     path: "/Production/ETL/Features",
+ *     language: "PYTHON",
+ * });
+ * const notebookUsage = new databricks.Permissions("notebook_usage", {
+ *     notebookPath: _this.path,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Workspace file usage
+ *
+ * Valid permission levels for databricks.WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const _this = new databricks.WorkspaceFile("this", {
+ *     contentBase64: std.base64encode({
+ *         input: "print('Hello World')",
+ *     }).then(invoke => invoke.result),
+ *     path: "/Production/ETL/Features.py",
+ * });
+ * const workspaceFileUsage = new databricks.Permissions("workspace_file_usage", {
+ *     workspaceFilePath: _this.path,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Folder usage
+ *
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of databricks.Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
+ *
+ * - All users can list items in the folder without any permissions.
+ * - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace > Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
+ * - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
+ * - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const _this = new databricks.Directory("this", {path: "/Production/ETL"});
+ * const folderUsage = new databricks.Permissions("folder_usage", {
+ *     directoryPath: _this.path,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [_this],
+ * });
+ * ```
+ *
+ * ## Repos usage
+ *
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html) for databricks.Repo are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const _this = new databricks.Repo("this", {url: "https://github.com/user/demo.git"});
+ * const repoUsage = new databricks.Permissions("repo_usage", {
+ *     repoId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## MLflow Experiment usage
+ *
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-experiment-permissions-1) for databricks.MlflowExperiment are: `CAN_READ`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const me = databricks.getCurrentUser({});
+ * const _this = new databricks.MlflowExperiment("this", {
+ *     name: me.then(me => `${me.home}/Sample`),
+ *     artifactLocation: "dbfs:/tmp/my-experiment",
+ *     description: "My MLflow experiment description",
+ * });
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const experimentUsage = new databricks.Permissions("experiment_usage", {
+ *     experimentId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## MLflow Model usage
+ *
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for databricks.MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registeredModelId = "root"`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.MlflowModel("this", {name: "SomePredictions"});
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const modelUsage = new databricks.Permissions("model_usage", {
+ *     registeredModelId: _this.registeredModelId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_MANAGE_PRODUCTION_VERSIONS",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE_STAGING_VERSIONS",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Model serving usage
+ *
+ * Valid permission levels for databricks.ModelServing are: `CAN_VIEW`, `CAN_QUERY`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.ModelServing("this", {
+ *     name: "tf-test",
+ *     config: {
+ *         servedModels: [{
+ *             name: "prod_model",
+ *             modelName: "test",
+ *             modelVersion: "1",
+ *             workloadSize: "Small",
+ *             scaleToZeroEnabled: true,
+ *         }],
+ *     },
+ * });
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const mlServingUsage = new databricks.Permissions("ml_serving_usage", {
+ *     servingEndpointId: _this.servingEndpointId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_VIEW",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_QUERY",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Passwords usage
+ *
+ * By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const guests = new databricks.Group("guests", {displayName: "Guest Users"});
+ * const passwordUsage = new databricks.Permissions("password_usage", {
+ *     authorization: "passwords",
+ *     accessControls: [{
+ *         groupName: guests.displayName,
+ *         permissionLevel: "CAN_USE",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Token usage
+ *
+ * It is required to have at least 1 personal access token in the workspace before you can manage tokens permissions.
+ *
+ * !> **Warning** There can be only one `authorization = "tokens"` permissions resource per workspace, otherwise there'll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
+ *
+ * Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const tokenUsage = new databricks.Permissions("token_usage", {
+ *     authorization: "tokens",
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## SQL warehouse usage
+ *
+ * [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const me = databricks.getCurrentUser({});
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const _this = new databricks.SqlEndpoint("this", {
+ *     name: me.then(me => `Endpoint of ${me.alphanumeric}`),
+ *     clusterSize: "Small",
+ *     maxNumClusters: 1,
+ *     tags: {
+ *         customTags: [{
+ *             key: "City",
+ *             value: "Amsterdam",
+ *         }],
+ *     },
+ * });
+ * const endpointUsage = new databricks.Permissions("endpoint_usage", {
+ *     sqlEndpointId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Dashboard usage
+ *
+ * [Dashboards](https://docs.databricks.com/en/dashboards/tutorials/manage-permissions.html) have four possible permissions: `CAN_READ`, `CAN_RUN`, `CAN_EDIT` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const dashboard = new databricks.Dashboard("dashboard", {displayName: "TF New Dashboard"});
+ * const dashboardUsage = new databricks.Permissions("dashboard_usage", {
+ *     dashboardId: dashboard.id,
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Legacy SQL Dashboard usage
+ *
+ * [Legacy SQL dashboards](https://docs.databricks.com/sql/user/security/access-control/dashboard-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const sqlDashboardUsage = new databricks.Permissions("sql_dashboard_usage", {
+ *     sqlDashboardId: "3244325",
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## SQL Query usage
+ *
+ * [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
+ *
+ * > **Note** If you do not define an `accessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const queryUsage = new databricks.Permissions("query_usage", {
+ *     sqlQueryId: "3244325",
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## SQL Alert usage
+ *
+ * [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const alertUsage = new databricks.Permissions("alert_usage", {
+ *     sqlAlertId: "3244325",
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Instance Profiles
+ *
+ * Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
+ *
+ * ## Secrets
+ *
+ * One can control access to databricks.Secret through `initialManagePrincipal` argument on databricks.SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
+ *
+ * ## Tables, Views and Databases
+ *
+ * General Permissions API does not apply to access control for tables and they have to be managed separately using the databricks.SqlPermissions resource, though you're encouraged to use Unity Catalog or migrate to it.
+ *
+ * ## Data Access with Unity Catalog
+ *
+ * Initially in Unity Catalog all users have no access to data, which has to be later assigned through databricks.Grants resource.
+ *
  * ## Import
  *
- * ### Import Example
- *
- * Configuration file:
- *
- * hcl
- *
- * resource "databricks_mlflow_model" "model" {
- *
- *   name        = "example_model"
- *
- *   description = "MLflow registered model"
- *
- * }
- *
- * resource "databricks_permissions" "model_usage" {
- *
- *   registered_model_id = databricks_mlflow_model.model.registered_model_id
- *
- *   access_control {
- *
- *     group_name       = "users"
- *     
- *     permission_level = "CAN_READ"
- *
- *   }
- *
- * }
- *
- * Import command:
- *
- * bash
+ * The resource permissions can be imported using the object id
  *
  * ```sh
- * $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
+ * $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
  * ```
  */
 export class Permissions extends pulumi.CustomResource {

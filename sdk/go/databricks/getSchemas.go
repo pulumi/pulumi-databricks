@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source could be only used with workspace-level provider!
+//
+// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+//
 // ## Example Usage
 //
 // Listing all schemas in a _sandbox_ databricks_catalog:

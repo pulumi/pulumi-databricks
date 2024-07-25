@@ -12,6 +12,320 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+//
+// Enables you to register awsVpcEndpoint resources or gcp vpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+//
+// It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or the [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+//
+// ## Example Usage
+//
+// ### Databricks on AWS usage
+//
+// Before using this resource, you will need to create the necessary VPC Endpoints as per your VPC endpoint requirements resource for this, for example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/ec2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ec2.NewVpcEndpoint(ctx, "workspace", &ec2.VpcEndpointArgs{
+//				VpcId:           pulumi.Any(vpc.VpcId),
+//				ServiceName:     pulumi.Any(privateLink.WorkspaceService),
+//				VpcEndpointType: pulumi.String("Interface"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					vpc.DefaultSecurityGroupId,
+//				},
+//				SubnetIds: pulumi.StringArray{
+//					plSubnet.Id,
+//				},
+//				PrivateDnsEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				plSubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ec2.NewVpcEndpoint(ctx, "relay", &ec2.VpcEndpointArgs{
+//				VpcId:           pulumi.Any(vpc.VpcId),
+//				ServiceName:     pulumi.Any(privateLink.RelayService),
+//				VpcEndpointType: pulumi.String("Interface"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					vpc.DefaultSecurityGroupId,
+//				},
+//				SubnetIds: pulumi.StringArray{
+//					plSubnet.Id,
+//				},
+//				PrivateDnsEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				plSubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Depending on your use case, you may need or choose to add VPC Endpoints for the AWS Services Databricks uses. See [Add VPC endpoints for other AWS services (recommended but optional)
+// ](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-9-add-vpc-endpoints-for-other-aws-services-recommended-but-optional) for more information. For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/ec2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
+//				VpcId:         pulumi.Any(vpc.VpcId),
+//				RouteTableIds: pulumi.Any(vpc.PrivateRouteTableIds),
+//				ServiceName:   pulumi.String(fmt.Sprintf("com.amazonaws.%v.s3", region)),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpc,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ec2.NewVpcEndpoint(ctx, "sts", &ec2.VpcEndpointArgs{
+//				VpcId:           pulumi.Any(vpc.VpcId),
+//				ServiceName:     pulumi.String(fmt.Sprintf("com.amazonaws.%v.sts", region)),
+//				VpcEndpointType: pulumi.String("Interface"),
+//				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
+//				SecurityGroupIds: pulumi.StringArray{
+//					vpc.DefaultSecurityGroupId,
+//				},
+//				PrivateDnsEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpc,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ec2.NewVpcEndpoint(ctx, "kinesis-streams", &ec2.VpcEndpointArgs{
+//				VpcId:           pulumi.Any(vpc.VpcId),
+//				ServiceName:     pulumi.String(fmt.Sprintf("com.amazonaws.%v.kinesis-streams", region)),
+//				VpcEndpointType: pulumi.String("Interface"),
+//				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
+//				SecurityGroupIds: pulumi.StringArray{
+//					vpc.DefaultSecurityGroupId,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpc,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Once you have created the necessary endpoints, you need to register each of them via *this* Pulumi resource, which calls out to the [Databricks Account API](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-your-vpc-endpoint-ids-with-the-account-api)):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsVpcEndpoint(ctx, "workspace", &databricks.MwsVpcEndpointArgs{
+//				AccountId:        pulumi.Any(databricksAccountId),
+//				AwsVpcEndpointId: pulumi.Any(workspaceAwsVpcEndpoint.Id),
+//				VpcEndpointName:  pulumi.String(fmt.Sprintf("VPC Relay for %v", vpc.VpcId)),
+//				Region:           pulumi.Any(region),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				workspaceAwsVpcEndpoint,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsVpcEndpoint(ctx, "relay", &databricks.MwsVpcEndpointArgs{
+//				AccountId:        pulumi.Any(databricksAccountId),
+//				AwsVpcEndpointId: pulumi.Any(relayAwsVpcEndpoint.Id),
+//				VpcEndpointName:  pulumi.String(fmt.Sprintf("VPC Relay for %v", vpc.VpcId)),
+//				Region:           pulumi.Any(region),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				relayAwsVpcEndpoint,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:               pulumi.Any(databricksAccountId),
+//				AwsRegion:               pulumi.Any(region),
+//				WorkspaceName:           pulumi.Any(prefix),
+//				CredentialsId:           pulumi.Any(thisDatabricksMwsCredentials.CredentialsId),
+//				StorageConfigurationId:  pulumi.Any(thisDatabricksMwsStorageConfigurations.StorageConfigurationId),
+//				NetworkId:               pulumi.Any(thisDatabricksMwsNetworks.NetworkId),
+//				PrivateAccessSettingsId: pulumi.Any(pas.PrivateAccessSettingsId),
+//				PricingTier:             pulumi.String("ENTERPRISE"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisDatabricksMwsNetworks,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Databricks on GCP usage
+//
+// Before using this resource, you will need to create the necessary Private Service Connect (PSC) connections on your Google Cloud VPC networks. You can see [Enable Private Service Connect for your workspace](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) for more details.
+//
+// Once you have created the necessary PSC connections, you need to register each of them via *this* Pulumi resource, which calls out to the Databricks Account API.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in https://accounts.gcp.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			databricksGoogleServiceAccount := cfg.RequireObject("databricksGoogleServiceAccount")
+//			googleProject := cfg.RequireObject("googleProject")
+//			subnetRegion := cfg.RequireObject("subnetRegion")
+//			_, err := databricks.NewMwsVpcEndpoint(ctx, "workspace", &databricks.MwsVpcEndpointArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				VpcEndpointName: pulumi.String("PSC Rest API endpoint"),
+//				GcpVpcEndpointInfo: &databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs{
+//					ProjectId:       pulumi.Any(googleProject),
+//					PscEndpointName: pulumi.String("PSC Rest API endpoint"),
+//					EndpointRegion:  pulumi.Any(subnetRegion),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsVpcEndpoint(ctx, "relay", &databricks.MwsVpcEndpointArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				VpcEndpointName: pulumi.String("PSC Relay endpoint"),
+//				GcpVpcEndpointInfo: &databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs{
+//					ProjectId:       pulumi.Any(googleProject),
+//					PscEndpointName: pulumi.String("PSC Relay endpoint"),
+//					EndpointRegion:  pulumi.Any(subnetRegion),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.Any(databricksAccountId),
+//				WorkspaceName: pulumi.String("gcp workspace"),
+//				Location:      pulumi.Any(subnetRegion),
+//				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
+//					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
+//						ProjectId: pulumi.Any(googleProject),
+//					},
+//				},
+//				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
+//					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
+//					MasterIpRange:    pulumi.String("10.3.0.0/28"),
+//				},
+//				NetworkId:               pulumi.Any(thisDatabricksMwsNetworks.NetworkId),
+//				PrivateAccessSettingsId: pulumi.Any(pas.PrivateAccessSettingsId),
+//				PricingTier:             pulumi.String("PREMIUM"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisDatabricksMwsNetworks,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Provisioning Databricks on AWS guide.
+// * Provisioning Databricks on AWS with Private Link guide.
+// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+// * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+// * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.

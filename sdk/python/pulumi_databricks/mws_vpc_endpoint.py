@@ -349,6 +349,178 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+
+        Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+
+        It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or the [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+
+        ## Example Usage
+
+        ### Databricks on AWS usage
+
+        Before using this resource, you will need to create the necessary VPC Endpoints as per your VPC endpoint requirements resource for this, for example:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        workspace = aws.ec2.VpcEndpoint("workspace",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["workspaceService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
+        relay = aws.ec2.VpcEndpoint("relay",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["relayService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
+        ```
+
+        Depending on your use case, you may need or choose to add VPC Endpoints for the AWS Services Databricks uses. See [Add VPC endpoints for other AWS services (recommended but optional)
+        ](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-9-add-vpc-endpoints-for-other-aws-services-recommended-but-optional) for more information. For example:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        s3 = aws.ec2.VpcEndpoint("s3",
+            vpc_id=vpc["vpcId"],
+            route_table_ids=vpc["privateRouteTableIds"],
+            service_name=f"com.amazonaws.{region}.s3",
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        sts = aws.ec2.VpcEndpoint("sts",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.sts",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        kinesis_streams = aws.ec2.VpcEndpoint("kinesis-streams",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.kinesis-streams",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        ```
+
+        Once you have created the necessary endpoints, you need to register each of them via *this* Pulumi resource, which calls out to the [Databricks Account API](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-your-vpc-endpoint-ids-with-the-account-api)):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        workspace = databricks.MwsVpcEndpoint("workspace",
+            account_id=databricks_account_id,
+            aws_vpc_endpoint_id=workspace_aws_vpc_endpoint["id"],
+            vpc_endpoint_name=f"VPC Relay for {vpc['vpcId']}",
+            region=region,
+            opts = pulumi.ResourceOptions(depends_on=[workspace_aws_vpc_endpoint]))
+        relay = databricks.MwsVpcEndpoint("relay",
+            account_id=databricks_account_id,
+            aws_vpc_endpoint_id=relay_aws_vpc_endpoint["id"],
+            vpc_endpoint_name=f"VPC Relay for {vpc['vpcId']}",
+            region=region,
+            opts = pulumi.ResourceOptions(depends_on=[relay_aws_vpc_endpoint]))
+        ```
+
+        Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="ENTERPRISE",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ### Databricks on GCP usage
+
+        Before using this resource, you will need to create the necessary Private Service Connect (PSC) connections on your Google Cloud VPC networks. You can see [Enable Private Service Connect for your workspace](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) for more details.
+
+        Once you have created the necessary PSC connections, you need to register each of them via *this* Pulumi resource, which calls out to the Databricks Account API.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in https://accounts.gcp.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        databricks_google_service_account = config.require_object("databricksGoogleServiceAccount")
+        google_project = config.require_object("googleProject")
+        subnet_region = config.require_object("subnetRegion")
+        workspace = databricks.MwsVpcEndpoint("workspace",
+            account_id=databricks_account_id,
+            vpc_endpoint_name="PSC Rest API endpoint",
+            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
+                project_id=google_project,
+                psc_endpoint_name="PSC Rest API endpoint",
+                endpoint_region=subnet_region,
+            ))
+        relay = databricks.MwsVpcEndpoint("relay",
+            account_id=databricks_account_id,
+            vpc_endpoint_name="PSC Relay endpoint",
+            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
+                project_id=google_project,
+                psc_endpoint_name="PSC Relay endpoint",
+                endpoint_region=subnet_region,
+            ))
+        ```
+
+        Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            workspace_name="gcp workspace",
+            location=subnet_region,
+            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
+                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
+                    project_id=google_project,
+                ),
+            ),
+            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
+                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
+                master_ip_range="10.3.0.0/28",
+            ),
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
         ## Import
 
         -> **Note** Importing this resource is not currently supported.
@@ -371,6 +543,178 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  args: MwsVpcEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+
+        Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+
+        It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or the [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+
+        ## Example Usage
+
+        ### Databricks on AWS usage
+
+        Before using this resource, you will need to create the necessary VPC Endpoints as per your VPC endpoint requirements resource for this, for example:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        workspace = aws.ec2.VpcEndpoint("workspace",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["workspaceService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
+        relay = aws.ec2.VpcEndpoint("relay",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["relayService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
+        ```
+
+        Depending on your use case, you may need or choose to add VPC Endpoints for the AWS Services Databricks uses. See [Add VPC endpoints for other AWS services (recommended but optional)
+        ](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-9-add-vpc-endpoints-for-other-aws-services-recommended-but-optional) for more information. For example:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        s3 = aws.ec2.VpcEndpoint("s3",
+            vpc_id=vpc["vpcId"],
+            route_table_ids=vpc["privateRouteTableIds"],
+            service_name=f"com.amazonaws.{region}.s3",
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        sts = aws.ec2.VpcEndpoint("sts",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.sts",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            private_dns_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        kinesis_streams = aws.ec2.VpcEndpoint("kinesis-streams",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.kinesis-streams",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            opts = pulumi.ResourceOptions(depends_on=[vpc]))
+        ```
+
+        Once you have created the necessary endpoints, you need to register each of them via *this* Pulumi resource, which calls out to the [Databricks Account API](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-your-vpc-endpoint-ids-with-the-account-api)):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        workspace = databricks.MwsVpcEndpoint("workspace",
+            account_id=databricks_account_id,
+            aws_vpc_endpoint_id=workspace_aws_vpc_endpoint["id"],
+            vpc_endpoint_name=f"VPC Relay for {vpc['vpcId']}",
+            region=region,
+            opts = pulumi.ResourceOptions(depends_on=[workspace_aws_vpc_endpoint]))
+        relay = databricks.MwsVpcEndpoint("relay",
+            account_id=databricks_account_id,
+            aws_vpc_endpoint_id=relay_aws_vpc_endpoint["id"],
+            vpc_endpoint_name=f"VPC Relay for {vpc['vpcId']}",
+            region=region,
+            opts = pulumi.ResourceOptions(depends_on=[relay_aws_vpc_endpoint]))
+        ```
+
+        Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="ENTERPRISE",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ### Databricks on GCP usage
+
+        Before using this resource, you will need to create the necessary Private Service Connect (PSC) connections on your Google Cloud VPC networks. You can see [Enable Private Service Connect for your workspace](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) for more details.
+
+        Once you have created the necessary PSC connections, you need to register each of them via *this* Pulumi resource, which calls out to the Databricks Account API.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in https://accounts.gcp.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        databricks_google_service_account = config.require_object("databricksGoogleServiceAccount")
+        google_project = config.require_object("googleProject")
+        subnet_region = config.require_object("subnetRegion")
+        workspace = databricks.MwsVpcEndpoint("workspace",
+            account_id=databricks_account_id,
+            vpc_endpoint_name="PSC Rest API endpoint",
+            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
+                project_id=google_project,
+                psc_endpoint_name="PSC Rest API endpoint",
+                endpoint_region=subnet_region,
+            ))
+        relay = databricks.MwsVpcEndpoint("relay",
+            account_id=databricks_account_id,
+            vpc_endpoint_name="PSC Relay endpoint",
+            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
+                project_id=google_project,
+                psc_endpoint_name="PSC Relay endpoint",
+                endpoint_region=subnet_region,
+            ))
+        ```
+
+        Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            workspace_name="gcp workspace",
+            location=subnet_region,
+            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
+                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
+                    project_id=google_project,
+                ),
+            ),
+            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
+                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
+                master_ip_range="10.3.0.0/28",
+            ),
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
         ## Import
 
         -> **Note** Importing this resource is not currently supported.

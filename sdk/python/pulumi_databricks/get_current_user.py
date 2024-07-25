@@ -109,9 +109,9 @@ class AwaitableGetCurrentUserResult(GetCurrentUserResult):
 
 def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentUserResult:
     """
-    ## Example Usage
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
-    Create personalized Job and databricks_notebook:
+    Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -131,8 +131,8 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 @_utilities.lift_output_func(get_current_user)
 def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
-    ## Example Usage
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
-    Create personalized Job and databricks_notebook:
+    Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
     """
     ...

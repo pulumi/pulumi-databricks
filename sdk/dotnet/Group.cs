@@ -162,6 +162,9 @@ namespace Pulumi.Databricks
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
 
+        /// <summary>
+        /// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
@@ -256,6 +259,9 @@ namespace Pulumi.Databricks
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -312,6 +318,9 @@ namespace Pulumi.Databricks
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 

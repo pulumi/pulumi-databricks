@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves a list of Share name, that were created by Pulumi or manually.
+//
 // ## Example Usage
 //
 // # Getting all existing shares in the metastore

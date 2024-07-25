@@ -136,9 +136,17 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
+    /**
+     * @return Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
@@ -431,11 +439,23 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param force Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
+        /**
+         * @param force Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }

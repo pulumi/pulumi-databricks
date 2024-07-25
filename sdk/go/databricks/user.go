@@ -211,7 +211,8 @@ type User struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
-	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
+	// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrOutput `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -274,7 +275,8 @@ type userState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
+	// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool `pulumi:"force"`
 	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -305,7 +307,8 @@ type UserState struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
+	// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
 	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrInput
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -340,7 +343,8 @@ type userArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
+	// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool `pulumi:"force"`
 	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -372,7 +376,8 @@ type UserArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
+	// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
 	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrInput
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -513,6 +518,7 @@ func (o UserOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 func (o UserOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

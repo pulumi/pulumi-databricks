@@ -10,6 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &gt; **Note** In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+    /// 
+    /// It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Job("this", new()
+    ///     {
+    ///         Name = "Job with multiple tasks",
+    ///         Description = "This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
+    ///         JobClusters = new[]
+    ///         {
+    ///             new Databricks.Inputs.JobJobClusterArgs
+    ///             {
+    ///                 JobClusterKey = "j",
+    ///                 NewCluster = new Databricks.Inputs.JobJobClusterNewClusterArgs
+    ///                 {
+    ///                     NumWorkers = 2,
+    ///                     SparkVersion = latest.Id,
+    ///                     NodeTypeId = smallest.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tasks = new[]
+    ///         {
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "a",
+    ///                 NewCluster = new Databricks.Inputs.JobTaskNewClusterArgs
+    ///                 {
+    ///                     NumWorkers = 1,
+    ///                     SparkVersion = latest.Id,
+    ///                     NodeTypeId = smallest.Id,
+    ///                 },
+    ///                 NotebookTask = new Databricks.Inputs.JobTaskNotebookTaskArgs
+    ///                 {
+    ///                     NotebookPath = thisDatabricksNotebook.Path,
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "b",
+    ///                 DependsOns = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.JobTaskDependsOnArgs
+    ///                     {
+    ///                         TaskKey = "a",
+    ///                     },
+    ///                 },
+    ///                 ExistingClusterId = shared.Id,
+    ///                 SparkJarTask = new Databricks.Inputs.JobTaskSparkJarTaskArgs
+    ///                 {
+    ///                     MainClassName = "com.acme.data.Main",
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "c",
+    ///                 JobClusterKey = "j",
+    ///                 NotebookTask = new Databricks.Inputs.JobTaskNotebookTaskArgs
+    ///                 {
+    ///                     NotebookPath = thisDatabricksNotebook.Path,
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "d",
+    ///                 PipelineTask = new Databricks.Inputs.JobTaskPipelineTaskArgs
+    ///                 {
+    ///                     PipelineId = thisDatabricksPipeline.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+    /// 
+    /// * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+    /// * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
+    /// 
     /// ## Import
     /// 
     /// The resource job can be imported using the id of the job

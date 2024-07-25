@@ -40,6 +40,7 @@ class UserArgs:
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
@@ -186,6 +187,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -278,6 +282,7 @@ class _UserState:
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
@@ -414,6 +419,9 @@ class _UserState:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -612,6 +620,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
@@ -811,6 +820,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
@@ -905,6 +915,9 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        """
         return pulumi.get(self, "force")
 
     @property

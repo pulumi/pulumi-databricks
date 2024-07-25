@@ -12,17 +12,17 @@ namespace Pulumi.Databricks
     public static class GetViews
     {
         /// <summary>
-        /// ## Example Usage
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
-        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
         /// </summary>
         public static Task<GetViewsResult> InvokeAsync(GetViewsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
-        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
         /// </summary>
         public static Output<GetViewsResult> Invoke(GetViewsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());

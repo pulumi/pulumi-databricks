@@ -385,6 +385,409 @@ class Grants(pulumi.CustomResource):
                  volume: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Note**
+          This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+
+        > **Note**
+          Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+
+        Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
+
+        - databricks_grants: Authoritative. Sets the grants of a securable and replaces any existing grants defined inside or outside of Pulumi.
+        - databricks_grant: Authoritative for a given principal. Updates the grants of a securable to a single principal. Other principals within the grants for the securables are preserved.
+
+        In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
+
+        Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
+
+        Every `Grants` resource must have exactly one securable identifier and one or more `grant` blocks with the following arguments:
+
+        - `principal` - User name, group name or service principal application ID.
+        - `privileges` - One or more privileges that are specific to a securable type.
+
+        For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
+
+        Pulumi will handle any configuration drift on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+
+        Unlike the [SQL specification](https://docs.databricks.com/sql/language-manual/sql-ref-privileges.html#privilege-types), all privileges to be written with underscore instead of space, e.g. `CREATE_TABLE` and not `CREATE TABLE`. Below summarizes which privilege types apply to each securable object in the catalog:
+
+        ## Metastore grants
+
+        You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to Metastore assigned to the workspace.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Grants("sandbox",
+            metastore="metastore_id",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "CREATE_CATALOG",
+                        "CREATE_EXTERNAL_LOCATION",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Sharer",
+                    privileges=[
+                        "CREATE_RECIPIENT",
+                        "CREATE_SHARE",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Catalog grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        sandbox_grants = databricks.Grants("sandbox",
+            catalog=sandbox.name,
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Scientists",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "CREATE_TABLE",
+                        "SELECT",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "CREATE_SCHEMA",
+                        "CREATE_TABLE",
+                        "MODIFY",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analyst",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "SELECT",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Schema grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.Schema("things",
+            catalog_name=sandbox["id"],
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        things_grants = databricks.Grants("things",
+            schema=things.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "USE_SCHEMA",
+                    "MODIFY",
+                ],
+            )])
+        ```
+
+        ## Table grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.Grants("customers",
+            table="main.reporting.customers",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "MODIFY",
+                        "SELECT",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["SELECT"],
+                ),
+            ])
+        ```
+
+        You can also apply grants dynamically with get_tables data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        things_grants = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+            things_grants.append(databricks.Grants(f"things-{range['key']}",
+                table=range["value"],
+                grants=[databricks.GrantsGrantArgs(
+                    principal="sensitive",
+                    privileges=[
+                        "SELECT",
+                        "MODIFY",
+                    ],
+                )]))
+        ```
+
+        ## View grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer360 = databricks.Grants("customer360",
+            table="main.reporting.customer360",
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Analysts",
+                privileges=["SELECT"],
+            )])
+        ```
+
+        You can also apply grants dynamically with get_views data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.get_views(catalog_name="main",
+            schema_name="customers")
+        customers_grants = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
+            customers_grants.append(databricks.Grants(f"customers-{range['key']}",
+                table=range["value"],
+                grants=[databricks.GrantsGrantArgs(
+                    principal="sensitive",
+                    privileges=[
+                        "SELECT",
+                        "MODIFY",
+                    ],
+                )]))
+        ```
+
+        ## Volume grants
+
+        You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox["name"],
+            schema_name=things["name"],
+            volume_type="EXTERNAL",
+            storage_location=some["url"],
+            comment="this volume is managed by terraform")
+        volume = databricks.Grants("volume",
+            volume=this.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["WRITE_VOLUME"],
+            )])
+        ```
+
+        ## Registered model grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.Grants("customers",
+            model="main.reporting.customer_model",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "APPLY_TAG",
+                        "EXECUTE",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["EXECUTE"],
+                ),
+            ])
+        ```
+
+        ## Function grants
+
+        You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        udf = databricks.Grants("udf",
+            function="main.reporting.udf",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=["EXECUTE"],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["EXECUTE"],
+                ),
+            ])
+        ```
+
+        ## Storage credential grants
+
+        You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storage_credential` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=external_data_access["arn"],
+            ),
+            comment="Managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            storage_credential=external.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_EXTERNAL_TABLE"],
+            )])
+        ```
+
+        ## External location grants
+
+        You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to ExternalLocation id specified in `external_location` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
+            credential_name=external["id"],
+            comment="Managed by TF")
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_sp["applicationId"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_group["displayName"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_user["userName"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Connection grants
+
+        You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to Connection specified in `foreign_connection` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mysql = databricks.Connection("mysql",
+            name="mysql_connection",
+            connection_type="MYSQL",
+            comment="this is a connection to mysql db",
+            options={
+                "host": "test.mysql.database.azure.com",
+                "port": "3306",
+                "user": "user",
+                "password": "password",
+            },
+            properties={
+                "purpose": "testing",
+            })
+        some = databricks.Grants("some",
+            foreign_connection=mysql.name,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "CREATE_FOREIGN_CATALOG",
+                    "USE_CONNECTION",
+                ],
+            )])
+        ```
+
+        ## Delta Sharing share grants
+
+        You can grant `SELECT` to Recipient on Share name specified in `share` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some", name="my_share")
+        some_recipient = databricks.Recipient("some", name="my_recipient")
+        some_grants = databricks.Grants("some",
+            share=some.name,
+            grants=[databricks.GrantsGrantArgs(
+                principal=some_recipient.name,
+                privileges=["SELECT"],
+            )])
+        ```
+
+        ## Other access control
+
+        You can control Databricks General Permissions through Permissions resource.
+
         ## Import
 
         The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
@@ -405,6 +808,409 @@ class Grants(pulumi.CustomResource):
                  args: GrantsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note**
+          This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+
+        > **Note**
+          Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+
+        Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
+
+        - databricks_grants: Authoritative. Sets the grants of a securable and replaces any existing grants defined inside or outside of Pulumi.
+        - databricks_grant: Authoritative for a given principal. Updates the grants of a securable to a single principal. Other principals within the grants for the securables are preserved.
+
+        In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
+
+        Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
+
+        Every `Grants` resource must have exactly one securable identifier and one or more `grant` blocks with the following arguments:
+
+        - `principal` - User name, group name or service principal application ID.
+        - `privileges` - One or more privileges that are specific to a securable type.
+
+        For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
+
+        Pulumi will handle any configuration drift on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+
+        Unlike the [SQL specification](https://docs.databricks.com/sql/language-manual/sql-ref-privileges.html#privilege-types), all privileges to be written with underscore instead of space, e.g. `CREATE_TABLE` and not `CREATE TABLE`. Below summarizes which privilege types apply to each securable object in the catalog:
+
+        ## Metastore grants
+
+        You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to Metastore assigned to the workspace.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Grants("sandbox",
+            metastore="metastore_id",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "CREATE_CATALOG",
+                        "CREATE_EXTERNAL_LOCATION",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Sharer",
+                    privileges=[
+                        "CREATE_RECIPIENT",
+                        "CREATE_SHARE",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Catalog grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        sandbox_grants = databricks.Grants("sandbox",
+            catalog=sandbox.name,
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Scientists",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "CREATE_TABLE",
+                        "SELECT",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "CREATE_SCHEMA",
+                        "CREATE_TABLE",
+                        "MODIFY",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analyst",
+                    privileges=[
+                        "USE_CATALOG",
+                        "USE_SCHEMA",
+                        "SELECT",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Schema grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.Schema("things",
+            catalog_name=sandbox["id"],
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        things_grants = databricks.Grants("things",
+            schema=things.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "USE_SCHEMA",
+                    "MODIFY",
+                ],
+            )])
+        ```
+
+        ## Table grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.Grants("customers",
+            table="main.reporting.customers",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "MODIFY",
+                        "SELECT",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["SELECT"],
+                ),
+            ])
+        ```
+
+        You can also apply grants dynamically with get_tables data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        things_grants = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+            things_grants.append(databricks.Grants(f"things-{range['key']}",
+                table=range["value"],
+                grants=[databricks.GrantsGrantArgs(
+                    principal="sensitive",
+                    privileges=[
+                        "SELECT",
+                        "MODIFY",
+                    ],
+                )]))
+        ```
+
+        ## View grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer360 = databricks.Grants("customer360",
+            table="main.reporting.customer360",
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Analysts",
+                privileges=["SELECT"],
+            )])
+        ```
+
+        You can also apply grants dynamically with get_views data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.get_views(catalog_name="main",
+            schema_name="customers")
+        customers_grants = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
+            customers_grants.append(databricks.Grants(f"customers-{range['key']}",
+                table=range["value"],
+                grants=[databricks.GrantsGrantArgs(
+                    principal="sensitive",
+                    privileges=[
+                        "SELECT",
+                        "MODIFY",
+                    ],
+                )]))
+        ```
+
+        ## Volume grants
+
+        You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox["name"],
+            schema_name=things["name"],
+            volume_type="EXTERNAL",
+            storage_location=some["url"],
+            comment="this volume is managed by terraform")
+        volume = databricks.Grants("volume",
+            volume=this.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["WRITE_VOLUME"],
+            )])
+        ```
+
+        ## Registered model grants
+
+        You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customers = databricks.Grants("customers",
+            model="main.reporting.customer_model",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "APPLY_TAG",
+                        "EXECUTE",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["EXECUTE"],
+                ),
+            ])
+        ```
+
+        ## Function grants
+
+        You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        udf = databricks.Grants("udf",
+            function="main.reporting.udf",
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=["EXECUTE"],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal="Data Analysts",
+                    privileges=["EXECUTE"],
+                ),
+            ])
+        ```
+
+        ## Storage credential grants
+
+        You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storage_credential` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=external_data_access["arn"],
+            ),
+            comment="Managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            storage_credential=external.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_EXTERNAL_TABLE"],
+            )])
+        ```
+
+        ## External location grants
+
+        You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to ExternalLocation id specified in `external_location` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
+            credential_name=external["id"],
+            comment="Managed by TF")
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[
+                databricks.GrantsGrantArgs(
+                    principal="Data Engineers",
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_sp["applicationId"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_group["displayName"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+                databricks.GrantsGrantArgs(
+                    principal=my_user["userName"],
+                    privileges=[
+                        "CREATE_EXTERNAL_TABLE",
+                        "READ_FILES",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Connection grants
+
+        You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to Connection specified in `foreign_connection` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mysql = databricks.Connection("mysql",
+            name="mysql_connection",
+            connection_type="MYSQL",
+            comment="this is a connection to mysql db",
+            options={
+                "host": "test.mysql.database.azure.com",
+                "port": "3306",
+                "user": "user",
+                "password": "password",
+            },
+            properties={
+                "purpose": "testing",
+            })
+        some = databricks.Grants("some",
+            foreign_connection=mysql.name,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "CREATE_FOREIGN_CATALOG",
+                    "USE_CONNECTION",
+                ],
+            )])
+        ```
+
+        ## Delta Sharing share grants
+
+        You can grant `SELECT` to Recipient on Share name specified in `share` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some", name="my_share")
+        some_recipient = databricks.Recipient("some", name="my_recipient")
+        some_grants = databricks.Grants("some",
+            share=some.name,
+            grants=[databricks.GrantsGrantArgs(
+                principal=some_recipient.name,
+                privileges=["SELECT"],
+            )])
+        ```
+
+        ## Other access control
+
+        You can control Databricks General Permissions through Permissions resource.
+
         ## Import
 
         The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:

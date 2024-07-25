@@ -48,6 +48,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("firstOnDemand")]
         public Input<int>? FirstOnDemand { get; set; }
 
+        /// <summary>
+        /// Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+        /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+ *
  * ## Import
  *
  * The workspace file resource can be imported using workspace file path
@@ -43,6 +45,9 @@ export class WorkspaceFile extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkspaceFile.__pulumiType;
     }
 
+    /**
+     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
     /**
@@ -108,6 +113,9 @@ export class WorkspaceFile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkspaceFile resources.
  */
 export interface WorkspaceFileState {
+    /**
+     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
     /**
@@ -136,6 +144,9 @@ export interface WorkspaceFileState {
  * The set of arguments for constructing a WorkspaceFile resource.
  */
 export interface WorkspaceFileArgs {
+    /**
+     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
     /**

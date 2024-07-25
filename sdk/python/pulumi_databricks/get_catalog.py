@@ -75,6 +75,12 @@ def get_catalog(catalog_info: Optional[pulumi.InputType['GetCatalogCatalogInfoAr
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
+
     ## Example Usage
 
     Read  on a specific catalog `test`:
@@ -123,6 +129,12 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[pulumi.Input
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
+
     ## Example Usage
 
     Read  on a specific catalog `test`:

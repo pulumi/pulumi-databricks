@@ -10,6 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// You can declare Pulumi-managed Git credential using following code:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ado = new Databricks.GitCredential("ado", new()
+    ///     {
+    ///         GitUsername = "myuser",
+    ///         GitProvider = "azureDevOpsServices",
+    ///         PersonalAccessToken = "sometoken",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Repo to manage Databricks Repos.
+    /// 
     /// ## Import
     /// 
     /// The resource cluster can be imported using ID of Git credential that could be obtained via REST API:

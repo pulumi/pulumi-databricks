@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source could be only used with workspace-level provider!
+//
+// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+//
 // ## Example Usage
 //
 // Read  on a specific catalog `test`:

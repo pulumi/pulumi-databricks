@@ -12,6 +12,129 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.
+//
+// ## Example Usage
+//
+// Creating a token for a narrowly-scoped service principal, that would be the only one (besides admins) allowed to use PAT token in this given workspace, keeping your automated deployment highly secure.
+//
+// > **Note** A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `accessControl` blocks in the Pulumi configuration file.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewServicePrincipal(ctx, "this", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("Automation-only SP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tokenUsage, err := databricks.NewPermissions(ctx, "token_usage", &databricks.PermissionsArgs{
+//				Authorization: pulumi.String("tokens"),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						ServicePrincipalName: this.ApplicationId,
+//						PermissionLevel:      pulumi.String("CAN_USE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisOboToken, err := databricks.NewOboToken(ctx, "this", &databricks.OboTokenArgs{
+//				ApplicationId: this.ApplicationId,
+//				Comment: this.DisplayName.ApplyT(func(displayName string) (string, error) {
+//					return fmt.Sprintf("PAT on behalf of %v", displayName), nil
+//				}).(pulumi.StringOutput),
+//				LifetimeSeconds: pulumi.Int(3600),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				tokenUsage,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("obo", thisOboToken.TokenValue)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Creating a token for a service principal with admin privileges
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewServicePrincipal(ctx, "this", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("Pulumi"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGroupMember, err := databricks.NewGroupMember(ctx, "this", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: this.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewOboToken(ctx, "this", &databricks.OboTokenArgs{
+//				ApplicationId: this.ApplicationId,
+//				Comment: this.DisplayName.ApplyT(func(displayName string) (string, error) {
+//					return fmt.Sprintf("PAT on behalf of %v", displayName), nil
+//				}).(pulumi.StringOutput),
+//				LifetimeSeconds: pulumi.Int(3600),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisGroupMember,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * Group data to retrieve information about Group members, entitlements and instance profiles.
+// * GroupMember to attach users and groups as group members.
+// * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+// * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
+// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.

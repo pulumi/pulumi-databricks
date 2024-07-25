@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetExternalLocations
     {
         /// <summary>
+        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
         /// ## Example Usage
         /// 
         /// List all external locations in the metastore
@@ -44,6 +48,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLocationsResult>("databricks:index/getExternalLocations:getExternalLocations", args ?? new GetExternalLocationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
         /// ## Example Usage
         /// 
         /// List all external locations in the metastore

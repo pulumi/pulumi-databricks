@@ -11,6 +11,94 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+//
+// ## Example Usage
+//
+// > **Note** In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `taskKey` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `taskKey` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+//
+// It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `taskKey`, and additional arguments described below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+//				Name:        pulumi.String("Job with multiple tasks"),
+//				Description: pulumi.String("This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished."),
+//				JobClusters: databricks.JobJobClusterArray{
+//					&databricks.JobJobClusterArgs{
+//						JobClusterKey: pulumi.String("j"),
+//						NewCluster: &databricks.JobJobClusterNewClusterArgs{
+//							NumWorkers:   pulumi.Int(2),
+//							SparkVersion: pulumi.Any(latest.Id),
+//							NodeTypeId:   pulumi.Any(smallest.Id),
+//						},
+//					},
+//				},
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("a"),
+//						NewCluster: &databricks.JobTaskNewClusterArgs{
+//							NumWorkers:   pulumi.Int(1),
+//							SparkVersion: pulumi.Any(latest.Id),
+//							NodeTypeId:   pulumi.Any(smallest.Id),
+//						},
+//						NotebookTask: &databricks.JobTaskNotebookTaskArgs{
+//							NotebookPath: pulumi.Any(thisDatabricksNotebook.Path),
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("b"),
+//						DependsOns: databricks.JobTaskDependsOnArray{
+//							&databricks.JobTaskDependsOnArgs{
+//								TaskKey: pulumi.String("a"),
+//							},
+//						},
+//						ExistingClusterId: pulumi.Any(shared.Id),
+//						SparkJarTask: &databricks.JobTaskSparkJarTaskArgs{
+//							MainClassName: pulumi.String("com.acme.data.Main"),
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey:       pulumi.String("c"),
+//						JobClusterKey: pulumi.String("j"),
+//						NotebookTask: &databricks.JobTaskNotebookTaskArgs{
+//							NotebookPath: pulumi.Any(thisDatabricksNotebook.Path),
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("d"),
+//						PipelineTask: &databricks.JobTaskPipelineTaskArgs{
+//							PipelineId: pulumi.Any(thisDatabricksPipeline.Id),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+//
+// * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+// * ClusterPolicy can control which kinds of clusters users can create for jobs.
+//
 // ## Import
 //
 // # The resource job can be imported using the id of the job

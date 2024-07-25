@@ -12,6 +12,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+//
+// ## Example Usage
+//
+// You can declare Pulumi-managed Git credential using following code:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGitCredential(ctx, "ado", &databricks.GitCredentialArgs{
+//				GitUsername:         pulumi.String("myuser"),
+//				GitProvider:         pulumi.String("azureDevOpsServices"),
+//				PersonalAccessToken: pulumi.String("sometoken"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Repo to manage Databricks Repos.
+//
 // ## Import
 //
 // The resource cluster can be imported using ID of Git credential that could be obtained via REST API:

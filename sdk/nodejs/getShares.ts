@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Getting all existing shares in the metastore
@@ -58,6 +60,8 @@ export interface GetSharesResult {
     readonly shares: string[];
 }
 /**
+ * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Getting all existing shares in the metastore

@@ -124,6 +124,14 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Note** This resource can only be used with an account-level provider.
+
+        With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+
+        This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
+
+        Additionally, the secret can be used to request OAuth tokens for the service principal, which can be used to authenticate to Databricks REST APIs. See [Authentication using OAuth tokens for service principals](https://docs.databricks.com/dev-tools/authentication-oauth.html).
+
         ## Example Usage
 
         Create service principal secret
@@ -153,6 +161,14 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  args: ServicePrincipalSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** This resource can only be used with an account-level provider.
+
+        With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+
+        This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
+
+        Additionally, the secret can be used to request OAuth tokens for the service principal, which can be used to authenticate to Databricks REST APIs. See [Authentication using OAuth tokens for service principals](https://docs.databricks.com/dev-tools/authentication-oauth.html).
+
         ## Example Usage
 
         Create service principal secret
