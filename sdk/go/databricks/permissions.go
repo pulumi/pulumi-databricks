@@ -393,7 +393,7 @@ import (
 //				return err
 //			}
 //			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", &databricks.NotebookArgs{
-//				ContentBase64: invokeBase64encode.Result,
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Language:      pulumi.String("PYTHON"),
 //				Path:          pulumi.String(fmt.Sprintf("%v/DLT_Demo", me.Home)),
 //			})
@@ -485,7 +485,7 @@ import (
 //				return err
 //			}
 //			this, err := databricks.NewNotebook(ctx, "this", &databricks.NotebookArgs{
-//				ContentBase64: invokeBase64encode.Result,
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Path:          pulumi.String("/Production/ETL/Features"),
 //				Language:      pulumi.String("PYTHON"),
 //			})
@@ -554,7 +554,7 @@ import (
 //				return err
 //			}
 //			this, err := databricks.NewWorkspaceFile(ctx, "this", &databricks.WorkspaceFileArgs{
-//				ContentBase64: invokeBase64encode.Result,
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Path:          pulumi.String("/Production/ETL/Features.py"),
 //			})
 //			if err != nil {

@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewFile(ctx, "init_script", &databricks.FileArgs{
-//				ContentBase64: invokeBase64encode.Result,
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Path:          pulumi.String(fmt.Sprintf("%v/fileName", this.VolumePath)),
 //			})
 //			if err != nil {
