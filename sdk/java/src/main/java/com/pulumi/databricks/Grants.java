@@ -17,6 +17,807 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note**
+ *   This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+ * 
+ * &gt; **Note**
+ *   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+ * 
+ * Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
+ * 
+ * - databricks_grants: Authoritative. Sets the grants of a securable and replaces any existing grants defined inside or outside of Pulumi.
+ * - databricks_grant: Authoritative for a given principal. Updates the grants of a securable to a single principal. Other principals within the grants for the securables are preserved.
+ * 
+ * In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
+ * 
+ * Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
+ * 
+ * Every `databricks.Grants` resource must have exactly one securable identifier and one or more `grant` blocks with the following arguments:
+ * 
+ * - `principal` - User name, group name or service principal application ID.
+ * - `privileges` - One or more privileges that are specific to a securable type.
+ * 
+ * For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
+ * 
+ * Pulumi will handle any configuration drift on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+ * 
+ * Unlike the [SQL specification](https://docs.databricks.com/sql/language-manual/sql-ref-privileges.html#privilege-types), all privileges to be written with underscore instead of space, e.g. `CREATE_TABLE` and not `CREATE TABLE`. Below summarizes which privilege types apply to each securable object in the catalog:
+ * 
+ * ## Metastore grants
+ * 
+ * You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Grants("sandbox", GrantsArgs.builder()
+ *             .metastore("metastore_id")
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges(                    
+ *                         "CREATE_CATALOG",
+ *                         "CREATE_EXTERNAL_LOCATION")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Sharer")
+ *                     .privileges(                    
+ *                         "CREATE_RECIPIENT",
+ *                         "CREATE_SHARE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Catalog grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to databricks.Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var sandboxGrants = new Grants("sandboxGrants", GrantsArgs.builder()
+ *             .catalog(sandbox.name())
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Scientists")
+ *                     .privileges(                    
+ *                         "USE_CATALOG",
+ *                         "USE_SCHEMA",
+ *                         "CREATE_TABLE",
+ *                         "SELECT")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges(                    
+ *                         "USE_CATALOG",
+ *                         "USE_SCHEMA",
+ *                         "CREATE_SCHEMA",
+ *                         "CREATE_TABLE",
+ *                         "MODIFY")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Analyst")
+ *                     .privileges(                    
+ *                         "USE_CATALOG",
+ *                         "USE_SCHEMA",
+ *                         "SELECT")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Schema grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.id())
+ *             .name("things")
+ *             .comment("this schema is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var thingsGrants = new Grants("thingsGrants", GrantsArgs.builder()
+ *             .schema(things.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges(                
+ *                     "USE_SCHEMA",
+ *                     "MODIFY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Table grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customers = new Grants("customers", GrantsArgs.builder()
+ *             .table("main.reporting.customers")
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges(                    
+ *                         "MODIFY",
+ *                         "SELECT")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Analysts")
+ *                     .privileges("SELECT")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * You can also apply grants dynamically with databricks.getTables data resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetTablesArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
+ *             .catalogName("sandbox")
+ *             .schemaName("things")
+ *             .build());
+ * 
+ *         final var thingsGrants = things.applyValue(getTablesResult -> {
+ *             final var resources = new ArrayList<Grants>();
+ *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+ *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
+ *                     .table(range.value())
+ *                     .grants(GrantsGrantArgs.builder()
+ *                         .principal("sensitive")
+ *                         .privileges(                        
+ *                             "SELECT",
+ *                             "MODIFY")
+ *                         .build())
+ *                     .build());
+ * 
+ *                 resources.add(resource);
+ *             }
+ * 
+ *             return resources;
+ *         });
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## View grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customer360 = new Grants("customer360", GrantsArgs.builder()
+ *             .table("main.reporting.customer360")
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Analysts")
+ *                 .privileges("SELECT")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * You can also apply grants dynamically with databricks.getViews data resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetViewsArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var customers = DatabricksFunctions.getViews(GetViewsArgs.builder()
+ *             .catalogName("main")
+ *             .schemaName("customers")
+ *             .build());
+ * 
+ *         final var customersGrants = customers.applyValue(getViewsResult -> {
+ *             final var resources = new ArrayList<Grants>();
+ *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+ *                 var resource = new Grants("customersGrants-" + range.key(), GrantsArgs.builder()
+ *                     .table(range.value())
+ *                     .grants(GrantsGrantArgs.builder()
+ *                         .principal("sensitive")
+ *                         .privileges(                        
+ *                             "SELECT",
+ *                             "MODIFY")
+ *                         .build())
+ *                     .build());
+ * 
+ *                 resources.add(resource);
+ *             }
+ * 
+ *             return resources;
+ *         });
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Volume grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Volume;
+ * import com.pulumi.databricks.VolumeArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Volume("this", VolumeArgs.builder()
+ *             .name("quickstart_volume")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .volumeType("EXTERNAL")
+ *             .storageLocation(some.url())
+ *             .comment("this volume is managed by terraform")
+ *             .build());
+ * 
+ *         var volume = new Grants("volume", GrantsArgs.builder()
+ *             .volume(this_.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("WRITE_VOLUME")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Registered model grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customers = new Grants("customers", GrantsArgs.builder()
+ *             .model("main.reporting.customer_model")
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges(                    
+ *                         "APPLY_TAG",
+ *                         "EXECUTE")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Analysts")
+ *                     .privileges("EXECUTE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Function grants
+ * 
+ * You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var udf = new Grants("udf", GrantsArgs.builder()
+ *             .function("main.reporting.udf")
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges("EXECUTE")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Analysts")
+ *                     .privileges("EXECUTE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Storage credential grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
+ *             .name(externalDataAccess.name())
+ *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(externalDataAccess.arn())
+ *                 .build())
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
+ *             .storageCredential(external.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("CREATE_EXTERNAL_TABLE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## External location grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to databricks.ExternalLocation id specified in `external_location` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ExternalLocation;
+ * import com.pulumi.databricks.ExternalLocationArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
+ *             .name("external")
+ *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
+ *             .credentialName(external.id())
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()
+ *             .externalLocation(some.id())
+ *             .grants(            
+ *                 GrantsGrantArgs.builder()
+ *                     .principal("Data Engineers")
+ *                     .privileges(                    
+ *                         "CREATE_EXTERNAL_TABLE",
+ *                         "READ_FILES")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal(mySp.applicationId())
+ *                     .privileges(                    
+ *                         "CREATE_EXTERNAL_TABLE",
+ *                         "READ_FILES")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal(myGroup.displayName())
+ *                     .privileges(                    
+ *                         "CREATE_EXTERNAL_TABLE",
+ *                         "READ_FILES")
+ *                     .build(),
+ *                 GrantsGrantArgs.builder()
+ *                     .principal(myUser.userName())
+ *                     .privileges(                    
+ *                         "CREATE_EXTERNAL_TABLE",
+ *                         "READ_FILES")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Connection grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to databricks.Connection specified in `foreign_connection` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mysql = new Connection("mysql", ConnectionArgs.builder()
+ *             .name("mysql_connection")
+ *             .connectionType("MYSQL")
+ *             .comment("this is a connection to mysql db")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("host", "test.mysql.database.azure.com"),
+ *                 Map.entry("port", "3306"),
+ *                 Map.entry("user", "user"),
+ *                 Map.entry("password", "password")
+ *             ))
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var some = new Grants("some", GrantsArgs.builder()
+ *             .foreignConnection(mysql.name())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges(                
+ *                     "CREATE_FOREIGN_CATALOG",
+ *                     "USE_CONNECTION")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Delta Sharing share grants
+ * 
+ * You can grant `SELECT` to databricks.Recipient on databricks.Share name specified in `share` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Share;
+ * import com.pulumi.databricks.ShareArgs;
+ * import com.pulumi.databricks.Recipient;
+ * import com.pulumi.databricks.RecipientArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var some = new Share("some", ShareArgs.builder()
+ *             .name("my_share")
+ *             .build());
+ * 
+ *         var someRecipient = new Recipient("someRecipient", RecipientArgs.builder()
+ *             .name("my_recipient")
+ *             .build());
+ * 
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()
+ *             .share(some.name())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal(someRecipient.name())
+ *                 .privileges("SELECT")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Other access control
+ * 
+ * You can control Databricks General Permissions through databricks.Permissions resource.
+ * 
  * ## Import
  * 
  * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it&#39;s name:

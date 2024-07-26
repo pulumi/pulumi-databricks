@@ -7,9 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+ * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
  */
 export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaResult> {
 
@@ -57,9 +56,8 @@ export interface GetSchemaResult {
     readonly schemaInfo: outputs.GetSchemaSchemaInfo;
 }
 /**
- * ## Example Usage
- *
- * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+ * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
  */
 export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaResult> {
     return pulumi.output(args).apply((a: any) => getSchema(a, opts))

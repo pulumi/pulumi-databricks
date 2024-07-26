@@ -72,6 +72,10 @@ def get_storage_credential(id: Optional[str] = None,
                            storage_credential_info: Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves details about a StorageCredential that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing storage credential in the metastore
@@ -115,6 +119,10 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = No
                                   storage_credential_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves details about a StorageCredential that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting details of an existing storage credential in the metastore

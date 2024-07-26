@@ -17,6 +17,128 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows uploading and downloading files in databricks_volume.
+ * 
+ * Notes:
+ * 
+ * * Currently the limit is 5GiB in octet-stream.
+ * * Currently, only UC volumes are supported. The list of destinations may change.
+ * 
+ * ## Example Usage
+ * 
+ * In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.Volume;
+ * import com.pulumi.databricks.VolumeArgs;
+ * import com.pulumi.databricks.File;
+ * import com.pulumi.databricks.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .metastoreId(thisDatabricksMetastore.id())
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.name())
+ *             .name("things")
+ *             .comment("this schema is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var this_ = new Volume("this", VolumeArgs.builder()
+ *             .name("quickstart_volume")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .volumeType("MANAGED")
+ *             .comment("this volume is managed by terraform")
+ *             .build());
+ * 
+ *         var thisFile = new File("thisFile", FileArgs.builder()
+ *             .source("/full/path/on/local/system")
+ *             .path(this_.volumePath().applyValue(volumePath -> String.format("%s/fileName", volumePath)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * You can also inline sources through `content_base64`  attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.File;
+ * import com.pulumi.databricks.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var initScript = new File("initScript", FileArgs.builder()
+ *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input("""
+ * #!/bin/bash
+ * echo "Hello World"
+ *                 """)
+ *                 .build()).result())
+ *             .path(String.format("%s/fileName", this_.volumePath()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.WorkspaceFile
+ * * End to end workspace management guide.
+ * * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+ * 
  * ## Import
  * 
  * The resource `databricks_file` can be imported using the path of the file:

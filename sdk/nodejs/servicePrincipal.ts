@@ -163,6 +163,9 @@ export class ServicePrincipal extends pulumi.CustomResource {
      * ID of the service principal in an external identity provider.
      */
     public readonly externalId!: pulumi.Output<string | undefined>;
+    /**
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -276,6 +279,9 @@ export interface ServicePrincipalState {
      * ID of the service principal in an external identity provider.
      */
     externalId?: pulumi.Input<string>;
+    /**
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -339,6 +345,9 @@ export interface ServicePrincipalArgs {
      * ID of the service principal in an external identity provider.
      */
     externalId?: pulumi.Input<string>;
+    /**
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.

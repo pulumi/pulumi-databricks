@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Getting details of an existing share in the metastore
@@ -89,6 +91,8 @@ export interface GetShareResult {
     readonly objects: outputs.GetShareObject[];
 }
 /**
+ * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Getting details of an existing share in the metastore

@@ -172,8 +172,9 @@ type Group struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
-	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
-	Url        pulumi.StringOutput    `pulumi:"url"`
+	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
+	Url   pulumi.StringOutput  `pulumi:"url"`
 	// This is a field to allow the group to have access to Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
 }
@@ -220,8 +221,9 @@ type groupState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
-	Url        *string `pulumi:"url"`
+	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool   `pulumi:"force"`
+	Url   *string `pulumi:"url"`
 	// This is a field to allow the group to have access to Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
 }
@@ -239,8 +241,9 @@ type GroupState struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
-	Url        pulumi.StringPtrInput
+	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
+	Url   pulumi.StringPtrInput
 	// This is a field to allow the group to have access to Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
 }
@@ -262,8 +265,9 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
-	Url        *string `pulumi:"url"`
+	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool   `pulumi:"force"`
+	Url   *string `pulumi:"url"`
 	// This is a field to allow the group to have access to Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
 }
@@ -282,8 +286,9 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
-	Url        pulumi.StringPtrInput
+	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
+	Url   pulumi.StringPtrInput
 	// This is a field to allow the group to have access to Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
 }
@@ -405,6 +410,7 @@ func (o GroupOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 func (o GroupOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

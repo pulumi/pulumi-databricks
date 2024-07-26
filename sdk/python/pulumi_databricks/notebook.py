@@ -25,6 +25,7 @@ class NotebookArgs:
         """
         The set of arguments for constructing a Notebook resource.
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
@@ -63,6 +64,9 @@ class NotebookArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -148,6 +152,7 @@ class _NotebookState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Notebook resources.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
@@ -179,6 +184,9 @@ class _NotebookState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -289,6 +297,8 @@ class Notebook(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
+
         ## Import
 
         The resource notebook can be imported using notebook path
@@ -301,6 +311,7 @@ class Notebook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
@@ -313,6 +324,8 @@ class Notebook(pulumi.CustomResource):
                  args: NotebookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
+
         ## Import
 
         The resource notebook can be imported using notebook path
@@ -392,6 +405,7 @@ class Notebook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
@@ -416,6 +430,9 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @property

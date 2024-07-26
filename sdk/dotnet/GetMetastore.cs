@@ -12,6 +12,12 @@ namespace Pulumi.Databricks
     public static class GetMetastore
     {
         /// <summary>
+        /// &gt; **Note** This data source could be only used with account-level provider!
+        /// 
+        /// Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
         /// ## Example Usage
         /// 
         /// MetastoreInfo response for a given metastore id
@@ -56,6 +62,12 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** This data source could be only used with account-level provider!
+        /// 
+        /// Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
         /// ## Example Usage
         /// 
         /// MetastoreInfo response for a given metastore id

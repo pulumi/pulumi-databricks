@@ -17,6 +17,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
+ * 
+ * Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there&#39;s no deterministic behavior, when they manage the same property. We strongly recommend to use a single `databricks.WorkspaceConf` per workspace.
+ * 
  * ## Example Usage
  * 
  * Allows specification of custom configuration properties for expert usage:

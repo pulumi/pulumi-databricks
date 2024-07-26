@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+ *
  * ## Example Usage
  *
  * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
@@ -85,6 +91,12 @@ export interface GetTablesResult {
     readonly schemaName: string;
 }
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+ *
  * ## Example Usage
  *
  * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:

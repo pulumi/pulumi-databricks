@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and getNotebookPaths data sources.
+//
 // ## Import
 //
 // # The resource notebook can be imported using notebook path
@@ -24,6 +26,7 @@ import (
 type Notebook struct {
 	pulumi.CustomResourceState
 
+	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	Format        pulumi.StringPtrOutput `pulumi:"format"`
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -74,6 +77,7 @@ func GetNotebook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notebook resources.
 type notebookState struct {
+	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Format        *string `pulumi:"format"`
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -92,6 +96,7 @@ type notebookState struct {
 }
 
 type NotebookState struct {
+	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Format        pulumi.StringPtrInput
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -114,6 +119,7 @@ func (NotebookState) ElementType() reflect.Type {
 }
 
 type notebookArgs struct {
+	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Format        *string `pulumi:"format"`
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -131,6 +137,7 @@ type notebookArgs struct {
 
 // The set of arguments for constructing a Notebook resource.
 type NotebookArgs struct {
+	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Format        pulumi.StringPtrInput
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -233,6 +240,7 @@ func (o NotebookOutput) ToNotebookOutputWithContext(ctx context.Context) Noteboo
 	return o
 }
 
+// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 func (o NotebookOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }

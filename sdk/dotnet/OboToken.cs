@@ -10,6 +10,113 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a token for a narrowly-scoped service principal, that would be the only one (besides admins) allowed to use PAT token in this given workspace, keeping your automated deployment highly secure.
+    /// 
+    /// &gt; **Note** A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `access_control` blocks in the Pulumi configuration file.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     {
+    ///         DisplayName = "Automation-only SP",
+    ///     });
+    /// 
+    ///     var tokenUsage = new Databricks.Permissions("token_usage", new()
+    ///     {
+    ///         Authorization = "tokens",
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 ServicePrincipalName = @this.ApplicationId,
+    ///                 PermissionLevel = "CAN_USE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var thisOboToken = new Databricks.OboToken("this", new()
+    ///     {
+    ///         ApplicationId = @this.ApplicationId,
+    ///         Comment = @this.DisplayName.Apply(displayName =&gt; $"PAT on behalf of {displayName}"),
+    ///         LifetimeSeconds = 3600,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             tokenUsage,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["obo"] = thisOboToken.TokenValue,
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// Creating a token for a service principal with admin privileges
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     {
+    ///         DisplayName = "Pulumi",
+    ///     });
+    /// 
+    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "admins",
+    ///     });
+    /// 
+    ///     var thisGroupMember = new Databricks.GroupMember("this", new()
+    ///     {
+    ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///         MemberId = @this.Id,
+    ///     });
+    /// 
+    ///     var thisOboToken = new Databricks.OboToken("this", new()
+    ///     {
+    ///         ApplicationId = @this.ApplicationId,
+    ///         Comment = @this.DisplayName.Apply(displayName =&gt; $"PAT on behalf of {displayName}"),
+    ///         LifetimeSeconds = 3600,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisGroupMember,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+    /// * databricks.GroupMember to attach users and groups as group members.
+    /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    /// * databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.
+    /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+    /// 
     /// ## Import
     /// 
     /// -&gt; **Note** Importing this resource is not currently supported.

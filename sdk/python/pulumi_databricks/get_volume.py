@@ -75,9 +75,8 @@ def get_volume(id: Optional[str] = None,
                volume_info: Optional[pulumi.InputType['GetVolumeVolumeInfoArgs']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    ## Example Usage
-
-    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+    Retrieves details about Volume that was created by Pulumi or manually.
+    A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
 
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
@@ -103,9 +102,8 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                       volume_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetVolumeVolumeInfoArgs']]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
     """
-    ## Example Usage
-
-    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+    Retrieves details about Volume that was created by Pulumi or manually.
+    A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
 
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.

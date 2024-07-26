@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsWorkspacesTokenArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 

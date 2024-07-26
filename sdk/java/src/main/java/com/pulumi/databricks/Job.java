@@ -45,6 +45,105 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * 
+ * ## Example Usage
+ * 
+ * &gt; **Note** In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ * 
+ * It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Job;
+ * import com.pulumi.databricks.JobArgs;
+ * import com.pulumi.databricks.inputs.JobJobClusterArgs;
+ * import com.pulumi.databricks.inputs.JobJobClusterNewClusterArgs;
+ * import com.pulumi.databricks.inputs.JobTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Job("this", JobArgs.builder()
+ *             .name("Job with multiple tasks")
+ *             .description("This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.")
+ *             .jobClusters(JobJobClusterArgs.builder()
+ *                 .jobClusterKey("j")
+ *                 .newCluster(JobJobClusterNewClusterArgs.builder()
+ *                     .numWorkers(2)
+ *                     .sparkVersion(latest.id())
+ *                     .nodeTypeId(smallest.id())
+ *                     .build())
+ *                 .build())
+ *             .tasks(            
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("a")
+ *                     .newCluster(JobTaskNewClusterArgs.builder()
+ *                         .numWorkers(1)
+ *                         .sparkVersion(latest.id())
+ *                         .nodeTypeId(smallest.id())
+ *                         .build())
+ *                     .notebookTask(JobTaskNotebookTaskArgs.builder()
+ *                         .notebookPath(thisDatabricksNotebook.path())
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("b")
+ *                     .dependsOns(JobTaskDependsOnArgs.builder()
+ *                         .taskKey("a")
+ *                         .build())
+ *                     .existingClusterId(shared.id())
+ *                     .sparkJarTask(JobTaskSparkJarTaskArgs.builder()
+ *                         .mainClassName("com.acme.data.Main")
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("c")
+ *                     .jobClusterKey("j")
+ *                     .notebookTask(JobTaskNotebookTaskArgs.builder()
+ *                         .notebookPath(thisDatabricksNotebook.path())
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("d")
+ *                     .pipelineTask(JobTaskPipelineTaskArgs.builder()
+ *                         .pipelineId(thisDatabricksPipeline.id())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+ * 
+ * * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+ * * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
+ * 
  * ## Import
  * 
  * The resource job can be imported using the id of the job

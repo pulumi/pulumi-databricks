@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
+ *
  * ## Import
  *
  * The resource notebook can be imported using notebook path
@@ -43,6 +45,9 @@ export class Notebook extends pulumi.CustomResource {
         return obj['__pulumiType'] === Notebook.__pulumiType;
     }
 
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string | undefined>;
     /**
@@ -117,6 +122,9 @@ export class Notebook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Notebook resources.
  */
 export interface NotebookState {
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     /**
@@ -150,6 +158,9 @@ export interface NotebookState {
  * The set of arguments for constructing a Notebook resource.
  */
 export interface NotebookArgs {
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     /**

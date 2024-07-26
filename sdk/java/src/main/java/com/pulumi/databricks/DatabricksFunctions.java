@@ -1622,6 +1622,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific catalog `test`:
@@ -1682,6 +1688,12 @@ public final class DatabricksFunctions {
         return getCatalog(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific catalog `test`:
@@ -1742,6 +1754,12 @@ public final class DatabricksFunctions {
         return getCatalogPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific catalog `test`:
@@ -1802,6 +1820,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific catalog `test`:
@@ -1862,6 +1886,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -1910,6 +1940,12 @@ public final class DatabricksFunctions {
         return getCatalogs(GetCatalogsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -1958,6 +1994,12 @@ public final class DatabricksFunctions {
         return getCatalogsPlain(GetCatalogsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -2006,6 +2048,12 @@ public final class DatabricksFunctions {
         return getCatalogs(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -2054,6 +2102,12 @@ public final class DatabricksFunctions {
         return getCatalogsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -2102,6 +2156,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all catalogs:
@@ -2630,6 +2690,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -2717,6 +2781,10 @@ public final class DatabricksFunctions {
         return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -2804,6 +2872,10 @@ public final class DatabricksFunctions {
         return getClustersPlain(GetClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -2891,6 +2963,10 @@ public final class DatabricksFunctions {
         return getClusters(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -2978,6 +3054,10 @@ public final class DatabricksFunctions {
         return getClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -3065,6 +3145,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Retrieve cluster IDs for all clusters:
@@ -3686,54 +3770,54 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentMetastore:getCurrentMetastore", TypeShape.of(GetCurrentMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser() {
         return getCurrentUser(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain() {
         return getCurrentUserPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args) {
         return getCurrentUser(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args) {
         return getCurrentUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
-     * Create personalized databricks.Job and databricks_notebook:
+     * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
@@ -4356,6 +4440,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
@@ -4406,6 +4494,10 @@ public final class DatabricksFunctions {
         return getExternalLocation(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
@@ -4456,6 +4548,10 @@ public final class DatabricksFunctions {
         return getExternalLocationPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
@@ -4506,6 +4602,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing external location in the metastore
@@ -4556,6 +4656,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -4604,6 +4708,10 @@ public final class DatabricksFunctions {
         return getExternalLocations(GetExternalLocationsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -4652,6 +4760,10 @@ public final class DatabricksFunctions {
         return getExternalLocationsPlain(GetExternalLocationsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -4700,6 +4812,10 @@ public final class DatabricksFunctions {
         return getExternalLocations(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -4748,6 +4864,10 @@ public final class DatabricksFunctions {
         return getExternalLocationsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -4796,6 +4916,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all external locations in the metastore
@@ -5914,6 +6038,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6015,6 +6145,12 @@ public final class DatabricksFunctions {
         return getJobs(GetJobsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6116,6 +6252,12 @@ public final class DatabricksFunctions {
         return getJobsPlain(GetJobsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6217,6 +6359,12 @@ public final class DatabricksFunctions {
         return getJobs(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6318,6 +6466,12 @@ public final class DatabricksFunctions {
         return getJobsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6419,6 +6573,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** Data resource will error in case of jobs with duplicate names.
+     * 
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -6520,6 +6680,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6580,6 +6746,12 @@ public final class DatabricksFunctions {
         return getMetastore(GetMetastoreArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6640,6 +6812,12 @@ public final class DatabricksFunctions {
         return getMetastorePlain(GetMetastorePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6700,6 +6878,12 @@ public final class DatabricksFunctions {
         return getMetastore(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6760,6 +6944,12 @@ public final class DatabricksFunctions {
         return getMetastorePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6820,6 +7010,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
@@ -6880,6 +7076,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -6929,6 +7131,12 @@ public final class DatabricksFunctions {
         return getMetastores(GetMetastoresArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -6978,6 +7186,12 @@ public final class DatabricksFunctions {
         return getMetastoresPlain(GetMetastoresPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -7027,6 +7241,12 @@ public final class DatabricksFunctions {
         return getMetastores(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -7076,6 +7296,12 @@ public final class DatabricksFunctions {
         return getMetastoresPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -7125,6 +7351,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
+     * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+     * 
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
@@ -9940,42 +10172,44 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args) {
         return getSchema(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args) {
         return getSchemaPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Schema that was created by Pulumi or manually.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
@@ -10026,6 +10260,12 @@ public final class DatabricksFunctions {
         return getSchemas(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
@@ -10076,6 +10316,12 @@ public final class DatabricksFunctions {
         return getSchemasPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
@@ -10126,6 +10372,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
@@ -10656,6 +10908,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10707,6 +10961,8 @@ public final class DatabricksFunctions {
         return getShare(GetShareArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10758,6 +11014,8 @@ public final class DatabricksFunctions {
         return getSharePlain(GetSharePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10809,6 +11067,8 @@ public final class DatabricksFunctions {
         return getShare(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10860,6 +11120,8 @@ public final class DatabricksFunctions {
         return getSharePlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10911,6 +11173,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -10962,6 +11226,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -11011,6 +11277,8 @@ public final class DatabricksFunctions {
         return getShares(GetSharesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -11060,6 +11328,8 @@ public final class DatabricksFunctions {
         return getSharesPlain(GetSharesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -11109,6 +11379,8 @@ public final class DatabricksFunctions {
         return getShares(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -11158,6 +11430,8 @@ public final class DatabricksFunctions {
         return getSharesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -11207,6 +11481,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -12096,6 +12372,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12181,6 +12461,10 @@ public final class DatabricksFunctions {
         return getSqlWarehouses(GetSqlWarehousesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12266,6 +12550,10 @@ public final class DatabricksFunctions {
         return getSqlWarehousesPlain(GetSqlWarehousesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12351,6 +12639,10 @@ public final class DatabricksFunctions {
         return getSqlWarehouses(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12436,6 +12728,10 @@ public final class DatabricksFunctions {
         return getSqlWarehousesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12521,6 +12817,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Retrieve IDs for all SQL warehouses:
@@ -12606,6 +12906,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
@@ -12656,6 +12960,10 @@ public final class DatabricksFunctions {
         return getStorageCredential(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
@@ -12706,6 +13014,10 @@ public final class DatabricksFunctions {
         return getStorageCredentialPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
@@ -12756,6 +13068,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing storage credential in the metastore
@@ -12806,6 +13122,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -12854,6 +13174,10 @@ public final class DatabricksFunctions {
         return getStorageCredentials(GetStorageCredentialsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -12902,6 +13226,10 @@ public final class DatabricksFunctions {
         return getStorageCredentialsPlain(GetStorageCredentialsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -12950,6 +13278,10 @@ public final class DatabricksFunctions {
         return getStorageCredentials(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -12998,6 +13330,10 @@ public final class DatabricksFunctions {
         return getStorageCredentialsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -13046,6 +13382,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
@@ -13094,6 +13434,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific table `main.certified.fct_transactions`:
@@ -13156,6 +13502,12 @@ public final class DatabricksFunctions {
         return getTable(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific table `main.certified.fct_transactions`:
@@ -13218,6 +13570,12 @@ public final class DatabricksFunctions {
         return getTablePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific table `main.certified.fct_transactions`:
@@ -13280,6 +13638,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
+     * 
      * ## Example Usage
      * 
      * Read  on a specific table `main.certified.fct_transactions`:
@@ -13342,6 +13706,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
@@ -13415,6 +13785,12 @@ public final class DatabricksFunctions {
         return getTables(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
@@ -13488,6 +13864,12 @@ public final class DatabricksFunctions {
         return getTablesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
@@ -13561,6 +13943,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
@@ -14066,6 +14454,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
@@ -14085,6 +14477,10 @@ public final class DatabricksFunctions {
         return getViews(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
@@ -14104,6 +14500,10 @@ public final class DatabricksFunctions {
         return getViewsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
@@ -14123,6 +14523,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+     * 
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
@@ -14142,42 +14546,42 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Volume that was created by Pulumi or manually.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
         return getVolume(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Volume that was created by Pulumi or manually.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
         return getVolumePlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Volume that was created by Pulumi or manually.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
-     * 
-     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * Retrieves details about databricks.Volume that was created by Pulumi or manually.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -14230,6 +14634,10 @@ public final class DatabricksFunctions {
         return getVolumes(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -14282,6 +14690,10 @@ public final class DatabricksFunctions {
         return getVolumesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -14334,6 +14746,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:

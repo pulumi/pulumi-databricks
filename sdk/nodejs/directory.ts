@@ -5,6 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ *
+ * ## Example Usage
+ *
+ * You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myCustomDirectory = new databricks.Directory("my_custom_directory", {path: "/my_custom_directory"});
+ * ```
+ *
+ * ## Access Control
+ *
+ * - databricks.Permissions can control which groups or individual users can access folders.
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * - End to end workspace management guide.
+ * - databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * - databricks.Notebook data to export a notebook from Databricks Workspace.
+ * - databricks.getNotebookPaths data to list notebooks in Databricks Workspace.
+ * - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources.
+ * - databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ *
  * ## Import
  *
  * The resource directory can be imported using directory path:
@@ -43,6 +72,9 @@ export class Directory extends pulumi.CustomResource {
         return obj['__pulumiType'] === Directory.__pulumiType;
     }
 
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     */
     public readonly deleteRecursive!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier for a DIRECTORY
@@ -93,6 +125,9 @@ export class Directory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Directory resources.
  */
 export interface DirectoryState {
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     */
     deleteRecursive?: pulumi.Input<boolean>;
     /**
      * Unique identifier for a DIRECTORY
@@ -112,6 +147,9 @@ export interface DirectoryState {
  * The set of arguments for constructing a Directory resource.
  */
 export interface DirectoryArgs {
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     */
     deleteRecursive?: pulumi.Input<boolean>;
     /**
      * Unique identifier for a DIRECTORY

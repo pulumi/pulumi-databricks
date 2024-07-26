@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -72,6 +76,10 @@ export interface GetVolumesResult {
     readonly schemaName: string;
 }
 /**
+ * > **Note** This data source could be only used with workspace-level provider!
+ *
+ * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+ *
  * ## Example Usage
  *
  * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:

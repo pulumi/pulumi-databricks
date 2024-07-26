@@ -17,9 +17,17 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NotebookArgs Empty = new NotebookArgs();
 
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
+    /**
+     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
@@ -148,11 +156,23 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
             $ = new NotebookArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
+        /**
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }

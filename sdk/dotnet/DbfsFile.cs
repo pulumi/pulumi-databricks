@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
+    /// 
     /// ## Import
     /// 
     /// The resource dbfs file can be imported using the path of the file:
@@ -23,6 +25,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/dbfsFile:DbfsFile")]
     public partial class DbfsFile : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
@@ -99,6 +104,9 @@ namespace Pulumi.Databricks
 
     public sealed class DbfsFileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
@@ -125,6 +133,9 @@ namespace Pulumi.Databricks
 
     public sealed class DbfsFileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 

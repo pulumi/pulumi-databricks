@@ -67,6 +67,10 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+
     ## Example Usage
 
     Retrieve cluster IDs for all clusters:
@@ -122,6 +126,10 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+
     ## Example Usage
 
     Retrieve cluster IDs for all clusters:

@@ -10,6 +10,584 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note**
+    ///   This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+    /// 
+    /// &gt; **Note**
+    ///   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+    /// 
+    /// In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
+    /// 
+    /// Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
+    /// 
+    /// Every `databricks.Grant` resource must have exactly one securable identifier and the following arguments:
+    /// 
+    /// - `principal` - User name, group name or service principal application ID.
+    /// - `privileges` - One or more privileges that are specific to a securable type.
+    /// 
+    /// For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
+    /// 
+    /// Pulumi will handle any configuration drift for the specified principal on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+    /// 
+    /// See databricks.Grants for the list of privilege types that apply to each securable object.
+    /// 
+    /// ## Metastore grants
+    /// 
+    /// See databricks.Grants Metastore grants for the list of privileges that apply to Metastores.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandboxDataEngineers = new Databricks.Grant("sandbox_data_engineers", new()
+    ///     {
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "CREATE_CATALOG",
+    ///             "CREATE_EXTERNAL_LOCATION",
+    ///         },
+    ///     });
+    /// 
+    ///     var sandboxDataSharer = new Databricks.Grant("sandbox_data_sharer", new()
+    ///     {
+    ///         Principal = "Data Sharer",
+    ///         Privileges = new[]
+    ///         {
+    ///             "CREATE_RECIPIENT",
+    ///             "CREATE_SHARE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Catalog grants
+    /// 
+    /// See databricks.Grants Catalog grants for the list of privileges that apply to Catalogs.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var sandboxDataScientists = new Databricks.Grant("sandbox_data_scientists", new()
+    ///     {
+    ///         Catalog = sandbox.Name,
+    ///         Principal = "Data Scientists",
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_CATALOG",
+    ///             "USE_SCHEMA",
+    ///             "CREATE_TABLE",
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    ///     var sandboxDataEngineers = new Databricks.Grant("sandbox_data_engineers", new()
+    ///     {
+    ///         Catalog = sandbox.Name,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_CATALOG",
+    ///             "USE_SCHEMA",
+    ///             "CREATE_SCHEMA",
+    ///             "CREATE_TABLE",
+    ///             "MODIFY",
+    ///         },
+    ///     });
+    /// 
+    ///     var sandboxDataAnalyst = new Databricks.Grant("sandbox_data_analyst", new()
+    ///     {
+    ///         Catalog = sandbox.Name,
+    ///         Principal = "Data Analyst",
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_CATALOG",
+    ///             "USE_SCHEMA",
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Schema grants
+    /// 
+    /// See databricks.Grants Schema grants for the list of privileges that apply to Schemas.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this schema is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var thingsGrant = new Databricks.Grant("things", new()
+    ///     {
+    ///         Schema = things.Id,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_SCHEMA",
+    ///             "MODIFY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Table grants
+    /// 
+    /// See databricks.Grants Table grants for the list of privileges that apply to Tables.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customersDataEngineers = new Databricks.Grant("customers_data_engineers", new()
+    ///     {
+    ///         Table = "main.reporting.customers",
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "MODIFY",
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    ///     var customersDataAnalysts = new Databricks.Grant("customers_data_analysts", new()
+    ///     {
+    ///         Table = "main.reporting.customers",
+    ///         Principal = "Data Analysts",
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You can also apply grants dynamically with databricks.getTables data resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var things = await Databricks.GetTables.InvokeAsync(new()
+    ///     {
+    ///         CatalogName = "sandbox",
+    ///         SchemaName = "things",
+    ///     });
+    /// 
+    ///     var thingsGrant = new List&lt;Databricks.Grant&gt;();
+    ///     foreach (var range in )
+    ///     {
+    ///         thingsGrant.Add(new Databricks.Grant($"things-{range.Key}", new()
+    ///         {
+    ///             Table = range.Value,
+    ///             Principal = "sensitive",
+    ///             Privileges = new[]
+    ///             {
+    ///                 "SELECT",
+    ///                 "MODIFY",
+    ///             },
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
+    /// ## View grants
+    /// 
+    /// See databricks.Grants View grants for the list of privileges that apply to Views.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customer360 = new Databricks.Grant("customer360", new()
+    ///     {
+    ///         Table = "main.reporting.customer360",
+    ///         Principal = "Data Analysts",
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You can also apply grants dynamically with databricks.getViews data resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var customers = await Databricks.GetViews.InvokeAsync(new()
+    ///     {
+    ///         CatalogName = "main",
+    ///         SchemaName = "customers",
+    ///     });
+    /// 
+    ///     var customersGrant = new List&lt;Databricks.Grant&gt;();
+    ///     foreach (var range in )
+    ///     {
+    ///         customersGrant.Add(new Databricks.Grant($"customers-{range.Key}", new()
+    ///         {
+    ///             Table = range.Value,
+    ///             Principal = "sensitive",
+    ///             Privileges = new[]
+    ///             {
+    ///                 "SELECT",
+    ///                 "MODIFY",
+    ///             },
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
+    /// ## Volume grants
+    /// 
+    /// See databricks.Grants Volume grants for the list of privileges that apply to Volumes.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Volume("this", new()
+    ///     {
+    ///         Name = "quickstart_volume",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         VolumeType = "EXTERNAL",
+    ///         StorageLocation = some.Url,
+    ///         Comment = "this volume is managed by terraform",
+    ///     });
+    /// 
+    ///     var volume = new Databricks.Grant("volume", new()
+    ///     {
+    ///         Volume = @this.Id,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "WRITE_VOLUME",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Registered model grants
+    /// 
+    /// See databricks.Grants Registered model grants for the list of privileges that apply to Registered models.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customersDataEngineers = new Databricks.Grant("customers_data_engineers", new()
+    ///     {
+    ///         Model = "main.reporting.customer_model",
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "APPLY_TAG",
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    ///     var customersDataAnalysts = new Databricks.Grant("customers_data_analysts", new()
+    ///     {
+    ///         Model = "main.reporting.customer_model",
+    ///         Principal = "Data Analysts",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Function grants
+    /// 
+    /// See databricks.Grants Function grants for the list of privileges that apply to Registered models.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var udfDataEngineers = new Databricks.Grant("udf_data_engineers", new()
+    ///     {
+    ///         Function = "main.reporting.udf",
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    ///     var udfDataAnalysts = new Databricks.Grant("udf_data_analysts", new()
+    ///     {
+    ///         Function = "main.reporting.udf",
+    ///         Principal = "Data Analysts",
+    ///         Privileges = new[]
+    ///         {
+    ///             "EXECUTE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Storage credential grants
+    /// 
+    /// See databricks.Grants Storage credential grants for the list of privileges that apply to Storage credentials.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     {
+    ///         Name = externalDataAccess.Name,
+    ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = externalDataAccess.Arn,
+    ///         },
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grant("external_creds", new()
+    ///     {
+    ///         StorageCredential = external.Id,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "CREATE_EXTERNAL_TABLE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## External location grants
+    /// 
+    /// See databricks.Grants External location grants for the list of privileges that apply to External locations.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     {
+    ///         Name = "external",
+    ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
+    ///         CredentialName = external.Id,
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var someDataEngineers = new Databricks.Grant("some_data_engineers", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "CREATE_EXTERNAL_TABLE",
+    ///             "READ_FILES",
+    ///         },
+    ///     });
+    /// 
+    ///     var someServicePrincipal = new Databricks.Grant("some_service_principal", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         Principal = mySp.ApplicationId,
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_SCHEMA",
+    ///             "MODIFY",
+    ///         },
+    ///     });
+    /// 
+    ///     var someGroup = new Databricks.Grant("some_group", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         Principal = myGroup.DisplayName,
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_SCHEMA",
+    ///             "MODIFY",
+    ///         },
+    ///     });
+    /// 
+    ///     var someUser = new Databricks.Grant("some_user", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         Principal = myUser.UserName,
+    ///         Privileges = new[]
+    ///         {
+    ///             "USE_SCHEMA",
+    ///             "MODIFY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Connection grants
+    /// 
+    /// See databricks.Grants Connection grants for the list of privileges that apply to Connections.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mysql = new Databricks.Connection("mysql", new()
+    ///     {
+    ///         Name = "mysql_connection",
+    ///         ConnectionType = "MYSQL",
+    ///         Comment = "this is a connection to mysql db",
+    ///         Options = 
+    ///         {
+    ///             { "host", "test.mysql.database.azure.com" },
+    ///             { "port", "3306" },
+    ///             { "user", "user" },
+    ///             { "password", "password" },
+    ///         },
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var some = new Databricks.Grant("some", new()
+    ///     {
+    ///         ForeignConnection = mysql.Name,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "CREATE_FOREIGN_CATALOG",
+    ///             "USE_CONNECTION",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Delta Sharing share grants
+    /// 
+    /// See databricks.Grants Delta Sharing share grants for the list of privileges that apply to Delta Sharing shares.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var some = new Databricks.Share("some", new()
+    ///     {
+    ///         Name = "my_share",
+    ///     });
+    /// 
+    ///     var someRecipient = new Databricks.Recipient("some", new()
+    ///     {
+    ///         Name = "my_recipient",
+    ///     });
+    /// 
+    ///     var someGrant = new Databricks.Grant("some", new()
+    ///     {
+    ///         Share = some.Name,
+    ///         Principal = someRecipient.Name,
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Other access control
+    /// 
+    /// You can control Databricks General Permissions through databricks.Permissions resource.
+    /// 
     /// ## Import
     /// 
     /// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:

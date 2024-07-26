@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+    /// 
     /// ## Import
     /// 
     /// The resource global init script can be imported using script ID:
@@ -23,6 +25,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/globalInitScript:GlobalInitScript")]
     public partial class GlobalInitScript : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
@@ -99,6 +104,9 @@ namespace Pulumi.Databricks
 
     public sealed class GlobalInitScriptArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
@@ -137,6 +145,9 @@ namespace Pulumi.Databricks
 
     public sealed class GlobalInitScriptState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 

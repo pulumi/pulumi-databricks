@@ -214,7 +214,8 @@ type ServicePrincipal struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
-	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
+	// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrOutput `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -275,7 +276,8 @@ type servicePrincipalState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
+	// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool `pulumi:"force"`
 	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -307,7 +309,8 @@ type ServicePrincipalState struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
+	// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
 	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrInput
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -343,7 +346,8 @@ type servicePrincipalArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	Force      *bool   `pulumi:"force"`
+	// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force *bool `pulumi:"force"`
 	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -376,7 +380,8 @@ type ServicePrincipalArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrInput
-	Force      pulumi.BoolPtrInput
+	// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+	Force pulumi.BoolPtrInput
 	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteHomeDir pulumi.BoolPtrInput
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -521,6 +526,7 @@ func (o ServicePrincipalOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 func (o ServicePrincipalOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

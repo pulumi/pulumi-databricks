@@ -12,6 +12,122 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows uploading and downloading files in databricks_volume.
+//
+// Notes:
+//
+// * Currently the limit is 5GiB in octet-stream.
+// * Currently, only UC volumes are supported. The list of destinations may change.
+//
+// ## Example Usage
+//
+// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				MetastoreId: pulumi.Any(thisDatabricksMetastore.Id),
+//				Name:        pulumi.String("sandbox"),
+//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.Map{
+//					"purpose": pulumi.Any("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.Name,
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this schema is managed by terraform"),
+//				Properties: pulumi.Map{
+//					"kind": pulumi.Any("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewVolume(ctx, "this", &databricks.VolumeArgs{
+//				Name:        pulumi.String("quickstart_volume"),
+//				CatalogName: sandbox.Name,
+//				SchemaName:  things.Name,
+//				VolumeType:  pulumi.String("MANAGED"),
+//				Comment:     pulumi.String("this volume is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewFile(ctx, "this", &databricks.FileArgs{
+//				Source: pulumi.String("/full/path/on/local/system"),
+//				Path: this.VolumePath.ApplyT(func(volumePath string) (string, error) {
+//					return fmt.Sprintf("%v/fileName", volumePath), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// You can also inline sources through `contentBase64`  attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "#!/bin/bash\necho \"Hello World\"\n",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewFile(ctx, "init_script", &databricks.FileArgs{
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
+//				Path:          pulumi.String(fmt.Sprintf("%v/fileName", this.VolumePath)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * WorkspaceFile
+// * End to end workspace management guide.
+// * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+//
 // ## Import
 //
 // The resource `databricks_file` can be imported using the path of the file:

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+//
 // ## Import
 //
 // # The workspace file resource can be imported using workspace file path
@@ -24,6 +26,7 @@ import (
 type WorkspaceFile struct {
 	pulumi.CustomResourceState
 
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	Md5           pulumi.StringPtrOutput `pulumi:"md5"`
 	// Unique identifier for a workspace file
@@ -71,6 +74,7 @@ func GetWorkspaceFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceFile resources.
 type workspaceFileState struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
 	// Unique identifier for a workspace file
@@ -86,6 +90,7 @@ type workspaceFileState struct {
 }
 
 type WorkspaceFileState struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
 	// Unique identifier for a workspace file
@@ -105,6 +110,7 @@ func (WorkspaceFileState) ElementType() reflect.Type {
 }
 
 type workspaceFileArgs struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
 	// Unique identifier for a workspace file
@@ -117,6 +123,7 @@ type workspaceFileArgs struct {
 
 // The set of arguments for constructing a WorkspaceFile resource.
 type WorkspaceFileArgs struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
 	// Unique identifier for a workspace file
@@ -214,6 +221,7 @@ func (o WorkspaceFileOutput) ToWorkspaceFileOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 func (o WorkspaceFileOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }

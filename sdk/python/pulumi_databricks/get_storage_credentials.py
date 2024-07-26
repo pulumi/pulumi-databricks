@@ -59,6 +59,10 @@ class AwaitableGetStorageCredentialsResult(GetStorageCredentialsResult):
 def get_storage_credentials(names: Optional[Sequence[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialsResult:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+
     ## Example Usage
 
     List all storage credentials in the metastore
@@ -95,6 +99,10 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
 def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialsResult]:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+
     ## Example Usage
 
     List all storage credentials in the metastore

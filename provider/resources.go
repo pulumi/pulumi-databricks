@@ -15,6 +15,7 @@
 package databricks
 
 import (
+	"bytes"
 	"fmt"
 	"path"
 	"strings"
@@ -108,6 +109,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumi/pulumi-databricks",
 		GitHubOrg:  "databricks",
 		Config:     map[string]*tfbridge.SchemaInfo{},
+		DocRules:   &tfbridge.DocRuleInfo{EditRules: editRules},
 		IgnoreMappings: []string{
 			"databricks_aws_s3_mount",
 			"databricks_azure_adls_gen1_mount",
@@ -208,4 +210,36 @@ func Provider() tfbridge.ProviderInfo {
 		})
 
 	return prov
+}
+
+func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		rewriteTerraformToPulumi,
+		rewritePermissions,
+	)
+}
+
+// This particular provider elides a lot of descriptions without this rule.
+// TODO: When https://github.com/pulumi/pulumi-terraform-bridge/issues/2251 is implemented, we may remove this rule.
+var rewriteTerraformToPulumi = tfbridge.DocsEdit{
+	Path: "*",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return bytes.ReplaceAll(content, []byte("Terraform"), []byte("Pulumi")), nil
+	},
+}
+
+// Without this change the import section in this file is of unusual format and leaks HCL code into the document.
+var rewritePermissions = tfbridge.DocsEdit{
+	Path: "permissions.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		// Find and split off the import section
+		importSectionSplit := bytes.SplitAfterN(content, []byte("## Import"), -1)
+		returnContent := importSectionSplit[0]
+		//Rewrite and append the import section
+		importContent := []byte("\n\n## Import\n\nThe resource permissions can be imported using the object id\n\n" +
+			"```\nterraform import databricks_permissions <object type>/<object id>\n```")
+		returnContent = append(returnContent, importContent...)
+		return returnContent, nil
+	},
 }

@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetShares
     {
         /// <summary>
+        /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+        /// 
         /// ## Example Usage
         /// 
         /// Getting all existing shares in the metastore
@@ -45,6 +47,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSharesResult>("databricks:index/getShares:getShares", args ?? new GetSharesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+        /// 
         /// ## Example Usage
         /// 
         /// Getting all existing shares in the metastore

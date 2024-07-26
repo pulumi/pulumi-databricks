@@ -115,6 +115,9 @@ export class PermissionAssignment extends pulumi.CustomResource {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     public readonly permissions!: pulumi.Output<string[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     public readonly principalId!: pulumi.Output<string>;
 
     /**
@@ -158,6 +161,9 @@ export interface PermissionAssignmentState {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     principalId?: pulumi.Input<string>;
 }
 
@@ -171,5 +177,8 @@ export interface PermissionAssignmentArgs {
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     principalId: pulumi.Input<string>;
 }

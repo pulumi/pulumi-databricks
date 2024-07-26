@@ -7,6 +7,75 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ *
+ * ## Example Usage
+ *
+ * > **Note** In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `taskKey` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `taskKey` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ *
+ * It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `taskKey`, and additional arguments described below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.Job("this", {
+ *     name: "Job with multiple tasks",
+ *     description: "This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
+ *     jobClusters: [{
+ *         jobClusterKey: "j",
+ *         newCluster: {
+ *             numWorkers: 2,
+ *             sparkVersion: latest.id,
+ *             nodeTypeId: smallest.id,
+ *         },
+ *     }],
+ *     tasks: [
+ *         {
+ *             taskKey: "a",
+ *             newCluster: {
+ *                 numWorkers: 1,
+ *                 sparkVersion: latest.id,
+ *                 nodeTypeId: smallest.id,
+ *             },
+ *             notebookTask: {
+ *                 notebookPath: thisDatabricksNotebook.path,
+ *             },
+ *         },
+ *         {
+ *             taskKey: "b",
+ *             dependsOns: [{
+ *                 taskKey: "a",
+ *             }],
+ *             existingClusterId: shared.id,
+ *             sparkJarTask: {
+ *                 mainClassName: "com.acme.data.Main",
+ *             },
+ *         },
+ *         {
+ *             taskKey: "c",
+ *             jobClusterKey: "j",
+ *             notebookTask: {
+ *                 notebookPath: thisDatabricksNotebook.path,
+ *             },
+ *         },
+ *         {
+ *             taskKey: "d",
+ *             pipelineTask: {
+ *                 pipelineId: thisDatabricksPipeline.id,
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+ *
+ * * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+ * * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
+ *
  * ## Import
  *
  * The resource job can be imported using the id of the job

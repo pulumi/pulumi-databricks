@@ -17,9 +17,17 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
 
     public static final GlobalInitScriptArgs Empty = new GlobalInitScriptArgs();
 
+    /**
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * 
+     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
+    /**
+     * @return The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * 
+     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
@@ -120,11 +128,23 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
             $ = new GlobalInitScriptArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
+        /**
+         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }

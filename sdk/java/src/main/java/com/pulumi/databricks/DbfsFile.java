@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
+ * 
  * ## Import
  * 
  * The resource dbfs file can be imported using the path of the file:
@@ -29,9 +31,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/dbfsFile:DbfsFile")
 public class DbfsFile extends com.pulumi.resources.CustomResource {
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }

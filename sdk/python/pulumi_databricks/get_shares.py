@@ -59,6 +59,8 @@ class AwaitableGetSharesResult(GetSharesResult):
 def get_shares(shares: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharesResult:
     """
+    Retrieves a list of Share name, that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting all existing shares in the metastore
@@ -96,6 +98,8 @@ def get_shares(shares: Optional[Sequence[str]] = None,
 def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharesResult]:
     """
+    Retrieves a list of Share name, that were created by Pulumi or manually.
+
     ## Example Usage
 
     Getting all existing shares in the metastore

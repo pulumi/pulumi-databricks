@@ -373,9 +373,17 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
+    /**
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }

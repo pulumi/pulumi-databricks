@@ -18,9 +18,17 @@ public final class DirectoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DirectoryArgs Empty = new DirectoryArgs();
 
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     @Import(name="deleteRecursive")
     private @Nullable Output<Boolean> deleteRecursive;
 
+    /**
+     * @return Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     public Optional<Output<Boolean>> deleteRecursive() {
         return Optional.ofNullable(this.deleteRecursive);
     }
@@ -81,11 +89,23 @@ public final class DirectoryArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DirectoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(@Nullable Output<Boolean> deleteRecursive) {
             $.deleteRecursive = deleteRecursive;
             return this;
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(Boolean deleteRecursive) {
             return deleteRecursive(Output.of(deleteRecursive));
         }

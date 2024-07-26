@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  * });
  * const thisJob = new databricks.Job("this", {
- *     name: me.then(me => `Terraform MLflowWebhook Demo (${me.alphanumeric})`),
+ *     name: me.then(me => `Pulumi MLflowWebhook Demo (${me.alphanumeric})`),
  *     tasks: [{
  *         taskKey: "task1",
  *         newCluster: {

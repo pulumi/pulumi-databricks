@@ -249,7 +249,7 @@ class MlflowWebhook(pulumi.CustomResource):
         print(f"event data={event_message_dict}")
         \"\"\").result)
         this_job = databricks.Job("this",
-            name=f"Terraform MLflowWebhook Demo ({me.alphanumeric})",
+            name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",
             tasks=[databricks.JobTaskArgs(
                 task_key="task1",
                 new_cluster=databricks.JobTaskNewClusterArgs(
@@ -349,7 +349,7 @@ class MlflowWebhook(pulumi.CustomResource):
         print(f"event data={event_message_dict}")
         \"\"\").result)
         this_job = databricks.Job("this",
-            name=f"Terraform MLflowWebhook Demo ({me.alphanumeric})",
+            name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",
             tasks=[databricks.JobTaskArgs(
                 task_key="task1",
                 new_cluster=databricks.JobTaskNewClusterArgs(

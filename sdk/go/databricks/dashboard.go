@@ -12,6 +12,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+//
+// ## Example Usage
+//
+// Dashboard using `serializedDashboard` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			starter, err := databricks.GetSqlWarehouse(ctx, &databricks.GetSqlWarehouseArgs{
+//				Name: pulumi.StringRef("Starter Warehouse"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDashboard(ctx, "dashboard", &databricks.DashboardArgs{
+//				DisplayName:         pulumi.String("New Dashboard"),
+//				WarehouseId:         pulumi.String(starter.Id),
+//				SerializedDashboard: pulumi.String("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}"),
+//				EmbedCredentials:    pulumi.Bool(false),
+//				ParentPath:          pulumi.String("/Shared/provider-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Dashboard using `filePath` attribute:
+//
 // ## Import
 //
 // You can import a `databricks_dashboard` resource with ID like the following:

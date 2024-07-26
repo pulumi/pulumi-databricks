@@ -10,6 +10,98 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows uploading and downloading files in databricks_volume.
+    /// 
+    /// Notes:
+    /// 
+    /// * Currently the limit is 5GiB in octet-stream.
+    /// * Currently, only UC volumes are supported. The list of destinations may change.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         MetastoreId = thisDatabricksMetastore.Id,
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Name,
+    ///         Name = "things",
+    ///         Comment = "this schema is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Volume("this", new()
+    ///     {
+    ///         Name = "quickstart_volume",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         VolumeType = "MANAGED",
+    ///         Comment = "this volume is managed by terraform",
+    ///     });
+    /// 
+    ///     var thisFile = new Databricks.File("this", new()
+    ///     {
+    ///         Source = "/full/path/on/local/system",
+    ///         Path = @this.VolumePath.Apply(volumePath =&gt; $"{volumePath}/fileName"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You can also inline sources through `content_base64`  attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var initScript = new Databricks.File("init_script", new()
+    ///     {
+    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = @"#!/bin/bash
+    /// echo ""Hello World""
+    /// ",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Path = $"{@this.VolumePath}/fileName",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.WorkspaceFile
+    /// * End to end workspace management guide.
+    /// * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+    /// 
     /// ## Import
     /// 
     /// The resource `databricks_file` can be imported using the path of the file:

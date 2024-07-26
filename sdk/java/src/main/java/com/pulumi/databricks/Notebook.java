@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
+ * 
  * ## Import
  * 
  * The resource notebook can be imported using notebook path
@@ -29,9 +31,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/notebook:Notebook")
 public class Notebook extends com.pulumi.resources.CustomResource {
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }

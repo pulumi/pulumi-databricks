@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
+//
 // ## Import
 //
 // The resource global init script can be imported using script ID:
@@ -23,6 +25,7 @@ import (
 type GlobalInitScript struct {
 	pulumi.CustomResourceState
 
+	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrOutput   `pulumi:"enabled"`
@@ -65,6 +68,7 @@ func GetGlobalInitScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalInitScript resources.
 type globalInitScriptState struct {
+	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 *string `pulumi:"contentBase64"`
 	// specifies if the script is enabled for execution, or not
 	Enabled *bool   `pulumi:"enabled"`
@@ -78,6 +82,7 @@ type globalInitScriptState struct {
 }
 
 type GlobalInitScriptState struct {
+	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 pulumi.StringPtrInput
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrInput
@@ -95,6 +100,7 @@ func (GlobalInitScriptState) ElementType() reflect.Type {
 }
 
 type globalInitScriptArgs struct {
+	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 *string `pulumi:"contentBase64"`
 	// specifies if the script is enabled for execution, or not
 	Enabled *bool   `pulumi:"enabled"`
@@ -109,6 +115,7 @@ type globalInitScriptArgs struct {
 
 // The set of arguments for constructing a GlobalInitScript resource.
 type GlobalInitScriptArgs struct {
+	// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 	ContentBase64 pulumi.StringPtrInput
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrInput
@@ -208,6 +215,7 @@ func (o GlobalInitScriptOutput) ToGlobalInitScriptOutputWithContext(ctx context.
 	return o
 }
 
+// The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
 func (o GlobalInitScriptOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalInitScript) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }

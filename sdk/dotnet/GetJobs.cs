@@ -12,6 +12,12 @@ namespace Pulumi.Databricks
     public static class GetJobs
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** Data resource will error in case of jobs with duplicate names.
+        /// 
         /// ## Example Usage
         /// 
         /// Granting view databricks.Permissions to all databricks.Job within the workspace:
@@ -75,6 +81,12 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobsResult>("databricks:index/getJobs:getJobs", args ?? new GetJobsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** Data resource will error in case of jobs with duplicate names.
+        /// 
         /// ## Example Usage
         /// 
         /// Granting view databricks.Permissions to all databricks.Job within the workspace:

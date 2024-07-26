@@ -79,9 +79,9 @@ def get_views(catalog_name: Optional[str] = None,
               schema_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetViewsResult:
     """
-    ## Example Usage
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+    Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use get_tables for retrieving a list of tables.
 
 
     :param str catalog_name: Name of databricks_catalog
@@ -108,9 +108,9 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
                      schema_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetViewsResult]:
     """
-    ## Example Usage
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+    Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use get_tables for retrieving a list of tables.
 
 
     :param str catalog_name: Name of databricks_catalog

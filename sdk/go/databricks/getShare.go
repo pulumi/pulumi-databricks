@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves details about a Share that were created by Pulumi or manually.
+//
 // ## Example Usage
 //
 // # Getting details of an existing share in the metastore

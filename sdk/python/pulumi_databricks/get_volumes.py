@@ -79,6 +79,10 @@ def get_volumes(catalog_name: Optional[str] = None,
                 schema_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
     ## Example Usage
 
     Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
@@ -125,6 +129,10 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[str]] = None,
                        schema_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
     """
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
     ## Example Usage
 
     Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:

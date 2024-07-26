@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
     ///     // create PAT token to provision entities within workspace
     ///     var pat = new Databricks.Token("pat", new()
     ///     {
-    ///         Comment = "Terraform Provisioning",
+    ///         Comment = "Pulumi Provisioning",
     ///         LifetimeSeconds = 8640000,
     ///     });
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var pat = new Databricks.Token("pat", new()
     ///     {
-    ///         Comment = @this.Rfc3339.Apply(rfc3339 =&gt; $"Terraform (created: {rfc3339})"),
+    ///         Comment = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
     ///         LifetimeSeconds = 60 * 24 * 60 * 60,
     ///     });
     /// 

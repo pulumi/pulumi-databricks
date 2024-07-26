@@ -16,9 +16,21 @@ public final class JobTaskForEachTaskTaskDependsOnArgs extends com.pulumi.resour
 
     public static final JobTaskForEachTaskTaskDependsOnArgs Empty = new JobTaskForEachTaskTaskDependsOnArgs();
 
+    /**
+     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
+     * 
+     * &gt; **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+     * 
+     */
     @Import(name="outcome")
     private @Nullable Output<String> outcome;
 
+    /**
+     * @return Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
+     * 
+     * &gt; **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+     * 
+     */
     public Optional<Output<String>> outcome() {
         return Optional.ofNullable(this.outcome);
     }
@@ -63,11 +75,27 @@ public final class JobTaskForEachTaskTaskDependsOnArgs extends com.pulumi.resour
             $ = new JobTaskForEachTaskTaskDependsOnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param outcome Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
+         * 
+         * &gt; **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outcome(@Nullable Output<String> outcome) {
             $.outcome = outcome;
             return this;
         }
 
+        /**
+         * @param outcome Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
+         * 
+         * &gt; **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outcome(String outcome) {
             return outcome(Output.of(outcome));
         }

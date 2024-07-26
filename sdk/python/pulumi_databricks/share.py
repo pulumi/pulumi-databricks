@@ -193,7 +193,93 @@ class Share(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Share resource with the given unique name, props, and options.
+        > **Note** This resource could be only used with workspace-level provider!
+
+        In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+
+        In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+
+        ## Example Usage
+
+        > **Note** In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        Creating a Delta Sharing share and add some existing tables to it
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        some = databricks.Share("some",
+            objects=[databricks.ShareObjectArgs(
+                name=entry["value"],
+                data_object_type="TABLE",
+            ) for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            name="my_share")
+        ```
+
+        Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_share = databricks.Share("schema_share",
+            name="schema_share",
+            objects=[databricks.ShareObjectArgs(
+                name="catalog_name.schema_name",
+                data_object_type="SCHEMA",
+                history_data_sharing_status="ENABLED",
+            )])
+        ```
+
+        Creating a Delta Sharing share and share a table with partitions spec and history
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some",
+            name="my_share",
+            objects=[databricks.ShareObjectArgs(
+                name="my_catalog.my_schema.my_table",
+                data_object_type="TABLE",
+                history_data_sharing_status="ENABLED",
+                partitions=[
+                    databricks.ShareObjectPartitionArgs(
+                        values=[
+                            databricks.ShareObjectPartitionValueArgs(
+                                name="year",
+                                op="EQUAL",
+                                value="2009",
+                            ),
+                            databricks.ShareObjectPartitionValueArgs(
+                                name="month",
+                                op="EQUAL",
+                                value="12",
+                            ),
+                        ],
+                    ),
+                    databricks.ShareObjectPartitionArgs(
+                        values=[databricks.ShareObjectPartitionValueArgs(
+                            name="year",
+                            op="EQUAL",
+                            value="2010",
+                        )],
+                    ),
+                ],
+            )])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Recipient to create Delta Sharing recipients.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
@@ -208,7 +294,93 @@ class Share(pulumi.CustomResource):
                  args: Optional[ShareArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Share resource with the given unique name, props, and options.
+        > **Note** This resource could be only used with workspace-level provider!
+
+        In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+
+        In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+
+        ## Example Usage
+
+        > **Note** In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        Creating a Delta Sharing share and add some existing tables to it
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        some = databricks.Share("some",
+            objects=[databricks.ShareObjectArgs(
+                name=entry["value"],
+                data_object_type="TABLE",
+            ) for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            name="my_share")
+        ```
+
+        Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_share = databricks.Share("schema_share",
+            name="schema_share",
+            objects=[databricks.ShareObjectArgs(
+                name="catalog_name.schema_name",
+                data_object_type="SCHEMA",
+                history_data_sharing_status="ENABLED",
+            )])
+        ```
+
+        Creating a Delta Sharing share and share a table with partitions spec and history
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some",
+            name="my_share",
+            objects=[databricks.ShareObjectArgs(
+                name="my_catalog.my_schema.my_table",
+                data_object_type="TABLE",
+                history_data_sharing_status="ENABLED",
+                partitions=[
+                    databricks.ShareObjectPartitionArgs(
+                        values=[
+                            databricks.ShareObjectPartitionValueArgs(
+                                name="year",
+                                op="EQUAL",
+                                value="2009",
+                            ),
+                            databricks.ShareObjectPartitionValueArgs(
+                                name="month",
+                                op="EQUAL",
+                                value="12",
+                            ),
+                        ],
+                    ),
+                    databricks.ShareObjectPartitionArgs(
+                        values=[databricks.ShareObjectPartitionValueArgs(
+                            name="year",
+                            op="EQUAL",
+                            value="2010",
+                        )],
+                    ),
+                ],
+            )])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Recipient to create Delta Sharing recipients.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
+
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

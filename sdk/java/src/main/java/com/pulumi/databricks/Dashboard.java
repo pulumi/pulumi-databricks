@@ -16,6 +16,57 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+ * 
+ * ## Example Usage
+ * 
+ * Dashboard using `serialized_dashboard` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+ * import com.pulumi.databricks.Dashboard;
+ * import com.pulumi.databricks.DashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var starter = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+ *             .name("Starter Warehouse")
+ *             .build());
+ * 
+ *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
+ *             .displayName("New Dashboard")
+ *             .warehouseId(starter.applyValue(getSqlWarehouseResult -> getSqlWarehouseResult.id()))
+ *             .serializedDashboard("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}")
+ *             .embedCredentials(false)
+ *             .parentPath("/Shared/provider-test")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Dashboard using `file_path` attribute:
+ * 
  * ## Import
  * 
  * You can import a `databricks_dashboard` resource with ID like the following:

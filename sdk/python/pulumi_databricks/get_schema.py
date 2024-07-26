@@ -75,9 +75,8 @@ def get_schema(id: Optional[str] = None,
                schema_info: Optional[pulumi.InputType['GetSchemaSchemaInfoArgs']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemaResult:
     """
-    ## Example Usage
-
-    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+    Retrieves details about Schema that was created by Pulumi or manually.
+    A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
 
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
@@ -103,9 +102,8 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                       schema_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetSchemaSchemaInfoArgs']]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemaResult]:
     """
-    ## Example Usage
-
-    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+    Retrieves details about Schema that was created by Pulumi or manually.
+    A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
 
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.

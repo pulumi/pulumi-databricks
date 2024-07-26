@@ -201,7 +201,7 @@ class Token(pulumi.CustomResource):
 
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
-            comment="Terraform Provisioning",
+            comment="Pulumi Provisioning",
             lifetime_seconds=8640000)
         pulumi.export("databricksToken", pat.token_value)
         ```
@@ -215,7 +215,7 @@ class Token(pulumi.CustomResource):
 
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
-            comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
+            comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
             lifetime_seconds=60 * 24 * 60 * 60)
         ```
 
@@ -245,7 +245,7 @@ class Token(pulumi.CustomResource):
 
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
-            comment="Terraform Provisioning",
+            comment="Pulumi Provisioning",
             lifetime_seconds=8640000)
         pulumi.export("databricksToken", pat.token_value)
         ```
@@ -259,7 +259,7 @@ class Token(pulumi.CustomResource):
 
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
-            comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
+            comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
             lifetime_seconds=60 * 24 * 60 * 60)
         ```
 

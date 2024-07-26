@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var thisJob = new Databricks.Job("this", new()
     ///     {
-    ///         Name = $"Terraform MLflowWebhook Demo ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
+    ///         Name = $"Pulumi MLflowWebhook Demo ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
     ///         Tasks = new[]
     ///         {
     ///             new Databricks.Inputs.JobTaskArgs

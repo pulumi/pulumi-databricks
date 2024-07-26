@@ -5,6 +5,75 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows uploading and downloading files in databricks_volume.
+ *
+ * Notes:
+ *
+ * * Currently the limit is 5GiB in octet-stream.
+ * * Currently, only UC volumes are supported. The list of destinations may change.
+ *
+ * ## Example Usage
+ *
+ * In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     metastoreId: thisDatabricksMetastore.id,
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const things = new databricks.Schema("things", {
+ *     catalogName: sandbox.name,
+ *     name: "things",
+ *     comment: "this schema is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const _this = new databricks.Volume("this", {
+ *     name: "quickstart_volume",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     volumeType: "MANAGED",
+ *     comment: "this volume is managed by terraform",
+ * });
+ * const thisFile = new databricks.File("this", {
+ *     source: "/full/path/on/local/system",
+ *     path: pulumi.interpolate`${_this.volumePath}/fileName`,
+ * });
+ * ```
+ *
+ * You can also inline sources through `contentBase64`  attribute.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const initScript = new databricks.File("init_script", {
+ *     contentBase64: std.base64encode({
+ *         input: `#!/bin/bash
+ * echo "Hello World"
+ * `,
+ *     }).then(invoke => invoke.result),
+ *     path: `${_this.volumePath}/fileName`,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.WorkspaceFile
+ * * End to end workspace management guide.
+ * * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+ *
  * ## Import
  *
  * The resource `databricks_file` can be imported using the path of the file:

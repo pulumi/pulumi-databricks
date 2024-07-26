@@ -165,6 +165,28 @@ class GitCredential(pulumi.CustomResource):
                  personal_access_token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+
+        ## Example Usage
+
+        You can declare Pulumi-managed Git credential using following code:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado",
+            git_username="myuser",
+            git_provider="azureDevOpsServices",
+            personal_access_token="sometoken")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Repo to manage Databricks Repos.
+
         ## Import
 
         The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
@@ -189,6 +211,28 @@ class GitCredential(pulumi.CustomResource):
                  args: GitCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+
+        ## Example Usage
+
+        You can declare Pulumi-managed Git credential using following code:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado",
+            git_username="myuser",
+            git_provider="azureDevOpsServices",
+            personal_access_token="sometoken")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Repo to manage Databricks Repos.
+
         ## Import
 
         The resource cluster can be imported using ID of Git credential that could be obtained via REST API:

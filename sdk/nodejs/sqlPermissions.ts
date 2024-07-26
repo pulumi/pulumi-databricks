@@ -7,11 +7,23 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * > **Note** Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `defaultCatalogName` was set to a UC catalog instead of `hiveMetastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hiveMetastore`. See databricks_metastore_assignment.
  *
- * The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+ * This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
  *
- * * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const clusterWithTableAccessControl = new databricks.Cluster("cluster_with_table_access_control", {sparkConf: {
+ *     "spark.databricks.acl.dfAclsEnabled": "true",
+ *     "spark.databricks.repl.allowedLanguages": "python,sql",
+ * }});
+ * ```
+ *
+ * It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+ *
+ * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
  * * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
  * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
  * * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
