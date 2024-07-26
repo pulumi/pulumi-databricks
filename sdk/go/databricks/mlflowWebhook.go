@@ -62,7 +62,7 @@ import (
 //			this, err := databricks.NewNotebook(ctx, "this", &databricks.NotebookArgs{
 //				Path:          pulumi.String(fmt.Sprintf("%v/MLFlowWebhook", me.Home)),
 //				Language:      pulumi.String("PYTHON"),
-//				ContentBase64: invokeBase64encode.Result,
+//				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //			})
 //			if err != nil {
 //				return err
