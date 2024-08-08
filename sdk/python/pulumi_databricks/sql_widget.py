@@ -227,8 +227,8 @@ class SqlWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dashboard_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlWidgetParameterArgs']]]]] = None,
-                 position: Optional[pulumi.Input[pulumi.InputType['SqlWidgetPositionArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+                 position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
                  text: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None,
@@ -250,21 +250,21 @@ class SqlWidget(pulumi.CustomResource):
         d1w1 = databricks.SqlWidget("d1w1",
             dashboard_id=d1["id"],
             text="Hello! I'm a **text widget**!",
-            position=databricks.SqlWidgetPositionArgs(
-                size_x=3,
-                size_y=4,
-                pos_x=0,
-                pos_y=0,
-            ))
+            position={
+                "size_x": 3,
+                "size_y": 4,
+                "pos_x": 0,
+                "pos_y": 0,
+            })
         d1w2 = databricks.SqlWidget("d1w2",
             dashboard_id=d1["id"],
             visualization_id=q1v1["id"],
-            position=databricks.SqlWidgetPositionArgs(
-                size_x=3,
-                size_y=4,
-                pos_x=3,
-                pos_y=0,
-            ))
+            position={
+                "size_x": 3,
+                "size_y": 4,
+                "pos_x": 3,
+                "pos_y": 0,
+            })
         ```
 
         ## Related Resources
@@ -312,21 +312,21 @@ class SqlWidget(pulumi.CustomResource):
         d1w1 = databricks.SqlWidget("d1w1",
             dashboard_id=d1["id"],
             text="Hello! I'm a **text widget**!",
-            position=databricks.SqlWidgetPositionArgs(
-                size_x=3,
-                size_y=4,
-                pos_x=0,
-                pos_y=0,
-            ))
+            position={
+                "size_x": 3,
+                "size_y": 4,
+                "pos_x": 0,
+                "pos_y": 0,
+            })
         d1w2 = databricks.SqlWidget("d1w2",
             dashboard_id=d1["id"],
             visualization_id=q1v1["id"],
-            position=databricks.SqlWidgetPositionArgs(
-                size_x=3,
-                size_y=4,
-                pos_x=3,
-                pos_y=0,
-            ))
+            position={
+                "size_x": 3,
+                "size_y": 4,
+                "pos_x": 3,
+                "pos_y": 0,
+            })
         ```
 
         ## Related Resources
@@ -366,8 +366,8 @@ class SqlWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dashboard_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlWidgetParameterArgs']]]]] = None,
-                 position: Optional[pulumi.Input[pulumi.InputType['SqlWidgetPositionArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+                 position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
                  text: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None,
@@ -403,8 +403,8 @@ class SqlWidget(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dashboard_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlWidgetParameterArgs']]]]] = None,
-            position: Optional[pulumi.Input[pulumi.InputType['SqlWidgetPositionArgs']]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+            position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
             text: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
             visualization_id: Optional[pulumi.Input[str]] = None,

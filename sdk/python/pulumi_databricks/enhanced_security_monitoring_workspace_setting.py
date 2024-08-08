@@ -105,7 +105,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enhanced_security_monitoring_workspace: Optional[pulumi.Input[pulumi.InputType['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs']]] = None,
+                 enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -137,7 +137,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enhanced_security_monitoring_workspace: Optional[pulumi.Input[pulumi.InputType['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs']]] = None,
+                 enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -164,7 +164,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enhanced_security_monitoring_workspace: Optional[pulumi.Input[pulumi.InputType['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs']]] = None,
+            enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             setting_name: Optional[pulumi.Input[str]] = None) -> 'EnhancedSecurityMonitoringWorkspaceSetting':
         """

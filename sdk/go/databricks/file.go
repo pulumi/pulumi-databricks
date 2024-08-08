@@ -109,7 +109,7 @@ import (
 //			}
 //			_, err = databricks.NewFile(ctx, "init_script", &databricks.FileArgs{
 //				ContentBase64: pulumi.String(invokeBase64encode.Result),
-//				Path:          pulumi.String(fmt.Sprintf("%v/fileName", this.VolumePath)),
+//				Path:          pulumi.Sprintf("%v/fileName", this.VolumePath),
 //			})
 //			if err != nil {
 //				return err

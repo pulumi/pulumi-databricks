@@ -239,10 +239,10 @@ class SqlDashboard(pulumi.CustomResource):
 
         d1 = databricks.Permissions("d1",
             sql_dashboard_id=d1_databricks_sql_dashboard["id"],
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=users["displayName"],
-                permission_level="CAN_RUN",
-            )])
+            access_controls=[{
+                "group_name": users["displayName"],
+                "permission_level": "CAN_RUN",
+            }])
         ```
 
         ## Related Resources
@@ -304,10 +304,10 @@ class SqlDashboard(pulumi.CustomResource):
 
         d1 = databricks.Permissions("d1",
             sql_dashboard_id=d1_databricks_sql_dashboard["id"],
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=users["displayName"],
-                permission_level="CAN_RUN",
-            )])
+            access_controls=[{
+                "group_name": users["displayName"],
+                "permission_level": "CAN_RUN",
+            }])
         ```
 
         ## Related Resources

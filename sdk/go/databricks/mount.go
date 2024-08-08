@@ -56,7 +56,7 @@ import (
 //			storageAcc := "lrs"
 //			_, err := databricks.NewMount(ctx, "this", &databricks.MountArgs{
 //				Name: pulumi.String("tf-abfss"),
-//				Uri:  pulumi.String(fmt.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc)),
+//				Uri:  pulumi.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc),
 //				ExtraConfigs: pulumi.Map{
 //					"fs.azure.account.auth.type":                          pulumi.Any("OAuth"),
 //					"fs.azure.account.oauth.provider.type":                pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
@@ -147,7 +147,7 @@ import (
 //			_, err = databricks.NewMount(ctx, "passthrough", &databricks.MountArgs{
 //				Name:      pulumi.String("passthrough-test"),
 //				ClusterId: sharedPassthrough.ID(),
-//				Uri:       pulumi.String(fmt.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc)),
+//				Uri:       pulumi.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc),
 //				ExtraConfigs: pulumi.Map{
 //					"fs.azure.account.auth.type":                   pulumi.Any("CustomAccessToken"),
 //					"fs.azure.account.custom.token.provider.class": pulumi.Any("{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}"),
@@ -249,7 +249,7 @@ import (
 //				return err
 //			}
 //			this, err := storage.NewAccount(ctx, "this", &storage.AccountArgs{
-//				Name:                   pulumi.String(fmt.Sprintf("%vdatalake", prefix)),
+//				Name:                   pulumi.Sprintf("%vdatalake", prefix),
 //				ResourceGroupName:      pulumi.Any(resourceGroupName),
 //				Location:               pulumi.Any(resourceGroupLocation),
 //				AccountTier:            pulumi.String("Standard"),
@@ -408,7 +408,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			blobaccount, err := storage.NewAccount(ctx, "blobaccount", &storage.AccountArgs{
-//				Name:                   pulumi.String(fmt.Sprintf("%vblob", prefix)),
+//				Name:                   pulumi.Sprintf("%vblob", prefix),
 //				ResourceGroupName:      pulumi.Any(resourceGroupName),
 //				Location:               pulumi.Any(resourceGroupLocation),
 //				AccountTier:            pulumi.String("Standard"),

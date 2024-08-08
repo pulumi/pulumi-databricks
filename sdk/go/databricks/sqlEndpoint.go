@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
-//				Name:           pulumi.String(fmt.Sprintf("Endpoint of %v", me.Alphanumeric)),
+//				Name:           pulumi.Sprintf("Endpoint of %v", me.Alphanumeric),
 //				ClusterSize:    pulumi.String("Small"),
 //				MaxNumClusters: pulumi.Int(1),
 //				Tags: &databricks.SqlEndpointTagsArgs{

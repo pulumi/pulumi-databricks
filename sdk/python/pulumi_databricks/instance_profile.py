@@ -177,23 +177,23 @@ class InstanceProfile(pulumi.CustomResource):
         config = pulumi.Config()
         # Role that you've specified on https://accounts.cloud.databricks.com/#aws
         crossaccount_role_name = config.require("crossaccountRoleName")
-        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["ec2.amazonaws.com"],
-                type="Service",
-            )],
-        )])
+        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
+            "effect": "Allow",
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "identifiers": ["ec2.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
         role_for_s3_access = aws.iam.Role("role_for_s3_access",
             name="shared-ec2-role-for-s3",
             description="Role for shared access",
             assume_role_policy=assume_role_for_ec2.json)
-        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["iam:PassRole"],
-            resources=[role_for_s3_access.arn],
-        )])
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[{
+            "effect": "Allow",
+            "actions": ["iam:PassRole"],
+            "resources": [role_for_s3_access.arn],
+        }])
         pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
             name="shared-pass-role-for-s3-access",
             path="/",
@@ -212,17 +212,17 @@ class InstanceProfile(pulumi.CustomResource):
             spark_version=latest.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ),
-            aws_attributes=databricks.ClusterAwsAttributesArgs(
-                instance_profile_arn=shared_instance_profile.id,
-                availability="SPOT",
-                zone_id="us-east-1",
-                first_on_demand=1,
-                spot_bid_price_percent=100,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            aws_attributes={
+                "instance_profile_arn": shared_instance_profile.id,
+                "availability": "SPOT",
+                "zone_id": "us-east-1",
+                "first_on_demand": 1,
+                "spot_bid_price_percent": 100,
+            })
         ```
 
         ## Usage with Cluster Policies
@@ -268,21 +268,21 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi_aws as aws
         import pulumi_databricks as databricks
 
-        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalID",
-                values=[
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "AWS",
+                "identifiers": ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            }],
+            "conditions": [{
+                "test": "StringEquals",
+                "variable": "sts:ExternalID",
+                "values": [
                     "databricks-serverless-<YOUR_WORKSPACE_ID1>",
                     "databricks-serverless-<YOUR_WORKSPACE_ID2>",
                 ],
-            )],
-        )])
+            }],
+        }])
         this = aws.iam.Role("this",
             name="my-databricks-sql-serverless-role",
             assume_role_policy=sql_serverless_assume_role.json)
@@ -330,23 +330,23 @@ class InstanceProfile(pulumi.CustomResource):
         config = pulumi.Config()
         # Role that you've specified on https://accounts.cloud.databricks.com/#aws
         crossaccount_role_name = config.require("crossaccountRoleName")
-        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["ec2.amazonaws.com"],
-                type="Service",
-            )],
-        )])
+        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
+            "effect": "Allow",
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "identifiers": ["ec2.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
         role_for_s3_access = aws.iam.Role("role_for_s3_access",
             name="shared-ec2-role-for-s3",
             description="Role for shared access",
             assume_role_policy=assume_role_for_ec2.json)
-        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["iam:PassRole"],
-            resources=[role_for_s3_access.arn],
-        )])
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[{
+            "effect": "Allow",
+            "actions": ["iam:PassRole"],
+            "resources": [role_for_s3_access.arn],
+        }])
         pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
             name="shared-pass-role-for-s3-access",
             path="/",
@@ -365,17 +365,17 @@ class InstanceProfile(pulumi.CustomResource):
             spark_version=latest.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ),
-            aws_attributes=databricks.ClusterAwsAttributesArgs(
-                instance_profile_arn=shared_instance_profile.id,
-                availability="SPOT",
-                zone_id="us-east-1",
-                first_on_demand=1,
-                spot_bid_price_percent=100,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            aws_attributes={
+                "instance_profile_arn": shared_instance_profile.id,
+                "availability": "SPOT",
+                "zone_id": "us-east-1",
+                "first_on_demand": 1,
+                "spot_bid_price_percent": 100,
+            })
         ```
 
         ## Usage with Cluster Policies
@@ -421,21 +421,21 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi_aws as aws
         import pulumi_databricks as databricks
 
-        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalID",
-                values=[
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "AWS",
+                "identifiers": ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            }],
+            "conditions": [{
+                "test": "StringEquals",
+                "variable": "sts:ExternalID",
+                "values": [
                     "databricks-serverless-<YOUR_WORKSPACE_ID1>",
                     "databricks-serverless-<YOUR_WORKSPACE_ID2>",
                 ],
-            )],
-        )])
+            }],
+        }])
         this = aws.iam.Role("this",
             name="my-databricks-sql-serverless-role",
             assume_role_policy=sql_serverless_assume_role.json)

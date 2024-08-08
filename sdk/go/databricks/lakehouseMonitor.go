@@ -35,9 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
-//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name)),
-//				AssetsDir:        pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name)),
-//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", sandbox.Name, things.Name)),
+//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
+//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name),
+//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
 //				InferenceLog: &databricks.LakehouseMonitorInferenceLogArgs{
 //					Granularities: pulumi.StringArray{
 //						pulumi.String("1 hour"),
@@ -72,9 +72,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
-//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name)),
-//				AssetsDir:        pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name)),
-//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", sandbox.Name, things.Name)),
+//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
+//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name),
+//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
 //				Snapshot:         nil,
 //			})
 //			if err != nil {

@@ -75,7 +75,7 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SqlVisualization(String name) {
+    public SqlVisualization(java.lang.String name) {
         this(name, SqlVisualizationArgs.Empty);
     }
     /**
@@ -83,7 +83,7 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SqlVisualization(String name, SqlVisualizationArgs args) {
+    public SqlVisualization(java.lang.String name, SqlVisualizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -92,15 +92,22 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SqlVisualization(String name, SqlVisualizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlVisualization:SqlVisualization", name, args == null ? SqlVisualizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SqlVisualization(java.lang.String name, SqlVisualizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlVisualization:SqlVisualization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SqlVisualization(String name, Output<String> id, @Nullable SqlVisualizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlVisualization:SqlVisualization", name, state, makeResourceOptions(options, id));
+    private SqlVisualization(java.lang.String name, Output<java.lang.String> id, @Nullable SqlVisualizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlVisualization:SqlVisualization", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SqlVisualizationArgs makeArgs(SqlVisualizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SqlVisualizationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -116,7 +123,7 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SqlVisualization get(String name, Output<String> id, @Nullable SqlVisualizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SqlVisualization get(java.lang.String name, Output<java.lang.String> id, @Nullable SqlVisualizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SqlVisualization(name, id, state, options);
     }
 }
