@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			crossAccountPolicy, err := iam.NewPolicy(ctx, "cross_account_policy", &iam.PolicyArgs{
-//				Name:   pulumi.String(fmt.Sprintf("%v-crossaccount-iam-policy", prefix)),
+//				Name:   pulumi.Sprintf("%v-crossaccount-iam-policy", prefix),
 //				Policy: pulumi.String(this.Json),
 //			})
 //			if err != nil {
@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			crossAccount, err := iam.NewRole(ctx, "cross_account", &iam.RoleArgs{
-//				Name:             pulumi.String(fmt.Sprintf("%v-crossaccount-iam-role", prefix)),
+//				Name:             pulumi.Sprintf("%v-crossaccount-iam-role", prefix),
 //				AssumeRolePolicy: pulumi.String(thisGetAwsAssumeRolePolicy.Json),
 //				Description:      pulumi.String("Grants Databricks full access to VPC resources"),
 //			})
@@ -71,7 +71,7 @@ import (
 //			// required only in case of multi-workspace setup
 //			_, err = databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
 //				RoleArn:         crossAccount.Arn,
 //			})
 //			if err != nil {

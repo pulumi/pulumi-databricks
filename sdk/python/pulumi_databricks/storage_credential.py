@@ -458,14 +458,14 @@ class StorageCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAwsIamRoleArgs']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
+                 aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -491,16 +491,16 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         For Azure
@@ -511,16 +511,16 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("external_mi",
             name="mi_credential",
-            azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=example["id"],
-            ),
+            azure_managed_identity={
+                "access_connector_id": example["id"],
+            },
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external["id"],
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         For GCP
@@ -531,13 +531,13 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name="the-creds",
-            databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+            databricks_gcp_service_account={})
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         ## Import
@@ -587,16 +587,16 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         For Azure
@@ -607,16 +607,16 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("external_mi",
             name="mi_credential",
-            azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=example["id"],
-            ),
+            azure_managed_identity={
+                "access_connector_id": example["id"],
+            },
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external["id"],
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         For GCP
@@ -627,13 +627,13 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name="the-creds",
-            databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+            databricks_gcp_service_account={})
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         ## Import
@@ -661,14 +661,14 @@ class StorageCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAwsIamRoleArgs']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
+                 aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -709,14 +709,14 @@ class StorageCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_iam_role: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAwsIamRoleArgs']]] = None,
-            azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
-            azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
+            aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+            azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+            azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
-            databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+            databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
-            gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
+            gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
             isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

@@ -395,13 +395,13 @@ import (
 //			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", &databricks.NotebookArgs{
 //				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Language:      pulumi.String("PYTHON"),
-//				Path:          pulumi.String(fmt.Sprintf("%v/DLT_Demo", me.Home)),
+//				Path:          pulumi.Sprintf("%v/DLT_Demo", me.Home),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			this, err := databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
-//				Name:    pulumi.String(fmt.Sprintf("DLT Demo Pipeline (%v)", me.Alphanumeric)),
+//				Name:    pulumi.Sprintf("DLT Demo Pipeline (%v)", me.Alphanumeric),
 //				Storage: pulumi.String("/test/tf-pipeline"),
 //				Configuration: pulumi.Map{
 //					"key1": pulumi.Any("value1"),
@@ -736,7 +736,7 @@ import (
 //				return err
 //			}
 //			this, err := databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
-//				Name:             pulumi.String(fmt.Sprintf("%v/Sample", me.Home)),
+//				Name:             pulumi.Sprintf("%v/Sample", me.Home),
 //				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
 //				Description:      pulumi.String("My MLflow experiment description"),
 //			})
@@ -1041,7 +1041,7 @@ import (
 //				return err
 //			}
 //			this, err := databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
-//				Name:           pulumi.String(fmt.Sprintf("Endpoint of %v", me.Alphanumeric)),
+//				Name:           pulumi.Sprintf("Endpoint of %v", me.Alphanumeric),
 //				ClusterSize:    pulumi.String("Small"),
 //				MaxNumClusters: pulumi.Int(1),
 //				Tags: &databricks.SqlEndpointTagsArgs{

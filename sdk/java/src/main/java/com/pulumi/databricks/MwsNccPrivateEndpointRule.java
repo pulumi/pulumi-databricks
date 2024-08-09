@@ -243,7 +243,7 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsNccPrivateEndpointRule(String name) {
+    public MwsNccPrivateEndpointRule(java.lang.String name) {
         this(name, MwsNccPrivateEndpointRuleArgs.Empty);
     }
     /**
@@ -251,7 +251,7 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsNccPrivateEndpointRule(String name, MwsNccPrivateEndpointRuleArgs args) {
+    public MwsNccPrivateEndpointRule(java.lang.String name, MwsNccPrivateEndpointRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -260,15 +260,22 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsNccPrivateEndpointRule(String name, MwsNccPrivateEndpointRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule", name, args == null ? MwsNccPrivateEndpointRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsNccPrivateEndpointRule(java.lang.String name, MwsNccPrivateEndpointRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsNccPrivateEndpointRule(String name, Output<String> id, @Nullable MwsNccPrivateEndpointRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule", name, state, makeResourceOptions(options, id));
+    private MwsNccPrivateEndpointRule(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNccPrivateEndpointRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsNccPrivateEndpointRuleArgs makeArgs(MwsNccPrivateEndpointRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsNccPrivateEndpointRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -284,7 +291,7 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsNccPrivateEndpointRule get(String name, Output<String> id, @Nullable MwsNccPrivateEndpointRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsNccPrivateEndpointRule get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNccPrivateEndpointRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsNccPrivateEndpointRule(name, id, state, options);
     }
 }

@@ -287,7 +287,7 @@ class SqlPermissions(pulumi.CustomResource):
                  catalog: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlPermissionsPrivilegeAssignmentArgs']]]]] = None,
+                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
                  table: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -320,17 +320,17 @@ class SqlPermissions(pulumi.CustomResource):
         foo_table = databricks.SqlPermissions("foo_table",
             table="foo",
             privilege_assignments=[
-                databricks.SqlPermissionsPrivilegeAssignmentArgs(
-                    principal="serge@example.com",
-                    privileges=[
+                {
+                    "principal": "serge@example.com",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                ),
-                databricks.SqlPermissionsPrivilegeAssignmentArgs(
-                    principal="special group",
-                    privileges=["SELECT"],
-                ),
+                },
+                {
+                    "principal": "special group",
+                    "privileges": ["SELECT"],
+                },
             ])
         ```
 
@@ -411,17 +411,17 @@ class SqlPermissions(pulumi.CustomResource):
         foo_table = databricks.SqlPermissions("foo_table",
             table="foo",
             privilege_assignments=[
-                databricks.SqlPermissionsPrivilegeAssignmentArgs(
-                    principal="serge@example.com",
-                    privileges=[
+                {
+                    "principal": "serge@example.com",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                ),
-                databricks.SqlPermissionsPrivilegeAssignmentArgs(
-                    principal="special group",
-                    privileges=["SELECT"],
-                ),
+                },
+                {
+                    "principal": "special group",
+                    "privileges": ["SELECT"],
+                },
             ])
         ```
 
@@ -477,7 +477,7 @@ class SqlPermissions(pulumi.CustomResource):
                  catalog: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlPermissionsPrivilegeAssignmentArgs']]]]] = None,
+                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
                  table: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -512,7 +512,7 @@ class SqlPermissions(pulumi.CustomResource):
             catalog: Optional[pulumi.Input[bool]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
-            privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlPermissionsPrivilegeAssignmentArgs']]]]] = None,
+            privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
             table: Optional[pulumi.Input[str]] = None,
             view: Optional[pulumi.Input[str]] = None) -> 'SqlPermissions':
         """

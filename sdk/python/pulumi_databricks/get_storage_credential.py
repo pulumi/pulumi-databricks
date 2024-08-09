@@ -69,7 +69,7 @@ class AwaitableGetStorageCredentialResult(GetStorageCredentialResult):
 
 def get_storage_credential(id: Optional[str] = None,
                            name: Optional[str] = None,
-                           storage_credential_info: Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']] = None,
+                           storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
     > **Note** This data source could be only used with workspace-level provider!
@@ -98,7 +98,7 @@ def get_storage_credential(id: Optional[str] = None,
 
     :param str id: Unique ID of storage credential.
     :param str name: The name of the storage credential
-    :param pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs'] storage_credential_info: array of objects with information about storage credential.
+    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -116,7 +116,7 @@ def get_storage_credential(id: Optional[str] = None,
 @_utilities.lift_output_func(get_storage_credential)
 def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
-                                  storage_credential_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']]]] = None,
+                                  storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
     > **Note** This data source could be only used with workspace-level provider!
@@ -145,6 +145,6 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = No
 
     :param str id: Unique ID of storage credential.
     :param str name: The name of the storage credential
-    :param pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs'] storage_credential_info: array of objects with information about storage credential.
+    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
     """
     ...

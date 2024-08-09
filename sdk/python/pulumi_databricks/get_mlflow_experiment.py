@@ -137,7 +137,7 @@ def get_mlflow_experiment(artifact_location: Optional[str] = None,
                           last_update_time: Optional[int] = None,
                           lifecycle_stage: Optional[str] = None,
                           name: Optional[str] = None,
-                          tags: Optional[Sequence[pulumi.InputType['GetMlflowExperimentTagArgs']]] = None,
+                          tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowExperimentResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -152,7 +152,7 @@ def get_mlflow_experiment(artifact_location: Optional[str] = None,
     :param int last_update_time: Last update time in unix time stamp.
     :param str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param str name: Path to experiment.
-    :param Sequence[pulumi.InputType['GetMlflowExperimentTagArgs']] tags: Additional metadata key-value pairs.
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
     __args__['artifactLocation'] = artifact_location
@@ -185,7 +185,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
                                  last_update_time: Optional[pulumi.Input[Optional[int]]] = None,
                                  lifecycle_stage: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
-                                 tags: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMlflowExperimentTagArgs']]]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -200,6 +200,6 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
     :param int last_update_time: Last update time in unix time stamp.
     :param str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param str name: Path to experiment.
-    :param Sequence[pulumi.InputType['GetMlflowExperimentTagArgs']] tags: Additional metadata key-value pairs.
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     ...

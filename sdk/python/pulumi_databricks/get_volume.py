@@ -72,7 +72,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
 
 def get_volume(id: Optional[str] = None,
                name: Optional[str] = None,
-               volume_info: Optional[pulumi.InputType['GetVolumeVolumeInfoArgs']] = None,
+               volume_info: Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Retrieves details about Volume that was created by Pulumi or manually.
@@ -81,7 +81,7 @@ def get_volume(id: Optional[str] = None,
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param pulumi.InputType['GetVolumeVolumeInfoArgs'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -99,7 +99,7 @@ def get_volume(id: Optional[str] = None,
 @_utilities.lift_output_func(get_volume)
 def get_volume_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
-                      volume_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetVolumeVolumeInfoArgs']]]] = None,
+                      volume_info: Optional[pulumi.Input[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Retrieves details about Volume that was created by Pulumi or manually.
@@ -108,6 +108,6 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param pulumi.InputType['GetVolumeVolumeInfoArgs'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     ...

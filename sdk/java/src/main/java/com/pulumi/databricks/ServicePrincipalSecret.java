@@ -108,7 +108,7 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePrincipalSecret(String name) {
+    public ServicePrincipalSecret(java.lang.String name) {
         this(name, ServicePrincipalSecretArgs.Empty);
     }
     /**
@@ -116,7 +116,7 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipalSecret(String name, ServicePrincipalSecretArgs args) {
+    public ServicePrincipalSecret(java.lang.String name, ServicePrincipalSecretArgs args) {
         this(name, args, null);
     }
     /**
@@ -125,15 +125,22 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipalSecret(String name, ServicePrincipalSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, args == null ? ServicePrincipalSecretArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePrincipalSecret(java.lang.String name, ServicePrincipalSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePrincipalSecret(String name, Output<String> id, @Nullable ServicePrincipalSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, state, makeResourceOptions(options, id));
+    private ServicePrincipalSecret(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePrincipalSecretArgs makeArgs(ServicePrincipalSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalSecretArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -152,7 +159,7 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePrincipalSecret get(String name, Output<String> id, @Nullable ServicePrincipalSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePrincipalSecret get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePrincipalSecret(name, id, state, options);
     }
 }

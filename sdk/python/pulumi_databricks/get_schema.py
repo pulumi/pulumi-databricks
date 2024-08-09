@@ -72,7 +72,7 @@ class AwaitableGetSchemaResult(GetSchemaResult):
 
 def get_schema(id: Optional[str] = None,
                name: Optional[str] = None,
-               schema_info: Optional[pulumi.InputType['GetSchemaSchemaInfoArgs']] = None,
+               schema_info: Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemaResult:
     """
     Retrieves details about Schema that was created by Pulumi or manually.
@@ -81,7 +81,7 @@ def get_schema(id: Optional[str] = None,
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
-    :param pulumi.InputType['GetSchemaSchemaInfoArgs'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -99,7 +99,7 @@ def get_schema(id: Optional[str] = None,
 @_utilities.lift_output_func(get_schema)
 def get_schema_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
-                      schema_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetSchemaSchemaInfoArgs']]]] = None,
+                      schema_info: Optional[pulumi.Input[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemaResult]:
     """
     Retrieves details about Schema that was created by Pulumi or manually.
@@ -108,6 +108,6 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
-    :param pulumi.InputType['GetSchemaSchemaInfoArgs'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+    :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     ...

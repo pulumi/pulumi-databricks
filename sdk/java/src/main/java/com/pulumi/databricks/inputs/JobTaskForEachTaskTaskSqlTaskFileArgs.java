@@ -43,12 +43,12 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
      *             .name("Example SQL Job")
      *             .tasks(            
@@ -68,7 +68,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
      *                             .dashboardId(dash.id())
      *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName("user{@literal @}domain.com")
+     *                                 .userName("user}{@literal @}{@code domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
@@ -80,15 +80,15 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *                         .alert(JobTaskSqlTaskAlertArgs.builder()
      *                             .alertId(alert.id())
      *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName("user{@literal @}domain.com")
+     *                                 .userName("user}{@literal @}{@code domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -124,12 +124,12 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
      *             .name("Example SQL Job")
      *             .tasks(            
@@ -149,7 +149,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
      *                             .dashboardId(dash.id())
      *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName("user{@literal @}domain.com")
+     *                                 .userName("user}{@literal @}{@code domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
@@ -161,15 +161,15 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *                         .alert(JobTaskSqlTaskAlertArgs.builder()
      *                             .alertId(alert.id())
      *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName("user{@literal @}domain.com")
+     *                                 .userName("user}{@literal @}{@code domain.com")
      *                                 .build())
      *                             .build())
      *                         .build())
      *                     .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -246,12 +246,12 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * import java.nio.file.Files;
          * import java.nio.file.Paths;
          * 
-         * public class App {
-         *     public static void main(String[] args) {
+         * public class App }{{@code
+         *     public static void main(String[] args) }{{@code
          *         Pulumi.run(App::stack);
-         *     }
+         *     }}{@code
          * 
-         *     public static void stack(Context ctx) {
+         *     public static void stack(Context ctx) }{{@code
          *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
          *             .name("Example SQL Job")
          *             .tasks(            
@@ -271,7 +271,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
          *                             .dashboardId(dash.id())
          *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-         *                                 .userName("user{@literal @}domain.com")
+         *                                 .userName("user}{@literal @}{@code domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
@@ -283,15 +283,15 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *                         .alert(JobTaskSqlTaskAlertArgs.builder()
          *                             .alertId(alert.id())
          *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-         *                                 .userName("user{@literal @}domain.com")
+         *                                 .userName("user}{@literal @}{@code domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
          *                     .build())
          *             .build());
          * 
-         *     }
-         * }
+         *     }}{@code
+         * }}{@code
          * }
          * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
@@ -331,12 +331,12 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * import java.nio.file.Files;
          * import java.nio.file.Paths;
          * 
-         * public class App {
-         *     public static void main(String[] args) {
+         * public class App }{{@code
+         *     public static void main(String[] args) }{{@code
          *         Pulumi.run(App::stack);
-         *     }
+         *     }}{@code
          * 
-         *     public static void stack(Context ctx) {
+         *     public static void stack(Context ctx) }{{@code
          *         var sqlAggregationJob = new Job("sqlAggregationJob", JobArgs.builder()
          *             .name("Example SQL Job")
          *             .tasks(            
@@ -356,7 +356,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
          *                             .dashboardId(dash.id())
          *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-         *                                 .userName("user{@literal @}domain.com")
+         *                                 .userName("user}{@literal @}{@code domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
@@ -368,15 +368,15 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *                         .alert(JobTaskSqlTaskAlertArgs.builder()
          *                             .alertId(alert.id())
          *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-         *                                 .userName("user{@literal @}domain.com")
+         *                                 .userName("user}{@literal @}{@code domain.com")
          *                                 .build())
          *                             .build())
          *                         .build())
          *                     .build())
          *             .build());
          * 
-         *     }
-         * }
+         *     }}{@code
+         * }}{@code
          * }
          * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;

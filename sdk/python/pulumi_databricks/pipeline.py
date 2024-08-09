@@ -565,16 +565,16 @@ class Pipeline(pulumi.CustomResource):
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
+                 deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
-                 filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -599,46 +599,46 @@ class Pipeline(pulumi.CustomResource):
                 "key2": "value2",
             },
             clusters=[
-                databricks.PipelineClusterArgs(
-                    label="default",
-                    num_workers=2,
-                    custom_tags={
+                {
+                    "label": "default",
+                    "num_workers": 2,
+                    "custom_tags": {
                         "cluster_type": "default",
                     },
-                ),
-                databricks.PipelineClusterArgs(
-                    label="maintenance",
-                    num_workers=1,
-                    custom_tags={
+                },
+                {
+                    "label": "maintenance",
+                    "num_workers": 1,
+                    "custom_tags": {
                         "cluster_type": "maintenance",
                     },
-                ),
+                },
             ],
             libraries=[
-                databricks.PipelineLibraryArgs(
-                    notebook=databricks.PipelineLibraryNotebookArgs(
-                        path=dlt_demo.id,
-                    ),
-                ),
-                databricks.PipelineLibraryArgs(
-                    file=databricks.PipelineLibraryFileArgs(
-                        path=dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
-                    ),
-                ),
+                {
+                    "notebook": {
+                        "path": dlt_demo.id,
+                    },
+                },
+                {
+                    "file": {
+                        "path": dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                    },
+                },
             ],
             continuous=False,
-            notifications=[databricks.PipelineNotificationArgs(
-                email_recipients=[
+            notifications=[{
+                "email_recipients": [
                     "user@domain.com",
                     "user1@domain.com",
                 ],
-                alerts=[
+                "alerts": [
                     "on-update-failure",
                     "on-update-fatal-failure",
                     "on-update-success",
                     "on-flow-failure",
                 ],
-            )])
+            }])
         ```
 
         ## Related Resources
@@ -665,12 +665,12 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -702,46 +702,46 @@ class Pipeline(pulumi.CustomResource):
                 "key2": "value2",
             },
             clusters=[
-                databricks.PipelineClusterArgs(
-                    label="default",
-                    num_workers=2,
-                    custom_tags={
+                {
+                    "label": "default",
+                    "num_workers": 2,
+                    "custom_tags": {
                         "cluster_type": "default",
                     },
-                ),
-                databricks.PipelineClusterArgs(
-                    label="maintenance",
-                    num_workers=1,
-                    custom_tags={
+                },
+                {
+                    "label": "maintenance",
+                    "num_workers": 1,
+                    "custom_tags": {
                         "cluster_type": "maintenance",
                     },
-                ),
+                },
             ],
             libraries=[
-                databricks.PipelineLibraryArgs(
-                    notebook=databricks.PipelineLibraryNotebookArgs(
-                        path=dlt_demo.id,
-                    ),
-                ),
-                databricks.PipelineLibraryArgs(
-                    file=databricks.PipelineLibraryFileArgs(
-                        path=dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
-                    ),
-                ),
+                {
+                    "notebook": {
+                        "path": dlt_demo.id,
+                    },
+                },
+                {
+                    "file": {
+                        "path": dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                    },
+                },
             ],
             continuous=False,
-            notifications=[databricks.PipelineNotificationArgs(
-                email_recipients=[
+            notifications=[{
+                "email_recipients": [
                     "user@domain.com",
                     "user1@domain.com",
                 ],
-                alerts=[
+                "alerts": [
                     "on-update-failure",
                     "on-update-fatal-failure",
                     "on-update-success",
                     "on-flow-failure",
                 ],
-            )])
+            }])
         ```
 
         ## Related Resources
@@ -782,16 +782,16 @@ class Pipeline(pulumi.CustomResource):
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
+                 deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
-                 filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -836,16 +836,16 @@ class Pipeline(pulumi.CustomResource):
             allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
             catalog: Optional[pulumi.Input[str]] = None,
             channel: Optional[pulumi.Input[str]] = None,
-            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
+            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             continuous: Optional[pulumi.Input[bool]] = None,
-            deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
+            deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
             development: Optional[pulumi.Input[bool]] = None,
             edition: Optional[pulumi.Input[str]] = None,
-            filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
             photon: Optional[pulumi.Input[bool]] = None,
             serverless: Optional[pulumi.Input[bool]] = None,
             storage: Optional[pulumi.Input[str]] = None,
@@ -860,12 +860,12 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.

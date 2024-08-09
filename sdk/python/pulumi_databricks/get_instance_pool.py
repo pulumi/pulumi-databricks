@@ -68,7 +68,7 @@ class AwaitableGetInstancePoolResult(GetInstancePoolResult):
 
 
 def get_instance_pool(name: Optional[str] = None,
-                      pool_info: Optional[pulumi.InputType['GetInstancePoolPoolInfoArgs']] = None,
+                      pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -89,7 +89,7 @@ def get_instance_pool(name: Optional[str] = None,
 
 
     :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
-    :param pulumi.InputType['GetInstancePoolPoolInfoArgs'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -105,7 +105,7 @@ def get_instance_pool(name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_instance_pool)
 def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
-                             pool_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstancePoolPoolInfoArgs']]]] = None,
+                             pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -126,6 +126,6 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
-    :param pulumi.InputType['GetInstancePoolPoolInfoArgs'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
     """
     ...
