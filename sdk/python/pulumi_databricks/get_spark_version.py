@@ -172,10 +172,10 @@ def get_spark_version(beta: Optional[bool] = None,
         spark_version=gpu_ml.id,
         node_type_id=with_gpu.id,
         autotermination_minutes=20,
-        autoscale=databricks.ClusterAutoscaleArgs(
-            min_workers=1,
-            max_workers=50,
-        ))
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
     ```
 
     ## Related Resources
@@ -267,10 +267,10 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
         spark_version=gpu_ml.id,
         node_type_id=with_gpu.id,
         autotermination_minutes=20,
-        autoscale=databricks.ClusterAutoscaleArgs(
-            min_workers=1,
-            max_workers=50,
-        ))
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
     ```
 
     ## Related Resources

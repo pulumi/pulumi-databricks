@@ -207,7 +207,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ModelServing(String name) {
+    public ModelServing(java.lang.String name) {
         this(name, ModelServingArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ModelServing(String name, ModelServingArgs args) {
+    public ModelServing(java.lang.String name, ModelServingArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ModelServing(String name, ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/modelServing:ModelServing", name, args == null ? ModelServingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ModelServing(java.lang.String name, ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/modelServing:ModelServing", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ModelServing(String name, Output<String> id, @Nullable ModelServingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/modelServing:ModelServing", name, state, makeResourceOptions(options, id));
+    private ModelServing(java.lang.String name, Output<java.lang.String> id, @Nullable ModelServingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/modelServing:ModelServing", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ModelServingArgs makeArgs(ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ModelServingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +255,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ModelServing get(String name, Output<String> id, @Nullable ModelServingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ModelServing get(java.lang.String name, Output<java.lang.String> id, @Nullable ModelServingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ModelServing(name, id, state, options);
     }
 }

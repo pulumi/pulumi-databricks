@@ -91,7 +91,7 @@ class AwaitableGetJobResult(GetJobResult):
 def get_job(id: Optional[str] = None,
             job_id: Optional[str] = None,
             job_name: Optional[str] = None,
-            job_settings: Optional[pulumi.InputType['GetJobJobSettingsArgs']] = None,
+            job_settings: Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']] = None,
             name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
@@ -120,7 +120,7 @@ def get_job(id: Optional[str] = None,
 
 
     :param str id: the id of Job if the resource was matched by name.
-    :param pulumi.InputType['GetJobJobSettingsArgs'] job_settings: the same fields as in databricks_job.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
     :param str name: the job name of Job if the resource was matched by id.
     """
     __args__ = dict()
@@ -144,7 +144,7 @@ def get_job(id: Optional[str] = None,
 def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_name: Optional[pulumi.Input[Optional[str]]] = None,
-                   job_settings: Optional[pulumi.Input[Optional[pulumi.InputType['GetJobJobSettingsArgs']]]] = None,
+                   job_settings: Optional[pulumi.Input[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
     """
@@ -173,7 +173,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str id: the id of Job if the resource was matched by name.
-    :param pulumi.InputType['GetJobJobSettingsArgs'] job_settings: the same fields as in databricks_job.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
     :param str name: the job name of Job if the resource was matched by id.
     """
     ...

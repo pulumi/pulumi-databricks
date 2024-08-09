@@ -329,9 +329,9 @@ class Volume(pulumi.CustomResource):
             })
         external = databricks.StorageCredential("external",
             name="creds",
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ))
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            })
         some = databricks.ExternalLocation("some",
             name="external-location",
             url=f"s3://{external_aws_s3_bucket['id']}/some",
@@ -423,9 +423,9 @@ class Volume(pulumi.CustomResource):
             })
         external = databricks.StorageCredential("external",
             name="creds",
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ))
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            })
         some = databricks.ExternalLocation("some",
             name="external-location",
             url=f"s3://{external_aws_s3_bucket['id']}/some",

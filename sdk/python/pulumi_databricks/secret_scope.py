@@ -156,7 +156,7 @@ class SecretScope(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_type: Optional[pulumi.Input[str]] = None,
                  initial_manage_principal: Optional[pulumi.Input[str]] = None,
-                 keyvault_metadata: Optional[pulumi.Input[pulumi.InputType['SecretScopeKeyvaultMetadataArgs']]] = None,
+                 keyvault_metadata: Optional[pulumi.Input[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -252,7 +252,7 @@ class SecretScope(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_type: Optional[pulumi.Input[str]] = None,
                  initial_manage_principal: Optional[pulumi.Input[str]] = None,
-                 keyvault_metadata: Optional[pulumi.Input[pulumi.InputType['SecretScopeKeyvaultMetadataArgs']]] = None,
+                 keyvault_metadata: Optional[pulumi.Input[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -279,7 +279,7 @@ class SecretScope(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_type: Optional[pulumi.Input[str]] = None,
             initial_manage_principal: Optional[pulumi.Input[str]] = None,
-            keyvault_metadata: Optional[pulumi.Input[pulumi.InputType['SecretScopeKeyvaultMetadataArgs']]] = None,
+            keyvault_metadata: Optional[pulumi.Input[Union['SecretScopeKeyvaultMetadataArgs', 'SecretScopeKeyvaultMetadataArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'SecretScope':
         """
         Get an existing SecretScope resource's state with the given name, id, and optional extra

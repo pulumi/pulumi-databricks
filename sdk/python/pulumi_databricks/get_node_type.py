@@ -200,10 +200,10 @@ def get_node_type(category: Optional[str] = None,
         spark_version=gpu_ml.id,
         node_type_id=with_gpu.id,
         autotermination_minutes=20,
-        autoscale=databricks.ClusterAutoscaleArgs(
-            min_workers=1,
-            max_workers=50,
-        ))
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
     ```
 
     ## Related Resources
@@ -314,10 +314,10 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
         spark_version=gpu_ml.id,
         node_type_id=with_gpu.id,
         autotermination_minutes=20,
-        autoscale=databricks.ClusterAutoscaleArgs(
-            min_workers=1,
-            max_workers=50,
-        ))
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
     ```
 
     ## Related Resources

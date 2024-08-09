@@ -67,7 +67,7 @@ class AwaitableGetExternalLocationResult(GetExternalLocationResult):
             name=self.name)
 
 
-def get_external_location(external_location_info: Optional[pulumi.InputType['GetExternalLocationExternalLocationInfoArgs']] = None,
+def get_external_location(external_location_info: Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']] = None,
                           id: Optional[str] = None,
                           name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
@@ -96,7 +96,7 @@ def get_external_location(external_location_info: Optional[pulumi.InputType['Get
     * ExternalLocation to manage external locations within Unity Catalog.
 
 
-    :param pulumi.InputType['GetExternalLocationExternalLocationInfoArgs'] external_location_info: array of objects with information about external location:
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
     :param str id: external location ID - same as name.
     :param str name: The name of the external location
     """
@@ -114,7 +114,7 @@ def get_external_location(external_location_info: Optional[pulumi.InputType['Get
 
 
 @_utilities.lift_output_func(get_external_location)
-def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetExternalLocationExternalLocationInfoArgs']]]] = None,
+def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationResult]:
@@ -143,7 +143,7 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
     * ExternalLocation to manage external locations within Unity Catalog.
 
 
-    :param pulumi.InputType['GetExternalLocationExternalLocationInfoArgs'] external_location_info: array of objects with information about external location:
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
     :param str id: external location ID - same as name.
     :param str name: The name of the external location
     """

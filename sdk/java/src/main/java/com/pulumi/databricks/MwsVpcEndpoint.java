@@ -501,7 +501,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsVpcEndpoint(String name) {
+    public MwsVpcEndpoint(java.lang.String name) {
         this(name, MwsVpcEndpointArgs.Empty);
     }
     /**
@@ -509,7 +509,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsVpcEndpoint(String name, MwsVpcEndpointArgs args) {
+    public MwsVpcEndpoint(java.lang.String name, MwsVpcEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -518,15 +518,22 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsVpcEndpoint(String name, MwsVpcEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint", name, args == null ? MwsVpcEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsVpcEndpoint(java.lang.String name, MwsVpcEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsVpcEndpoint(String name, Output<String> id, @Nullable MwsVpcEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint", name, state, makeResourceOptions(options, id));
+    private MwsVpcEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable MwsVpcEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsVpcEndpointArgs makeArgs(MwsVpcEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsVpcEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -542,7 +549,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsVpcEndpoint get(String name, Output<String> id, @Nullable MwsVpcEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsVpcEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsVpcEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsVpcEndpoint(name, id, state, options);
     }
 }

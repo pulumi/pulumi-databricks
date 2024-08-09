@@ -50,14 +50,14 @@ import (
 //				return err
 //			}
 //			unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
-//				Name:   pulumi.String(fmt.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix)),
+//				Name:   pulumi.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix),
 //				Policy: pulumi.String(this.Json),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
-//				Name:             pulumi.String(fmt.Sprintf("%v-uc-access", prefix)),
+//				Name:             pulumi.Sprintf("%v-uc-access", prefix),
 //				AssumeRolePolicy: pulumi.Any(thisAwsIamPolicyDocument.Json),
 //				ManagedPolicyArns: pulumi.StringArray{
 //					unityMetastore.Arn,

@@ -338,7 +338,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Recipient(String name) {
+    public Recipient(java.lang.String name) {
         this(name, RecipientArgs.Empty);
     }
     /**
@@ -346,7 +346,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Recipient(String name, RecipientArgs args) {
+    public Recipient(java.lang.String name, RecipientArgs args) {
         this(name, args, null);
     }
     /**
@@ -355,15 +355,22 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Recipient(String name, RecipientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/recipient:Recipient", name, args == null ? RecipientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Recipient(java.lang.String name, RecipientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/recipient:Recipient", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Recipient(String name, Output<String> id, @Nullable RecipientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/recipient:Recipient", name, state, makeResourceOptions(options, id));
+    private Recipient(java.lang.String name, Output<java.lang.String> id, @Nullable RecipientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/recipient:Recipient", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RecipientArgs makeArgs(RecipientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RecipientArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -382,7 +389,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Recipient get(String name, Output<String> id, @Nullable RecipientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Recipient get(java.lang.String name, Output<java.lang.String> id, @Nullable RecipientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Recipient(name, id, state, options);
     }
 }

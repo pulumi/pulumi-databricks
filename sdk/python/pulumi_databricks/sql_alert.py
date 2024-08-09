@@ -242,7 +242,7 @@ class SqlAlert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
                  rearm: Optional[pulumi.Input[int]] = None,
@@ -270,12 +270,12 @@ class SqlAlert(pulumi.CustomResource):
             name="My Alert",
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             rearm=1,
-            options=databricks.SqlAlertOptionsArgs(
-                column="p1",
-                op="==",
-                value="2",
-                muted=False,
-            ))
+            options={
+                "column": "p1",
+                "op": "==",
+                "value": "2",
+                "muted": False,
+            })
         ```
 
         ## Related Resources
@@ -290,7 +290,7 @@ class SqlAlert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']] options: Alert configuration options.
+        :param pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']] options: Alert configuration options.
         :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
         :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -323,12 +323,12 @@ class SqlAlert(pulumi.CustomResource):
             name="My Alert",
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             rearm=1,
-            options=databricks.SqlAlertOptionsArgs(
-                column="p1",
-                op="==",
-                value="2",
-                muted=False,
-            ))
+            options={
+                "column": "p1",
+                "op": "==",
+                "value": "2",
+                "muted": False,
+            })
         ```
 
         ## Related Resources
@@ -357,7 +357,7 @@ class SqlAlert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
                  rearm: Optional[pulumi.Input[int]] = None,
@@ -394,7 +394,7 @@ class SqlAlert(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
+            options: Optional[pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             query_id: Optional[pulumi.Input[str]] = None,
             rearm: Optional[pulumi.Input[int]] = None,
@@ -407,7 +407,7 @@ class SqlAlert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']] options: Alert configuration options.
+        :param pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']] options: Alert configuration options.
         :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
         :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.

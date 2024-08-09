@@ -325,7 +325,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[int]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             endpoint_id: Optional[pulumi.Input[str]] = None,
-            endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchEndpointEndpointStatusArgs']]]]] = None,
+            endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
             last_updated_user: Optional[pulumi.Input[str]] = None,
@@ -341,7 +341,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[str] creator: Creator of the endpoint.
         :param pulumi.Input[str] endpoint_id: Unique internal identifier of the endpoint (UUID).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchEndpointEndpointStatusArgs']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
         :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         :param pulumi.Input[int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[str] last_updated_user: User who last updated the endpoint.

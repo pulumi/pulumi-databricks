@@ -34,7 +34,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
-//				Name:             pulumi.String(fmt.Sprintf("%v/Sample", me.Home)),
+//				Name:             pulumi.Sprintf("%v/Sample", me.Home),
 //				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
 //				Description:      pulumi.String("My MLflow experiment description"),
 //			})

@@ -310,15 +310,15 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         this = databricks.MwsWorkspaces("this",
             workspace_name="gcp-workspace",
             location=subnet_region,
-            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
-                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=google_project,
-                ),
-            ),
-            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
-                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
-                master_ip_range="10.3.0.0/28",
-            ),
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
@@ -404,15 +404,15 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         this = databricks.MwsWorkspaces("this",
             workspace_name="gcp-workspace",
             location=subnet_region,
-            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
-                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=google_project,
-                ),
-            ),
-            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
-                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
-                master_ip_range="10.3.0.0/28",
-            ),
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",

@@ -259,7 +259,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MlflowWebhook(String name) {
+    public MlflowWebhook(java.lang.String name) {
         this(name, MlflowWebhookArgs.Empty);
     }
     /**
@@ -267,7 +267,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MlflowWebhook(String name, MlflowWebhookArgs args) {
+    public MlflowWebhook(java.lang.String name, MlflowWebhookArgs args) {
         this(name, args, null);
     }
     /**
@@ -276,15 +276,22 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MlflowWebhook(String name, MlflowWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mlflowWebhook:MlflowWebhook", name, args == null ? MlflowWebhookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MlflowWebhook(java.lang.String name, MlflowWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mlflowWebhook:MlflowWebhook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MlflowWebhook(String name, Output<String> id, @Nullable MlflowWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mlflowWebhook:MlflowWebhook", name, state, makeResourceOptions(options, id));
+    private MlflowWebhook(java.lang.String name, Output<java.lang.String> id, @Nullable MlflowWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mlflowWebhook:MlflowWebhook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MlflowWebhookArgs makeArgs(MlflowWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MlflowWebhookArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -300,7 +307,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MlflowWebhook get(String name, Output<String> id, @Nullable MlflowWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MlflowWebhook get(java.lang.String name, Output<java.lang.String> id, @Nullable MlflowWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MlflowWebhook(name, id, state, options);
     }
 }

@@ -150,7 +150,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MlflowModel(String name) {
+    public MlflowModel(java.lang.String name) {
         this(name, MlflowModelArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MlflowModel(String name, @Nullable MlflowModelArgs args) {
+    public MlflowModel(java.lang.String name, @Nullable MlflowModelArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MlflowModel(String name, @Nullable MlflowModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mlflowModel:MlflowModel", name, args == null ? MlflowModelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MlflowModel(java.lang.String name, @Nullable MlflowModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mlflowModel:MlflowModel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MlflowModel(String name, Output<String> id, @Nullable MlflowModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mlflowModel:MlflowModel", name, state, makeResourceOptions(options, id));
+    private MlflowModel(java.lang.String name, Output<java.lang.String> id, @Nullable MlflowModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mlflowModel:MlflowModel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MlflowModelArgs makeArgs(@Nullable MlflowModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MlflowModelArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MlflowModel get(String name, Output<String> id, @Nullable MlflowModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MlflowModel get(java.lang.String name, Output<java.lang.String> id, @Nullable MlflowModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MlflowModel(name, id, state, options);
     }
 }

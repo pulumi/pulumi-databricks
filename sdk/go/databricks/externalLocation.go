@@ -49,7 +49,7 @@ import (
 //			}
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
 //				Name:           pulumi.String("external"),
-//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", externalAwsS3Bucket.Id)),
+//				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
 //				CredentialName: external.ID(),
 //				Comment:        pulumi.String("Managed by TF"),
 //			})

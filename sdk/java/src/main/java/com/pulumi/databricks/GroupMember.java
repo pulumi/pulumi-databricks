@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var a = new Group("a", GroupArgs.builder()
  *             .displayName("A")
  *             .build());
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bradley = new User("bradley", UserArgs.builder()
- *             .userName("bradley{@literal @}example.com")
+ *             .userName("bradley}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var bb = new GroupMember("bb", GroupMemberArgs.builder()
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .memberId(bradley.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -137,7 +137,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupMember(String name) {
+    public GroupMember(java.lang.String name) {
         this(name, GroupMemberArgs.Empty);
     }
     /**
@@ -145,7 +145,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupMember(String name, GroupMemberArgs args) {
+    public GroupMember(java.lang.String name, GroupMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -154,15 +154,22 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupMember(String name, GroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/groupMember:GroupMember", name, args == null ? GroupMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GroupMember(java.lang.String name, GroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/groupMember:GroupMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GroupMember(String name, Output<String> id, @Nullable GroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/groupMember:GroupMember", name, state, makeResourceOptions(options, id));
+    private GroupMember(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/groupMember:GroupMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GroupMemberArgs makeArgs(GroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -178,7 +185,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupMember get(String name, Output<String> id, @Nullable GroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupMember get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupMember(name, id, state, options);
     }
 }

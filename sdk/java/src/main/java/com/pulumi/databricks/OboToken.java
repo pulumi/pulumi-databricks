@@ -219,7 +219,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OboToken(String name) {
+    public OboToken(java.lang.String name) {
         this(name, OboTokenArgs.Empty);
     }
     /**
@@ -227,7 +227,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OboToken(String name, OboTokenArgs args) {
+    public OboToken(java.lang.String name, OboTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -236,15 +236,22 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OboToken(String name, OboTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/oboToken:OboToken", name, args == null ? OboTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OboToken(java.lang.String name, OboTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/oboToken:OboToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OboToken(String name, Output<String> id, @Nullable OboTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/oboToken:OboToken", name, state, makeResourceOptions(options, id));
+    private OboToken(java.lang.String name, Output<java.lang.String> id, @Nullable OboTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/oboToken:OboToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OboTokenArgs makeArgs(OboTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OboTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -263,7 +270,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OboToken get(String name, Output<String> id, @Nullable OboTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OboToken get(java.lang.String name, Output<java.lang.String> id, @Nullable OboTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OboToken(name, id, state, options);
     }
 }

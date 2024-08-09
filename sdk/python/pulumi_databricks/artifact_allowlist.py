@@ -184,7 +184,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArtifactAllowlistArtifactMatcherArgs']]]]] = None,
+                 artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
                  artifact_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -206,10 +206,10 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         init_scripts = databricks.ArtifactAllowlist("init_scripts",
             artifact_type="INIT_SCRIPT",
-            artifact_matchers=[databricks.ArtifactAllowlistArtifactMatcherArgs(
-                artifact="/Volumes/inits",
-                match_type="PREFIX_MATCH",
-            )])
+            artifact_matchers=[{
+                "artifact": "/Volumes/inits",
+                "match_type": "PREFIX_MATCH",
+            }])
         ```
 
         ## Related Resources
@@ -258,10 +258,10 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         init_scripts = databricks.ArtifactAllowlist("init_scripts",
             artifact_type="INIT_SCRIPT",
-            artifact_matchers=[databricks.ArtifactAllowlistArtifactMatcherArgs(
-                artifact="/Volumes/inits",
-                match_type="PREFIX_MATCH",
-            )])
+            artifact_matchers=[{
+                "artifact": "/Volumes/inits",
+                "match_type": "PREFIX_MATCH",
+            }])
         ```
 
         ## Related Resources
@@ -296,7 +296,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArtifactAllowlistArtifactMatcherArgs']]]]] = None,
+                 artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
                  artifact_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -329,7 +329,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArtifactAllowlistArtifactMatcherArgs']]]]] = None,
+            artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ArtifactAllowlistArtifactMatcherArgs', 'ArtifactAllowlistArtifactMatcherArgsDict']]]]] = None,
             artifact_type: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,

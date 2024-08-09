@@ -119,10 +119,10 @@ class AwaitableGetMlflowModelResult(GetMlflowModelResult):
 
 
 def get_mlflow_model(description: Optional[str] = None,
-                     latest_versions: Optional[Sequence[pulumi.InputType['GetMlflowModelLatestVersionArgs']]] = None,
+                     latest_versions: Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]] = None,
                      name: Optional[str] = None,
                      permission_level: Optional[str] = None,
-                     tags: Optional[Sequence[pulumi.InputType['GetMlflowModelTagArgs']]] = None,
+                     tags: Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]] = None,
                      user_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelResult:
     """
@@ -140,14 +140,14 @@ def get_mlflow_model(description: Optional[str] = None,
         name="My MLflow Model",
         description="My MLflow model description",
         tags=[
-            databricks.MlflowModelTagArgs(
-                key="key1",
-                value="value1",
-            ),
-            databricks.MlflowModelTagArgs(
-                key="key2",
-                value="value2",
-            ),
+            {
+                "key": "key1",
+                "value": "value1",
+            },
+            {
+                "key": "key2",
+                "value": "value2",
+            },
         ])
     this = databricks.get_mlflow_model(name="My MLflow Model")
     pulumi.export("model", this)
@@ -160,23 +160,23 @@ def get_mlflow_model(description: Optional[str] = None,
     this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
     this_model_serving = databricks.ModelServing("this",
         name="model-serving-endpoint",
-        config=databricks.ModelServingConfigArgs(
-            served_models=[databricks.ModelServingConfigServedModelArgs(
-                name="model_serving_prod",
-                model_name=this.name,
-                model_version=this.latest_versions[0].version,
-                workload_size="Small",
-                scale_to_zero_enabled=True,
-            )],
-        ))
+        config={
+            "served_models": [{
+                "name": "model_serving_prod",
+                "model_name": this.name,
+                "model_version": this.latest_versions[0].version,
+                "workload_size": "Small",
+                "scale_to_zero_enabled": True,
+            }],
+        })
     ```
 
 
     :param str description: User-specified description for the object.
-    :param Sequence[pulumi.InputType['GetMlflowModelLatestVersionArgs']] latest_versions: Array of model versions, each the latest version for its stage.
+    :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
     :param str name: Name of the registered model.
     :param str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
-    :param Sequence[pulumi.InputType['GetMlflowModelTagArgs']] tags: Array of tags associated with the model.
+    :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
     :param str user_id: The username of the user that created the object.
     """
     __args__ = dict()
@@ -201,10 +201,10 @@ def get_mlflow_model(description: Optional[str] = None,
 
 @_utilities.lift_output_func(get_mlflow_model)
 def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] = None,
-                            latest_versions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMlflowModelLatestVersionArgs']]]]] = None,
+                            latest_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
                             permission_level: Optional[pulumi.Input[Optional[str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMlflowModelTagArgs']]]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]]]] = None,
                             user_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMlflowModelResult]:
     """
@@ -222,14 +222,14 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
         name="My MLflow Model",
         description="My MLflow model description",
         tags=[
-            databricks.MlflowModelTagArgs(
-                key="key1",
-                value="value1",
-            ),
-            databricks.MlflowModelTagArgs(
-                key="key2",
-                value="value2",
-            ),
+            {
+                "key": "key1",
+                "value": "value1",
+            },
+            {
+                "key": "key2",
+                "value": "value2",
+            },
         ])
     this = databricks.get_mlflow_model(name="My MLflow Model")
     pulumi.export("model", this)
@@ -242,23 +242,23 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
     this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
     this_model_serving = databricks.ModelServing("this",
         name="model-serving-endpoint",
-        config=databricks.ModelServingConfigArgs(
-            served_models=[databricks.ModelServingConfigServedModelArgs(
-                name="model_serving_prod",
-                model_name=this.name,
-                model_version=this.latest_versions[0].version,
-                workload_size="Small",
-                scale_to_zero_enabled=True,
-            )],
-        ))
+        config={
+            "served_models": [{
+                "name": "model_serving_prod",
+                "model_name": this.name,
+                "model_version": this.latest_versions[0].version,
+                "workload_size": "Small",
+                "scale_to_zero_enabled": True,
+            }],
+        })
     ```
 
 
     :param str description: User-specified description for the object.
-    :param Sequence[pulumi.InputType['GetMlflowModelLatestVersionArgs']] latest_versions: Array of model versions, each the latest version for its stage.
+    :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
     :param str name: Name of the registered model.
     :param str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
-    :param Sequence[pulumi.InputType['GetMlflowModelTagArgs']] tags: Array of tags associated with the model.
+    :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
     :param str user_id: The username of the user that created the object.
     """
     ...

@@ -43,14 +43,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
- *             .userName("me{@literal @}example.com")
+ *             .userName("me}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var meEntitlements = new Entitlements("meEntitlements", EntitlementsArgs.builder()
@@ -59,8 +59,8 @@ import javax.annotation.Nullable;
  *             .allowInstancePoolCreate(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -289,7 +289,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Entitlements(String name) {
+    public Entitlements(java.lang.String name) {
         this(name, EntitlementsArgs.Empty);
     }
     /**
@@ -297,7 +297,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Entitlements(String name, @Nullable EntitlementsArgs args) {
+    public Entitlements(java.lang.String name, @Nullable EntitlementsArgs args) {
         this(name, args, null);
     }
     /**
@@ -306,15 +306,22 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Entitlements(String name, @Nullable EntitlementsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/entitlements:Entitlements", name, args == null ? EntitlementsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Entitlements(java.lang.String name, @Nullable EntitlementsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/entitlements:Entitlements", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Entitlements(String name, Output<String> id, @Nullable EntitlementsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/entitlements:Entitlements", name, state, makeResourceOptions(options, id));
+    private Entitlements(java.lang.String name, Output<java.lang.String> id, @Nullable EntitlementsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/entitlements:Entitlements", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EntitlementsArgs makeArgs(@Nullable EntitlementsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntitlementsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -330,7 +337,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Entitlements get(String name, Output<String> id, @Nullable EntitlementsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Entitlements get(java.lang.String name, Output<java.lang.String> id, @Nullable EntitlementsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Entitlements(name, id, state, options);
     }
 }

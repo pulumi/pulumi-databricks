@@ -443,7 +443,7 @@ class ExternalLocation(pulumi.CustomResource):
                  access_point: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
-                 encryption_details: Optional[pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']]] = None,
+                 encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -472,9 +472,9 @@ class ExternalLocation(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         some = databricks.ExternalLocation("some",
             name="external",
@@ -483,13 +483,13 @@ class ExternalLocation(pulumi.CustomResource):
             comment="Managed by TF")
         some_grants = databricks.Grants("some",
             external_location=some.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "CREATE_EXTERNAL_TABLE",
                     "READ_FILES",
                 ],
-            )])
+            }])
         ```
 
         For Azure
@@ -509,7 +509,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this external location.
-        :param pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -543,9 +543,9 @@ class ExternalLocation(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         some = databricks.ExternalLocation("some",
             name="external",
@@ -554,13 +554,13 @@ class ExternalLocation(pulumi.CustomResource):
             comment="Managed by TF")
         some_grants = databricks.Grants("some",
             external_location=some.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "CREATE_EXTERNAL_TABLE",
                     "READ_FILES",
                 ],
-            )])
+            }])
         ```
 
         For Azure
@@ -593,7 +593,7 @@ class ExternalLocation(pulumi.CustomResource):
                  access_point: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
-                 encryption_details: Optional[pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']]] = None,
+                 encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -642,7 +642,7 @@ class ExternalLocation(pulumi.CustomResource):
             access_point: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             credential_name: Optional[pulumi.Input[str]] = None,
-            encryption_details: Optional[pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']]] = None,
+            encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -662,7 +662,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this external location.
-        :param pulumi.Input[pulumi.InputType['ExternalLocationEncryptionDetailsArgs']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.

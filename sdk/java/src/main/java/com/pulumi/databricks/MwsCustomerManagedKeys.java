@@ -450,7 +450,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsCustomerManagedKeys(String name) {
+    public MwsCustomerManagedKeys(java.lang.String name) {
         this(name, MwsCustomerManagedKeysArgs.Empty);
     }
     /**
@@ -458,7 +458,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsCustomerManagedKeys(String name, MwsCustomerManagedKeysArgs args) {
+    public MwsCustomerManagedKeys(java.lang.String name, MwsCustomerManagedKeysArgs args) {
         this(name, args, null);
     }
     /**
@@ -467,15 +467,22 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsCustomerManagedKeys(String name, MwsCustomerManagedKeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", name, args == null ? MwsCustomerManagedKeysArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsCustomerManagedKeys(java.lang.String name, MwsCustomerManagedKeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsCustomerManagedKeys(String name, Output<String> id, @Nullable MwsCustomerManagedKeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", name, state, makeResourceOptions(options, id));
+    private MwsCustomerManagedKeys(java.lang.String name, Output<java.lang.String> id, @Nullable MwsCustomerManagedKeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsCustomerManagedKeysArgs makeArgs(MwsCustomerManagedKeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsCustomerManagedKeysArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -491,7 +498,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsCustomerManagedKeys get(String name, Output<String> id, @Nullable MwsCustomerManagedKeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsCustomerManagedKeys get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsCustomerManagedKeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsCustomerManagedKeys(name, id, state, options);
     }
 }

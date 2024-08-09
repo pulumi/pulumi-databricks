@@ -137,7 +137,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GitCredential(String name) {
+    public GitCredential(java.lang.String name) {
         this(name, GitCredentialArgs.Empty);
     }
     /**
@@ -145,7 +145,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GitCredential(String name, GitCredentialArgs args) {
+    public GitCredential(java.lang.String name, GitCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -154,15 +154,22 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GitCredential(String name, GitCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/gitCredential:GitCredential", name, args == null ? GitCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GitCredential(java.lang.String name, GitCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/gitCredential:GitCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GitCredential(String name, Output<String> id, @Nullable GitCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/gitCredential:GitCredential", name, state, makeResourceOptions(options, id));
+    private GitCredential(java.lang.String name, Output<java.lang.String> id, @Nullable GitCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/gitCredential:GitCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GitCredentialArgs makeArgs(GitCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GitCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -178,7 +185,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GitCredential get(String name, Output<String> id, @Nullable GitCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GitCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable GitCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GitCredential(name, id, state, options);
     }
 }

@@ -97,7 +97,7 @@ class AwaitableGetShareResult(GetShareResult):
 def get_share(created_at: Optional[int] = None,
               created_by: Optional[str] = None,
               name: Optional[str] = None,
-              objects: Optional[Sequence[pulumi.InputType['GetShareObjectArgs']]] = None,
+              objects: Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
     Retrieves details about a Share that were created by Pulumi or manually.
@@ -126,7 +126,7 @@ def get_share(created_at: Optional[int] = None,
     :param int created_at: Time when the share was created.
     :param str created_by: The principal that created the share.
     :param str name: The name of the share
-    :param Sequence[pulumi.InputType['GetShareObjectArgs']] objects: arrays containing details of each object in the share.
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -148,7 +148,7 @@ def get_share(created_at: Optional[int] = None,
 def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
                      created_by: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
-                     objects: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetShareObjectArgs']]]]] = None,
+                     objects: Optional[pulumi.Input[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
     """
     Retrieves details about a Share that were created by Pulumi or manually.
@@ -177,6 +177,6 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
     :param int created_at: Time when the share was created.
     :param str created_by: The principal that created the share.
     :param str name: The name of the share
-    :param Sequence[pulumi.InputType['GetShareObjectArgs']] objects: arrays containing details of each object in the share.
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
     """
     ...

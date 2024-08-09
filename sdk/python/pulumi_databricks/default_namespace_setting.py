@@ -114,7 +114,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[pulumi.InputType['DefaultNamespaceSettingNamespaceArgs']]] = None,
+                 namespace: Optional[pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -133,9 +133,9 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.DefaultNamespaceSetting("this", namespace=databricks.DefaultNamespaceSettingNamespaceArgs(
-            value="namespace_value",
-        ))
+        this = databricks.DefaultNamespaceSetting("this", namespace={
+            "value": "namespace_value",
+        })
         ```
 
         ## Import
@@ -150,7 +150,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DefaultNamespaceSettingNamespaceArgs']] namespace: The configuration details.
+        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
         """
         ...
     @overload
@@ -174,9 +174,9 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.DefaultNamespaceSetting("this", namespace=databricks.DefaultNamespaceSettingNamespaceArgs(
-            value="namespace_value",
-        ))
+        this = databricks.DefaultNamespaceSetting("this", namespace={
+            "value": "namespace_value",
+        })
         ```
 
         ## Import
@@ -205,7 +205,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[pulumi.InputType['DefaultNamespaceSettingNamespaceArgs']]] = None,
+                 namespace: Optional[pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -232,7 +232,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            namespace: Optional[pulumi.Input[pulumi.InputType['DefaultNamespaceSettingNamespaceArgs']]] = None,
+            namespace: Optional[pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[str]] = None) -> 'DefaultNamespaceSetting':
         """
         Get an existing DefaultNamespaceSetting resource's state with the given name, id, and optional extra
@@ -241,7 +241,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DefaultNamespaceSettingNamespaceArgs']] namespace: The configuration details.
+        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

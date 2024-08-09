@@ -209,11 +209,11 @@ class ModelServing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -228,36 +228,36 @@ class ModelServing(pulumi.CustomResource):
 
         this = databricks.ModelServing("this",
             name="ads-serving-endpoint",
-            config=databricks.ModelServingConfigArgs(
-                served_entities=[
-                    databricks.ModelServingConfigServedEntityArgs(
-                        name="prod_model",
-                        entity_name="ads-model",
-                        entity_version="2",
-                        workload_size="Small",
-                        scale_to_zero_enabled=True,
-                    ),
-                    databricks.ModelServingConfigServedEntityArgs(
-                        name="candidate_model",
-                        entity_name="ads-model",
-                        entity_version="4",
-                        workload_size="Small",
-                        scale_to_zero_enabled=False,
-                    ),
+            config={
+                "served_entities": [
+                    {
+                        "name": "prod_model",
+                        "entity_name": "ads-model",
+                        "entity_version": "2",
+                        "workload_size": "Small",
+                        "scale_to_zero_enabled": True,
+                    },
+                    {
+                        "name": "candidate_model",
+                        "entity_name": "ads-model",
+                        "entity_version": "4",
+                        "workload_size": "Small",
+                        "scale_to_zero_enabled": False,
+                    },
                 ],
-                traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
-                    routes=[
-                        databricks.ModelServingConfigTrafficConfigRouteArgs(
-                            served_model_name="prod_model",
-                            traffic_percentage=90,
-                        ),
-                        databricks.ModelServingConfigTrafficConfigRouteArgs(
-                            served_model_name="candidate_model",
-                            traffic_percentage=10,
-                        ),
+                "traffic_config": {
+                    "routes": [
+                        {
+                            "served_model_name": "prod_model",
+                            "traffic_percentage": 90,
+                        },
+                        {
+                            "served_model_name": "candidate_model",
+                            "traffic_percentage": 10,
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Access Control
@@ -288,11 +288,11 @@ class ModelServing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
     @overload
@@ -313,36 +313,36 @@ class ModelServing(pulumi.CustomResource):
 
         this = databricks.ModelServing("this",
             name="ads-serving-endpoint",
-            config=databricks.ModelServingConfigArgs(
-                served_entities=[
-                    databricks.ModelServingConfigServedEntityArgs(
-                        name="prod_model",
-                        entity_name="ads-model",
-                        entity_version="2",
-                        workload_size="Small",
-                        scale_to_zero_enabled=True,
-                    ),
-                    databricks.ModelServingConfigServedEntityArgs(
-                        name="candidate_model",
-                        entity_name="ads-model",
-                        entity_version="4",
-                        workload_size="Small",
-                        scale_to_zero_enabled=False,
-                    ),
+            config={
+                "served_entities": [
+                    {
+                        "name": "prod_model",
+                        "entity_name": "ads-model",
+                        "entity_version": "2",
+                        "workload_size": "Small",
+                        "scale_to_zero_enabled": True,
+                    },
+                    {
+                        "name": "candidate_model",
+                        "entity_name": "ads-model",
+                        "entity_version": "4",
+                        "workload_size": "Small",
+                        "scale_to_zero_enabled": False,
+                    },
                 ],
-                traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
-                    routes=[
-                        databricks.ModelServingConfigTrafficConfigRouteArgs(
-                            served_model_name="prod_model",
-                            traffic_percentage=90,
-                        ),
-                        databricks.ModelServingConfigTrafficConfigRouteArgs(
-                            served_model_name="candidate_model",
-                            traffic_percentage=10,
-                        ),
+                "traffic_config": {
+                    "routes": [
+                        {
+                            "served_model_name": "prod_model",
+                            "traffic_percentage": 90,
+                        },
+                        {
+                            "served_model_name": "candidate_model",
+                            "traffic_percentage": 10,
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Access Control
@@ -386,11 +386,11 @@ class ModelServing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,12 +418,12 @@ class ModelServing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
+            rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
             route_optimized: Optional[pulumi.Input[bool]] = None,
             serving_endpoint_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None) -> 'ModelServing':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None) -> 'ModelServing':
         """
         Get an existing ModelServing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -431,12 +431,12 @@ class ModelServing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

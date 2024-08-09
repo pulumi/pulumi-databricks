@@ -356,11 +356,11 @@ class SqlQuery(pulumi.CustomResource):
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -389,37 +389,37 @@ class SqlQuery(pulumi.CustomResource):
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             run_as_role="viewer",
             parameters=[
-                databricks.SqlQueryParameterArgs(
-                    name="p1",
-                    title="Title for p1",
-                    text=databricks.SqlQueryParameterTextArgs(
-                        value="default",
-                    ),
-                ),
-                databricks.SqlQueryParameterArgs(
-                    name="p2",
-                    title="Title for p2",
-                    enum=databricks.SqlQueryParameterEnumArgs(
-                        options=[
+                {
+                    "name": "p1",
+                    "title": "Title for p1",
+                    "text": {
+                        "value": "default",
+                    },
+                },
+                {
+                    "name": "p2",
+                    "title": "Title for p2",
+                    "enum": {
+                        "options": [
                             "default",
                             "foo",
                             "bar",
                         ],
-                        value="default",
-                        multiple=databricks.SqlQueryParameterEnumMultipleArgs(
-                            prefix="\\"",
-                            suffix="\\"",
-                            separator=",",
-                        ),
-                    ),
-                ),
-                databricks.SqlQueryParameterArgs(
-                    name="p3",
-                    title="Title for p3",
-                    date=databricks.SqlQueryParameterDateArgs(
-                        value="2022-01-01",
-                    ),
-                ),
+                        "value": "default",
+                        "multiple": {
+                            "prefix": "\\"",
+                            "suffix": "\\"",
+                            "separator": ",",
+                        },
+                    },
+                },
+                {
+                    "name": "p3",
+                    "title": "Title for p3",
+                    "date": {
+                        "value": "2022-01-01",
+                    },
+                },
             ],
             tags=[
                 "t1",
@@ -436,14 +436,14 @@ class SqlQuery(pulumi.CustomResource):
         q1 = databricks.Permissions("q1",
             sql_query_id=q1_databricks_sql_query["id"],
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=users["displayName"],
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=team["displayName"],
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": users["displayName"],
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": team["displayName"],
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -514,37 +514,37 @@ class SqlQuery(pulumi.CustomResource):
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             run_as_role="viewer",
             parameters=[
-                databricks.SqlQueryParameterArgs(
-                    name="p1",
-                    title="Title for p1",
-                    text=databricks.SqlQueryParameterTextArgs(
-                        value="default",
-                    ),
-                ),
-                databricks.SqlQueryParameterArgs(
-                    name="p2",
-                    title="Title for p2",
-                    enum=databricks.SqlQueryParameterEnumArgs(
-                        options=[
+                {
+                    "name": "p1",
+                    "title": "Title for p1",
+                    "text": {
+                        "value": "default",
+                    },
+                },
+                {
+                    "name": "p2",
+                    "title": "Title for p2",
+                    "enum": {
+                        "options": [
                             "default",
                             "foo",
                             "bar",
                         ],
-                        value="default",
-                        multiple=databricks.SqlQueryParameterEnumMultipleArgs(
-                            prefix="\\"",
-                            suffix="\\"",
-                            separator=",",
-                        ),
-                    ),
-                ),
-                databricks.SqlQueryParameterArgs(
-                    name="p3",
-                    title="Title for p3",
-                    date=databricks.SqlQueryParameterDateArgs(
-                        value="2022-01-01",
-                    ),
-                ),
+                        "value": "default",
+                        "multiple": {
+                            "prefix": "\\"",
+                            "suffix": "\\"",
+                            "separator": ",",
+                        },
+                    },
+                },
+                {
+                    "name": "p3",
+                    "title": "Title for p3",
+                    "date": {
+                        "value": "2022-01-01",
+                    },
+                },
             ],
             tags=[
                 "t1",
@@ -561,14 +561,14 @@ class SqlQuery(pulumi.CustomResource):
         q1 = databricks.Permissions("q1",
             sql_query_id=q1_databricks_sql_query["id"],
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=users["displayName"],
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=team["displayName"],
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": users["displayName"],
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": team["displayName"],
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -618,11 +618,11 @@ class SqlQuery(pulumi.CustomResource):
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -663,11 +663,11 @@ class SqlQuery(pulumi.CustomResource):
             data_source_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             query: Optional[pulumi.Input[str]] = None,
             run_as_role: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'SqlQuery':
         """

@@ -99,13 +99,13 @@ def get_tables(catalog_name: Optional[str] = None,
     for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
         things_grants.append(databricks.Grants(f"things-{range['key']}",
             table=range["value"],
-            grants=[databricks.GrantsGrantArgs(
-                principal="sensitive",
-                privileges=[
+            grants=[{
+                "principal": "sensitive",
+                "privileges": [
                     "SELECT",
                     "MODIFY",
                 ],
-            )]))
+            }]))
     ```
 
     ## Related Resources
@@ -160,13 +160,13 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
     for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
         things_grants.append(databricks.Grants(f"things-{range['key']}",
             table=range["value"],
-            grants=[databricks.GrantsGrantArgs(
-                principal="sensitive",
-                privileges=[
+            grants=[{
+                "principal": "sensitive",
+                "privileges": [
                     "SELECT",
                     "MODIFY",
                 ],
-            )]))
+            }]))
     ```
 
     ## Related Resources

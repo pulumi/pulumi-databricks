@@ -46,7 +46,7 @@ import (
 //			// register cross-account ARN
 //			this, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
 //				RoleArn:         pulumi.Any(crossaccountArn),
 //			})
 //			if err != nil {
@@ -55,7 +55,7 @@ import (
 //			// register root bucket
 //			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
-//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", prefix)),
+//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
 //				BucketName:               pulumi.Any(rootBucket),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //			// register VPC
 //			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
-//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", prefix)),
+//				NetworkName: pulumi.Sprintf("%v-network", prefix),
 //				VpcId:       pulumi.Any(vpcId),
 //				SubnetIds:   pulumi.Any(subnetsPrivate),
 //				SecurityGroupIds: pulumi.StringArray{
@@ -139,7 +139,7 @@ import (
 //				return err
 //			}
 //			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
-//				Name:             pulumi.String(fmt.Sprintf("%v-crossaccount", prefix)),
+//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
 //				AssumeRolePolicy: pulumi.String(this.Json),
 //				Tags:             pulumi.Any(tags),
 //			})
@@ -151,7 +151,7 @@ import (
 //				return err
 //			}
 //			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
-//				Name:   pulumi.String(fmt.Sprintf("%v-policy", prefix)),
+//				Name:   pulumi.Sprintf("%v-policy", prefix),
 //				Role:   crossAccountRole.ID(),
 //				Policy: pulumi.String(thisGetAwsCrossAccountPolicy.Json),
 //			})
@@ -160,14 +160,14 @@ import (
 //			}
 //			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
 //				RoleArn:         crossAccountRole.Arn,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			rootStorageBucket, err := s3.NewBucketV2(ctx, "root_storage_bucket", &s3.BucketV2Args{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-rootbucket", prefix)),
+//				Bucket:       pulumi.Sprintf("%v-rootbucket", prefix),
 //				Acl:          pulumi.String("private"),
 //				ForceDestroy: pulumi.Bool(true),
 //				Tags:         pulumi.Any(tags),
@@ -225,7 +225,7 @@ import (
 //			}
 //			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
-//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", prefix)),
+//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
 //				BucketName:               rootStorageBucket.Bucket,
 //			})
 //			if err != nil {
@@ -285,7 +285,7 @@ import (
 //			// register VPC
 //			this, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
-//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", prefix)),
+//				NetworkName: pulumi.Sprintf("%v-network", prefix),
 //				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
 //					NetworkProjectId:   pulumi.Any(googleProject),
 //					VpcId:              pulumi.Any(vpcId),

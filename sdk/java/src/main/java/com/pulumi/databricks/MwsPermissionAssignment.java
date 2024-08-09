@@ -83,14 +83,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var me = new User("me", UserArgs.builder()
- *             .userName("me{@literal @}example.com")
+ *             .userName("me}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var addUser = new MwsPermissionAssignment("addUser", MwsPermissionAssignmentArgs.builder()
@@ -99,8 +99,8 @@ import javax.annotation.Nullable;
  *             .permissions("USER")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -221,7 +221,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsPermissionAssignment(String name) {
+    public MwsPermissionAssignment(java.lang.String name) {
         this(name, MwsPermissionAssignmentArgs.Empty);
     }
     /**
@@ -229,7 +229,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsPermissionAssignment(String name, MwsPermissionAssignmentArgs args) {
+    public MwsPermissionAssignment(java.lang.String name, MwsPermissionAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -238,15 +238,22 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsPermissionAssignment(String name, MwsPermissionAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment", name, args == null ? MwsPermissionAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsPermissionAssignment(java.lang.String name, MwsPermissionAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsPermissionAssignment(String name, Output<String> id, @Nullable MwsPermissionAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment", name, state, makeResourceOptions(options, id));
+    private MwsPermissionAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable MwsPermissionAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsPermissionAssignmentArgs makeArgs(MwsPermissionAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsPermissionAssignmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -262,7 +269,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsPermissionAssignment get(String name, Output<String> id, @Nullable MwsPermissionAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsPermissionAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsPermissionAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsPermissionAssignment(name, id, state, options);
     }
 }

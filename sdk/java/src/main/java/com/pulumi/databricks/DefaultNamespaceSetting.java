@@ -106,7 +106,7 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DefaultNamespaceSetting(String name) {
+    public DefaultNamespaceSetting(java.lang.String name) {
         this(name, DefaultNamespaceSettingArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DefaultNamespaceSetting(String name, DefaultNamespaceSettingArgs args) {
+    public DefaultNamespaceSetting(java.lang.String name, DefaultNamespaceSettingArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DefaultNamespaceSetting(String name, DefaultNamespaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting", name, args == null ? DefaultNamespaceSettingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DefaultNamespaceSetting(java.lang.String name, DefaultNamespaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DefaultNamespaceSetting(String name, Output<String> id, @Nullable DefaultNamespaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting", name, state, makeResourceOptions(options, id));
+    private DefaultNamespaceSetting(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultNamespaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DefaultNamespaceSettingArgs makeArgs(DefaultNamespaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DefaultNamespaceSettingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DefaultNamespaceSetting get(String name, Output<String> id, @Nullable DefaultNamespaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DefaultNamespaceSetting get(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultNamespaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DefaultNamespaceSetting(name, id, state, options);
     }
 }

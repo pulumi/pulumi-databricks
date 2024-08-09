@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
 //				Name:         pulumi.String("primary"),
-//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", metastore.Id)),
+//				StorageRoot:  pulumi.Sprintf("s3://%v/metastore", metastore.Id),
 //				Owner:        pulumi.String("uc admins"),
 //				Region:       pulumi.String("us-east-1"),
 //				ForceDestroy: pulumi.Bool(true),

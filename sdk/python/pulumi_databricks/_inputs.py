@@ -1569,14 +1569,14 @@ class ClusterClusterMountInfoArgs:
                
                storage_account = "ewfw3ggwegwg"
                storage_container = "test"
-               with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
-                   network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
-                       server_address=f"{storage_account}.blob.core.windows.net",
-                       mount_options="sec=sys,vers=3,nolock,proto=tcp",
-                   ),
-                   remote_mount_dir_path=f"{storage_account}/{storage_container}",
-                   local_mount_dir_path="/mnt/nfs-test",
-               )])
+               with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[{
+                   "network_filesystem_info": {
+                       "server_address": f"{storage_account}.blob.core.windows.net",
+                       "mount_options": "sec=sys,vers=3,nolock,proto=tcp",
+                   },
+                   "remote_mount_dir_path": f"{storage_account}/{storage_container}",
+                   "local_mount_dir_path": "/mnt/nfs-test",
+               }])
                ```
         :param pulumi.Input['ClusterClusterMountInfoNetworkFilesystemInfoArgs'] network_filesystem_info: block specifying connection. It consists of:
         :param pulumi.Input[str] remote_mount_dir_path: string specifying path to mount on the remote service.
@@ -1600,14 +1600,14 @@ class ClusterClusterMountInfoArgs:
 
         storage_account = "ewfw3ggwegwg"
         storage_container = "test"
-        with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
-            network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
-                server_address=f"{storage_account}.blob.core.windows.net",
-                mount_options="sec=sys,vers=3,nolock,proto=tcp",
-            ),
-            remote_mount_dir_path=f"{storage_account}/{storage_container}",
-            local_mount_dir_path="/mnt/nfs-test",
-        )])
+        with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[{
+            "network_filesystem_info": {
+                "server_address": f"{storage_account}.blob.core.windows.net",
+                "mount_options": "sec=sys,vers=3,nolock,proto=tcp",
+            },
+            "remote_mount_dir_path": f"{storage_account}/{storage_container}",
+            "local_mount_dir_path": "/mnt/nfs-test",
+        }])
         ```
         """
         return pulumi.get(self, "local_mount_dir_path")
@@ -1698,13 +1698,13 @@ class ClusterDockerImageArgs:
                this = docker.index.RegistryImage("this",
                    build=[{}],
                    name=f{this_azurerm_container_registry.login_server}/sample:latest)
-               this_cluster = databricks.Cluster("this", docker_image=databricks.ClusterDockerImageArgs(
-                   url=this["name"],
-                   basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
-                       username=this_azurerm_container_registry["adminUsername"],
-                       password=this_azurerm_container_registry["adminPassword"],
-                   ),
-               ))
+               this_cluster = databricks.Cluster("this", docker_image={
+                   "url": this["name"],
+                   "basic_auth": {
+                       "username": this_azurerm_container_registry["adminUsername"],
+                       "password": this_azurerm_container_registry["adminPassword"],
+                   },
+               })
                ```
         """
         pulumi.set(__self__, "url", url)
@@ -1739,13 +1739,13 @@ class ClusterDockerImageArgs:
         this = docker.index.RegistryImage("this",
             build=[{}],
             name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_cluster = databricks.Cluster("this", docker_image=databricks.ClusterDockerImageArgs(
-            url=this["name"],
-            basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
-                username=this_azurerm_container_registry["adminUsername"],
-                password=this_azurerm_container_registry["adminPassword"],
-            ),
-        ))
+        this_cluster = databricks.Cluster("this", docker_image={
+            "url": this["name"],
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        })
         ```
         """
         return pulumi.get(self, "basic_auth")
@@ -2632,12 +2632,12 @@ class ClusterWorkloadTypeClientsArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               with_nfs = databricks.Cluster("with_nfs", workload_type=databricks.ClusterWorkloadTypeArgs(
-                   clients=databricks.ClusterWorkloadTypeClientsArgs(
-                       jobs=False,
-                       notebooks=True,
-                   ),
-               ))
+               with_nfs = databricks.Cluster("with_nfs", workload_type={
+                   "clients": {
+                       "jobs": False,
+                       "notebooks": True,
+                   },
+               })
                ```
         :param pulumi.Input[bool] notebooks: boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
         """
@@ -2656,12 +2656,12 @@ class ClusterWorkloadTypeClientsArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        with_nfs = databricks.Cluster("with_nfs", workload_type=databricks.ClusterWorkloadTypeArgs(
-            clients=databricks.ClusterWorkloadTypeClientsArgs(
-                jobs=False,
-                notebooks=True,
-            ),
-        ))
+        with_nfs = databricks.Cluster("with_nfs", workload_type={
+            "clients": {
+                "jobs": False,
+                "notebooks": True,
+            },
+        })
         ```
         """
         return pulumi.get(self, "jobs")
@@ -3196,13 +3196,13 @@ class InstancePoolPreloadedDockerImageArgs:
                this = docker.index.RegistryImage("this",
                    build=[{}],
                    name=f{this_azurerm_container_registry.login_server}/sample:latest)
-               this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
-                   url=this["name"],
-                   basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
-                       username=this_azurerm_container_registry["adminUsername"],
-                       password=this_azurerm_container_registry["adminPassword"],
-                   ),
-               )])
+               this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
+                   "url": this["name"],
+                   "basic_auth": {
+                       "username": this_azurerm_container_registry["adminUsername"],
+                       "password": this_azurerm_container_registry["adminPassword"],
+                   },
+               }])
                ```
         """
         pulumi.set(__self__, "url", url)
@@ -3237,13 +3237,13 @@ class InstancePoolPreloadedDockerImageArgs:
         this = docker.index.RegistryImage("this",
             build=[{}],
             name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
-            url=this["name"],
-            basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
-                username=this_azurerm_container_registry["adminUsername"],
-                password=this_azurerm_container_registry["adminPassword"],
-            ),
-        )])
+        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
+            "url": this["name"],
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        }])
         ```
         """
         return pulumi.get(self, "basic_auth")
@@ -7323,9 +7323,9 @@ class JobRunAsArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               this = databricks.Job("this", run_as=databricks.JobRunAsArgs(
-                   service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
-               ))
+               this = databricks.Job("this", run_as={
+                   "service_principal_name": "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+               })
                ```
         :param pulumi.Input[str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
         """
@@ -7346,9 +7346,9 @@ class JobRunAsArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.Job("this", run_as=databricks.JobRunAsArgs(
-            service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
-        ))
+        this = databricks.Job("this", run_as={
+            "service_principal_name": "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+        })
         ```
         """
         return pulumi.get(self, "service_principal_name")
@@ -11703,39 +11703,39 @@ class JobTaskForEachTaskTaskSqlTaskFileArgs:
                sql_aggregation_job = databricks.Job("sql_aggregation_job",
                    name="Example SQL Job",
                    tasks=[
-                       databricks.JobTaskArgs(
-                           task_key="run_agg_query",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               query=databricks.JobTaskSqlTaskQueryArgs(
-                                   query_id=agg_query["id"],
-                               ),
-                           ),
-                       ),
-                       databricks.JobTaskArgs(
-                           task_key="run_dashboard",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                                   dashboard_id=dash["id"],
-                                   subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                       user_name="user@domain.com",
-                                   )],
-                               ),
-                           ),
-                       ),
-                       databricks.JobTaskArgs(
-                           task_key="run_alert",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               alert=databricks.JobTaskSqlTaskAlertArgs(
-                                   alert_id=alert["id"],
-                                   subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                       user_name="user@domain.com",
-                                   )],
-                               ),
-                           ),
-                       ),
+                       {
+                           "task_key": "run_agg_query",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "query": {
+                                   "query_id": agg_query["id"],
+                               },
+                           },
+                       },
+                       {
+                           "task_key": "run_dashboard",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "dashboard": {
+                                   "dashboard_id": dash["id"],
+                                   "subscriptions": [{
+                                       "user_name": "user@domain.com",
+                                   }],
+                               },
+                           },
+                       },
+                       {
+                           "task_key": "run_alert",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "alert": {
+                                   "alert_id": alert["id"],
+                                   "subscriptions": [{
+                                       "user_name": "user@domain.com",
+                                   }],
+                               },
+                           },
+                       },
                    ])
                ```
         :param pulumi.Input[str] source: The source of the project. Possible values are `WORKSPACE` and `GIT`.
@@ -11759,39 +11759,39 @@ class JobTaskForEachTaskTaskSqlTaskFileArgs:
         sql_aggregation_job = databricks.Job("sql_aggregation_job",
             name="Example SQL Job",
             tasks=[
-                databricks.JobTaskArgs(
-                    task_key="run_agg_query",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        query=databricks.JobTaskSqlTaskQueryArgs(
-                            query_id=agg_query["id"],
-                        ),
-                    ),
-                ),
-                databricks.JobTaskArgs(
-                    task_key="run_dashboard",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                            dashboard_id=dash["id"],
-                            subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                user_name="user@domain.com",
-                            )],
-                        ),
-                    ),
-                ),
-                databricks.JobTaskArgs(
-                    task_key="run_alert",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        alert=databricks.JobTaskSqlTaskAlertArgs(
-                            alert_id=alert["id"],
-                            subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                user_name="user@domain.com",
-                            )],
-                        ),
-                    ),
-                ),
+                {
+                    "task_key": "run_agg_query",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "query": {
+                            "query_id": agg_query["id"],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_dashboard",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "dashboard": {
+                            "dashboard_id": dash["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_alert",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "alert": {
+                            "alert_id": alert["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
             ])
         ```
         """
@@ -14594,39 +14594,39 @@ class JobTaskSqlTaskFileArgs:
                sql_aggregation_job = databricks.Job("sql_aggregation_job",
                    name="Example SQL Job",
                    tasks=[
-                       databricks.JobTaskArgs(
-                           task_key="run_agg_query",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               query=databricks.JobTaskSqlTaskQueryArgs(
-                                   query_id=agg_query["id"],
-                               ),
-                           ),
-                       ),
-                       databricks.JobTaskArgs(
-                           task_key="run_dashboard",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                                   dashboard_id=dash["id"],
-                                   subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                       user_name="user@domain.com",
-                                   )],
-                               ),
-                           ),
-                       ),
-                       databricks.JobTaskArgs(
-                           task_key="run_alert",
-                           sql_task=databricks.JobTaskSqlTaskArgs(
-                               warehouse_id=sql_job_warehouse["id"],
-                               alert=databricks.JobTaskSqlTaskAlertArgs(
-                                   alert_id=alert["id"],
-                                   subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                       user_name="user@domain.com",
-                                   )],
-                               ),
-                           ),
-                       ),
+                       {
+                           "task_key": "run_agg_query",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "query": {
+                                   "query_id": agg_query["id"],
+                               },
+                           },
+                       },
+                       {
+                           "task_key": "run_dashboard",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "dashboard": {
+                                   "dashboard_id": dash["id"],
+                                   "subscriptions": [{
+                                       "user_name": "user@domain.com",
+                                   }],
+                               },
+                           },
+                       },
+                       {
+                           "task_key": "run_alert",
+                           "sql_task": {
+                               "warehouse_id": sql_job_warehouse["id"],
+                               "alert": {
+                                   "alert_id": alert["id"],
+                                   "subscriptions": [{
+                                       "user_name": "user@domain.com",
+                                   }],
+                               },
+                           },
+                       },
                    ])
                ```
         :param pulumi.Input[str] source: The source of the project. Possible values are `WORKSPACE` and `GIT`.
@@ -14650,39 +14650,39 @@ class JobTaskSqlTaskFileArgs:
         sql_aggregation_job = databricks.Job("sql_aggregation_job",
             name="Example SQL Job",
             tasks=[
-                databricks.JobTaskArgs(
-                    task_key="run_agg_query",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        query=databricks.JobTaskSqlTaskQueryArgs(
-                            query_id=agg_query["id"],
-                        ),
-                    ),
-                ),
-                databricks.JobTaskArgs(
-                    task_key="run_dashboard",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                            dashboard_id=dash["id"],
-                            subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                user_name="user@domain.com",
-                            )],
-                        ),
-                    ),
-                ),
-                databricks.JobTaskArgs(
-                    task_key="run_alert",
-                    sql_task=databricks.JobTaskSqlTaskArgs(
-                        warehouse_id=sql_job_warehouse["id"],
-                        alert=databricks.JobTaskSqlTaskAlertArgs(
-                            alert_id=alert["id"],
-                            subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                user_name="user@domain.com",
-                            )],
-                        ),
-                    ),
-                ),
+                {
+                    "task_key": "run_agg_query",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "query": {
+                            "query_id": agg_query["id"],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_dashboard",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "dashboard": {
+                            "dashboard_id": dash["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_alert",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "alert": {
+                            "alert_id": alert["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
             ])
         ```
         """

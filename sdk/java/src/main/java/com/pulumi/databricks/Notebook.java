@@ -144,7 +144,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Notebook(String name) {
+    public Notebook(java.lang.String name) {
         this(name, NotebookArgs.Empty);
     }
     /**
@@ -152,7 +152,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Notebook(String name, NotebookArgs args) {
+    public Notebook(java.lang.String name, NotebookArgs args) {
         this(name, args, null);
     }
     /**
@@ -161,15 +161,22 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Notebook(String name, NotebookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/notebook:Notebook", name, args == null ? NotebookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Notebook(java.lang.String name, NotebookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/notebook:Notebook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Notebook(String name, Output<String> id, @Nullable NotebookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/notebook:Notebook", name, state, makeResourceOptions(options, id));
+    private Notebook(java.lang.String name, Output<java.lang.String> id, @Nullable NotebookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/notebook:Notebook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NotebookArgs makeArgs(NotebookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NotebookArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -185,7 +192,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Notebook get(String name, Output<String> id, @Nullable NotebookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Notebook get(java.lang.String name, Output<java.lang.String> id, @Nullable NotebookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Notebook(name, id, state, options);
     }
 }

@@ -59,7 +59,7 @@ class AwaitableGetCurrentMetastoreResult(GetCurrentMetastoreResult):
 
 
 def get_current_metastore(id: Optional[str] = None,
-                          metastore_info: Optional[pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs']] = None,
+                          metastore_info: Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentMetastoreResult:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -91,7 +91,7 @@ def get_current_metastore(id: Optional[str] = None,
 
 
     :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
     """
     __args__ = dict()
     __args__['id'] = id
@@ -106,7 +106,7 @@ def get_current_metastore(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_current_metastore)
 def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 metastore_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs']]]] = None,
+                                 metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -138,6 +138,6 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
 
 
     :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param pulumi.InputType['GetCurrentMetastoreMetastoreInfoArgs'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
     """
     ...

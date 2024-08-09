@@ -69,7 +69,7 @@ class AwaitableGetTableResult(GetTableResult):
 
 def get_table(id: Optional[str] = None,
               name: Optional[str] = None,
-              table_info: Optional[pulumi.InputType['GetTableTableInfoArgs']] = None,
+              table_info: Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
     > **Note** This data source could be only used with workspace-level provider!
@@ -89,13 +89,13 @@ def get_table(id: Optional[str] = None,
     fct_transactions = databricks.get_table(name="main.certified.fct_transactions")
     things = databricks.Grants("things",
         table=fct_transactions.name,
-        grants=[databricks.GrantsGrantArgs(
-            principal="sensitive",
-            privileges=[
+        grants=[{
+            "principal": "sensitive",
+            "privileges": [
                 "SELECT",
                 "MODIFY",
             ],
-        )])
+        }])
     ```
 
     ## Related Resources
@@ -107,7 +107,7 @@ def get_table(id: Optional[str] = None,
 
 
     :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
-    :param pulumi.InputType['GetTableTableInfoArgs'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
+    :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -125,7 +125,7 @@ def get_table(id: Optional[str] = None,
 @_utilities.lift_output_func(get_table)
 def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[str]] = None,
-                     table_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetTableTableInfoArgs']]]] = None,
+                     table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
     """
     > **Note** This data source could be only used with workspace-level provider!
@@ -145,13 +145,13 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     fct_transactions = databricks.get_table(name="main.certified.fct_transactions")
     things = databricks.Grants("things",
         table=fct_transactions.name,
-        grants=[databricks.GrantsGrantArgs(
-            principal="sensitive",
-            privileges=[
+        grants=[{
+            "principal": "sensitive",
+            "privileges": [
                 "SELECT",
                 "MODIFY",
             ],
-        )])
+        }])
     ```
 
     ## Related Resources
@@ -163,6 +163,6 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
-    :param pulumi.InputType['GetTableTableInfoArgs'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
+    :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     ...

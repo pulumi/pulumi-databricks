@@ -2647,10 +2647,10 @@ type ClusterClusterMountInfo struct {
 	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 	// 				&databricks.ClusterClusterMountInfoArgs{
 	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 						ServerAddress: pulumi.Sprintf("%v.blob.core.windows.net", storageAccount),
 	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 					},
-	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 					RemoteMountDirPath: pulumi.Sprintf("%v/%v", storageAccount, storageContainer),
 	// 					LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 	// 				},
 	// 			},
@@ -2703,10 +2703,10 @@ type ClusterClusterMountInfoArgs struct {
 	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 	// 				&databricks.ClusterClusterMountInfoArgs{
 	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 						ServerAddress: pulumi.Sprintf("%v.blob.core.windows.net", storageAccount),
 	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 					},
-	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 					RemoteMountDirPath: pulumi.Sprintf("%v/%v", storageAccount, storageContainer),
 	// 					LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 	// 				},
 	// 			},
@@ -2800,10 +2800,10 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //				ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 //					&databricks.ClusterClusterMountInfoArgs{
 //						NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-//							ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+//							ServerAddress: pulumi.Sprintf("%v.blob.core.windows.net", storageAccount),
 //							MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 //						},
-//						RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+//						RemoteMountDirPath: pulumi.Sprintf("%v/%v", storageAccount, storageContainer),
 //						LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 //					},
 //				},

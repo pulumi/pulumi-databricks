@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			this, err := databricks.NewNotebook(ctx, "this", &databricks.NotebookArgs{
-//				Path:          pulumi.String(fmt.Sprintf("%v/MLFlowWebhook", me.Home)),
+//				Path:          pulumi.Sprintf("%v/MLFlowWebhook", me.Home),
 //				Language:      pulumi.String("PYTHON"),
 //				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //			})
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			thisJob, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
-//				Name: pulumi.String(fmt.Sprintf("Pulumi MLflowWebhook Demo (%v)", me.Alphanumeric)),
+//				Name: pulumi.Sprintf("Pulumi MLflowWebhook Demo (%v)", me.Alphanumeric),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("task1"),

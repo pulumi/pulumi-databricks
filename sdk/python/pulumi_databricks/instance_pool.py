@@ -456,20 +456,20 @@ class InstancePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAwsAttributesArgs']]] = None,
-                 azure_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAzureAttributesArgs']]] = None,
+                 aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
+                 azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 disk_spec: Optional[pulumi.Input[pulumi.InputType['InstancePoolDiskSpecArgs']]] = None,
+                 disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolGcpAttributesArgs']]] = None,
+                 gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
                  idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
-                 instance_pool_fleet_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolInstancePoolFleetAttributesArgs']]] = None,
+                 instance_pool_fleet_attributes: Optional[pulumi.Input[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  instance_pool_name: Optional[pulumi.Input[str]] = None,
                  max_capacity: Optional[pulumi.Input[int]] = None,
                  min_idle_instances: Optional[pulumi.Input[int]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
-                 preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolPreloadedDockerImageArgs']]]]] = None,
+                 preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -489,19 +489,19 @@ class InstancePool(pulumi.CustomResource):
             min_idle_instances=0,
             max_capacity=300,
             node_type_id=smallest.id,
-            aws_attributes=databricks.InstancePoolAwsAttributesArgs(
-                availability="ON_DEMAND",
-                zone_id="us-east-1a",
-                spot_bid_price_percent=100,
-            ),
+            aws_attributes={
+                "availability": "ON_DEMAND",
+                "zone_id": "us-east-1a",
+                "spot_bid_price_percent": 100,
+            },
             idle_instance_autotermination_minutes=10,
-            disk_spec=databricks.InstancePoolDiskSpecArgs(
-                disk_type=databricks.InstancePoolDiskSpecDiskTypeArgs(
-                    ebs_volume_type="GENERAL_PURPOSE_SSD",
-                ),
-                disk_size=80,
-                disk_count=1,
-            ))
+            disk_spec={
+                "disk_type": {
+                    "ebs_volume_type": "GENERAL_PURPOSE_SSD",
+                },
+                "disk_size": 80,
+                "disk_count": 1,
+            })
         ```
 
         ## Access Control
@@ -553,19 +553,19 @@ class InstancePool(pulumi.CustomResource):
             min_idle_instances=0,
             max_capacity=300,
             node_type_id=smallest.id,
-            aws_attributes=databricks.InstancePoolAwsAttributesArgs(
-                availability="ON_DEMAND",
-                zone_id="us-east-1a",
-                spot_bid_price_percent=100,
-            ),
+            aws_attributes={
+                "availability": "ON_DEMAND",
+                "zone_id": "us-east-1a",
+                "spot_bid_price_percent": 100,
+            },
             idle_instance_autotermination_minutes=10,
-            disk_spec=databricks.InstancePoolDiskSpecArgs(
-                disk_type=databricks.InstancePoolDiskSpecDiskTypeArgs(
-                    ebs_volume_type="GENERAL_PURPOSE_SSD",
-                ),
-                disk_size=80,
-                disk_count=1,
-            ))
+            disk_spec={
+                "disk_type": {
+                    "ebs_volume_type": "GENERAL_PURPOSE_SSD",
+                },
+                "disk_size": 80,
+                "disk_count": 1,
+            })
         ```
 
         ## Access Control
@@ -598,20 +598,20 @@ class InstancePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAwsAttributesArgs']]] = None,
-                 azure_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAzureAttributesArgs']]] = None,
+                 aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
+                 azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 disk_spec: Optional[pulumi.Input[pulumi.InputType['InstancePoolDiskSpecArgs']]] = None,
+                 disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolGcpAttributesArgs']]] = None,
+                 gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
                  idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
-                 instance_pool_fleet_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolInstancePoolFleetAttributesArgs']]] = None,
+                 instance_pool_fleet_attributes: Optional[pulumi.Input[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  instance_pool_name: Optional[pulumi.Input[str]] = None,
                  max_capacity: Optional[pulumi.Input[int]] = None,
                  min_idle_instances: Optional[pulumi.Input[int]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
-                 preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolPreloadedDockerImageArgs']]]]] = None,
+                 preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -651,20 +651,20 @@ class InstancePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAwsAttributesArgs']]] = None,
-            azure_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolAzureAttributesArgs']]] = None,
+            aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
+            azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            disk_spec: Optional[pulumi.Input[pulumi.InputType['InstancePoolDiskSpecArgs']]] = None,
+            disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
-            gcp_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolGcpAttributesArgs']]] = None,
+            gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
             idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
-            instance_pool_fleet_attributes: Optional[pulumi.Input[pulumi.InputType['InstancePoolInstancePoolFleetAttributesArgs']]] = None,
+            instance_pool_fleet_attributes: Optional[pulumi.Input[Union['InstancePoolInstancePoolFleetAttributesArgs', 'InstancePoolInstancePoolFleetAttributesArgsDict']]] = None,
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             instance_pool_name: Optional[pulumi.Input[str]] = None,
             max_capacity: Optional[pulumi.Input[int]] = None,
             min_idle_instances: Optional[pulumi.Input[int]] = None,
             node_type_id: Optional[pulumi.Input[str]] = None,
-            preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolPreloadedDockerImageArgs']]]]] = None,
+            preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
             preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'InstancePool':
         """
         Get an existing InstancePool resource's state with the given name, id, and optional extra

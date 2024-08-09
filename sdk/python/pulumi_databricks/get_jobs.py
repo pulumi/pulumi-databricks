@@ -78,10 +78,10 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name="users",
-                permission_level="CAN_VIEW",
-            )]))
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
     ```
 
     Getting ID of specific Job by name:
@@ -136,10 +136,10 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = N
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name="users",
-                permission_level="CAN_VIEW",
-            )]))
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
     ```
 
     Getting ID of specific Job by name:

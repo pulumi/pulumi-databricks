@@ -116,7 +116,7 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePrincipalRole(String name) {
+    public ServicePrincipalRole(java.lang.String name) {
         this(name, ServicePrincipalRoleArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipalRole(String name, ServicePrincipalRoleArgs args) {
+    public ServicePrincipalRole(java.lang.String name, ServicePrincipalRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,15 +133,22 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipalRole(String name, ServicePrincipalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalRole:ServicePrincipalRole", name, args == null ? ServicePrincipalRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePrincipalRole(java.lang.String name, ServicePrincipalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/servicePrincipalRole:ServicePrincipalRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePrincipalRole(String name, Output<String> id, @Nullable ServicePrincipalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalRole:ServicePrincipalRole", name, state, makeResourceOptions(options, id));
+    private ServicePrincipalRole(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/servicePrincipalRole:ServicePrincipalRole", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePrincipalRoleArgs makeArgs(ServicePrincipalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalRoleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -157,7 +164,7 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePrincipalRole get(String name, Output<String> id, @Nullable ServicePrincipalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePrincipalRole get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePrincipalRole(name, id, state, options);
     }
 }

@@ -39,7 +39,7 @@ public class AutomaticClusterUpdateWorkspaceSetting extends com.pulumi.resources
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AutomaticClusterUpdateWorkspaceSetting(String name) {
+    public AutomaticClusterUpdateWorkspaceSetting(java.lang.String name) {
         this(name, AutomaticClusterUpdateWorkspaceSettingArgs.Empty);
     }
     /**
@@ -47,7 +47,7 @@ public class AutomaticClusterUpdateWorkspaceSetting extends com.pulumi.resources
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AutomaticClusterUpdateWorkspaceSetting(String name, AutomaticClusterUpdateWorkspaceSettingArgs args) {
+    public AutomaticClusterUpdateWorkspaceSetting(java.lang.String name, AutomaticClusterUpdateWorkspaceSettingArgs args) {
         this(name, args, null);
     }
     /**
@@ -56,15 +56,22 @@ public class AutomaticClusterUpdateWorkspaceSetting extends com.pulumi.resources
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AutomaticClusterUpdateWorkspaceSetting(String name, AutomaticClusterUpdateWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting", name, args == null ? AutomaticClusterUpdateWorkspaceSettingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AutomaticClusterUpdateWorkspaceSetting(java.lang.String name, AutomaticClusterUpdateWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AutomaticClusterUpdateWorkspaceSetting(String name, Output<String> id, @Nullable AutomaticClusterUpdateWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting", name, state, makeResourceOptions(options, id));
+    private AutomaticClusterUpdateWorkspaceSetting(java.lang.String name, Output<java.lang.String> id, @Nullable AutomaticClusterUpdateWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AutomaticClusterUpdateWorkspaceSettingArgs makeArgs(AutomaticClusterUpdateWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AutomaticClusterUpdateWorkspaceSettingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -80,7 +87,7 @@ public class AutomaticClusterUpdateWorkspaceSetting extends com.pulumi.resources
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AutomaticClusterUpdateWorkspaceSetting get(String name, Output<String> id, @Nullable AutomaticClusterUpdateWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AutomaticClusterUpdateWorkspaceSetting get(java.lang.String name, Output<java.lang.String> id, @Nullable AutomaticClusterUpdateWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AutomaticClusterUpdateWorkspaceSetting(name, id, state, options);
     }
 }

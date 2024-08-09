@@ -226,11 +226,11 @@ class Library(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 cran: Optional[pulumi.Input[pulumi.InputType['LibraryCranArgs']]] = None,
+                 cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
-                 maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
-                 pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+                 maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -252,9 +252,9 @@ class Library(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
                 cluster_id=range["key"],
-                pypi=databricks.LibraryPypiArgs(
-                    package="databricks-cli",
-                )))
+                pypi={
+                    "package": "databricks-cli",
+                }))
         ```
 
         ## Java/Scala Maven
@@ -267,10 +267,10 @@ class Library(pulumi.CustomResource):
 
         deequ = databricks.Library("deequ",
             cluster_id=this["id"],
-            maven=databricks.LibraryMavenArgs(
-                coordinates="com.amazon.deequ:deequ:1.0.4",
-                exclusions=["org.apache.avro:avro"],
-            ))
+            maven={
+                "coordinates": "com.amazon.deequ:deequ:1.0.4",
+                "exclusions": ["org.apache.avro:avro"],
+            })
         ```
 
         ## Python PyPI
@@ -285,9 +285,9 @@ class Library(pulumi.CustomResource):
 
         fbprophet = databricks.Library("fbprophet",
             cluster_id=this["id"],
-            pypi=databricks.LibraryPypiArgs(
-                package="fbprophet==0.6",
-            ))
+            pypi={
+                "package": "fbprophet==0.6",
+            })
         ```
 
         ## Python requirements files
@@ -313,9 +313,9 @@ class Library(pulumi.CustomResource):
 
         rkeops = databricks.Library("rkeops",
             cluster_id=this["id"],
-            cran=databricks.LibraryCranArgs(
-                package="rkeops",
-            ))
+            cran={
+                "package": "rkeops",
+            })
         ```
 
         ## Related Resources
@@ -366,9 +366,9 @@ class Library(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
                 cluster_id=range["key"],
-                pypi=databricks.LibraryPypiArgs(
-                    package="databricks-cli",
-                )))
+                pypi={
+                    "package": "databricks-cli",
+                }))
         ```
 
         ## Java/Scala Maven
@@ -381,10 +381,10 @@ class Library(pulumi.CustomResource):
 
         deequ = databricks.Library("deequ",
             cluster_id=this["id"],
-            maven=databricks.LibraryMavenArgs(
-                coordinates="com.amazon.deequ:deequ:1.0.4",
-                exclusions=["org.apache.avro:avro"],
-            ))
+            maven={
+                "coordinates": "com.amazon.deequ:deequ:1.0.4",
+                "exclusions": ["org.apache.avro:avro"],
+            })
         ```
 
         ## Python PyPI
@@ -399,9 +399,9 @@ class Library(pulumi.CustomResource):
 
         fbprophet = databricks.Library("fbprophet",
             cluster_id=this["id"],
-            pypi=databricks.LibraryPypiArgs(
-                package="fbprophet==0.6",
-            ))
+            pypi={
+                "package": "fbprophet==0.6",
+            })
         ```
 
         ## Python requirements files
@@ -427,9 +427,9 @@ class Library(pulumi.CustomResource):
 
         rkeops = databricks.Library("rkeops",
             cluster_id=this["id"],
-            cran=databricks.LibraryCranArgs(
-                package="rkeops",
-            ))
+            cran={
+                "package": "rkeops",
+            })
         ```
 
         ## Related Resources
@@ -469,11 +469,11 @@ class Library(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 cran: Optional[pulumi.Input[pulumi.InputType['LibraryCranArgs']]] = None,
+                 cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
-                 maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
-                 pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+                 maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
                  whl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -506,11 +506,11 @@ class Library(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            cran: Optional[pulumi.Input[pulumi.InputType['LibraryCranArgs']]] = None,
+            cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
             egg: Optional[pulumi.Input[str]] = None,
             jar: Optional[pulumi.Input[str]] = None,
-            maven: Optional[pulumi.Input[pulumi.InputType['LibraryMavenArgs']]] = None,
-            pypi: Optional[pulumi.Input[pulumi.InputType['LibraryPypiArgs']]] = None,
+            maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+            pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
             requirements: Optional[pulumi.Input[str]] = None,
             whl: Optional[pulumi.Input[str]] = None) -> 'Library':
         """

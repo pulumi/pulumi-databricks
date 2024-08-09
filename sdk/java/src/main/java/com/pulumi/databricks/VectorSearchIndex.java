@@ -204,7 +204,7 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VectorSearchIndex(String name) {
+    public VectorSearchIndex(java.lang.String name) {
         this(name, VectorSearchIndexArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VectorSearchIndex(String name, VectorSearchIndexArgs args) {
+    public VectorSearchIndex(java.lang.String name, VectorSearchIndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,15 +221,22 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VectorSearchIndex(String name, VectorSearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/vectorSearchIndex:VectorSearchIndex", name, args == null ? VectorSearchIndexArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VectorSearchIndex(java.lang.String name, VectorSearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/vectorSearchIndex:VectorSearchIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VectorSearchIndex(String name, Output<String> id, @Nullable VectorSearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/vectorSearchIndex:VectorSearchIndex", name, state, makeResourceOptions(options, id));
+    private VectorSearchIndex(java.lang.String name, Output<java.lang.String> id, @Nullable VectorSearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/vectorSearchIndex:VectorSearchIndex", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VectorSearchIndexArgs makeArgs(VectorSearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VectorSearchIndexArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +252,7 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VectorSearchIndex get(String name, Output<String> id, @Nullable VectorSearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VectorSearchIndex get(java.lang.String name, Output<java.lang.String> id, @Nullable VectorSearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VectorSearchIndex(name, id, state, options);
     }
 }

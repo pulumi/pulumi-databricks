@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dltDemo = new Notebook("dltDemo");
  * 
  *         var dltDemoRepo = new Repo("dltDemoRepo");
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *             .continuous(false)
  *             .notifications(PipelineNotificationArgs.builder()
  *                 .emailRecipients(                
- *                     "user{@literal @}domain.com",
- *                     "user1{@literal @}domain.com")
+ *                     "user}{@literal @}{@code domain.com",
+ *                     "user1}{@literal @}{@code domain.com")
  *                 .alerts(                
  *                     "on-update-failure",
  *                     "on-update-fatal-failure",
@@ -104,8 +104,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -358,7 +358,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Pipeline(String name) {
+    public Pipeline(java.lang.String name) {
         this(name, PipelineArgs.Empty);
     }
     /**
@@ -366,7 +366,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Pipeline(String name, @Nullable PipelineArgs args) {
+    public Pipeline(java.lang.String name, @Nullable PipelineArgs args) {
         this(name, args, null);
     }
     /**
@@ -375,15 +375,22 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Pipeline(String name, @Nullable PipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/pipeline:Pipeline", name, args == null ? PipelineArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Pipeline(java.lang.String name, @Nullable PipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/pipeline:Pipeline", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Pipeline(String name, Output<String> id, @Nullable PipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/pipeline:Pipeline", name, state, makeResourceOptions(options, id));
+    private Pipeline(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/pipeline:Pipeline", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PipelineArgs makeArgs(@Nullable PipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PipelineArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -399,7 +406,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Pipeline get(String name, Output<String> id, @Nullable PipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Pipeline get(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Pipeline(name, id, state, options);
     }
 }

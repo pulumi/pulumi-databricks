@@ -661,9 +661,9 @@ class Grant(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grant("external_creds",
             storage_credential=external.id,
@@ -1038,9 +1038,9 @@ class Grant(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grant("external_creds",
             storage_credential=external.id,

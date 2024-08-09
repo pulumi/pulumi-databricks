@@ -154,7 +154,7 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkspaceBinding(String name) {
+    public WorkspaceBinding(java.lang.String name) {
         this(name, WorkspaceBindingArgs.Empty);
     }
     /**
@@ -162,7 +162,7 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkspaceBinding(String name, @Nullable WorkspaceBindingArgs args) {
+    public WorkspaceBinding(java.lang.String name, @Nullable WorkspaceBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -171,15 +171,22 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkspaceBinding(String name, @Nullable WorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/workspaceBinding:WorkspaceBinding", name, args == null ? WorkspaceBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkspaceBinding(java.lang.String name, @Nullable WorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/workspaceBinding:WorkspaceBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkspaceBinding(String name, Output<String> id, @Nullable WorkspaceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/workspaceBinding:WorkspaceBinding", name, state, makeResourceOptions(options, id));
+    private WorkspaceBinding(java.lang.String name, Output<java.lang.String> id, @Nullable WorkspaceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/workspaceBinding:WorkspaceBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkspaceBindingArgs makeArgs(@Nullable WorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkspaceBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -195,7 +202,7 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkspaceBinding get(String name, Output<String> id, @Nullable WorkspaceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkspaceBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkspaceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkspaceBinding(name, id, state, options);
     }
 }

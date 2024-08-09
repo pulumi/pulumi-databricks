@@ -114,7 +114,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input[pulumi.InputType['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']]] = None,
+                 restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -142,9 +142,9 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins=databricks.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(
-            status="RESTRICT_TOKENS_AND_JOB_RUN_AS",
-        ))
+        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins={
+            "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
+        })
         ```
 
         ## Import
@@ -159,7 +159,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']] restrict_workspace_admins: The configuration details.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         ...
     @overload
@@ -192,9 +192,9 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins=databricks.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(
-            status="RESTRICT_TOKENS_AND_JOB_RUN_AS",
-        ))
+        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins={
+            "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
+        })
         ```
 
         ## Import
@@ -223,7 +223,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input[pulumi.InputType['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']]] = None,
+                 restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -250,7 +250,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            restrict_workspace_admins: Optional[pulumi.Input[pulumi.InputType['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']]] = None,
+            restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[str]] = None) -> 'RestrictWorkspaceAdminsSetting':
         """
         Get an existing RestrictWorkspaceAdminsSetting resource's state with the given name, id, and optional extra
@@ -259,7 +259,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']] restrict_workspace_admins: The configuration details.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -617,7 +617,7 @@ class Permissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PermissionsAccessControlArgs']]]]] = None,
+                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -671,25 +671,25 @@ class Permissions(pulumi.CustomResource):
             spark_version=latest.id,
             node_type_id=smallest.id,
             autotermination_minutes=60,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=10,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 10,
+            })
         cluster_usage = databricks.Permissions("cluster_usage",
             cluster_id=shared_autoscaling.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_ATTACH_TO",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_RESTART",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=ds.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_ATTACH_TO",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_RESTART",
+                },
+                {
+                    "group_name": ds.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -717,14 +717,14 @@ class Permissions(pulumi.CustomResource):
         policy_usage = databricks.Permissions("policy_usage",
             cluster_policy_id=something_simple.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=ds.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_USE",
-                ),
+                {
+                    "group_name": ds.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_USE",
+                },
             ])
         ```
 
@@ -748,14 +748,14 @@ class Permissions(pulumi.CustomResource):
         pool_usage = databricks.Permissions("pool_usage",
             instance_pool_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_ATTACH_TO",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_ATTACH_TO",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -781,36 +781,36 @@ class Permissions(pulumi.CustomResource):
         this = databricks.Job("this",
             name="Featurization",
             max_concurrent_runs=1,
-            tasks=[databricks.JobTaskArgs(
-                task_key="task1",
-                new_cluster=databricks.JobTaskNewClusterArgs(
-                    num_workers=300,
-                    spark_version=latest.id,
-                    node_type_id=smallest.id,
-                ),
-                notebook_task=databricks.JobTaskNotebookTaskArgs(
-                    notebook_path="/Production/MakeFeatures",
-                ),
-            )])
+            tasks=[{
+                "task_key": "task1",
+                "new_cluster": {
+                    "num_workers": 300,
+                    "spark_version": latest.id,
+                    "node_type_id": smallest.id,
+                },
+                "notebook_task": {
+                    "notebook_path": "/Production/MakeFeatures",
+                },
+            }])
         job_usage = databricks.Permissions("job_usage",
             job_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    service_principal_name=aws_principal.application_id,
-                    permission_level="IS_OWNER",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "service_principal_name": aws_principal.application_id,
+                    "permission_level": "IS_OWNER",
+                },
             ])
         ```
 
@@ -848,27 +848,27 @@ class Permissions(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             },
-            libraries=[databricks.PipelineLibraryArgs(
-                notebook=databricks.PipelineLibraryNotebookArgs(
-                    path=dlt_demo.id,
-                ),
-            )],
+            libraries=[{
+                "notebook": {
+                    "path": dlt_demo.id,
+                },
+            }],
             continuous=False,
-            filters=databricks.PipelineFiltersArgs(
-                includes=["com.databricks.include"],
-                excludes=["com.databricks.exclude"],
-            ))
+            filters={
+                "includes": ["com.databricks.include"],
+                "excludes": ["com.databricks.exclude"],
+            })
         dlt_usage = databricks.Permissions("dlt_usage",
             pipeline_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -890,18 +890,18 @@ class Permissions(pulumi.CustomResource):
         notebook_usage = databricks.Permissions("notebook_usage",
             notebook_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -922,18 +922,18 @@ class Permissions(pulumi.CustomResource):
         workspace_file_usage = databricks.Permissions("workspace_file_usage",
             workspace_file_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -956,18 +956,18 @@ class Permissions(pulumi.CustomResource):
         folder_usage = databricks.Permissions("folder_usage",
             directory_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[this]))
         ```
@@ -986,18 +986,18 @@ class Permissions(pulumi.CustomResource):
         repo_usage = databricks.Permissions("repo_usage",
             repo_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1019,18 +1019,18 @@ class Permissions(pulumi.CustomResource):
         experiment_usage = databricks.Permissions("experiment_usage",
             experiment_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1048,18 +1048,18 @@ class Permissions(pulumi.CustomResource):
         model_usage = databricks.Permissions("model_usage",
             registered_model_id=this.registered_model_id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE_PRODUCTION_VERSIONS",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE_STAGING_VERSIONS",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE_PRODUCTION_VERSIONS",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE_STAGING_VERSIONS",
+                },
             ])
         ```
 
@@ -1073,32 +1073,32 @@ class Permissions(pulumi.CustomResource):
 
         this = databricks.ModelServing("this",
             name="tf-test",
-            config=databricks.ModelServingConfigArgs(
-                served_models=[databricks.ModelServingConfigServedModelArgs(
-                    name="prod_model",
-                    model_name="test",
-                    model_version="1",
-                    workload_size="Small",
-                    scale_to_zero_enabled=True,
-                )],
-            ))
+            config={
+                "served_models": [{
+                    "name": "prod_model",
+                    "model_name": "test",
+                    "model_version": "1",
+                    "workload_size": "Small",
+                    "scale_to_zero_enabled": True,
+                }],
+            })
         auto = databricks.Group("auto", display_name="Automation")
         eng = databricks.Group("eng", display_name="Engineering")
         ml_serving_usage = databricks.Permissions("ml_serving_usage",
             serving_endpoint_id=this.serving_endpoint_id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_QUERY",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_QUERY",
+                },
             ])
         ```
 
@@ -1113,10 +1113,10 @@ class Permissions(pulumi.CustomResource):
         guests = databricks.Group("guests", display_name="Guest Users")
         password_usage = databricks.Permissions("password_usage",
             authorization="passwords",
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=guests.display_name,
-                permission_level="CAN_USE",
-            )])
+            access_controls=[{
+                "group_name": guests.display_name,
+                "permission_level": "CAN_USE",
+            }])
         ```
 
         ## Token usage
@@ -1136,14 +1136,14 @@ class Permissions(pulumi.CustomResource):
         token_usage = databricks.Permissions("token_usage",
             authorization="tokens",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_USE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_USE",
+                },
             ])
         ```
 
@@ -1162,23 +1162,23 @@ class Permissions(pulumi.CustomResource):
             name=f"Endpoint of {me.alphanumeric}",
             cluster_size="Small",
             max_num_clusters=1,
-            tags=databricks.SqlEndpointTagsArgs(
-                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
-                    key="City",
-                    value="Amsterdam",
-                )],
-            ))
+            tags={
+                "custom_tags": [{
+                    "key": "City",
+                    "value": "Amsterdam",
+                }],
+            })
         endpoint_usage = databricks.Permissions("endpoint_usage",
             sql_endpoint_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1196,14 +1196,14 @@ class Permissions(pulumi.CustomResource):
         dashboard_usage = databricks.Permissions("dashboard_usage",
             dashboard_id=dashboard.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1220,14 +1220,14 @@ class Permissions(pulumi.CustomResource):
         sql_dashboard_usage = databricks.Permissions("sql_dashboard_usage",
             sql_dashboard_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1246,14 +1246,14 @@ class Permissions(pulumi.CustomResource):
         query_usage = databricks.Permissions("query_usage",
             sql_query_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1270,14 +1270,14 @@ class Permissions(pulumi.CustomResource):
         alert_usage = databricks.Permissions("alert_usage",
             sql_alert_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1344,25 +1344,25 @@ class Permissions(pulumi.CustomResource):
             spark_version=latest.id,
             node_type_id=smallest.id,
             autotermination_minutes=60,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=10,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 10,
+            })
         cluster_usage = databricks.Permissions("cluster_usage",
             cluster_id=shared_autoscaling.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_ATTACH_TO",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_RESTART",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=ds.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_ATTACH_TO",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_RESTART",
+                },
+                {
+                    "group_name": ds.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1390,14 +1390,14 @@ class Permissions(pulumi.CustomResource):
         policy_usage = databricks.Permissions("policy_usage",
             cluster_policy_id=something_simple.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=ds.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_USE",
-                ),
+                {
+                    "group_name": ds.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_USE",
+                },
             ])
         ```
 
@@ -1421,14 +1421,14 @@ class Permissions(pulumi.CustomResource):
         pool_usage = databricks.Permissions("pool_usage",
             instance_pool_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_ATTACH_TO",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_ATTACH_TO",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1454,36 +1454,36 @@ class Permissions(pulumi.CustomResource):
         this = databricks.Job("this",
             name="Featurization",
             max_concurrent_runs=1,
-            tasks=[databricks.JobTaskArgs(
-                task_key="task1",
-                new_cluster=databricks.JobTaskNewClusterArgs(
-                    num_workers=300,
-                    spark_version=latest.id,
-                    node_type_id=smallest.id,
-                ),
-                notebook_task=databricks.JobTaskNotebookTaskArgs(
-                    notebook_path="/Production/MakeFeatures",
-                ),
-            )])
+            tasks=[{
+                "task_key": "task1",
+                "new_cluster": {
+                    "num_workers": 300,
+                    "spark_version": latest.id,
+                    "node_type_id": smallest.id,
+                },
+                "notebook_task": {
+                    "notebook_path": "/Production/MakeFeatures",
+                },
+            }])
         job_usage = databricks.Permissions("job_usage",
             job_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    service_principal_name=aws_principal.application_id,
-                    permission_level="IS_OWNER",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "service_principal_name": aws_principal.application_id,
+                    "permission_level": "IS_OWNER",
+                },
             ])
         ```
 
@@ -1521,27 +1521,27 @@ class Permissions(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             },
-            libraries=[databricks.PipelineLibraryArgs(
-                notebook=databricks.PipelineLibraryNotebookArgs(
-                    path=dlt_demo.id,
-                ),
-            )],
+            libraries=[{
+                "notebook": {
+                    "path": dlt_demo.id,
+                },
+            }],
             continuous=False,
-            filters=databricks.PipelineFiltersArgs(
-                includes=["com.databricks.include"],
-                excludes=["com.databricks.exclude"],
-            ))
+            filters={
+                "includes": ["com.databricks.include"],
+                "excludes": ["com.databricks.exclude"],
+            })
         dlt_usage = databricks.Permissions("dlt_usage",
             pipeline_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1563,18 +1563,18 @@ class Permissions(pulumi.CustomResource):
         notebook_usage = databricks.Permissions("notebook_usage",
             notebook_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1595,18 +1595,18 @@ class Permissions(pulumi.CustomResource):
         workspace_file_usage = databricks.Permissions("workspace_file_usage",
             workspace_file_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1629,18 +1629,18 @@ class Permissions(pulumi.CustomResource):
         folder_usage = databricks.Permissions("folder_usage",
             directory_path=this.path,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[this]))
         ```
@@ -1659,18 +1659,18 @@ class Permissions(pulumi.CustomResource):
         repo_usage = databricks.Permissions("repo_usage",
             repo_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1692,18 +1692,18 @@ class Permissions(pulumi.CustomResource):
         experiment_usage = databricks.Permissions("experiment_usage",
             experiment_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_EDIT",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
             ])
         ```
 
@@ -1721,18 +1721,18 @@ class Permissions(pulumi.CustomResource):
         model_usage = databricks.Permissions("model_usage",
             registered_model_id=this.registered_model_id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_READ",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE_PRODUCTION_VERSIONS",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE_STAGING_VERSIONS",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE_PRODUCTION_VERSIONS",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE_STAGING_VERSIONS",
+                },
             ])
         ```
 
@@ -1746,32 +1746,32 @@ class Permissions(pulumi.CustomResource):
 
         this = databricks.ModelServing("this",
             name="tf-test",
-            config=databricks.ModelServingConfigArgs(
-                served_models=[databricks.ModelServingConfigServedModelArgs(
-                    name="prod_model",
-                    model_name="test",
-                    model_version="1",
-                    workload_size="Small",
-                    scale_to_zero_enabled=True,
-                )],
-            ))
+            config={
+                "served_models": [{
+                    "name": "prod_model",
+                    "model_name": "test",
+                    "model_version": "1",
+                    "workload_size": "Small",
+                    "scale_to_zero_enabled": True,
+                }],
+            })
         auto = databricks.Group("auto", display_name="Automation")
         eng = databricks.Group("eng", display_name="Engineering")
         ml_serving_usage = databricks.Permissions("ml_serving_usage",
             serving_endpoint_id=this.serving_endpoint_id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name="users",
-                    permission_level="CAN_VIEW",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_QUERY",
-                ),
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_QUERY",
+                },
             ])
         ```
 
@@ -1786,10 +1786,10 @@ class Permissions(pulumi.CustomResource):
         guests = databricks.Group("guests", display_name="Guest Users")
         password_usage = databricks.Permissions("password_usage",
             authorization="passwords",
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=guests.display_name,
-                permission_level="CAN_USE",
-            )])
+            access_controls=[{
+                "group_name": guests.display_name,
+                "permission_level": "CAN_USE",
+            }])
         ```
 
         ## Token usage
@@ -1809,14 +1809,14 @@ class Permissions(pulumi.CustomResource):
         token_usage = databricks.Permissions("token_usage",
             authorization="tokens",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_USE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_USE",
+                },
             ])
         ```
 
@@ -1835,23 +1835,23 @@ class Permissions(pulumi.CustomResource):
             name=f"Endpoint of {me.alphanumeric}",
             cluster_size="Small",
             max_num_clusters=1,
-            tags=databricks.SqlEndpointTagsArgs(
-                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
-                    key="City",
-                    value="Amsterdam",
-                )],
-            ))
+            tags={
+                "custom_tags": [{
+                    "key": "City",
+                    "value": "Amsterdam",
+                }],
+            })
         endpoint_usage = databricks.Permissions("endpoint_usage",
             sql_endpoint_id=this.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_USE",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1869,14 +1869,14 @@ class Permissions(pulumi.CustomResource):
         dashboard_usage = databricks.Permissions("dashboard_usage",
             dashboard_id=dashboard.id,
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1893,14 +1893,14 @@ class Permissions(pulumi.CustomResource):
         sql_dashboard_usage = databricks.Permissions("sql_dashboard_usage",
             sql_dashboard_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1919,14 +1919,14 @@ class Permissions(pulumi.CustomResource):
         query_usage = databricks.Permissions("query_usage",
             sql_query_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1943,14 +1943,14 @@ class Permissions(pulumi.CustomResource):
         alert_usage = databricks.Permissions("alert_usage",
             sql_alert_id="3244325",
             access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=auto.display_name,
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=eng.display_name,
-                    permission_level="CAN_MANAGE",
-                ),
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
             ])
         ```
 
@@ -1993,7 +1993,7 @@ class Permissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PermissionsAccessControlArgs']]]]] = None,
+                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2062,7 +2062,7 @@ class Permissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PermissionsAccessControlArgs']]]]] = None,
+            access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
             authorization: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_policy_id: Optional[pulumi.Input[str]] = None,

@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewRecipient(ctx, "db2open", &databricks.RecipientArgs{
-//				Name:               pulumi.String(fmt.Sprintf("%v-recipient", current.Alphanumeric)),
+//				Name:               pulumi.Sprintf("%v-recipient", current.Alphanumeric),
 //				Comment:            pulumi.String("Made by Pulumi"),
 //				AuthenticationType: pulumi.String("TOKEN"),
 //				SharingCode:        db2opensharecode.Result,

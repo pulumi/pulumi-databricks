@@ -219,8 +219,8 @@ class MlflowWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 http_url_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookHttpUrlSpecArgs']]] = None,
-                 job_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookJobSpecArgs']]] = None,
+                 http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+                 job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
                  model_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -250,17 +250,17 @@ class MlflowWebhook(pulumi.CustomResource):
         \"\"\").result)
         this_job = databricks.Job("this",
             name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",
-            tasks=[databricks.JobTaskArgs(
-                task_key="task1",
-                new_cluster=databricks.JobTaskNewClusterArgs(
-                    num_workers=1,
-                    spark_version=latest.id,
-                    node_type_id=smallest.id,
-                ),
-                notebook_task=databricks.JobTaskNotebookTaskArgs(
-                    notebook_path=this.path,
-                ),
-            )])
+            tasks=[{
+                "task_key": "task1",
+                "new_cluster": {
+                    "num_workers": 1,
+                    "spark_version": latest.id,
+                    "node_type_id": smallest.id,
+                },
+                "notebook_task": {
+                    "notebook_path": this.path,
+                },
+            }])
         pat_for_webhook = databricks.Token("pat_for_webhook",
             comment="MLflow Webhook",
             lifetime_seconds=86400000)
@@ -268,11 +268,11 @@ class MlflowWebhook(pulumi.CustomResource):
             events=["TRANSITION_REQUEST_CREATED"],
             description="Databricks Job webhook trigger",
             status="ACTIVE",
-            job_spec=databricks.MlflowWebhookJobSpecArgs(
-                job_id=this_job.id,
-                workspace_url=me.workspace_url,
-                access_token=pat_for_webhook.token_value,
-            ))
+            job_spec={
+                "job_id": this_job.id,
+                "workspace_url": me.workspace_url,
+                "access_token": pat_for_webhook.token_value,
+            })
         ```
 
         ### POSTing to URL
@@ -284,9 +284,9 @@ class MlflowWebhook(pulumi.CustomResource):
         url = databricks.MlflowWebhook("url",
             events=["TRANSITION_REQUEST_CREATED"],
             description="URL webhook trigger",
-            http_url_spec=databricks.MlflowWebhookHttpUrlSpecArgs(
-                url="https://my_cool_host/webhook",
-            ))
+            http_url_spec={
+                "url": "https://my_cool_host/webhook",
+            })
         ```
 
         ## Access Control
@@ -350,17 +350,17 @@ class MlflowWebhook(pulumi.CustomResource):
         \"\"\").result)
         this_job = databricks.Job("this",
             name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",
-            tasks=[databricks.JobTaskArgs(
-                task_key="task1",
-                new_cluster=databricks.JobTaskNewClusterArgs(
-                    num_workers=1,
-                    spark_version=latest.id,
-                    node_type_id=smallest.id,
-                ),
-                notebook_task=databricks.JobTaskNotebookTaskArgs(
-                    notebook_path=this.path,
-                ),
-            )])
+            tasks=[{
+                "task_key": "task1",
+                "new_cluster": {
+                    "num_workers": 1,
+                    "spark_version": latest.id,
+                    "node_type_id": smallest.id,
+                },
+                "notebook_task": {
+                    "notebook_path": this.path,
+                },
+            }])
         pat_for_webhook = databricks.Token("pat_for_webhook",
             comment="MLflow Webhook",
             lifetime_seconds=86400000)
@@ -368,11 +368,11 @@ class MlflowWebhook(pulumi.CustomResource):
             events=["TRANSITION_REQUEST_CREATED"],
             description="Databricks Job webhook trigger",
             status="ACTIVE",
-            job_spec=databricks.MlflowWebhookJobSpecArgs(
-                job_id=this_job.id,
-                workspace_url=me.workspace_url,
-                access_token=pat_for_webhook.token_value,
-            ))
+            job_spec={
+                "job_id": this_job.id,
+                "workspace_url": me.workspace_url,
+                "access_token": pat_for_webhook.token_value,
+            })
         ```
 
         ### POSTing to URL
@@ -384,9 +384,9 @@ class MlflowWebhook(pulumi.CustomResource):
         url = databricks.MlflowWebhook("url",
             events=["TRANSITION_REQUEST_CREATED"],
             description="URL webhook trigger",
-            http_url_spec=databricks.MlflowWebhookHttpUrlSpecArgs(
-                url="https://my_cool_host/webhook",
-            ))
+            http_url_spec={
+                "url": "https://my_cool_host/webhook",
+            })
         ```
 
         ## Access Control
@@ -426,8 +426,8 @@ class MlflowWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 http_url_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookHttpUrlSpecArgs']]] = None,
-                 job_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookJobSpecArgs']]] = None,
+                 http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+                 job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
                  model_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -459,8 +459,8 @@ class MlflowWebhook(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            http_url_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookHttpUrlSpecArgs']]] = None,
-            job_spec: Optional[pulumi.Input[pulumi.InputType['MlflowWebhookJobSpecArgs']]] = None,
+            http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+            job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
             model_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'MlflowWebhook':
         """

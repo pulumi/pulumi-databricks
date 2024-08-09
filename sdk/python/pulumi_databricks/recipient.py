@@ -464,12 +464,12 @@ class Recipient(pulumi.CustomResource):
                  authentication_type: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
-                 ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
+                 ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input[pulumi.InputType['RecipientPropertiesKvpairsArgs']]] = None,
+                 properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
+                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         """
         > **Note** This resource could be only used with workspace-level provider!
@@ -501,9 +501,9 @@ class Recipient(pulumi.CustomResource):
             comment="Made by Pulumi",
             authentication_type="TOKEN",
             sharing_code=db2opensharecode["result"],
-            ip_access_list=databricks.RecipientIpAccessListArgs(
-                allowed_ip_addresses=[],
-            ))
+            ip_access_list={
+                "allowed_ip_addresses": [],
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -511,12 +511,12 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: Recipient IP access list.
+        :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input[pulumi.InputType['RecipientPropertiesKvpairsArgs']] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         ...
     @overload
@@ -554,9 +554,9 @@ class Recipient(pulumi.CustomResource):
             comment="Made by Pulumi",
             authentication_type="TOKEN",
             sharing_code=db2opensharecode["result"],
-            ip_access_list=databricks.RecipientIpAccessListArgs(
-                allowed_ip_addresses=[],
-            ))
+            ip_access_list={
+                "allowed_ip_addresses": [],
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -577,12 +577,12 @@ class Recipient(pulumi.CustomResource):
                  authentication_type: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
-                 ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
+                 ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input[pulumi.InputType['RecipientPropertiesKvpairsArgs']]] = None,
+                 properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
+                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -632,14 +632,14 @@ class Recipient(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
-            ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
+            ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties_kvpairs: Optional[pulumi.Input[pulumi.InputType['RecipientPropertiesKvpairsArgs']]] = None,
+            properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             sharing_code: Optional[pulumi.Input[str]] = None,
-            tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
+            tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
             updated_at: Optional[pulumi.Input[int]] = None,
             updated_by: Optional[pulumi.Input[str]] = None) -> 'Recipient':
         """
@@ -656,14 +656,14 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[int] created_at: Time at which this recipient was created, in epoch milliseconds.
         :param pulumi.Input[str] created_by: Username of recipient creator.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: Recipient IP access list.
+        :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] metastore_id: Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input[pulumi.InputType['RecipientPropertiesKvpairsArgs']] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input[str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         :param pulumi.Input[int] updated_at: Time at which this recipient was updated, in epoch milliseconds.
         :param pulumi.Input[str] updated_by: Username of recipient Token updater.
         """

@@ -273,12 +273,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var accountId = "00000000-0000-0000-0000-000000000000";
  * 
  *         // account level group
@@ -287,7 +287,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var john = DatabricksFunctions.getUser(GetUserArgs.builder()
- *             .userName("john.doe{@literal @}example.com")
+ *             .userName("john.doe}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var dsGroupRuleSet = new AccessControlRuleSet("dsGroupRuleSet", AccessControlRuleSetArgs.builder()
@@ -298,8 +298,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -329,12 +329,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var accountId = "00000000-0000-0000-0000-000000000000";
  * 
  *         // account level group
@@ -348,7 +348,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var john = DatabricksFunctions.getUser(GetUserArgs.builder()
- *             .userName("john.doe{@literal @}example.com")
+ *             .userName("john.doe}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var accountRuleSet = new AccessControlRuleSet("accountRuleSet", AccessControlRuleSetArgs.builder()
@@ -368,8 +368,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -434,7 +434,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessControlRuleSet(String name) {
+    public AccessControlRuleSet(java.lang.String name) {
         this(name, AccessControlRuleSetArgs.Empty);
     }
     /**
@@ -442,7 +442,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessControlRuleSet(String name, @Nullable AccessControlRuleSetArgs args) {
+    public AccessControlRuleSet(java.lang.String name, @Nullable AccessControlRuleSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -451,15 +451,22 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessControlRuleSet(String name, @Nullable AccessControlRuleSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/accessControlRuleSet:AccessControlRuleSet", name, args == null ? AccessControlRuleSetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessControlRuleSet(java.lang.String name, @Nullable AccessControlRuleSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/accessControlRuleSet:AccessControlRuleSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessControlRuleSet(String name, Output<String> id, @Nullable AccessControlRuleSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/accessControlRuleSet:AccessControlRuleSet", name, state, makeResourceOptions(options, id));
+    private AccessControlRuleSet(java.lang.String name, Output<java.lang.String> id, @Nullable AccessControlRuleSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/accessControlRuleSet:AccessControlRuleSet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessControlRuleSetArgs makeArgs(@Nullable AccessControlRuleSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessControlRuleSetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -475,7 +482,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessControlRuleSet get(String name, Output<String> id, @Nullable AccessControlRuleSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessControlRuleSet get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessControlRuleSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessControlRuleSet(name, id, state, options);
     }
 }

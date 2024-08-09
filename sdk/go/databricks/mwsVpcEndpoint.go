@@ -96,7 +96,7 @@ import (
 //			_, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
 //				VpcId:         pulumi.Any(vpc.VpcId),
 //				RouteTableIds: pulumi.Any(vpc.PrivateRouteTableIds),
-//				ServiceName:   pulumi.String(fmt.Sprintf("com.amazonaws.%v.s3", region)),
+//				ServiceName:   pulumi.Sprintf("com.amazonaws.%v.s3", region),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpc,
 //			}))
@@ -105,7 +105,7 @@ import (
 //			}
 //			_, err = ec2.NewVpcEndpoint(ctx, "sts", &ec2.VpcEndpointArgs{
 //				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.String(fmt.Sprintf("com.amazonaws.%v.sts", region)),
+//				ServiceName:     pulumi.Sprintf("com.amazonaws.%v.sts", region),
 //				VpcEndpointType: pulumi.String("Interface"),
 //				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
 //				SecurityGroupIds: pulumi.StringArray{
@@ -120,7 +120,7 @@ import (
 //			}
 //			_, err = ec2.NewVpcEndpoint(ctx, "kinesis-streams", &ec2.VpcEndpointArgs{
 //				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.String(fmt.Sprintf("com.amazonaws.%v.kinesis-streams", region)),
+//				ServiceName:     pulumi.Sprintf("com.amazonaws.%v.kinesis-streams", region),
 //				VpcEndpointType: pulumi.String("Interface"),
 //				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
 //				SecurityGroupIds: pulumi.StringArray{
@@ -157,7 +157,7 @@ import (
 //			_, err := databricks.NewMwsVpcEndpoint(ctx, "workspace", &databricks.MwsVpcEndpointArgs{
 //				AccountId:        pulumi.Any(databricksAccountId),
 //				AwsVpcEndpointId: pulumi.Any(workspaceAwsVpcEndpoint.Id),
-//				VpcEndpointName:  pulumi.String(fmt.Sprintf("VPC Relay for %v", vpc.VpcId)),
+//				VpcEndpointName:  pulumi.Sprintf("VPC Relay for %v", vpc.VpcId),
 //				Region:           pulumi.Any(region),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				workspaceAwsVpcEndpoint,
@@ -168,7 +168,7 @@ import (
 //			_, err = databricks.NewMwsVpcEndpoint(ctx, "relay", &databricks.MwsVpcEndpointArgs{
 //				AccountId:        pulumi.Any(databricksAccountId),
 //				AwsVpcEndpointId: pulumi.Any(relayAwsVpcEndpoint.Id),
-//				VpcEndpointName:  pulumi.String(fmt.Sprintf("VPC Relay for %v", vpc.VpcId)),
+//				VpcEndpointName:  pulumi.Sprintf("VPC Relay for %v", vpc.VpcId),
 //				Region:           pulumi.Any(region),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				relayAwsVpcEndpoint,
