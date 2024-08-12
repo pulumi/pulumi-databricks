@@ -589,18 +589,18 @@ class LakehouseMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_dir: Optional[pulumi.Input[str]] = None,
                  baseline_table_name: Optional[pulumi.Input[str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]]] = None,
-                 data_classification_config: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']]] = None,
-                 inference_log: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict']]]]] = None,
+                 data_classification_config: Optional[pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']]] = None,
+                 inference_log: Optional[pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']]] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 snapshot: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']]] = None,
+                 snapshot: Optional[pulumi.Input[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict']]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
-                 time_series: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorTimeSeriesArgs']]] = None,
+                 time_series: Optional[pulumi.Input[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -620,13 +620,13 @@ class LakehouseMonitor(pulumi.CustomResource):
             table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
             assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
             output_schema_name=f"{sandbox['name']}.{things['name']}",
-            inference_log=databricks.LakehouseMonitorInferenceLogArgs(
-                granularities=["1 hour"],
-                timestamp_col="timestamp",
-                prediction_col="prediction",
-                model_id_col="model_id",
-                problem_type="PROBLEM_TYPE_REGRESSION",
-            ))
+            inference_log={
+                "granularities": ["1 hour"],
+                "timestamp_col": "timestamp",
+                "prediction_col": "prediction",
+                "model_id_col": "model_id",
+                "problem_type": "PROBLEM_TYPE_REGRESSION",
+            })
         ```
         ### Snapshot Monitor
         ```python
@@ -637,7 +637,7 @@ class LakehouseMonitor(pulumi.CustomResource):
             table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
             assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
             output_schema_name=f"{sandbox['name']}.{things['name']}",
-            snapshot=databricks.LakehouseMonitorSnapshotArgs())
+            snapshot={})
         ```
 
         ## Related Resources
@@ -653,17 +653,17 @@ class LakehouseMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[str] baseline_table_name: Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
                table.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']] data_classification_config: The data classification config for the monitor
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']] inference_log: Configuration for the inference log monitor
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+        :param pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
+        :param pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+        :param pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']] snapshot: Configuration for monitoring snapshot tables.
+        :param pulumi.Input[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorTimeSeriesArgs']] time_series: Configuration for monitoring timeseries tables.
+        :param pulumi.Input[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
         :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
         """
         ...
@@ -689,13 +689,13 @@ class LakehouseMonitor(pulumi.CustomResource):
             table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
             assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
             output_schema_name=f"{sandbox['name']}.{things['name']}",
-            inference_log=databricks.LakehouseMonitorInferenceLogArgs(
-                granularities=["1 hour"],
-                timestamp_col="timestamp",
-                prediction_col="prediction",
-                model_id_col="model_id",
-                problem_type="PROBLEM_TYPE_REGRESSION",
-            ))
+            inference_log={
+                "granularities": ["1 hour"],
+                "timestamp_col": "timestamp",
+                "prediction_col": "prediction",
+                "model_id_col": "model_id",
+                "problem_type": "PROBLEM_TYPE_REGRESSION",
+            })
         ```
         ### Snapshot Monitor
         ```python
@@ -706,7 +706,7 @@ class LakehouseMonitor(pulumi.CustomResource):
             table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
             assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
             output_schema_name=f"{sandbox['name']}.{things['name']}",
-            snapshot=databricks.LakehouseMonitorSnapshotArgs())
+            snapshot={})
         ```
 
         ## Related Resources
@@ -734,18 +734,18 @@ class LakehouseMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_dir: Optional[pulumi.Input[str]] = None,
                  baseline_table_name: Optional[pulumi.Input[str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]]] = None,
-                 data_classification_config: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']]] = None,
-                 inference_log: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict']]]]] = None,
+                 data_classification_config: Optional[pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']]] = None,
+                 inference_log: Optional[pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']]] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']]] = None,
+                 notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 snapshot: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']]] = None,
+                 snapshot: Optional[pulumi.Input[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict']]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
-                 time_series: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorTimeSeriesArgs']]] = None,
+                 time_series: Optional[pulumi.Input[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -794,23 +794,23 @@ class LakehouseMonitor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assets_dir: Optional[pulumi.Input[str]] = None,
             baseline_table_name: Optional[pulumi.Input[str]] = None,
-            custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]]] = None,
+            custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict']]]]] = None,
             dashboard_id: Optional[pulumi.Input[str]] = None,
-            data_classification_config: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']]] = None,
+            data_classification_config: Optional[pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']]] = None,
             drift_metrics_table_name: Optional[pulumi.Input[str]] = None,
-            inference_log: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']]] = None,
+            inference_log: Optional[pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']]] = None,
             latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
             monitor_version: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']]] = None,
+            notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[str]] = None,
             profile_metrics_table_name: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
             skip_builtin_dashboard: Optional[pulumi.Input[bool]] = None,
             slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            snapshot: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']]] = None,
+            snapshot: Optional[pulumi.Input[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             table_name: Optional[pulumi.Input[str]] = None,
-            time_series: Optional[pulumi.Input[pulumi.InputType['LakehouseMonitorTimeSeriesArgs']]] = None,
+            time_series: Optional[pulumi.Input[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict']]] = None,
             warehouse_id: Optional[pulumi.Input[str]] = None) -> 'LakehouseMonitor':
         """
         Get an existing LakehouseMonitor resource's state with the given name, id, and optional extra
@@ -822,22 +822,22 @@ class LakehouseMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[str] baseline_table_name: Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
                table.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakehouseMonitorCustomMetricArgs', 'LakehouseMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[str] dashboard_id: The ID of the generated dashboard.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']] data_classification_config: The data classification config for the monitor
+        :param pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+        :param pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']] snapshot: Configuration for monitoring snapshot tables.
+        :param pulumi.Input[Union['LakehouseMonitorSnapshotArgs', 'LakehouseMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[str] status: Status of the Monitor
         :param pulumi.Input[str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorTimeSeriesArgs']] time_series: Configuration for monitoring timeseries tables.
+        :param pulumi.Input[Union['LakehouseMonitorTimeSeriesArgs', 'LakehouseMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
         :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

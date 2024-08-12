@@ -141,7 +141,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetastoreProvider(String name) {
+    public MetastoreProvider(java.lang.String name) {
         this(name, MetastoreProviderArgs.Empty);
     }
     /**
@@ -149,7 +149,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetastoreProvider(String name, MetastoreProviderArgs args) {
+    public MetastoreProvider(java.lang.String name, MetastoreProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -158,15 +158,22 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetastoreProvider(String name, MetastoreProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/metastoreProvider:MetastoreProvider", name, args == null ? MetastoreProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MetastoreProvider(java.lang.String name, MetastoreProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/metastoreProvider:MetastoreProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetastoreProvider(String name, Output<String> id, @Nullable MetastoreProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/metastoreProvider:MetastoreProvider", name, state, makeResourceOptions(options, id));
+    private MetastoreProvider(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/metastoreProvider:MetastoreProvider", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MetastoreProviderArgs makeArgs(MetastoreProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetastoreProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -185,7 +192,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetastoreProvider get(String name, Output<String> id, @Nullable MetastoreProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetastoreProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetastoreProvider(name, id, state, options);
     }
 }

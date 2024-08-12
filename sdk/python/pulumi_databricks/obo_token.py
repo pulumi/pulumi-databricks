@@ -163,10 +163,10 @@ class OboToken(pulumi.CustomResource):
         this = databricks.ServicePrincipal("this", display_name="Automation-only SP")
         token_usage = databricks.Permissions("token_usage",
             authorization="tokens",
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                service_principal_name=this.application_id,
-                permission_level="CAN_USE",
-            )])
+            access_controls=[{
+                "service_principal_name": this.application_id,
+                "permission_level": "CAN_USE",
+            }])
         this_obo_token = databricks.OboToken("this",
             application_id=this.application_id,
             comment=this.display_name.apply(lambda display_name: f"PAT on behalf of {display_name}"),
@@ -236,10 +236,10 @@ class OboToken(pulumi.CustomResource):
         this = databricks.ServicePrincipal("this", display_name="Automation-only SP")
         token_usage = databricks.Permissions("token_usage",
             authorization="tokens",
-            access_controls=[databricks.PermissionsAccessControlArgs(
-                service_principal_name=this.application_id,
-                permission_level="CAN_USE",
-            )])
+            access_controls=[{
+                "service_principal_name": this.application_id,
+                "permission_level": "CAN_USE",
+            }])
         this_obo_token = databricks.OboToken("this",
             application_id=this.application_id,
             comment=this.display_name.apply(lambda display_name: f"PAT on behalf of {display_name}"),

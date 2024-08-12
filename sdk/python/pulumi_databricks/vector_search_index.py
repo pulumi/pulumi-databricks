@@ -263,8 +263,8 @@ class VectorSearchIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delta_sync_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDeltaSyncIndexSpecArgs']]] = None,
-                 direct_access_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']]] = None,
+                 delta_sync_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
+                 direct_access_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
                  endpoint_name: Optional[pulumi.Input[str]] = None,
                  index_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -286,14 +286,14 @@ class VectorSearchIndex(pulumi.CustomResource):
             endpoint_name=this_databricks_vector_search_endpoint["name"],
             primary_key="id",
             index_type="DELTA_SYNC",
-            delta_sync_index_spec=databricks.VectorSearchIndexDeltaSyncIndexSpecArgs(
-                source_table="main.default.source_table",
-                pipeline_type="TRIGGERED",
-                embedding_source_columns=[databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(
-                    name="text",
-                    embedding_model_endpoint_name=this["name"],
-                )],
-            ))
+            delta_sync_index_spec={
+                "source_table": "main.default.source_table",
+                "pipeline_type": "TRIGGERED",
+                "embedding_source_columns": [{
+                    "name": "text",
+                    "embedding_model_endpoint_name": this["name"],
+                }],
+            })
         ```
 
         ## Import
@@ -308,8 +308,8 @@ class VectorSearchIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['VectorSearchIndexDeltaSyncIndexSpecArgs']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
-        :param pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
                * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -339,14 +339,14 @@ class VectorSearchIndex(pulumi.CustomResource):
             endpoint_name=this_databricks_vector_search_endpoint["name"],
             primary_key="id",
             index_type="DELTA_SYNC",
-            delta_sync_index_spec=databricks.VectorSearchIndexDeltaSyncIndexSpecArgs(
-                source_table="main.default.source_table",
-                pipeline_type="TRIGGERED",
-                embedding_source_columns=[databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(
-                    name="text",
-                    embedding_model_endpoint_name=this["name"],
-                )],
-            ))
+            delta_sync_index_spec={
+                "source_table": "main.default.source_table",
+                "pipeline_type": "TRIGGERED",
+                "embedding_source_columns": [{
+                    "name": "text",
+                    "embedding_model_endpoint_name": this["name"],
+                }],
+            })
         ```
 
         ## Import
@@ -374,8 +374,8 @@ class VectorSearchIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delta_sync_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDeltaSyncIndexSpecArgs']]] = None,
-                 direct_access_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']]] = None,
+                 delta_sync_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
+                 direct_access_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
                  endpoint_name: Optional[pulumi.Input[str]] = None,
                  index_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -414,13 +414,13 @@ class VectorSearchIndex(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creator: Optional[pulumi.Input[str]] = None,
-            delta_sync_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDeltaSyncIndexSpecArgs']]] = None,
-            direct_access_index_spec: Optional[pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']]] = None,
+            delta_sync_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
+            direct_access_index_spec: Optional[pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
             endpoint_name: Optional[pulumi.Input[str]] = None,
             index_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             primary_key: Optional[pulumi.Input[str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchIndexStatusArgs']]]]] = None) -> 'VectorSearchIndex':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchIndexStatusArgs', 'VectorSearchIndexStatusArgsDict']]]]] = None) -> 'VectorSearchIndex':
         """
         Get an existing VectorSearchIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -429,15 +429,15 @@ class VectorSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creator: Creator of the endpoint.
-        :param pulumi.Input[pulumi.InputType['VectorSearchIndexDeltaSyncIndexSpecArgs']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
-        :param pulumi.Input[pulumi.InputType['VectorSearchIndexDirectAccessIndexSpecArgs']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
         :param pulumi.Input[str] endpoint_name: The name of the Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[str] index_type: Vector Search index type. Currently supported values are:
                * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
                * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
         :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
         :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchIndexStatusArgs']]]] statuses: Object describing the current status of the index consisting of the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchIndexStatusArgs', 'VectorSearchIndexStatusArgsDict']]]] statuses: Object describing the current status of the index consisting of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

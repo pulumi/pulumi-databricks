@@ -87,7 +87,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsStorageConfigurations(String name) {
+    public MwsStorageConfigurations(java.lang.String name) {
         this(name, MwsStorageConfigurationsArgs.Empty);
     }
     /**
@@ -95,7 +95,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsStorageConfigurations(String name, MwsStorageConfigurationsArgs args) {
+    public MwsStorageConfigurations(java.lang.String name, MwsStorageConfigurationsArgs args) {
         this(name, args, null);
     }
     /**
@@ -104,15 +104,22 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsStorageConfigurations(String name, MwsStorageConfigurationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, args == null ? MwsStorageConfigurationsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsStorageConfigurations(java.lang.String name, MwsStorageConfigurationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsStorageConfigurations(String name, Output<String> id, @Nullable MwsStorageConfigurationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, state, makeResourceOptions(options, id));
+    private MwsStorageConfigurations(java.lang.String name, Output<java.lang.String> id, @Nullable MwsStorageConfigurationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsStorageConfigurationsArgs makeArgs(MwsStorageConfigurationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsStorageConfigurationsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -131,7 +138,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsStorageConfigurations get(String name, Output<String> id, @Nullable MwsStorageConfigurationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsStorageConfigurations get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsStorageConfigurationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsStorageConfigurations(name, id, state, options);
     }
 }

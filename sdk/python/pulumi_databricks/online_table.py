@@ -139,7 +139,7 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -155,11 +155,11 @@ class OnlineTable(pulumi.CustomResource):
 
         this = databricks.OnlineTable("this",
             name="main.default.online_table",
-            spec=databricks.OnlineTableSpecArgs(
-                source_table_full_name="main.default.source_table",
-                primary_key_columns=["id"],
-                run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
-            ))
+            spec={
+                "source_table_full_name": "main.default.source_table",
+                "primary_key_columns": ["id"],
+                "run_triggered": {},
+            })
         ```
 
         ## Import
@@ -175,7 +175,7 @@ class OnlineTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
-        :param pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']] spec: object containing specification of the online table:
+        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
         """
         ...
     @overload
@@ -196,11 +196,11 @@ class OnlineTable(pulumi.CustomResource):
 
         this = databricks.OnlineTable("this",
             name="main.default.online_table",
-            spec=databricks.OnlineTableSpecArgs(
-                source_table_full_name="main.default.source_table",
-                primary_key_columns=["id"],
-                run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
-            ))
+            spec={
+                "source_table_full_name": "main.default.source_table",
+                "primary_key_columns": ["id"],
+                "run_triggered": {},
+            })
         ```
 
         ## Import
@@ -229,7 +229,7 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -255,8 +255,8 @@ class OnlineTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OnlineTableStatusArgs']]]]] = None,
+            spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
             table_serving_url: Optional[pulumi.Input[str]] = None) -> 'OnlineTable':
         """
         Get an existing OnlineTable resource's state with the given name, id, and optional extra
@@ -266,8 +266,8 @@ class OnlineTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
-        :param pulumi.Input[pulumi.InputType['OnlineTableSpecArgs']] spec: object containing specification of the online table:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OnlineTableStatusArgs']]]] statuses: object describing status of the online table:
+        :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]] statuses: object describing status of the online table:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

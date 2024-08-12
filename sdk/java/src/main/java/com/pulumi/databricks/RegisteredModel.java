@@ -171,7 +171,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegisteredModel(String name) {
+    public RegisteredModel(java.lang.String name) {
         this(name, RegisteredModelArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegisteredModel(String name, RegisteredModelArgs args) {
+    public RegisteredModel(java.lang.String name, RegisteredModelArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,15 +188,22 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegisteredModel(String name, RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/registeredModel:RegisteredModel", name, args == null ? RegisteredModelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegisteredModel(java.lang.String name, RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/registeredModel:RegisteredModel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegisteredModel(String name, Output<String> id, @Nullable RegisteredModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/registeredModel:RegisteredModel", name, state, makeResourceOptions(options, id));
+    private RegisteredModel(java.lang.String name, Output<java.lang.String> id, @Nullable RegisteredModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/registeredModel:RegisteredModel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegisteredModelArgs makeArgs(RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegisteredModelArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -212,7 +219,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegisteredModel get(String name, Output<String> id, @Nullable RegisteredModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegisteredModel get(java.lang.String name, Output<java.lang.String> id, @Nullable RegisteredModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegisteredModel(name, id, state, options);
     }
 }

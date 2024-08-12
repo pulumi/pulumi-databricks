@@ -265,7 +265,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstancePool(String name) {
+    public InstancePool(java.lang.String name) {
         this(name, InstancePoolArgs.Empty);
     }
     /**
@@ -273,7 +273,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstancePool(String name, InstancePoolArgs args) {
+    public InstancePool(java.lang.String name, InstancePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -282,15 +282,22 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstancePool(String name, InstancePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/instancePool:InstancePool", name, args == null ? InstancePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstancePool(java.lang.String name, InstancePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/instancePool:InstancePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstancePool(String name, Output<String> id, @Nullable InstancePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/instancePool:InstancePool", name, state, makeResourceOptions(options, id));
+    private InstancePool(java.lang.String name, Output<java.lang.String> id, @Nullable InstancePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/instancePool:InstancePool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstancePoolArgs makeArgs(InstancePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstancePoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -306,7 +313,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstancePool get(String name, Output<String> id, @Nullable InstancePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstancePool get(java.lang.String name, Output<java.lang.String> id, @Nullable InstancePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstancePool(name, id, state, options);
     }
 }

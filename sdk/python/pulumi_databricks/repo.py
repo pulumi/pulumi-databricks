@@ -269,7 +269,7 @@ class Repo(pulumi.CustomResource):
                  commit_hash: Optional[pulumi.Input[str]] = None,
                  git_provider: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 sparse_checkout: Optional[pulumi.Input[pulumi.InputType['RepoSparseCheckoutArgs']]] = None,
+                 sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -393,7 +393,7 @@ class Repo(pulumi.CustomResource):
                  commit_hash: Optional[pulumi.Input[str]] = None,
                  git_provider: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 sparse_checkout: Optional[pulumi.Input[pulumi.InputType['RepoSparseCheckoutArgs']]] = None,
+                 sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -429,7 +429,7 @@ class Repo(pulumi.CustomResource):
             commit_hash: Optional[pulumi.Input[str]] = None,
             git_provider: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
-            sparse_checkout: Optional[pulumi.Input[pulumi.InputType['RepoSparseCheckoutArgs']]] = None,
+            sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
             tag: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             workspace_path: Optional[pulumi.Input[str]] = None) -> 'Repo':

@@ -96,10 +96,10 @@ class ClusterArgs:
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   autoscale=databricks.ClusterAutoscaleArgs(
-                       min_workers=1,
-                       max_workers=50,
-                   ),
+                   autoscale={
+                       "min_workers": 1,
+                       "max_workers": 50,
+                   },
                    spark_conf={
                        "spark.databricks.io.cache.enabled": True,
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -434,10 +434,10 @@ class ClusterArgs:
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ),
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
             spark_conf={
                 "spark.databricks.io.cache.enabled": True,
                 "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -655,10 +655,10 @@ class _ClusterState:
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   autoscale=databricks.ClusterAutoscaleArgs(
-                       min_workers=1,
-                       max_workers=50,
-                   ),
+                   autoscale={
+                       "min_workers": 1,
+                       "max_workers": 50,
+                   },
                    spark_conf={
                        "spark.databricks.io.cache.enabled": True,
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -1013,10 +1013,10 @@ class _ClusterState:
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ),
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
             spark_conf={
                 "spark.databricks.io.cache.enabled": True,
                 "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -1186,26 +1186,26 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
-                 aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
-                 azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
-                 cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
+                 aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+                 azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
-                 docker_image: Optional[pulumi.Input[pulumi.InputType['ClusterDockerImageArgs']]] = None,
+                 docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
                  driver_node_type_id: Optional[pulumi.Input[str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterGcpAttributesArgs']]] = None,
+                 gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
                  idempotency_token: Optional[pulumi.Input[str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterInitScriptArgs']]]]] = None,
+                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterLibraryArgs']]]]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -1215,7 +1215,7 @@ class Cluster(pulumi.CustomResource):
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 workload_type: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadTypeArgs']]] = None,
+                 workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
@@ -1233,10 +1233,10 @@ class Cluster(pulumi.CustomResource):
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            })
         ```
 
         ## Access Control
@@ -1325,10 +1325,10 @@ class Cluster(pulumi.CustomResource):
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   autoscale=databricks.ClusterAutoscaleArgs(
-                       min_workers=1,
-                       max_workers=50,
-                   ),
+                   autoscale={
+                       "min_workers": 1,
+                       "max_workers": 50,
+                   },
                    spark_conf={
                        "spark.databricks.io.cache.enabled": True,
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -1369,10 +1369,10 @@ class Cluster(pulumi.CustomResource):
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ))
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            })
         ```
 
         ## Access Control
@@ -1429,26 +1429,26 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
-                 aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
-                 azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
-                 cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
+                 aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+                 azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
-                 docker_image: Optional[pulumi.Input[pulumi.InputType['ClusterDockerImageArgs']]] = None,
+                 docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
                  driver_node_type_id: Optional[pulumi.Input[str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterGcpAttributesArgs']]] = None,
+                 gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
                  idempotency_token: Optional[pulumi.Input[str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterInitScriptArgs']]]]] = None,
+                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterLibraryArgs']]]]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -1458,7 +1458,7 @@ class Cluster(pulumi.CustomResource):
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 workload_type: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadTypeArgs']]] = None,
+                 workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1516,28 +1516,28 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
-            autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
+            autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
             autotermination_minutes: Optional[pulumi.Input[int]] = None,
-            aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
-            azure_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAzureAttributesArgs']]] = None,
+            aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+            azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
-            cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
+            cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+            cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             data_security_mode: Optional[pulumi.Input[str]] = None,
             default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            docker_image: Optional[pulumi.Input[pulumi.InputType['ClusterDockerImageArgs']]] = None,
+            docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
             driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
             driver_node_type_id: Optional[pulumi.Input[str]] = None,
             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
             enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
-            gcp_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterGcpAttributesArgs']]] = None,
+            gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
             idempotency_token: Optional[pulumi.Input[str]] = None,
-            init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterInitScriptArgs']]]]] = None,
+            init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             is_pinned: Optional[pulumi.Input[bool]] = None,
-            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterLibraryArgs']]]]] = None,
+            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
             node_type_id: Optional[pulumi.Input[str]] = None,
             num_workers: Optional[pulumi.Input[int]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
@@ -1549,7 +1549,7 @@ class Cluster(pulumi.CustomResource):
             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            workload_type: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadTypeArgs']]] = None) -> 'Cluster':
+            workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1604,10 +1604,10 @@ class Cluster(pulumi.CustomResource):
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   autoscale=databricks.ClusterAutoscaleArgs(
-                       min_workers=1,
-                       max_workers=50,
-                   ),
+                   autoscale={
+                       "min_workers": 1,
+                       "max_workers": 50,
+                   },
                    spark_conf={
                        "spark.databricks.io.cache.enabled": True,
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
@@ -1848,10 +1848,10 @@ class Cluster(pulumi.CustomResource):
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            autoscale=databricks.ClusterAutoscaleArgs(
-                min_workers=1,
-                max_workers=50,
-            ),
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
             spark_conf={
                 "spark.databricks.io.cache.enabled": True,
                 "spark.databricks.io.cache.maxDiskUsage": "50g",

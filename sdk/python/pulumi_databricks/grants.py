@@ -373,7 +373,7 @@ class Grants(pulumi.CustomResource):
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
+                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  pipeline: Optional[pulumi.Input[str]] = None,
@@ -422,20 +422,20 @@ class Grants(pulumi.CustomResource):
         sandbox = databricks.Grants("sandbox",
             metastore="metastore_id",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "CREATE_CATALOG",
                         "CREATE_EXTERNAL_LOCATION",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Sharer",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Sharer",
+                    "privileges": [
                         "CREATE_RECIPIENT",
                         "CREATE_SHARE",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -456,33 +456,33 @@ class Grants(pulumi.CustomResource):
         sandbox_grants = databricks.Grants("sandbox",
             catalog=sandbox.name,
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Scientists",
-                    privileges=[
+                {
+                    "principal": "Data Scientists",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "CREATE_TABLE",
                         "SELECT",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "CREATE_SCHEMA",
                         "CREATE_TABLE",
                         "MODIFY",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analyst",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Analyst",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "SELECT",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -503,13 +503,13 @@ class Grants(pulumi.CustomResource):
             })
         things_grants = databricks.Grants("things",
             schema=things.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "USE_SCHEMA",
                     "MODIFY",
                 ],
-            )])
+            }])
         ```
 
         ## Table grants
@@ -523,17 +523,17 @@ class Grants(pulumi.CustomResource):
         customers = databricks.Grants("customers",
             table="main.reporting.customers",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "MODIFY",
                         "SELECT",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["SELECT"],
-                ),
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["SELECT"],
+                },
             ])
         ```
 
@@ -549,13 +549,13 @@ class Grants(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
             things_grants.append(databricks.Grants(f"things-{range['key']}",
                 table=range["value"],
-                grants=[databricks.GrantsGrantArgs(
-                    principal="sensitive",
-                    privileges=[
+                grants=[{
+                    "principal": "sensitive",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                )]))
+                }]))
         ```
 
         ## View grants
@@ -568,10 +568,10 @@ class Grants(pulumi.CustomResource):
 
         customer360 = databricks.Grants("customer360",
             table="main.reporting.customer360",
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Analysts",
-                privileges=["SELECT"],
-            )])
+            grants=[{
+                "principal": "Data Analysts",
+                "privileges": ["SELECT"],
+            }])
         ```
 
         You can also apply grants dynamically with get_views data resource:
@@ -586,13 +586,13 @@ class Grants(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
             customers_grants.append(databricks.Grants(f"customers-{range['key']}",
                 table=range["value"],
-                grants=[databricks.GrantsGrantArgs(
-                    principal="sensitive",
-                    privileges=[
+                grants=[{
+                    "principal": "sensitive",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                )]))
+                }]))
         ```
 
         ## Volume grants
@@ -612,10 +612,10 @@ class Grants(pulumi.CustomResource):
             comment="this volume is managed by terraform")
         volume = databricks.Grants("volume",
             volume=this.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["WRITE_VOLUME"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["WRITE_VOLUME"],
+            }])
         ```
 
         ## Registered model grants
@@ -629,17 +629,17 @@ class Grants(pulumi.CustomResource):
         customers = databricks.Grants("customers",
             model="main.reporting.customer_model",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "APPLY_TAG",
                         "EXECUTE",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["EXECUTE"],
-                ),
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["EXECUTE"],
+                },
             ])
         ```
 
@@ -654,14 +654,14 @@ class Grants(pulumi.CustomResource):
         udf = databricks.Grants("udf",
             function="main.reporting.udf",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=["EXECUTE"],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["EXECUTE"],
-                ),
+                {
+                    "principal": "Data Engineers",
+                    "privileges": ["EXECUTE"],
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["EXECUTE"],
+                },
             ])
         ```
 
@@ -675,16 +675,16 @@ class Grants(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         ## External location grants
@@ -703,34 +703,34 @@ class Grants(pulumi.CustomResource):
         some_grants = databricks.Grants("some",
             external_location=some.id,
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_sp["applicationId"],
-                    privileges=[
+                },
+                {
+                    "principal": my_sp["applicationId"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_group["displayName"],
-                    privileges=[
+                },
+                {
+                    "principal": my_group["displayName"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_user["userName"],
-                    privileges=[
+                },
+                {
+                    "principal": my_user["userName"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -757,13 +757,13 @@ class Grants(pulumi.CustomResource):
             })
         some = databricks.Grants("some",
             foreign_connection=mysql.name,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "CREATE_FOREIGN_CATALOG",
                     "USE_CONNECTION",
                 ],
-            )])
+            }])
         ```
 
         ## Delta Sharing share grants
@@ -778,10 +778,10 @@ class Grants(pulumi.CustomResource):
         some_recipient = databricks.Recipient("some", name="my_recipient")
         some_grants = databricks.Grants("some",
             share=some.name,
-            grants=[databricks.GrantsGrantArgs(
-                principal=some_recipient.name,
-                privileges=["SELECT"],
-            )])
+            grants=[{
+                "principal": some_recipient.name,
+                "privileges": ["SELECT"],
+            }])
         ```
 
         ## Other access control
@@ -845,20 +845,20 @@ class Grants(pulumi.CustomResource):
         sandbox = databricks.Grants("sandbox",
             metastore="metastore_id",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "CREATE_CATALOG",
                         "CREATE_EXTERNAL_LOCATION",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Sharer",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Sharer",
+                    "privileges": [
                         "CREATE_RECIPIENT",
                         "CREATE_SHARE",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -879,33 +879,33 @@ class Grants(pulumi.CustomResource):
         sandbox_grants = databricks.Grants("sandbox",
             catalog=sandbox.name,
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Scientists",
-                    privileges=[
+                {
+                    "principal": "Data Scientists",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "CREATE_TABLE",
                         "SELECT",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "CREATE_SCHEMA",
                         "CREATE_TABLE",
                         "MODIFY",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analyst",
-                    privileges=[
+                },
+                {
+                    "principal": "Data Analyst",
+                    "privileges": [
                         "USE_CATALOG",
                         "USE_SCHEMA",
                         "SELECT",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -926,13 +926,13 @@ class Grants(pulumi.CustomResource):
             })
         things_grants = databricks.Grants("things",
             schema=things.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "USE_SCHEMA",
                     "MODIFY",
                 ],
-            )])
+            }])
         ```
 
         ## Table grants
@@ -946,17 +946,17 @@ class Grants(pulumi.CustomResource):
         customers = databricks.Grants("customers",
             table="main.reporting.customers",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "MODIFY",
                         "SELECT",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["SELECT"],
-                ),
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["SELECT"],
+                },
             ])
         ```
 
@@ -972,13 +972,13 @@ class Grants(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
             things_grants.append(databricks.Grants(f"things-{range['key']}",
                 table=range["value"],
-                grants=[databricks.GrantsGrantArgs(
-                    principal="sensitive",
-                    privileges=[
+                grants=[{
+                    "principal": "sensitive",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                )]))
+                }]))
         ```
 
         ## View grants
@@ -991,10 +991,10 @@ class Grants(pulumi.CustomResource):
 
         customer360 = databricks.Grants("customer360",
             table="main.reporting.customer360",
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Analysts",
-                privileges=["SELECT"],
-            )])
+            grants=[{
+                "principal": "Data Analysts",
+                "privileges": ["SELECT"],
+            }])
         ```
 
         You can also apply grants dynamically with get_views data resource:
@@ -1009,13 +1009,13 @@ class Grants(pulumi.CustomResource):
         for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
             customers_grants.append(databricks.Grants(f"customers-{range['key']}",
                 table=range["value"],
-                grants=[databricks.GrantsGrantArgs(
-                    principal="sensitive",
-                    privileges=[
+                grants=[{
+                    "principal": "sensitive",
+                    "privileges": [
                         "SELECT",
                         "MODIFY",
                     ],
-                )]))
+                }]))
         ```
 
         ## Volume grants
@@ -1035,10 +1035,10 @@ class Grants(pulumi.CustomResource):
             comment="this volume is managed by terraform")
         volume = databricks.Grants("volume",
             volume=this.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["WRITE_VOLUME"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["WRITE_VOLUME"],
+            }])
         ```
 
         ## Registered model grants
@@ -1052,17 +1052,17 @@ class Grants(pulumi.CustomResource):
         customers = databricks.Grants("customers",
             model="main.reporting.customer_model",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "APPLY_TAG",
                         "EXECUTE",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["EXECUTE"],
-                ),
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["EXECUTE"],
+                },
             ])
         ```
 
@@ -1077,14 +1077,14 @@ class Grants(pulumi.CustomResource):
         udf = databricks.Grants("udf",
             function="main.reporting.udf",
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=["EXECUTE"],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal="Data Analysts",
-                    privileges=["EXECUTE"],
-                ),
+                {
+                    "principal": "Data Engineers",
+                    "privileges": ["EXECUTE"],
+                },
+                {
+                    "principal": "Data Analysts",
+                    "privileges": ["EXECUTE"],
+                },
             ])
         ```
 
@@ -1098,16 +1098,16 @@ class Grants(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             name=external_data_access["name"],
-            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=external_data_access["arn"],
-            ),
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=["CREATE_EXTERNAL_TABLE"],
-            )])
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["CREATE_EXTERNAL_TABLE"],
+            }])
         ```
 
         ## External location grants
@@ -1126,34 +1126,34 @@ class Grants(pulumi.CustomResource):
         some_grants = databricks.Grants("some",
             external_location=some.id,
             grants=[
-                databricks.GrantsGrantArgs(
-                    principal="Data Engineers",
-                    privileges=[
+                {
+                    "principal": "Data Engineers",
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_sp["applicationId"],
-                    privileges=[
+                },
+                {
+                    "principal": my_sp["applicationId"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_group["displayName"],
-                    privileges=[
+                },
+                {
+                    "principal": my_group["displayName"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
-                databricks.GrantsGrantArgs(
-                    principal=my_user["userName"],
-                    privileges=[
+                },
+                {
+                    "principal": my_user["userName"],
+                    "privileges": [
                         "CREATE_EXTERNAL_TABLE",
                         "READ_FILES",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -1180,13 +1180,13 @@ class Grants(pulumi.CustomResource):
             })
         some = databricks.Grants("some",
             foreign_connection=mysql.name,
-            grants=[databricks.GrantsGrantArgs(
-                principal="Data Engineers",
-                privileges=[
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
                     "CREATE_FOREIGN_CATALOG",
                     "USE_CONNECTION",
                 ],
-            )])
+            }])
         ```
 
         ## Delta Sharing share grants
@@ -1201,10 +1201,10 @@ class Grants(pulumi.CustomResource):
         some_recipient = databricks.Recipient("some", name="my_recipient")
         some_grants = databricks.Grants("some",
             share=some.name,
-            grants=[databricks.GrantsGrantArgs(
-                principal=some_recipient.name,
-                privileges=["SELECT"],
-            )])
+            grants=[{
+                "principal": some_recipient.name,
+                "privileges": ["SELECT"],
+            }])
         ```
 
         ## Other access control
@@ -1240,7 +1240,7 @@ class Grants(pulumi.CustomResource):
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
+                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  pipeline: Optional[pulumi.Input[str]] = None,
@@ -1289,7 +1289,7 @@ class Grants(pulumi.CustomResource):
             external_location: Optional[pulumi.Input[str]] = None,
             foreign_connection: Optional[pulumi.Input[str]] = None,
             function: Optional[pulumi.Input[str]] = None,
-            grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
+            grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
             metastore: Optional[pulumi.Input[str]] = None,
             model: Optional[pulumi.Input[str]] = None,
             pipeline: Optional[pulumi.Input[str]] = None,

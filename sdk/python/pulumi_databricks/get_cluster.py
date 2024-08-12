@@ -80,7 +80,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 
 
 def get_cluster(cluster_id: Optional[str] = None,
-                cluster_info: Optional[pulumi.InputType['GetClusterClusterInfoArgs']] = None,
+                cluster_info: Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']] = None,
                 cluster_name: Optional[str] = None,
                 id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
@@ -115,7 +115,7 @@ def get_cluster(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The id of the cluster
-    :param pulumi.InputType['GetClusterClusterInfoArgs'] cluster_info: block, consisting of following fields:
+    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
     :param str cluster_name: The exact name of the cluster to search
     :param str id: cluster ID
     """
@@ -136,7 +136,7 @@ def get_cluster(cluster_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_cluster)
 def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       cluster_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetClusterClusterInfoArgs']]]] = None,
+                       cluster_info: Optional[pulumi.Input[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
                        cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
@@ -171,7 +171,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str cluster_id: The id of the cluster
-    :param pulumi.InputType['GetClusterClusterInfoArgs'] cluster_info: block, consisting of following fields:
+    :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
     :param str cluster_name: The exact name of the cluster to search
     :param str id: cluster ID
     """

@@ -341,7 +341,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
@@ -469,19 +469,19 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         workspace = databricks.MwsVpcEndpoint("workspace",
             account_id=databricks_account_id,
             vpc_endpoint_name="PSC Rest API endpoint",
-            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
-                project_id=google_project,
-                psc_endpoint_name="PSC Rest API endpoint",
-                endpoint_region=subnet_region,
-            ))
+            gcp_vpc_endpoint_info={
+                "project_id": google_project,
+                "psc_endpoint_name": "PSC Rest API endpoint",
+                "endpoint_region": subnet_region,
+            })
         relay = databricks.MwsVpcEndpoint("relay",
             account_id=databricks_account_id,
             vpc_endpoint_name="PSC Relay endpoint",
-            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
-                project_id=google_project,
-                psc_endpoint_name="PSC Relay endpoint",
-                endpoint_region=subnet_region,
-            ))
+            gcp_vpc_endpoint_info={
+                "project_id": google_project,
+                "psc_endpoint_name": "PSC Relay endpoint",
+                "endpoint_region": subnet_region,
+            })
         ```
 
         Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
@@ -494,15 +494,15 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             account_id=databricks_account_id,
             workspace_name="gcp workspace",
             location=subnet_region,
-            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
-                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=google_project,
-                ),
-            ),
-            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
-                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
-                master_ip_range="10.3.0.0/28",
-            ),
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
@@ -530,7 +530,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
@@ -663,19 +663,19 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         workspace = databricks.MwsVpcEndpoint("workspace",
             account_id=databricks_account_id,
             vpc_endpoint_name="PSC Rest API endpoint",
-            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
-                project_id=google_project,
-                psc_endpoint_name="PSC Rest API endpoint",
-                endpoint_region=subnet_region,
-            ))
+            gcp_vpc_endpoint_info={
+                "project_id": google_project,
+                "psc_endpoint_name": "PSC Rest API endpoint",
+                "endpoint_region": subnet_region,
+            })
         relay = databricks.MwsVpcEndpoint("relay",
             account_id=databricks_account_id,
             vpc_endpoint_name="PSC Relay endpoint",
-            gcp_vpc_endpoint_info=databricks.MwsVpcEndpointGcpVpcEndpointInfoArgs(
-                project_id=google_project,
-                psc_endpoint_name="PSC Relay endpoint",
-                endpoint_region=subnet_region,
-            ))
+            gcp_vpc_endpoint_info={
+                "project_id": google_project,
+                "psc_endpoint_name": "PSC Relay endpoint",
+                "endpoint_region": subnet_region,
+            })
         ```
 
         Typically the next steps after this would be to create a MwsPrivateAccessSettings and MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a MwsWorkspaces resource:
@@ -688,15 +688,15 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             account_id=databricks_account_id,
             workspace_name="gcp workspace",
             location=subnet_region,
-            cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
-                gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=google_project,
-                ),
-            ),
-            gke_config=databricks.MwsWorkspacesGkeConfigArgs(
-                connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
-                master_ip_range="10.3.0.0/28",
-            ),
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
             network_id=this_databricks_mws_networks["networkId"],
             private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
@@ -738,7 +738,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
@@ -779,7 +779,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             aws_account_id: Optional[pulumi.Input[str]] = None,
             aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
             aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-            gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
+            gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             use_case: Optional[pulumi.Input[str]] = None,
@@ -795,7 +795,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account

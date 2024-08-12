@@ -36,7 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMwsPrivateAccessSettings(ctx, "pas", &databricks.MwsPrivateAccessSettingsArgs{
 //				AccountId:                 pulumi.Any(databricksAccountId),
-//				PrivateAccessSettingsName: pulumi.String(fmt.Sprintf("Private Access Settings for %v", prefix)),
+//				PrivateAccessSettingsName: pulumi.Sprintf("Private Access Settings for %v", prefix),
 //				Region:                    pulumi.Any(region),
 //				PublicAccessEnabled:       pulumi.Bool(true),
 //			})

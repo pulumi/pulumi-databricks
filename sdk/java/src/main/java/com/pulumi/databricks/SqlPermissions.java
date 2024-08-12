@@ -83,17 +83,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
  *             .table("foo")
  *             .privilegeAssignments(            
  *                 SqlPermissionsPrivilegeAssignmentArgs.builder()
- *                     .principal("serge{@literal @}example.com")
+ *                     .principal("serge}{@literal @}{@code example.com")
  *                     .privileges(                    
  *                         "SELECT",
  *                         "MODIFY")
@@ -104,8 +104,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -254,7 +254,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SqlPermissions(String name) {
+    public SqlPermissions(java.lang.String name) {
         this(name, SqlPermissionsArgs.Empty);
     }
     /**
@@ -262,7 +262,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SqlPermissions(String name, @Nullable SqlPermissionsArgs args) {
+    public SqlPermissions(java.lang.String name, @Nullable SqlPermissionsArgs args) {
         this(name, args, null);
     }
     /**
@@ -271,15 +271,22 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SqlPermissions(String name, @Nullable SqlPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlPermissions:SqlPermissions", name, args == null ? SqlPermissionsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SqlPermissions(java.lang.String name, @Nullable SqlPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlPermissions:SqlPermissions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SqlPermissions(String name, Output<String> id, @Nullable SqlPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlPermissions:SqlPermissions", name, state, makeResourceOptions(options, id));
+    private SqlPermissions(java.lang.String name, Output<java.lang.String> id, @Nullable SqlPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlPermissions:SqlPermissions", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SqlPermissionsArgs makeArgs(@Nullable SqlPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SqlPermissionsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -295,7 +302,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SqlPermissions get(String name, Output<String> id, @Nullable SqlPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SqlPermissions get(java.lang.String name, Output<java.lang.String> id, @Nullable SqlPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SqlPermissions(name, id, state, options);
     }
 }
