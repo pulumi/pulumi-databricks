@@ -313,7 +313,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SqlQuery(String name) {
+    public SqlQuery(java.lang.String name) {
         this(name, SqlQueryArgs.Empty);
     }
     /**
@@ -321,7 +321,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SqlQuery(String name, SqlQueryArgs args) {
+    public SqlQuery(java.lang.String name, SqlQueryArgs args) {
         this(name, args, null);
     }
     /**
@@ -330,15 +330,22 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SqlQuery(String name, SqlQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlQuery:SqlQuery", name, args == null ? SqlQueryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SqlQuery(java.lang.String name, SqlQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlQuery:SqlQuery", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SqlQuery(String name, Output<String> id, @Nullable SqlQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlQuery:SqlQuery", name, state, makeResourceOptions(options, id));
+    private SqlQuery(java.lang.String name, Output<java.lang.String> id, @Nullable SqlQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlQuery:SqlQuery", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SqlQueryArgs makeArgs(SqlQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SqlQueryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -354,7 +361,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SqlQuery get(String name, Output<String> id, @Nullable SqlQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SqlQuery get(java.lang.String name, Output<java.lang.String> id, @Nullable SqlQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SqlQuery(name, id, state, options);
     }
 }

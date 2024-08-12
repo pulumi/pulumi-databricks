@@ -189,7 +189,7 @@ class Share(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -212,10 +212,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[databricks.ShareObjectArgs(
-                name=entry["value"],
-                data_object_type="TABLE",
-            ) for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            objects=[{
+                "name": entry["value"],
+                "data_object_type": "TABLE",
+            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
             name="my_share")
         ```
 
@@ -227,11 +227,11 @@ class Share(pulumi.CustomResource):
 
         schema_share = databricks.Share("schema_share",
             name="schema_share",
-            objects=[databricks.ShareObjectArgs(
-                name="catalog_name.schema_name",
-                data_object_type="SCHEMA",
-                history_data_sharing_status="ENABLED",
-            )])
+            objects=[{
+                "name": "catalog_name.schema_name",
+                "data_object_type": "SCHEMA",
+                "history_data_sharing_status": "ENABLED",
+            }])
         ```
 
         Creating a Delta Sharing share and share a table with partitions spec and history
@@ -242,34 +242,34 @@ class Share(pulumi.CustomResource):
 
         some = databricks.Share("some",
             name="my_share",
-            objects=[databricks.ShareObjectArgs(
-                name="my_catalog.my_schema.my_table",
-                data_object_type="TABLE",
-                history_data_sharing_status="ENABLED",
-                partitions=[
-                    databricks.ShareObjectPartitionArgs(
-                        values=[
-                            databricks.ShareObjectPartitionValueArgs(
-                                name="year",
-                                op="EQUAL",
-                                value="2009",
-                            ),
-                            databricks.ShareObjectPartitionValueArgs(
-                                name="month",
-                                op="EQUAL",
-                                value="12",
-                            ),
+            objects=[{
+                "name": "my_catalog.my_schema.my_table",
+                "data_object_type": "TABLE",
+                "history_data_sharing_status": "ENABLED",
+                "partitions": [
+                    {
+                        "values": [
+                            {
+                                "name": "year",
+                                "op": "EQUAL",
+                                "value": "2009",
+                            },
+                            {
+                                "name": "month",
+                                "op": "EQUAL",
+                                "value": "12",
+                            },
                         ],
-                    ),
-                    databricks.ShareObjectPartitionArgs(
-                        values=[databricks.ShareObjectPartitionValueArgs(
-                            name="year",
-                            op="EQUAL",
-                            value="2010",
-                        )],
-                    ),
+                    },
+                    {
+                        "values": [{
+                            "name": "year",
+                            "op": "EQUAL",
+                            "value": "2010",
+                        }],
+                    },
                 ],
-            )])
+            }])
         ```
 
         ## Related Resources
@@ -313,10 +313,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[databricks.ShareObjectArgs(
-                name=entry["value"],
-                data_object_type="TABLE",
-            ) for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            objects=[{
+                "name": entry["value"],
+                "data_object_type": "TABLE",
+            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
             name="my_share")
         ```
 
@@ -328,11 +328,11 @@ class Share(pulumi.CustomResource):
 
         schema_share = databricks.Share("schema_share",
             name="schema_share",
-            objects=[databricks.ShareObjectArgs(
-                name="catalog_name.schema_name",
-                data_object_type="SCHEMA",
-                history_data_sharing_status="ENABLED",
-            )])
+            objects=[{
+                "name": "catalog_name.schema_name",
+                "data_object_type": "SCHEMA",
+                "history_data_sharing_status": "ENABLED",
+            }])
         ```
 
         Creating a Delta Sharing share and share a table with partitions spec and history
@@ -343,34 +343,34 @@ class Share(pulumi.CustomResource):
 
         some = databricks.Share("some",
             name="my_share",
-            objects=[databricks.ShareObjectArgs(
-                name="my_catalog.my_schema.my_table",
-                data_object_type="TABLE",
-                history_data_sharing_status="ENABLED",
-                partitions=[
-                    databricks.ShareObjectPartitionArgs(
-                        values=[
-                            databricks.ShareObjectPartitionValueArgs(
-                                name="year",
-                                op="EQUAL",
-                                value="2009",
-                            ),
-                            databricks.ShareObjectPartitionValueArgs(
-                                name="month",
-                                op="EQUAL",
-                                value="12",
-                            ),
+            objects=[{
+                "name": "my_catalog.my_schema.my_table",
+                "data_object_type": "TABLE",
+                "history_data_sharing_status": "ENABLED",
+                "partitions": [
+                    {
+                        "values": [
+                            {
+                                "name": "year",
+                                "op": "EQUAL",
+                                "value": "2009",
+                            },
+                            {
+                                "name": "month",
+                                "op": "EQUAL",
+                                "value": "12",
+                            },
                         ],
-                    ),
-                    databricks.ShareObjectPartitionArgs(
-                        values=[databricks.ShareObjectPartitionValueArgs(
-                            name="year",
-                            op="EQUAL",
-                            value="2010",
-                        )],
-                    ),
+                    },
+                    {
+                        "values": [{
+                            "name": "year",
+                            "op": "EQUAL",
+                            "value": "2010",
+                        }],
+                    },
                 ],
-            )])
+            }])
         ```
 
         ## Related Resources
@@ -399,7 +399,7 @@ class Share(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -428,7 +428,7 @@ class Share(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+            objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
             owner: Optional[pulumi.Input[str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra

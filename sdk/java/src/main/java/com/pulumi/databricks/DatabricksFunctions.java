@@ -4997,18 +4997,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         var me = new User("me", UserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -5016,8 +5016,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5067,18 +5067,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         var me = new User("me", UserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -5086,8 +5086,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5137,18 +5137,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         var me = new User("me", UserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -5156,8 +5156,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -5207,18 +5207,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         var me = new User("me", UserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -5226,8 +5226,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.id())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14050,18 +14050,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14069,8 +14069,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14122,18 +14122,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14141,8 +14141,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14194,18 +14194,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14213,8 +14213,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14266,18 +14266,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14285,8 +14285,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14338,18 +14338,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14357,8 +14357,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -14410,18 +14410,18 @@ public final class DatabricksFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName("admins")
      *             .build());
      * 
      *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
-     *             .userName("me{@literal @}example.com")
+     *             .userName("me}{@literal @}{@code example.com")
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
@@ -14429,8 +14429,8 @@ public final class DatabricksFunctions {
      *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

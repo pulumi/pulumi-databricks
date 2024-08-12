@@ -70,7 +70,7 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             name=self.name)
 
 
-def get_catalog(catalog_info: Optional[pulumi.InputType['GetCatalogCatalogInfoArgs']] = None,
+def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']] = None,
                 id: Optional[str] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
@@ -92,10 +92,10 @@ def get_catalog(catalog_info: Optional[pulumi.InputType['GetCatalogCatalogInfoAr
     test = databricks.get_catalog(name="test")
     things = databricks.Grants("things",
         catalog=test.name,
-        grants=[databricks.GrantsGrantArgs(
-            principal="sensitive",
-            privileges=["USE_CATALOG"],
-        )])
+        grants=[{
+            "principal": "sensitive",
+            "privileges": ["USE_CATALOG"],
+        }])
     ```
 
     ## Related Resources
@@ -106,7 +106,7 @@ def get_catalog(catalog_info: Optional[pulumi.InputType['GetCatalogCatalogInfoAr
     * get_catalogs to list all catalogs within Unity Catalog metastore.
 
 
-    :param pulumi.InputType['GetCatalogCatalogInfoArgs'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param str id: same as the `name`
     :param str name: name of the catalog
     """
@@ -124,7 +124,7 @@ def get_catalog(catalog_info: Optional[pulumi.InputType['GetCatalogCatalogInfoAr
 
 
 @_utilities.lift_output_func(get_catalog)
-def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetCatalogCatalogInfoArgs']]]] = None,
+def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
@@ -146,10 +146,10 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[pulumi.Input
     test = databricks.get_catalog(name="test")
     things = databricks.Grants("things",
         catalog=test.name,
-        grants=[databricks.GrantsGrantArgs(
-            principal="sensitive",
-            privileges=["USE_CATALOG"],
-        )])
+        grants=[{
+            "principal": "sensitive",
+            "privileges": ["USE_CATALOG"],
+        }])
     ```
 
     ## Related Resources
@@ -160,7 +160,7 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[pulumi.Input
     * get_catalogs to list all catalogs within Unity Catalog metastore.
 
 
-    :param pulumi.InputType['GetCatalogCatalogInfoArgs'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param str id: same as the `name`
     :param str name: name of the catalog
     """

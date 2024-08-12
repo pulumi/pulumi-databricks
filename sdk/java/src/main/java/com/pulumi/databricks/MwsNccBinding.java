@@ -111,7 +111,7 @@ public class MwsNccBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsNccBinding(String name) {
+    public MwsNccBinding(java.lang.String name) {
         this(name, MwsNccBindingArgs.Empty);
     }
     /**
@@ -119,7 +119,7 @@ public class MwsNccBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsNccBinding(String name, MwsNccBindingArgs args) {
+    public MwsNccBinding(java.lang.String name, MwsNccBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -128,15 +128,22 @@ public class MwsNccBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsNccBinding(String name, MwsNccBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNccBinding:MwsNccBinding", name, args == null ? MwsNccBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsNccBinding(java.lang.String name, MwsNccBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNccBinding:MwsNccBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsNccBinding(String name, Output<String> id, @Nullable MwsNccBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNccBinding:MwsNccBinding", name, state, makeResourceOptions(options, id));
+    private MwsNccBinding(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNccBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNccBinding:MwsNccBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsNccBindingArgs makeArgs(MwsNccBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsNccBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -152,7 +159,7 @@ public class MwsNccBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsNccBinding get(String name, Output<String> id, @Nullable MwsNccBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsNccBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNccBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsNccBinding(name, id, state, options);
     }
 }

@@ -263,7 +263,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewAccessControlRuleSet(ctx, "ds_group_rule_set", &databricks.AccessControlRuleSetArgs{
-//				Name: pulumi.String(fmt.Sprintf("accounts/%v/groups/%v/ruleSets/default", accountId, dsDatabricksGroup.Id)),
+//				Name: pulumi.Sprintf("accounts/%v/groups/%v/ruleSets/default", accountId, dsDatabricksGroup.Id),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -322,7 +322,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewAccessControlRuleSet(ctx, "account_rule_set", &databricks.AccessControlRuleSetArgs{
-//				Name: pulumi.String(fmt.Sprintf("accounts/%v/ruleSets/default", accountId)),
+//				Name: pulumi.Sprintf("accounts/%v/ruleSets/default", accountId),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{

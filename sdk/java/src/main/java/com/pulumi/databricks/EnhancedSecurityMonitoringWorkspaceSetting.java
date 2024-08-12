@@ -39,7 +39,7 @@ public class EnhancedSecurityMonitoringWorkspaceSetting extends com.pulumi.resou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnhancedSecurityMonitoringWorkspaceSetting(String name) {
+    public EnhancedSecurityMonitoringWorkspaceSetting(java.lang.String name) {
         this(name, EnhancedSecurityMonitoringWorkspaceSettingArgs.Empty);
     }
     /**
@@ -47,7 +47,7 @@ public class EnhancedSecurityMonitoringWorkspaceSetting extends com.pulumi.resou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnhancedSecurityMonitoringWorkspaceSetting(String name, EnhancedSecurityMonitoringWorkspaceSettingArgs args) {
+    public EnhancedSecurityMonitoringWorkspaceSetting(java.lang.String name, EnhancedSecurityMonitoringWorkspaceSettingArgs args) {
         this(name, args, null);
     }
     /**
@@ -56,15 +56,22 @@ public class EnhancedSecurityMonitoringWorkspaceSetting extends com.pulumi.resou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnhancedSecurityMonitoringWorkspaceSetting(String name, EnhancedSecurityMonitoringWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", name, args == null ? EnhancedSecurityMonitoringWorkspaceSettingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnhancedSecurityMonitoringWorkspaceSetting(java.lang.String name, EnhancedSecurityMonitoringWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnhancedSecurityMonitoringWorkspaceSetting(String name, Output<String> id, @Nullable EnhancedSecurityMonitoringWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", name, state, makeResourceOptions(options, id));
+    private EnhancedSecurityMonitoringWorkspaceSetting(java.lang.String name, Output<java.lang.String> id, @Nullable EnhancedSecurityMonitoringWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnhancedSecurityMonitoringWorkspaceSettingArgs makeArgs(EnhancedSecurityMonitoringWorkspaceSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnhancedSecurityMonitoringWorkspaceSettingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -80,7 +87,7 @@ public class EnhancedSecurityMonitoringWorkspaceSetting extends com.pulumi.resou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnhancedSecurityMonitoringWorkspaceSetting get(String name, Output<String> id, @Nullable EnhancedSecurityMonitoringWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnhancedSecurityMonitoringWorkspaceSetting get(java.lang.String name, Output<java.lang.String> id, @Nullable EnhancedSecurityMonitoringWorkspaceSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnhancedSecurityMonitoringWorkspaceSetting(name, id, state, options);
     }
 }

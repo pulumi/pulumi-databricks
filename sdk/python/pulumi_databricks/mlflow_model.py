@@ -144,7 +144,7 @@ class MlflowModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
@@ -161,14 +161,14 @@ class MlflowModel(pulumi.CustomResource):
             name="My MLflow Model",
             description="My MLflow model description",
             tags=[
-                databricks.MlflowModelTagArgs(
-                    key="key1",
-                    value="value1",
-                ),
-                databricks.MlflowModelTagArgs(
-                    key="key2",
-                    value="value2",
-                ),
+                {
+                    "key": "key1",
+                    "value": "value1",
+                },
+                {
+                    "key": "key2",
+                    "value": "value2",
+                },
             ])
         ```
 
@@ -203,7 +203,7 @@ class MlflowModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the MLflow model.
         :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]] tags: Tags for the MLflow model.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         ...
     @overload
@@ -226,14 +226,14 @@ class MlflowModel(pulumi.CustomResource):
             name="My MLflow Model",
             description="My MLflow model description",
             tags=[
-                databricks.MlflowModelTagArgs(
-                    key="key1",
-                    value="value1",
-                ),
-                databricks.MlflowModelTagArgs(
-                    key="key2",
-                    value="value2",
-                ),
+                {
+                    "key": "key1",
+                    "value": "value1",
+                },
+                {
+                    "key": "key2",
+                    "value": "value2",
+                },
             ])
         ```
 
@@ -281,7 +281,7 @@ class MlflowModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,7 +308,7 @@ class MlflowModel(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             registered_model_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]]] = None) -> 'MlflowModel':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None) -> 'MlflowModel':
         """
         Get an existing MlflowModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -318,7 +318,7 @@ class MlflowModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the MLflow model.
         :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]] tags: Tags for the MLflow model.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

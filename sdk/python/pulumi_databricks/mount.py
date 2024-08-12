@@ -314,17 +314,17 @@ class Mount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abfs: Optional[pulumi.Input[pulumi.InputType['MountAbfsArgs']]] = None,
-                 adl: Optional[pulumi.Input[pulumi.InputType['MountAdlArgs']]] = None,
+                 abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+                 adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 gs: Optional[pulumi.Input[pulumi.InputType['MountGsArgs']]] = None,
+                 gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
-                 s3: Optional[pulumi.Input[pulumi.InputType['MountS3Args']]] = None,
+                 s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
-                 wasb: Optional[pulumi.Input[pulumi.InputType['MountWasbArgs']]] = None,
+                 wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         """
         This resource will mount your cloud storage
@@ -439,10 +439,10 @@ class Mount(pulumi.CustomResource):
         # now you can do `%fs ls /mnt/experiments` in notebooks
         this = databricks.Mount("this",
             name="experiments",
-            s3=databricks.MountS3Args(
-                instance_profile=ds["id"],
-                bucket_name=this_aws_s3_bucket["bucket"],
-            ))
+            s3={
+                "instance_profile": ds["id"],
+                "bucket_name": this_aws_s3_bucket["bucket"],
+            })
         ```
 
         ## abfs block
@@ -493,12 +493,12 @@ class Mount(pulumi.CustomResource):
         marketing = databricks.Mount("marketing",
             name="marketing",
             resource_id=this_container.resource_manager_id,
-            abfs=databricks.MountAbfsArgs(
-                client_id=current["clientId"],
-                client_secret_scope=terraform.name,
-                client_secret_key=service_principal_key.key,
-                initialize_file_system=True,
-            ))
+            abfs={
+                "client_id": current["clientId"],
+                "client_secret_scope": terraform.name,
+                "client_secret_key": service_principal_key.key,
+                "initialize_file_system": True,
+            })
         ```
 
         ## gs block
@@ -516,10 +516,10 @@ class Mount(pulumi.CustomResource):
 
         this_gs = databricks.Mount("this_gs",
             name="gs-mount",
-            gs=databricks.MountGsArgs(
-                service_account="acc@company.iam.gserviceaccount.com",
-                bucket_name="mybucket",
-            ))
+            gs={
+                "service_account": "acc@company.iam.gserviceaccount.com",
+                "bucket_name": "mybucket",
+            })
         ```
 
         ## adl block
@@ -543,14 +543,14 @@ class Mount(pulumi.CustomResource):
 
         mount = databricks.Mount("mount",
             name="{var.RANDOM}",
-            adl=databricks.MountAdlArgs(
-                storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
-                tenant_id=current["tenantId"],
-                client_id=current["clientId"],
-                client_secret_scope=terraform["name"],
-                client_secret_key=service_principal_key["key"],
-                spark_conf_prefix="fs.adl",
-            ))
+            adl={
+                "storage_resource_name": "{env.TEST_STORAGE_ACCOUNT_NAME}",
+                "tenant_id": current["tenantId"],
+                "client_id": current["clientId"],
+                "client_secret_scope": terraform["name"],
+                "client_secret_key": service_principal_key["key"],
+                "spark_conf_prefix": "fs.adl",
+            })
         ```
 
         ## wasb block
@@ -591,13 +591,13 @@ class Mount(pulumi.CustomResource):
             scope=terraform.name)
         marketing_mount = databricks.Mount("marketing",
             name="marketing",
-            wasb=databricks.MountWasbArgs(
-                container_name=marketing.name,
-                storage_account_name=blobaccount.name,
-                auth_type="ACCESS_KEY",
-                token_secret_scope=terraform.name,
-                token_secret_key=storage_key.key,
-            ))
+            wasb={
+                "container_name": marketing.name,
+                "storage_account_name": blobaccount.name,
+                "auth_type": "ACCESS_KEY",
+                "token_secret_scope": terraform.name,
+                "token_secret_key": storage_key.key,
+            })
         ```
 
         ## Migration from other mount resources
@@ -747,10 +747,10 @@ class Mount(pulumi.CustomResource):
         # now you can do `%fs ls /mnt/experiments` in notebooks
         this = databricks.Mount("this",
             name="experiments",
-            s3=databricks.MountS3Args(
-                instance_profile=ds["id"],
-                bucket_name=this_aws_s3_bucket["bucket"],
-            ))
+            s3={
+                "instance_profile": ds["id"],
+                "bucket_name": this_aws_s3_bucket["bucket"],
+            })
         ```
 
         ## abfs block
@@ -801,12 +801,12 @@ class Mount(pulumi.CustomResource):
         marketing = databricks.Mount("marketing",
             name="marketing",
             resource_id=this_container.resource_manager_id,
-            abfs=databricks.MountAbfsArgs(
-                client_id=current["clientId"],
-                client_secret_scope=terraform.name,
-                client_secret_key=service_principal_key.key,
-                initialize_file_system=True,
-            ))
+            abfs={
+                "client_id": current["clientId"],
+                "client_secret_scope": terraform.name,
+                "client_secret_key": service_principal_key.key,
+                "initialize_file_system": True,
+            })
         ```
 
         ## gs block
@@ -824,10 +824,10 @@ class Mount(pulumi.CustomResource):
 
         this_gs = databricks.Mount("this_gs",
             name="gs-mount",
-            gs=databricks.MountGsArgs(
-                service_account="acc@company.iam.gserviceaccount.com",
-                bucket_name="mybucket",
-            ))
+            gs={
+                "service_account": "acc@company.iam.gserviceaccount.com",
+                "bucket_name": "mybucket",
+            })
         ```
 
         ## adl block
@@ -851,14 +851,14 @@ class Mount(pulumi.CustomResource):
 
         mount = databricks.Mount("mount",
             name="{var.RANDOM}",
-            adl=databricks.MountAdlArgs(
-                storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
-                tenant_id=current["tenantId"],
-                client_id=current["clientId"],
-                client_secret_scope=terraform["name"],
-                client_secret_key=service_principal_key["key"],
-                spark_conf_prefix="fs.adl",
-            ))
+            adl={
+                "storage_resource_name": "{env.TEST_STORAGE_ACCOUNT_NAME}",
+                "tenant_id": current["tenantId"],
+                "client_id": current["clientId"],
+                "client_secret_scope": terraform["name"],
+                "client_secret_key": service_principal_key["key"],
+                "spark_conf_prefix": "fs.adl",
+            })
         ```
 
         ## wasb block
@@ -899,13 +899,13 @@ class Mount(pulumi.CustomResource):
             scope=terraform.name)
         marketing_mount = databricks.Mount("marketing",
             name="marketing",
-            wasb=databricks.MountWasbArgs(
-                container_name=marketing.name,
-                storage_account_name=blobaccount.name,
-                auth_type="ACCESS_KEY",
-                token_secret_scope=terraform.name,
-                token_secret_key=storage_key.key,
-            ))
+            wasb={
+                "container_name": marketing.name,
+                "storage_account_name": blobaccount.name,
+                "auth_type": "ACCESS_KEY",
+                "token_secret_scope": terraform.name,
+                "token_secret_key": storage_key.key,
+            })
         ```
 
         ## Migration from other mount resources
@@ -948,17 +948,17 @@ class Mount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abfs: Optional[pulumi.Input[pulumi.InputType['MountAbfsArgs']]] = None,
-                 adl: Optional[pulumi.Input[pulumi.InputType['MountAdlArgs']]] = None,
+                 abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+                 adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 gs: Optional[pulumi.Input[pulumi.InputType['MountGsArgs']]] = None,
+                 gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
-                 s3: Optional[pulumi.Input[pulumi.InputType['MountS3Args']]] = None,
+                 s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
-                 wasb: Optional[pulumi.Input[pulumi.InputType['MountWasbArgs']]] = None,
+                 wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -990,18 +990,18 @@ class Mount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            abfs: Optional[pulumi.Input[pulumi.InputType['MountAbfsArgs']]] = None,
-            adl: Optional[pulumi.Input[pulumi.InputType['MountAdlArgs']]] = None,
+            abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+            adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             encryption_type: Optional[pulumi.Input[str]] = None,
             extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            gs: Optional[pulumi.Input[pulumi.InputType['MountGsArgs']]] = None,
+            gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_id: Optional[pulumi.Input[str]] = None,
-            s3: Optional[pulumi.Input[pulumi.InputType['MountS3Args']]] = None,
+            s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
             source: Optional[pulumi.Input[str]] = None,
             uri: Optional[pulumi.Input[str]] = None,
-            wasb: Optional[pulumi.Input[pulumi.InputType['MountWasbArgs']]] = None) -> 'Mount':
+            wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None) -> 'Mount':
         """
         Get an existing Mount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

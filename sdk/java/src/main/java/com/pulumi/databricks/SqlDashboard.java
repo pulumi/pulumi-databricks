@@ -177,7 +177,7 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SqlDashboard(String name) {
+    public SqlDashboard(java.lang.String name) {
         this(name, SqlDashboardArgs.Empty);
     }
     /**
@@ -185,7 +185,7 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SqlDashboard(String name, @Nullable SqlDashboardArgs args) {
+    public SqlDashboard(java.lang.String name, @Nullable SqlDashboardArgs args) {
         this(name, args, null);
     }
     /**
@@ -194,15 +194,22 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SqlDashboard(String name, @Nullable SqlDashboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlDashboard:SqlDashboard", name, args == null ? SqlDashboardArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SqlDashboard(java.lang.String name, @Nullable SqlDashboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlDashboard:SqlDashboard", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SqlDashboard(String name, Output<String> id, @Nullable SqlDashboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/sqlDashboard:SqlDashboard", name, state, makeResourceOptions(options, id));
+    private SqlDashboard(java.lang.String name, Output<java.lang.String> id, @Nullable SqlDashboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/sqlDashboard:SqlDashboard", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SqlDashboardArgs makeArgs(@Nullable SqlDashboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SqlDashboardArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -218,7 +225,7 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SqlDashboard get(String name, Output<String> id, @Nullable SqlDashboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SqlDashboard get(java.lang.String name, Output<java.lang.String> id, @Nullable SqlDashboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SqlDashboard(name, id, state, options);
     }
 }

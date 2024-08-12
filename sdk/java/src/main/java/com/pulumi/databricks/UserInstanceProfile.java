@@ -41,18 +41,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
  *             .instanceProfileArn("my_instance_profile_arn")
  *             .build());
  * 
  *         var myUser = new User("myUser", UserArgs.builder()
- *             .userName("me{@literal @}example.com")
+ *             .userName("me}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var myUserInstanceProfile = new UserInstanceProfile("myUserInstanceProfile", UserInstanceProfileArgs.builder()
@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  *             .instanceProfileId(instanceProfile.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -117,7 +117,7 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserInstanceProfile(String name) {
+    public UserInstanceProfile(java.lang.String name) {
         this(name, UserInstanceProfileArgs.Empty);
     }
     /**
@@ -125,7 +125,7 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserInstanceProfile(String name, UserInstanceProfileArgs args) {
+    public UserInstanceProfile(java.lang.String name, UserInstanceProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -134,15 +134,22 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserInstanceProfile(String name, UserInstanceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/userInstanceProfile:UserInstanceProfile", name, args == null ? UserInstanceProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserInstanceProfile(java.lang.String name, UserInstanceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/userInstanceProfile:UserInstanceProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserInstanceProfile(String name, Output<String> id, @Nullable UserInstanceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/userInstanceProfile:UserInstanceProfile", name, state, makeResourceOptions(options, id));
+    private UserInstanceProfile(java.lang.String name, Output<java.lang.String> id, @Nullable UserInstanceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/userInstanceProfile:UserInstanceProfile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserInstanceProfileArgs makeArgs(UserInstanceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserInstanceProfileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +165,7 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserInstanceProfile get(String name, Output<String> id, @Nullable UserInstanceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserInstanceProfile get(java.lang.String name, Output<java.lang.String> id, @Nullable UserInstanceProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserInstanceProfile(name, id, state, options);
     }
 }

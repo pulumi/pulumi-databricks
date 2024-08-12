@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var tenantId = "00000000-1111-2222-3333-444444444444";
  * 
  *         final var clientId = "55555555-6666-7777-8888-999999999999";
@@ -81,19 +81,19 @@ import javax.annotation.Nullable;
  * 
  *         var this_ = new Mount("this", MountArgs.builder()
  *             .name("tf-abfss")
- *             .uri(String.format("abfss://%s{@literal @}%s.dfs.core.windows.net", container,storageAcc))
+ *             .uri(String.format("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net", container,storageAcc))
  *             .extraConfigs(Map.ofEntries(
  *                 Map.entry("fs.azure.account.auth.type", "OAuth"),
  *                 Map.entry("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
  *                 Map.entry("fs.azure.account.oauth2.client.id", clientId),
- *                 Map.entry("fs.azure.account.oauth2.client.secret", String.format("{{{{secrets/%s/%s}}}}", secretScope,secretKey)),
+ *                 Map.entry("fs.azure.account.oauth2.client.secret", String.format("}{{{{{@code secrets/%s/%s}}}}}{@code ", secretScope,secretKey)),
  *                 Map.entry("fs.azure.account.oauth2.client.endpoint", String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId)),
  *                 Map.entry("fs.azure.createRemoteFileSystemDuringInitialization", "false")
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -130,12 +130,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var resourceGroup = config.get("resourceGroup");
  *         final var workspaceName = config.get("workspaceName");
@@ -170,15 +170,15 @@ import javax.annotation.Nullable;
  *         var passthrough = new Mount("passthrough", MountArgs.builder()
  *             .name("passthrough-test")
  *             .clusterId(sharedPassthrough.id())
- *             .uri(String.format("abfss://%s{@literal @}%s.dfs.core.windows.net", container,storageAcc))
+ *             .uri(String.format("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net", container,storageAcc))
  *             .extraConfigs(Map.ofEntries(
  *                 Map.entry("fs.azure.account.auth.type", "CustomAccessToken"),
- *                 Map.entry("fs.azure.account.custom.token.provider.class", "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}")
+ *                 Map.entry("fs.azure.account.custom.token.provider.class", "}{{{@code sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}}{@code ")
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -359,22 +359,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var thisGs = new Mount("thisGs", MountArgs.builder()
  *             .name("gs-mount")
  *             .gs(MountGsArgs.builder()
- *                 .serviceAccount("acc{@literal @}company.iam.gserviceaccount.com")
+ *                 .serviceAccount("acc}{@literal @}{@code company.iam.gserviceaccount.com")
  *                 .bucketName("mybucket")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -637,7 +637,7 @@ public class Mount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Mount(String name) {
+    public Mount(java.lang.String name) {
         this(name, MountArgs.Empty);
     }
     /**
@@ -645,7 +645,7 @@ public class Mount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Mount(String name, @Nullable MountArgs args) {
+    public Mount(java.lang.String name, @Nullable MountArgs args) {
         this(name, args, null);
     }
     /**
@@ -654,15 +654,22 @@ public class Mount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Mount(String name, @Nullable MountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mount:Mount", name, args == null ? MountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Mount(java.lang.String name, @Nullable MountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mount:Mount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Mount(String name, Output<String> id, @Nullable MountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mount:Mount", name, state, makeResourceOptions(options, id));
+    private Mount(java.lang.String name, Output<java.lang.String> id, @Nullable MountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mount:Mount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MountArgs makeArgs(@Nullable MountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -678,7 +685,7 @@ public class Mount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Mount get(String name, Output<String> id, @Nullable MountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Mount get(java.lang.String name, Output<java.lang.String> id, @Nullable MountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Mount(name, id, state, options);
     }
 }

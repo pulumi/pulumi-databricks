@@ -58,7 +58,7 @@ class AwaitableGetInstanceProfilesResult(GetInstanceProfilesResult):
             instance_profiles=self.instance_profiles)
 
 
-def get_instance_profiles(instance_profiles: Optional[Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']]] = None,
+def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceProfilesResult:
     """
     Lists all available databricks_instance_profiles.
@@ -76,7 +76,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[pulumi.InputType[
     ```
 
 
-    :param Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
@@ -89,7 +89,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[pulumi.InputType[
 
 
 @_utilities.lift_output_func(get_instance_profiles)
-def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']]]]] = None,
+def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.
@@ -107,6 +107,6 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
     ```
 
 
-    :param Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
     """
     ...

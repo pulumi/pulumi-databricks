@@ -158,7 +158,7 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MwsNetworkConnectivityConfig(String name) {
+    public MwsNetworkConnectivityConfig(java.lang.String name) {
         this(name, MwsNetworkConnectivityConfigArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MwsNetworkConnectivityConfig(String name, MwsNetworkConnectivityConfigArgs args) {
+    public MwsNetworkConnectivityConfig(java.lang.String name, MwsNetworkConnectivityConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,15 +175,22 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MwsNetworkConnectivityConfig(String name, MwsNetworkConnectivityConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig", name, args == null ? MwsNetworkConnectivityConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MwsNetworkConnectivityConfig(java.lang.String name, MwsNetworkConnectivityConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MwsNetworkConnectivityConfig(String name, Output<String> id, @Nullable MwsNetworkConnectivityConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig", name, state, makeResourceOptions(options, id));
+    private MwsNetworkConnectivityConfig(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNetworkConnectivityConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MwsNetworkConnectivityConfigArgs makeArgs(MwsNetworkConnectivityConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MwsNetworkConnectivityConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +206,7 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MwsNetworkConnectivityConfig get(String name, Output<String> id, @Nullable MwsNetworkConnectivityConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MwsNetworkConnectivityConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable MwsNetworkConnectivityConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MwsNetworkConnectivityConfig(name, id, state, options);
     }
 }
