@@ -19,18 +19,18 @@ namespace Pulumi.Databricks.Inputs
         public Inputs.GetInstancePoolPoolInfoAzureAttributesArgs? AzureAttributes { get; set; }
 
         [Input("customTags")]
-        private Dictionary<string, object>? _customTags;
-        public Dictionary<string, object> CustomTags
+        private Dictionary<string, string>? _customTags;
+        public Dictionary<string, string> CustomTags
         {
-            get => _customTags ?? (_customTags = new Dictionary<string, object>());
+            get => _customTags ?? (_customTags = new Dictionary<string, string>());
             set => _customTags = value;
         }
 
         [Input("defaultTags", required: true)]
-        private Dictionary<string, object>? _defaultTags;
-        public Dictionary<string, object> DefaultTags
+        private Dictionary<string, string>? _defaultTags;
+        public Dictionary<string, string> DefaultTags
         {
-            get => _defaultTags ?? (_defaultTags = new Dictionary<string, object>());
+            get => _defaultTags ?? (_defaultTags = new Dictionary<string, string>());
             set => _defaultTags = value;
         }
 

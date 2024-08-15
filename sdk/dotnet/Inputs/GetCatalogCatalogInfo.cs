@@ -82,14 +82,14 @@ namespace Pulumi.Databricks.Inputs
         public string? Name { get; set; }
 
         [Input("options")]
-        private Dictionary<string, object>? _options;
+        private Dictionary<string, string>? _options;
 
         /// <summary>
         /// A map of key-value properties attached to the securable.
         /// </summary>
-        public Dictionary<string, object> Options
+        public Dictionary<string, string> Options
         {
-            get => _options ?? (_options = new Dictionary<string, object>());
+            get => _options ?? (_options = new Dictionary<string, string>());
             set => _options = value;
         }
 
@@ -100,14 +100,14 @@ namespace Pulumi.Databricks.Inputs
         public string? Owner { get; set; }
 
         [Input("properties")]
-        private Dictionary<string, object>? _properties;
+        private Dictionary<string, string>? _properties;
 
         /// <summary>
         /// A map of key-value properties attached to the securable.
         /// </summary>
-        public Dictionary<string, object> Properties
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new Dictionary<string, object>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 

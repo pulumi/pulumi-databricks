@@ -13,7 +13,6 @@ import com.pulumi.databricks.outputs.GetTableTableInfoTableConstraint;
 import com.pulumi.databricks.outputs.GetTableTableInfoViewDependencies;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ public final class GetTableTableInfo {
      */
     private @Nullable String owner;
     private @Nullable String pipelineId;
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
     private @Nullable GetTableTableInfoRowFilter rowFilter;
     /**
      * @return Name of parent schema relative to its parent catalog.
@@ -178,7 +177,7 @@ public final class GetTableTableInfo {
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     public Optional<GetTableTableInfoRowFilter> rowFilter() {
@@ -262,7 +261,7 @@ public final class GetTableTableInfo {
         private @Nullable String name;
         private @Nullable String owner;
         private @Nullable String pipelineId;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         private @Nullable GetTableTableInfoRowFilter rowFilter;
         private @Nullable String schemaName;
         private @Nullable String sqlPath;
@@ -430,7 +429,7 @@ public final class GetTableTableInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

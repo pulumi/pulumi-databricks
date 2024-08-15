@@ -85,14 +85,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// map of properties set on the schema
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

@@ -20,7 +20,7 @@ class InstancePoolArgs:
                  instance_pool_name: pulumi.Input[str],
                  aws_attributes: Optional[pulumi.Input['InstancePoolAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['InstancePoolAzureAttributesArgs']] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disk_spec: Optional[pulumi.Input['InstancePoolDiskSpecArgs']] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  gcp_attributes: Optional[pulumi.Input['InstancePoolGcpAttributesArgs']] = None,
@@ -35,7 +35,7 @@ class InstancePoolArgs:
         The set of arguments for constructing a InstancePool resource.
         :param pulumi.Input[int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         :param pulumi.Input[str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         :param pulumi.Input[bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
@@ -115,14 +115,14 @@ class InstancePoolArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -236,7 +236,7 @@ class _InstancePoolState:
     def __init__(__self__, *,
                  aws_attributes: Optional[pulumi.Input['InstancePoolAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['InstancePoolAzureAttributesArgs']] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disk_spec: Optional[pulumi.Input['InstancePoolDiskSpecArgs']] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  gcp_attributes: Optional[pulumi.Input['InstancePoolGcpAttributesArgs']] = None,
@@ -251,7 +251,7 @@ class _InstancePoolState:
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering InstancePool resources.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         :param pulumi.Input[bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         :param pulumi.Input[str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
@@ -311,14 +311,14 @@ class _InstancePoolState:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -458,7 +458,7 @@ class InstancePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
                  azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
@@ -521,7 +521,7 @@ class InstancePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         :param pulumi.Input[bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         :param pulumi.Input[str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
@@ -600,7 +600,7 @@ class InstancePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
                  azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
                  gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
@@ -653,7 +653,7 @@ class InstancePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aws_attributes: Optional[pulumi.Input[Union['InstancePoolAwsAttributesArgs', 'InstancePoolAwsAttributesArgsDict']]] = None,
             azure_attributes: Optional[pulumi.Input[Union['InstancePoolAzureAttributesArgs', 'InstancePoolAzureAttributesArgsDict']]] = None,
-            custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             disk_spec: Optional[pulumi.Input[Union['InstancePoolDiskSpecArgs', 'InstancePoolDiskSpecArgsDict']]] = None,
             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
             gcp_attributes: Optional[pulumi.Input[Union['InstancePoolGcpAttributesArgs', 'InstancePoolGcpAttributesArgsDict']]] = None,
@@ -673,7 +673,7 @@ class InstancePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         :param pulumi.Input[bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         :param pulumi.Input[str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
@@ -715,7 +715,7 @@ class InstancePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         """

@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -55,20 +54,20 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
      * 
      */
     @Import(name="jobParameters")
-    private @Nullable Output<Map<String,Object>> jobParameters;
+    private @Nullable Output<Map<String,String>> jobParameters;
 
     /**
      * @return (Map) Job parameters for the task
      * 
      */
-    public Optional<Output<Map<String,Object>>> jobParameters() {
+    public Optional<Output<Map<String,String>>> jobParameters() {
         return Optional.ofNullable(this.jobParameters);
     }
 
     @Import(name="notebookParams")
-    private @Nullable Output<Map<String,Object>> notebookParams;
+    private @Nullable Output<Map<String,String>> notebookParams;
 
-    public Optional<Output<Map<String,Object>>> notebookParams() {
+    public Optional<Output<Map<String,String>>> notebookParams() {
         return Optional.ofNullable(this.notebookParams);
     }
 
@@ -80,9 +79,9 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
     }
 
     @Import(name="pythonNamedParams")
-    private @Nullable Output<Map<String,Object>> pythonNamedParams;
+    private @Nullable Output<Map<String,String>> pythonNamedParams;
 
-    public Optional<Output<Map<String,Object>>> pythonNamedParams() {
+    public Optional<Output<Map<String,String>>> pythonNamedParams() {
         return Optional.ofNullable(this.pythonNamedParams);
     }
 
@@ -101,9 +100,9 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
     }
 
     @Import(name="sqlParams")
-    private @Nullable Output<Map<String,Object>> sqlParams;
+    private @Nullable Output<Map<String,String>> sqlParams;
 
-    public Optional<Output<Map<String,Object>>> sqlParams() {
+    public Optional<Output<Map<String,String>>> sqlParams() {
         return Optional.ofNullable(this.sqlParams);
     }
 
@@ -193,7 +192,7 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder jobParameters(@Nullable Output<Map<String,Object>> jobParameters) {
+        public Builder jobParameters(@Nullable Output<Map<String,String>> jobParameters) {
             $.jobParameters = jobParameters;
             return this;
         }
@@ -204,16 +203,16 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder jobParameters(Map<String,Object> jobParameters) {
+        public Builder jobParameters(Map<String,String> jobParameters) {
             return jobParameters(Output.of(jobParameters));
         }
 
-        public Builder notebookParams(@Nullable Output<Map<String,Object>> notebookParams) {
+        public Builder notebookParams(@Nullable Output<Map<String,String>> notebookParams) {
             $.notebookParams = notebookParams;
             return this;
         }
 
-        public Builder notebookParams(Map<String,Object> notebookParams) {
+        public Builder notebookParams(Map<String,String> notebookParams) {
             return notebookParams(Output.of(notebookParams));
         }
 
@@ -226,12 +225,12 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
             return pipelineParams(Output.of(pipelineParams));
         }
 
-        public Builder pythonNamedParams(@Nullable Output<Map<String,Object>> pythonNamedParams) {
+        public Builder pythonNamedParams(@Nullable Output<Map<String,String>> pythonNamedParams) {
             $.pythonNamedParams = pythonNamedParams;
             return this;
         }
 
-        public Builder pythonNamedParams(Map<String,Object> pythonNamedParams) {
+        public Builder pythonNamedParams(Map<String,String> pythonNamedParams) {
             return pythonNamedParams(Output.of(pythonNamedParams));
         }
 
@@ -261,12 +260,12 @@ public final class JobTaskForEachTaskTaskRunJobTaskArgs extends com.pulumi.resou
             return sparkSubmitParams(List.of(sparkSubmitParams));
         }
 
-        public Builder sqlParams(@Nullable Output<Map<String,Object>> sqlParams) {
+        public Builder sqlParams(@Nullable Output<Map<String,String>> sqlParams) {
             $.sqlParams = sqlParams;
             return this;
         }
 
-        public Builder sqlParams(Map<String,Object> sqlParams) {
+        public Builder sqlParams(Map<String,String> sqlParams) {
             return sqlParams(Output.of(sqlParams));
         }
 

@@ -12,7 +12,6 @@ import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -103,13 +102,13 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="customTags")
-    private @Nullable Output<Map<String,Object>> customTags;
+    private @Nullable Output<Map<String,String>> customTags;
 
     /**
      * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
-    public Optional<Output<Map<String,Object>>> customTags() {
+    public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -543,7 +542,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+        public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -554,7 +553,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder customTags(Map<String,Object> customTags) {
+        public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 

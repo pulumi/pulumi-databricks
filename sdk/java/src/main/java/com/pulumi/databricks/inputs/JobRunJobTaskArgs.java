@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -39,13 +38,13 @@ public final class JobRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="jobParameters")
-    private @Nullable Output<Map<String,Object>> jobParameters;
+    private @Nullable Output<Map<String,String>> jobParameters;
 
     /**
      * @return (Map) Job parameters for the task
      * 
      */
-    public Optional<Output<Map<String,Object>>> jobParameters() {
+    public Optional<Output<Map<String,String>>> jobParameters() {
         return Optional.ofNullable(this.jobParameters);
     }
 
@@ -101,7 +100,7 @@ public final class JobRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder jobParameters(@Nullable Output<Map<String,Object>> jobParameters) {
+        public Builder jobParameters(@Nullable Output<Map<String,String>> jobParameters) {
             $.jobParameters = jobParameters;
             return this;
         }
@@ -112,7 +111,7 @@ public final class JobRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder jobParameters(Map<String,Object> jobParameters) {
+        public Builder jobParameters(Map<String,String> jobParameters) {
             return jobParameters(Output.of(jobParameters));
         }
 

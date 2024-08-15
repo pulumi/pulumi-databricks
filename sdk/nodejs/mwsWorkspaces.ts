@@ -258,7 +258,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    public readonly customTags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
@@ -436,7 +436,7 @@ export interface MwsWorkspacesState {
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
@@ -532,7 +532,7 @@ export interface MwsWorkspacesArgs {
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */

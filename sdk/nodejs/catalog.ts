@@ -103,7 +103,7 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    public readonly options!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
@@ -111,7 +111,7 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * Extensible Catalog properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
@@ -207,7 +207,7 @@ export interface CatalogState {
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
@@ -215,7 +215,7 @@ export interface CatalogState {
     /**
      * Extensible Catalog properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
@@ -265,7 +265,7 @@ export interface CatalogArgs {
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
@@ -273,7 +273,7 @@ export interface CatalogArgs {
     /**
      * Extensible Catalog properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */

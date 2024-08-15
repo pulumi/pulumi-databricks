@@ -17,7 +17,6 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterWorkloadT
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -94,9 +93,9 @@ public final class GetJobJobSettingsSettingsNewClusterArgs extends com.pulumi.re
     }
 
     @Import(name="customTags")
-    private @Nullable Output<Map<String,Object>> customTags;
+    private @Nullable Output<Map<String,String>> customTags;
 
-    public Optional<Output<Map<String,Object>>> customTags() {
+    public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -206,16 +205,16 @@ public final class GetJobJobSettingsSettingsNewClusterArgs extends com.pulumi.re
     }
 
     @Import(name="sparkConf")
-    private @Nullable Output<Map<String,Object>> sparkConf;
+    private @Nullable Output<Map<String,String>> sparkConf;
 
-    public Optional<Output<Map<String,Object>>> sparkConf() {
+    public Optional<Output<Map<String,String>>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
     @Import(name="sparkEnvVars")
-    private @Nullable Output<Map<String,Object>> sparkEnvVars;
+    private @Nullable Output<Map<String,String>> sparkEnvVars;
 
-    public Optional<Output<Map<String,Object>>> sparkEnvVars() {
+    public Optional<Output<Map<String,String>>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
@@ -378,12 +377,12 @@ public final class GetJobJobSettingsSettingsNewClusterArgs extends com.pulumi.re
             return clusterName(Output.of(clusterName));
         }
 
-        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+        public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
 
-        public Builder customTags(Map<String,Object> customTags) {
+        public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 
@@ -526,21 +525,21 @@ public final class GetJobJobSettingsSettingsNewClusterArgs extends com.pulumi.re
             return singleUserName(Output.of(singleUserName));
         }
 
-        public Builder sparkConf(@Nullable Output<Map<String,Object>> sparkConf) {
+        public Builder sparkConf(@Nullable Output<Map<String,String>> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
 
-        public Builder sparkConf(Map<String,Object> sparkConf) {
+        public Builder sparkConf(Map<String,String> sparkConf) {
             return sparkConf(Output.of(sparkConf));
         }
 
-        public Builder sparkEnvVars(@Nullable Output<Map<String,Object>> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Output<Map<String,String>> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }
 
-        public Builder sparkEnvVars(Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(Map<String,String> sparkEnvVars) {
             return sparkEnvVars(Output.of(sparkEnvVars));
         }
 

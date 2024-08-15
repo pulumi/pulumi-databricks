@@ -39,7 +39,7 @@ class GetJobsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> Mapping[str, Any]:
+    def ids(self) -> Mapping[str, str]:
         """
         map of Job names to ids
         """
@@ -56,7 +56,7 @@ class AwaitableGetJobsResult(GetJobsResult):
             ids=self.ids)
 
 
-def get_jobs(ids: Optional[Mapping[str, Any]] = None,
+def get_jobs(ids: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -101,7 +101,7 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param Mapping[str, Any] ids: map of Job names to ids
+    :param Mapping[str, str] ids: map of Job names to ids
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -114,7 +114,7 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_jobs)
-def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobsResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -159,6 +159,6 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = N
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param Mapping[str, Any] ids: map of Job names to ids
+    :param Mapping[str, str] ids: map of Job names to ids
     """
     ...

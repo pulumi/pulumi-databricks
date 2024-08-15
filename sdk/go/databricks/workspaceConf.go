@@ -38,8 +38,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
-//				CustomConfig: pulumi.Map{
-//					"enableIpAccessLists": pulumi.Any(true),
+//				CustomConfig: pulumi.StringMap{
+//					"enableIpAccessLists": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ type WorkspaceConf struct {
 	pulumi.CustomResourceState
 
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-	CustomConfig pulumi.MapOutput `pulumi:"customConfig"`
+	CustomConfig pulumi.StringMapOutput `pulumi:"customConfig"`
 }
 
 // NewWorkspaceConf registers a new resource with the given unique name, arguments, and options.
@@ -92,12 +92,12 @@ func GetWorkspaceConf(ctx *pulumi.Context,
 // Input properties used for looking up and filtering WorkspaceConf resources.
 type workspaceConfState struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	CustomConfig map[string]string `pulumi:"customConfig"`
 }
 
 type WorkspaceConfState struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-	CustomConfig pulumi.MapInput
+	CustomConfig pulumi.StringMapInput
 }
 
 func (WorkspaceConfState) ElementType() reflect.Type {
@@ -106,13 +106,13 @@ func (WorkspaceConfState) ElementType() reflect.Type {
 
 type workspaceConfArgs struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	CustomConfig map[string]string `pulumi:"customConfig"`
 }
 
 // The set of arguments for constructing a WorkspaceConf resource.
 type WorkspaceConfArgs struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-	CustomConfig pulumi.MapInput
+	CustomConfig pulumi.StringMapInput
 }
 
 func (WorkspaceConfArgs) ElementType() reflect.Type {
@@ -203,8 +203,8 @@ func (o WorkspaceConfOutput) ToWorkspaceConfOutputWithContext(ctx context.Contex
 }
 
 // Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-func (o WorkspaceConfOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *WorkspaceConf) pulumi.MapOutput { return v.CustomConfig }).(pulumi.MapOutput)
+func (o WorkspaceConfOutput) CustomConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkspaceConf) pulumi.StringMapOutput { return v.CustomConfig }).(pulumi.StringMapOutput)
 }
 
 type WorkspaceConfArrayOutput struct{ *pulumi.OutputState }

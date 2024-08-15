@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.WorkspaceConfArgs;
 import com.pulumi.databricks.inputs.WorkspaceConfState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -75,14 +74,14 @@ public class WorkspaceConf extends com.pulumi.resources.CustomResource {
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      * 
      */
-    @Export(name="customConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> customConfig;
+    @Export(name="customConfig", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> customConfig;
 
     /**
      * @return Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      * 
      */
-    public Output<Optional<Map<String,Object>>> customConfig() {
+    public Output<Optional<Map<String,String>>> customConfig() {
         return Codegen.optional(this.customConfig);
     }
 

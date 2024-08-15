@@ -61,7 +61,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// A map of key-value properties attached to the securable.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Options;
+        public readonly ImmutableDictionary<string, string>? Options;
         /// <summary>
         /// Current owner of the catalog
         /// </summary>
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// A map of key-value properties attached to the securable.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// The name of delta sharing provider.
         /// </summary>
@@ -130,11 +130,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? name,
 
-            ImmutableDictionary<string, object>? options,
+            ImmutableDictionary<string, string>? options,
 
             string? owner,
 
-            ImmutableDictionary<string, object>? properties,
+            ImmutableDictionary<string, string>? properties,
 
             string? providerName,
 

@@ -94,10 +94,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PipelineId { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
-        public InputMap<object> Properties
+        private InputMap<string>? _properties;
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

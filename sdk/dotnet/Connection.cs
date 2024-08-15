@@ -135,7 +135,7 @@ namespace Pulumi.Databricks
         /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         [Output("options")]
-        public Output<ImmutableDictionary<string, object>> Options { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Options { get; private set; } = null!;
 
         /// <summary>
         /// Name of the connection owner.
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
         /// Free-form connection properties.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableDictionary<string, object>?> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
@@ -224,17 +224,17 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options", required: true)]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _options = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -246,14 +246,14 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Free-form connection properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -290,17 +290,17 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _options = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -312,14 +312,14 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Free-form connection properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

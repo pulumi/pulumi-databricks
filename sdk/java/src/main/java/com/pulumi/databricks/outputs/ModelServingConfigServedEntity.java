@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModel;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -30,7 +29,7 @@ public final class ModelServingConfigServedEntity {
      * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
      * 
      */
-    private @Nullable Map<String,Object> environmentVars;
+    private @Nullable Map<String,String> environmentVars;
     /**
      * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
      * 
@@ -91,7 +90,7 @@ public final class ModelServingConfigServedEntity {
      * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
      * 
      */
-    public Map<String,Object> environmentVars() {
+    public Map<String,String> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
     /**
@@ -162,7 +161,7 @@ public final class ModelServingConfigServedEntity {
     public static final class Builder {
         private @Nullable String entityName;
         private @Nullable String entityVersion;
-        private @Nullable Map<String,Object> environmentVars;
+        private @Nullable Map<String,String> environmentVars;
         private @Nullable ModelServingConfigServedEntityExternalModel externalModel;
         private @Nullable String instanceProfileArn;
         private @Nullable Integer maxProvisionedThroughput;
@@ -200,7 +199,7 @@ public final class ModelServingConfigServedEntity {
             return this;
         }
         @CustomType.Setter
-        public Builder environmentVars(@Nullable Map<String,Object> environmentVars) {
+        public Builder environmentVars(@Nullable Map<String,String> environmentVars) {
 
             this.environmentVars = environmentVars;
             return this;

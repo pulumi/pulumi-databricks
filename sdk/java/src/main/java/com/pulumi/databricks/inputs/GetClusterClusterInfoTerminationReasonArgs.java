@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -25,9 +24,9 @@ public final class GetClusterClusterInfoTerminationReasonArgs extends com.pulumi
     }
 
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -73,12 +72,12 @@ public final class GetClusterClusterInfoTerminationReasonArgs extends com.pulumi
             return code(Output.of(code));
         }
 
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 

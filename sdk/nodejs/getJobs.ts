@@ -66,7 +66,7 @@ export interface GetJobsArgs {
     /**
      * map of databricks.Job names to ids
      */
-    ids?: {[key: string]: any};
+    ids?: {[key: string]: string};
 }
 
 /**
@@ -80,7 +80,7 @@ export interface GetJobsResult {
     /**
      * map of databricks.Job names to ids
      */
-    readonly ids: {[key: string]: any};
+    readonly ids: {[key: string]: string};
 }
 /**
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -139,5 +139,5 @@ export interface GetJobsOutputArgs {
     /**
      * map of databricks.Job names to ids
      */
-    ids?: pulumi.Input<{[key: string]: any}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

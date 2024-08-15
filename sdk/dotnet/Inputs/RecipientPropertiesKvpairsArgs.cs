@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class RecipientPropertiesKvpairsArgs : global::Pulumi.ResourceArgs
     {
         [Input("properties", required: true)]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

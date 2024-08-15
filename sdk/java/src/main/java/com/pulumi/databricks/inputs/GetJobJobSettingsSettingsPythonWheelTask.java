@@ -4,7 +4,6 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +24,9 @@ public final class GetJobJobSettingsSettingsPythonWheelTask extends com.pulumi.r
     }
 
     @Import(name="namedParameters")
-    private @Nullable Map<String,Object> namedParameters;
+    private @Nullable Map<String,String> namedParameters;
 
-    public Optional<Map<String,Object>> namedParameters() {
+    public Optional<Map<String,String>> namedParameters() {
         return Optional.ofNullable(this.namedParameters);
     }
 
@@ -77,7 +76,7 @@ public final class GetJobJobSettingsSettingsPythonWheelTask extends com.pulumi.r
             return this;
         }
 
-        public Builder namedParameters(@Nullable Map<String,Object> namedParameters) {
+        public Builder namedParameters(@Nullable Map<String,String> namedParameters) {
             $.namedParameters = namedParameters;
             return this;
         }

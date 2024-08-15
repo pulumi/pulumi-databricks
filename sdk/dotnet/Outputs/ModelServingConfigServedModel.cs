@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? EnvironmentVars;
+        public readonly ImmutableDictionary<string, string>? EnvironmentVars;
         /// <summary>
         /// ARN of the instance profile that the served model will use to access AWS resources.
         /// </summary>
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfigServedModel(
-            ImmutableDictionary<string, object>? environmentVars,
+            ImmutableDictionary<string, string>? environmentVars,
 
             string? instanceProfileArn,
 

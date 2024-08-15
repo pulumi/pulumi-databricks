@@ -237,7 +237,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * An optional map of the tags associated with the job. See tags Configuration Map
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of task specification that the job will execute. See task Configuration Block below.
      */
@@ -485,7 +485,7 @@ export interface JobState {
     /**
      * An optional map of the tags associated with the job. See tags Configuration Map
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of task specification that the job will execute. See task Configuration Block below.
      */
@@ -635,7 +635,7 @@ export interface JobArgs {
     /**
      * An optional map of the tags associated with the job. See tags Configuration Map
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of task specification that the job will execute. See task Configuration Block below.
      */

@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -128,13 +127,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="options")
-    private @Nullable Output<Map<String,Object>> options;
+    private @Nullable Output<Map<String,String>> options;
 
     /**
      * @return For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      * 
      */
-    public Optional<Output<Map<String,Object>>> options() {
+    public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -158,13 +157,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="properties")
-    private @Nullable Output<Map<String,Object>> properties;
+    private @Nullable Output<Map<String,String>> properties;
 
     /**
      * @return Extensible Catalog properties.
      * 
      */
-    public Optional<Output<Map<String,Object>>> properties() {
+    public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -402,7 +401,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder options(@Nullable Output<Map<String,Object>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
@@ -413,7 +412,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 
@@ -444,7 +443,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Output<Map<String,Object>> properties) {
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
@@ -455,7 +454,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }
 

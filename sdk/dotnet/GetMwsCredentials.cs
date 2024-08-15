@@ -100,14 +100,14 @@ namespace Pulumi.Databricks
     public sealed class GetMwsCredentialsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
-        private Dictionary<string, object>? _ids;
+        private Dictionary<string, string>? _ids;
 
         /// <summary>
         /// name-to-id map for all of the credentials in the account
         /// </summary>
-        public Dictionary<string, object> Ids
+        public Dictionary<string, string> Ids
         {
-            get => _ids ?? (_ids = new Dictionary<string, object>());
+            get => _ids ?? (_ids = new Dictionary<string, string>());
             set => _ids = value;
         }
 
@@ -120,14 +120,14 @@ namespace Pulumi.Databricks
     public sealed class GetMwsCredentialsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
-        private InputMap<object>? _ids;
+        private InputMap<string>? _ids;
 
         /// <summary>
         /// name-to-id map for all of the credentials in the account
         /// </summary>
-        public InputMap<object> Ids
+        public InputMap<string> Ids
         {
-            get => _ids ?? (_ids = new InputMap<object>());
+            get => _ids ?? (_ids = new InputMap<string>());
             set => _ids = value;
         }
 
@@ -148,13 +148,13 @@ namespace Pulumi.Databricks
         /// <summary>
         /// name-to-id map for all of the credentials in the account
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Ids;
+        public readonly ImmutableDictionary<string, string> Ids;
 
         [OutputConstructor]
         private GetMwsCredentialsResult(
             string id,
 
-            ImmutableDictionary<string, object> ids)
+            ImmutableDictionary<string, string> ids)
         {
             Id = id;
             Ids = ids;

@@ -64,7 +64,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// map of properties set on the schema
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// the unique identifier of the volume
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? owner,
 
-            ImmutableDictionary<string, object>? properties,
+            ImmutableDictionary<string, string>? properties,
 
             string? schemaId,
 

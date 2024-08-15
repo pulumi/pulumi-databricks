@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class WorkspaceConfState extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="customConfig")
-    private @Nullable Output<Map<String,Object>> customConfig;
+    private @Nullable Output<Map<String,String>> customConfig;
 
     /**
      * @return Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      * 
      */
-    public Optional<Output<Map<String,Object>>> customConfig() {
+    public Optional<Output<Map<String,String>>> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
 
@@ -62,7 +61,7 @@ public final class WorkspaceConfState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder customConfig(@Nullable Output<Map<String,Object>> customConfig) {
+        public Builder customConfig(@Nullable Output<Map<String,String>> customConfig) {
             $.customConfig = customConfig;
             return this;
         }
@@ -73,7 +72,7 @@ public final class WorkspaceConfState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder customConfig(Map<String,Object> customConfig) {
+        public Builder customConfig(Map<String,String> customConfig) {
             return customConfig(Output.of(customConfig));
         }
 

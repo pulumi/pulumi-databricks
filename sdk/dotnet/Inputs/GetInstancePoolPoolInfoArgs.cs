@@ -19,18 +19,18 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.GetInstancePoolPoolInfoAzureAttributesInputArgs>? AzureAttributes { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
-        public InputMap<object> CustomTags
+        private InputMap<string>? _customTags;
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
         [Input("defaultTags", required: true)]
-        private InputMap<object>? _defaultTags;
-        public InputMap<object> DefaultTags
+        private InputMap<string>? _defaultTags;
+        public InputMap<string> DefaultTags
         {
-            get => _defaultTags ?? (_defaultTags = new InputMap<object>());
+            get => _defaultTags ?? (_defaultTags = new InputMap<string>());
             set => _defaultTags = value;
         }
 

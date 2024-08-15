@@ -39,7 +39,7 @@ class GetMetastoresResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> Mapping[str, Any]:
+    def ids(self) -> Mapping[str, str]:
         """
         Mapping of name to id of databricks_metastore
         """
@@ -56,7 +56,7 @@ class AwaitableGetMetastoresResult(GetMetastoresResult):
             ids=self.ids)
 
 
-def get_metastores(ids: Optional[Mapping[str, Any]] = None,
+def get_metastores(ids: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoresResult:
     """
     > **Note** This data source could be only used with account-level provider!
@@ -86,7 +86,7 @@ def get_metastores(ids: Optional[Mapping[str, Any]] = None,
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param Mapping[str, Any] ids: Mapping of name to id of databricks_metastore
+    :param Mapping[str, str] ids: Mapping of name to id of databricks_metastore
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -99,7 +99,7 @@ def get_metastores(ids: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_metastores)
-def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoresResult]:
     """
     > **Note** This data source could be only used with account-level provider!
@@ -129,6 +129,6 @@ def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]
     * Catalog to manage catalogs within Unity Catalog.
 
 
-    :param Mapping[str, Any] ids: Mapping of name to id of databricks_metastore
+    :param Mapping[str, str] ids: Mapping of name to id of databricks_metastore
     """
     ...

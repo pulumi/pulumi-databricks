@@ -14,48 +14,48 @@ __all__ = ['WorkspaceConfArgs', 'WorkspaceConf']
 @pulumi.input_type
 class WorkspaceConfArgs:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a WorkspaceConf resource.
-        :param pulumi.Input[Mapping[str, Any]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_config", value)
 
 
 @pulumi.input_type
 class _WorkspaceConfState:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering WorkspaceConf resources.
-        :param pulumi.Input[Mapping[str, Any]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_config", value)
 
 
@@ -64,7 +64,7 @@ class WorkspaceConf(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         > **Note** This resource has an evolving API, which may change in future versions of the provider.
@@ -86,7 +86,7 @@ class WorkspaceConf(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": True,
+            "enableIpAccessLists": "true",
         })
         ```
 
@@ -96,7 +96,7 @@ class WorkspaceConf(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         ...
     @overload
@@ -124,7 +124,7 @@ class WorkspaceConf(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": True,
+            "enableIpAccessLists": "true",
         })
         ```
 
@@ -147,7 +147,7 @@ class WorkspaceConf(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -168,7 +168,7 @@ class WorkspaceConf(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'WorkspaceConf':
+            custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'WorkspaceConf':
         """
         Get an existing WorkspaceConf resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,7 +176,7 @@ class WorkspaceConf(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -187,7 +187,7 @@ class WorkspaceConf(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def custom_config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """

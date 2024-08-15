@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public final class JobRunJobTask {
      * @return (Map) Job parameters for the task
      * 
      */
-    private @Nullable Map<String,Object> jobParameters;
+    private @Nullable Map<String,String> jobParameters;
 
     private JobRunJobTask() {}
     /**
@@ -37,7 +36,7 @@ public final class JobRunJobTask {
      * @return (Map) Job parameters for the task
      * 
      */
-    public Map<String,Object> jobParameters() {
+    public Map<String,String> jobParameters() {
         return this.jobParameters == null ? Map.of() : this.jobParameters;
     }
 
@@ -51,7 +50,7 @@ public final class JobRunJobTask {
     @CustomType.Builder
     public static final class Builder {
         private Integer jobId;
-        private @Nullable Map<String,Object> jobParameters;
+        private @Nullable Map<String,String> jobParameters;
         public Builder() {}
         public Builder(JobRunJobTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -68,7 +67,7 @@ public final class JobRunJobTask {
             return this;
         }
         @CustomType.Setter
-        public Builder jobParameters(@Nullable Map<String,Object> jobParameters) {
+        public Builder jobParameters(@Nullable Map<String,String> jobParameters) {
 
             this.jobParameters = jobParameters;
             return this;

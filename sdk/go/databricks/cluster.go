@@ -130,12 +130,12 @@ type Cluster struct {
 	// 			SparkVersion:           pulumi.Any(latestLts.Id),
 	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-	// 				"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+	// 				"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("Serverless"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("Serverless"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -145,11 +145,11 @@ type Cluster struct {
 	// 	})
 	// }
 	// ```
-	CustomTags pulumi.MapOutput `pulumi:"customTags"`
+	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrOutput `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags pulumi.MapOutput            `pulumi:"defaultTags"`
+	DefaultTags pulumi.StringMapOutput      `pulumi:"defaultTags"`
 	DockerImage ClusterDockerImagePtrOutput `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId pulumi.StringOutput `pulumi:"driverInstancePoolId"`
@@ -200,10 +200,10 @@ type Cluster struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -228,9 +228,9 @@ type Cluster struct {
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 	// * `spark.databricks.cluster.profile` set to `serverless`
-	SparkConf pulumi.MapOutput `pulumi:"sparkConf"`
+	SparkConf pulumi.StringMapOutput `pulumi:"sparkConf"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars pulumi.MapOutput `pulumi:"sparkEnvVars"`
+	SparkEnvVars pulumi.StringMapOutput `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion pulumi.StringOutput `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -305,12 +305,12 @@ type clusterState struct {
 	// 			SparkVersion:           pulumi.Any(latestLts.Id),
 	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-	// 				"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+	// 				"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("Serverless"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("Serverless"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -320,12 +320,12 @@ type clusterState struct {
 	// 	})
 	// }
 	// ```
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode *string `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags map[string]interface{} `pulumi:"defaultTags"`
-	DockerImage *ClusterDockerImage    `pulumi:"dockerImage"`
+	DefaultTags map[string]string   `pulumi:"defaultTags"`
+	DockerImage *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
@@ -375,10 +375,10 @@ type clusterState struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -403,9 +403,9 @@ type clusterState struct {
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 	// * `spark.databricks.cluster.profile` set to `serverless`
-	SparkConf map[string]interface{} `pulumi:"sparkConf"`
+	SparkConf map[string]string `pulumi:"sparkConf"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars map[string]interface{} `pulumi:"sparkEnvVars"`
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion *string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -448,12 +448,12 @@ type ClusterState struct {
 	// 			SparkVersion:           pulumi.Any(latestLts.Id),
 	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-	// 				"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+	// 				"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("Serverless"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("Serverless"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -463,11 +463,11 @@ type ClusterState struct {
 	// 	})
 	// }
 	// ```
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrInput
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-	DefaultTags pulumi.MapInput
+	DefaultTags pulumi.StringMapInput
 	DockerImage ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
 	DriverInstancePoolId pulumi.StringPtrInput
@@ -518,10 +518,10 @@ type ClusterState struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -546,9 +546,9 @@ type ClusterState struct {
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 	// * `spark.databricks.cluster.profile` set to `serverless`
-	SparkConf pulumi.MapInput
+	SparkConf pulumi.StringMapInput
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars pulumi.MapInput
+	SparkEnvVars pulumi.StringMapInput
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion pulumi.StringPtrInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -594,12 +594,12 @@ type clusterArgs struct {
 	// 			SparkVersion:           pulumi.Any(latestLts.Id),
 	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-	// 				"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+	// 				"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("Serverless"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("Serverless"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -609,7 +609,7 @@ type clusterArgs struct {
 	// 	})
 	// }
 	// ```
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode *string             `pulumi:"dataSecurityMode"`
 	DockerImage      *ClusterDockerImage `pulumi:"dockerImage"`
@@ -662,10 +662,10 @@ type clusterArgs struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -690,9 +690,9 @@ type clusterArgs struct {
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 	// * `spark.databricks.cluster.profile` set to `serverless`
-	SparkConf map[string]interface{} `pulumi:"sparkConf"`
+	SparkConf map[string]string `pulumi:"sparkConf"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars map[string]interface{} `pulumi:"sparkEnvVars"`
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -732,12 +732,12 @@ type ClusterArgs struct {
 	// 			SparkVersion:           pulumi.Any(latestLts.Id),
 	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-	// 				"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+	// 				"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("Serverless"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("Serverless"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -747,7 +747,7 @@ type ClusterArgs struct {
 	// 	})
 	// }
 	// ```
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrInput
 	DockerImage      ClusterDockerImagePtrInput
@@ -800,10 +800,10 @@ type ClusterArgs struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -828,9 +828,9 @@ type ClusterArgs struct {
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 	// * `spark.databricks.cluster.profile` set to `serverless`
-	SparkConf pulumi.MapInput
+	SparkConf pulumi.StringMapInput
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars pulumi.MapInput
+	SparkEnvVars pulumi.StringMapInput
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion pulumi.StringInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -985,12 +985,12 @@ func (o ClusterOutput) ClusterName() pulumi.StringPtrOutput {
 //				SparkVersion:           pulumi.Any(latestLts.Id),
 //				NodeTypeId:             pulumi.Any(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
-//					"spark.databricks.cluster.profile":       pulumi.Any("serverless"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
+//					"spark.databricks.cluster.profile":       pulumi.String("serverless"),
 //				},
-//				CustomTags: pulumi.Map{
-//					"ResourceClass": pulumi.Any("Serverless"),
+//				CustomTags: pulumi.StringMap{
+//					"ResourceClass": pulumi.String("Serverless"),
 //				},
 //			})
 //			if err != nil {
@@ -1001,8 +1001,8 @@ func (o ClusterOutput) ClusterName() pulumi.StringPtrOutput {
 //	}
 //
 // ```
-func (o ClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.CustomTags }).(pulumi.MapOutput)
+func (o ClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 // Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
@@ -1011,8 +1011,8 @@ func (o ClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
 }
 
 // (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
-func (o ClusterOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.DefaultTags }).(pulumi.MapOutput)
+func (o ClusterOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.DefaultTags }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterOutput) DockerImage() ClusterDockerImagePtrOutput {
@@ -1094,10 +1094,10 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //					MinWorkers: pulumi.Int(1),
 //					MaxWorkers: pulumi.Int(50),
 //				},
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.io.cache.enabled":          pulumi.Any(true),
-//					"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
-//					"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.io.cache.enabled":          pulumi.String("true"),
+//					"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
+//					"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
 //				},
 //			})
 //			if err != nil {
@@ -1144,13 +1144,13 @@ func (o ClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 // should have following items:
 // * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
 // * `spark.databricks.cluster.profile` set to `serverless`
-func (o ClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.SparkConf }).(pulumi.MapOutput)
+func (o ClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
 // Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-func (o ClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o ClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 // [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.

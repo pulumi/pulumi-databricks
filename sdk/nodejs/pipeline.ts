@@ -132,7 +132,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    public readonly configuration!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
@@ -254,7 +254,7 @@ export interface PipelineState {
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
@@ -320,7 +320,7 @@ export interface PipelineArgs {
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */

@@ -43,13 +43,13 @@ type SqlTable struct {
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
-	Options pulumi.MapOutput `pulumi:"options"`
+	Options pulumi.StringMapOutput `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
 	Partitions pulumi.StringArrayOutput `pulumi:"partitions"`
 	// Map of table properties.
-	Properties pulumi.MapOutput `pulumi:"properties"`
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -116,13 +116,13 @@ type sqlTableState struct {
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
 	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
 	Partitions []string `pulumi:"partitions"`
 	// Map of table properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -151,13 +151,13 @@ type SqlTableState struct {
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Map of user defined table options. Change forces creation of a new resource.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
 	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
 	Partitions pulumi.StringArrayInput
 	// Map of table properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringPtrInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -190,13 +190,13 @@ type sqlTableArgs struct {
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
 	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
 	Partitions []string `pulumi:"partitions"`
 	// Map of table properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -226,13 +226,13 @@ type SqlTableArgs struct {
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Map of user defined table options. Change forces creation of a new resource.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
 	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
 	Partitions pulumi.StringArrayInput
 	// Map of table properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -368,8 +368,8 @@ func (o SqlTableOutput) Name() pulumi.StringOutput {
 }
 
 // Map of user defined table options. Change forces creation of a new resource.
-func (o SqlTableOutput) Options() pulumi.MapOutput {
-	return o.ApplyT(func(v *SqlTable) pulumi.MapOutput { return v.Options }).(pulumi.MapOutput)
+func (o SqlTableOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // Username/groupname/sp applicationId of the schema owner.
@@ -383,8 +383,8 @@ func (o SqlTableOutput) Partitions() pulumi.StringArrayOutput {
 }
 
 // Map of table properties.
-func (o SqlTableOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *SqlTable) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+func (o SqlTableOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

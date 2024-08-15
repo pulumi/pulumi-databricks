@@ -23,7 +23,7 @@ class MwsWorkspacesArgs:
                  cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
@@ -49,7 +49,7 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[str] location: region of the subnet.
@@ -198,14 +198,14 @@ class MwsWorkspacesArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -420,7 +420,7 @@ class _MwsWorkspacesState:
                  cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
@@ -447,7 +447,7 @@ class _MwsWorkspacesState:
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
@@ -590,14 +590,14 @@ class _MwsWorkspacesState:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -838,7 +838,7 @@ class MwsWorkspaces(pulumi.CustomResource):
                  cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
@@ -1045,7 +1045,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[str] location: region of the subnet.
@@ -1268,7 +1268,7 @@ class MwsWorkspaces(pulumi.CustomResource):
                  cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
@@ -1346,7 +1346,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             credentials_id: Optional[pulumi.Input[str]] = None,
-            custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             customer_managed_key_id: Optional[pulumi.Input[str]] = None,
             deployment_name: Optional[pulumi.Input[str]] = None,
             external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
@@ -1378,7 +1378,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
@@ -1472,7 +1472,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         """

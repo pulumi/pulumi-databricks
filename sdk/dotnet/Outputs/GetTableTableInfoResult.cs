@@ -50,7 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Owner;
         public readonly string? PipelineId;
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
         public readonly Outputs.GetTableTableInfoRowFilterResult? RowFilter;
         /// <summary>
         /// Name of parent schema relative to its parent catalog.
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? pipelineId,
 
-            ImmutableDictionary<string, object>? properties,
+            ImmutableDictionary<string, string>? properties,
 
             Outputs.GetTableTableInfoRowFilterResult? rowFilter,
 

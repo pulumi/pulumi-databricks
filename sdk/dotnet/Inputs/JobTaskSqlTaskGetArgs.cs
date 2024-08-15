@@ -31,14 +31,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskSqlTaskFileGetArgs>? File { get; set; }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 

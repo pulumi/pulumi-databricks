@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         [Output("dataAccessConfig")]
-        public Output<ImmutableDictionary<string, object>?> DataAccessConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> DataAccessConfig { get; private set; } = null!;
 
         [Output("enableServerlessCompute")]
         public Output<bool> EnableServerlessCompute { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Databricks
         /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
         [Output("sqlConfigParams")]
-        public Output<ImmutableDictionary<string, object>?> SqlConfigParams { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> SqlConfigParams { get; private set; } = null!;
 
 
         /// <summary>
@@ -172,14 +172,14 @@ namespace Pulumi.Databricks
     public sealed class SqlGlobalConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataAccessConfig")]
-        private InputMap<object>? _dataAccessConfig;
+        private InputMap<string>? _dataAccessConfig;
 
         /// <summary>
         /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
-        public InputMap<object> DataAccessConfig
+        public InputMap<string> DataAccessConfig
         {
-            get => _dataAccessConfig ?? (_dataAccessConfig = new InputMap<object>());
+            get => _dataAccessConfig ?? (_dataAccessConfig = new InputMap<string>());
             set => _dataAccessConfig = value;
         }
 
@@ -205,14 +205,14 @@ namespace Pulumi.Databricks
         public Input<string>? SecurityPolicy { get; set; }
 
         [Input("sqlConfigParams")]
-        private InputMap<object>? _sqlConfigParams;
+        private InputMap<string>? _sqlConfigParams;
 
         /// <summary>
         /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
-        public InputMap<object> SqlConfigParams
+        public InputMap<string> SqlConfigParams
         {
-            get => _sqlConfigParams ?? (_sqlConfigParams = new InputMap<object>());
+            get => _sqlConfigParams ?? (_sqlConfigParams = new InputMap<string>());
             set => _sqlConfigParams = value;
         }
 
@@ -225,14 +225,14 @@ namespace Pulumi.Databricks
     public sealed class SqlGlobalConfigState : global::Pulumi.ResourceArgs
     {
         [Input("dataAccessConfig")]
-        private InputMap<object>? _dataAccessConfig;
+        private InputMap<string>? _dataAccessConfig;
 
         /// <summary>
         /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
-        public InputMap<object> DataAccessConfig
+        public InputMap<string> DataAccessConfig
         {
-            get => _dataAccessConfig ?? (_dataAccessConfig = new InputMap<object>());
+            get => _dataAccessConfig ?? (_dataAccessConfig = new InputMap<string>());
             set => _dataAccessConfig = value;
         }
 
@@ -258,14 +258,14 @@ namespace Pulumi.Databricks
         public Input<string>? SecurityPolicy { get; set; }
 
         [Input("sqlConfigParams")]
-        private InputMap<object>? _sqlConfigParams;
+        private InputMap<string>? _sqlConfigParams;
 
         /// <summary>
         /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
-        public InputMap<object> SqlConfigParams
+        public InputMap<string> SqlConfigParams
         {
-            get => _sqlConfigParams ?? (_sqlConfigParams = new InputMap<object>());
+            get => _sqlConfigParams ?? (_sqlConfigParams = new InputMap<string>());
             set => _sqlConfigParams = value;
         }
 

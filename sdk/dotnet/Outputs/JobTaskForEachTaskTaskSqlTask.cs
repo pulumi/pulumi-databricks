@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Parameters;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
         /// block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
         /// </summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskSqlTaskFile? file,
 
-            ImmutableDictionary<string, object>? parameters,
+            ImmutableDictionary<string, string>? parameters,
 
             Outputs.JobTaskForEachTaskTaskSqlTaskQuery? query,
 

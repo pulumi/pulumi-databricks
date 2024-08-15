@@ -14,14 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SqlEndpointHealthFailureReason
     {
         public readonly string? Code;
-        public readonly ImmutableDictionary<string, object>? Parameters;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         public readonly string? Type;
 
         [OutputConstructor]
         private SqlEndpointHealthFailureReason(
             string? code,
 
-            ImmutableDictionary<string, object>? parameters,
+            ImmutableDictionary<string, string>? parameters,
 
             string? type)
         {

@@ -5,7 +5,6 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,14 +15,14 @@ public final class RecipientPropertiesKvpairs {
      * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
      * 
      */
-    private Map<String,Object> properties;
+    private Map<String,String> properties;
 
     private RecipientPropertiesKvpairs() {}
     /**
      * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
      * 
      */
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties;
     }
 
@@ -36,7 +35,7 @@ public final class RecipientPropertiesKvpairs {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> properties;
+        private Map<String,String> properties;
         public Builder() {}
         public Builder(RecipientPropertiesKvpairs defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,7 +43,7 @@ public final class RecipientPropertiesKvpairs {
         }
 
         @CustomType.Setter
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             if (properties == null) {
               throw new MissingRequiredPropertyException("RecipientPropertiesKvpairs", "properties");
             }

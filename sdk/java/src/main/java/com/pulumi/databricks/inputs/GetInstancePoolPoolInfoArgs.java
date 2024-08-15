@@ -15,7 +15,6 @@ import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoStatsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -43,16 +42,16 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
     }
 
     @Import(name="customTags")
-    private @Nullable Output<Map<String,Object>> customTags;
+    private @Nullable Output<Map<String,String>> customTags;
 
-    public Optional<Output<Map<String,Object>>> customTags() {
+    public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
     @Import(name="defaultTags", required=true)
-    private Output<Map<String,Object>> defaultTags;
+    private Output<Map<String,String>> defaultTags;
 
-    public Output<Map<String,Object>> defaultTags() {
+    public Output<Map<String,String>> defaultTags() {
         return this.defaultTags;
     }
 
@@ -213,21 +212,21 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
             return azureAttributes(Output.of(azureAttributes));
         }
 
-        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+        public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
 
-        public Builder customTags(Map<String,Object> customTags) {
+        public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 
-        public Builder defaultTags(Output<Map<String,Object>> defaultTags) {
+        public Builder defaultTags(Output<Map<String,String>> defaultTags) {
             $.defaultTags = defaultTags;
             return this;
         }
 
-        public Builder defaultTags(Map<String,Object> defaultTags) {
+        public Builder defaultTags(Map<String,String> defaultTags) {
             return defaultTags(Output.of(defaultTags));
         }
 

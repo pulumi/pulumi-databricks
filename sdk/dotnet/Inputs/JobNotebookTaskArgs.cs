@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobNotebookTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseParameters")]
-        private InputMap<object>? _baseParameters;
+        private InputMap<string>? _baseParameters;
 
         /// <summary>
         /// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         /// </summary>
-        public InputMap<object> BaseParameters
+        public InputMap<string> BaseParameters
         {
-            get => _baseParameters ?? (_baseParameters = new InputMap<object>());
+            get => _baseParameters ?? (_baseParameters = new InputMap<string>());
             set => _baseParameters = value;
         }
 

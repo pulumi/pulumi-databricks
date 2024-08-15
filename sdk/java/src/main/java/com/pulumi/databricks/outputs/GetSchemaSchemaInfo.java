@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -80,7 +79,7 @@ public final class GetSchemaSchemaInfo {
      * @return map of properties set on the schema
      * 
      */
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return the unique identifier of the volume
      * 
@@ -196,7 +195,7 @@ public final class GetSchemaSchemaInfo {
      * @return map of properties set on the schema
      * 
      */
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
@@ -256,7 +255,7 @@ public final class GetSchemaSchemaInfo {
         private @Nullable String metastoreId;
         private @Nullable String name;
         private @Nullable String owner;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         private @Nullable String schemaId;
         private @Nullable String storageLocation;
         private @Nullable String storageRoot;
@@ -358,7 +357,7 @@ public final class GetSchemaSchemaInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

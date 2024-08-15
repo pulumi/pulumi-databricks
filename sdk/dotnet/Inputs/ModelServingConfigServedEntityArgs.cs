@@ -25,14 +25,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? EntityVersion { get; set; }
 
         [Input("environmentVars")]
-        private InputMap<object>? _environmentVars;
+        private InputMap<string>? _environmentVars;
 
         /// <summary>
         /// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
         /// </summary>
-        public InputMap<object> EnvironmentVars
+        public InputMap<string> EnvironmentVars
         {
-            get => _environmentVars ?? (_environmentVars = new InputMap<object>());
+            get => _environmentVars ?? (_environmentVars = new InputMap<string>());
             set => _environmentVars = value;
         }
 

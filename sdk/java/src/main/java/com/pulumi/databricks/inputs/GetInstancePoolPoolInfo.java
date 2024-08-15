@@ -14,7 +14,6 @@ import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoStats;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,16 +41,16 @@ public final class GetInstancePoolPoolInfo extends com.pulumi.resources.InvokeAr
     }
 
     @Import(name="customTags")
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
 
-    public Optional<Map<String,Object>> customTags() {
+    public Optional<Map<String,String>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
     @Import(name="defaultTags", required=true)
-    private Map<String,Object> defaultTags;
+    private Map<String,String> defaultTags;
 
-    public Map<String,Object> defaultTags() {
+    public Map<String,String> defaultTags() {
         return this.defaultTags;
     }
 
@@ -204,12 +203,12 @@ public final class GetInstancePoolPoolInfo extends com.pulumi.resources.InvokeAr
             return this;
         }
 
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
             $.customTags = customTags;
             return this;
         }
 
-        public Builder defaultTags(Map<String,Object> defaultTags) {
+        public Builder defaultTags(Map<String,String> defaultTags) {
             $.defaultTags = defaultTags;
             return this;
         }

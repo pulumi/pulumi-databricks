@@ -1113,12 +1113,12 @@ type ClusterAutoscale struct {
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
-	// 				"spark.master":                     pulumi.Any("local[*]"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.cluster.profile": pulumi.String("singleNode"),
+	// 				"spark.master":                     pulumi.String("local[*]"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("SingleNode"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("SingleNode"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -1185,12 +1185,12 @@ type ClusterAutoscaleArgs struct {
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			SparkConf: pulumi.Map{
-	// 				"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
-	// 				"spark.master":                     pulumi.Any("local[*]"),
+	// 			SparkConf: pulumi.StringMap{
+	// 				"spark.databricks.cluster.profile": pulumi.String("singleNode"),
+	// 				"spark.master":                     pulumi.String("local[*]"),
 	// 			},
-	// 			CustomTags: pulumi.Map{
-	// 				"ResourceClass": pulumi.Any("SingleNode"),
+	// 			CustomTags: pulumi.StringMap{
+	// 				"ResourceClass": pulumi.String("SingleNode"),
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -1324,12 +1324,12 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
-//					"spark.master":                     pulumi.Any("local[*]"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.cluster.profile": pulumi.String("singleNode"),
+//					"spark.master":                     pulumi.String("local[*]"),
 //				},
-//				CustomTags: pulumi.Map{
-//					"ResourceClass": pulumi.Any("SingleNode"),
+//				CustomTags: pulumi.StringMap{
+//					"ResourceClass": pulumi.String("SingleNode"),
 //				},
 //			})
 //			if err != nil {
@@ -1415,12 +1415,12 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
-//					"spark.master":                     pulumi.Any("local[*]"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.cluster.profile": pulumi.String("singleNode"),
+//					"spark.master":                     pulumi.String("local[*]"),
 //				},
-//				CustomTags: pulumi.Map{
-//					"ResourceClass": pulumi.Any("SingleNode"),
+//				CustomTags: pulumi.StringMap{
+//					"ResourceClass": pulumi.String("SingleNode"),
 //				},
 //			})
 //			if err != nil {
@@ -10959,7 +10959,7 @@ type JobJobClusterNewCluster struct {
 	ClusterLogConf            *JobJobClusterNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobJobClusterNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                   `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                    `pulumi:"customTags"`
+	CustomTags                map[string]string                         `pulumi:"customTags"`
 	DataSecurityMode          *string                                   `pulumi:"dataSecurityMode"`
 	DockerImage               *JobJobClusterNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      *string                                   `pulumi:"driverInstancePoolId"`
@@ -10977,8 +10977,8 @@ type JobJobClusterNewCluster struct {
 	PolicyId       *string                          `pulumi:"policyId"`
 	RuntimeEngine  *string                          `pulumi:"runtimeEngine"`
 	SingleUserName *string                          `pulumi:"singleUserName"`
-	SparkConf      map[string]interface{}           `pulumi:"sparkConf"`
-	SparkEnvVars   map[string]interface{}           `pulumi:"sparkEnvVars"`
+	SparkConf      map[string]string                `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]string                `pulumi:"sparkEnvVars"`
 	SparkVersion   string                           `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                         `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -11005,7 +11005,7 @@ type JobJobClusterNewClusterArgs struct {
 	ClusterLogConf            JobJobClusterNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobJobClusterNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                             `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                   `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                             `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                             `pulumi:"dataSecurityMode"`
 	DockerImage               JobJobClusterNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringPtrInput                             `pulumi:"driverInstancePoolId"`
@@ -11023,8 +11023,8 @@ type JobJobClusterNewClusterArgs struct {
 	PolicyId       pulumi.StringPtrInput                    `pulumi:"policyId"`
 	RuntimeEngine  pulumi.StringPtrInput                    `pulumi:"runtimeEngine"`
 	SingleUserName pulumi.StringPtrInput                    `pulumi:"singleUserName"`
-	SparkConf      pulumi.MapInput                          `pulumi:"sparkConf"`
-	SparkEnvVars   pulumi.MapInput                          `pulumi:"sparkEnvVars"`
+	SparkConf      pulumi.StringMapInput                    `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.StringMapInput                    `pulumi:"sparkEnvVars"`
 	SparkVersion   pulumi.StringInput                       `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput                  `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -11089,8 +11089,8 @@ func (o JobJobClusterNewClusterOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobJobClusterNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o JobJobClusterNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -11158,12 +11158,12 @@ func (o JobJobClusterNewClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobJobClusterNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o JobJobClusterNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o JobJobClusterNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o JobJobClusterNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -15735,7 +15735,7 @@ type JobNewCluster struct {
 	ClusterLogConf            *JobNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                         `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}          `pulumi:"customTags"`
+	CustomTags                map[string]string               `pulumi:"customTags"`
 	DataSecurityMode          *string                         `pulumi:"dataSecurityMode"`
 	DockerImage               *JobNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      *string                         `pulumi:"driverInstancePoolId"`
@@ -15753,8 +15753,8 @@ type JobNewCluster struct {
 	PolicyId       *string                `pulumi:"policyId"`
 	RuntimeEngine  *string                `pulumi:"runtimeEngine"`
 	SingleUserName *string                `pulumi:"singleUserName"`
-	SparkConf      map[string]interface{} `pulumi:"sparkConf"`
-	SparkEnvVars   map[string]interface{} `pulumi:"sparkEnvVars"`
+	SparkConf      map[string]string      `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]string      `pulumi:"sparkEnvVars"`
 	SparkVersion   string                 `pulumi:"sparkVersion"`
 	SshPublicKeys  []string               `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -15781,7 +15781,7 @@ type JobNewClusterArgs struct {
 	ClusterLogConf            JobNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                   `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                         `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                   `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                   `pulumi:"dataSecurityMode"`
 	DockerImage               JobNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringPtrInput                   `pulumi:"driverInstancePoolId"`
@@ -15799,8 +15799,8 @@ type JobNewClusterArgs struct {
 	PolicyId       pulumi.StringPtrInput          `pulumi:"policyId"`
 	RuntimeEngine  pulumi.StringPtrInput          `pulumi:"runtimeEngine"`
 	SingleUserName pulumi.StringPtrInput          `pulumi:"singleUserName"`
-	SparkConf      pulumi.MapInput                `pulumi:"sparkConf"`
-	SparkEnvVars   pulumi.MapInput                `pulumi:"sparkEnvVars"`
+	SparkConf      pulumi.StringMapInput          `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.StringMapInput          `pulumi:"sparkEnvVars"`
 	SparkVersion   pulumi.StringInput             `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput        `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -15916,8 +15916,8 @@ func (o JobNewClusterOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v JobNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o JobNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o JobNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -15985,12 +15985,12 @@ func (o JobNewClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v JobNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o JobNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o JobNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v JobNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o JobNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o JobNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -16102,13 +16102,13 @@ func (o JobNewClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobNewCluster) map[string]interface{} {
+func (o JobNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -16256,22 +16256,22 @@ func (o JobNewClusterPtrOutput) SingleUserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobNewCluster) map[string]interface{} {
+func (o JobNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o JobNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobNewCluster) map[string]interface{} {
+func (o JobNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -20250,7 +20250,7 @@ func (o JobNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOut
 
 type JobNotebookTask struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath string `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -20272,7 +20272,7 @@ type JobNotebookTaskInput interface {
 
 type JobNotebookTaskArgs struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath pulumi.StringInput `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -20359,8 +20359,8 @@ func (o JobNotebookTaskOutput) ToJobNotebookTaskPtrOutputWithContext(ctx context
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o JobNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -20403,13 +20403,13 @@ func (o JobNotebookTaskPtrOutput) Elem() JobNotebookTaskOutput {
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobNotebookTask) map[string]interface{} {
+func (o JobNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -20886,7 +20886,7 @@ type JobPythonWheelTask struct {
 	// Python function as entry point for the task
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName *string `pulumi:"packageName"`
 	// Parameters for the task
@@ -20908,7 +20908,7 @@ type JobPythonWheelTaskArgs struct {
 	// Python function as entry point for the task
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters pulumi.MapInput `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
 	// Parameters for the task
@@ -20998,8 +20998,8 @@ func (o JobPythonWheelTaskOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Named parameters for the task
-func (o JobPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
+func (o JobPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -21047,13 +21047,13 @@ func (o JobPythonWheelTaskPtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Named parameters for the task
-func (o JobPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobPythonWheelTask) map[string]interface{} {
+func (o JobPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -21479,7 +21479,7 @@ type JobRunJobTask struct {
 	// (String) ID of the job
 	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobParameters map[string]string `pulumi:"jobParameters"`
 }
 
 // JobRunJobTaskInput is an input type that accepts JobRunJobTaskArgs and JobRunJobTaskOutput values.
@@ -21497,7 +21497,7 @@ type JobRunJobTaskArgs struct {
 	// (String) ID of the job
 	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobParameters pulumi.StringMapInput `pulumi:"jobParameters"`
 }
 
 func (JobRunJobTaskArgs) ElementType() reflect.Type {
@@ -21583,8 +21583,8 @@ func (o JobRunJobTaskOutput) JobId() pulumi.IntOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+func (o JobRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
 }
 
 type JobRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -21622,13 +21622,13 @@ func (o JobRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobRunJobTask) map[string]interface{} {
+func (o JobRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type JobSchedule struct {
@@ -25856,7 +25856,7 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	ClusterLogConf            *JobTaskForEachTaskTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobTaskForEachTaskTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                            `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                             `pulumi:"customTags"`
+	CustomTags                map[string]string                                  `pulumi:"customTags"`
 	DataSecurityMode          *string                                            `pulumi:"dataSecurityMode"`
 	DockerImage               *JobTaskForEachTaskTaskNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      *string                                            `pulumi:"driverInstancePoolId"`
@@ -25874,8 +25874,8 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	PolicyId       *string                                   `pulumi:"policyId"`
 	RuntimeEngine  *string                                   `pulumi:"runtimeEngine"`
 	SingleUserName *string                                   `pulumi:"singleUserName"`
-	SparkConf      map[string]interface{}                    `pulumi:"sparkConf"`
-	SparkEnvVars   map[string]interface{}                    `pulumi:"sparkEnvVars"`
+	SparkConf      map[string]string                         `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]string                         `pulumi:"sparkEnvVars"`
 	SparkVersion   string                                    `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                                  `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -25902,7 +25902,7 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	ClusterLogConf            JobTaskForEachTaskTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobTaskForEachTaskTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                                      `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                            `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                                      `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                                      `pulumi:"dataSecurityMode"`
 	DockerImage               JobTaskForEachTaskTaskNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringPtrInput                                      `pulumi:"driverInstancePoolId"`
@@ -25920,8 +25920,8 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	PolicyId       pulumi.StringPtrInput                             `pulumi:"policyId"`
 	RuntimeEngine  pulumi.StringPtrInput                             `pulumi:"runtimeEngine"`
 	SingleUserName pulumi.StringPtrInput                             `pulumi:"singleUserName"`
-	SparkConf      pulumi.MapInput                                   `pulumi:"sparkConf"`
-	SparkEnvVars   pulumi.MapInput                                   `pulumi:"sparkEnvVars"`
+	SparkConf      pulumi.StringMapInput                             `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.StringMapInput                             `pulumi:"sparkEnvVars"`
 	SparkVersion   pulumi.StringInput                                `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput                           `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -26047,8 +26047,8 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) ClusterName() pulumi.StringPtrOu
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -26122,12 +26122,12 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) SingleUserName() pulumi.StringPt
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -26241,13 +26241,13 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) ClusterName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o JobTaskForEachTaskTaskNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -26395,22 +26395,22 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SingleUserName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -30425,7 +30425,7 @@ func (o JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsPtrOutput) Notebooks(
 
 type JobTaskForEachTaskTaskNotebookTask struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath string `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -30447,7 +30447,7 @@ type JobTaskForEachTaskTaskNotebookTaskInput interface {
 
 type JobTaskForEachTaskTaskNotebookTaskArgs struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath pulumi.StringInput `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -30534,8 +30534,8 @@ func (o JobTaskForEachTaskTaskNotebookTaskOutput) ToJobTaskForEachTaskTaskNotebo
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobTaskForEachTaskTaskNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -30578,13 +30578,13 @@ func (o JobTaskForEachTaskTaskNotebookTaskPtrOutput) Elem() JobTaskForEachTaskTa
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobTaskForEachTaskTaskNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskNotebookTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -30968,7 +30968,7 @@ type JobTaskForEachTaskTaskPythonWheelTask struct {
 	// Python function as entry point for the task
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName *string `pulumi:"packageName"`
 	// Parameters for the task
@@ -30990,7 +30990,7 @@ type JobTaskForEachTaskTaskPythonWheelTaskArgs struct {
 	// Python function as entry point for the task
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters pulumi.MapInput `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
 	// Parameters for the task
@@ -31080,8 +31080,8 @@ func (o JobTaskForEachTaskTaskPythonWheelTaskOutput) EntryPoint() pulumi.StringP
 }
 
 // Named parameters for the task
-func (o JobTaskForEachTaskTaskPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -31129,13 +31129,13 @@ func (o JobTaskForEachTaskTaskPythonWheelTaskPtrOutput) EntryPoint() pulumi.Stri
 }
 
 // Named parameters for the task
-func (o JobTaskForEachTaskTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskPythonWheelTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -31164,13 +31164,13 @@ type JobTaskForEachTaskTaskRunJobTask struct {
 	// (String) ID of the job
 	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters     map[string]interface{}                          `pulumi:"jobParameters"`
-	NotebookParams    map[string]interface{}                          `pulumi:"notebookParams"`
+	JobParameters     map[string]string                               `pulumi:"jobParameters"`
+	NotebookParams    map[string]string                               `pulumi:"notebookParams"`
 	PipelineParams    *JobTaskForEachTaskTaskRunJobTaskPipelineParams `pulumi:"pipelineParams"`
-	PythonNamedParams map[string]interface{}                          `pulumi:"pythonNamedParams"`
+	PythonNamedParams map[string]string                               `pulumi:"pythonNamedParams"`
 	PythonParams      []string                                        `pulumi:"pythonParams"`
 	SparkSubmitParams []string                                        `pulumi:"sparkSubmitParams"`
-	SqlParams         map[string]interface{}                          `pulumi:"sqlParams"`
+	SqlParams         map[string]string                               `pulumi:"sqlParams"`
 }
 
 // JobTaskForEachTaskTaskRunJobTaskInput is an input type that accepts JobTaskForEachTaskTaskRunJobTaskArgs and JobTaskForEachTaskTaskRunJobTaskOutput values.
@@ -31190,13 +31190,13 @@ type JobTaskForEachTaskTaskRunJobTaskArgs struct {
 	// (String) ID of the job
 	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters     pulumi.MapInput                                        `pulumi:"jobParameters"`
-	NotebookParams    pulumi.MapInput                                        `pulumi:"notebookParams"`
+	JobParameters     pulumi.StringMapInput                                  `pulumi:"jobParameters"`
+	NotebookParams    pulumi.StringMapInput                                  `pulumi:"notebookParams"`
 	PipelineParams    JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrInput `pulumi:"pipelineParams"`
-	PythonNamedParams pulumi.MapInput                                        `pulumi:"pythonNamedParams"`
+	PythonNamedParams pulumi.StringMapInput                                  `pulumi:"pythonNamedParams"`
 	PythonParams      pulumi.StringArrayInput                                `pulumi:"pythonParams"`
 	SparkSubmitParams pulumi.StringArrayInput                                `pulumi:"sparkSubmitParams"`
-	SqlParams         pulumi.MapInput                                        `pulumi:"sqlParams"`
+	SqlParams         pulumi.StringMapInput                                  `pulumi:"sqlParams"`
 }
 
 func (JobTaskForEachTaskTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -31290,12 +31290,12 @@ func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskOutput) NotebookParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.NotebookParams }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) NotebookParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]string { return v.NotebookParams }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskRunJobTaskOutput) PipelineParams() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
@@ -31304,8 +31304,8 @@ func (o JobTaskForEachTaskTaskRunJobTaskOutput) PipelineParams() JobTaskForEachT
 	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskOutput) PythonNamedParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.PythonNamedParams }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) PythonNamedParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]string { return v.PythonNamedParams }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskRunJobTaskOutput) PythonParams() pulumi.StringArrayOutput {
@@ -31316,8 +31316,8 @@ func (o JobTaskForEachTaskTaskRunJobTaskOutput) SparkSubmitParams() pulumi.Strin
 	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) []string { return v.SparkSubmitParams }).(pulumi.StringArrayOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskOutput) SqlParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]interface{} { return v.SqlParams }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskRunJobTaskOutput) SqlParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskRunJobTask) map[string]string { return v.SqlParams }).(pulumi.StringMapOutput)
 }
 
 type JobTaskForEachTaskTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -31373,22 +31373,22 @@ func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) NotebookParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) NotebookParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NotebookParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PipelineParams() JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput {
@@ -31400,13 +31400,13 @@ func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PipelineParams() JobTaskForEa
 	}).(JobTaskForEachTaskTaskRunJobTaskPipelineParamsPtrOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.PythonNamedParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) PythonParams() pulumi.StringArrayOutput {
@@ -31427,13 +31427,13 @@ func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) SparkSubmitParams() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) SqlParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskRunJobTaskPtrOutput) SqlParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SqlParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type JobTaskForEachTaskTaskRunJobTaskPipelineParams struct {
@@ -32072,7 +32072,7 @@ type JobTaskForEachTaskTaskSqlTask struct {
 	// block consisting of single string fields:
 	File *JobTaskForEachTaskTaskSqlTaskFile `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query *JobTaskForEachTaskTaskSqlTaskQuery `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -32098,7 +32098,7 @@ type JobTaskForEachTaskTaskSqlTaskArgs struct {
 	// block consisting of single string fields:
 	File JobTaskForEachTaskTaskSqlTaskFilePtrInput `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query JobTaskForEachTaskTaskSqlTaskQueryPtrInput `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -32198,8 +32198,8 @@ func (o JobTaskForEachTaskTaskSqlTaskOutput) File() JobTaskForEachTaskTaskSqlTas
 }
 
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-func (o JobTaskForEachTaskTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o JobTaskForEachTaskTaskSqlTaskOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTask) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -32267,13 +32267,13 @@ func (o JobTaskForEachTaskTaskSqlTaskPtrOutput) File() JobTaskForEachTaskTaskSql
 }
 
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-func (o JobTaskForEachTaskTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskForEachTaskTaskSqlTask) map[string]interface{} {
+func (o JobTaskForEachTaskTaskSqlTaskPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskSqlTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -34990,7 +34990,7 @@ type JobTaskNewCluster struct {
 	ClusterLogConf            *JobTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []JobTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                             `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}              `pulumi:"customTags"`
+	CustomTags                map[string]string                   `pulumi:"customTags"`
 	DataSecurityMode          *string                             `pulumi:"dataSecurityMode"`
 	DockerImage               *JobTaskNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      *string                             `pulumi:"driverInstancePoolId"`
@@ -35008,8 +35008,8 @@ type JobTaskNewCluster struct {
 	PolicyId       *string                    `pulumi:"policyId"`
 	RuntimeEngine  *string                    `pulumi:"runtimeEngine"`
 	SingleUserName *string                    `pulumi:"singleUserName"`
-	SparkConf      map[string]interface{}     `pulumi:"sparkConf"`
-	SparkEnvVars   map[string]interface{}     `pulumi:"sparkEnvVars"`
+	SparkConf      map[string]string          `pulumi:"sparkConf"`
+	SparkEnvVars   map[string]string          `pulumi:"sparkEnvVars"`
 	SparkVersion   string                     `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                   `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -35036,7 +35036,7 @@ type JobTaskNewClusterArgs struct {
 	ClusterLogConf            JobTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         JobTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                       `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                             `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                       `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                       `pulumi:"dataSecurityMode"`
 	DockerImage               JobTaskNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringPtrInput                       `pulumi:"driverInstancePoolId"`
@@ -35054,8 +35054,8 @@ type JobTaskNewClusterArgs struct {
 	PolicyId       pulumi.StringPtrInput              `pulumi:"policyId"`
 	RuntimeEngine  pulumi.StringPtrInput              `pulumi:"runtimeEngine"`
 	SingleUserName pulumi.StringPtrInput              `pulumi:"singleUserName"`
-	SparkConf      pulumi.MapInput                    `pulumi:"sparkConf"`
-	SparkEnvVars   pulumi.MapInput                    `pulumi:"sparkEnvVars"`
+	SparkConf      pulumi.StringMapInput              `pulumi:"sparkConf"`
+	SparkEnvVars   pulumi.StringMapInput              `pulumi:"sparkEnvVars"`
 	SparkVersion   pulumi.StringInput                 `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput            `pulumi:"sshPublicKeys"`
 	// isn't supported
@@ -35171,8 +35171,8 @@ func (o JobTaskNewClusterOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o JobTaskNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -35240,12 +35240,12 @@ func (o JobTaskNewClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o JobTaskNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o JobTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -35357,13 +35357,13 @@ func (o JobTaskNewClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskNewCluster) map[string]interface{} {
+func (o JobTaskNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -35511,22 +35511,22 @@ func (o JobTaskNewClusterPtrOutput) SingleUserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobTaskNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskNewCluster) map[string]interface{} {
+func (o JobTaskNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskNewCluster) map[string]interface{} {
+func (o JobTaskNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -39505,7 +39505,7 @@ func (o JobTaskNewClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPt
 
 type JobTaskNotebookTask struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath string `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -39527,7 +39527,7 @@ type JobTaskNotebookTaskInput interface {
 
 type JobTaskNotebookTaskArgs struct {
 	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath pulumi.StringInput `pulumi:"notebookPath"`
 	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
@@ -39614,8 +39614,8 @@ func (o JobTaskNotebookTaskOutput) ToJobTaskNotebookTaskPtrOutputWithContext(ctx
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobTaskNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o JobTaskNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -39658,13 +39658,13 @@ func (o JobTaskNotebookTaskPtrOutput) Elem() JobTaskNotebookTaskOutput {
 }
 
 // (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-func (o JobTaskNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskNotebookTask) map[string]interface{} {
+func (o JobTaskNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
@@ -40048,7 +40048,7 @@ type JobTaskPythonWheelTask struct {
 	// Python function as entry point for the task
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName *string `pulumi:"packageName"`
 	// Parameters for the task
@@ -40070,7 +40070,7 @@ type JobTaskPythonWheelTaskArgs struct {
 	// Python function as entry point for the task
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Named parameters for the task
-	NamedParameters pulumi.MapInput `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
 	// Parameters for the task
@@ -40160,8 +40160,8 @@ func (o JobTaskPythonWheelTaskOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Named parameters for the task
-func (o JobTaskPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
+func (o JobTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -40209,13 +40209,13 @@ func (o JobTaskPythonWheelTaskPtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Named parameters for the task
-func (o JobTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskPythonWheelTask) map[string]interface{} {
+func (o JobTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Name of Python package
@@ -40244,13 +40244,13 @@ type JobTaskRunJobTask struct {
 	// (String) ID of the job
 	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters     map[string]interface{}           `pulumi:"jobParameters"`
-	NotebookParams    map[string]interface{}           `pulumi:"notebookParams"`
+	JobParameters     map[string]string                `pulumi:"jobParameters"`
+	NotebookParams    map[string]string                `pulumi:"notebookParams"`
 	PipelineParams    *JobTaskRunJobTaskPipelineParams `pulumi:"pipelineParams"`
-	PythonNamedParams map[string]interface{}           `pulumi:"pythonNamedParams"`
+	PythonNamedParams map[string]string                `pulumi:"pythonNamedParams"`
 	PythonParams      []string                         `pulumi:"pythonParams"`
 	SparkSubmitParams []string                         `pulumi:"sparkSubmitParams"`
-	SqlParams         map[string]interface{}           `pulumi:"sqlParams"`
+	SqlParams         map[string]string                `pulumi:"sqlParams"`
 }
 
 // JobTaskRunJobTaskInput is an input type that accepts JobTaskRunJobTaskArgs and JobTaskRunJobTaskOutput values.
@@ -40270,13 +40270,13 @@ type JobTaskRunJobTaskArgs struct {
 	// (String) ID of the job
 	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
-	JobParameters     pulumi.MapInput                         `pulumi:"jobParameters"`
-	NotebookParams    pulumi.MapInput                         `pulumi:"notebookParams"`
+	JobParameters     pulumi.StringMapInput                   `pulumi:"jobParameters"`
+	NotebookParams    pulumi.StringMapInput                   `pulumi:"notebookParams"`
 	PipelineParams    JobTaskRunJobTaskPipelineParamsPtrInput `pulumi:"pipelineParams"`
-	PythonNamedParams pulumi.MapInput                         `pulumi:"pythonNamedParams"`
+	PythonNamedParams pulumi.StringMapInput                   `pulumi:"pythonNamedParams"`
 	PythonParams      pulumi.StringArrayInput                 `pulumi:"pythonParams"`
 	SparkSubmitParams pulumi.StringArrayInput                 `pulumi:"sparkSubmitParams"`
-	SqlParams         pulumi.MapInput                         `pulumi:"sqlParams"`
+	SqlParams         pulumi.StringMapInput                   `pulumi:"sqlParams"`
 }
 
 func (JobTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -40370,20 +40370,20 @@ func (o JobTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+func (o JobTaskRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskRunJobTaskOutput) NotebookParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.NotebookParams }).(pulumi.MapOutput)
+func (o JobTaskRunJobTaskOutput) NotebookParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]string { return v.NotebookParams }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskRunJobTaskOutput) PipelineParams() JobTaskRunJobTaskPipelineParamsPtrOutput {
 	return o.ApplyT(func(v JobTaskRunJobTask) *JobTaskRunJobTaskPipelineParams { return v.PipelineParams }).(JobTaskRunJobTaskPipelineParamsPtrOutput)
 }
 
-func (o JobTaskRunJobTaskOutput) PythonNamedParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.PythonNamedParams }).(pulumi.MapOutput)
+func (o JobTaskRunJobTaskOutput) PythonNamedParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]string { return v.PythonNamedParams }).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskRunJobTaskOutput) PythonParams() pulumi.StringArrayOutput {
@@ -40394,8 +40394,8 @@ func (o JobTaskRunJobTaskOutput) SparkSubmitParams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskRunJobTask) []string { return v.SparkSubmitParams }).(pulumi.StringArrayOutput)
 }
 
-func (o JobTaskRunJobTaskOutput) SqlParams() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.SqlParams }).(pulumi.MapOutput)
+func (o JobTaskRunJobTaskOutput) SqlParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]string { return v.SqlParams }).(pulumi.StringMapOutput)
 }
 
 type JobTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -40451,22 +40451,22 @@ func (o JobTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
 }
 
 // (Map) Job parameters for the task
-func (o JobTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+func (o JobTaskRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskRunJobTaskPtrOutput) NotebookParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+func (o JobTaskRunJobTaskPtrOutput) NotebookParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NotebookParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskRunJobTaskPtrOutput) PipelineParams() JobTaskRunJobTaskPipelineParamsPtrOutput {
@@ -40478,13 +40478,13 @@ func (o JobTaskRunJobTaskPtrOutput) PipelineParams() JobTaskRunJobTaskPipelinePa
 	}).(JobTaskRunJobTaskPipelineParamsPtrOutput)
 }
 
-func (o JobTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+func (o JobTaskRunJobTaskPtrOutput) PythonNamedParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.PythonNamedParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o JobTaskRunJobTaskPtrOutput) PythonParams() pulumi.StringArrayOutput {
@@ -40505,13 +40505,13 @@ func (o JobTaskRunJobTaskPtrOutput) SparkSubmitParams() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o JobTaskRunJobTaskPtrOutput) SqlParams() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+func (o JobTaskRunJobTaskPtrOutput) SqlParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SqlParams
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type JobTaskRunJobTaskPipelineParams struct {
@@ -41150,7 +41150,7 @@ type JobTaskSqlTask struct {
 	// block consisting of single string fields:
 	File *JobTaskSqlTaskFile `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query *JobTaskSqlTaskQuery `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -41176,7 +41176,7 @@ type JobTaskSqlTaskArgs struct {
 	// block consisting of single string fields:
 	File JobTaskSqlTaskFilePtrInput `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
 	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -41276,8 +41276,8 @@ func (o JobTaskSqlTaskOutput) File() JobTaskSqlTaskFilePtrOutput {
 }
 
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-func (o JobTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v JobTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o JobTaskSqlTaskOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -41345,13 +41345,13 @@ func (o JobTaskSqlTaskPtrOutput) File() JobTaskSqlTaskFilePtrOutput {
 }
 
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-func (o JobTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *JobTaskSqlTask) map[string]interface{} {
+func (o JobTaskSqlTaskPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -48348,7 +48348,7 @@ type ModelServingConfigServedEntity struct {
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion *string `pulumi:"entityVersion"`
 	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-	EnvironmentVars map[string]interface{} `pulumi:"environmentVars"`
+	EnvironmentVars map[string]string `pulumi:"environmentVars"`
 	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel *ModelServingConfigServedEntityExternalModel `pulumi:"externalModel"`
 	// ARN of the instance profile that the served entity uses to access AWS resources.
@@ -48384,7 +48384,7 @@ type ModelServingConfigServedEntityArgs struct {
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion pulumi.StringPtrInput `pulumi:"entityVersion"`
 	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-	EnvironmentVars pulumi.MapInput `pulumi:"environmentVars"`
+	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
 	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel ModelServingConfigServedEntityExternalModelPtrInput `pulumi:"externalModel"`
 	// ARN of the instance profile that the served entity uses to access AWS resources.
@@ -48465,8 +48465,8 @@ func (o ModelServingConfigServedEntityOutput) EntityVersion() pulumi.StringPtrOu
 }
 
 // An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-func (o ModelServingConfigServedEntityOutput) EnvironmentVars() pulumi.MapOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntity) map[string]interface{} { return v.EnvironmentVars }).(pulumi.MapOutput)
+func (o ModelServingConfigServedEntityOutput) EnvironmentVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntity) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
 }
 
 // The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
@@ -50048,7 +50048,7 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiK
 
 type ModelServingConfigServedModel struct {
 	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-	EnvironmentVars map[string]interface{} `pulumi:"environmentVars"`
+	EnvironmentVars map[string]string `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
@@ -50078,7 +50078,7 @@ type ModelServingConfigServedModelInput interface {
 
 type ModelServingConfigServedModelArgs struct {
 	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-	EnvironmentVars pulumi.MapInput `pulumi:"environmentVars"`
+	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
@@ -50147,8 +50147,8 @@ func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutp
 }
 
 // a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.MapOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]interface{} { return v.EnvironmentVars }).(pulumi.MapOutput)
+func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
 }
 
 // ARN of the instance profile that the served model will use to access AWS resources.
@@ -56496,7 +56496,7 @@ type PipelineCluster struct {
 	AwsAttributes             *PipelineClusterAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes           *PipelineClusterAzureAttributes `pulumi:"azureAttributes"`
 	ClusterLogConf            *PipelineClusterClusterLogConf  `pulumi:"clusterLogConf"`
-	CustomTags                map[string]interface{}          `pulumi:"customTags"`
+	CustomTags                map[string]string               `pulumi:"customTags"`
 	DriverInstancePoolId      *string                         `pulumi:"driverInstancePoolId"`
 	DriverNodeTypeId          *string                         `pulumi:"driverNodeTypeId"`
 	EnableLocalDiskEncryption *bool                           `pulumi:"enableLocalDiskEncryption"`
@@ -56507,8 +56507,8 @@ type PipelineCluster struct {
 	NodeTypeId                *string                         `pulumi:"nodeTypeId"`
 	NumWorkers                *int                            `pulumi:"numWorkers"`
 	PolicyId                  *string                         `pulumi:"policyId"`
-	SparkConf                 map[string]interface{}          `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}          `pulumi:"sparkEnvVars"`
+	SparkConf                 map[string]string               `pulumi:"sparkConf"`
+	SparkEnvVars              map[string]string               `pulumi:"sparkEnvVars"`
 	SshPublicKeys             []string                        `pulumi:"sshPublicKeys"`
 }
 
@@ -56529,7 +56529,7 @@ type PipelineClusterArgs struct {
 	AwsAttributes             PipelineClusterAwsAttributesPtrInput   `pulumi:"awsAttributes"`
 	AzureAttributes           PipelineClusterAzureAttributesPtrInput `pulumi:"azureAttributes"`
 	ClusterLogConf            PipelineClusterClusterLogConfPtrInput  `pulumi:"clusterLogConf"`
-	CustomTags                pulumi.MapInput                        `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                  `pulumi:"customTags"`
 	DriverInstancePoolId      pulumi.StringPtrInput                  `pulumi:"driverInstancePoolId"`
 	DriverNodeTypeId          pulumi.StringPtrInput                  `pulumi:"driverNodeTypeId"`
 	EnableLocalDiskEncryption pulumi.BoolPtrInput                    `pulumi:"enableLocalDiskEncryption"`
@@ -56540,8 +56540,8 @@ type PipelineClusterArgs struct {
 	NodeTypeId                pulumi.StringPtrInput                  `pulumi:"nodeTypeId"`
 	NumWorkers                pulumi.IntPtrInput                     `pulumi:"numWorkers"`
 	PolicyId                  pulumi.StringPtrInput                  `pulumi:"policyId"`
-	SparkConf                 pulumi.MapInput                        `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                        `pulumi:"sparkEnvVars"`
+	SparkConf                 pulumi.StringMapInput                  `pulumi:"sparkConf"`
+	SparkEnvVars              pulumi.StringMapInput                  `pulumi:"sparkEnvVars"`
 	SshPublicKeys             pulumi.StringArrayInput                `pulumi:"sshPublicKeys"`
 }
 
@@ -56616,8 +56616,8 @@ func (o PipelineClusterOutput) ClusterLogConf() PipelineClusterClusterLogConfPtr
 	return o.ApplyT(func(v PipelineCluster) *PipelineClusterClusterLogConf { return v.ClusterLogConf }).(PipelineClusterClusterLogConfPtrOutput)
 }
 
-func (o PipelineClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o PipelineClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o PipelineClusterOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
@@ -56660,12 +56660,12 @@ func (o PipelineClusterOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineCluster) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o PipelineClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o PipelineClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o PipelineClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o PipelineClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
@@ -61578,7 +61578,7 @@ func (o RecipientIpAccessListPtrOutput) AllowedIpAddresses() pulumi.StringArrayO
 
 type RecipientPropertiesKvpairs struct {
 	// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 }
 
 // RecipientPropertiesKvpairsInput is an input type that accepts RecipientPropertiesKvpairsArgs and RecipientPropertiesKvpairsOutput values.
@@ -61594,7 +61594,7 @@ type RecipientPropertiesKvpairsInput interface {
 
 type RecipientPropertiesKvpairsArgs struct {
 	// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
 func (RecipientPropertiesKvpairsArgs) ElementType() reflect.Type {
@@ -61675,8 +61675,8 @@ func (o RecipientPropertiesKvpairsOutput) ToRecipientPropertiesKvpairsPtrOutputW
 }
 
 // a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-func (o RecipientPropertiesKvpairsOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v RecipientPropertiesKvpairs) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o RecipientPropertiesKvpairsOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RecipientPropertiesKvpairs) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 type RecipientPropertiesKvpairsPtrOutput struct{ *pulumi.OutputState }
@@ -61704,13 +61704,13 @@ func (o RecipientPropertiesKvpairsPtrOutput) Elem() RecipientPropertiesKvpairsOu
 }
 
 // a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-func (o RecipientPropertiesKvpairsPtrOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *RecipientPropertiesKvpairs) map[string]interface{} {
+func (o RecipientPropertiesKvpairsPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RecipientPropertiesKvpairs) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Properties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type RecipientToken struct {
@@ -63221,9 +63221,9 @@ func (o SqlEndpointHealthArrayOutput) Index(i pulumi.IntInput) SqlEndpointHealth
 }
 
 type SqlEndpointHealthFailureReason struct {
-	Code       *string                `pulumi:"code"`
-	Parameters map[string]interface{} `pulumi:"parameters"`
-	Type       *string                `pulumi:"type"`
+	Code       *string           `pulumi:"code"`
+	Parameters map[string]string `pulumi:"parameters"`
+	Type       *string           `pulumi:"type"`
 }
 
 // SqlEndpointHealthFailureReasonInput is an input type that accepts SqlEndpointHealthFailureReasonArgs and SqlEndpointHealthFailureReasonOutput values.
@@ -63239,7 +63239,7 @@ type SqlEndpointHealthFailureReasonInput interface {
 
 type SqlEndpointHealthFailureReasonArgs struct {
 	Code       pulumi.StringPtrInput `pulumi:"code"`
-	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	Type       pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -63324,8 +63324,8 @@ func (o SqlEndpointHealthFailureReasonOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlEndpointHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-func (o SqlEndpointHealthFailureReasonOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v SqlEndpointHealthFailureReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o SqlEndpointHealthFailureReasonOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqlEndpointHealthFailureReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o SqlEndpointHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
@@ -63365,13 +63365,13 @@ func (o SqlEndpointHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SqlEndpointHealthFailureReasonPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) map[string]interface{} {
+func (o SqlEndpointHealthFailureReasonPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o SqlEndpointHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
@@ -69543,11 +69543,11 @@ type GetCatalogCatalogInfo struct {
 	// name of the catalog
 	Name *string `pulumi:"name"`
 	// A map of key-value properties attached to the securable.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Current owner of the catalog
 	Owner *string `pulumi:"owner"`
 	// A map of key-value properties attached to the securable.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// The name of delta sharing provider.
 	ProviderName     *string                                `pulumi:"providerName"`
 	ProvisioningInfo *GetCatalogCatalogInfoProvisioningInfo `pulumi:"provisioningInfo"`
@@ -69603,11 +69603,11 @@ type GetCatalogCatalogInfoArgs struct {
 	// name of the catalog
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A map of key-value properties attached to the securable.
-	Options pulumi.MapInput `pulumi:"options"`
+	Options pulumi.StringMapInput `pulumi:"options"`
 	// Current owner of the catalog
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// A map of key-value properties attached to the securable.
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The name of delta sharing provider.
 	ProviderName     pulumi.StringPtrInput                         `pulumi:"providerName"`
 	ProvisioningInfo GetCatalogCatalogInfoProvisioningInfoPtrInput `pulumi:"provisioningInfo"`
@@ -69766,8 +69766,8 @@ func (o GetCatalogCatalogInfoOutput) Name() pulumi.StringPtrOutput {
 }
 
 // A map of key-value properties attached to the securable.
-func (o GetCatalogCatalogInfoOutput) Options() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
+func (o GetCatalogCatalogInfoOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]string { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // Current owner of the catalog
@@ -69776,8 +69776,8 @@ func (o GetCatalogCatalogInfoOutput) Owner() pulumi.StringPtrOutput {
 }
 
 // A map of key-value properties attached to the securable.
-func (o GetCatalogCatalogInfoOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o GetCatalogCatalogInfoOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // The name of delta sharing provider.
@@ -69968,13 +69968,13 @@ func (o GetCatalogCatalogInfoPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // A map of key-value properties attached to the securable.
-func (o GetCatalogCatalogInfoPtrOutput) Options() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]interface{} {
+func (o GetCatalogCatalogInfoPtrOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Options
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Current owner of the catalog
@@ -69988,13 +69988,13 @@ func (o GetCatalogCatalogInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 }
 
 // A map of key-value properties attached to the securable.
-func (o GetCatalogCatalogInfoPtrOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]interface{} {
+func (o GetCatalogCatalogInfoPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Properties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The name of delta sharing provider.
@@ -70399,10 +70399,10 @@ type GetClusterClusterInfo struct {
 	ClusterSource   *string `pulumi:"clusterSource"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
 	// Additional tags for cluster resources.
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 	DataSecurityMode *string                           `pulumi:"dataSecurityMode"`
-	DefaultTags      map[string]interface{}            `pulumi:"defaultTags"`
+	DefaultTags      map[string]string                 `pulumi:"defaultTags"`
 	DockerImage      *GetClusterClusterInfoDockerImage `pulumi:"dockerImage"`
 	Driver           *GetClusterClusterInfoDriver      `pulumi:"driver"`
 	// similar to `instancePoolId`, but for driver node.
@@ -70431,10 +70431,10 @@ type GetClusterClusterInfo struct {
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters.
-	SparkConf      map[string]interface{} `pulumi:"sparkConf"`
-	SparkContextId *int                   `pulumi:"sparkContextId"`
+	SparkConf      map[string]string `pulumi:"sparkConf"`
+	SparkContextId *int              `pulumi:"sparkContextId"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars map[string]interface{} `pulumi:"sparkEnvVars"`
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 	SparkVersion *string                    `pulumi:"sparkVersion"`
 	Spec         *GetClusterClusterInfoSpec `pulumi:"spec"`
@@ -70476,10 +70476,10 @@ type GetClusterClusterInfoArgs struct {
 	ClusterSource   pulumi.StringPtrInput `pulumi:"clusterSource"`
 	CreatorUserName pulumi.StringPtrInput `pulumi:"creatorUserName"`
 	// Additional tags for cluster resources.
-	CustomTags pulumi.MapInput `pulumi:"customTags"`
+	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
 	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 	DataSecurityMode pulumi.StringPtrInput                    `pulumi:"dataSecurityMode"`
-	DefaultTags      pulumi.MapInput                          `pulumi:"defaultTags"`
+	DefaultTags      pulumi.StringMapInput                    `pulumi:"defaultTags"`
 	DockerImage      GetClusterClusterInfoDockerImagePtrInput `pulumi:"dockerImage"`
 	Driver           GetClusterClusterInfoDriverPtrInput      `pulumi:"driver"`
 	// similar to `instancePoolId`, but for driver node.
@@ -70508,10 +70508,10 @@ type GetClusterClusterInfoArgs struct {
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters.
-	SparkConf      pulumi.MapInput    `pulumi:"sparkConf"`
-	SparkContextId pulumi.IntPtrInput `pulumi:"sparkContextId"`
+	SparkConf      pulumi.StringMapInput `pulumi:"sparkConf"`
+	SparkContextId pulumi.IntPtrInput    `pulumi:"sparkContextId"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars pulumi.MapInput `pulumi:"sparkEnvVars"`
+	SparkEnvVars pulumi.StringMapInput `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 	SparkVersion pulumi.StringPtrInput             `pulumi:"sparkVersion"`
 	Spec         GetClusterClusterInfoSpecPtrInput `pulumi:"spec"`
@@ -70654,8 +70654,8 @@ func (o GetClusterClusterInfoOutput) CreatorUserName() pulumi.StringPtrOutput {
 }
 
 // Additional tags for cluster resources.
-func (o GetClusterClusterInfoOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfo) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 // Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
@@ -70663,8 +70663,8 @@ func (o GetClusterClusterInfoOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfo) map[string]interface{} { return v.DefaultTags }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.DefaultTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoOutput) DockerImage() GetClusterClusterInfoDockerImagePtrOutput {
@@ -70749,8 +70749,8 @@ func (o GetClusterClusterInfoOutput) SingleUserName() pulumi.StringPtrOutput {
 }
 
 // Map with key-value pairs to fine-tune Spark clusters.
-func (o GetClusterClusterInfoOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfo) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoOutput) SparkContextId() pulumi.IntPtrOutput {
@@ -70758,8 +70758,8 @@ func (o GetClusterClusterInfoOutput) SparkContextId() pulumi.IntPtrOutput {
 }
 
 // Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-func (o GetClusterClusterInfoOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfo) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 // [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
@@ -70936,13 +70936,13 @@ func (o GetClusterClusterInfoPtrOutput) CreatorUserName() pulumi.StringPtrOutput
 }
 
 // Additional tags for cluster resources.
-func (o GetClusterClusterInfoPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]interface{} {
+func (o GetClusterClusterInfoPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
@@ -70955,13 +70955,13 @@ func (o GetClusterClusterInfoPtrOutput) DataSecurityMode() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoPtrOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]interface{} {
+func (o GetClusterClusterInfoPtrOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoPtrOutput) DockerImage() GetClusterClusterInfoDockerImagePtrOutput {
@@ -71136,13 +71136,13 @@ func (o GetClusterClusterInfoPtrOutput) SingleUserName() pulumi.StringPtrOutput 
 }
 
 // Map with key-value pairs to fine-tune Spark clusters.
-func (o GetClusterClusterInfoPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]interface{} {
+func (o GetClusterClusterInfoPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoPtrOutput) SparkContextId() pulumi.IntPtrOutput {
@@ -71155,13 +71155,13 @@ func (o GetClusterClusterInfoPtrOutput) SparkContextId() pulumi.IntPtrOutput {
 }
 
 // Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-func (o GetClusterClusterInfoPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]interface{} {
+func (o GetClusterClusterInfoPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
@@ -74935,7 +74935,7 @@ type GetClusterClusterInfoSpec struct {
 	// The exact name of the cluster to search
 	ClusterName *string `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 	DataSecurityMode *string                               `pulumi:"dataSecurityMode"`
 	DockerImage      *GetClusterClusterInfoSpecDockerImage `pulumi:"dockerImage"`
@@ -74964,9 +74964,9 @@ type GetClusterClusterInfoSpec struct {
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters.
-	SparkConf map[string]interface{} `pulumi:"sparkConf"`
+	SparkConf map[string]string `pulumi:"sparkConf"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars map[string]interface{} `pulumi:"sparkEnvVars"`
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster.
@@ -74997,7 +74997,7 @@ type GetClusterClusterInfoSpecArgs struct {
 	// The exact name of the cluster to search
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
-	CustomTags pulumi.MapInput `pulumi:"customTags"`
+	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
 	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 	DataSecurityMode pulumi.StringPtrInput                        `pulumi:"dataSecurityMode"`
 	DockerImage      GetClusterClusterInfoSpecDockerImagePtrInput `pulumi:"dockerImage"`
@@ -75026,9 +75026,9 @@ type GetClusterClusterInfoSpecArgs struct {
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters.
-	SparkConf pulumi.MapInput `pulumi:"sparkConf"`
+	SparkConf pulumi.StringMapInput `pulumi:"sparkConf"`
 	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-	SparkEnvVars pulumi.MapInput `pulumi:"sparkEnvVars"`
+	SparkEnvVars pulumi.StringMapInput `pulumi:"sparkEnvVars"`
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 	SparkVersion pulumi.StringInput `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster.
@@ -75150,8 +75150,8 @@ func (o GetClusterClusterInfoSpecOutput) ClusterName() pulumi.StringPtrOutput {
 }
 
 // Additional tags for cluster resources.
-func (o GetClusterClusterInfoSpecOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoSpecOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 // Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
@@ -75230,13 +75230,13 @@ func (o GetClusterClusterInfoSpecOutput) SingleUserName() pulumi.StringPtrOutput
 }
 
 // Map with key-value pairs to fine-tune Spark clusters.
-func (o GetClusterClusterInfoSpecOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoSpecOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
 // Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-func (o GetClusterClusterInfoSpecOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoSpecOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 // [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
@@ -75352,13 +75352,13 @@ func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput
 }
 
 // Additional tags for cluster resources.
-func (o GetClusterClusterInfoSpecPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]interface{} {
+func (o GetClusterClusterInfoSpecPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
@@ -75517,23 +75517,23 @@ func (o GetClusterClusterInfoSpecPtrOutput) SingleUserName() pulumi.StringPtrOut
 }
 
 // Map with key-value pairs to fine-tune Spark clusters.
-func (o GetClusterClusterInfoSpecPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]interface{} {
+func (o GetClusterClusterInfoSpecPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-func (o GetClusterClusterInfoSpecPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]interface{} {
+func (o GetClusterClusterInfoSpecPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
@@ -79521,9 +79521,9 @@ func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) Notebooks() pulum
 }
 
 type GetClusterClusterInfoTerminationReason struct {
-	Code       *string                `pulumi:"code"`
-	Parameters map[string]interface{} `pulumi:"parameters"`
-	Type       *string                `pulumi:"type"`
+	Code       *string           `pulumi:"code"`
+	Parameters map[string]string `pulumi:"parameters"`
+	Type       *string           `pulumi:"type"`
 }
 
 // GetClusterClusterInfoTerminationReasonInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs and GetClusterClusterInfoTerminationReasonOutput values.
@@ -79539,7 +79539,7 @@ type GetClusterClusterInfoTerminationReasonInput interface {
 
 type GetClusterClusterInfoTerminationReasonArgs struct {
 	Code       pulumi.StringPtrInput `pulumi:"code"`
-	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	Type       pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -79624,8 +79624,8 @@ func (o GetClusterClusterInfoTerminationReasonOutput) Code() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoTerminationReasonOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoTerminationReasonOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoTerminationReasonOutput) Type() pulumi.StringPtrOutput {
@@ -79665,13 +79665,13 @@ func (o GetClusterClusterInfoTerminationReasonPtrOutput) Code() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoTerminationReasonPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) map[string]interface{} {
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoTerminationReasonPtrOutput) Type() pulumi.StringPtrOutput {
@@ -81229,8 +81229,8 @@ func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDet
 type GetInstancePoolPoolInfo struct {
 	AwsAttributes                      *GetInstancePoolPoolInfoAwsAttributes               `pulumi:"awsAttributes"`
 	AzureAttributes                    *GetInstancePoolPoolInfoAzureAttributes             `pulumi:"azureAttributes"`
-	CustomTags                         map[string]interface{}                              `pulumi:"customTags"`
-	DefaultTags                        map[string]interface{}                              `pulumi:"defaultTags"`
+	CustomTags                         map[string]string                                   `pulumi:"customTags"`
+	DefaultTags                        map[string]string                                   `pulumi:"defaultTags"`
 	DiskSpec                           *GetInstancePoolPoolInfoDiskSpec                    `pulumi:"diskSpec"`
 	EnableElasticDisk                  *bool                                               `pulumi:"enableElasticDisk"`
 	GcpAttributes                      *GetInstancePoolPoolInfoGcpAttributes               `pulumi:"gcpAttributes"`
@@ -81261,8 +81261,8 @@ type GetInstancePoolPoolInfoInput interface {
 type GetInstancePoolPoolInfoArgs struct {
 	AwsAttributes                      GetInstancePoolPoolInfoAwsAttributesPtrInput                `pulumi:"awsAttributes"`
 	AzureAttributes                    GetInstancePoolPoolInfoAzureAttributesPtrInput              `pulumi:"azureAttributes"`
-	CustomTags                         pulumi.MapInput                                             `pulumi:"customTags"`
-	DefaultTags                        pulumi.MapInput                                             `pulumi:"defaultTags"`
+	CustomTags                         pulumi.StringMapInput                                       `pulumi:"customTags"`
+	DefaultTags                        pulumi.StringMapInput                                       `pulumi:"defaultTags"`
 	DiskSpec                           GetInstancePoolPoolInfoDiskSpecPtrInput                     `pulumi:"diskSpec"`
 	EnableElasticDisk                  pulumi.BoolPtrInput                                         `pulumi:"enableElasticDisk"`
 	GcpAttributes                      GetInstancePoolPoolInfoGcpAttributesPtrInput                `pulumi:"gcpAttributes"`
@@ -81364,12 +81364,12 @@ func (o GetInstancePoolPoolInfoOutput) AzureAttributes() GetInstancePoolPoolInfo
 	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAzureAttributes { return v.AzureAttributes }).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
 }
 
-func (o GetInstancePoolPoolInfoOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetInstancePoolPoolInfoOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
-func (o GetInstancePoolPoolInfoOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.DefaultTags }).(pulumi.MapOutput)
+func (o GetInstancePoolPoolInfoOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]string { return v.DefaultTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancePoolPoolInfoOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {
@@ -81474,22 +81474,22 @@ func (o GetInstancePoolPoolInfoPtrOutput) AzureAttributes() GetInstancePoolPoolI
 	}).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
 }
 
-func (o GetInstancePoolPoolInfoPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+func (o GetInstancePoolPoolInfoPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o GetInstancePoolPoolInfoPtrOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+func (o GetInstancePoolPoolInfoPtrOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancePoolPoolInfoPtrOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {

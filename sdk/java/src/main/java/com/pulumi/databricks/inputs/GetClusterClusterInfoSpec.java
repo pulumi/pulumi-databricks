@@ -17,7 +17,6 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecWorkloadType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -107,13 +106,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      * 
      */
     @Import(name="customTags")
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
 
     /**
      * @return Additional tags for cluster resources.
      * 
      */
-    public Optional<Map<String,Object>> customTags() {
+    public Optional<Map<String,String>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -322,13 +321,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      * 
      */
     @Import(name="sparkConf")
-    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,String> sparkConf;
 
     /**
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    public Optional<Map<String,Object>> sparkConf() {
+    public Optional<Map<String,String>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
@@ -337,13 +336,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      * 
      */
     @Import(name="sparkEnvVars")
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkEnvVars;
 
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    public Optional<Map<String,Object>> sparkEnvVars() {
+    public Optional<Map<String,String>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
@@ -499,7 +498,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -664,7 +663,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
@@ -675,7 +674,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }

@@ -108,7 +108,7 @@ export class Schema extends pulumi.CustomResource {
     /**
      * Extensible Schema properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
@@ -188,7 +188,7 @@ export interface SchemaState {
     /**
      * Extensible Schema properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
@@ -227,7 +227,7 @@ export interface SchemaArgs {
     /**
      * Extensible Schema properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */

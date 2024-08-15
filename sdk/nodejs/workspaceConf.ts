@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.WorkspaceConf("this", {customConfig: {
- *     enableIpAccessLists: true,
+ *     enableIpAccessLists: "true",
  * }});
  * ```
  *
@@ -63,7 +63,7 @@ export class WorkspaceConf extends pulumi.CustomResource {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    public readonly customConfig!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customConfig!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a WorkspaceConf resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export interface WorkspaceConfState {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    customConfig?: pulumi.Input<{[key: string]: any}>;
+    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -105,5 +105,5 @@ export interface WorkspaceConfArgs {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    customConfig?: pulumi.Input<{[key: string]: any}>;
+    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

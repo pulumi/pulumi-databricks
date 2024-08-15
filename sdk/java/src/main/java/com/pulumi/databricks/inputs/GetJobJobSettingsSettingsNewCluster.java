@@ -16,7 +16,6 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterWorkloadT
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -93,9 +92,9 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
     }
 
     @Import(name="customTags")
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
 
-    public Optional<Map<String,Object>> customTags() {
+    public Optional<Map<String,String>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -205,16 +204,16 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
     }
 
     @Import(name="sparkConf")
-    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,String> sparkConf;
 
-    public Optional<Map<String,Object>> sparkConf() {
+    public Optional<Map<String,String>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
     @Import(name="sparkEnvVars")
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkEnvVars;
 
-    public Optional<Map<String,Object>> sparkEnvVars() {
+    public Optional<Map<String,String>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
@@ -341,7 +340,7 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
             return this;
         }
 
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -425,12 +424,12 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
             return this;
         }
 
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
 
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }

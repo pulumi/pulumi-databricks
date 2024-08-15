@@ -22,13 +22,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (Map) Job parameters for the task
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? JobParameters;
-        public readonly ImmutableDictionary<string, object>? NotebookParams;
+        public readonly ImmutableDictionary<string, string>? JobParameters;
+        public readonly ImmutableDictionary<string, string>? NotebookParams;
         public readonly Outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams? PipelineParams;
-        public readonly ImmutableDictionary<string, object>? PythonNamedParams;
+        public readonly ImmutableDictionary<string, string>? PythonNamedParams;
         public readonly ImmutableArray<string> PythonParams;
         public readonly ImmutableArray<string> SparkSubmitParams;
-        public readonly ImmutableDictionary<string, object>? SqlParams;
+        public readonly ImmutableDictionary<string, string>? SqlParams;
 
         [OutputConstructor]
         private JobTaskForEachTaskTaskRunJobTask(
@@ -38,19 +38,19 @@ namespace Pulumi.Databricks.Outputs
 
             int jobId,
 
-            ImmutableDictionary<string, object>? jobParameters,
+            ImmutableDictionary<string, string>? jobParameters,
 
-            ImmutableDictionary<string, object>? notebookParams,
+            ImmutableDictionary<string, string>? notebookParams,
 
             Outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams? pipelineParams,
 
-            ImmutableDictionary<string, object>? pythonNamedParams,
+            ImmutableDictionary<string, string>? pythonNamedParams,
 
             ImmutableArray<string> pythonParams,
 
             ImmutableArray<string> sparkSubmitParams,
 
-            ImmutableDictionary<string, object>? sqlParams)
+            ImmutableDictionary<string, string>? sqlParams)
         {
             DbtCommands = dbtCommands;
             JarParams = jarParams;

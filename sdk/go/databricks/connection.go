@@ -41,14 +41,14 @@ import (
 //				Name:           pulumi.String("mysql_connection"),
 //				ConnectionType: pulumi.String("MYSQL"),
 //				Comment:        pulumi.String("this is a connection to mysql db"),
-//				Options: pulumi.Map{
-//					"host":     pulumi.Any("test.mysql.database.azure.com"),
-//					"port":     pulumi.Any("3306"),
-//					"user":     pulumi.Any("user"),
-//					"password": pulumi.Any("password"),
+//				Options: pulumi.StringMap{
+//					"host":     pulumi.String("test.mysql.database.azure.com"),
+//					"port":     pulumi.String("3306"),
+//					"user":     pulumi.String("user"),
+//					"password": pulumi.String("password"),
 //				},
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -97,11 +97,11 @@ import (
 //				Name:           pulumi.String("bq_connection"),
 //				ConnectionType: pulumi.String("BIGQUERY"),
 //				Comment:        pulumi.String("this is a connection to BQ"),
-//				Options: pulumi.Map{
+//				Options: pulumi.StringMap{
 //					"GoogleServiceAccountKeyJson": pulumi.String(json0),
 //				},
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -133,12 +133,12 @@ type Connection struct {
 	// Name of the Connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-	Options pulumi.MapOutput `pulumi:"options"`
+	Options pulumi.StringMapOutput `pulumi:"options"`
 	// Name of the connection owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Free-form connection properties.
-	Properties pulumi.MapOutput  `pulumi:"properties"`
-	ReadOnly   pulumi.BoolOutput `pulumi:"readOnly"`
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	ReadOnly   pulumi.BoolOutput      `pulumi:"readOnly"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -155,7 +155,7 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Options'")
 	}
 	if args.Options != nil {
-		args.Options = pulumi.ToSecret(args.Options).(pulumi.MapInput)
+		args.Options = pulumi.ToSecret(args.Options).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"options",
@@ -192,12 +192,12 @@ type connectionState struct {
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Name of the connection owner.
 	Owner *string `pulumi:"owner"`
 	// Free-form connection properties.
-	Properties map[string]interface{} `pulumi:"properties"`
-	ReadOnly   *bool                  `pulumi:"readOnly"`
+	Properties map[string]string `pulumi:"properties"`
+	ReadOnly   *bool             `pulumi:"readOnly"`
 }
 
 type ConnectionState struct {
@@ -209,11 +209,11 @@ type ConnectionState struct {
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Name of the connection owner.
 	Owner pulumi.StringPtrInput
 	// Free-form connection properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	ReadOnly   pulumi.BoolPtrInput
 }
 
@@ -230,12 +230,12 @@ type connectionArgs struct {
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Name of the connection owner.
 	Owner *string `pulumi:"owner"`
 	// Free-form connection properties.
-	Properties map[string]interface{} `pulumi:"properties"`
-	ReadOnly   *bool                  `pulumi:"readOnly"`
+	Properties map[string]string `pulumi:"properties"`
+	ReadOnly   *bool             `pulumi:"readOnly"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -248,11 +248,11 @@ type ConnectionArgs struct {
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Name of the connection owner.
 	Owner pulumi.StringPtrInput
 	// Free-form connection properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	ReadOnly   pulumi.BoolPtrInput
 }
 
@@ -363,8 +363,8 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 }
 
 // The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-func (o ConnectionOutput) Options() pulumi.MapOutput {
-	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.Options }).(pulumi.MapOutput)
+func (o ConnectionOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // Name of the connection owner.
@@ -373,8 +373,8 @@ func (o ConnectionOutput) Owner() pulumi.StringOutput {
 }
 
 // Free-form connection properties.
-func (o ConnectionOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+func (o ConnectionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 func (o ConnectionOutput) ReadOnly() pulumi.BoolOutput {

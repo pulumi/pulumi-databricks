@@ -47,7 +47,7 @@ export interface GetMetastoresArgs {
     /**
      * Mapping of name to id of databricks_metastore
      */
-    ids?: {[key: string]: any};
+    ids?: {[key: string]: string};
 }
 
 /**
@@ -61,7 +61,7 @@ export interface GetMetastoresResult {
     /**
      * Mapping of name to id of databricks_metastore
      */
-    readonly ids: {[key: string]: any};
+    readonly ids: {[key: string]: string};
 }
 /**
  * > **Note** This data source could be only used with account-level provider!
@@ -101,5 +101,5 @@ export interface GetMetastoresOutputArgs {
     /**
      * Mapping of name to id of databricks_metastore
      */
-    ids?: pulumi.Input<{[key: string]: any}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

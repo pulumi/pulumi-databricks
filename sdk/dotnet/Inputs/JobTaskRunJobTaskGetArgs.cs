@@ -35,22 +35,22 @@ namespace Pulumi.Databricks.Inputs
         public Input<int> JobId { get; set; } = null!;
 
         [Input("jobParameters")]
-        private InputMap<object>? _jobParameters;
+        private InputMap<string>? _jobParameters;
 
         /// <summary>
         /// (Map) Job parameters for the task
         /// </summary>
-        public InputMap<object> JobParameters
+        public InputMap<string> JobParameters
         {
-            get => _jobParameters ?? (_jobParameters = new InputMap<object>());
+            get => _jobParameters ?? (_jobParameters = new InputMap<string>());
             set => _jobParameters = value;
         }
 
         [Input("notebookParams")]
-        private InputMap<object>? _notebookParams;
-        public InputMap<object> NotebookParams
+        private InputMap<string>? _notebookParams;
+        public InputMap<string> NotebookParams
         {
-            get => _notebookParams ?? (_notebookParams = new InputMap<object>());
+            get => _notebookParams ?? (_notebookParams = new InputMap<string>());
             set => _notebookParams = value;
         }
 
@@ -58,10 +58,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskRunJobTaskPipelineParamsGetArgs>? PipelineParams { get; set; }
 
         [Input("pythonNamedParams")]
-        private InputMap<object>? _pythonNamedParams;
-        public InputMap<object> PythonNamedParams
+        private InputMap<string>? _pythonNamedParams;
+        public InputMap<string> PythonNamedParams
         {
-            get => _pythonNamedParams ?? (_pythonNamedParams = new InputMap<object>());
+            get => _pythonNamedParams ?? (_pythonNamedParams = new InputMap<string>());
             set => _pythonNamedParams = value;
         }
 
@@ -82,10 +82,10 @@ namespace Pulumi.Databricks.Inputs
         }
 
         [Input("sqlParams")]
-        private InputMap<object>? _sqlParams;
-        public InputMap<object> SqlParams
+        private InputMap<string>? _sqlParams;
+        public InputMap<string> SqlParams
         {
-            get => _sqlParams ?? (_sqlParams = new InputMap<object>());
+            get => _sqlParams ?? (_sqlParams = new InputMap<string>());
             set => _sqlParams = value;
         }
 

@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
-//				CustomConfig: pulumi.Map{
-//					"enableIpAccessLists": pulumi.Any(true),
+//				CustomConfig: pulumi.StringMap{
+//					"enableIpAccessLists": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {

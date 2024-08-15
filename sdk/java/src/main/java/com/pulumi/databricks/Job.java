@@ -37,7 +37,6 @@ import com.pulumi.databricks.outputs.JobTrigger;
 import com.pulumi.databricks.outputs.JobWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -567,14 +566,14 @@ public class Job extends com.pulumi.resources.CustomResource {
      * An optional map of the tags associated with the job. See tags Configuration Map
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
      * @return An optional map of the tags associated with the job. See tags Configuration Map
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
+    public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
