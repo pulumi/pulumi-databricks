@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
     public partial class MetastoreAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Default catalog used for this assignment, default to `hive_metastore`
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Output("defaultCatalogName")]
         public Output<string?> DefaultCatalogName { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     public sealed class MetastoreAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default catalog used for this assignment, default to `hive_metastore`
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Input("defaultCatalogName")]
         public Input<string>? DefaultCatalogName { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks
     public sealed class MetastoreAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default catalog used for this assignment, default to `hive_metastore`
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Input("defaultCatalogName")]
         public Input<string>? DefaultCatalogName { get; set; }

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineNotificationGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("alerts", required: true)]
+        [Input("alerts")]
         private InputList<string>? _alerts;
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
             set => _alerts = value;
         }
 
-        [Input("emailRecipients", required: true)]
+        [Input("emailRecipients")]
         private InputList<string>? _emailRecipients;
 
         /// <summary>

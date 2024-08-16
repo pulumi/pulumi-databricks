@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource is used to manage [Databricks SQL Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+    /// &gt; **Note:** Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
     /// 
-    /// **Note:** documentation for this resource is a work in progress.
+    /// This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+    /// 
+    /// &gt; **Note:** documentation for this resource is a work in progress.
     /// 
     /// A dashboard may have one or more widgets.
     /// 

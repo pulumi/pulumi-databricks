@@ -453,6 +453,8 @@ import (
 //
 // Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
 //
+// A notebook could be specified by using either `notebookPath` or `notebookId` attribute.  The value for the `notebookId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `Notebook` resource as shown below.
+//
 // ```go
 // package main
 //
@@ -492,8 +494,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPermissions(ctx, "notebook_usage", &databricks.PermissionsArgs{
+//			_, err = databricks.NewPermissions(ctx, "notebook_usage_by_path", &databricks.PermissionsArgs{
 //				NotebookPath: this.Path,
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_READ"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       auto.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "notebook_usage_by_id", &databricks.PermissionsArgs{
+//				NotebookId: this.ObjectId,
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -518,9 +540,13 @@ import (
 //
 // ```
 //
+// > **Note**: when importing a permissions resource, only the `notebookId` is filled!
+//
 // ## Workspace file usage
 //
 // Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+//
+// A workspace file could be specified by using either `workspaceFilePath` or `workspaceFileId` attribute.  The value for the `workspaceFileId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `WorkspaceFile` resource as shown below.
 //
 // ```go
 // package main
@@ -560,8 +586,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPermissions(ctx, "workspace_file_usage", &databricks.PermissionsArgs{
+//			_, err = databricks.NewPermissions(ctx, "workspace_file_usage_by_path", &databricks.PermissionsArgs{
 //				WorkspaceFilePath: this.Path,
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_READ"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       auto.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "workspace_file_usage_by_id", &databricks.PermissionsArgs{
+//				WorkspaceFileId: this.ObjectId,
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -586,6 +632,8 @@ import (
 //
 // ```
 //
+// > **Note**: when importing a permissions resource, only the `workspaceFileId` is filled!
+//
 // ## Folder usage
 //
 // Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
@@ -594,6 +642,8 @@ import (
 // - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace > Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
 // - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
 // - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
+//
+// A folder could be specified by using either `directoryPath` or `directoryId` attribute.  The value for the `directoryId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `Directory` resource as shown below.
 //
 // ```go
 // package main
@@ -625,7 +675,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPermissions(ctx, "folder_usage", &databricks.PermissionsArgs{
+//			_, err = databricks.NewPermissions(ctx, "folder_usage_by_path", &databricks.PermissionsArgs{
 //				DirectoryPath: this.Path,
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
@@ -641,9 +691,27 @@ import (
 //						PermissionLevel: pulumi.String("CAN_EDIT"),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				this,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "folder_usage_by_id", &databricks.PermissionsArgs{
+//				DirectoryId: this.ObjectId,
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_READ"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       auto.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -652,6 +720,8 @@ import (
 //	}
 //
 // ```
+//
+// > **Note**: when importing a permissions resource, only the `directoryId` is filled!
 //
 // ## Repos usage
 //
@@ -1009,6 +1079,10 @@ import (
 // ## SQL warehouse usage
 //
 // [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+//
+// - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
+// - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
+// - A warehouse cannot have a group as an owner.
 //
 // ```go
 // package main

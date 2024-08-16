@@ -5,20 +5,21 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PipelineLibraryFileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineLibraryFileArgs Empty = new PipelineLibraryFileArgs();
 
-    @Import(name="path", required=true)
-    private Output<String> path;
+    @Import(name="path")
+    private @Nullable Output<String> path;
 
-    public Output<String> path() {
-        return this.path;
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
     }
 
     private PipelineLibraryFileArgs() {}
@@ -45,7 +46,7 @@ public final class PipelineLibraryFileArgs extends com.pulumi.resources.Resource
             $ = new PipelineLibraryFileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder path(Output<String> path) {
+        public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
@@ -55,9 +56,6 @@ public final class PipelineLibraryFileArgs extends com.pulumi.resources.Resource
         }
 
         public PipelineLibraryFileArgs build() {
-            if ($.path == null) {
-                throw new MissingRequiredPropertyException("PipelineLibraryFileArgs", "path");
-            }
             return $;
         }
     }

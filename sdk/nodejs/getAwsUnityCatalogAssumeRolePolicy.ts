@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,
- *     kmsName: "databricks-kms",
+ *     kmsName: "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
  * });
  * const thisGetAwsUnityCatalogAssumeRolePolicy = databricks.getAwsUnityCatalogAssumeRolePolicy({
  *     awsAccountId: awsAccountId,
@@ -101,7 +101,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,
- *     kmsName: "databricks-kms",
+ *     kmsName: "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
  * });
  * const thisGetAwsUnityCatalogAssumeRolePolicy = databricks.getAwsUnityCatalogAssumeRolePolicy({
  *     awsAccountId: awsAccountId,

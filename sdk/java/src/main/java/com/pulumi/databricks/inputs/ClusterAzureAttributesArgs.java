@@ -56,14 +56,14 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      * 
      */
     @Import(name="spotBidMaxPrice")
     private @Nullable Output<Double> spotBidMaxPrice;
 
     /**
-     * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * @return The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      * 
      */
     public Optional<Output<Double>> spotBidMaxPrice() {
@@ -149,7 +149,7 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param spotBidMaxPrice The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param spotBidMaxPrice The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
          * 
          * @return builder
          * 

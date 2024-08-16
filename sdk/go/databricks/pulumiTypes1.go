@@ -13,6 +13,3985 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterClusterInfoSpecWorkloadTypeClients struct {
+	Jobs      *bool `pulumi:"jobs"`
+	Notebooks *bool `pulumi:"notebooks"`
+}
+
+// GetClusterClusterInfoSpecWorkloadTypeClientsInput is an input type that accepts GetClusterClusterInfoSpecWorkloadTypeClientsArgs and GetClusterClusterInfoSpecWorkloadTypeClientsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecWorkloadTypeClientsInput` via:
+//
+//	GetClusterClusterInfoSpecWorkloadTypeClientsArgs{...}
+type GetClusterClusterInfoSpecWorkloadTypeClientsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecWorkloadTypeClientsOutput() GetClusterClusterInfoSpecWorkloadTypeClientsOutput
+	ToGetClusterClusterInfoSpecWorkloadTypeClientsOutputWithContext(context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsOutput
+}
+
+type GetClusterClusterInfoSpecWorkloadTypeClientsArgs struct {
+	Jobs      pulumi.BoolPtrInput `pulumi:"jobs"`
+	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
+}
+
+func (GetClusterClusterInfoSpecWorkloadTypeClientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecWorkloadTypeClients)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecWorkloadTypeClientsArgs) ToGetClusterClusterInfoSpecWorkloadTypeClientsOutput() GetClusterClusterInfoSpecWorkloadTypeClientsOutput {
+	return i.ToGetClusterClusterInfoSpecWorkloadTypeClientsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecWorkloadTypeClientsArgs) ToGetClusterClusterInfoSpecWorkloadTypeClientsOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecWorkloadTypeClientsOutput)
+}
+
+func (i GetClusterClusterInfoSpecWorkloadTypeClientsArgs) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput() GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return i.ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecWorkloadTypeClientsArgs) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecWorkloadTypeClientsOutput).ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecWorkloadTypeClientsPtrInput is an input type that accepts GetClusterClusterInfoSpecWorkloadTypeClientsArgs, GetClusterClusterInfoSpecWorkloadTypeClientsPtr and GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecWorkloadTypeClientsPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecWorkloadTypeClientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecWorkloadTypeClientsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput() GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput
+	ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput
+}
+
+type getClusterClusterInfoSpecWorkloadTypeClientsPtrType GetClusterClusterInfoSpecWorkloadTypeClientsArgs
+
+func GetClusterClusterInfoSpecWorkloadTypeClientsPtr(v *GetClusterClusterInfoSpecWorkloadTypeClientsArgs) GetClusterClusterInfoSpecWorkloadTypeClientsPtrInput {
+	return (*getClusterClusterInfoSpecWorkloadTypeClientsPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecWorkloadTypeClientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecWorkloadTypeClients)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecWorkloadTypeClientsPtrType) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput() GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return i.ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecWorkloadTypeClientsPtrType) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput)
+}
+
+type GetClusterClusterInfoSpecWorkloadTypeClientsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecWorkloadTypeClientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecWorkloadTypeClients)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsOutput() GetClusterClusterInfoSpecWorkloadTypeClientsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput() GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return o.ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecWorkloadTypeClients) *GetClusterClusterInfoSpecWorkloadTypeClients {
+		return &v
+	}).(GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsOutput) Notebooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecWorkloadTypeClients) *bool { return v.Notebooks }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecWorkloadTypeClients)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput() GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) ToGetClusterClusterInfoSpecWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) Elem() GetClusterClusterInfoSpecWorkloadTypeClientsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecWorkloadTypeClients) GetClusterClusterInfoSpecWorkloadTypeClients {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecWorkloadTypeClients
+		return ret
+	}).(GetClusterClusterInfoSpecWorkloadTypeClientsOutput)
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecWorkloadTypeClients) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Jobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecWorkloadTypeClients) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Notebooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterClusterInfoTerminationReason struct {
+	Code       *string                `pulumi:"code"`
+	Parameters map[string]interface{} `pulumi:"parameters"`
+	Type       *string                `pulumi:"type"`
+}
+
+// GetClusterClusterInfoTerminationReasonInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs and GetClusterClusterInfoTerminationReasonOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoTerminationReasonInput` via:
+//
+//	GetClusterClusterInfoTerminationReasonArgs{...}
+type GetClusterClusterInfoTerminationReasonInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoTerminationReasonOutput() GetClusterClusterInfoTerminationReasonOutput
+	ToGetClusterClusterInfoTerminationReasonOutputWithContext(context.Context) GetClusterClusterInfoTerminationReasonOutput
+}
+
+type GetClusterClusterInfoTerminationReasonArgs struct {
+	Code       pulumi.StringPtrInput `pulumi:"code"`
+	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetClusterClusterInfoTerminationReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoTerminationReason)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoTerminationReasonArgs) ToGetClusterClusterInfoTerminationReasonOutput() GetClusterClusterInfoTerminationReasonOutput {
+	return i.ToGetClusterClusterInfoTerminationReasonOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoTerminationReasonArgs) ToGetClusterClusterInfoTerminationReasonOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoTerminationReasonOutput)
+}
+
+func (i GetClusterClusterInfoTerminationReasonArgs) ToGetClusterClusterInfoTerminationReasonPtrOutput() GetClusterClusterInfoTerminationReasonPtrOutput {
+	return i.ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoTerminationReasonArgs) ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoTerminationReasonOutput).ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoTerminationReasonPtrInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs, GetClusterClusterInfoTerminationReasonPtr and GetClusterClusterInfoTerminationReasonPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoTerminationReasonPtrInput` via:
+//
+//	        GetClusterClusterInfoTerminationReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoTerminationReasonPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoTerminationReasonPtrOutput() GetClusterClusterInfoTerminationReasonPtrOutput
+	ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(context.Context) GetClusterClusterInfoTerminationReasonPtrOutput
+}
+
+type getClusterClusterInfoTerminationReasonPtrType GetClusterClusterInfoTerminationReasonArgs
+
+func GetClusterClusterInfoTerminationReasonPtr(v *GetClusterClusterInfoTerminationReasonArgs) GetClusterClusterInfoTerminationReasonPtrInput {
+	return (*getClusterClusterInfoTerminationReasonPtrType)(v)
+}
+
+func (*getClusterClusterInfoTerminationReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoTerminationReason)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoTerminationReasonPtrType) ToGetClusterClusterInfoTerminationReasonPtrOutput() GetClusterClusterInfoTerminationReasonPtrOutput {
+	return i.ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoTerminationReasonPtrType) ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoTerminationReasonPtrOutput)
+}
+
+type GetClusterClusterInfoTerminationReasonOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoTerminationReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoTerminationReason)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) ToGetClusterClusterInfoTerminationReasonOutput() GetClusterClusterInfoTerminationReasonOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) ToGetClusterClusterInfoTerminationReasonOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) ToGetClusterClusterInfoTerminationReasonPtrOutput() GetClusterClusterInfoTerminationReasonPtrOutput {
+	return o.ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoTerminationReason) *GetClusterClusterInfoTerminationReason {
+		return &v
+	}).(GetClusterClusterInfoTerminationReasonPtrOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoTerminationReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoTerminationReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoTerminationReason)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) ToGetClusterClusterInfoTerminationReasonPtrOutput() GetClusterClusterInfoTerminationReasonPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) ToGetClusterClusterInfoTerminationReasonPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoTerminationReasonPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Elem() GetClusterClusterInfoTerminationReasonOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) GetClusterClusterInfoTerminationReason {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoTerminationReason
+		return ret
+	}).(GetClusterClusterInfoTerminationReasonOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoWorkloadType struct {
+	Clients GetClusterClusterInfoWorkloadTypeClients `pulumi:"clients"`
+}
+
+// GetClusterClusterInfoWorkloadTypeInput is an input type that accepts GetClusterClusterInfoWorkloadTypeArgs and GetClusterClusterInfoWorkloadTypeOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoWorkloadTypeInput` via:
+//
+//	GetClusterClusterInfoWorkloadTypeArgs{...}
+type GetClusterClusterInfoWorkloadTypeInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoWorkloadTypeOutput() GetClusterClusterInfoWorkloadTypeOutput
+	ToGetClusterClusterInfoWorkloadTypeOutputWithContext(context.Context) GetClusterClusterInfoWorkloadTypeOutput
+}
+
+type GetClusterClusterInfoWorkloadTypeArgs struct {
+	Clients GetClusterClusterInfoWorkloadTypeClientsInput `pulumi:"clients"`
+}
+
+func (GetClusterClusterInfoWorkloadTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoWorkloadType)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoWorkloadTypeArgs) ToGetClusterClusterInfoWorkloadTypeOutput() GetClusterClusterInfoWorkloadTypeOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypeOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoWorkloadTypeArgs) ToGetClusterClusterInfoWorkloadTypeOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypeOutput)
+}
+
+func (i GetClusterClusterInfoWorkloadTypeArgs) ToGetClusterClusterInfoWorkloadTypePtrOutput() GetClusterClusterInfoWorkloadTypePtrOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoWorkloadTypeArgs) ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypeOutput).ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoWorkloadTypePtrInput is an input type that accepts GetClusterClusterInfoWorkloadTypeArgs, GetClusterClusterInfoWorkloadTypePtr and GetClusterClusterInfoWorkloadTypePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoWorkloadTypePtrInput` via:
+//
+//	        GetClusterClusterInfoWorkloadTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoWorkloadTypePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoWorkloadTypePtrOutput() GetClusterClusterInfoWorkloadTypePtrOutput
+	ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(context.Context) GetClusterClusterInfoWorkloadTypePtrOutput
+}
+
+type getClusterClusterInfoWorkloadTypePtrType GetClusterClusterInfoWorkloadTypeArgs
+
+func GetClusterClusterInfoWorkloadTypePtr(v *GetClusterClusterInfoWorkloadTypeArgs) GetClusterClusterInfoWorkloadTypePtrInput {
+	return (*getClusterClusterInfoWorkloadTypePtrType)(v)
+}
+
+func (*getClusterClusterInfoWorkloadTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoWorkloadType)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoWorkloadTypePtrType) ToGetClusterClusterInfoWorkloadTypePtrOutput() GetClusterClusterInfoWorkloadTypePtrOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoWorkloadTypePtrType) ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypePtrOutput)
+}
+
+type GetClusterClusterInfoWorkloadTypeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoWorkloadTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoWorkloadType)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoWorkloadTypeOutput) ToGetClusterClusterInfoWorkloadTypeOutput() GetClusterClusterInfoWorkloadTypeOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeOutput) ToGetClusterClusterInfoWorkloadTypeOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeOutput) ToGetClusterClusterInfoWorkloadTypePtrOutput() GetClusterClusterInfoWorkloadTypePtrOutput {
+	return o.ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoWorkloadTypeOutput) ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoWorkloadType) *GetClusterClusterInfoWorkloadType {
+		return &v
+	}).(GetClusterClusterInfoWorkloadTypePtrOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypeOutput) Clients() GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoWorkloadType) GetClusterClusterInfoWorkloadTypeClients { return v.Clients }).(GetClusterClusterInfoWorkloadTypeClientsOutput)
+}
+
+type GetClusterClusterInfoWorkloadTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoWorkloadTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoWorkloadType)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoWorkloadTypePtrOutput) ToGetClusterClusterInfoWorkloadTypePtrOutput() GetClusterClusterInfoWorkloadTypePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypePtrOutput) ToGetClusterClusterInfoWorkloadTypePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypePtrOutput) Elem() GetClusterClusterInfoWorkloadTypeOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoWorkloadType) GetClusterClusterInfoWorkloadType {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoWorkloadType
+		return ret
+	}).(GetClusterClusterInfoWorkloadTypeOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypePtrOutput) Clients() GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoWorkloadType) *GetClusterClusterInfoWorkloadTypeClients {
+		if v == nil {
+			return nil
+		}
+		return &v.Clients
+	}).(GetClusterClusterInfoWorkloadTypeClientsPtrOutput)
+}
+
+type GetClusterClusterInfoWorkloadTypeClients struct {
+	Jobs      *bool `pulumi:"jobs"`
+	Notebooks *bool `pulumi:"notebooks"`
+}
+
+// GetClusterClusterInfoWorkloadTypeClientsInput is an input type that accepts GetClusterClusterInfoWorkloadTypeClientsArgs and GetClusterClusterInfoWorkloadTypeClientsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoWorkloadTypeClientsInput` via:
+//
+//	GetClusterClusterInfoWorkloadTypeClientsArgs{...}
+type GetClusterClusterInfoWorkloadTypeClientsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoWorkloadTypeClientsOutput() GetClusterClusterInfoWorkloadTypeClientsOutput
+	ToGetClusterClusterInfoWorkloadTypeClientsOutputWithContext(context.Context) GetClusterClusterInfoWorkloadTypeClientsOutput
+}
+
+type GetClusterClusterInfoWorkloadTypeClientsArgs struct {
+	Jobs      pulumi.BoolPtrInput `pulumi:"jobs"`
+	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
+}
+
+func (GetClusterClusterInfoWorkloadTypeClientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClients)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoWorkloadTypeClientsArgs) ToGetClusterClusterInfoWorkloadTypeClientsOutput() GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypeClientsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoWorkloadTypeClientsArgs) ToGetClusterClusterInfoWorkloadTypeClientsOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypeClientsOutput)
+}
+
+func (i GetClusterClusterInfoWorkloadTypeClientsArgs) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutput() GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoWorkloadTypeClientsArgs) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypeClientsOutput).ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoWorkloadTypeClientsPtrInput is an input type that accepts GetClusterClusterInfoWorkloadTypeClientsArgs, GetClusterClusterInfoWorkloadTypeClientsPtr and GetClusterClusterInfoWorkloadTypeClientsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoWorkloadTypeClientsPtrInput` via:
+//
+//	        GetClusterClusterInfoWorkloadTypeClientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoWorkloadTypeClientsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoWorkloadTypeClientsPtrOutput() GetClusterClusterInfoWorkloadTypeClientsPtrOutput
+	ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(context.Context) GetClusterClusterInfoWorkloadTypeClientsPtrOutput
+}
+
+type getClusterClusterInfoWorkloadTypeClientsPtrType GetClusterClusterInfoWorkloadTypeClientsArgs
+
+func GetClusterClusterInfoWorkloadTypeClientsPtr(v *GetClusterClusterInfoWorkloadTypeClientsArgs) GetClusterClusterInfoWorkloadTypeClientsPtrInput {
+	return (*getClusterClusterInfoWorkloadTypeClientsPtrType)(v)
+}
+
+func (*getClusterClusterInfoWorkloadTypeClientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoWorkloadTypeClients)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoWorkloadTypeClientsPtrType) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutput() GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return i.ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoWorkloadTypeClientsPtrType) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoWorkloadTypeClientsPtrOutput)
+}
+
+type GetClusterClusterInfoWorkloadTypeClientsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoWorkloadTypeClientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClients)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) ToGetClusterClusterInfoWorkloadTypeClientsOutput() GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) ToGetClusterClusterInfoWorkloadTypeClientsOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutput() GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return o.ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoWorkloadTypeClients) *GetClusterClusterInfoWorkloadTypeClients {
+		return &v
+	}).(GetClusterClusterInfoWorkloadTypeClientsPtrOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsOutput) Notebooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoWorkloadTypeClients) *bool { return v.Notebooks }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterClusterInfoWorkloadTypeClientsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoWorkloadTypeClientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoWorkloadTypeClients)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutput() GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) ToGetClusterClusterInfoWorkloadTypeClientsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoWorkloadTypeClientsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) Elem() GetClusterClusterInfoWorkloadTypeClientsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoWorkloadTypeClients) GetClusterClusterInfoWorkloadTypeClients {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoWorkloadTypeClients
+		return ret
+	}).(GetClusterClusterInfoWorkloadTypeClientsOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoWorkloadTypeClients) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Jobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoWorkloadTypeClients) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Notebooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfo struct {
+	Cloud *string `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt *int `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy *string `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner *string `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetCurrentMetastoreMetastoreInfoInput is an input type that accepts GetCurrentMetastoreMetastoreInfoArgs and GetCurrentMetastoreMetastoreInfoOutput values.
+// You can construct a concrete instance of `GetCurrentMetastoreMetastoreInfoInput` via:
+//
+//	GetCurrentMetastoreMetastoreInfoArgs{...}
+type GetCurrentMetastoreMetastoreInfoInput interface {
+	pulumi.Input
+
+	ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput
+	ToGetCurrentMetastoreMetastoreInfoOutputWithContext(context.Context) GetCurrentMetastoreMetastoreInfoOutput
+}
+
+type GetCurrentMetastoreMetastoreInfoArgs struct {
+	Cloud pulumi.StringPtrInput `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetCurrentMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoOutputWithContext(context.Background())
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoOutput)
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoOutput).ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx)
+}
+
+// GetCurrentMetastoreMetastoreInfoPtrInput is an input type that accepts GetCurrentMetastoreMetastoreInfoArgs, GetCurrentMetastoreMetastoreInfoPtr and GetCurrentMetastoreMetastoreInfoPtrOutput values.
+// You can construct a concrete instance of `GetCurrentMetastoreMetastoreInfoPtrInput` via:
+//
+//	        GetCurrentMetastoreMetastoreInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCurrentMetastoreMetastoreInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput
+	ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput
+}
+
+type getCurrentMetastoreMetastoreInfoPtrType GetCurrentMetastoreMetastoreInfoArgs
+
+func GetCurrentMetastoreMetastoreInfoPtr(v *GetCurrentMetastoreMetastoreInfoArgs) GetCurrentMetastoreMetastoreInfoPtrInput {
+	return (*getCurrentMetastoreMetastoreInfoPtrType)(v)
+}
+
+func (*getCurrentMetastoreMetastoreInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i *getCurrentMetastoreMetastoreInfoPtrType) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getCurrentMetastoreMetastoreInfoPtrType) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfoOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentMetastoreMetastoreInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCurrentMetastoreMetastoreInfo) *GetCurrentMetastoreMetastoreInfo {
+		return &v
+	}).(GetCurrentMetastoreMetastoreInfoPtrOutput)
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was created.
+func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that created the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// the ID of the default data access configuration.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// the expiration duration in seconds on recipient data access tokens.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
+}
+
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+func (o GetCurrentMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Metastore ID.
+func (o GetCurrentMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Username/group name/sp applicationId of the metastore owner.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// the version of the privilege model used by the metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Mandatory for account-level) The region of the metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+// ID of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialId }).(pulumi.StringPtrOutput)
+}
+
+// Name of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialName }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was updated.
+func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that updated the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentMetastoreMetastoreInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Elem() GetCurrentMetastoreMetastoreInfoOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) GetCurrentMetastoreMetastoreInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetCurrentMetastoreMetastoreInfo
+		return ret
+	}).(GetCurrentMetastoreMetastoreInfoOutput)
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was created.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that created the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// the ID of the default data access configuration.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDataAccessConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the expiration duration in seconds on recipient data access tokens.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingRecipientTokenLifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalMetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metastore ID.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username/group name/sp applicationId of the metastore owner.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// the version of the privilege model used by the metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegeModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Mandatory for account-level) The region of the metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was updated.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that updated the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetDbfsFilePathsPathList struct {
+	FileSize *int `pulumi:"fileSize"`
+	// Path on DBFS for the file to perform listing
+	Path *string `pulumi:"path"`
+}
+
+// GetDbfsFilePathsPathListInput is an input type that accepts GetDbfsFilePathsPathListArgs and GetDbfsFilePathsPathListOutput values.
+// You can construct a concrete instance of `GetDbfsFilePathsPathListInput` via:
+//
+//	GetDbfsFilePathsPathListArgs{...}
+type GetDbfsFilePathsPathListInput interface {
+	pulumi.Input
+
+	ToGetDbfsFilePathsPathListOutput() GetDbfsFilePathsPathListOutput
+	ToGetDbfsFilePathsPathListOutputWithContext(context.Context) GetDbfsFilePathsPathListOutput
+}
+
+type GetDbfsFilePathsPathListArgs struct {
+	FileSize pulumi.IntPtrInput `pulumi:"fileSize"`
+	// Path on DBFS for the file to perform listing
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GetDbfsFilePathsPathListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbfsFilePathsPathList)(nil)).Elem()
+}
+
+func (i GetDbfsFilePathsPathListArgs) ToGetDbfsFilePathsPathListOutput() GetDbfsFilePathsPathListOutput {
+	return i.ToGetDbfsFilePathsPathListOutputWithContext(context.Background())
+}
+
+func (i GetDbfsFilePathsPathListArgs) ToGetDbfsFilePathsPathListOutputWithContext(ctx context.Context) GetDbfsFilePathsPathListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbfsFilePathsPathListOutput)
+}
+
+// GetDbfsFilePathsPathListArrayInput is an input type that accepts GetDbfsFilePathsPathListArray and GetDbfsFilePathsPathListArrayOutput values.
+// You can construct a concrete instance of `GetDbfsFilePathsPathListArrayInput` via:
+//
+//	GetDbfsFilePathsPathListArray{ GetDbfsFilePathsPathListArgs{...} }
+type GetDbfsFilePathsPathListArrayInput interface {
+	pulumi.Input
+
+	ToGetDbfsFilePathsPathListArrayOutput() GetDbfsFilePathsPathListArrayOutput
+	ToGetDbfsFilePathsPathListArrayOutputWithContext(context.Context) GetDbfsFilePathsPathListArrayOutput
+}
+
+type GetDbfsFilePathsPathListArray []GetDbfsFilePathsPathListInput
+
+func (GetDbfsFilePathsPathListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbfsFilePathsPathList)(nil)).Elem()
+}
+
+func (i GetDbfsFilePathsPathListArray) ToGetDbfsFilePathsPathListArrayOutput() GetDbfsFilePathsPathListArrayOutput {
+	return i.ToGetDbfsFilePathsPathListArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbfsFilePathsPathListArray) ToGetDbfsFilePathsPathListArrayOutputWithContext(ctx context.Context) GetDbfsFilePathsPathListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbfsFilePathsPathListArrayOutput)
+}
+
+type GetDbfsFilePathsPathListOutput struct{ *pulumi.OutputState }
+
+func (GetDbfsFilePathsPathListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbfsFilePathsPathList)(nil)).Elem()
+}
+
+func (o GetDbfsFilePathsPathListOutput) ToGetDbfsFilePathsPathListOutput() GetDbfsFilePathsPathListOutput {
+	return o
+}
+
+func (o GetDbfsFilePathsPathListOutput) ToGetDbfsFilePathsPathListOutputWithContext(ctx context.Context) GetDbfsFilePathsPathListOutput {
+	return o
+}
+
+func (o GetDbfsFilePathsPathListOutput) FileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDbfsFilePathsPathList) *int { return v.FileSize }).(pulumi.IntPtrOutput)
+}
+
+// Path on DBFS for the file to perform listing
+func (o GetDbfsFilePathsPathListOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDbfsFilePathsPathList) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type GetDbfsFilePathsPathListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbfsFilePathsPathListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbfsFilePathsPathList)(nil)).Elem()
+}
+
+func (o GetDbfsFilePathsPathListArrayOutput) ToGetDbfsFilePathsPathListArrayOutput() GetDbfsFilePathsPathListArrayOutput {
+	return o
+}
+
+func (o GetDbfsFilePathsPathListArrayOutput) ToGetDbfsFilePathsPathListArrayOutputWithContext(ctx context.Context) GetDbfsFilePathsPathListArrayOutput {
+	return o
+}
+
+func (o GetDbfsFilePathsPathListArrayOutput) Index(i pulumi.IntInput) GetDbfsFilePathsPathListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbfsFilePathsPathList {
+		return vs[0].([]GetDbfsFilePathsPathList)[vs[1].(int)]
+	}).(GetDbfsFilePathsPathListOutput)
+}
+
+type GetExternalLocationExternalLocationInfo struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
+	BrowseOnly  *bool   `pulumi:"browseOnly"`
+	// User-supplied comment.
+	Comment *string `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Unique ID of storage credential.
+	CredentialId *string `pulumi:"credentialId"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName *string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails *GetExternalLocationExternalLocationInfoEncryptionDetails `pulumi:"encryptionDetails"`
+	IsolationMode     *string                                                   `pulumi:"isolationMode"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the external location
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url *string `pulumi:"url"`
+}
+
+// GetExternalLocationExternalLocationInfoInput is an input type that accepts GetExternalLocationExternalLocationInfoArgs and GetExternalLocationExternalLocationInfoOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoInput` via:
+//
+//	GetExternalLocationExternalLocationInfoArgs{...}
+type GetExternalLocationExternalLocationInfoInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoOutput() GetExternalLocationExternalLocationInfoOutput
+	ToGetExternalLocationExternalLocationInfoOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoOutput
+}
+
+type GetExternalLocationExternalLocationInfoArgs struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
+	BrowseOnly  pulumi.BoolPtrInput   `pulumi:"browseOnly"`
+	// User-supplied comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Unique ID of storage credential.
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName pulumi.StringPtrInput `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
+	IsolationMode     pulumi.StringPtrInput                                            `pulumi:"isolationMode"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the external location
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (GetExternalLocationExternalLocationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfo)(nil)).Elem()
+}
+
+func (i GetExternalLocationExternalLocationInfoArgs) ToGetExternalLocationExternalLocationInfoOutput() GetExternalLocationExternalLocationInfoOutput {
+	return i.ToGetExternalLocationExternalLocationInfoOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoArgs) ToGetExternalLocationExternalLocationInfoOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoOutput)
+}
+
+func (i GetExternalLocationExternalLocationInfoArgs) ToGetExternalLocationExternalLocationInfoPtrOutput() GetExternalLocationExternalLocationInfoPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoArgs) ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoOutput).ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(ctx)
+}
+
+// GetExternalLocationExternalLocationInfoPtrInput is an input type that accepts GetExternalLocationExternalLocationInfoArgs, GetExternalLocationExternalLocationInfoPtr and GetExternalLocationExternalLocationInfoPtrOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoPtrInput` via:
+//
+//	        GetExternalLocationExternalLocationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetExternalLocationExternalLocationInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoPtrOutput() GetExternalLocationExternalLocationInfoPtrOutput
+	ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoPtrOutput
+}
+
+type getExternalLocationExternalLocationInfoPtrType GetExternalLocationExternalLocationInfoArgs
+
+func GetExternalLocationExternalLocationInfoPtr(v *GetExternalLocationExternalLocationInfoArgs) GetExternalLocationExternalLocationInfoPtrInput {
+	return (*getExternalLocationExternalLocationInfoPtrType)(v)
+}
+
+func (*getExternalLocationExternalLocationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfo)(nil)).Elem()
+}
+
+func (i *getExternalLocationExternalLocationInfoPtrType) ToGetExternalLocationExternalLocationInfoPtrOutput() GetExternalLocationExternalLocationInfoPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getExternalLocationExternalLocationInfoPtrType) ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfo)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) ToGetExternalLocationExternalLocationInfoOutput() GetExternalLocationExternalLocationInfoOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) ToGetExternalLocationExternalLocationInfoOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) ToGetExternalLocationExternalLocationInfoPtrOutput() GetExternalLocationExternalLocationInfoPtrOutput {
+	return o.ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfo {
+		return &v
+	}).(GetExternalLocationExternalLocationInfoPtrOutput)
+}
+
+// The ARN of the s3 access point to use with the external location (AWS).
+func (o GetExternalLocationExternalLocationInfoOutput) AccessPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.AccessPoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// User-supplied comment.
+func (o GetExternalLocationExternalLocationInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was created, in epoch milliseconds.
+func (o GetExternalLocationExternalLocationInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of catalog creator.
+func (o GetExternalLocationExternalLocationInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of storage credential.
+func (o GetExternalLocationExternalLocationInfoOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the StorageCredential to use with this external location.
+func (o GetExternalLocationExternalLocationInfoOutput) CredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CredentialName }).(pulumi.StringPtrOutput)
+}
+
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+func (o GetExternalLocationExternalLocationInfoOutput) EncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfoEncryptionDetails {
+		return v.EncryptionDetails
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the parent Metastore.
+func (o GetExternalLocationExternalLocationInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the external location
+func (o GetExternalLocationExternalLocationInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Username/groupname/sp applicationId of the external location owner.
+func (o GetExternalLocationExternalLocationInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the external location is read-only.
+func (o GetExternalLocationExternalLocationInfoOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Time at which this catalog was last modified, in epoch milliseconds.
+func (o GetExternalLocationExternalLocationInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of user who last modified catalog.
+func (o GetExternalLocationExternalLocationInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+func (o GetExternalLocationExternalLocationInfoOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfo)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) ToGetExternalLocationExternalLocationInfoPtrOutput() GetExternalLocationExternalLocationInfoPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) ToGetExternalLocationExternalLocationInfoPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Elem() GetExternalLocationExternalLocationInfoOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) GetExternalLocationExternalLocationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetExternalLocationExternalLocationInfo
+		return ret
+	}).(GetExternalLocationExternalLocationInfoOutput)
+}
+
+// The ARN of the s3 access point to use with the external location (AWS).
+func (o GetExternalLocationExternalLocationInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BrowseOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User-supplied comment.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which this catalog was created, in epoch milliseconds.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username of catalog creator.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of storage credential.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the StorageCredential to use with this external location.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+func (o GetExternalLocationExternalLocationInfoPtrOutput) EncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfoEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionDetails
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsolationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the parent Metastore.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the external location
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username/groupname/sp applicationId of the external location owner.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the external location is read-only.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time at which this catalog was last modified, in epoch milliseconds.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username of user who last modified catalog.
+func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetails struct {
+	SseEncryptionDetails *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
+}
+
+// GetExternalLocationExternalLocationInfoEncryptionDetailsInput is an input type that accepts GetExternalLocationExternalLocationInfoEncryptionDetailsArgs and GetExternalLocationExternalLocationInfoEncryptionDetailsOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoEncryptionDetailsInput` via:
+//
+//	GetExternalLocationExternalLocationInfoEncryptionDetailsArgs{...}
+type GetExternalLocationExternalLocationInfoEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsOutput
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsOutput
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsArgs struct {
+	SseEncryptionDetails GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
+}
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsOutput)
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsOutput).ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput is an input type that accepts GetExternalLocationExternalLocationInfoEncryptionDetailsArgs, GetExternalLocationExternalLocationInfoEncryptionDetailsPtr and GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput` via:
+//
+//	        GetExternalLocationExternalLocationInfoEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput
+}
+
+type getExternalLocationExternalLocationInfoEncryptionDetailsPtrType GetExternalLocationExternalLocationInfoEncryptionDetailsArgs
+
+func GetExternalLocationExternalLocationInfoEncryptionDetailsPtr(v *GetExternalLocationExternalLocationInfoEncryptionDetailsArgs) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput {
+	return (*getExternalLocationExternalLocationInfoEncryptionDetailsPtrType)(v)
+}
+
+func (*getExternalLocationExternalLocationInfoEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (i *getExternalLocationExternalLocationInfoEncryptionDetailsPtrType) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getExternalLocationExternalLocationInfoEncryptionDetailsPtrType) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o.ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetExternalLocationExternalLocationInfoEncryptionDetails) *GetExternalLocationExternalLocationInfoEncryptionDetails {
+		return &v
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsOutput) SseEncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfoEncryptionDetails) *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+		return v.SseEncryptionDetails
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfoEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput) Elem() GetExternalLocationExternalLocationInfoEncryptionDetailsOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfoEncryptionDetails) GetExternalLocationExternalLocationInfoEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetExternalLocationExternalLocationInfoEncryptionDetails
+		return ret
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput) SseEncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfoEncryptionDetails) *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.SseEncryptionDetails
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails struct {
+	Algorithm    *string `pulumi:"algorithm"`
+	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
+}
+
+// GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs and GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInput` via:
+//
+//	GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs struct {
+	Algorithm    pulumi.StringPtrInput `pulumi:"algorithm"`
+	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
+}
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput).ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs, GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtr and GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput` via:
+//
+//	        GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
+	ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput
+}
+
+type getExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrType GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs
+
+func GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtr(v *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput {
+	return (*getExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrType)(v)
+}
+
+func (*getExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i *getExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrType) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+		return &v
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) *string {
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) *string {
+		return v.AwsKmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) ToGetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails
+		return ret
+	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfo struct {
+	AwsAttributes                      *GetInstancePoolPoolInfoAwsAttributes               `pulumi:"awsAttributes"`
+	AzureAttributes                    *GetInstancePoolPoolInfoAzureAttributes             `pulumi:"azureAttributes"`
+	CustomTags                         map[string]interface{}                              `pulumi:"customTags"`
+	DefaultTags                        map[string]interface{}                              `pulumi:"defaultTags"`
+	DiskSpec                           *GetInstancePoolPoolInfoDiskSpec                    `pulumi:"diskSpec"`
+	EnableElasticDisk                  *bool                                               `pulumi:"enableElasticDisk"`
+	GcpAttributes                      *GetInstancePoolPoolInfoGcpAttributes               `pulumi:"gcpAttributes"`
+	IdleInstanceAutoterminationMinutes int                                                 `pulumi:"idleInstanceAutoterminationMinutes"`
+	InstancePoolFleetAttributes        []GetInstancePoolPoolInfoInstancePoolFleetAttribute `pulumi:"instancePoolFleetAttributes"`
+	InstancePoolId                     string                                              `pulumi:"instancePoolId"`
+	InstancePoolName                   string                                              `pulumi:"instancePoolName"`
+	MaxCapacity                        *int                                                `pulumi:"maxCapacity"`
+	MinIdleInstances                   *int                                                `pulumi:"minIdleInstances"`
+	NodeTypeId                         *string                                             `pulumi:"nodeTypeId"`
+	PreloadedDockerImages              []GetInstancePoolPoolInfoPreloadedDockerImage       `pulumi:"preloadedDockerImages"`
+	PreloadedSparkVersions             []string                                            `pulumi:"preloadedSparkVersions"`
+	State                              *string                                             `pulumi:"state"`
+	Stats                              *GetInstancePoolPoolInfoStats                       `pulumi:"stats"`
+}
+
+// GetInstancePoolPoolInfoInput is an input type that accepts GetInstancePoolPoolInfoArgs and GetInstancePoolPoolInfoOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInput` via:
+//
+//	GetInstancePoolPoolInfoArgs{...}
+type GetInstancePoolPoolInfoInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoOutput() GetInstancePoolPoolInfoOutput
+	ToGetInstancePoolPoolInfoOutputWithContext(context.Context) GetInstancePoolPoolInfoOutput
+}
+
+type GetInstancePoolPoolInfoArgs struct {
+	AwsAttributes                      GetInstancePoolPoolInfoAwsAttributesPtrInput                `pulumi:"awsAttributes"`
+	AzureAttributes                    GetInstancePoolPoolInfoAzureAttributesPtrInput              `pulumi:"azureAttributes"`
+	CustomTags                         pulumi.MapInput                                             `pulumi:"customTags"`
+	DefaultTags                        pulumi.MapInput                                             `pulumi:"defaultTags"`
+	DiskSpec                           GetInstancePoolPoolInfoDiskSpecPtrInput                     `pulumi:"diskSpec"`
+	EnableElasticDisk                  pulumi.BoolPtrInput                                         `pulumi:"enableElasticDisk"`
+	GcpAttributes                      GetInstancePoolPoolInfoGcpAttributesPtrInput                `pulumi:"gcpAttributes"`
+	IdleInstanceAutoterminationMinutes pulumi.IntInput                                             `pulumi:"idleInstanceAutoterminationMinutes"`
+	InstancePoolFleetAttributes        GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayInput `pulumi:"instancePoolFleetAttributes"`
+	InstancePoolId                     pulumi.StringInput                                          `pulumi:"instancePoolId"`
+	InstancePoolName                   pulumi.StringInput                                          `pulumi:"instancePoolName"`
+	MaxCapacity                        pulumi.IntPtrInput                                          `pulumi:"maxCapacity"`
+	MinIdleInstances                   pulumi.IntPtrInput                                          `pulumi:"minIdleInstances"`
+	NodeTypeId                         pulumi.StringPtrInput                                       `pulumi:"nodeTypeId"`
+	PreloadedDockerImages              GetInstancePoolPoolInfoPreloadedDockerImageArrayInput       `pulumi:"preloadedDockerImages"`
+	PreloadedSparkVersions             pulumi.StringArrayInput                                     `pulumi:"preloadedSparkVersions"`
+	State                              pulumi.StringPtrInput                                       `pulumi:"state"`
+	Stats                              GetInstancePoolPoolInfoStatsPtrInput                        `pulumi:"stats"`
+}
+
+func (GetInstancePoolPoolInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfo)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoArgs) ToGetInstancePoolPoolInfoOutput() GetInstancePoolPoolInfoOutput {
+	return i.ToGetInstancePoolPoolInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoArgs) ToGetInstancePoolPoolInfoOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoOutput)
+}
+
+func (i GetInstancePoolPoolInfoArgs) ToGetInstancePoolPoolInfoPtrOutput() GetInstancePoolPoolInfoPtrOutput {
+	return i.ToGetInstancePoolPoolInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoArgs) ToGetInstancePoolPoolInfoPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoOutput).ToGetInstancePoolPoolInfoPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoPtrInput is an input type that accepts GetInstancePoolPoolInfoArgs, GetInstancePoolPoolInfoPtr and GetInstancePoolPoolInfoPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoPtrOutput() GetInstancePoolPoolInfoPtrOutput
+	ToGetInstancePoolPoolInfoPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoPtrOutput
+}
+
+type getInstancePoolPoolInfoPtrType GetInstancePoolPoolInfoArgs
+
+func GetInstancePoolPoolInfoPtr(v *GetInstancePoolPoolInfoArgs) GetInstancePoolPoolInfoPtrInput {
+	return (*getInstancePoolPoolInfoPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfo)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoPtrType) ToGetInstancePoolPoolInfoPtrOutput() GetInstancePoolPoolInfoPtrOutput {
+	return i.ToGetInstancePoolPoolInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoPtrType) ToGetInstancePoolPoolInfoPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPtrOutput)
+}
+
+type GetInstancePoolPoolInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfo)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoOutput) ToGetInstancePoolPoolInfoOutput() GetInstancePoolPoolInfoOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoOutput) ToGetInstancePoolPoolInfoOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoOutput) ToGetInstancePoolPoolInfoPtrOutput() GetInstancePoolPoolInfoPtrOutput {
+	return o.ToGetInstancePoolPoolInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoOutput) ToGetInstancePoolPoolInfoPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfo {
+		return &v
+	}).(GetInstancePoolPoolInfoPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) AwsAttributes() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAwsAttributes { return v.AwsAttributes }).(GetInstancePoolPoolInfoAwsAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) AzureAttributes() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAzureAttributes { return v.AzureAttributes }).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) CustomTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) DefaultTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.DefaultTags }).(pulumi.MapOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoDiskSpec { return v.DiskSpec }).(GetInstancePoolPoolInfoDiskSpecPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *bool { return v.EnableElasticDisk }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) GcpAttributes() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoGcpAttributes { return v.GcpAttributes }).(GetInstancePoolPoolInfoGcpAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) IdleInstanceAutoterminationMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) int { return v.IdleInstanceAutoterminationMinutes }).(pulumi.IntOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) InstancePoolFleetAttributes() GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) []GetInstancePoolPoolInfoInstancePoolFleetAttribute {
+		return v.InstancePoolFleetAttributes
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) InstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) string { return v.InstancePoolId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) InstancePoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) string { return v.InstancePoolName }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) NodeTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *string { return v.NodeTypeId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) PreloadedDockerImages() GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) []GetInstancePoolPoolInfoPreloadedDockerImage {
+		return v.PreloadedDockerImages
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) PreloadedSparkVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) []string { return v.PreloadedSparkVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoOutput) Stats() GetInstancePoolPoolInfoStatsPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoStats { return v.Stats }).(GetInstancePoolPoolInfoStatsPtrOutput)
+}
+
+type GetInstancePoolPoolInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfo)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) ToGetInstancePoolPoolInfoPtrOutput() GetInstancePoolPoolInfoPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) ToGetInstancePoolPoolInfoPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) Elem() GetInstancePoolPoolInfoOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) GetInstancePoolPoolInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfo
+		return ret
+	}).(GetInstancePoolPoolInfoOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) AwsAttributes() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAwsAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAttributes
+	}).(GetInstancePoolPoolInfoAwsAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) AzureAttributes() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAzureAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAttributes
+	}).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) CustomTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTags
+	}).(pulumi.MapOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) DefaultTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTags
+	}).(pulumi.MapOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoDiskSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSpec
+	}).(GetInstancePoolPoolInfoDiskSpecPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableElasticDisk
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) GcpAttributes() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoGcpAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.GcpAttributes
+	}).(GetInstancePoolPoolInfoGcpAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) IdleInstanceAutoterminationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IdleInstanceAutoterminationMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) InstancePoolFleetAttributes() GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) []GetInstancePoolPoolInfoInstancePoolFleetAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePoolFleetAttributes
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstancePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) InstancePoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstancePoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinIdleInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) PreloadedDockerImages() GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) []GetInstancePoolPoolInfoPreloadedDockerImage {
+		if v == nil {
+			return nil
+		}
+		return v.PreloadedDockerImages
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) PreloadedSparkVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreloadedSparkVersions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPtrOutput) Stats() GetInstancePoolPoolInfoStatsPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoStats {
+		if v == nil {
+			return nil
+		}
+		return v.Stats
+	}).(GetInstancePoolPoolInfoStatsPtrOutput)
+}
+
+type GetInstancePoolPoolInfoAwsAttributes struct {
+	Availability        *string `pulumi:"availability"`
+	SpotBidPricePercent *int    `pulumi:"spotBidPricePercent"`
+	ZoneId              string  `pulumi:"zoneId"`
+}
+
+// GetInstancePoolPoolInfoAwsAttributesInput is an input type that accepts GetInstancePoolPoolInfoAwsAttributesArgs and GetInstancePoolPoolInfoAwsAttributesOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoAwsAttributesInput` via:
+//
+//	GetInstancePoolPoolInfoAwsAttributesArgs{...}
+type GetInstancePoolPoolInfoAwsAttributesInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoAwsAttributesOutput() GetInstancePoolPoolInfoAwsAttributesOutput
+	ToGetInstancePoolPoolInfoAwsAttributesOutputWithContext(context.Context) GetInstancePoolPoolInfoAwsAttributesOutput
+}
+
+type GetInstancePoolPoolInfoAwsAttributesArgs struct {
+	Availability        pulumi.StringPtrInput `pulumi:"availability"`
+	SpotBidPricePercent pulumi.IntPtrInput    `pulumi:"spotBidPricePercent"`
+	ZoneId              pulumi.StringInput    `pulumi:"zoneId"`
+}
+
+func (GetInstancePoolPoolInfoAwsAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoAwsAttributes)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoAwsAttributesArgs) ToGetInstancePoolPoolInfoAwsAttributesOutput() GetInstancePoolPoolInfoAwsAttributesOutput {
+	return i.ToGetInstancePoolPoolInfoAwsAttributesOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoAwsAttributesArgs) ToGetInstancePoolPoolInfoAwsAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAwsAttributesOutput)
+}
+
+func (i GetInstancePoolPoolInfoAwsAttributesArgs) ToGetInstancePoolPoolInfoAwsAttributesPtrOutput() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoAwsAttributesArgs) ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAwsAttributesOutput).ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoAwsAttributesPtrInput is an input type that accepts GetInstancePoolPoolInfoAwsAttributesArgs, GetInstancePoolPoolInfoAwsAttributesPtr and GetInstancePoolPoolInfoAwsAttributesPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoAwsAttributesPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoAwsAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoAwsAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoAwsAttributesPtrOutput() GetInstancePoolPoolInfoAwsAttributesPtrOutput
+	ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoAwsAttributesPtrOutput
+}
+
+type getInstancePoolPoolInfoAwsAttributesPtrType GetInstancePoolPoolInfoAwsAttributesArgs
+
+func GetInstancePoolPoolInfoAwsAttributesPtr(v *GetInstancePoolPoolInfoAwsAttributesArgs) GetInstancePoolPoolInfoAwsAttributesPtrInput {
+	return (*getInstancePoolPoolInfoAwsAttributesPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoAwsAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoAwsAttributes)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoAwsAttributesPtrType) ToGetInstancePoolPoolInfoAwsAttributesPtrOutput() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoAwsAttributesPtrType) ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAwsAttributesPtrOutput)
+}
+
+type GetInstancePoolPoolInfoAwsAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoAwsAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoAwsAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) ToGetInstancePoolPoolInfoAwsAttributesOutput() GetInstancePoolPoolInfoAwsAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) ToGetInstancePoolPoolInfoAwsAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) ToGetInstancePoolPoolInfoAwsAttributesPtrOutput() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o.ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoAwsAttributes) *GetInstancePoolPoolInfoAwsAttributes {
+		return &v
+	}).(GetInstancePoolPoolInfoAwsAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoAwsAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoAwsAttributes) *int { return v.SpotBidPricePercent }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoAwsAttributes) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetInstancePoolPoolInfoAwsAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoAwsAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoAwsAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) ToGetInstancePoolPoolInfoAwsAttributesPtrOutput() GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) ToGetInstancePoolPoolInfoAwsAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAwsAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) Elem() GetInstancePoolPoolInfoAwsAttributesOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAwsAttributes) GetInstancePoolPoolInfoAwsAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoAwsAttributes
+		return ret
+	}).(GetInstancePoolPoolInfoAwsAttributesOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotBidPricePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ZoneId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfoAzureAttributes struct {
+	Availability    *string  `pulumi:"availability"`
+	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
+}
+
+// GetInstancePoolPoolInfoAzureAttributesInput is an input type that accepts GetInstancePoolPoolInfoAzureAttributesArgs and GetInstancePoolPoolInfoAzureAttributesOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoAzureAttributesInput` via:
+//
+//	GetInstancePoolPoolInfoAzureAttributesArgs{...}
+type GetInstancePoolPoolInfoAzureAttributesInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoAzureAttributesOutput() GetInstancePoolPoolInfoAzureAttributesOutput
+	ToGetInstancePoolPoolInfoAzureAttributesOutputWithContext(context.Context) GetInstancePoolPoolInfoAzureAttributesOutput
+}
+
+type GetInstancePoolPoolInfoAzureAttributesArgs struct {
+	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
+	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
+}
+
+func (GetInstancePoolPoolInfoAzureAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoAzureAttributes)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoAzureAttributesArgs) ToGetInstancePoolPoolInfoAzureAttributesOutput() GetInstancePoolPoolInfoAzureAttributesOutput {
+	return i.ToGetInstancePoolPoolInfoAzureAttributesOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoAzureAttributesArgs) ToGetInstancePoolPoolInfoAzureAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAzureAttributesOutput)
+}
+
+func (i GetInstancePoolPoolInfoAzureAttributesArgs) ToGetInstancePoolPoolInfoAzureAttributesPtrOutput() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoAzureAttributesArgs) ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAzureAttributesOutput).ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoAzureAttributesPtrInput is an input type that accepts GetInstancePoolPoolInfoAzureAttributesArgs, GetInstancePoolPoolInfoAzureAttributesPtr and GetInstancePoolPoolInfoAzureAttributesPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoAzureAttributesPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoAzureAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoAzureAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoAzureAttributesPtrOutput() GetInstancePoolPoolInfoAzureAttributesPtrOutput
+	ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoAzureAttributesPtrOutput
+}
+
+type getInstancePoolPoolInfoAzureAttributesPtrType GetInstancePoolPoolInfoAzureAttributesArgs
+
+func GetInstancePoolPoolInfoAzureAttributesPtr(v *GetInstancePoolPoolInfoAzureAttributesArgs) GetInstancePoolPoolInfoAzureAttributesPtrInput {
+	return (*getInstancePoolPoolInfoAzureAttributesPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoAzureAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoAzureAttributes)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoAzureAttributesPtrType) ToGetInstancePoolPoolInfoAzureAttributesPtrOutput() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoAzureAttributesPtrType) ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
+}
+
+type GetInstancePoolPoolInfoAzureAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoAzureAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoAzureAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) ToGetInstancePoolPoolInfoAzureAttributesOutput() GetInstancePoolPoolInfoAzureAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) ToGetInstancePoolPoolInfoAzureAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) ToGetInstancePoolPoolInfoAzureAttributesPtrOutput() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o.ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoAzureAttributes) *GetInstancePoolPoolInfoAzureAttributes {
+		return &v
+	}).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoAzureAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
+}
+
+type GetInstancePoolPoolInfoAzureAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoAzureAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoAzureAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesPtrOutput) ToGetInstancePoolPoolInfoAzureAttributesPtrOutput() GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesPtrOutput) ToGetInstancePoolPoolInfoAzureAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoAzureAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesPtrOutput) Elem() GetInstancePoolPoolInfoAzureAttributesOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAzureAttributes) GetInstancePoolPoolInfoAzureAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoAzureAttributes
+		return ret
+	}).(GetInstancePoolPoolInfoAzureAttributesOutput)
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAzureAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoAzureAttributes) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SpotBidMaxPrice
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpec struct {
+	DiskCount *int                                     `pulumi:"diskCount"`
+	DiskSize  *int                                     `pulumi:"diskSize"`
+	DiskType  *GetInstancePoolPoolInfoDiskSpecDiskType `pulumi:"diskType"`
+}
+
+// GetInstancePoolPoolInfoDiskSpecInput is an input type that accepts GetInstancePoolPoolInfoDiskSpecArgs and GetInstancePoolPoolInfoDiskSpecOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoDiskSpecInput` via:
+//
+//	GetInstancePoolPoolInfoDiskSpecArgs{...}
+type GetInstancePoolPoolInfoDiskSpecInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoDiskSpecOutput() GetInstancePoolPoolInfoDiskSpecOutput
+	ToGetInstancePoolPoolInfoDiskSpecOutputWithContext(context.Context) GetInstancePoolPoolInfoDiskSpecOutput
+}
+
+type GetInstancePoolPoolInfoDiskSpecArgs struct {
+	DiskCount pulumi.IntPtrInput                              `pulumi:"diskCount"`
+	DiskSize  pulumi.IntPtrInput                              `pulumi:"diskSize"`
+	DiskType  GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput `pulumi:"diskType"`
+}
+
+func (GetInstancePoolPoolInfoDiskSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpec)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecArgs) ToGetInstancePoolPoolInfoDiskSpecOutput() GetInstancePoolPoolInfoDiskSpecOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecArgs) ToGetInstancePoolPoolInfoDiskSpecOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecOutput)
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecArgs) ToGetInstancePoolPoolInfoDiskSpecPtrOutput() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecArgs) ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecOutput).ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoDiskSpecPtrInput is an input type that accepts GetInstancePoolPoolInfoDiskSpecArgs, GetInstancePoolPoolInfoDiskSpecPtr and GetInstancePoolPoolInfoDiskSpecPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoDiskSpecPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoDiskSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoDiskSpecPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoDiskSpecPtrOutput() GetInstancePoolPoolInfoDiskSpecPtrOutput
+	ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoDiskSpecPtrOutput
+}
+
+type getInstancePoolPoolInfoDiskSpecPtrType GetInstancePoolPoolInfoDiskSpecArgs
+
+func GetInstancePoolPoolInfoDiskSpecPtr(v *GetInstancePoolPoolInfoDiskSpecArgs) GetInstancePoolPoolInfoDiskSpecPtrInput {
+	return (*getInstancePoolPoolInfoDiskSpecPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoDiskSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoDiskSpec)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoDiskSpecPtrType) ToGetInstancePoolPoolInfoDiskSpecPtrOutput() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoDiskSpecPtrType) ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecPtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpecOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoDiskSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpec)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) ToGetInstancePoolPoolInfoDiskSpecOutput() GetInstancePoolPoolInfoDiskSpecOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) ToGetInstancePoolPoolInfoDiskSpecOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) ToGetInstancePoolPoolInfoDiskSpecPtrOutput() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o.ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoDiskSpec) *GetInstancePoolPoolInfoDiskSpec {
+		return &v
+	}).(GetInstancePoolPoolInfoDiskSpecPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) DiskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoDiskSpec) *int { return v.DiskCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoDiskSpec) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecOutput) DiskType() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoDiskSpec) *GetInstancePoolPoolInfoDiskSpecDiskType { return v.DiskType }).(GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoDiskSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoDiskSpec)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) ToGetInstancePoolPoolInfoDiskSpecPtrOutput() GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) ToGetInstancePoolPoolInfoDiskSpecPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) Elem() GetInstancePoolPoolInfoDiskSpecOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpec) GetInstancePoolPoolInfoDiskSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoDiskSpec
+		return ret
+	}).(GetInstancePoolPoolInfoDiskSpecOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) DiskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecPtrOutput) DiskType() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpec) *GetInstancePoolPoolInfoDiskSpecDiskType {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpecDiskType struct {
+	AzureDiskVolumeType *string `pulumi:"azureDiskVolumeType"`
+	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
+}
+
+// GetInstancePoolPoolInfoDiskSpecDiskTypeInput is an input type that accepts GetInstancePoolPoolInfoDiskSpecDiskTypeArgs and GetInstancePoolPoolInfoDiskSpecDiskTypeOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoDiskSpecDiskTypeInput` via:
+//
+//	GetInstancePoolPoolInfoDiskSpecDiskTypeArgs{...}
+type GetInstancePoolPoolInfoDiskSpecDiskTypeInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutput() GetInstancePoolPoolInfoDiskSpecDiskTypeOutput
+	ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutputWithContext(context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypeOutput
+}
+
+type GetInstancePoolPoolInfoDiskSpecDiskTypeArgs struct {
+	AzureDiskVolumeType pulumi.StringPtrInput `pulumi:"azureDiskVolumeType"`
+	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
+}
+
+func (GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecDiskType)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutput() GetInstancePoolPoolInfoDiskSpecDiskTypeOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecDiskTypeOutput)
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecDiskTypeOutput).ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput is an input type that accepts GetInstancePoolPoolInfoDiskSpecDiskTypeArgs, GetInstancePoolPoolInfoDiskSpecDiskTypePtr and GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput` via:
+//
+//	        GetInstancePoolPoolInfoDiskSpecDiskTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput
+	ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput
+}
+
+type getInstancePoolPoolInfoDiskSpecDiskTypePtrType GetInstancePoolPoolInfoDiskSpecDiskTypeArgs
+
+func GetInstancePoolPoolInfoDiskSpecDiskTypePtr(v *GetInstancePoolPoolInfoDiskSpecDiskTypeArgs) GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput {
+	return (*getInstancePoolPoolInfoDiskSpecDiskTypePtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoDiskSpecDiskTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoDiskSpecDiskType)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoDiskSpecDiskTypePtrType) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return i.ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoDiskSpecDiskTypePtrType) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpecDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecDiskType)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutput() GetInstancePoolPoolInfoDiskSpecDiskTypeOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypeOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypeOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o.ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoDiskSpecDiskType) *GetInstancePoolPoolInfoDiskSpecDiskType {
+		return &v
+	}).(GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) AzureDiskVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoDiskSpecDiskType) *string { return v.AzureDiskVolumeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypeOutput) EbsVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoDiskSpecDiskType) *string { return v.EbsVolumeType }).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoDiskSpecDiskType)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput() GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) ToGetInstancePoolPoolInfoDiskSpecDiskTypePtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) Elem() GetInstancePoolPoolInfoDiskSpecDiskTypeOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpecDiskType) GetInstancePoolPoolInfoDiskSpecDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoDiskSpecDiskType
+		return ret
+	}).(GetInstancePoolPoolInfoDiskSpecDiskTypeOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) AzureDiskVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpecDiskType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDiskVolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) EbsVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoDiskSpecDiskType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfoGcpAttributes struct {
+	GcpAvailability *string `pulumi:"gcpAvailability"`
+	LocalSsdCount   int     `pulumi:"localSsdCount"`
+	ZoneId          string  `pulumi:"zoneId"`
+}
+
+// GetInstancePoolPoolInfoGcpAttributesInput is an input type that accepts GetInstancePoolPoolInfoGcpAttributesArgs and GetInstancePoolPoolInfoGcpAttributesOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoGcpAttributesInput` via:
+//
+//	GetInstancePoolPoolInfoGcpAttributesArgs{...}
+type GetInstancePoolPoolInfoGcpAttributesInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoGcpAttributesOutput() GetInstancePoolPoolInfoGcpAttributesOutput
+	ToGetInstancePoolPoolInfoGcpAttributesOutputWithContext(context.Context) GetInstancePoolPoolInfoGcpAttributesOutput
+}
+
+type GetInstancePoolPoolInfoGcpAttributesArgs struct {
+	GcpAvailability pulumi.StringPtrInput `pulumi:"gcpAvailability"`
+	LocalSsdCount   pulumi.IntInput       `pulumi:"localSsdCount"`
+	ZoneId          pulumi.StringInput    `pulumi:"zoneId"`
+}
+
+func (GetInstancePoolPoolInfoGcpAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoGcpAttributes)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoGcpAttributesArgs) ToGetInstancePoolPoolInfoGcpAttributesOutput() GetInstancePoolPoolInfoGcpAttributesOutput {
+	return i.ToGetInstancePoolPoolInfoGcpAttributesOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoGcpAttributesArgs) ToGetInstancePoolPoolInfoGcpAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoGcpAttributesOutput)
+}
+
+func (i GetInstancePoolPoolInfoGcpAttributesArgs) ToGetInstancePoolPoolInfoGcpAttributesPtrOutput() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoGcpAttributesArgs) ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoGcpAttributesOutput).ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoGcpAttributesPtrInput is an input type that accepts GetInstancePoolPoolInfoGcpAttributesArgs, GetInstancePoolPoolInfoGcpAttributesPtr and GetInstancePoolPoolInfoGcpAttributesPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoGcpAttributesPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoGcpAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoGcpAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoGcpAttributesPtrOutput() GetInstancePoolPoolInfoGcpAttributesPtrOutput
+	ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoGcpAttributesPtrOutput
+}
+
+type getInstancePoolPoolInfoGcpAttributesPtrType GetInstancePoolPoolInfoGcpAttributesArgs
+
+func GetInstancePoolPoolInfoGcpAttributesPtr(v *GetInstancePoolPoolInfoGcpAttributesArgs) GetInstancePoolPoolInfoGcpAttributesPtrInput {
+	return (*getInstancePoolPoolInfoGcpAttributesPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoGcpAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoGcpAttributes)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoGcpAttributesPtrType) ToGetInstancePoolPoolInfoGcpAttributesPtrOutput() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return i.ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoGcpAttributesPtrType) ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoGcpAttributesPtrOutput)
+}
+
+type GetInstancePoolPoolInfoGcpAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoGcpAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoGcpAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) ToGetInstancePoolPoolInfoGcpAttributesOutput() GetInstancePoolPoolInfoGcpAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) ToGetInstancePoolPoolInfoGcpAttributesOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) ToGetInstancePoolPoolInfoGcpAttributesPtrOutput() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o.ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoGcpAttributes) *GetInstancePoolPoolInfoGcpAttributes {
+		return &v
+	}).(GetInstancePoolPoolInfoGcpAttributesPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) GcpAvailability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoGcpAttributes) *string { return v.GcpAvailability }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoGcpAttributes) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoGcpAttributes) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetInstancePoolPoolInfoGcpAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoGcpAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoGcpAttributes)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) ToGetInstancePoolPoolInfoGcpAttributesPtrOutput() GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) ToGetInstancePoolPoolInfoGcpAttributesPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoGcpAttributesPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) Elem() GetInstancePoolPoolInfoGcpAttributesOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoGcpAttributes) GetInstancePoolPoolInfoGcpAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoGcpAttributes
+		return ret
+	}).(GetInstancePoolPoolInfoGcpAttributesOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) GcpAvailability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoGcpAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpAvailability
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoGcpAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ZoneId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttribute struct {
+	FleetOnDemandOption     *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption     `pulumi:"fleetOnDemandOption"`
+	FleetSpotOption         *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption         `pulumi:"fleetSpotOption"`
+	LaunchTemplateOverrides []GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs and GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs{...}
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs struct {
+	FleetOnDemandOption     GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput      `pulumi:"fleetOnDemandOption"`
+	FleetSpotOption         GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput          `pulumi:"fleetSpotOption"`
+	LaunchTemplateOverrides GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayInput `pulumi:"launchTemplateOverrides"`
+}
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttribute)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput)
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeArray and GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeArray{ GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs{...} }
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeArray []GetInstancePoolPoolInfoInstancePoolFleetAttributeInput
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoInstancePoolFleetAttribute)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeArray) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeArray) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttribute)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) FleetOnDemandOption() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttribute) *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption {
+		return v.FleetOnDemandOption
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) FleetSpotOption() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttribute) *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
+		return v.FleetSpotOption
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput) LaunchTemplateOverrides() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttribute) []GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
+		return v.LaunchTemplateOverrides
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoInstancePoolFleetAttribute)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput) Index(i pulumi.IntInput) GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolPoolInfoInstancePoolFleetAttribute {
+		return vs[0].([]GetInstancePoolPoolInfoInstancePoolFleetAttribute)[vs[1].(int)]
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption struct {
+	AllocationStrategy      string `pulumi:"allocationStrategy"`
+	InstancePoolsToUseCount *int   `pulumi:"instancePoolsToUseCount"`
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs and GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs{...}
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs struct {
+	AllocationStrategy      pulumi.StringInput `pulumi:"allocationStrategy"`
+	InstancePoolsToUseCount pulumi.IntPtrInput `pulumi:"instancePoolsToUseCount"`
+}
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput)
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput).ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs, GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtr and GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput
+}
+
+type getInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrType GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs
+
+func GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtr(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput {
+	return (*getInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrType) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrType) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return o.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption {
+		return &v
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) AllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) string {
+		return v.AllocationStrategy
+	}).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput) InstancePoolsToUseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) *int {
+		return v.InstancePoolsToUseCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) Elem() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption
+		return ret
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput) InstancePoolsToUseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePoolsToUseCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption struct {
+	AllocationStrategy      string `pulumi:"allocationStrategy"`
+	InstancePoolsToUseCount *int   `pulumi:"instancePoolsToUseCount"`
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs and GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs{...}
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs struct {
+	AllocationStrategy      pulumi.StringInput `pulumi:"allocationStrategy"`
+	InstancePoolsToUseCount pulumi.IntPtrInput `pulumi:"instancePoolsToUseCount"`
+}
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput)
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput).ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs, GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtr and GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput
+}
+
+type getInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrType GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs
+
+func GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtr(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput {
+	return (*getInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrType) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrType) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return o.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
+		return &v
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) AllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) string {
+		return v.AllocationStrategy
+	}).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput) InstancePoolsToUseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) *int {
+		return v.InstancePoolsToUseCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) Elem() GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption
+		return ret
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput) InstancePoolsToUseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePoolsToUseCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride struct {
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	InstanceType     string `pulumi:"instanceType"`
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs and GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs{...}
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs struct {
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	InstanceType     pulumi.StringInput `pulumi:"instanceType"`
+}
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput)
+}
+
+// GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayInput is an input type that accepts GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray and GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayInput` via:
+//
+//	GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray{ GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs{...} }
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput
+	ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutputWithContext(context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray []GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideInput
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput {
+	return i.ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride) string {
+		return v.AvailabilityZone
+	}).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride) string {
+		return v.InstanceType
+	}).(pulumi.StringOutput)
+}
+
+type GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput() GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput) ToGetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput) Index(i pulumi.IntInput) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
+		return vs[0].([]GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride)[vs[1].(int)]
+	}).(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImage struct {
+	BasicAuth *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth `pulumi:"basicAuth"`
+	Url       string                                                `pulumi:"url"`
+}
+
+// GetInstancePoolPoolInfoPreloadedDockerImageInput is an input type that accepts GetInstancePoolPoolInfoPreloadedDockerImageArgs and GetInstancePoolPoolInfoPreloadedDockerImageOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoPreloadedDockerImageInput` via:
+//
+//	GetInstancePoolPoolInfoPreloadedDockerImageArgs{...}
+type GetInstancePoolPoolInfoPreloadedDockerImageInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoPreloadedDockerImageOutput() GetInstancePoolPoolInfoPreloadedDockerImageOutput
+	ToGetInstancePoolPoolInfoPreloadedDockerImageOutputWithContext(context.Context) GetInstancePoolPoolInfoPreloadedDockerImageOutput
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageArgs struct {
+	BasicAuth GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
+	Url       pulumi.StringInput                                           `pulumi:"url"`
+}
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImage)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageOutput() GetInstancePoolPoolInfoPreloadedDockerImageOutput {
+	return i.ToGetInstancePoolPoolInfoPreloadedDockerImageOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPreloadedDockerImageOutput)
+}
+
+// GetInstancePoolPoolInfoPreloadedDockerImageArrayInput is an input type that accepts GetInstancePoolPoolInfoPreloadedDockerImageArray and GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoPreloadedDockerImageArrayInput` via:
+//
+//	GetInstancePoolPoolInfoPreloadedDockerImageArray{ GetInstancePoolPoolInfoPreloadedDockerImageArgs{...} }
+type GetInstancePoolPoolInfoPreloadedDockerImageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutput() GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput
+	ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutputWithContext(context.Context) GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageArray []GetInstancePoolPoolInfoPreloadedDockerImageInput
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoPreloadedDockerImage)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageArray) ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutput() GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return i.ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageArray) ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImage)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageOutput() GetInstancePoolPoolInfoPreloadedDockerImageOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageOutput) BasicAuth() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoPreloadedDockerImage) *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth {
+		return v.BasicAuth
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoPreloadedDockerImage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePoolPoolInfoPreloadedDockerImage)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutput() GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageArrayOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput) Index(i pulumi.IntInput) GetInstancePoolPoolInfoPreloadedDockerImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolPoolInfoPreloadedDockerImage {
+		return vs[0].([]GetInstancePoolPoolInfoPreloadedDockerImage)[vs[1].(int)]
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth struct {
+	Password string `pulumi:"password"`
+	Username string `pulumi:"username"`
+}
+
+// GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthInput is an input type that accepts GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs and GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthInput` via:
+//
+//	GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs{...}
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput
+	ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutputWithContext(context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs struct {
+	Password pulumi.StringInput `pulumi:"password"`
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput {
+	return i.ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput)
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return i.ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput).ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput is an input type that accepts GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs, GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtr and GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput
+	ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput
+}
+
+type getInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrType GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs
+
+func GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtr(v *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput {
+	return (*getInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrType) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return i.ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrType) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return o.ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth {
+		return &v
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) ToGetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) Elem() GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth
+		return ret
+	}).(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput)
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstancePoolPoolInfoStats struct {
+	IdleCount        *int `pulumi:"idleCount"`
+	PendingIdleCount *int `pulumi:"pendingIdleCount"`
+	PendingUsedCount *int `pulumi:"pendingUsedCount"`
+	UsedCount        *int `pulumi:"usedCount"`
+}
+
+// GetInstancePoolPoolInfoStatsInput is an input type that accepts GetInstancePoolPoolInfoStatsArgs and GetInstancePoolPoolInfoStatsOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoStatsInput` via:
+//
+//	GetInstancePoolPoolInfoStatsArgs{...}
+type GetInstancePoolPoolInfoStatsInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoStatsOutput() GetInstancePoolPoolInfoStatsOutput
+	ToGetInstancePoolPoolInfoStatsOutputWithContext(context.Context) GetInstancePoolPoolInfoStatsOutput
+}
+
+type GetInstancePoolPoolInfoStatsArgs struct {
+	IdleCount        pulumi.IntPtrInput `pulumi:"idleCount"`
+	PendingIdleCount pulumi.IntPtrInput `pulumi:"pendingIdleCount"`
+	PendingUsedCount pulumi.IntPtrInput `pulumi:"pendingUsedCount"`
+	UsedCount        pulumi.IntPtrInput `pulumi:"usedCount"`
+}
+
+func (GetInstancePoolPoolInfoStatsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoStats)(nil)).Elem()
+}
+
+func (i GetInstancePoolPoolInfoStatsArgs) ToGetInstancePoolPoolInfoStatsOutput() GetInstancePoolPoolInfoStatsOutput {
+	return i.ToGetInstancePoolPoolInfoStatsOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoStatsArgs) ToGetInstancePoolPoolInfoStatsOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoStatsOutput)
+}
+
+func (i GetInstancePoolPoolInfoStatsArgs) ToGetInstancePoolPoolInfoStatsPtrOutput() GetInstancePoolPoolInfoStatsPtrOutput {
+	return i.ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstancePoolPoolInfoStatsArgs) ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoStatsOutput).ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(ctx)
+}
+
+// GetInstancePoolPoolInfoStatsPtrInput is an input type that accepts GetInstancePoolPoolInfoStatsArgs, GetInstancePoolPoolInfoStatsPtr and GetInstancePoolPoolInfoStatsPtrOutput values.
+// You can construct a concrete instance of `GetInstancePoolPoolInfoStatsPtrInput` via:
+//
+//	        GetInstancePoolPoolInfoStatsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstancePoolPoolInfoStatsPtrInput interface {
+	pulumi.Input
+
+	ToGetInstancePoolPoolInfoStatsPtrOutput() GetInstancePoolPoolInfoStatsPtrOutput
+	ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(context.Context) GetInstancePoolPoolInfoStatsPtrOutput
+}
+
+type getInstancePoolPoolInfoStatsPtrType GetInstancePoolPoolInfoStatsArgs
+
+func GetInstancePoolPoolInfoStatsPtr(v *GetInstancePoolPoolInfoStatsArgs) GetInstancePoolPoolInfoStatsPtrInput {
+	return (*getInstancePoolPoolInfoStatsPtrType)(v)
+}
+
+func (*getInstancePoolPoolInfoStatsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoStats)(nil)).Elem()
+}
+
+func (i *getInstancePoolPoolInfoStatsPtrType) ToGetInstancePoolPoolInfoStatsPtrOutput() GetInstancePoolPoolInfoStatsPtrOutput {
+	return i.ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstancePoolPoolInfoStatsPtrType) ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolPoolInfoStatsPtrOutput)
+}
+
+type GetInstancePoolPoolInfoStatsOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoStatsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePoolPoolInfoStats)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) ToGetInstancePoolPoolInfoStatsOutput() GetInstancePoolPoolInfoStatsOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) ToGetInstancePoolPoolInfoStatsOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) ToGetInstancePoolPoolInfoStatsPtrOutput() GetInstancePoolPoolInfoStatsPtrOutput {
+	return o.ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstancePoolPoolInfoStats) *GetInstancePoolPoolInfoStats {
+		return &v
+	}).(GetInstancePoolPoolInfoStatsPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) IdleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoStats) *int { return v.IdleCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) PendingIdleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoStats) *int { return v.PendingIdleCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) PendingUsedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoStats) *int { return v.PendingUsedCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsOutput) UsedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoStats) *int { return v.UsedCount }).(pulumi.IntPtrOutput)
+}
+
+type GetInstancePoolPoolInfoStatsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePoolPoolInfoStatsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstancePoolPoolInfoStats)(nil)).Elem()
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) ToGetInstancePoolPoolInfoStatsPtrOutput() GetInstancePoolPoolInfoStatsPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) ToGetInstancePoolPoolInfoStatsPtrOutputWithContext(ctx context.Context) GetInstancePoolPoolInfoStatsPtrOutput {
+	return o
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) Elem() GetInstancePoolPoolInfoStatsOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoStats) GetInstancePoolPoolInfoStats {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstancePoolPoolInfoStats
+		return ret
+	}).(GetInstancePoolPoolInfoStatsOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) IdleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoStats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) PendingIdleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoStats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PendingIdleCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) PendingUsedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoStats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PendingUsedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoStatsPtrOutput) UsedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoStats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UsedCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetInstanceProfilesInstanceProfile struct {
 	// ARN of the instance profile.
 	Arn string `pulumi:"arn"`
@@ -39023,6 +43002,50 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecWorkloadTypeClientsInput)(nil)).Elem(), GetClusterClusterInfoSpecWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecWorkloadTypeClientsPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonPtrInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypePtrInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClientsInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClientsPtrInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListArrayInput)(nil)).Elem(), GetDbfsFilePathsPathListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoPtrInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInput)(nil)).Elem(), GetInstancePoolPoolInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoAwsAttributesInput)(nil)).Elem(), GetInstancePoolPoolInfoAwsAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoAwsAttributesPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoAwsAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoAzureAttributesInput)(nil)).Elem(), GetInstancePoolPoolInfoAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoAzureAttributesPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecInput)(nil)).Elem(), GetInstancePoolPoolInfoDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecDiskTypeInput)(nil)).Elem(), GetInstancePoolPoolInfoDiskSpecDiskTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoDiskSpecDiskTypePtrInput)(nil)).Elem(), GetInstancePoolPoolInfoDiskSpecDiskTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoGcpAttributesInput)(nil)).Elem(), GetInstancePoolPoolInfoGcpAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoGcpAttributesPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoGcpAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayInput)(nil)).Elem(), GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageInput)(nil)).Elem(), GetInstancePoolPoolInfoPreloadedDockerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageArrayInput)(nil)).Elem(), GetInstancePoolPoolInfoPreloadedDockerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthInput)(nil)).Elem(), GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoStatsInput)(nil)).Elem(), GetInstancePoolPoolInfoStatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoStatsPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoStatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProfilesInstanceProfileInput)(nil)).Elem(), GetInstanceProfilesInstanceProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProfilesInstanceProfileArrayInput)(nil)).Elem(), GetInstanceProfilesInstanceProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsInput)(nil)).Elem(), GetJobJobSettingsArgs{})
@@ -39488,6 +43511,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecWorkloadTypeClientsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypeOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypePtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypeClientsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoOutput{})
+	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})
+	pulumi.RegisterOutputType(GetDbfsFilePathsPathListArrayOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoAwsAttributesOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoAwsAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoAzureAttributesOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoDiskSpecOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoDiskSpecPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoDiskSpecDiskTypeOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoGcpAttributesOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoGcpAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPreloadedDockerImageOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPreloadedDockerImageArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoStatsOutput{})
+	pulumi.RegisterOutputType(GetInstancePoolPoolInfoStatsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceProfilesInstanceProfileOutput{})
 	pulumi.RegisterOutputType(GetInstanceProfilesInstanceProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsOutput{})

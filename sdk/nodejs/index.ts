@@ -525,6 +525,11 @@ export type Notebook = import("./notebook").Notebook;
 export const Notebook: typeof import("./notebook").Notebook = null as any;
 utilities.lazyLoad(exports, ["Notebook"], () => require("./notebook"));
 
+export { NotificationDestinationArgs, NotificationDestinationState } from "./notificationDestination";
+export type NotificationDestination = import("./notificationDestination").NotificationDestination;
+export const NotificationDestination: typeof import("./notificationDestination").NotificationDestination = null as any;
+utilities.lazyLoad(exports, ["NotificationDestination"], () => require("./notificationDestination"));
+
 export { OboTokenArgs, OboTokenState } from "./oboToken";
 export type OboToken = import("./oboToken").OboToken;
 export const OboToken: typeof import("./oboToken").OboToken = null as any;
@@ -850,6 +855,8 @@ const _module = {
                 return new MwsWorkspaces(name, <any>undefined, { urn })
             case "databricks:index/notebook:Notebook":
                 return new Notebook(name, <any>undefined, { urn })
+            case "databricks:index/notificationDestination:NotificationDestination":
+                return new NotificationDestination(name, <any>undefined, { urn })
             case "databricks:index/oboToken:OboToken":
                 return new OboToken(name, <any>undefined, { urn })
             case "databricks:index/onlineTable:OnlineTable":
@@ -988,6 +995,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/mwsStorageConfigurati
 pulumi.runtime.registerResourceModule("databricks", "index/mwsVpcEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsWorkspaces", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/notebook", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/notificationDestination", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/oboToken", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/onlineTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)

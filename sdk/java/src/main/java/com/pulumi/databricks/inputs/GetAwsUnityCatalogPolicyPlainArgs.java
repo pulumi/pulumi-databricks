@@ -46,14 +46,14 @@ public final class GetAwsUnityCatalogPolicyPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
      * 
      */
     @Import(name="kmsName")
     private @Nullable String kmsName;
 
     /**
-     * @return If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * @return If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
      * 
      */
     public Optional<String> kmsName() {
@@ -125,7 +125,7 @@ public final class GetAwsUnityCatalogPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param kmsName If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+         * @param kmsName If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
          * 
          * @return builder
          * 

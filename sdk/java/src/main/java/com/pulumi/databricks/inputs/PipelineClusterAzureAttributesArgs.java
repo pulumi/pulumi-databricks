@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineClusterAzureAttributesLogAnalyticsInfoArgs;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -31,6 +32,13 @@ public final class PipelineClusterAzureAttributesArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.firstOnDemand);
     }
 
+    @Import(name="logAnalyticsInfo")
+    private @Nullable Output<PipelineClusterAzureAttributesLogAnalyticsInfoArgs> logAnalyticsInfo;
+
+    public Optional<Output<PipelineClusterAzureAttributesLogAnalyticsInfoArgs>> logAnalyticsInfo() {
+        return Optional.ofNullable(this.logAnalyticsInfo);
+    }
+
     @Import(name="spotBidMaxPrice")
     private @Nullable Output<Double> spotBidMaxPrice;
 
@@ -43,6 +51,7 @@ public final class PipelineClusterAzureAttributesArgs extends com.pulumi.resourc
     private PipelineClusterAzureAttributesArgs(PipelineClusterAzureAttributesArgs $) {
         this.availability = $.availability;
         this.firstOnDemand = $.firstOnDemand;
+        this.logAnalyticsInfo = $.logAnalyticsInfo;
         this.spotBidMaxPrice = $.spotBidMaxPrice;
     }
 
@@ -80,6 +89,15 @@ public final class PipelineClusterAzureAttributesArgs extends com.pulumi.resourc
 
         public Builder firstOnDemand(Integer firstOnDemand) {
             return firstOnDemand(Output.of(firstOnDemand));
+        }
+
+        public Builder logAnalyticsInfo(@Nullable Output<PipelineClusterAzureAttributesLogAnalyticsInfoArgs> logAnalyticsInfo) {
+            $.logAnalyticsInfo = logAnalyticsInfo;
+            return this;
+        }
+
+        public Builder logAnalyticsInfo(PipelineClusterAzureAttributesLogAnalyticsInfoArgs logAnalyticsInfo) {
+            return logAnalyticsInfo(Output.of(logAnalyticsInfo));
         }
 
         public Builder spotBidMaxPrice(@Nullable Output<Double> spotBidMaxPrice) {

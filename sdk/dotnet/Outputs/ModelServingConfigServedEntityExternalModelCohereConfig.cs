@@ -13,15 +13,24 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelCohereConfig
     {
+        public readonly string? CohereApiBase;
         /// <summary>
         /// The Databricks secret key reference for a Cohere API key.
         /// </summary>
-        public readonly string CohereApiKey;
+        public readonly string? CohereApiKey;
+        public readonly string? CohereApiKeyPlaintext;
 
         [OutputConstructor]
-        private ModelServingConfigServedEntityExternalModelCohereConfig(string cohereApiKey)
+        private ModelServingConfigServedEntityExternalModelCohereConfig(
+            string? cohereApiBase,
+
+            string? cohereApiKey,
+
+            string? cohereApiKeyPlaintext)
         {
+            CohereApiBase = cohereApiBase;
             CohereApiKey = cohereApiKey;
+            CohereApiKeyPlaintext = cohereApiKeyPlaintext;
         }
     }
 }

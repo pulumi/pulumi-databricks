@@ -8,9 +8,14 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterArgs;
 import com.pulumi.databricks.inputs.PipelineDeploymentArgs;
 import com.pulumi.databricks.inputs.PipelineFiltersArgs;
+import com.pulumi.databricks.inputs.PipelineGatewayDefinitionArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionArgs;
+import com.pulumi.databricks.inputs.PipelineLatestUpdateArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
 import com.pulumi.databricks.inputs.PipelineNotificationArgs;
+import com.pulumi.databricks.inputs.PipelineTriggerArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -24,9 +29,17 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineState Empty = new PipelineState();
 
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     @Import(name="allowDuplicateNames")
     private @Nullable Output<Boolean> allowDuplicateNames;
 
+    /**
+     * @return Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> allowDuplicateNames() {
         return Optional.ofNullable(this.allowDuplicateNames);
     }
@@ -46,6 +59,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.catalog);
     }
 
+    @Import(name="cause")
+    private @Nullable Output<String> cause;
+
+    public Optional<Output<String>> cause() {
+        return Optional.ofNullable(this.cause);
+    }
+
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
@@ -59,6 +79,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> channel() {
         return Optional.ofNullable(this.channel);
+    }
+
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
+
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
     }
 
     /**
@@ -106,22 +133,37 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.continuous);
     }
 
+    @Import(name="creatorUserName")
+    private @Nullable Output<String> creatorUserName;
+
+    public Optional<Output<String>> creatorUserName() {
+        return Optional.ofNullable(this.creatorUserName);
+    }
+
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     @Import(name="deployment")
     private @Nullable Output<PipelineDeploymentArgs> deployment;
 
+    /**
+     * @return Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     public Optional<Output<PipelineDeploymentArgs>> deployment() {
         return Optional.ofNullable(this.deployment);
     }
 
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      * 
      */
     @Import(name="development")
     private @Nullable Output<Boolean> development;
 
     /**
-     * @return A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+     * @return A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> development() {
@@ -143,11 +185,69 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.edition);
     }
 
+    @Import(name="expectedLastModified")
+    private @Nullable Output<Integer> expectedLastModified;
+
+    public Optional<Output<Integer>> expectedLastModified() {
+        return Optional.ofNullable(this.expectedLastModified);
+    }
+
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<PipelineFiltersArgs> filters;
 
+    /**
+     * @return Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     public Optional<Output<PipelineFiltersArgs>> filters() {
         return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
+    @Import(name="gatewayDefinition")
+    private @Nullable Output<PipelineGatewayDefinitionArgs> gatewayDefinition;
+
+    /**
+     * @return The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
+    public Optional<Output<PipelineGatewayDefinitionArgs>> gatewayDefinition() {
+        return Optional.ofNullable(this.gatewayDefinition);
+    }
+
+    @Import(name="health")
+    private @Nullable Output<String> health;
+
+    public Optional<Output<String>> health() {
+        return Optional.ofNullable(this.health);
+    }
+
+    @Import(name="ingestionDefinition")
+    private @Nullable Output<PipelineIngestionDefinitionArgs> ingestionDefinition;
+
+    public Optional<Output<PipelineIngestionDefinitionArgs>> ingestionDefinition() {
+        return Optional.ofNullable(this.ingestionDefinition);
+    }
+
+    @Import(name="lastModified")
+    private @Nullable Output<Integer> lastModified;
+
+    public Optional<Output<Integer>> lastModified() {
+        return Optional.ofNullable(this.lastModified);
+    }
+
+    @Import(name="latestUpdates")
+    private @Nullable Output<List<PipelineLatestUpdateArgs>> latestUpdates;
+
+    public Optional<Output<List<PipelineLatestUpdateArgs>>> latestUpdates() {
+        return Optional.ofNullable(this.latestUpdates);
     }
 
     /**
@@ -202,6 +302,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.photon);
     }
 
+    @Import(name="runAsUserName")
+    private @Nullable Output<String> runAsUserName;
+
+    public Optional<Output<String>> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
+    }
+
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      * 
@@ -215,6 +322,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> serverless() {
         return Optional.ofNullable(this.serverless);
+    }
+
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
     }
 
     /**
@@ -247,6 +361,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.target);
     }
 
+    @Import(name="trigger")
+    private @Nullable Output<PipelineTriggerArgs> trigger;
+
+    public Optional<Output<PipelineTriggerArgs>> trigger() {
+        return Optional.ofNullable(this.trigger);
+    }
+
     /**
      * URL of the DLT pipeline on the given workspace.
      * 
@@ -267,21 +388,33 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     private PipelineState(PipelineState $) {
         this.allowDuplicateNames = $.allowDuplicateNames;
         this.catalog = $.catalog;
+        this.cause = $.cause;
         this.channel = $.channel;
+        this.clusterId = $.clusterId;
         this.clusters = $.clusters;
         this.configuration = $.configuration;
         this.continuous = $.continuous;
+        this.creatorUserName = $.creatorUserName;
         this.deployment = $.deployment;
         this.development = $.development;
         this.edition = $.edition;
+        this.expectedLastModified = $.expectedLastModified;
         this.filters = $.filters;
+        this.gatewayDefinition = $.gatewayDefinition;
+        this.health = $.health;
+        this.ingestionDefinition = $.ingestionDefinition;
+        this.lastModified = $.lastModified;
+        this.latestUpdates = $.latestUpdates;
         this.libraries = $.libraries;
         this.name = $.name;
         this.notifications = $.notifications;
         this.photon = $.photon;
+        this.runAsUserName = $.runAsUserName;
         this.serverless = $.serverless;
+        this.state = $.state;
         this.storage = $.storage;
         this.target = $.target;
+        this.trigger = $.trigger;
         this.url = $.url;
     }
 
@@ -303,11 +436,23 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             $ = new PipelineState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowDuplicateNames Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowDuplicateNames(@Nullable Output<Boolean> allowDuplicateNames) {
             $.allowDuplicateNames = allowDuplicateNames;
             return this;
         }
 
+        /**
+         * @param allowDuplicateNames Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowDuplicateNames(Boolean allowDuplicateNames) {
             return allowDuplicateNames(Output.of(allowDuplicateNames));
         }
@@ -333,6 +478,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return catalog(Output.of(catalog));
         }
 
+        public Builder cause(@Nullable Output<String> cause) {
+            $.cause = cause;
+            return this;
+        }
+
+        public Builder cause(String cause) {
+            return cause(Output.of(cause));
+        }
+
         /**
          * @param channel optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
          * 
@@ -352,6 +506,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder channel(String channel) {
             return channel(Output.of(channel));
+        }
+
+        public Builder clusterId(@Nullable Output<String> clusterId) {
+            $.clusterId = clusterId;
+            return this;
+        }
+
+        public Builder clusterId(String clusterId) {
+            return clusterId(Output.of(clusterId));
         }
 
         /**
@@ -427,17 +590,38 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return continuous(Output.of(continuous));
         }
 
+        public Builder creatorUserName(@Nullable Output<String> creatorUserName) {
+            $.creatorUserName = creatorUserName;
+            return this;
+        }
+
+        public Builder creatorUserName(String creatorUserName) {
+            return creatorUserName(Output.of(creatorUserName));
+        }
+
+        /**
+         * @param deployment Deployment type of this pipeline. Supports following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployment(@Nullable Output<PipelineDeploymentArgs> deployment) {
             $.deployment = deployment;
             return this;
         }
 
+        /**
+         * @param deployment Deployment type of this pipeline. Supports following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployment(PipelineDeploymentArgs deployment) {
             return deployment(Output.of(deployment));
         }
 
         /**
-         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `false`.
          * 
          * @return builder
          * 
@@ -448,7 +632,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `false`.
          * 
          * @return builder
          * 
@@ -478,13 +662,95 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return edition(Output.of(edition));
         }
 
+        public Builder expectedLastModified(@Nullable Output<Integer> expectedLastModified) {
+            $.expectedLastModified = expectedLastModified;
+            return this;
+        }
+
+        public Builder expectedLastModified(Integer expectedLastModified) {
+            return expectedLastModified(Output.of(expectedLastModified));
+        }
+
+        /**
+         * @param filters Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<PipelineFiltersArgs> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(PipelineFiltersArgs filters) {
             return filters(Output.of(filters));
+        }
+
+        /**
+         * @param gatewayDefinition The definition of a gateway pipeline to support CDC. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayDefinition(@Nullable Output<PipelineGatewayDefinitionArgs> gatewayDefinition) {
+            $.gatewayDefinition = gatewayDefinition;
+            return this;
+        }
+
+        /**
+         * @param gatewayDefinition The definition of a gateway pipeline to support CDC. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayDefinition(PipelineGatewayDefinitionArgs gatewayDefinition) {
+            return gatewayDefinition(Output.of(gatewayDefinition));
+        }
+
+        public Builder health(@Nullable Output<String> health) {
+            $.health = health;
+            return this;
+        }
+
+        public Builder health(String health) {
+            return health(Output.of(health));
+        }
+
+        public Builder ingestionDefinition(@Nullable Output<PipelineIngestionDefinitionArgs> ingestionDefinition) {
+            $.ingestionDefinition = ingestionDefinition;
+            return this;
+        }
+
+        public Builder ingestionDefinition(PipelineIngestionDefinitionArgs ingestionDefinition) {
+            return ingestionDefinition(Output.of(ingestionDefinition));
+        }
+
+        public Builder lastModified(@Nullable Output<Integer> lastModified) {
+            $.lastModified = lastModified;
+            return this;
+        }
+
+        public Builder lastModified(Integer lastModified) {
+            return lastModified(Output.of(lastModified));
+        }
+
+        public Builder latestUpdates(@Nullable Output<List<PipelineLatestUpdateArgs>> latestUpdates) {
+            $.latestUpdates = latestUpdates;
+            return this;
+        }
+
+        public Builder latestUpdates(List<PipelineLatestUpdateArgs> latestUpdates) {
+            return latestUpdates(Output.of(latestUpdates));
+        }
+
+        public Builder latestUpdates(PipelineLatestUpdateArgs... latestUpdates) {
+            return latestUpdates(List.of(latestUpdates));
         }
 
         /**
@@ -573,6 +839,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return photon(Output.of(photon));
         }
 
+        public Builder runAsUserName(@Nullable Output<String> runAsUserName) {
+            $.runAsUserName = runAsUserName;
+            return this;
+        }
+
+        public Builder runAsUserName(String runAsUserName) {
+            return runAsUserName(Output.of(runAsUserName));
+        }
+
         /**
          * @param serverless An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
          * 
@@ -592,6 +867,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverless(Boolean serverless) {
             return serverless(Output.of(serverless));
+        }
+
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**
@@ -634,6 +918,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder target(String target) {
             return target(Output.of(target));
+        }
+
+        public Builder trigger(@Nullable Output<PipelineTriggerArgs> trigger) {
+            $.trigger = trigger;
+            return this;
+        }
+
+        public Builder trigger(PipelineTriggerArgs trigger) {
+            return trigger(Output.of(trigger));
         }
 
         /**

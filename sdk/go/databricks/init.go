@@ -127,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MwsWorkspaces{}
 	case "databricks:index/notebook:Notebook":
 		r = &Notebook{}
+	case "databricks:index/notificationDestination:NotificationDestination":
+		r = &NotificationDestination{}
 	case "databricks:index/oboToken:OboToken":
 		r = &OboToken{}
 	case "databricks:index/onlineTable:OnlineTable":
@@ -501,6 +503,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/notebook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/notificationDestination",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

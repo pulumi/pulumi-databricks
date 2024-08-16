@@ -120,6 +120,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/pipeline:Pipeline")]
     public partial class Pipeline : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// </summary>
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
@@ -129,11 +132,17 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
 
+        [Output("cause")]
+        public Output<string> Cause { get; private set; } = null!;
+
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Output("channel")]
         public Output<string?> Channel { get; private set; } = null!;
+
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
         /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -153,11 +162,17 @@ namespace Pulumi.Databricks
         [Output("continuous")]
         public Output<bool?> Continuous { get; private set; } = null!;
 
+        [Output("creatorUserName")]
+        public Output<string> CreatorUserName { get; private set; } = null!;
+
+        /// <summary>
+        /// Deployment type of this pipeline. Supports following attributes:
+        /// </summary>
         [Output("deployment")]
         public Output<Outputs.PipelineDeployment?> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         /// </summary>
         [Output("development")]
         public Output<bool?> Development { get; private set; } = null!;
@@ -168,8 +183,32 @@ namespace Pulumi.Databricks
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
 
+        [Output("expectedLastModified")]
+        public Output<int?> ExpectedLastModified { get; private set; } = null!;
+
+        /// <summary>
+        /// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+        /// </summary>
         [Output("filters")]
         public Output<Outputs.PipelineFilters?> Filters { get; private set; } = null!;
+
+        /// <summary>
+        /// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+        /// </summary>
+        [Output("gatewayDefinition")]
+        public Output<Outputs.PipelineGatewayDefinition?> GatewayDefinition { get; private set; } = null!;
+
+        [Output("health")]
+        public Output<string> Health { get; private set; } = null!;
+
+        [Output("ingestionDefinition")]
+        public Output<Outputs.PipelineIngestionDefinition?> IngestionDefinition { get; private set; } = null!;
+
+        [Output("lastModified")]
+        public Output<int> LastModified { get; private set; } = null!;
+
+        [Output("latestUpdates")]
+        public Output<ImmutableArray<Outputs.PipelineLatestUpdate>> LatestUpdates { get; private set; } = null!;
 
         /// <summary>
         /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
@@ -192,11 +231,17 @@ namespace Pulumi.Databricks
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
 
+        [Output("runAsUserName")]
+        public Output<string> RunAsUserName { get; private set; } = null!;
+
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Output("serverless")]
         public Output<bool?> Serverless { get; private set; } = null!;
+
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -209,6 +254,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
+
+        [Output("trigger")]
+        public Output<Outputs.PipelineTrigger?> Trigger { get; private set; } = null!;
 
         /// <summary>
         /// URL of the DLT pipeline on the given workspace.
@@ -262,6 +310,9 @@ namespace Pulumi.Databricks
 
     public sealed class PipelineArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
@@ -271,11 +322,17 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        [Input("cause")]
+        public Input<string>? Cause { get; set; }
+
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
+
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         [Input("clusters")]
         private InputList<Inputs.PipelineClusterArgs>? _clusters;
@@ -307,11 +364,17 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
 
+        [Input("creatorUserName")]
+        public Input<string>? CreatorUserName { get; set; }
+
+        /// <summary>
+        /// Deployment type of this pipeline. Supports following attributes:
+        /// </summary>
         [Input("deployment")]
         public Input<Inputs.PipelineDeploymentArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }
@@ -322,8 +385,37 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        [Input("expectedLastModified")]
+        public Input<int>? ExpectedLastModified { get; set; }
+
+        /// <summary>
+        /// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+        /// </summary>
         [Input("filters")]
         public Input<Inputs.PipelineFiltersArgs>? Filters { get; set; }
+
+        /// <summary>
+        /// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+        /// </summary>
+        [Input("gatewayDefinition")]
+        public Input<Inputs.PipelineGatewayDefinitionArgs>? GatewayDefinition { get; set; }
+
+        [Input("health")]
+        public Input<string>? Health { get; set; }
+
+        [Input("ingestionDefinition")]
+        public Input<Inputs.PipelineIngestionDefinitionArgs>? IngestionDefinition { get; set; }
+
+        [Input("lastModified")]
+        public Input<int>? LastModified { get; set; }
+
+        [Input("latestUpdates")]
+        private InputList<Inputs.PipelineLatestUpdateArgs>? _latestUpdates;
+        public InputList<Inputs.PipelineLatestUpdateArgs> LatestUpdates
+        {
+            get => _latestUpdates ?? (_latestUpdates = new InputList<Inputs.PipelineLatestUpdateArgs>());
+            set => _latestUpdates = value;
+        }
 
         [Input("libraries")]
         private InputList<Inputs.PipelineLibraryArgs>? _libraries;
@@ -357,11 +449,17 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        [Input("runAsUserName")]
+        public Input<string>? RunAsUserName { get; set; }
+
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -375,6 +473,15 @@ namespace Pulumi.Databricks
         [Input("target")]
         public Input<string>? Target { get; set; }
 
+        [Input("trigger")]
+        public Input<Inputs.PipelineTriggerArgs>? Trigger { get; set; }
+
+        /// <summary>
+        /// URL of the DLT pipeline on the given workspace.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
         public PipelineArgs()
         {
         }
@@ -383,6 +490,9 @@ namespace Pulumi.Databricks
 
     public sealed class PipelineState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
@@ -392,11 +502,17 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        [Input("cause")]
+        public Input<string>? Cause { get; set; }
+
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
+
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         [Input("clusters")]
         private InputList<Inputs.PipelineClusterGetArgs>? _clusters;
@@ -428,11 +544,17 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
 
+        [Input("creatorUserName")]
+        public Input<string>? CreatorUserName { get; set; }
+
+        /// <summary>
+        /// Deployment type of this pipeline. Supports following attributes:
+        /// </summary>
         [Input("deployment")]
         public Input<Inputs.PipelineDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }
@@ -443,8 +565,37 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        [Input("expectedLastModified")]
+        public Input<int>? ExpectedLastModified { get; set; }
+
+        /// <summary>
+        /// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+        /// </summary>
         [Input("filters")]
         public Input<Inputs.PipelineFiltersGetArgs>? Filters { get; set; }
+
+        /// <summary>
+        /// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+        /// </summary>
+        [Input("gatewayDefinition")]
+        public Input<Inputs.PipelineGatewayDefinitionGetArgs>? GatewayDefinition { get; set; }
+
+        [Input("health")]
+        public Input<string>? Health { get; set; }
+
+        [Input("ingestionDefinition")]
+        public Input<Inputs.PipelineIngestionDefinitionGetArgs>? IngestionDefinition { get; set; }
+
+        [Input("lastModified")]
+        public Input<int>? LastModified { get; set; }
+
+        [Input("latestUpdates")]
+        private InputList<Inputs.PipelineLatestUpdateGetArgs>? _latestUpdates;
+        public InputList<Inputs.PipelineLatestUpdateGetArgs> LatestUpdates
+        {
+            get => _latestUpdates ?? (_latestUpdates = new InputList<Inputs.PipelineLatestUpdateGetArgs>());
+            set => _latestUpdates = value;
+        }
 
         [Input("libraries")]
         private InputList<Inputs.PipelineLibraryGetArgs>? _libraries;
@@ -478,11 +629,17 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        [Input("runAsUserName")]
+        public Input<string>? RunAsUserName { get; set; }
+
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -495,6 +652,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
+
+        [Input("trigger")]
+        public Input<Inputs.PipelineTriggerGetArgs>? Trigger { get; set; }
 
         /// <summary>
         /// URL of the DLT pipeline on the given workspace.

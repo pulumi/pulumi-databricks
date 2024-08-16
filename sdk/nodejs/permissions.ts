@@ -258,6 +258,8 @@ import * as utilities from "./utilities";
  *
  * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for databricks.Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
  *
+ * A notebook could be specified by using either `notebookPath` or `notebookId` attribute.  The value for the `notebookId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.Notebook` resource as shown below.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -272,7 +274,7 @@ import * as utilities from "./utilities";
  *     path: "/Production/ETL/Features",
  *     language: "PYTHON",
  * });
- * const notebookUsage = new databricks.Permissions("notebook_usage", {
+ * const notebookUsageByPath = new databricks.Permissions("notebook_usage_by_path", {
  *     notebookPath: _this.path,
  *     accessControls: [
  *         {
@@ -289,11 +291,32 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
+ * const notebookUsageById = new databricks.Permissions("notebook_usage_by_id", {
+ *     notebookId: _this.objectId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
  * ```
+ *
+ * > **Note**: when importing a permissions resource, only the `notebookId` is filled!
  *
  * ## Workspace file usage
  *
  * Valid permission levels for databricks.WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * A workspace file could be specified by using either `workspaceFilePath` or `workspaceFileId` attribute.  The value for the `workspaceFileId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.WorkspaceFile` resource as shown below.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -308,7 +331,7 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  *     path: "/Production/ETL/Features.py",
  * });
- * const workspaceFileUsage = new databricks.Permissions("workspace_file_usage", {
+ * const workspaceFileUsageByPath = new databricks.Permissions("workspace_file_usage_by_path", {
  *     workspaceFilePath: _this.path,
  *     accessControls: [
  *         {
@@ -325,7 +348,26 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
+ * const workspaceFileUsageById = new databricks.Permissions("workspace_file_usage_by_id", {
+ *     workspaceFileId: _this.objectId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
  * ```
+ *
+ * > **Note**: when importing a permissions resource, only the `workspaceFileId` is filled!
  *
  * ## Folder usage
  *
@@ -336,6 +378,8 @@ import * as utilities from "./utilities";
  * - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
  * - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
  *
+ * A folder could be specified by using either `directoryPath` or `directoryId` attribute.  The value for the `directoryId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.Directory` resource as shown below.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -343,7 +387,7 @@ import * as utilities from "./utilities";
  * const auto = new databricks.Group("auto", {displayName: "Automation"});
  * const eng = new databricks.Group("eng", {displayName: "Engineering"});
  * const _this = new databricks.Directory("this", {path: "/Production/ETL"});
- * const folderUsage = new databricks.Permissions("folder_usage", {
+ * const folderUsageByPath = new databricks.Permissions("folder_usage_by_path", {
  *     directoryPath: _this.path,
  *     accessControls: [
  *         {
@@ -359,10 +403,27 @@ import * as utilities from "./utilities";
  *             permissionLevel: "CAN_EDIT",
  *         },
  *     ],
- * }, {
- *     dependsOn: [_this],
+ * });
+ * const folderUsageById = new databricks.Permissions("folder_usage_by_id", {
+ *     directoryId: _this.objectId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_READ",
+ *         },
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
  * });
  * ```
+ *
+ * > **Note**: when importing a permissions resource, only the `directoryId` is filled!
  *
  * ## Repos usage
  *
@@ -550,6 +611,10 @@ import * as utilities from "./utilities";
  * ## SQL warehouse usage
  *
  * [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+ *
+ * - The creator of a warehouse has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a warehouse would revert ownership to the creator.
+ * - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
+ * - A warehouse cannot have a group as an owner.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

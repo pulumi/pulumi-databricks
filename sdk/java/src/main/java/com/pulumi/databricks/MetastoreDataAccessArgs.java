@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.MetastoreDataAccessCloudflareApiTokenArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessGcpServiceAccountKeyArgs;
 import java.lang.Boolean;
@@ -40,6 +41,13 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
     public Optional<Output<MetastoreDataAccessAzureServicePrincipalArgs>> azureServicePrincipal() {
         return Optional.ofNullable(this.azureServicePrincipal);
+    }
+
+    @Import(name="cloudflareApiToken")
+    private @Nullable Output<MetastoreDataAccessCloudflareApiTokenArgs> cloudflareApiToken;
+
+    public Optional<Output<MetastoreDataAccessCloudflareApiTokenArgs>> cloudflareApiToken() {
+        return Optional.ofNullable(this.cloudflareApiToken);
     }
 
     @Import(name="comment")
@@ -140,6 +148,7 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         this.awsIamRole = $.awsIamRole;
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
+        this.cloudflareApiToken = $.cloudflareApiToken;
         this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.forceDestroy = $.forceDestroy;
@@ -197,6 +206,15 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         public Builder azureServicePrincipal(MetastoreDataAccessAzureServicePrincipalArgs azureServicePrincipal) {
             return azureServicePrincipal(Output.of(azureServicePrincipal));
+        }
+
+        public Builder cloudflareApiToken(@Nullable Output<MetastoreDataAccessCloudflareApiTokenArgs> cloudflareApiToken) {
+            $.cloudflareApiToken = cloudflareApiToken;
+            return this;
+        }
+
+        public Builder cloudflareApiToken(MetastoreDataAccessCloudflareApiTokenArgs cloudflareApiToken) {
+            return cloudflareApiToken(Output.of(cloudflareApiToken));
         }
 
         public Builder comment(@Nullable Output<String> comment) {

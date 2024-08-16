@@ -82,7 +82,7 @@ export class SqlTable extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
      */
     public readonly partitions!: pulumi.Output<string[] | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface SqlTableState {
      */
     owner?: pulumi.Input<string>;
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
      */
     partitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -281,7 +281,7 @@ export interface SqlTableArgs {
      */
     owner?: pulumi.Input<string>;
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
      */
     partitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

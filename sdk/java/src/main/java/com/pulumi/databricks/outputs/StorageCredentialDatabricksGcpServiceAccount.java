@@ -15,7 +15,7 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      * 
      */
     private @Nullable String email;
@@ -27,7 +27,7 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      * 
      */
     public Optional<String> email() {

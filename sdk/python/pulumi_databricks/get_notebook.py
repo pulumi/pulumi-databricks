@@ -21,7 +21,7 @@ class GetNotebookResult:
     """
     A collection of values returned by getNotebook.
     """
-    def __init__(__self__, content=None, format=None, id=None, language=None, object_id=None, object_type=None, path=None):
+    def __init__(__self__, content=None, format=None, id=None, language=None, object_id=None, object_type=None, path=None, workspace_path=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -43,6 +43,9 @@ class GetNotebookResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if workspace_path and not isinstance(workspace_path, str):
+            raise TypeError("Expected argument 'workspace_path' to be a str")
+        pulumi.set(__self__, "workspace_path", workspace_path)
 
     @property
     @pulumi.getter
@@ -94,6 +97,14 @@ class GetNotebookResult:
     def path(self) -> str:
         return pulumi.get(self, "path")
 
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> str:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
+
 
 class AwaitableGetNotebookResult(GetNotebookResult):
     # pylint: disable=using-constant-test
@@ -107,7 +118,8 @@ class AwaitableGetNotebookResult(GetNotebookResult):
             language=self.language,
             object_id=self.object_id,
             object_type=self.object_type,
-            path=self.path)
+            path=self.path,
+            workspace_path=self.workspace_path)
 
 
 def get_notebook(format: Optional[str] = None,
@@ -154,7 +166,8 @@ def get_notebook(format: Optional[str] = None,
         language=pulumi.get(__ret__, 'language'),
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
-        path=pulumi.get(__ret__, 'path'))
+        path=pulumi.get(__ret__, 'path'),
+        workspace_path=pulumi.get(__ret__, 'workspace_path'))
 
 
 @_utilities.lift_output_func(get_notebook)

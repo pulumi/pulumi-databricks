@@ -1108,7 +1108,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1177,7 +1177,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1246,7 +1246,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1315,7 +1315,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1384,7 +1384,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1453,7 +1453,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1522,7 +1522,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -1591,7 +1591,7 @@ public final class DatabricksFunctions {
      *             .awsAccountId(awsAccountId)
      *             .bucketName("databricks-bucket")
      *             .roleName(String.format("%s-uc-access", prefix))
-     *             .kmsName("databricks-kms")
+     *             .kmsName("arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
      *             .build());
      * 
      *         final var thisGetAwsUnityCatalogAssumeRolePolicy = DatabricksFunctions.getAwsUnityCatalogAssumeRolePolicy(GetAwsUnityCatalogAssumeRolePolicyArgs.builder()
@@ -10175,6 +10175,55 @@ public final class DatabricksFunctions {
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
      * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args) {
         return getSchema(args, InvokeOptions.Empty);
@@ -10182,6 +10231,55 @@ public final class DatabricksFunctions {
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
      * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args) {
@@ -10191,6 +10289,55 @@ public final class DatabricksFunctions {
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
      * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
@@ -10198,6 +10345,55 @@ public final class DatabricksFunctions {
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
      * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args, InvokeOptions options) {

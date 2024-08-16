@@ -19,6 +19,7 @@ class MetastoreDataAccessArgs:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -41,6 +42,8 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+        if cloudflare_api_token is not None:
+            pulumi.set(__self__, "cloudflare_api_token", cloudflare_api_token)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
@@ -92,6 +95,15 @@ class MetastoreDataAccessArgs:
     @azure_service_principal.setter
     def azure_service_principal(self, value: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']]:
+        return pulumi.get(self, "cloudflare_api_token")
+
+    @cloudflare_api_token.setter
+    def cloudflare_api_token(self, value: Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']]):
+        pulumi.set(self, "cloudflare_api_token", value)
 
     @property
     @pulumi.getter
@@ -211,6 +223,7 @@ class _MetastoreDataAccessState:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -233,6 +246,8 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+        if cloudflare_api_token is not None:
+            pulumi.set(__self__, "cloudflare_api_token", cloudflare_api_token)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
@@ -284,6 +299,15 @@ class _MetastoreDataAccessState:
     @azure_service_principal.setter
     def azure_service_principal(self, value: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']]:
+        return pulumi.get(self, "cloudflare_api_token")
+
+    @cloudflare_api_token.setter
+    def cloudflare_api_token(self, value: Optional[pulumi.Input['MetastoreDataAccessCloudflareApiTokenArgs']]):
+        pulumi.set(self, "cloudflare_api_token", value)
 
     @property
     @pulumi.getter
@@ -405,6 +429,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: Optional[pulumi.Input[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -526,6 +551,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: Optional[pulumi.Input[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -550,6 +576,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
+            __props__.__dict__["cloudflare_api_token"] = cloudflare_api_token
             __props__.__dict__["comment"] = comment
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
@@ -575,6 +602,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
             azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
             azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
+            cloudflare_api_token: Optional[pulumi.Input[Union['MetastoreDataAccessCloudflareApiTokenArgs', 'MetastoreDataAccessCloudflareApiTokenArgsDict']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[Union['MetastoreDataAccessDatabricksGcpServiceAccountArgs', 'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -603,6 +631,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
+        __props__.__dict__["cloudflare_api_token"] = cloudflare_api_token
         __props__.__dict__["comment"] = comment
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["force_destroy"] = force_destroy
@@ -631,6 +660,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="azureServicePrincipal")
     def azure_service_principal(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessAzureServicePrincipal']]:
         return pulumi.get(self, "azure_service_principal")
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessCloudflareApiToken']]:
+        return pulumi.get(self, "cloudflare_api_token")
 
     @property
     @pulumi.getter

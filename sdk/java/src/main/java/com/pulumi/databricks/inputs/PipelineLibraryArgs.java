@@ -46,9 +46,21 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.notebook);
     }
 
+    /**
+     * @deprecated
+     * The &#39;whl&#39; field is deprecated
+     * 
+     */
+    @Deprecated /* The 'whl' field is deprecated */
     @Import(name="whl")
     private @Nullable Output<String> whl;
 
+    /**
+     * @deprecated
+     * The &#39;whl&#39; field is deprecated
+     * 
+     */
+    @Deprecated /* The 'whl' field is deprecated */
     public Optional<Output<String>> whl() {
         return Optional.ofNullable(this.whl);
     }
@@ -117,11 +129,27 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
             return notebook(Output.of(notebook));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The &#39;whl&#39; field is deprecated
+         * 
+         */
+        @Deprecated /* The 'whl' field is deprecated */
         public Builder whl(@Nullable Output<String> whl) {
             $.whl = whl;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The &#39;whl&#39; field is deprecated
+         * 
+         */
+        @Deprecated /* The 'whl' field is deprecated */
         public Builder whl(String whl) {
             return whl(Output.of(whl));
         }

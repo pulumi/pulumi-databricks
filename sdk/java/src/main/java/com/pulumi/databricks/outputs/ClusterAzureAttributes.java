@@ -26,7 +26,7 @@ public final class ClusterAzureAttributes {
     private @Nullable Integer firstOnDemand;
     private @Nullable ClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
     /**
-     * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * @return The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      * 
      */
     private @Nullable Double spotBidMaxPrice;
@@ -50,7 +50,7 @@ public final class ClusterAzureAttributes {
         return Optional.ofNullable(this.logAnalyticsInfo);
     }
     /**
-     * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * @return The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      * 
      */
     public Optional<Double> spotBidMaxPrice() {

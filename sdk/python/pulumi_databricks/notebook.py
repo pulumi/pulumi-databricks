@@ -149,7 +149,8 @@ class _NotebookState:
                  object_type: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 url: Optional[pulumi.Input[str]] = None,
+                 workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Notebook resources.
         :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
@@ -158,6 +159,7 @@ class _NotebookState:
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[str] url: Routable URL of the notebook
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -180,6 +182,8 @@ class _NotebookState:
             pulumi.set(__self__, "source", source)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if workspace_path is not None:
+            pulumi.set(__self__, "workspace_path", workspace_path)
 
     @property
     @pulumi.getter(name="contentBase64")
@@ -281,6 +285,18 @@ class _NotebookState:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
+
+    @workspace_path.setter
+    def workspace_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_path", value)
+
 
 class Notebook(pulumi.CustomResource):
     @overload
@@ -379,6 +395,7 @@ class Notebook(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             __props__.__dict__["source"] = source
             __props__.__dict__["url"] = None
+            __props__.__dict__["workspace_path"] = None
         super(Notebook, __self__).__init__(
             'databricks:index/notebook:Notebook',
             resource_name,
@@ -397,7 +414,8 @@ class Notebook(pulumi.CustomResource):
             object_type: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[str]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'Notebook':
+            url: Optional[pulumi.Input[str]] = None,
+            workspace_path: Optional[pulumi.Input[str]] = None) -> 'Notebook':
         """
         Get an existing Notebook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -411,6 +429,7 @@ class Notebook(pulumi.CustomResource):
         :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[str] url: Routable URL of the notebook
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -425,6 +444,7 @@ class Notebook(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["source"] = source
         __props__.__dict__["url"] = url
+        __props__.__dict__["workspace_path"] = workspace_path
         return Notebook(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -490,4 +510,12 @@ class Notebook(pulumi.CustomResource):
         Routable URL of the notebook
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
 

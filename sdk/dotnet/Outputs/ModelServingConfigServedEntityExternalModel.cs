@@ -33,6 +33,7 @@ namespace Pulumi.Databricks.Outputs
         /// Databricks Model Serving Config
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? DatabricksModelServingConfig;
+        public readonly Outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig? GoogleCloudVertexAiConfig;
         /// <summary>
         /// The name of the external model.
         /// </summary>
@@ -66,6 +67,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? databricksModelServingConfig,
 
+            Outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig? googleCloudVertexAiConfig,
+
             string name,
 
             Outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig? openaiConfig,
@@ -81,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
             AnthropicConfig = anthropicConfig;
             CohereConfig = cohereConfig;
             DatabricksModelServingConfig = databricksModelServingConfig;
+            GoogleCloudVertexAiConfig = googleCloudVertexAiConfig;
             Name = name;
             OpenaiConfig = openaiConfig;
             PalmConfig = palmConfig;

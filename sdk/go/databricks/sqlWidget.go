@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
+// > **Note:** Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 //
-// **Note:** documentation for this resource is a work in progress.
+// To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
 //
-// A widget is always tied to a dashboard. Every dashboard may have one or more widgets.
+// > **Note:** documentation for this resource is a work in progress.
+//
+// A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
 //
 // ## Example Usage
 //

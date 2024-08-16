@@ -17,12 +17,17 @@ namespace Pulumi.Databricks.Outputs
         /// The Databricks secret key reference for an Anthropic API key.
         /// The Databricks secret key reference for an Anthropic API key.
         /// </summary>
-        public readonly string AnthropicApiKey;
+        public readonly string? AnthropicApiKey;
+        public readonly string? AnthropicApiKeyPlaintext;
 
         [OutputConstructor]
-        private ModelServingConfigServedEntityExternalModelAnthropicConfig(string anthropicApiKey)
+        private ModelServingConfigServedEntityExternalModelAnthropicConfig(
+            string? anthropicApiKey,
+
+            string? anthropicApiKeyPlaintext)
         {
             AnthropicApiKey = anthropicApiKey;
+            AnthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
         }
     }
 }

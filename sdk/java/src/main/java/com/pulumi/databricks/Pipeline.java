@@ -13,9 +13,14 @@ import com.pulumi.databricks.inputs.PipelineState;
 import com.pulumi.databricks.outputs.PipelineCluster;
 import com.pulumi.databricks.outputs.PipelineDeployment;
 import com.pulumi.databricks.outputs.PipelineFilters;
+import com.pulumi.databricks.outputs.PipelineGatewayDefinition;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinition;
+import com.pulumi.databricks.outputs.PipelineLatestUpdate;
 import com.pulumi.databricks.outputs.PipelineLibrary;
 import com.pulumi.databricks.outputs.PipelineNotification;
+import com.pulumi.databricks.outputs.PipelineTrigger;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -133,9 +138,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/pipeline:Pipeline")
 public class Pipeline extends com.pulumi.resources.CustomResource {
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     @Export(name="allowDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowDuplicateNames;
 
+    /**
+     * @return Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
     }
@@ -153,6 +166,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
     }
+    @Export(name="cause", refs={String.class}, tree="[0]")
+    private Output<String> cause;
+
+    public Output<String> cause() {
+        return this.cause;
+    }
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
@@ -166,6 +185,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> channel() {
         return Codegen.optional(this.channel);
+    }
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
+    private Output<String> clusterId;
+
+    public Output<String> clusterId() {
+        return this.clusterId;
     }
     /**
      * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -209,21 +234,35 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> continuous() {
         return Codegen.optional(this.continuous);
     }
+    @Export(name="creatorUserName", refs={String.class}, tree="[0]")
+    private Output<String> creatorUserName;
+
+    public Output<String> creatorUserName() {
+        return this.creatorUserName;
+    }
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     @Export(name="deployment", refs={PipelineDeployment.class}, tree="[0]")
     private Output</* @Nullable */ PipelineDeployment> deployment;
 
+    /**
+     * @return Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     public Output<Optional<PipelineDeployment>> deployment() {
         return Codegen.optional(this.deployment);
     }
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      * 
      */
     @Export(name="development", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> development;
 
     /**
-     * @return A flag indicating whether to run the pipeline in development mode. The default value is `true`.
+     * @return A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      * 
      */
     public Output<Optional<Boolean>> development() {
@@ -243,11 +282,63 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
+    @Export(name="expectedLastModified", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> expectedLastModified;
+
+    public Output<Optional<Integer>> expectedLastModified() {
+        return Codegen.optional(this.expectedLastModified);
+    }
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     @Export(name="filters", refs={PipelineFilters.class}, tree="[0]")
     private Output</* @Nullable */ PipelineFilters> filters;
 
+    /**
+     * @return Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     public Output<Optional<PipelineFilters>> filters() {
         return Codegen.optional(this.filters);
+    }
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
+    @Export(name="gatewayDefinition", refs={PipelineGatewayDefinition.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineGatewayDefinition> gatewayDefinition;
+
+    /**
+     * @return The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
+    public Output<Optional<PipelineGatewayDefinition>> gatewayDefinition() {
+        return Codegen.optional(this.gatewayDefinition);
+    }
+    @Export(name="health", refs={String.class}, tree="[0]")
+    private Output<String> health;
+
+    public Output<String> health() {
+        return this.health;
+    }
+    @Export(name="ingestionDefinition", refs={PipelineIngestionDefinition.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineIngestionDefinition> ingestionDefinition;
+
+    public Output<Optional<PipelineIngestionDefinition>> ingestionDefinition() {
+        return Codegen.optional(this.ingestionDefinition);
+    }
+    @Export(name="lastModified", refs={Integer.class}, tree="[0]")
+    private Output<Integer> lastModified;
+
+    public Output<Integer> lastModified() {
+        return this.lastModified;
+    }
+    @Export(name="latestUpdates", refs={List.class,PipelineLatestUpdate.class}, tree="[0,1]")
+    private Output<List<PipelineLatestUpdate>> latestUpdates;
+
+    public Output<List<PipelineLatestUpdate>> latestUpdates() {
+        return this.latestUpdates;
     }
     /**
      * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
@@ -297,6 +388,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
     }
+    @Export(name="runAsUserName", refs={String.class}, tree="[0]")
+    private Output<String> runAsUserName;
+
+    public Output<String> runAsUserName() {
+        return this.runAsUserName;
+    }
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      * 
@@ -310,6 +407,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> serverless() {
         return Codegen.optional(this.serverless);
+    }
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -338,6 +441,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
+    }
+    @Export(name="trigger", refs={PipelineTrigger.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineTrigger> trigger;
+
+    public Output<Optional<PipelineTrigger>> trigger() {
+        return Codegen.optional(this.trigger);
     }
     /**
      * URL of the DLT pipeline on the given workspace.

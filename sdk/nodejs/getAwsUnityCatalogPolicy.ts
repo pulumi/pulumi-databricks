@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,
- *     kmsName: "databricks-kms",
+ *     kmsName: "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
  * });
  * const thisGetAwsUnityCatalogAssumeRolePolicy = databricks.getAwsUnityCatalogAssumeRolePolicy({
  *     awsAccountId: awsAccountId,
@@ -62,7 +62,7 @@ export interface GetAwsUnityCatalogPolicyArgs {
      */
     bucketName: string;
     /**
-     * If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
      */
     kmsName?: string;
     /**
@@ -104,7 +104,7 @@ export interface GetAwsUnityCatalogPolicyResult {
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,
- *     kmsName: "databricks-kms",
+ *     kmsName: "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
  * });
  * const thisGetAwsUnityCatalogAssumeRolePolicy = databricks.getAwsUnityCatalogAssumeRolePolicy({
  *     awsAccountId: awsAccountId,
@@ -139,7 +139,7 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
      */
     bucketName: pulumi.Input<string>;
     /**
-     * If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
      */
     kmsName?: pulumi.Input<string>;
     /**

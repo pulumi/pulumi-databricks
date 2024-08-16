@@ -158,7 +158,7 @@ export interface ClusterAzureAttributes {
     firstOnDemand?: pulumi.Input<number>;
     logAnalyticsInfo?: pulumi.Input<inputs.ClusterAzureAttributesLogAnalyticsInfo>;
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
     spotBidMaxPrice?: pulumi.Input<number>;
 }
@@ -6191,7 +6191,7 @@ export interface InstancePoolAzureAttributes {
      */
     availability?: pulumi.Input<string>;
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
     spotBidMaxPrice?: pulumi.Input<number>;
 }
@@ -7060,12 +7060,15 @@ export interface JobTask {
      */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
     /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * description for this task.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A flag to disable auto optimization in serverless tasks.
+     */
     disableAutoOptimization?: pulumi.Input<boolean>;
     /**
-     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
     /**
@@ -7079,8 +7082,6 @@ export interface JobTask {
     forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
     /**
      * block described below that specifies health conditions for a given task.
-     *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: pulumi.Input<inputs.JobTaskHealth>;
     /**
@@ -7134,6 +7135,8 @@ export interface JobTask {
     timeoutSeconds?: pulumi.Input<number>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
 }
@@ -7252,12 +7255,15 @@ export interface JobTaskForEachTaskTask {
      */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDependsOn>[]>;
     /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * description for this task.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A flag to disable auto optimization in serverless tasks.
+     */
     disableAutoOptimization?: pulumi.Input<boolean>;
     /**
-     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
     /**
@@ -7270,8 +7276,6 @@ export interface JobTaskForEachTaskTask {
     existingClusterId?: pulumi.Input<string>;
     /**
      * block described below that specifies health conditions for a given task.
-     *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth>;
     /**
@@ -7325,6 +7329,8 @@ export interface JobTaskForEachTaskTask {
     timeoutSeconds?: pulumi.Input<number>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
 }
@@ -8850,6 +8856,12 @@ export interface MetastoreDataAccessAzureServicePrincipal {
     directoryId: pulumi.Input<string>;
 }
 
+export interface MetastoreDataAccessCloudflareApiToken {
+    accessKeyId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
+    secretAccessKey: pulumi.Input<string>;
+}
+
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     credentialId?: pulumi.Input<string>;
     email?: pulumi.Input<string>;
@@ -9008,6 +9020,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Databricks Model Serving Config
      */
     databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
+    googleCloudVertexAiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig>;
     /**
      * The name of the external model.
      */
@@ -9034,14 +9047,16 @@ export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
     /**
      * The Databricks secret key reference for an AI21Labs API key.
      */
-    ai21labsApiKey: pulumi.Input<string>;
+    ai21labsApiKey?: pulumi.Input<string>;
+    ai21labsApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
     /**
      * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      */
-    awsAccessKeyId: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyIdPlaintext?: pulumi.Input<string>;
     /**
      * The AWS region to use. Bedrock has to be enabled there.
      */
@@ -9049,7 +9064,8 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
     /**
      * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      */
-    awsSecretAccessKey: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
     /**
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      */
@@ -9061,30 +9077,42 @@ export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
      * The Databricks secret key reference for an Anthropic API key.
      * The Databricks secret key reference for an Anthropic API key.
      */
-    anthropicApiKey: pulumi.Input<string>;
+    anthropicApiKey?: pulumi.Input<string>;
+    anthropicApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
+    cohereApiBase?: pulumi.Input<string>;
     /**
      * The Databricks secret key reference for a Cohere API key.
      */
-    cohereApiKey: pulumi.Input<string>;
+    cohereApiKey?: pulumi.Input<string>;
+    cohereApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
     /**
      * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      */
-    databricksApiToken: pulumi.Input<string>;
+    databricksApiToken?: pulumi.Input<string>;
+    databricksApiTokenPlaintext?: pulumi.Input<string>;
     /**
      * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
      */
     databricksWorkspaceUrl: pulumi.Input<string>;
 }
 
+export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    privateKey?: pulumi.Input<string>;
+    privateKeyPlaintext?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
     microsoftEntraClientId?: pulumi.Input<string>;
     microsoftEntraClientSecret?: pulumi.Input<string>;
+    microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
     microsoftEntraTenantId?: pulumi.Input<string>;
     /**
      * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
@@ -9094,6 +9122,7 @@ export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
      * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
      */
     openaiApiKey?: pulumi.Input<string>;
+    openaiApiKeyPlaintext?: pulumi.Input<string>;
     /**
      * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
      */
@@ -9116,7 +9145,8 @@ export interface ModelServingConfigServedEntityExternalModelPalmConfig {
     /**
      * The Databricks secret key reference for a PaLM API key.
      */
-    palmApiKey: pulumi.Input<string>;
+    palmApiKey?: pulumi.Input<string>;
+    palmApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedModel {
@@ -9434,6 +9464,80 @@ export interface MwsWorkspacesToken {
     tokenValue?: pulumi.Input<string>;
 }
 
+export interface NotificationDestinationConfig {
+    /**
+     * The email configuration of the Notification Destination. It must contain the following:
+     */
+    email?: pulumi.Input<inputs.NotificationDestinationConfigEmail>;
+    /**
+     * The Generic Webhook configuration of the Notification Destination. It must contain the following:
+     */
+    genericWebhook?: pulumi.Input<inputs.NotificationDestinationConfigGenericWebhook>;
+    /**
+     * The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+     */
+    microsoftTeams?: pulumi.Input<inputs.NotificationDestinationConfigMicrosoftTeams>;
+    /**
+     * The PagerDuty configuration of the Notification Destination. It must contain the following:
+     */
+    pagerduty?: pulumi.Input<inputs.NotificationDestinationConfigPagerduty>;
+    /**
+     * The Slack configuration of the Notification Destination. It must contain the following:
+     */
+    slack?: pulumi.Input<inputs.NotificationDestinationConfigSlack>;
+}
+
+export interface NotificationDestinationConfigEmail {
+    /**
+     * The list of email addresses to send notifications to.
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface NotificationDestinationConfigGenericWebhook {
+    /**
+     * The password for basic authentication.
+     *
+     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+     */
+    password?: pulumi.Input<string>;
+    passwordSet?: pulumi.Input<boolean>;
+    /**
+     * The Generic Webhook URL.
+     */
+    url?: pulumi.Input<string>;
+    urlSet?: pulumi.Input<boolean>;
+    /**
+     * The username for basic authentication.
+     */
+    username?: pulumi.Input<string>;
+    usernameSet?: pulumi.Input<boolean>;
+}
+
+export interface NotificationDestinationConfigMicrosoftTeams {
+    /**
+     * The Microsoft Teams webhook URL.
+     */
+    url?: pulumi.Input<string>;
+    urlSet?: pulumi.Input<boolean>;
+}
+
+export interface NotificationDestinationConfigPagerduty {
+    /**
+     * The PagerDuty integration key.
+     */
+    integrationKey?: pulumi.Input<string>;
+    integrationKeySet?: pulumi.Input<boolean>;
+}
+
+export interface NotificationDestinationConfigSlack {
+    /**
+     * The Slack webhook URL.
+     */
+    url?: pulumi.Input<string>;
+    urlSet?: pulumi.Input<boolean>;
+}
+
 export interface OnlineTableSpec {
     /**
      * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
@@ -9575,15 +9679,17 @@ export interface PipelineCluster {
 }
 
 export interface PipelineClusterAutoscale {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers: pulumi.Input<number>;
+    minWorkers: pulumi.Input<number>;
     mode?: pulumi.Input<string>;
 }
 
 export interface PipelineClusterAwsAttributes {
     availability?: pulumi.Input<string>;
     ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number>;
     ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number>;
     ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
@@ -9594,7 +9700,13 @@ export interface PipelineClusterAwsAttributes {
 export interface PipelineClusterAzureAttributes {
     availability?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
+    logAnalyticsInfo?: pulumi.Input<inputs.PipelineClusterAzureAttributesLogAnalyticsInfo>;
     spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface PipelineClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: pulumi.Input<string>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string>;
 }
 
 export interface PipelineClusterClusterLogConf {
@@ -9671,13 +9783,98 @@ export interface PipelineClusterInitScriptWorkspace {
 }
 
 export interface PipelineDeployment {
+    /**
+     * The deployment method that manages the pipeline.
+     */
     kind?: pulumi.Input<string>;
+    /**
+     * The path to the file containing metadata about the deployment.
+     */
     metadataFilePath?: pulumi.Input<string>;
 }
 
 export interface PipelineFilters {
+    /**
+     * Paths to exclude.
+     */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Paths to include.
+     */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PipelineGatewayDefinition {
+    /**
+     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     */
+    connectionId?: pulumi.Input<string>;
+    /**
+     * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+     */
+    gatewayStorageCatalog?: pulumi.Input<string>;
+    /**
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     */
+    gatewayStorageName?: pulumi.Input<string>;
+    /**
+     * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+     */
+    gatewayStorageSchema?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinition {
+    connectionName?: pulumi.Input<string>;
+    ingestionGatewayId?: pulumi.Input<string>;
+    objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[]>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionObject {
+    schema?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchema>;
+    table?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTable>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchema {
+    destinationCatalog?: pulumi.Input<string>;
+    destinationSchema?: pulumi.Input<string>;
+    sourceCatalog?: pulumi.Input<string>;
+    sourceSchema?: pulumi.Input<string>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
+    scdType?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTable {
+    destinationCatalog?: pulumi.Input<string>;
+    destinationSchema?: pulumi.Input<string>;
+    destinationTable?: pulumi.Input<string>;
+    sourceCatalog?: pulumi.Input<string>;
+    sourceSchema?: pulumi.Input<string>;
+    sourceTable?: pulumi.Input<string>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
+    scdType?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionTableConfiguration {
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
+    scdType?: pulumi.Input<string>;
+}
+
+export interface PipelineLatestUpdate {
+    creationTime?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+    updateId?: pulumi.Input<string>;
 }
 
 export interface PipelineLibrary {
@@ -9685,11 +9882,14 @@ export interface PipelineLibrary {
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.PipelineLibraryMaven>;
     notebook?: pulumi.Input<inputs.PipelineLibraryNotebook>;
+    /**
+     * @deprecated The 'whl' field is deprecated
+     */
     whl?: pulumi.Input<string>;
 }
 
 export interface PipelineLibraryFile {
-    path: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
 }
 
 export interface PipelineLibraryMaven {
@@ -9699,7 +9899,7 @@ export interface PipelineLibraryMaven {
 }
 
 export interface PipelineLibraryNotebook {
-    path: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
 }
 
 export interface PipelineNotification {
@@ -9710,11 +9910,24 @@ export interface PipelineNotification {
      * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
      * * `on-flow-failure` - a single data flow fails.
      */
-    alerts: pulumi.Input<pulumi.Input<string>[]>;
+    alerts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * non-empty list of emails to notify.
      */
-    emailRecipients: pulumi.Input<pulumi.Input<string>[]>;
+    emailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PipelineTrigger {
+    cron?: pulumi.Input<inputs.PipelineTriggerCron>;
+    manual?: pulumi.Input<inputs.PipelineTriggerManual>;
+}
+
+export interface PipelineTriggerCron {
+    quartzCronSchedule?: pulumi.Input<string>;
+    timezoneId?: pulumi.Input<string>;
+}
+
+export interface PipelineTriggerManual {
 }
 
 export interface QualityMonitorCustomMetric {
@@ -10262,12 +10475,29 @@ export interface StorageCredentialAzureServicePrincipal {
     directoryId: pulumi.Input<string>;
 }
 
+export interface StorageCredentialCloudflareApiToken {
+    /**
+     * R2 API token access key ID
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * R2 account ID
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * R2 API token secret access key
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     */
+    secretAccessKey: pulumi.Input<string>;
+}
+
 export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId?: pulumi.Input<string>;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      */
     email?: pulumi.Input<string>;
 }
@@ -10276,7 +10506,7 @@ export interface StorageCredentialGcpServiceAccountKey {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      */
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;

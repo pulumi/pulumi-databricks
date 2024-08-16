@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
@@ -14,7 +16,8 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      * 
      */
-    private String awsAccessKeyId;
+    private @Nullable String awsAccessKeyId;
+    private @Nullable String awsAccessKeyIdPlaintext;
     /**
      * @return The AWS region to use. Bedrock has to be enabled there.
      * 
@@ -24,7 +27,8 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      * 
      */
-    private String awsSecretAccessKey;
+    private @Nullable String awsSecretAccessKey;
+    private @Nullable String awsSecretAccessKeyPlaintext;
     /**
      * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      * 
@@ -36,8 +40,11 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      * 
      */
-    public String awsAccessKeyId() {
-        return this.awsAccessKeyId;
+    public Optional<String> awsAccessKeyId() {
+        return Optional.ofNullable(this.awsAccessKeyId);
+    }
+    public Optional<String> awsAccessKeyIdPlaintext() {
+        return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
     }
     /**
      * @return The AWS region to use. Bedrock has to be enabled there.
@@ -50,8 +57,11 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      * 
      */
-    public String awsSecretAccessKey() {
-        return this.awsSecretAccessKey;
+    public Optional<String> awsSecretAccessKey() {
+        return Optional.ofNullable(this.awsSecretAccessKey);
+    }
+    public Optional<String> awsSecretAccessKeyPlaintext() {
+        return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
     }
     /**
      * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
@@ -70,25 +80,33 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
     }
     @CustomType.Builder
     public static final class Builder {
-        private String awsAccessKeyId;
+        private @Nullable String awsAccessKeyId;
+        private @Nullable String awsAccessKeyIdPlaintext;
         private String awsRegion;
-        private String awsSecretAccessKey;
+        private @Nullable String awsSecretAccessKey;
+        private @Nullable String awsSecretAccessKeyPlaintext;
         private String bedrockProvider;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelAmazonBedrockConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKeyId = defaults.awsAccessKeyId;
+    	      this.awsAccessKeyIdPlaintext = defaults.awsAccessKeyIdPlaintext;
     	      this.awsRegion = defaults.awsRegion;
     	      this.awsSecretAccessKey = defaults.awsSecretAccessKey;
+    	      this.awsSecretAccessKeyPlaintext = defaults.awsSecretAccessKeyPlaintext;
     	      this.bedrockProvider = defaults.bedrockProvider;
         }
 
         @CustomType.Setter
-        public Builder awsAccessKeyId(String awsAccessKeyId) {
-            if (awsAccessKeyId == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfig", "awsAccessKeyId");
-            }
+        public Builder awsAccessKeyId(@Nullable String awsAccessKeyId) {
+
             this.awsAccessKeyId = awsAccessKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsAccessKeyIdPlaintext(@Nullable String awsAccessKeyIdPlaintext) {
+
+            this.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
             return this;
         }
         @CustomType.Setter
@@ -100,11 +118,15 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             return this;
         }
         @CustomType.Setter
-        public Builder awsSecretAccessKey(String awsSecretAccessKey) {
-            if (awsSecretAccessKey == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfig", "awsSecretAccessKey");
-            }
+        public Builder awsSecretAccessKey(@Nullable String awsSecretAccessKey) {
+
             this.awsSecretAccessKey = awsSecretAccessKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsSecretAccessKeyPlaintext(@Nullable String awsSecretAccessKeyPlaintext) {
+
+            this.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             return this;
         }
         @CustomType.Setter
@@ -118,8 +140,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
         public ModelServingConfigServedEntityExternalModelAmazonBedrockConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelAmazonBedrockConfig();
             _resultValue.awsAccessKeyId = awsAccessKeyId;
+            _resultValue.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
             _resultValue.awsRegion = awsRegion;
             _resultValue.awsSecretAccessKey = awsSecretAccessKey;
+            _resultValue.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             _resultValue.bedrockProvider = bedrockProvider;
             return _resultValue;
         }

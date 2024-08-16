@@ -120,6 +120,7 @@
         "mwsVpcEndpoint.ts",
         "mwsWorkspaces.ts",
         "notebook.ts",
+        "notificationDestination.ts",
         "oboToken.ts",
         "onlineTable.ts",
         "permissionAssignment.ts",

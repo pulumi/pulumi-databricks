@@ -109,7 +109,7 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
     this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name=f"{prefix}-uc-access",
-        kms_name="databricks-kms")
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")
@@ -166,7 +166,7 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
     this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name=f"{prefix}-uc-access",
-        kms_name="databricks-kms")
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")

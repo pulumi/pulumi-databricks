@@ -41,13 +41,17 @@ public final class JobTask {
      */
     private @Nullable List<JobTaskDependsOn> dependsOns;
     /**
-     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * @return description for this task.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return A flag to disable auto optimization in serverless tasks.
+     * 
+     */
     private @Nullable Boolean disableAutoOptimization;
     /**
-     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
      */
     private @Nullable JobTaskEmailNotifications emailNotifications;
@@ -64,8 +68,6 @@ public final class JobTask {
     private @Nullable JobTaskForEachTask forEachTask;
     /**
      * @return block described below that specifies health conditions for a given task.
-     * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     private @Nullable JobTaskHealth health;
@@ -131,6 +133,8 @@ public final class JobTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * 
      */
     private @Nullable JobTaskWebhookNotifications webhookNotifications;
 
@@ -149,17 +153,21 @@ public final class JobTask {
         return this.dependsOns == null ? List.of() : this.dependsOns;
     }
     /**
-     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * @return description for this task.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return A flag to disable auto optimization in serverless tasks.
+     * 
+     */
     public Optional<Boolean> disableAutoOptimization() {
         return Optional.ofNullable(this.disableAutoOptimization);
     }
     /**
-     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
      */
     public Optional<JobTaskEmailNotifications> emailNotifications() {
@@ -184,8 +192,6 @@ public final class JobTask {
     }
     /**
      * @return block described below that specifies health conditions for a given task.
-     * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<JobTaskHealth> health() {
@@ -288,6 +294,8 @@ public final class JobTask {
     }
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<JobTaskWebhookNotifications> webhookNotifications() {

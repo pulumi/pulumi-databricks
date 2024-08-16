@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.ClusterAzureAttributesLogAnalyticsInfoArgs>? LogAnalyticsInfo { get; set; }
 
         /// <summary>
-        /// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        /// The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         /// </summary>
         [Input("spotBidMaxPrice")]
         public Input<double>? SpotBidMaxPrice { get; set; }

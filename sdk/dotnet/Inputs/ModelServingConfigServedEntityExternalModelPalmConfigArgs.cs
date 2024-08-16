@@ -15,8 +15,11 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The Databricks secret key reference for a PaLM API key.
         /// </summary>
-        [Input("palmApiKey", required: true)]
-        public Input<string> PalmApiKey { get; set; } = null!;
+        [Input("palmApiKey")]
+        public Input<string>? PalmApiKey { get; set; }
+
+        [Input("palmApiKeyPlaintext")]
+        public Input<string>? PalmApiKeyPlaintext { get; set; }
 
         public ModelServingConfigServedEntityExternalModelPalmConfigArgs()
         {

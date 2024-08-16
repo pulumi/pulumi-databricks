@@ -19,6 +19,7 @@ class StorageCredentialArgs:
                  aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -49,6 +50,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+        if cloudflare_api_token is not None:
+            pulumi.set(__self__, "cloudflare_api_token", cloudflare_api_token)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
@@ -98,6 +101,15 @@ class StorageCredentialArgs:
     @azure_service_principal.setter
     def azure_service_principal(self, value: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]:
+        return pulumi.get(self, "cloudflare_api_token")
+
+    @cloudflare_api_token.setter
+    def cloudflare_api_token(self, value: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]):
+        pulumi.set(self, "cloudflare_api_token", value)
 
     @property
     @pulumi.getter
@@ -231,6 +243,7 @@ class _StorageCredentialState:
                  aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -263,6 +276,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+        if cloudflare_api_token is not None:
+            pulumi.set(__self__, "cloudflare_api_token", cloudflare_api_token)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
@@ -314,6 +329,15 @@ class _StorageCredentialState:
     @azure_service_principal.setter
     def azure_service_principal(self, value: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]:
+        return pulumi.get(self, "cloudflare_api_token")
+
+    @cloudflare_api_token.setter
+    def cloudflare_api_token(self, value: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]):
+        pulumi.set(self, "cloudflare_api_token", value)
 
     @property
     @pulumi.getter
@@ -461,6 +485,7 @@ class StorageCredential(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -664,6 +689,7 @@ class StorageCredential(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -687,6 +713,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
+            __props__.__dict__["cloudflare_api_token"] = cloudflare_api_token
             __props__.__dict__["comment"] = comment
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
@@ -712,6 +739,7 @@ class StorageCredential(pulumi.CustomResource):
             aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
             azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
             azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+            cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -750,6 +778,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
+        __props__.__dict__["cloudflare_api_token"] = cloudflare_api_token
         __props__.__dict__["comment"] = comment
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["force_destroy"] = force_destroy
@@ -778,6 +807,11 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter(name="azureServicePrincipal")
     def azure_service_principal(self) -> pulumi.Output[Optional['outputs.StorageCredentialAzureServicePrincipal']]:
         return pulumi.get(self, "azure_service_principal")
+
+    @property
+    @pulumi.getter(name="cloudflareApiToken")
+    def cloudflare_api_token(self) -> pulumi.Output[Optional['outputs.StorageCredentialCloudflareApiToken']]:
+        return pulumi.get(self, "cloudflare_api_token")
 
     @property
     @pulumi.getter

@@ -73,6 +73,9 @@ namespace Pulumi.Databricks
         [Output("azureServicePrincipal")]
         public Output<Outputs.MetastoreDataAccessAzureServicePrincipal?> AzureServicePrincipal { get; private set; } = null!;
 
+        [Output("cloudflareApiToken")]
+        public Output<Outputs.MetastoreDataAccessCloudflareApiToken?> CloudflareApiToken { get; private set; } = null!;
+
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
@@ -167,6 +170,9 @@ namespace Pulumi.Databricks
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalArgs>? AzureServicePrincipal { get; set; }
 
+        [Input("cloudflareApiToken")]
+        public Input<Inputs.MetastoreDataAccessCloudflareApiTokenArgs>? CloudflareApiToken { get; set; }
+
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -222,6 +228,9 @@ namespace Pulumi.Databricks
 
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalGetArgs>? AzureServicePrincipal { get; set; }
+
+        [Input("cloudflareApiToken")]
+        public Input<Inputs.MetastoreDataAccessCloudflareApiTokenGetArgs>? CloudflareApiToken { get; set; }
 
         [Input("comment")]
         public Input<string>? Comment { get; set; }

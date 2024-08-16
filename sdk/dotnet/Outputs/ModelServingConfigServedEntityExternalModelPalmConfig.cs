@@ -16,12 +16,17 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The Databricks secret key reference for a PaLM API key.
         /// </summary>
-        public readonly string PalmApiKey;
+        public readonly string? PalmApiKey;
+        public readonly string? PalmApiKeyPlaintext;
 
         [OutputConstructor]
-        private ModelServingConfigServedEntityExternalModelPalmConfig(string palmApiKey)
+        private ModelServingConfigServedEntityExternalModelPalmConfig(
+            string? palmApiKey,
+
+            string? palmApiKeyPlaintext)
         {
             PalmApiKey = palmApiKey;
+            PalmApiKeyPlaintext = palmApiKeyPlaintext;
         }
     }
 }

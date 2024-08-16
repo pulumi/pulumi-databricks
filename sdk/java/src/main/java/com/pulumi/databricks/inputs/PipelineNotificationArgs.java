@@ -5,10 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PipelineNotificationArgs extends com.pulumi.resources.ResourceArgs {
@@ -23,8 +24,8 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
      * * `on-flow-failure` - a single data flow fails.
      * 
      */
-    @Import(name="alerts", required=true)
-    private Output<List<String>> alerts;
+    @Import(name="alerts")
+    private @Nullable Output<List<String>> alerts;
 
     /**
      * @return non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
@@ -34,23 +35,23 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
      * * `on-flow-failure` - a single data flow fails.
      * 
      */
-    public Output<List<String>> alerts() {
-        return this.alerts;
+    public Optional<Output<List<String>>> alerts() {
+        return Optional.ofNullable(this.alerts);
     }
 
     /**
      * non-empty list of emails to notify.
      * 
      */
-    @Import(name="emailRecipients", required=true)
-    private Output<List<String>> emailRecipients;
+    @Import(name="emailRecipients")
+    private @Nullable Output<List<String>> emailRecipients;
 
     /**
      * @return non-empty list of emails to notify.
      * 
      */
-    public Output<List<String>> emailRecipients() {
-        return this.emailRecipients;
+    public Optional<Output<List<String>>> emailRecipients() {
+        return Optional.ofNullable(this.emailRecipients);
     }
 
     private PipelineNotificationArgs() {}
@@ -88,7 +89,7 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder alerts(Output<List<String>> alerts) {
+        public Builder alerts(@Nullable Output<List<String>> alerts) {
             $.alerts = alerts;
             return this;
         }
@@ -127,7 +128,7 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder emailRecipients(Output<List<String>> emailRecipients) {
+        public Builder emailRecipients(@Nullable Output<List<String>> emailRecipients) {
             $.emailRecipients = emailRecipients;
             return this;
         }
@@ -153,12 +154,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
         }
 
         public PipelineNotificationArgs build() {
-            if ($.alerts == null) {
-                throw new MissingRequiredPropertyException("PipelineNotificationArgs", "alerts");
-            }
-            if ($.emailRecipients == null) {
-                throw new MissingRequiredPropertyException("PipelineNotificationArgs", "emailRecipients");
-            }
             return $;
         }
     }

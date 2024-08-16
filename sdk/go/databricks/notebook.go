@@ -42,6 +42,8 @@ type Notebook struct {
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Routable URL of the notebook
 	Url pulumi.StringOutput `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
 
 // NewNotebook registers a new resource with the given unique name, arguments, and options.
@@ -93,6 +95,8 @@ type notebookState struct {
 	Source *string `pulumi:"source"`
 	// Routable URL of the notebook
 	Url *string `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type NotebookState struct {
@@ -112,6 +116,8 @@ type NotebookState struct {
 	Source pulumi.StringPtrInput
 	// Routable URL of the notebook
 	Url pulumi.StringPtrInput
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringPtrInput
 }
 
 func (NotebookState) ElementType() reflect.Type {
@@ -281,6 +287,11 @@ func (o NotebookOutput) Source() pulumi.StringPtrOutput {
 // Routable URL of the notebook
 func (o NotebookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o NotebookOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 type NotebookArrayOutput struct{ *pulumi.OutputState }

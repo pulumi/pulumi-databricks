@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -12,16 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterAutoscale {
-    private @Nullable Integer maxWorkers;
-    private @Nullable Integer minWorkers;
+    private Integer maxWorkers;
+    private Integer minWorkers;
     private @Nullable String mode;
 
     private PipelineClusterAutoscale() {}
-    public Optional<Integer> maxWorkers() {
-        return Optional.ofNullable(this.maxWorkers);
+    public Integer maxWorkers() {
+        return this.maxWorkers;
     }
-    public Optional<Integer> minWorkers() {
-        return Optional.ofNullable(this.minWorkers);
+    public Integer minWorkers() {
+        return this.minWorkers;
     }
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
@@ -36,8 +37,8 @@ public final class PipelineClusterAutoscale {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer maxWorkers;
-        private @Nullable Integer minWorkers;
+        private Integer maxWorkers;
+        private Integer minWorkers;
         private @Nullable String mode;
         public Builder() {}
         public Builder(PipelineClusterAutoscale defaults) {
@@ -48,14 +49,18 @@ public final class PipelineClusterAutoscale {
         }
 
         @CustomType.Setter
-        public Builder maxWorkers(@Nullable Integer maxWorkers) {
-
+        public Builder maxWorkers(Integer maxWorkers) {
+            if (maxWorkers == null) {
+              throw new MissingRequiredPropertyException("PipelineClusterAutoscale", "maxWorkers");
+            }
             this.maxWorkers = maxWorkers;
             return this;
         }
         @CustomType.Setter
-        public Builder minWorkers(@Nullable Integer minWorkers) {
-
+        public Builder minWorkers(Integer minWorkers) {
+            if (minWorkers == null) {
+              throw new MissingRequiredPropertyException("PipelineClusterAutoscale", "minWorkers");
+            }
             this.minWorkers = minWorkers;
             return this;
         }

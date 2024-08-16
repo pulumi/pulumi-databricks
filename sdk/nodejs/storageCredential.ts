@@ -120,6 +120,7 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly awsIamRole!: pulumi.Output<outputs.StorageCredentialAwsIamRole | undefined>;
     public readonly azureManagedIdentity!: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
+    public readonly cloudflareApiToken!: pulumi.Output<outputs.StorageCredentialCloudflareApiToken | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
@@ -178,6 +179,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["awsIamRole"] = state ? state.awsIamRole : undefined;
             resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
+            resourceInputs["cloudflareApiToken"] = state ? state.cloudflareApiToken : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
@@ -195,6 +197,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
+            resourceInputs["cloudflareApiToken"] = args ? args.cloudflareApiToken : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
@@ -220,6 +223,7 @@ export interface StorageCredentialState {
     awsIamRole?: pulumi.Input<inputs.StorageCredentialAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
+    cloudflareApiToken?: pulumi.Input<inputs.StorageCredentialCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
@@ -270,6 +274,7 @@ export interface StorageCredentialArgs {
     awsIamRole?: pulumi.Input<inputs.StorageCredentialAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
+    cloudflareApiToken?: pulumi.Input<inputs.StorageCredentialCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**

@@ -139,14 +139,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<List<String>>> partitions() {
@@ -478,7 +478,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 

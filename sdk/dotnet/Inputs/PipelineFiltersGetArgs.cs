@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
+
+        /// <summary>
+        /// Paths to exclude.
+        /// </summary>
         public InputList<string> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("includes")]
         private InputList<string>? _includes;
+
+        /// <summary>
+        /// Paths to include.
+        /// </summary>
         public InputList<string> Includes
         {
             get => _includes ?? (_includes = new InputList<string>());

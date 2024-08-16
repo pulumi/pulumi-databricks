@@ -67,36 +67,44 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * description for this task.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * @return description for this task.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * A flag to disable auto optimization in serverless tasks.
+     * 
+     */
     @Import(name="disableAutoOptimization")
     private @Nullable Output<Boolean> disableAutoOptimization;
 
+    /**
+     * @return A flag to disable auto optimization in serverless tasks.
+     * 
+     */
     public Optional<Output<Boolean>> disableAutoOptimization() {
         return Optional.ofNullable(this.disableAutoOptimization);
     }
 
     /**
-     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
      */
     @Import(name="emailNotifications")
     private @Nullable Output<JobTaskEmailNotificationsArgs> emailNotifications;
 
     /**
-     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
      */
     public Optional<Output<JobTaskEmailNotificationsArgs>> emailNotifications() {
@@ -143,16 +151,12 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * block described below that specifies health conditions for a given task.
      * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
-     * 
      */
     @Import(name="health")
     private @Nullable Output<JobTaskHealthArgs> health;
 
     /**
      * @return block described below that specifies health conditions for a given task.
-     * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<Output<JobTaskHealthArgs>> health() {
@@ -370,12 +374,16 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * 
      */
     @Import(name="webhookNotifications")
     private @Nullable Output<JobTaskWebhookNotificationsArgs> webhookNotifications;
 
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<Output<JobTaskWebhookNotificationsArgs>> webhookNotifications() {
@@ -484,7 +492,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+         * @param description description for this task.
          * 
          * @return builder
          * 
@@ -495,7 +503,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+         * @param description description for this task.
          * 
          * @return builder
          * 
@@ -504,17 +512,29 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param disableAutoOptimization A flag to disable auto optimization in serverless tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableAutoOptimization(@Nullable Output<Boolean> disableAutoOptimization) {
             $.disableAutoOptimization = disableAutoOptimization;
             return this;
         }
 
+        /**
+         * @param disableAutoOptimization A flag to disable auto optimization in serverless tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableAutoOptimization(Boolean disableAutoOptimization) {
             return disableAutoOptimization(Output.of(disableAutoOptimization));
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
          * 
          * @return builder
          * 
@@ -525,7 +545,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
          * 
          * @return builder
          * 
@@ -588,8 +608,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param health block described below that specifies health conditions for a given task.
          * 
-         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
-         * 
          * @return builder
          * 
          */
@@ -600,8 +618,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param health block described below that specifies health conditions for a given task.
-         * 
-         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 
@@ -907,6 +923,8 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
+         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * 
          * @return builder
          * 
          */
@@ -917,6 +935,8 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+         * 
+         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 

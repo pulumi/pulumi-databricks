@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("microsoftEntraClientSecret")]
         public Input<string>? MicrosoftEntraClientSecret { get; set; }
 
+        [Input("microsoftEntraClientSecretPlaintext")]
+        public Input<string>? MicrosoftEntraClientSecretPlaintext { get; set; }
+
         [Input("microsoftEntraTenantId")]
         public Input<string>? MicrosoftEntraTenantId { get; set; }
 
@@ -32,6 +35,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("openaiApiKey")]
         public Input<string>? OpenaiApiKey { get; set; }
+
+        [Input("openaiApiKeyPlaintext")]
+        public Input<string>? OpenaiApiKeyPlaintext { get; set; }
 
         /// <summary>
         /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.

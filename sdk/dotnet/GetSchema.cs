@@ -14,6 +14,53 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
         /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSchemas.Invoke(new()
+        ///     {
+        ///         CatalogName = "sandbox",
+        ///     });
+        /// 
+        ///     var @this = ;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// * Search for a specific schema by its fully qualified name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     {
+        ///         Name = "catalog.schema",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Schema to manage schemas within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Task<GetSchemaResult> InvokeAsync(GetSchemaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaResult>("databricks:index/getSchema:getSchema", args ?? new GetSchemaArgs(), options.WithDefaults());
@@ -21,6 +68,53 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
         /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSchemas.Invoke(new()
+        ///     {
+        ///         CatalogName = "sandbox",
+        ///     });
+        /// 
+        ///     var @this = ;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// * Search for a specific schema by its fully qualified name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     {
+        ///         Name = "catalog.schema",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Schema to manage schemas within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Output<GetSchemaResult> Invoke(GetSchemaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemaResult>("databricks:index/getSchema:getSchema", args ?? new GetSchemaInvokeArgs(), options.WithDefaults());

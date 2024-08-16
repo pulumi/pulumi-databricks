@@ -333,7 +333,7 @@ class Volume(pulumi.CustomResource):
                 "role_arn": external_data_access["arn"],
             })
         some = databricks.ExternalLocation("some",
-            name="external-location",
+            name="external_location",
             url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.name)
         this = databricks.Volume("this",
@@ -427,7 +427,7 @@ class Volume(pulumi.CustomResource):
                 "role_arn": external_data_access["arn"],
             })
         some = databricks.ExternalLocation("some",
-            name="external-location",
+            name="external_location",
             url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.name)
         this = databricks.Volume("this",

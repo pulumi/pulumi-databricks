@@ -4,9 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelPalmConfig {
@@ -14,15 +15,19 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfig {
      * @return The Databricks secret key reference for a PaLM API key.
      * 
      */
-    private String palmApiKey;
+    private @Nullable String palmApiKey;
+    private @Nullable String palmApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelPalmConfig() {}
     /**
      * @return The Databricks secret key reference for a PaLM API key.
      * 
      */
-    public String palmApiKey() {
-        return this.palmApiKey;
+    public Optional<String> palmApiKey() {
+        return Optional.ofNullable(this.palmApiKey);
+    }
+    public Optional<String> palmApiKeyPlaintext() {
+        return Optional.ofNullable(this.palmApiKeyPlaintext);
     }
 
     public static Builder builder() {
@@ -34,24 +39,31 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String palmApiKey;
+        private @Nullable String palmApiKey;
+        private @Nullable String palmApiKeyPlaintext;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelPalmConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.palmApiKey = defaults.palmApiKey;
+    	      this.palmApiKeyPlaintext = defaults.palmApiKeyPlaintext;
         }
 
         @CustomType.Setter
-        public Builder palmApiKey(String palmApiKey) {
-            if (palmApiKey == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelPalmConfig", "palmApiKey");
-            }
+        public Builder palmApiKey(@Nullable String palmApiKey) {
+
             this.palmApiKey = palmApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder palmApiKeyPlaintext(@Nullable String palmApiKeyPlaintext) {
+
+            this.palmApiKeyPlaintext = palmApiKeyPlaintext;
             return this;
         }
         public ModelServingConfigServedEntityExternalModelPalmConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelPalmConfig();
             _resultValue.palmApiKey = palmApiKey;
+            _resultValue.palmApiKeyPlaintext = palmApiKeyPlaintext;
             return _resultValue;
         }
     }

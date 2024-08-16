@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelA
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelAnthropicConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelCohereConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelPalmConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -98,6 +99,13 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         return Optional.ofNullable(this.databricksModelServingConfig);
     }
 
+    @Import(name="googleCloudVertexAiConfig")
+    private @Nullable Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs> googleCloudVertexAiConfig;
+
+    public Optional<Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>> googleCloudVertexAiConfig() {
+        return Optional.ofNullable(this.googleCloudVertexAiConfig);
+    }
+
     /**
      * The name of the external model.
      * 
@@ -181,6 +189,7 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         this.anthropicConfig = $.anthropicConfig;
         this.cohereConfig = $.cohereConfig;
         this.databricksModelServingConfig = $.databricksModelServingConfig;
+        this.googleCloudVertexAiConfig = $.googleCloudVertexAiConfig;
         this.name = $.name;
         this.openaiConfig = $.openaiConfig;
         this.palmConfig = $.palmConfig;
@@ -309,6 +318,15 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
          */
         public Builder databricksModelServingConfig(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs databricksModelServingConfig) {
             return databricksModelServingConfig(Output.of(databricksModelServingConfig));
+        }
+
+        public Builder googleCloudVertexAiConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs> googleCloudVertexAiConfig) {
+            $.googleCloudVertexAiConfig = googleCloudVertexAiConfig;
+            return this;
+        }
+
+        public Builder googleCloudVertexAiConfig(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs googleCloudVertexAiConfig) {
+            return googleCloudVertexAiConfig(Output.of(googleCloudVertexAiConfig));
         }
 
         /**

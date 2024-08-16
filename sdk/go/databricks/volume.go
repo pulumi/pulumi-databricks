@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
-//				Name:           pulumi.String("external-location"),
+//				Name:           pulumi.String("external_location"),
 //				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
 //				CredentialName: external.Name,
 //			})

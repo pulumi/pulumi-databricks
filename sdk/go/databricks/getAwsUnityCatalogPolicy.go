@@ -36,7 +36,7 @@ import (
 //				AwsAccountId: awsAccountId,
 //				BucketName:   "databricks-bucket",
 //				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				KmsName:      pulumi.StringRef("databricks-kms"),
+//				KmsName:      pulumi.StringRef("arn:aws:kms:us-west-2:111122223333:key/databricks-kms"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -87,7 +87,7 @@ type GetAwsUnityCatalogPolicyArgs struct {
 	AwsAccountId string `pulumi:"awsAccountId"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName string `pulumi:"bucketName"`
-	// If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
 	KmsName *string `pulumi:"kmsName"`
 	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
 	RoleName string `pulumi:"roleName"`
@@ -124,7 +124,7 @@ type GetAwsUnityCatalogPolicyOutputArgs struct {
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
 	KmsName pulumi.StringPtrInput `pulumi:"kmsName"`
 	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
 	RoleName pulumi.StringInput `pulumi:"roleName"`

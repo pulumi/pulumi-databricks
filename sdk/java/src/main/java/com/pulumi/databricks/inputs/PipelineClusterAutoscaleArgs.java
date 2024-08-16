@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,18 +17,18 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
 
     public static final PipelineClusterAutoscaleArgs Empty = new PipelineClusterAutoscaleArgs();
 
-    @Import(name="maxWorkers")
-    private @Nullable Output<Integer> maxWorkers;
+    @Import(name="maxWorkers", required=true)
+    private Output<Integer> maxWorkers;
 
-    public Optional<Output<Integer>> maxWorkers() {
-        return Optional.ofNullable(this.maxWorkers);
+    public Output<Integer> maxWorkers() {
+        return this.maxWorkers;
     }
 
-    @Import(name="minWorkers")
-    private @Nullable Output<Integer> minWorkers;
+    @Import(name="minWorkers", required=true)
+    private Output<Integer> minWorkers;
 
-    public Optional<Output<Integer>> minWorkers() {
-        return Optional.ofNullable(this.minWorkers);
+    public Output<Integer> minWorkers() {
+        return this.minWorkers;
     }
 
     @Import(name="mode")
@@ -63,7 +64,7 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
             $ = new PipelineClusterAutoscaleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxWorkers(@Nullable Output<Integer> maxWorkers) {
+        public Builder maxWorkers(Output<Integer> maxWorkers) {
             $.maxWorkers = maxWorkers;
             return this;
         }
@@ -72,7 +73,7 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
             return maxWorkers(Output.of(maxWorkers));
         }
 
-        public Builder minWorkers(@Nullable Output<Integer> minWorkers) {
+        public Builder minWorkers(Output<Integer> minWorkers) {
             $.minWorkers = minWorkers;
             return this;
         }
@@ -91,6 +92,12 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
         }
 
         public PipelineClusterAutoscaleArgs build() {
+            if ($.maxWorkers == null) {
+                throw new MissingRequiredPropertyException("PipelineClusterAutoscaleArgs", "maxWorkers");
+            }
+            if ($.minWorkers == null) {
+                throw new MissingRequiredPropertyException("PipelineClusterAutoscaleArgs", "minWorkers");
+            }
             return $;
         }
     }

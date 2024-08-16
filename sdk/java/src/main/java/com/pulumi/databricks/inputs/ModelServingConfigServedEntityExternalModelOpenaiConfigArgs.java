@@ -29,6 +29,13 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
 
+    @Import(name="microsoftEntraClientSecretPlaintext")
+    private @Nullable Output<String> microsoftEntraClientSecretPlaintext;
+
+    public Optional<Output<String>> microsoftEntraClientSecretPlaintext() {
+        return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
+    }
+
     @Import(name="microsoftEntraTenantId")
     private @Nullable Output<String> microsoftEntraTenantId;
 
@@ -64,6 +71,13 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
      */
     public Optional<Output<String>> openaiApiKey() {
         return Optional.ofNullable(this.openaiApiKey);
+    }
+
+    @Import(name="openaiApiKeyPlaintext")
+    private @Nullable Output<String> openaiApiKeyPlaintext;
+
+    public Optional<Output<String>> openaiApiKeyPlaintext() {
+        return Optional.ofNullable(this.openaiApiKeyPlaintext);
     }
 
     /**
@@ -131,9 +145,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
     private ModelServingConfigServedEntityExternalModelOpenaiConfigArgs(ModelServingConfigServedEntityExternalModelOpenaiConfigArgs $) {
         this.microsoftEntraClientId = $.microsoftEntraClientId;
         this.microsoftEntraClientSecret = $.microsoftEntraClientSecret;
+        this.microsoftEntraClientSecretPlaintext = $.microsoftEntraClientSecretPlaintext;
         this.microsoftEntraTenantId = $.microsoftEntraTenantId;
         this.openaiApiBase = $.openaiApiBase;
         this.openaiApiKey = $.openaiApiKey;
+        this.openaiApiKeyPlaintext = $.openaiApiKeyPlaintext;
         this.openaiApiType = $.openaiApiType;
         this.openaiApiVersion = $.openaiApiVersion;
         this.openaiDeploymentName = $.openaiDeploymentName;
@@ -174,6 +190,15 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
 
         public Builder microsoftEntraClientSecret(String microsoftEntraClientSecret) {
             return microsoftEntraClientSecret(Output.of(microsoftEntraClientSecret));
+        }
+
+        public Builder microsoftEntraClientSecretPlaintext(@Nullable Output<String> microsoftEntraClientSecretPlaintext) {
+            $.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
+            return this;
+        }
+
+        public Builder microsoftEntraClientSecretPlaintext(String microsoftEntraClientSecretPlaintext) {
+            return microsoftEntraClientSecretPlaintext(Output.of(microsoftEntraClientSecretPlaintext));
         }
 
         public Builder microsoftEntraTenantId(@Nullable Output<String> microsoftEntraTenantId) {
@@ -225,6 +250,15 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
          */
         public Builder openaiApiKey(String openaiApiKey) {
             return openaiApiKey(Output.of(openaiApiKey));
+        }
+
+        public Builder openaiApiKeyPlaintext(@Nullable Output<String> openaiApiKeyPlaintext) {
+            $.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
+            return this;
+        }
+
+        public Builder openaiApiKeyPlaintext(String openaiApiKeyPlaintext) {
+            return openaiApiKeyPlaintext(Output.of(openaiApiKeyPlaintext));
         }
 
         /**

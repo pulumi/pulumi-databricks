@@ -293,6 +293,7 @@ __all__ = [
     'MetastoreDataAccessAwsIamRoleArgs',
     'MetastoreDataAccessAzureManagedIdentityArgs',
     'MetastoreDataAccessAzureServicePrincipalArgs',
+    'MetastoreDataAccessCloudflareApiTokenArgs',
     'MetastoreDataAccessDatabricksGcpServiceAccountArgs',
     'MetastoreDataAccessGcpServiceAccountKeyArgs',
     'MlflowModelTagArgs',
@@ -307,6 +308,7 @@ __all__ = [
     'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs',
     'ModelServingConfigServedEntityExternalModelCohereConfigArgs',
     'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs',
+    'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs',
     'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs',
     'ModelServingConfigServedEntityExternalModelPalmConfigArgs',
     'ModelServingConfigServedModelArgs',
@@ -337,6 +339,12 @@ __all__ = [
     'MwsWorkspacesGcpManagedNetworkConfigArgs',
     'MwsWorkspacesGkeConfigArgs',
     'MwsWorkspacesTokenArgs',
+    'NotificationDestinationConfigArgs',
+    'NotificationDestinationConfigEmailArgs',
+    'NotificationDestinationConfigGenericWebhookArgs',
+    'NotificationDestinationConfigMicrosoftTeamsArgs',
+    'NotificationDestinationConfigPagerdutyArgs',
+    'NotificationDestinationConfigSlackArgs',
     'OnlineTableSpecArgs',
     'OnlineTableSpecRunContinuouslyArgs',
     'OnlineTableSpecRunTriggeredArgs',
@@ -353,6 +361,7 @@ __all__ = [
     'PipelineClusterAutoscaleArgs',
     'PipelineClusterAwsAttributesArgs',
     'PipelineClusterAzureAttributesArgs',
+    'PipelineClusterAzureAttributesLogAnalyticsInfoArgs',
     'PipelineClusterClusterLogConfArgs',
     'PipelineClusterClusterLogConfDbfsArgs',
     'PipelineClusterClusterLogConfS3Args',
@@ -367,11 +376,23 @@ __all__ = [
     'PipelineClusterInitScriptWorkspaceArgs',
     'PipelineDeploymentArgs',
     'PipelineFiltersArgs',
+    'PipelineGatewayDefinitionArgs',
+    'PipelineIngestionDefinitionArgs',
+    'PipelineIngestionDefinitionObjectArgs',
+    'PipelineIngestionDefinitionObjectSchemaArgs',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs',
+    'PipelineIngestionDefinitionObjectTableArgs',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationArgs',
+    'PipelineIngestionDefinitionTableConfigurationArgs',
+    'PipelineLatestUpdateArgs',
     'PipelineLibraryArgs',
     'PipelineLibraryFileArgs',
     'PipelineLibraryMavenArgs',
     'PipelineLibraryNotebookArgs',
     'PipelineNotificationArgs',
+    'PipelineTriggerArgs',
+    'PipelineTriggerCronArgs',
+    'PipelineTriggerManualArgs',
     'QualityMonitorCustomMetricArgs',
     'QualityMonitorDataClassificationConfigArgs',
     'QualityMonitorInferenceLogArgs',
@@ -424,6 +445,7 @@ __all__ = [
     'StorageCredentialAwsIamRoleArgs',
     'StorageCredentialAzureManagedIdentityArgs',
     'StorageCredentialAzureServicePrincipalArgs',
+    'StorageCredentialCloudflareApiTokenArgs',
     'StorageCredentialDatabricksGcpServiceAccountArgs',
     'StorageCredentialGcpServiceAccountKeyArgs',
     'TableColumnArgs',
@@ -1297,7 +1319,7 @@ class ClusterAzureAttributesArgs:
         """
         :param pulumi.Input[str] availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
         :param pulumi.Input[int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-        :param pulumi.Input[float] spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        :param pulumi.Input[float] spot_bid_max_price: The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1345,7 +1367,7 @@ class ClusterAzureAttributesArgs:
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -2887,7 +2909,7 @@ class InstancePoolAzureAttributesArgs:
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] availability: Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-        :param pulumi.Input[float] spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        :param pulumi.Input[float] spot_bid_max_price: The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -2910,7 +2932,7 @@ class InstancePoolAzureAttributesArgs:
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -7625,13 +7647,12 @@ class JobTaskArgs:
         :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
-        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        :param pulumi.Input['JobTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: description for this task.
+        :param pulumi.Input[bool] disable_auto_optimization: A flag to disable auto optimization in serverless tasks.
+        :param pulumi.Input['JobTaskEmailNotificationsArgs'] email_notifications: An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         :param pulumi.Input[str] environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param pulumi.Input[str] existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param pulumi.Input['JobTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
-               
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param pulumi.Input[str] job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
@@ -7642,6 +7663,8 @@ class JobTaskArgs:
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTaskWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -7748,7 +7771,7 @@ class JobTaskArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        description for this task.
         """
         return pulumi.get(self, "description")
 
@@ -7759,6 +7782,9 @@ class JobTaskArgs:
     @property
     @pulumi.getter(name="disableAutoOptimization")
     def disable_auto_optimization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
         return pulumi.get(self, "disable_auto_optimization")
 
     @disable_auto_optimization.setter
@@ -7769,7 +7795,7 @@ class JobTaskArgs:
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobTaskEmailNotificationsArgs']]:
         """
-        (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -7815,8 +7841,6 @@ class JobTaskArgs:
     def health(self) -> Optional[pulumi.Input['JobTaskHealthArgs']]:
         """
         block described below that specifies health conditions for a given task.
-
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
@@ -8009,6 +8033,8 @@ class JobTaskArgs:
     def webhook_notifications(self) -> Optional[pulumi.Input['JobTaskWebhookNotificationsArgs']]:
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -8432,13 +8458,12 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]] depends_ons: block specifying dependency(-ies) for a given task.
-        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        :param pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: description for this task.
+        :param pulumi.Input[bool] disable_auto_optimization: A flag to disable auto optimization in serverless tasks.
+        :param pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs'] email_notifications: An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         :param pulumi.Input[str] environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param pulumi.Input[str] existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param pulumi.Input['JobTaskForEachTaskTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
-               
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param pulumi.Input[str] job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
@@ -8449,6 +8474,8 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -8553,7 +8580,7 @@ class JobTaskForEachTaskTaskArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        description for this task.
         """
         return pulumi.get(self, "description")
 
@@ -8564,6 +8591,9 @@ class JobTaskForEachTaskTaskArgs:
     @property
     @pulumi.getter(name="disableAutoOptimization")
     def disable_auto_optimization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
         return pulumi.get(self, "disable_auto_optimization")
 
     @disable_auto_optimization.setter
@@ -8574,7 +8604,7 @@ class JobTaskForEachTaskTaskArgs:
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs']]:
         """
-        (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -8611,8 +8641,6 @@ class JobTaskForEachTaskTaskArgs:
     def health(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskHealthArgs']]:
         """
         block described below that specifies health conditions for a given task.
-
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
@@ -8805,6 +8833,8 @@ class JobTaskForEachTaskTaskArgs:
     def webhook_notifications(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsArgs']]:
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -16015,6 +16045,44 @@ class MetastoreDataAccessAzureServicePrincipalArgs:
 
 
 @pulumi.input_type
+class MetastoreDataAccessCloudflareApiTokenArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[str],
+                 account_id: pulumi.Input[str],
+                 secret_access_key: pulumi.Input[str]):
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_access_key", value)
+
+
+@pulumi.input_type
 class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
                  credential_id: Optional[pulumi.Input[str]] = None,
@@ -16573,6 +16641,7 @@ class ModelServingConfigServedEntityExternalModelArgs:
                  anthropic_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']] = None,
                  cohere_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']] = None,
                  databricks_model_serving_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']] = None,
+                 google_cloud_vertex_ai_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs']] = None,
                  openai_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']] = None,
                  palm_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs']] = None):
         """
@@ -16600,6 +16669,8 @@ class ModelServingConfigServedEntityExternalModelArgs:
             pulumi.set(__self__, "cohere_config", cohere_config)
         if databricks_model_serving_config is not None:
             pulumi.set(__self__, "databricks_model_serving_config", databricks_model_serving_config)
+        if google_cloud_vertex_ai_config is not None:
+            pulumi.set(__self__, "google_cloud_vertex_ai_config", google_cloud_vertex_ai_config)
         if openai_config is not None:
             pulumi.set(__self__, "openai_config", openai_config)
         if palm_config is not None:
@@ -16702,6 +16773,15 @@ class ModelServingConfigServedEntityExternalModelArgs:
         pulumi.set(self, "databricks_model_serving_config", value)
 
     @property
+    @pulumi.getter(name="googleCloudVertexAiConfig")
+    def google_cloud_vertex_ai_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs']]:
+        return pulumi.get(self, "google_cloud_vertex_ai_config")
+
+    @google_cloud_vertex_ai_config.setter
+    def google_cloud_vertex_ai_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs']]):
+        pulumi.set(self, "google_cloud_vertex_ai_config", value)
+
+    @property
     @pulumi.getter(name="openaiConfig")
     def openai_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']]:
         """
@@ -16729,54 +16809,63 @@ class ModelServingConfigServedEntityExternalModelArgs:
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs:
     def __init__(__self__, *,
-                 ai21labs_api_key: pulumi.Input[str]):
+                 ai21labs_api_key: Optional[pulumi.Input[str]] = None,
+                 ai21labs_api_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
         """
-        pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+        if ai21labs_api_key is not None:
+            pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+        if ai21labs_api_key_plaintext is not None:
+            pulumi.set(__self__, "ai21labs_api_key_plaintext", ai21labs_api_key_plaintext)
 
     @property
     @pulumi.getter(name="ai21labsApiKey")
-    def ai21labs_api_key(self) -> pulumi.Input[str]:
+    def ai21labs_api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Databricks secret key reference for an AI21Labs API key.
         """
         return pulumi.get(self, "ai21labs_api_key")
 
     @ai21labs_api_key.setter
-    def ai21labs_api_key(self, value: pulumi.Input[str]):
+    def ai21labs_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ai21labs_api_key", value)
+
+    @property
+    @pulumi.getter(name="ai21labsApiKeyPlaintext")
+    def ai21labs_api_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ai21labs_api_key_plaintext")
+
+    @ai21labs_api_key_plaintext.setter
+    def ai21labs_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ai21labs_api_key_plaintext", value)
 
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
     def __init__(__self__, *,
-                 aws_access_key_id: pulumi.Input[str],
                  aws_region: pulumi.Input[str],
-                 aws_secret_access_key: pulumi.Input[str],
-                 bedrock_provider: pulumi.Input[str]):
+                 bedrock_provider: pulumi.Input[str],
+                 aws_access_key_id: Optional[pulumi.Input[str]] = None,
+                 aws_access_key_id_plaintext: Optional[pulumi.Input[str]] = None,
+                 aws_secret_access_key: Optional[pulumi.Input[str]] = None,
+                 aws_secret_access_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
         :param pulumi.Input[str] aws_region: The AWS region to use. Bedrock has to be enabled there.
-        :param pulumi.Input[str] aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
         :param pulumi.Input[str] bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        :param pulumi.Input[str] aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        :param pulumi.Input[str] aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
         """
-        pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         pulumi.set(__self__, "aws_region", aws_region)
-        pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
         pulumi.set(__self__, "bedrock_provider", bedrock_provider)
-
-    @property
-    @pulumi.getter(name="awsAccessKeyId")
-    def aws_access_key_id(self) -> pulumi.Input[str]:
-        """
-        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-        """
-        return pulumi.get(self, "aws_access_key_id")
-
-    @aws_access_key_id.setter
-    def aws_access_key_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "aws_access_key_id", value)
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_access_key_id_plaintext is not None:
+            pulumi.set(__self__, "aws_access_key_id_plaintext", aws_access_key_id_plaintext)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_secret_access_key_plaintext is not None:
+            pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
 
     @property
     @pulumi.getter(name="awsRegion")
@@ -16791,18 +16880,6 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
         pulumi.set(self, "aws_region", value)
 
     @property
-    @pulumi.getter(name="awsSecretAccessKey")
-    def aws_secret_access_key(self) -> pulumi.Input[str]:
-        """
-        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-        """
-        return pulumi.get(self, "aws_secret_access_key")
-
-    @aws_secret_access_key.setter
-    def aws_secret_access_key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "aws_secret_access_key", value)
-
-    @property
     @pulumi.getter(name="bedrockProvider")
     def bedrock_provider(self) -> pulumi.Input[str]:
         """
@@ -16814,20 +16891,66 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
     def bedrock_provider(self, value: pulumi.Input[str]):
         pulumi.set(self, "bedrock_provider", value)
 
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @aws_access_key_id.setter
+    def aws_access_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_access_key_id", value)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyIdPlaintext")
+    def aws_access_key_id_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_access_key_id_plaintext")
+
+    @aws_access_key_id_plaintext.setter
+    def aws_access_key_id_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_access_key_id_plaintext", value)
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @aws_secret_access_key.setter
+    def aws_secret_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_secret_access_key", value)
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKeyPlaintext")
+    def aws_secret_access_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_secret_access_key_plaintext")
+
+    @aws_secret_access_key_plaintext.setter
+    def aws_secret_access_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_secret_access_key_plaintext", value)
+
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs:
     def __init__(__self__, *,
-                 anthropic_api_key: pulumi.Input[str]):
+                 anthropic_api_key: Optional[pulumi.Input[str]] = None,
+                 anthropic_api_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
                The Databricks secret key reference for an Anthropic API key.
         """
-        pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+        if anthropic_api_key is not None:
+            pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+        if anthropic_api_key_plaintext is not None:
+            pulumi.set(__self__, "anthropic_api_key_plaintext", anthropic_api_key_plaintext)
 
     @property
     @pulumi.getter(name="anthropicApiKey")
-    def anthropic_api_key(self) -> pulumi.Input[str]:
+    def anthropic_api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Databricks secret key reference for an Anthropic API key.
         The Databricks secret key reference for an Anthropic API key.
@@ -16835,55 +16958,81 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs:
         return pulumi.get(self, "anthropic_api_key")
 
     @anthropic_api_key.setter
-    def anthropic_api_key(self, value: pulumi.Input[str]):
+    def anthropic_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "anthropic_api_key", value)
+
+    @property
+    @pulumi.getter(name="anthropicApiKeyPlaintext")
+    def anthropic_api_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "anthropic_api_key_plaintext")
+
+    @anthropic_api_key_plaintext.setter
+    def anthropic_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anthropic_api_key_plaintext", value)
 
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
     def __init__(__self__, *,
-                 cohere_api_key: pulumi.Input[str]):
+                 cohere_api_base: Optional[pulumi.Input[str]] = None,
+                 cohere_api_key: Optional[pulumi.Input[str]] = None,
+                 cohere_api_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cohere_api_key: The Databricks secret key reference for a Cohere API key.
         """
-        pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+        if cohere_api_base is not None:
+            pulumi.set(__self__, "cohere_api_base", cohere_api_base)
+        if cohere_api_key is not None:
+            pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+        if cohere_api_key_plaintext is not None:
+            pulumi.set(__self__, "cohere_api_key_plaintext", cohere_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="cohereApiBase")
+    def cohere_api_base(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cohere_api_base")
+
+    @cohere_api_base.setter
+    def cohere_api_base(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cohere_api_base", value)
 
     @property
     @pulumi.getter(name="cohereApiKey")
-    def cohere_api_key(self) -> pulumi.Input[str]:
+    def cohere_api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Databricks secret key reference for a Cohere API key.
         """
         return pulumi.get(self, "cohere_api_key")
 
     @cohere_api_key.setter
-    def cohere_api_key(self, value: pulumi.Input[str]):
+    def cohere_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cohere_api_key", value)
+
+    @property
+    @pulumi.getter(name="cohereApiKeyPlaintext")
+    def cohere_api_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cohere_api_key_plaintext")
+
+    @cohere_api_key_plaintext.setter
+    def cohere_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cohere_api_key_plaintext", value)
 
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs:
     def __init__(__self__, *,
-                 databricks_api_token: pulumi.Input[str],
-                 databricks_workspace_url: pulumi.Input[str]):
+                 databricks_workspace_url: pulumi.Input[str],
+                 databricks_api_token: Optional[pulumi.Input[str]] = None,
+                 databricks_api_token_plaintext: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
         :param pulumi.Input[str] databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        :param pulumi.Input[str] databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
         """
-        pulumi.set(__self__, "databricks_api_token", databricks_api_token)
         pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
-
-    @property
-    @pulumi.getter(name="databricksApiToken")
-    def databricks_api_token(self) -> pulumi.Input[str]:
-        """
-        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-        """
-        return pulumi.get(self, "databricks_api_token")
-
-    @databricks_api_token.setter
-    def databricks_api_token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "databricks_api_token", value)
+        if databricks_api_token is not None:
+            pulumi.set(__self__, "databricks_api_token", databricks_api_token)
+        if databricks_api_token_plaintext is not None:
+            pulumi.set(__self__, "databricks_api_token_plaintext", databricks_api_token_plaintext)
 
     @property
     @pulumi.getter(name="databricksWorkspaceUrl")
@@ -16897,15 +17046,91 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArg
     def databricks_workspace_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "databricks_workspace_url", value)
 
+    @property
+    @pulumi.getter(name="databricksApiToken")
+    def databricks_api_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        """
+        return pulumi.get(self, "databricks_api_token")
+
+    @databricks_api_token.setter
+    def databricks_api_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "databricks_api_token", value)
+
+    @property
+    @pulumi.getter(name="databricksApiTokenPlaintext")
+    def databricks_api_token_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "databricks_api_token_plaintext")
+
+    @databricks_api_token_plaintext.setter
+    def databricks_api_token_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "databricks_api_token_plaintext", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
+    def __init__(__self__, *,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_plaintext: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_plaintext is not None:
+            pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyPlaintext")
+    def private_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key_plaintext")
+
+    @private_key_plaintext.setter
+    def private_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_plaintext", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
     def __init__(__self__, *,
                  microsoft_entra_client_id: Optional[pulumi.Input[str]] = None,
                  microsoft_entra_client_secret: Optional[pulumi.Input[str]] = None,
+                 microsoft_entra_client_secret_plaintext: Optional[pulumi.Input[str]] = None,
                  microsoft_entra_tenant_id: Optional[pulumi.Input[str]] = None,
                  openai_api_base: Optional[pulumi.Input[str]] = None,
                  openai_api_key: Optional[pulumi.Input[str]] = None,
+                 openai_api_key_plaintext: Optional[pulumi.Input[str]] = None,
                  openai_api_type: Optional[pulumi.Input[str]] = None,
                  openai_api_version: Optional[pulumi.Input[str]] = None,
                  openai_deployment_name: Optional[pulumi.Input[str]] = None,
@@ -16922,12 +17147,16 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
             pulumi.set(__self__, "microsoft_entra_client_id", microsoft_entra_client_id)
         if microsoft_entra_client_secret is not None:
             pulumi.set(__self__, "microsoft_entra_client_secret", microsoft_entra_client_secret)
+        if microsoft_entra_client_secret_plaintext is not None:
+            pulumi.set(__self__, "microsoft_entra_client_secret_plaintext", microsoft_entra_client_secret_plaintext)
         if microsoft_entra_tenant_id is not None:
             pulumi.set(__self__, "microsoft_entra_tenant_id", microsoft_entra_tenant_id)
         if openai_api_base is not None:
             pulumi.set(__self__, "openai_api_base", openai_api_base)
         if openai_api_key is not None:
             pulumi.set(__self__, "openai_api_key", openai_api_key)
+        if openai_api_key_plaintext is not None:
+            pulumi.set(__self__, "openai_api_key_plaintext", openai_api_key_plaintext)
         if openai_api_type is not None:
             pulumi.set(__self__, "openai_api_type", openai_api_type)
         if openai_api_version is not None:
@@ -16954,6 +17183,15 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
     @microsoft_entra_client_secret.setter
     def microsoft_entra_client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "microsoft_entra_client_secret", value)
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientSecretPlaintext")
+    def microsoft_entra_client_secret_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "microsoft_entra_client_secret_plaintext")
+
+    @microsoft_entra_client_secret_plaintext.setter
+    def microsoft_entra_client_secret_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "microsoft_entra_client_secret_plaintext", value)
 
     @property
     @pulumi.getter(name="microsoftEntraTenantId")
@@ -16987,6 +17225,15 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
     @openai_api_key.setter
     def openai_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "openai_api_key", value)
+
+    @property
+    @pulumi.getter(name="openaiApiKeyPlaintext")
+    def openai_api_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "openai_api_key_plaintext")
+
+    @openai_api_key_plaintext.setter
+    def openai_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_api_key_plaintext", value)
 
     @property
     @pulumi.getter(name="openaiApiType")
@@ -17040,23 +17287,36 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelPalmConfigArgs:
     def __init__(__self__, *,
-                 palm_api_key: pulumi.Input[str]):
+                 palm_api_key: Optional[pulumi.Input[str]] = None,
+                 palm_api_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] palm_api_key: The Databricks secret key reference for a PaLM API key.
         """
-        pulumi.set(__self__, "palm_api_key", palm_api_key)
+        if palm_api_key is not None:
+            pulumi.set(__self__, "palm_api_key", palm_api_key)
+        if palm_api_key_plaintext is not None:
+            pulumi.set(__self__, "palm_api_key_plaintext", palm_api_key_plaintext)
 
     @property
     @pulumi.getter(name="palmApiKey")
-    def palm_api_key(self) -> pulumi.Input[str]:
+    def palm_api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Databricks secret key reference for a PaLM API key.
         """
         return pulumi.get(self, "palm_api_key")
 
     @palm_api_key.setter
-    def palm_api_key(self, value: pulumi.Input[str]):
+    def palm_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "palm_api_key", value)
+
+    @property
+    @pulumi.getter(name="palmApiKeyPlaintext")
+    def palm_api_key_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "palm_api_key_plaintext")
+
+    @palm_api_key_plaintext.setter
+    def palm_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "palm_api_key_plaintext", value)
 
 
 @pulumi.input_type
@@ -18495,6 +18755,316 @@ class MwsWorkspacesTokenArgs:
 
 
 @pulumi.input_type
+class NotificationDestinationConfigArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input['NotificationDestinationConfigEmailArgs']] = None,
+                 generic_webhook: Optional[pulumi.Input['NotificationDestinationConfigGenericWebhookArgs']] = None,
+                 microsoft_teams: Optional[pulumi.Input['NotificationDestinationConfigMicrosoftTeamsArgs']] = None,
+                 pagerduty: Optional[pulumi.Input['NotificationDestinationConfigPagerdutyArgs']] = None,
+                 slack: Optional[pulumi.Input['NotificationDestinationConfigSlackArgs']] = None):
+        """
+        :param pulumi.Input['NotificationDestinationConfigEmailArgs'] email: The email configuration of the Notification Destination. It must contain the following:
+        :param pulumi.Input['NotificationDestinationConfigGenericWebhookArgs'] generic_webhook: The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        :param pulumi.Input['NotificationDestinationConfigMicrosoftTeamsArgs'] microsoft_teams: The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        :param pulumi.Input['NotificationDestinationConfigPagerdutyArgs'] pagerduty: The PagerDuty configuration of the Notification Destination. It must contain the following:
+        :param pulumi.Input['NotificationDestinationConfigSlackArgs'] slack: The Slack configuration of the Notification Destination. It must contain the following:
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if generic_webhook is not None:
+            pulumi.set(__self__, "generic_webhook", generic_webhook)
+        if microsoft_teams is not None:
+            pulumi.set(__self__, "microsoft_teams", microsoft_teams)
+        if pagerduty is not None:
+            pulumi.set(__self__, "pagerduty", pagerduty)
+        if slack is not None:
+            pulumi.set(__self__, "slack", slack)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['NotificationDestinationConfigEmailArgs']]:
+        """
+        The email configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['NotificationDestinationConfigEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="genericWebhook")
+    def generic_webhook(self) -> Optional[pulumi.Input['NotificationDestinationConfigGenericWebhookArgs']]:
+        """
+        The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "generic_webhook")
+
+    @generic_webhook.setter
+    def generic_webhook(self, value: Optional[pulumi.Input['NotificationDestinationConfigGenericWebhookArgs']]):
+        pulumi.set(self, "generic_webhook", value)
+
+    @property
+    @pulumi.getter(name="microsoftTeams")
+    def microsoft_teams(self) -> Optional[pulumi.Input['NotificationDestinationConfigMicrosoftTeamsArgs']]:
+        """
+        The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "microsoft_teams")
+
+    @microsoft_teams.setter
+    def microsoft_teams(self, value: Optional[pulumi.Input['NotificationDestinationConfigMicrosoftTeamsArgs']]):
+        pulumi.set(self, "microsoft_teams", value)
+
+    @property
+    @pulumi.getter
+    def pagerduty(self) -> Optional[pulumi.Input['NotificationDestinationConfigPagerdutyArgs']]:
+        """
+        The PagerDuty configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "pagerduty")
+
+    @pagerduty.setter
+    def pagerduty(self, value: Optional[pulumi.Input['NotificationDestinationConfigPagerdutyArgs']]):
+        pulumi.set(self, "pagerduty", value)
+
+    @property
+    @pulumi.getter
+    def slack(self) -> Optional[pulumi.Input['NotificationDestinationConfigSlackArgs']]:
+        """
+        The Slack configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "slack")
+
+    @slack.setter
+    def slack(self, value: Optional[pulumi.Input['NotificationDestinationConfigSlackArgs']]):
+        pulumi.set(self, "slack", value)
+
+
+@pulumi.input_type
+class NotificationDestinationConfigEmailArgs:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The list of email addresses to send notifications to.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of email addresses to send notifications to.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "addresses", value)
+
+
+@pulumi.input_type
+class NotificationDestinationConfigGenericWebhookArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 password_set: Optional[pulumi.Input[bool]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 url_set: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_set: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] password: The password for basic authentication.
+               
+               > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        :param pulumi.Input[str] url: The Generic Webhook URL.
+        :param pulumi.Input[str] username: The username for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_set is not None:
+            pulumi.set(__self__, "password_set", password_set)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_set is not None:
+            pulumi.set(__self__, "username_set", username_set)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for basic authentication.
+
+        > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "password_set")
+
+    @password_set.setter
+    def password_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "password_set", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Generic Webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "url_set")
+
+    @url_set.setter
+    def url_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_set", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameSet")
+    def username_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "username_set")
+
+    @username_set.setter
+    def username_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "username_set", value)
+
+
+@pulumi.input_type
+class NotificationDestinationConfigMicrosoftTeamsArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[str]] = None,
+                 url_set: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] url: The Microsoft Teams webhook URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Microsoft Teams webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "url_set")
+
+    @url_set.setter
+    def url_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_set", value)
+
+
+@pulumi.input_type
+class NotificationDestinationConfigPagerdutyArgs:
+    def __init__(__self__, *,
+                 integration_key: Optional[pulumi.Input[str]] = None,
+                 integration_key_set: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] integration_key: The PagerDuty integration key.
+        """
+        if integration_key is not None:
+            pulumi.set(__self__, "integration_key", integration_key)
+        if integration_key_set is not None:
+            pulumi.set(__self__, "integration_key_set", integration_key_set)
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PagerDuty integration key.
+        """
+        return pulumi.get(self, "integration_key")
+
+    @integration_key.setter
+    def integration_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_key", value)
+
+    @property
+    @pulumi.getter(name="integrationKeySet")
+    def integration_key_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "integration_key_set")
+
+    @integration_key_set.setter
+    def integration_key_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "integration_key_set", value)
+
+
+@pulumi.input_type
+class NotificationDestinationConfigSlackArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[str]] = None,
+                 url_set: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] url: The Slack webhook URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "url_set")
+
+    @url_set.setter
+    def url_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_set", value)
+
+
+@pulumi.input_type
 class OnlineTableSpecArgs:
     def __init__(__self__, *,
                  perform_full_copy: Optional[pulumi.Input[bool]] = None,
@@ -19345,32 +19915,30 @@ class PipelineClusterArgs:
 @pulumi.input_type
 class PipelineClusterAutoscaleArgs:
     def __init__(__self__, *,
-                 max_workers: Optional[pulumi.Input[int]] = None,
-                 min_workers: Optional[pulumi.Input[int]] = None,
+                 max_workers: pulumi.Input[int],
+                 min_workers: pulumi.Input[int],
                  mode: Optional[pulumi.Input[str]] = None):
-        if max_workers is not None:
-            pulumi.set(__self__, "max_workers", max_workers)
-        if min_workers is not None:
-            pulumi.set(__self__, "min_workers", min_workers)
+        pulumi.set(__self__, "max_workers", max_workers)
+        pulumi.set(__self__, "min_workers", min_workers)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[int]]:
+    def max_workers(self) -> pulumi.Input[int]:
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[int]]):
+    def max_workers(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_workers", value)
 
     @property
     @pulumi.getter(name="minWorkers")
-    def min_workers(self) -> Optional[pulumi.Input[int]]:
+    def min_workers(self) -> pulumi.Input[int]:
         return pulumi.get(self, "min_workers")
 
     @min_workers.setter
-    def min_workers(self, value: Optional[pulumi.Input[int]]):
+    def min_workers(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_workers", value)
 
     @property
@@ -19388,7 +19956,9 @@ class PipelineClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -19398,8 +19968,12 @@ class PipelineClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -19430,6 +20004,15 @@ class PipelineClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ebs_volume_size")
@@ -19437,6 +20020,15 @@ class PipelineClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -19489,11 +20081,14 @@ class PipelineClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['PipelineClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -19516,6 +20111,15 @@ class PipelineClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['PipelineClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['PipelineClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "spot_bid_max_price")
@@ -19523,6 +20127,35 @@ class PipelineClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class PipelineClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
 
 
 @pulumi.input_type
@@ -19993,6 +20626,10 @@ class PipelineDeploymentArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata_file_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kind: The deployment method that manages the pipeline.
+        :param pulumi.Input[str] metadata_file_path: The path to the file containing metadata about the deployment.
+        """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if metadata_file_path is not None:
@@ -20001,6 +20638,9 @@ class PipelineDeploymentArgs:
     @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deployment method that manages the pipeline.
+        """
         return pulumi.get(self, "kind")
 
     @kind.setter
@@ -20010,6 +20650,9 @@ class PipelineDeploymentArgs:
     @property
     @pulumi.getter(name="metadataFilePath")
     def metadata_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the file containing metadata about the deployment.
+        """
         return pulumi.get(self, "metadata_file_path")
 
     @metadata_file_path.setter
@@ -20022,6 +20665,10 @@ class PipelineFiltersArgs:
     def __init__(__self__, *,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: Paths to exclude.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: Paths to include.
+        """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
@@ -20030,6 +20677,9 @@ class PipelineFiltersArgs:
     @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Paths to exclude.
+        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -20039,11 +20689,485 @@ class PipelineFiltersArgs:
     @property
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Paths to include.
+        """
         return pulumi.get(self, "includes")
 
     @includes.setter
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
+
+
+@pulumi.input_type
+class PipelineGatewayDefinitionArgs:
+    def __init__(__self__, *,
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 gateway_storage_catalog: Optional[pulumi.Input[str]] = None,
+                 gateway_storage_name: Optional[pulumi.Input[str]] = None,
+                 gateway_storage_schema: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        :param pulumi.Input[str] gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        :param pulumi.Input[str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        :param pulumi.Input[str] gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if gateway_storage_catalog is not None:
+            pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
+        if gateway_storage_name is not None:
+            pulumi.set(__self__, "gateway_storage_name", gateway_storage_name)
+        if gateway_storage_schema is not None:
+            pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="gatewayStorageCatalog")
+    def gateway_storage_catalog(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_catalog")
+
+    @gateway_storage_catalog.setter
+    def gateway_storage_catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_storage_catalog", value)
+
+    @property
+    @pulumi.getter(name="gatewayStorageName")
+    def gateway_storage_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        """
+        return pulumi.get(self, "gateway_storage_name")
+
+    @gateway_storage_name.setter
+    def gateway_storage_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_storage_name", value)
+
+    @property
+    @pulumi.getter(name="gatewayStorageSchema")
+    def gateway_storage_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_schema")
+
+    @gateway_storage_schema.setter
+    def gateway_storage_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_storage_schema", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionArgs:
+    def __init__(__self__, *,
+                 connection_name: Optional[pulumi.Input[str]] = None,
+                 ingestion_gateway_id: Optional[pulumi.Input[str]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]] = None,
+                 table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if ingestion_gateway_id is not None:
+            pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
+        if objects is not None:
+            pulumi.set(__self__, "objects", objects)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="ingestionGatewayId")
+    def ingestion_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ingestion_gateway_id")
+
+    @ingestion_gateway_id.setter
+    def ingestion_gateway_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingestion_gateway_id", value)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]]:
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]]):
+        pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']]:
+        return pulumi.get(self, "table_configuration")
+
+    @table_configuration.setter
+    def table_configuration(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']]):
+        pulumi.set(self, "table_configuration", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectArgs:
+    def __init__(__self__, *,
+                 schema: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs']] = None,
+                 table: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableArgs']] = None):
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs']]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableArgs']]:
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableArgs']]):
+        pulumi.set(self, "table", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaArgs:
+    def __init__(__self__, *,
+                 destination_catalog: Optional[pulumi.Input[str]] = None,
+                 destination_schema: Optional[pulumi.Input[str]] = None,
+                 source_catalog: Optional[pulumi.Input[str]] = None,
+                 source_schema: Optional[pulumi.Input[str]] = None,
+                 table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']] = None):
+        if destination_catalog is not None:
+            pulumi.set(__self__, "destination_catalog", destination_catalog)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="destinationCatalog")
+    def destination_catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_catalog")
+
+    @destination_catalog.setter
+    def destination_catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_catalog", value)
+
+    @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_schema")
+
+    @destination_schema.setter
+    def destination_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_schema", value)
+
+    @property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_catalog")
+
+    @source_catalog.setter
+    def source_catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_catalog", value)
+
+    @property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_schema")
+
+    @source_schema.setter
+    def source_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_schema", value)
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']]:
+        return pulumi.get(self, "table_configuration")
+
+    @table_configuration.setter
+    def table_configuration(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']]):
+        pulumi.set(self, "table_configuration", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
+    def __init__(__self__, *,
+                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 salesforce_include_formula_fields: Optional[pulumi.Input[bool]] = None,
+                 scd_type: Optional[pulumi.Input[str]] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "primary_keys")
+
+    @primary_keys.setter
+    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "primary_keys", value)
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @salesforce_include_formula_fields.setter
+    def salesforce_include_formula_fields(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "salesforce_include_formula_fields", value)
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scd_type")
+
+    @scd_type.setter
+    def scd_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scd_type", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableArgs:
+    def __init__(__self__, *,
+                 destination_catalog: Optional[pulumi.Input[str]] = None,
+                 destination_schema: Optional[pulumi.Input[str]] = None,
+                 destination_table: Optional[pulumi.Input[str]] = None,
+                 source_catalog: Optional[pulumi.Input[str]] = None,
+                 source_schema: Optional[pulumi.Input[str]] = None,
+                 source_table: Optional[pulumi.Input[str]] = None,
+                 table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']] = None):
+        if destination_catalog is not None:
+            pulumi.set(__self__, "destination_catalog", destination_catalog)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
+        if destination_table is not None:
+            pulumi.set(__self__, "destination_table", destination_table)
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
+        if source_table is not None:
+            pulumi.set(__self__, "source_table", source_table)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="destinationCatalog")
+    def destination_catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_catalog")
+
+    @destination_catalog.setter
+    def destination_catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_catalog", value)
+
+    @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_schema")
+
+    @destination_schema.setter
+    def destination_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_schema", value)
+
+    @property
+    @pulumi.getter(name="destinationTable")
+    def destination_table(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_table")
+
+    @destination_table.setter
+    def destination_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_table", value)
+
+    @property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_catalog")
+
+    @source_catalog.setter
+    def source_catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_catalog", value)
+
+    @property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_schema")
+
+    @source_schema.setter
+    def source_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_schema", value)
+
+    @property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_table")
+
+    @source_table.setter
+    def source_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_table", value)
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']]:
+        return pulumi.get(self, "table_configuration")
+
+    @table_configuration.setter
+    def table_configuration(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']]):
+        pulumi.set(self, "table_configuration", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
+    def __init__(__self__, *,
+                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 salesforce_include_formula_fields: Optional[pulumi.Input[bool]] = None,
+                 scd_type: Optional[pulumi.Input[str]] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "primary_keys")
+
+    @primary_keys.setter
+    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "primary_keys", value)
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @salesforce_include_formula_fields.setter
+    def salesforce_include_formula_fields(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "salesforce_include_formula_fields", value)
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scd_type")
+
+    @scd_type.setter
+    def scd_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scd_type", value)
+
+
+@pulumi.input_type
+class PipelineIngestionDefinitionTableConfigurationArgs:
+    def __init__(__self__, *,
+                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 salesforce_include_formula_fields: Optional[pulumi.Input[bool]] = None,
+                 scd_type: Optional[pulumi.Input[str]] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "primary_keys")
+
+    @primary_keys.setter
+    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "primary_keys", value)
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @salesforce_include_formula_fields.setter
+    def salesforce_include_formula_fields(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "salesforce_include_formula_fields", value)
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scd_type")
+
+    @scd_type.setter
+    def scd_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scd_type", value)
+
+
+@pulumi.input_type
+class PipelineLatestUpdateArgs:
+    def __init__(__self__, *,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 update_id: Optional[pulumi.Input[str]] = None):
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_id is not None:
+            pulumi.set(__self__, "update_id", update_id)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="updateId")
+    def update_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "update_id")
+
+    @update_id.setter
+    def update_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_id", value)
 
 
 @pulumi.input_type
@@ -20062,6 +21186,9 @@ class PipelineLibraryArgs:
             pulumi.set(__self__, "maven", maven)
         if notebook is not None:
             pulumi.set(__self__, "notebook", notebook)
+        if whl is not None:
+            warnings.warn("""The 'whl' field is deprecated""", DeprecationWarning)
+            pulumi.log.warn("""whl is deprecated: The 'whl' field is deprecated""")
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
 
@@ -20103,6 +21230,7 @@ class PipelineLibraryArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The 'whl' field is deprecated""")
     def whl(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "whl")
 
@@ -20114,16 +21242,17 @@ class PipelineLibraryArgs:
 @pulumi.input_type
 class PipelineLibraryFileArgs:
     def __init__(__self__, *,
-                 path: pulumi.Input[str]):
-        pulumi.set(__self__, "path", path)
+                 path: Optional[pulumi.Input[str]] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> pulumi.Input[str]:
+    def path(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: pulumi.Input[str]):
+    def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
 
@@ -20170,24 +21299,25 @@ class PipelineLibraryMavenArgs:
 @pulumi.input_type
 class PipelineLibraryNotebookArgs:
     def __init__(__self__, *,
-                 path: pulumi.Input[str]):
-        pulumi.set(__self__, "path", path)
+                 path: Optional[pulumi.Input[str]] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> pulumi.Input[str]:
+    def path(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: pulumi.Input[str]):
+    def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
 class PipelineNotificationArgs:
     def __init__(__self__, *,
-                 alerts: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 email_recipients: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alerts: non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
                * `on-update-success` - a pipeline update completes successfully.
@@ -20196,12 +21326,14 @@ class PipelineNotificationArgs:
                * `on-flow-failure` - a single data flow fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_recipients: non-empty list of emails to notify.
         """
-        pulumi.set(__self__, "alerts", alerts)
-        pulumi.set(__self__, "email_recipients", email_recipients)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if email_recipients is not None:
+            pulumi.set(__self__, "email_recipients", email_recipients)
 
     @property
     @pulumi.getter
-    def alerts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
         * `on-update-success` - a pipeline update completes successfully.
@@ -20212,20 +21344,84 @@ class PipelineNotificationArgs:
         return pulumi.get(self, "alerts")
 
     @alerts.setter
-    def alerts(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "alerts", value)
 
     @property
     @pulumi.getter(name="emailRecipients")
-    def email_recipients(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def email_recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         non-empty list of emails to notify.
         """
         return pulumi.get(self, "email_recipients")
 
     @email_recipients.setter
-    def email_recipients(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def email_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_recipients", value)
+
+
+@pulumi.input_type
+class PipelineTriggerArgs:
+    def __init__(__self__, *,
+                 cron: Optional[pulumi.Input['PipelineTriggerCronArgs']] = None,
+                 manual: Optional[pulumi.Input['PipelineTriggerManualArgs']] = None):
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional[pulumi.Input['PipelineTriggerCronArgs']]:
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: Optional[pulumi.Input['PipelineTriggerCronArgs']]):
+        pulumi.set(self, "cron", value)
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional[pulumi.Input['PipelineTriggerManualArgs']]:
+        return pulumi.get(self, "manual")
+
+    @manual.setter
+    def manual(self, value: Optional[pulumi.Input['PipelineTriggerManualArgs']]):
+        pulumi.set(self, "manual", value)
+
+
+@pulumi.input_type
+class PipelineTriggerCronArgs:
+    def __init__(__self__, *,
+                 quartz_cron_schedule: Optional[pulumi.Input[str]] = None,
+                 timezone_id: Optional[pulumi.Input[str]] = None):
+        if quartz_cron_schedule is not None:
+            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @property
+    @pulumi.getter(name="quartzCronSchedule")
+    def quartz_cron_schedule(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quartz_cron_schedule")
+
+    @quartz_cron_schedule.setter
+    def quartz_cron_schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quartz_cron_schedule", value)
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone_id", value)
+
+
+@pulumi.input_type
+class PipelineTriggerManualArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type
@@ -22679,6 +23875,62 @@ class StorageCredentialAzureServicePrincipalArgs:
 
 
 @pulumi.input_type
+class StorageCredentialCloudflareApiTokenArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[str],
+                 account_id: pulumi.Input[str],
+                 secret_access_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_key_id: R2 API token access key ID
+        :param pulumi.Input[str] account_id: R2 account ID
+        :param pulumi.Input[str] secret_access_key: R2 API token secret access key
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[str]:
+        """
+        R2 API token access key ID
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        R2 account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> pulumi.Input[str]:
+        """
+        R2 API token secret access key
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        """
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_access_key", value)
+
+
+@pulumi.input_type
 class StorageCredentialDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
                  credential_id: Optional[pulumi.Input[str]] = None,
@@ -22686,7 +23938,7 @@ class StorageCredentialDatabricksGcpServiceAccountArgs:
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
                
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+               `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -22708,7 +23960,7 @@ class StorageCredentialDatabricksGcpServiceAccountArgs:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
 
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         return pulumi.get(self, "email")
 
@@ -22726,7 +23978,7 @@ class StorageCredentialGcpServiceAccountKeyArgs:
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
                
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+               `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
@@ -22738,7 +23990,7 @@ class StorageCredentialGcpServiceAccountKeyArgs:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
 
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         return pulumi.get(self, "email")
 

@@ -112,7 +112,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
     this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name=f"{prefix}-uc-access",
-        kms_name="databricks-kms")
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")
@@ -128,7 +128,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-    :param str kms_name: If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+    :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
     __args__ = dict()
@@ -169,7 +169,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name=f"{prefix}-uc-access",
-        kms_name="databricks-kms")
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")
@@ -185,7 +185,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-    :param str kms_name: If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+    :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
     ...

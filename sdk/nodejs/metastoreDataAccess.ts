@@ -79,6 +79,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly awsIamRole!: pulumi.Output<outputs.MetastoreDataAccessAwsIamRole | undefined>;
     public readonly azureManagedIdentity!: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
+    public readonly cloudflareApiToken!: pulumi.Output<outputs.MetastoreDataAccessCloudflareApiToken | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -111,6 +112,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["awsIamRole"] = state ? state.awsIamRole : undefined;
             resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
+            resourceInputs["cloudflareApiToken"] = state ? state.cloudflareApiToken : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
@@ -128,6 +130,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
+            resourceInputs["cloudflareApiToken"] = args ? args.cloudflareApiToken : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
@@ -153,6 +156,7 @@ export interface MetastoreDataAccessState {
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
+    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;
@@ -177,6 +181,7 @@ export interface MetastoreDataAccessArgs {
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
+    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;

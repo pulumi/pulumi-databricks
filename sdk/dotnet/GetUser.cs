@@ -168,6 +168,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string AclPrincipalId;
         /// <summary>
+        /// Whether the user is active.
+        /// </summary>
+        public readonly bool Active;
+        /// <summary>
         /// Alphanumeric representation of user local name. e.g. `mr_foo`.
         /// </summary>
         public readonly string Alphanumeric;
@@ -202,6 +206,8 @@ namespace Pulumi.Databricks
         private GetUserResult(
             string aclPrincipalId,
 
+            bool active,
+
             string alphanumeric,
 
             string applicationId,
@@ -221,6 +227,7 @@ namespace Pulumi.Databricks
             string? userName)
         {
             AclPrincipalId = aclPrincipalId;
+            Active = active;
             Alphanumeric = alphanumeric;
             ApplicationId = applicationId;
             DisplayName = displayName;

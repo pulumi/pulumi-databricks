@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,21 +19,29 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
      * The Databricks secret key reference for an AI21Labs API key.
      * 
      */
-    @Import(name="ai21labsApiKey", required=true)
-    private Output<String> ai21labsApiKey;
+    @Import(name="ai21labsApiKey")
+    private @Nullable Output<String> ai21labsApiKey;
 
     /**
      * @return The Databricks secret key reference for an AI21Labs API key.
      * 
      */
-    public Output<String> ai21labsApiKey() {
-        return this.ai21labsApiKey;
+    public Optional<Output<String>> ai21labsApiKey() {
+        return Optional.ofNullable(this.ai21labsApiKey);
+    }
+
+    @Import(name="ai21labsApiKeyPlaintext")
+    private @Nullable Output<String> ai21labsApiKeyPlaintext;
+
+    public Optional<Output<String>> ai21labsApiKeyPlaintext() {
+        return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
     }
 
     private ModelServingConfigServedEntityExternalModelAi21labsConfigArgs() {}
 
     private ModelServingConfigServedEntityExternalModelAi21labsConfigArgs(ModelServingConfigServedEntityExternalModelAi21labsConfigArgs $) {
         this.ai21labsApiKey = $.ai21labsApiKey;
+        this.ai21labsApiKeyPlaintext = $.ai21labsApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -59,7 +68,7 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
          * @return builder
          * 
          */
-        public Builder ai21labsApiKey(Output<String> ai21labsApiKey) {
+        public Builder ai21labsApiKey(@Nullable Output<String> ai21labsApiKey) {
             $.ai21labsApiKey = ai21labsApiKey;
             return this;
         }
@@ -74,10 +83,16 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
             return ai21labsApiKey(Output.of(ai21labsApiKey));
         }
 
+        public Builder ai21labsApiKeyPlaintext(@Nullable Output<String> ai21labsApiKeyPlaintext) {
+            $.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
+            return this;
+        }
+
+        public Builder ai21labsApiKeyPlaintext(String ai21labsApiKeyPlaintext) {
+            return ai21labsApiKeyPlaintext(Output.of(ai21labsApiKeyPlaintext));
+        }
+
         public ModelServingConfigServedEntityExternalModelAi21labsConfigArgs build() {
-            if ($.ai21labsApiKey == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAi21labsConfigArgs", "ai21labsApiKey");
-            }
             return $;
         }
     }

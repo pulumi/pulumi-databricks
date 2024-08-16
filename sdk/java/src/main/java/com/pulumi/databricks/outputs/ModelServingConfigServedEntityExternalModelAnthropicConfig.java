@@ -4,9 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
@@ -15,7 +16,8 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
      * The Databricks secret key reference for an Anthropic API key.
      * 
      */
-    private String anthropicApiKey;
+    private @Nullable String anthropicApiKey;
+    private @Nullable String anthropicApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelAnthropicConfig() {}
     /**
@@ -23,8 +25,11 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
      * The Databricks secret key reference for an Anthropic API key.
      * 
      */
-    public String anthropicApiKey() {
-        return this.anthropicApiKey;
+    public Optional<String> anthropicApiKey() {
+        return Optional.ofNullable(this.anthropicApiKey);
+    }
+    public Optional<String> anthropicApiKeyPlaintext() {
+        return Optional.ofNullable(this.anthropicApiKeyPlaintext);
     }
 
     public static Builder builder() {
@@ -36,24 +41,31 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String anthropicApiKey;
+        private @Nullable String anthropicApiKey;
+        private @Nullable String anthropicApiKeyPlaintext;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelAnthropicConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anthropicApiKey = defaults.anthropicApiKey;
+    	      this.anthropicApiKeyPlaintext = defaults.anthropicApiKeyPlaintext;
         }
 
         @CustomType.Setter
-        public Builder anthropicApiKey(String anthropicApiKey) {
-            if (anthropicApiKey == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAnthropicConfig", "anthropicApiKey");
-            }
+        public Builder anthropicApiKey(@Nullable String anthropicApiKey) {
+
             this.anthropicApiKey = anthropicApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder anthropicApiKeyPlaintext(@Nullable String anthropicApiKeyPlaintext) {
+
+            this.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
             return this;
         }
         public ModelServingConfigServedEntityExternalModelAnthropicConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelAnthropicConfig();
             _resultValue.anthropicApiKey = anthropicApiKey;
+            _resultValue.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
             return _resultValue;
         }
     }

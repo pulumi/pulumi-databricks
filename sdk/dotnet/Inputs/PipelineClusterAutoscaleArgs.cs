@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineClusterAutoscaleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("maxWorkers")]
-        public Input<int>? MaxWorkers { get; set; }
+        [Input("maxWorkers", required: true)]
+        public Input<int> MaxWorkers { get; set; } = null!;
 
-        [Input("minWorkers")]
-        public Input<int>? MinWorkers { get; set; }
+        [Input("minWorkers", required: true)]
+        public Input<int> MinWorkers { get; set; } = null!;
 
         [Input("mode")]
         public Input<string>? Mode { get; set; }

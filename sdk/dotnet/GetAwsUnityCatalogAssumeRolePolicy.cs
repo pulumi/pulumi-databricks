@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "databricks-kms",
+        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
         ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
@@ -85,7 +85,7 @@ namespace Pulumi.Databricks
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "databricks-kms",
+        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
         ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()

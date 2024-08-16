@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class GetUserResult {
      * 
      */
     private String aclPrincipalId;
+    /**
+     * @return Whether the user is active.
+     * 
+     */
+    private Boolean active;
     /**
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
      * 
@@ -62,6 +68,13 @@ public final class GetUserResult {
      */
     public String aclPrincipalId() {
         return this.aclPrincipalId;
+    }
+    /**
+     * @return Whether the user is active.
+     * 
+     */
+    public Boolean active() {
+        return this.active;
     }
     /**
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -129,6 +142,7 @@ public final class GetUserResult {
     @CustomType.Builder
     public static final class Builder {
         private String aclPrincipalId;
+        private Boolean active;
         private String alphanumeric;
         private String applicationId;
         private String displayName;
@@ -142,6 +156,7 @@ public final class GetUserResult {
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclPrincipalId = defaults.aclPrincipalId;
+    	      this.active = defaults.active;
     	      this.alphanumeric = defaults.alphanumeric;
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
@@ -159,6 +174,14 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "aclPrincipalId");
             }
             this.aclPrincipalId = aclPrincipalId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder active(Boolean active) {
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
@@ -232,6 +255,7 @@ public final class GetUserResult {
         public GetUserResult build() {
             final var _resultValue = new GetUserResult();
             _resultValue.aclPrincipalId = aclPrincipalId;
+            _resultValue.active = active;
             _resultValue.alphanumeric = alphanumeric;
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;

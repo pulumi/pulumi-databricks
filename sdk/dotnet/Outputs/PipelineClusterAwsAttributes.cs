@@ -15,7 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? Availability;
         public readonly int? EbsVolumeCount;
+        public readonly int? EbsVolumeIops;
         public readonly int? EbsVolumeSize;
+        public readonly int? EbsVolumeThroughput;
         public readonly string? EbsVolumeType;
         public readonly int? FirstOnDemand;
         public readonly string? InstanceProfileArn;
@@ -28,7 +30,11 @@ namespace Pulumi.Databricks.Outputs
 
             int? ebsVolumeCount,
 
+            int? ebsVolumeIops,
+
             int? ebsVolumeSize,
+
+            int? ebsVolumeThroughput,
 
             string? ebsVolumeType,
 
@@ -42,7 +48,9 @@ namespace Pulumi.Databricks.Outputs
         {
             Availability = availability;
             EbsVolumeCount = ebsVolumeCount;
+            EbsVolumeIops = ebsVolumeIops;
             EbsVolumeSize = ebsVolumeSize;
+            EbsVolumeThroughput = ebsVolumeThroughput;
             EbsVolumeType = ebsVolumeType;
             FirstOnDemand = firstOnDemand;
             InstanceProfileArn = instanceProfileArn;
