@@ -126,7 +126,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    public readonly options!: pulumi.Output<{[key: string]: any}>;
+    public readonly options!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the connection owner.
      */
@@ -134,7 +134,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Free-form connection properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly readOnly!: pulumi.Output<boolean>;
 
     /**
@@ -202,7 +202,7 @@ export interface ConnectionState {
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the connection owner.
      */
@@ -210,7 +210,7 @@ export interface ConnectionState {
     /**
      * Free-form connection properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readOnly?: pulumi.Input<boolean>;
 }
 
@@ -234,7 +234,7 @@ export interface ConnectionArgs {
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    options: pulumi.Input<{[key: string]: any}>;
+    options: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the connection owner.
      */
@@ -242,6 +242,6 @@ export interface ConnectionArgs {
     /**
      * Free-form connection properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readOnly?: pulumi.Input<boolean>;
 }

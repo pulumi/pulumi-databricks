@@ -18,7 +18,6 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecWorkloadTypeArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -108,13 +107,13 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
      * 
      */
     @Import(name="customTags")
-    private @Nullable Output<Map<String,Object>> customTags;
+    private @Nullable Output<Map<String,String>> customTags;
 
     /**
      * @return Additional tags for cluster resources.
      * 
      */
-    public Optional<Output<Map<String,Object>>> customTags() {
+    public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -323,13 +322,13 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
      * 
      */
     @Import(name="sparkConf")
-    private @Nullable Output<Map<String,Object>> sparkConf;
+    private @Nullable Output<Map<String,String>> sparkConf;
 
     /**
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    public Optional<Output<Map<String,Object>>> sparkConf() {
+    public Optional<Output<Map<String,String>>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
@@ -338,13 +337,13 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
      * 
      */
     @Import(name="sparkEnvVars")
-    private @Nullable Output<Map<String,Object>> sparkEnvVars;
+    private @Nullable Output<Map<String,String>> sparkEnvVars;
 
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    public Optional<Output<Map<String,Object>>> sparkEnvVars() {
+    public Optional<Output<Map<String,String>>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
@@ -544,7 +543,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+        public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -555,7 +554,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder customTags(Map<String,Object> customTags) {
+        public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 
@@ -849,7 +848,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder sparkConf(@Nullable Output<Map<String,Object>> sparkConf) {
+        public Builder sparkConf(@Nullable Output<Map<String,String>> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
@@ -860,7 +859,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder sparkConf(Map<String,Object> sparkConf) {
+        public Builder sparkConf(Map<String,String> sparkConf) {
             return sparkConf(Output.of(sparkConf));
         }
 
@@ -870,7 +869,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder sparkEnvVars(@Nullable Output<Map<String,Object>> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Output<Map<String,String>> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }
@@ -881,7 +880,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder sparkEnvVars(Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(Map<String,String> sparkEnvVars) {
             return sparkEnvVars(Output.of(sparkEnvVars));
         }
 

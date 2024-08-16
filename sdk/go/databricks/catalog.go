@@ -34,8 +34,8 @@ import (
 //			_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
 //				Name:    pulumi.String("sandbox"),
 //				Comment: pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -82,11 +82,11 @@ type Catalog struct {
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.MapOutput `pulumi:"options"`
+	Options pulumi.StringMapOutput `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Catalog properties.
-	Properties pulumi.MapOutput `pulumi:"properties"`
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName pulumi.StringPtrOutput `pulumi:"providerName"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -140,11 +140,11 @@ type catalogState struct {
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName *string `pulumi:"providerName"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -169,11 +169,11 @@ type CatalogState struct {
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName pulumi.StringPtrInput
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -202,11 +202,11 @@ type catalogArgs struct {
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options map[string]interface{} `pulumi:"options"`
+	Options map[string]string `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName *string `pulumi:"providerName"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -232,11 +232,11 @@ type CatalogArgs struct {
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.MapInput
+	Options pulumi.StringMapInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName pulumi.StringPtrInput
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -368,8 +368,8 @@ func (o CatalogOutput) Name() pulumi.StringOutput {
 }
 
 // For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-func (o CatalogOutput) Options() pulumi.MapOutput {
-	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Options }).(pulumi.MapOutput)
+func (o CatalogOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // Username/groupname/sp applicationId of the catalog owner.
@@ -378,8 +378,8 @@ func (o CatalogOutput) Owner() pulumi.StringOutput {
 }
 
 // Extensible Catalog properties.
-func (o CatalogOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+func (o CatalogOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.

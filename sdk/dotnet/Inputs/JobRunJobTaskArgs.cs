@@ -19,14 +19,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<int> JobId { get; set; } = null!;
 
         [Input("jobParameters")]
-        private InputMap<object>? _jobParameters;
+        private InputMap<string>? _jobParameters;
 
         /// <summary>
         /// (Map) Job parameters for the task
         /// </summary>
-        public InputMap<object> JobParameters
+        public InputMap<string> JobParameters
         {
-            get => _jobParameters ?? (_jobParameters = new InputMap<object>());
+            get => _jobParameters ?? (_jobParameters = new InputMap<string>());
             set => _jobParameters = value;
         }
 

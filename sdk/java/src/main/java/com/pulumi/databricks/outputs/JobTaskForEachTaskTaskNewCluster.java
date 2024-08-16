@@ -17,7 +17,6 @@ import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterWorkloadTyp
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +34,7 @@ public final class JobTaskForEachTaskTaskNewCluster {
     private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConf clusterLogConf;
     private @Nullable List<JobTaskForEachTaskTaskNewClusterClusterMountInfo> clusterMountInfos;
     private @Nullable String clusterName;
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
     private @Nullable String dataSecurityMode;
     private @Nullable JobTaskForEachTaskTaskNewClusterDockerImage dockerImage;
     private @Nullable String driverInstancePoolId;
@@ -56,8 +55,8 @@ public final class JobTaskForEachTaskTaskNewCluster {
     private @Nullable String policyId;
     private @Nullable String runtimeEngine;
     private @Nullable String singleUserName;
-    private @Nullable Map<String,Object> sparkConf;
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkConf;
+    private @Nullable Map<String,String> sparkEnvVars;
     private String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
     /**
@@ -91,7 +90,7 @@ public final class JobTaskForEachTaskTaskNewCluster {
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
-    public Map<String,Object> customTags() {
+    public Map<String,String> customTags() {
         return this.customTags == null ? Map.of() : this.customTags;
     }
     public Optional<String> dataSecurityMode() {
@@ -146,10 +145,10 @@ public final class JobTaskForEachTaskTaskNewCluster {
     public Optional<String> singleUserName() {
         return Optional.ofNullable(this.singleUserName);
     }
-    public Map<String,Object> sparkConf() {
+    public Map<String,String> sparkConf() {
         return this.sparkConf == null ? Map.of() : this.sparkConf;
     }
-    public Map<String,Object> sparkEnvVars() {
+    public Map<String,String> sparkEnvVars() {
         return this.sparkEnvVars == null ? Map.of() : this.sparkEnvVars;
     }
     public String sparkVersion() {
@@ -183,7 +182,7 @@ public final class JobTaskForEachTaskTaskNewCluster {
         private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConf clusterLogConf;
         private @Nullable List<JobTaskForEachTaskTaskNewClusterClusterMountInfo> clusterMountInfos;
         private @Nullable String clusterName;
-        private @Nullable Map<String,Object> customTags;
+        private @Nullable Map<String,String> customTags;
         private @Nullable String dataSecurityMode;
         private @Nullable JobTaskForEachTaskTaskNewClusterDockerImage dockerImage;
         private @Nullable String driverInstancePoolId;
@@ -200,8 +199,8 @@ public final class JobTaskForEachTaskTaskNewCluster {
         private @Nullable String policyId;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
-        private @Nullable Map<String,Object> sparkConf;
-        private @Nullable Map<String,Object> sparkEnvVars;
+        private @Nullable Map<String,String> sparkConf;
+        private @Nullable Map<String,String> sparkEnvVars;
         private String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable JobTaskForEachTaskTaskNewClusterWorkloadType workloadType;
@@ -292,7 +291,7 @@ public final class JobTaskForEachTaskTaskNewCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
 
             this.customTags = customTags;
             return this;
@@ -400,13 +399,13 @@ public final class JobTaskForEachTaskTaskNewCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
 
             this.sparkConf = sparkConf;
             return this;
         }
         @CustomType.Setter
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
 
             this.sparkEnvVars = sparkEnvVars;
             return this;

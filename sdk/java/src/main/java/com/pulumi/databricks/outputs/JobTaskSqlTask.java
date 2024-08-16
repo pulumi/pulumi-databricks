@@ -9,7 +9,6 @@ import com.pulumi.databricks.outputs.JobTaskSqlTaskDashboard;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskQuery;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -37,7 +36,7 @@ public final class JobTaskSqlTask {
      * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    private @Nullable Map<String,Object> parameters;
+    private @Nullable Map<String,String> parameters;
     /**
      * @return block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
      * 
@@ -75,7 +74,7 @@ public final class JobTaskSqlTask {
      * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    public Map<String,Object> parameters() {
+    public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
@@ -105,7 +104,7 @@ public final class JobTaskSqlTask {
         private @Nullable JobTaskSqlTaskAlert alert;
         private @Nullable JobTaskSqlTaskDashboard dashboard;
         private @Nullable JobTaskSqlTaskFile file;
-        private @Nullable Map<String,Object> parameters;
+        private @Nullable Map<String,String> parameters;
         private @Nullable JobTaskSqlTaskQuery query;
         private String warehouseId;
         public Builder() {}
@@ -138,7 +137,7 @@ public final class JobTaskSqlTask {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(@Nullable Map<String,Object> parameters) {
+        public Builder parameters(@Nullable Map<String,String> parameters) {
 
             this.parameters = parameters;
             return this;

@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ModelServingConfigServedModelArgs : global::Pulumi.ResourceArgs
     {
         [Input("environmentVars")]
-        private InputMap<object>? _environmentVars;
+        private InputMap<string>? _environmentVars;
 
         /// <summary>
         /// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         /// </summary>
-        public InputMap<object> EnvironmentVars
+        public InputMap<string> EnvironmentVars
         {
-            get => _environmentVars ?? (_environmentVars = new InputMap<object>());
+            get => _environmentVars ?? (_environmentVars = new InputMap<string>());
             set => _environmentVars = value;
         }
 

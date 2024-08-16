@@ -8,7 +8,6 @@ import com.pulumi.databricks.inputs.GetCatalogCatalogInfoEffectivePredictiveOpti
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -197,13 +196,13 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="options")
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
 
     /**
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Optional<Map<String,Object>> options() {
+    public Optional<Map<String,String>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -227,13 +226,13 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="properties")
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
 
     /**
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Optional<Map<String,Object>> properties() {
+    public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -543,7 +542,7 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
             $.options = options;
             return this;
         }
@@ -565,7 +564,7 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;
         }

@@ -35,8 +35,8 @@ import (
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
 //				Name:    pulumi.String("sandbox"),
 //				Comment: pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -46,8 +46,8 @@ import (
 //				CatalogName: sandbox.ID(),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"kind": pulumi.Any("various"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
 //				},
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ type Schema struct {
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
-	Properties pulumi.MapOutput `pulumi:"properties"`
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
@@ -145,7 +145,7 @@ type schemaState struct {
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
@@ -165,7 +165,7 @@ type SchemaState struct {
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
@@ -189,7 +189,7 @@ type schemaArgs struct {
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
@@ -210,7 +210,7 @@ type SchemaArgs struct {
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
@@ -337,8 +337,8 @@ func (o SchemaOutput) Owner() pulumi.StringOutput {
 }
 
 // Extensible Schema properties.
-func (o SchemaOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Schema) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+func (o SchemaOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.

@@ -335,7 +335,7 @@ namespace Pulumi.Databricks
         /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
         [Output("customTags")]
-        public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
 
         [Output("customerManagedKeyId")]
         public Output<string?> CustomerManagedKeyId { get; private set; } = null!;
@@ -533,14 +533,14 @@ namespace Pulumi.Databricks
         public Input<string>? CredentialsId { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -692,14 +692,14 @@ namespace Pulumi.Databricks
         public Input<string>? CredentialsId { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 

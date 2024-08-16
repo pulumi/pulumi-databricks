@@ -28,10 +28,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.PipelineClusterClusterLogConfArgs>? ClusterLogConf { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
-        public InputMap<object> CustomTags
+        private InputMap<string>? _customTags;
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -71,18 +71,18 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PolicyId { get; set; }
 
         [Input("sparkConf")]
-        private InputMap<object>? _sparkConf;
-        public InputMap<object> SparkConf
+        private InputMap<string>? _sparkConf;
+        public InputMap<string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new InputMap<object>());
+            get => _sparkConf ?? (_sparkConf = new InputMap<string>());
             set => _sparkConf = value;
         }
 
         [Input("sparkEnvVars")]
-        private InputMap<object>? _sparkEnvVars;
-        public InputMap<object> SparkEnvVars
+        private InputMap<string>? _sparkEnvVars;
+        public InputMap<string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<string>());
             set => _sparkEnvVars = value;
         }
 

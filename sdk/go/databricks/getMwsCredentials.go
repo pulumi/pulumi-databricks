@@ -67,7 +67,7 @@ func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, o
 // A collection of arguments for invoking getMwsCredentials.
 type LookupMwsCredentialsArgs struct {
 	// name-to-id map for all of the credentials in the account
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMwsCredentials.
@@ -75,7 +75,7 @@ type LookupMwsCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the credentials in the account
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOutputArgs, opts ...pulumi.InvokeOption) LookupMwsCredentialsResultOutput {
@@ -94,7 +94,7 @@ func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOu
 // A collection of arguments for invoking getMwsCredentials.
 type LookupMwsCredentialsOutputArgs struct {
 	// name-to-id map for all of the credentials in the account
-	Ids pulumi.MapInput `pulumi:"ids"`
+	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
 func (LookupMwsCredentialsOutputArgs) ElementType() reflect.Type {
@@ -122,8 +122,8 @@ func (o LookupMwsCredentialsResultOutput) Id() pulumi.StringOutput {
 }
 
 // name-to-id map for all of the credentials in the account
-func (o LookupMwsCredentialsResultOutput) Ids() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupMwsCredentialsResult) map[string]interface{} { return v.Ids }).(pulumi.MapOutput)
+func (o LookupMwsCredentialsResultOutput) Ids() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMwsCredentialsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }
 
 func init() {

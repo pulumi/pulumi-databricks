@@ -358,7 +358,7 @@ export class Mount extends pulumi.CustomResource {
     public readonly adl!: pulumi.Output<outputs.MountAdl | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
     public readonly encryptionType!: pulumi.Output<string | undefined>;
-    public readonly extraConfigs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly extraConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly gs!: pulumi.Output<outputs.MountGs | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly resourceId!: pulumi.Output<string | undefined>;
@@ -423,7 +423,7 @@ export interface MountState {
     adl?: pulumi.Input<inputs.MountAdl>;
     clusterId?: pulumi.Input<string>;
     encryptionType?: pulumi.Input<string>;
-    extraConfigs?: pulumi.Input<{[key: string]: any}>;
+    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     gs?: pulumi.Input<inputs.MountGs>;
     name?: pulumi.Input<string>;
     resourceId?: pulumi.Input<string>;
@@ -444,7 +444,7 @@ export interface MountArgs {
     adl?: pulumi.Input<inputs.MountAdl>;
     clusterId?: pulumi.Input<string>;
     encryptionType?: pulumi.Input<string>;
-    extraConfigs?: pulumi.Input<{[key: string]: any}>;
+    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     gs?: pulumi.Input<inputs.MountGs>;
     name?: pulumi.Input<string>;
     resourceId?: pulumi.Input<string>;

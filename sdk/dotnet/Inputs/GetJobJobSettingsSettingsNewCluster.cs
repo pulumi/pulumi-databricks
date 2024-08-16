@@ -45,10 +45,10 @@ namespace Pulumi.Databricks.Inputs
         public string? ClusterName { get; set; }
 
         [Input("customTags")]
-        private Dictionary<string, object>? _customTags;
-        public Dictionary<string, object> CustomTags
+        private Dictionary<string, string>? _customTags;
+        public Dictionary<string, string> CustomTags
         {
-            get => _customTags ?? (_customTags = new Dictionary<string, object>());
+            get => _customTags ?? (_customTags = new Dictionary<string, string>());
             set => _customTags = value;
         }
 
@@ -103,18 +103,18 @@ namespace Pulumi.Databricks.Inputs
         public string? SingleUserName { get; set; }
 
         [Input("sparkConf")]
-        private Dictionary<string, object>? _sparkConf;
-        public Dictionary<string, object> SparkConf
+        private Dictionary<string, string>? _sparkConf;
+        public Dictionary<string, string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new Dictionary<string, object>());
+            get => _sparkConf ?? (_sparkConf = new Dictionary<string, string>());
             set => _sparkConf = value;
         }
 
         [Input("sparkEnvVars")]
-        private Dictionary<string, object>? _sparkEnvVars;
-        public Dictionary<string, object> SparkEnvVars
+        private Dictionary<string, string>? _sparkEnvVars;
+        public Dictionary<string, string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new Dictionary<string, object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new Dictionary<string, string>());
             set => _sparkEnvVars = value;
         }
 

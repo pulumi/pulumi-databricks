@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         /// ```
         /// </summary>
         [Output("customTags")]
-        public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
 
         /// <summary>
         /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
@@ -171,7 +171,7 @@ namespace Pulumi.Databricks
         /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
         [Output("defaultTags")]
-        public Output<ImmutableDictionary<string, object>> DefaultTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> DefaultTags { get; private set; } = null!;
 
         [Output("dockerImage")]
         public Output<Outputs.ClusterDockerImage?> DockerImage { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Databricks
         ///         },
         ///         SparkConf = 
         ///         {
-        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.enabled", "true" },
         ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
         ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
         ///         },
@@ -305,13 +305,13 @@ namespace Pulumi.Databricks
         /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
         [Output("sparkConf")]
-        public Output<ImmutableDictionary<string, object>?> SparkConf { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> SparkConf { get; private set; } = null!;
 
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
         [Output("sparkEnvVars")]
-        public Output<ImmutableDictionary<string, object>?> SparkEnvVars { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> SparkEnvVars { get; private set; } = null!;
 
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
@@ -422,7 +422,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterName { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// should have tag `ResourceClass` set to value `Serverless`
@@ -457,9 +457,9 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -555,7 +555,7 @@ namespace Pulumi.Databricks
         ///         },
         ///         SparkConf = 
         ///         {
-        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.enabled", "true" },
         ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
         ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
         ///         },
@@ -606,28 +606,28 @@ namespace Pulumi.Databricks
         public Input<string>? SingleUserName { get; set; }
 
         [Input("sparkConf")]
-        private InputMap<object>? _sparkConf;
+        private InputMap<string>? _sparkConf;
 
         /// <summary>
         /// should have following items:
         /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
         /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
-        public InputMap<object> SparkConf
+        public InputMap<string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new InputMap<object>());
+            get => _sparkConf ?? (_sparkConf = new InputMap<string>());
             set => _sparkConf = value;
         }
 
         [Input("sparkEnvVars")]
-        private InputMap<object>? _sparkEnvVars;
+        private InputMap<string>? _sparkEnvVars;
 
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
-        public InputMap<object> SparkEnvVars
+        public InputMap<string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<string>());
             set => _sparkEnvVars = value;
         }
 
@@ -702,7 +702,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterName { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// should have tag `ResourceClass` set to value `Serverless`
@@ -737,9 +737,9 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -750,14 +750,14 @@ namespace Pulumi.Databricks
         public Input<string>? DataSecurityMode { get; set; }
 
         [Input("defaultTags")]
-        private InputMap<object>? _defaultTags;
+        private InputMap<string>? _defaultTags;
 
         /// <summary>
         /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
-        public InputMap<object> DefaultTags
+        public InputMap<string> DefaultTags
         {
-            get => _defaultTags ?? (_defaultTags = new InputMap<object>());
+            get => _defaultTags ?? (_defaultTags = new InputMap<string>());
             set => _defaultTags = value;
         }
 
@@ -847,7 +847,7 @@ namespace Pulumi.Databricks
         ///         },
         ///         SparkConf = 
         ///         {
-        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.enabled", "true" },
         ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
         ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
         ///         },
@@ -898,28 +898,28 @@ namespace Pulumi.Databricks
         public Input<string>? SingleUserName { get; set; }
 
         [Input("sparkConf")]
-        private InputMap<object>? _sparkConf;
+        private InputMap<string>? _sparkConf;
 
         /// <summary>
         /// should have following items:
         /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
         /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
-        public InputMap<object> SparkConf
+        public InputMap<string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new InputMap<object>());
+            get => _sparkConf ?? (_sparkConf = new InputMap<string>());
             set => _sparkConf = value;
         }
 
         [Input("sparkEnvVars")]
-        private InputMap<object>? _sparkEnvVars;
+        private InputMap<string>? _sparkEnvVars;
 
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
-        public InputMap<object> SparkEnvVars
+        public InputMap<string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<string>());
             set => _sparkEnvVars = value;
         }
 

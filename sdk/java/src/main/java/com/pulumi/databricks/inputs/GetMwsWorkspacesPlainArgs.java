@@ -4,7 +4,6 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -21,13 +20,13 @@ public final class GetMwsWorkspacesPlainArgs extends com.pulumi.resources.Invoke
      * 
      */
     @Import(name="ids")
-    private @Nullable Map<String,Object> ids;
+    private @Nullable Map<String,String> ids;
 
     /**
      * @return name-to-id map for all of the workspaces in the account
      * 
      */
-    public Optional<Map<String,Object>> ids() {
+    public Optional<Map<String,String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
@@ -61,7 +60,7 @@ public final class GetMwsWorkspacesPlainArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder ids(@Nullable Map<String,Object> ids) {
+        public Builder ids(@Nullable Map<String,String> ids) {
             $.ids = ids;
             return this;
         }

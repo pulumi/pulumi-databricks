@@ -10,7 +10,6 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboar
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -44,9 +43,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskArgs extends com.pulumi.r
     }
 
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -120,12 +119,12 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskArgs extends com.pulumi.r
             return file(Output.of(file));
         }
 
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 

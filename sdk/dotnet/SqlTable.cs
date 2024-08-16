@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// Map of user defined table options. Change forces creation of a new resource.
         /// </summary>
         [Output("options")]
-        public Output<ImmutableDictionary<string, object>?> Options { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
         /// Username/groupname/sp application_id of the schema owner.
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// Map of table properties.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableDictionary<string, object>> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Properties { get; private set; } = null!;
 
         /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
@@ -219,14 +219,14 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// Map of user defined table options. Change forces creation of a new resource.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
@@ -249,14 +249,14 @@ namespace Pulumi.Databricks
         }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Map of table properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -352,14 +352,14 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// Map of user defined table options. Change forces creation of a new resource.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
@@ -382,14 +382,14 @@ namespace Pulumi.Databricks
         }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Map of table properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

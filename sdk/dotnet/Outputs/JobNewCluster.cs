@@ -21,7 +21,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobNewClusterClusterLogConf? ClusterLogConf;
         public readonly ImmutableArray<Outputs.JobNewClusterClusterMountInfo> ClusterMountInfos;
         public readonly string? ClusterName;
-        public readonly ImmutableDictionary<string, object>? CustomTags;
+        public readonly ImmutableDictionary<string, string>? CustomTags;
         public readonly string? DataSecurityMode;
         public readonly Outputs.JobNewClusterDockerImage? DockerImage;
         public readonly string? DriverInstancePoolId;
@@ -41,8 +41,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? PolicyId;
         public readonly string? RuntimeEngine;
         public readonly string? SingleUserName;
-        public readonly ImmutableDictionary<string, object>? SparkConf;
-        public readonly ImmutableDictionary<string, object>? SparkEnvVars;
+        public readonly ImmutableDictionary<string, string>? SparkConf;
+        public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? clusterName,
 
-            ImmutableDictionary<string, object>? customTags,
+            ImmutableDictionary<string, string>? customTags,
 
             string? dataSecurityMode,
 
@@ -102,9 +102,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? singleUserName,
 
-            ImmutableDictionary<string, object>? sparkConf,
+            ImmutableDictionary<string, string>? sparkConf,
 
-            ImmutableDictionary<string, object>? sparkEnvVars,
+            ImmutableDictionary<string, string>? sparkEnvVars,
 
             string sparkVersion,
 

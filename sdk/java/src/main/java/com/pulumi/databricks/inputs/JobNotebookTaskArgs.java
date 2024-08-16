@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class JobNotebookTaskArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="baseParameters")
-    private @Nullable Output<Map<String,Object>> baseParameters;
+    private @Nullable Output<Map<String,String>> baseParameters;
 
     /**
      * @return (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> baseParameters() {
+    public Optional<Output<Map<String,String>>> baseParameters() {
         return Optional.ofNullable(this.baseParameters);
     }
 
@@ -111,7 +110,7 @@ public final class JobNotebookTaskArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder baseParameters(@Nullable Output<Map<String,Object>> baseParameters) {
+        public Builder baseParameters(@Nullable Output<Map<String,String>> baseParameters) {
             $.baseParameters = baseParameters;
             return this;
         }
@@ -122,7 +121,7 @@ public final class JobNotebookTaskArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder baseParameters(Map<String,Object> baseParameters) {
+        public Builder baseParameters(Map<String,String> baseParameters) {
             return baseParameters(Output.of(baseParameters));
         }
 

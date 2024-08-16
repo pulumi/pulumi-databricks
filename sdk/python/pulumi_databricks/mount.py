@@ -20,7 +20,7 @@ class MountArgs:
                  adl: Optional[pulumi.Input['MountAdlArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gs: Optional[pulumi.Input['MountGsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
@@ -91,11 +91,11 @@ class MountArgs:
 
     @property
     @pulumi.getter(name="extraConfigs")
-    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_configs")
 
     @extra_configs.setter
-    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_configs", value)
 
     @property
@@ -160,7 +160,7 @@ class _MountState:
                  adl: Optional[pulumi.Input['MountAdlArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gs: Optional[pulumi.Input['MountGsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
@@ -235,11 +235,11 @@ class _MountState:
 
     @property
     @pulumi.getter(name="extraConfigs")
-    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_configs")
 
     @extra_configs.setter
-    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_configs", value)
 
     @property
@@ -318,7 +318,7 @@ class Mount(pulumi.CustomResource):
                  adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
@@ -952,7 +952,7 @@ class Mount(pulumi.CustomResource):
                  adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
@@ -994,7 +994,7 @@ class Mount(pulumi.CustomResource):
             adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             encryption_type: Optional[pulumi.Input[str]] = None,
-            extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_id: Optional[pulumi.Input[str]] = None,
@@ -1051,7 +1051,7 @@ class Mount(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraConfigs")
-    def extra_configs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def extra_configs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "extra_configs")
 
     @property

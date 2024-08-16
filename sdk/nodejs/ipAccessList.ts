@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.WorkspaceConf("this", {customConfig: {
- *     enableIpAccessLists: true,
+ *     enableIpAccessLists: "true",
  * }});
  * const allowed_list = new databricks.IpAccessList("allowed-list", {
  *     label: "allow_in",

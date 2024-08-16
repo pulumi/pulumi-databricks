@@ -39,7 +39,7 @@ class GetMwsWorkspacesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> Mapping[str, Any]:
+    def ids(self) -> Mapping[str, str]:
         """
         name-to-id map for all of the workspaces in the account
         """
@@ -56,7 +56,7 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
             ids=self.ids)
 
 
-def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
+def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -85,7 +85,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
     * MetastoreAssignment
 
 
-    :param Mapping[str, Any] ids: name-to-id map for all of the workspaces in the account
+    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -98,7 +98,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_mws_workspaces)
-def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -127,6 +127,6 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, A
     * MetastoreAssignment
 
 
-    :param Mapping[str, Any] ids: name-to-id map for all of the workspaces in the account
+    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     ...

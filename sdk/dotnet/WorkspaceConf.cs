@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         CustomConfig = 
     ///         {
-    ///             { "enableIpAccessLists", true },
+    ///             { "enableIpAccessLists", "true" },
     ///         },
     ///     });
     /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
         /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
         [Output("customConfig")]
-        public Output<ImmutableDictionary<string, object>?> CustomConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -105,14 +105,14 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceConfArgs : global::Pulumi.ResourceArgs
     {
         [Input("customConfig")]
-        private InputMap<object>? _customConfig;
+        private InputMap<string>? _customConfig;
 
         /// <summary>
         /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
-        public InputMap<object> CustomConfig
+        public InputMap<string> CustomConfig
         {
-            get => _customConfig ?? (_customConfig = new InputMap<object>());
+            get => _customConfig ?? (_customConfig = new InputMap<string>());
             set => _customConfig = value;
         }
 
@@ -125,14 +125,14 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceConfState : global::Pulumi.ResourceArgs
     {
         [Input("customConfig")]
-        private InputMap<object>? _customConfig;
+        private InputMap<string>? _customConfig;
 
         /// <summary>
         /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
-        public InputMap<object> CustomConfig
+        public InputMap<string> CustomConfig
         {
-            get => _customConfig ?? (_customConfig = new InputMap<object>());
+            get => _customConfig ?? (_customConfig = new InputMap<string>());
             set => _customConfig = value;
         }
 

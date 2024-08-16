@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
         [Output("customTags")]
-        public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
 
         [Output("diskSpec")]
         public Output<Outputs.InstancePoolDiskSpec?> DiskSpec { get; private set; } = null!;
@@ -193,14 +193,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.InstancePoolAzureAttributesArgs>? AzureAttributes { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -287,14 +287,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.InstancePoolAzureAttributesGetArgs>? AzureAttributes { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 

@@ -32,7 +32,6 @@ import com.pulumi.databricks.inputs.JobTriggerArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -557,13 +556,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,Object>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return An optional map of the tags associated with the job. See tags Configuration Map
      * 
      */
-    public Optional<Output<Map<String,Object>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -1409,7 +1408,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
@@ -1420,7 +1419,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 

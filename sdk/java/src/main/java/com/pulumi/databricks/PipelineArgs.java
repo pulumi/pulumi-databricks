@@ -16,7 +16,6 @@ import com.pulumi.databricks.inputs.PipelineNotificationArgs;
 import com.pulumi.databricks.inputs.PipelineTriggerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -108,13 +107,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="configuration")
-    private @Nullable Output<Map<String,Object>> configuration;
+    private @Nullable Output<Map<String,String>> configuration;
 
     /**
      * @return An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      * 
      */
-    public Optional<Output<Map<String,Object>>> configuration() {
+    public Optional<Output<Map<String,String>>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
@@ -554,7 +553,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder configuration(@Nullable Output<Map<String,Object>> configuration) {
+        public Builder configuration(@Nullable Output<Map<String,String>> configuration) {
             $.configuration = configuration;
             return this;
         }
@@ -565,7 +564,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder configuration(Map<String,Object> configuration) {
+        public Builder configuration(Map<String,String> configuration) {
             return configuration(Output.of(configuration));
         }
 

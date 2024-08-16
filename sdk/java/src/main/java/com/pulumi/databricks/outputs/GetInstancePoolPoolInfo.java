@@ -14,7 +14,6 @@ import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoStats;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +25,8 @@ import javax.annotation.Nullable;
 public final class GetInstancePoolPoolInfo {
     private @Nullable GetInstancePoolPoolInfoAwsAttributes awsAttributes;
     private @Nullable GetInstancePoolPoolInfoAzureAttributes azureAttributes;
-    private @Nullable Map<String,Object> customTags;
-    private Map<String,Object> defaultTags;
+    private @Nullable Map<String,String> customTags;
+    private Map<String,String> defaultTags;
     private @Nullable GetInstancePoolPoolInfoDiskSpec diskSpec;
     private @Nullable Boolean enableElasticDisk;
     private @Nullable GetInstancePoolPoolInfoGcpAttributes gcpAttributes;
@@ -50,10 +49,10 @@ public final class GetInstancePoolPoolInfo {
     public Optional<GetInstancePoolPoolInfoAzureAttributes> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
     }
-    public Map<String,Object> customTags() {
+    public Map<String,String> customTags() {
         return this.customTags == null ? Map.of() : this.customTags;
     }
-    public Map<String,Object> defaultTags() {
+    public Map<String,String> defaultTags() {
         return this.defaultTags;
     }
     public Optional<GetInstancePoolPoolInfoDiskSpec> diskSpec() {
@@ -110,8 +109,8 @@ public final class GetInstancePoolPoolInfo {
     public static final class Builder {
         private @Nullable GetInstancePoolPoolInfoAwsAttributes awsAttributes;
         private @Nullable GetInstancePoolPoolInfoAzureAttributes azureAttributes;
-        private @Nullable Map<String,Object> customTags;
-        private Map<String,Object> defaultTags;
+        private @Nullable Map<String,String> customTags;
+        private Map<String,String> defaultTags;
         private @Nullable GetInstancePoolPoolInfoDiskSpec diskSpec;
         private @Nullable Boolean enableElasticDisk;
         private @Nullable GetInstancePoolPoolInfoGcpAttributes gcpAttributes;
@@ -162,13 +161,13 @@ public final class GetInstancePoolPoolInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
 
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
-        public Builder defaultTags(Map<String,Object> defaultTags) {
+        public Builder defaultTags(Map<String,String> defaultTags) {
             if (defaultTags == null) {
               throw new MissingRequiredPropertyException("GetInstancePoolPoolInfo", "defaultTags");
             }

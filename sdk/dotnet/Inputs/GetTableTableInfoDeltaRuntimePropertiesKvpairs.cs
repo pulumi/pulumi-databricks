@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs : global::Pulumi.InvokeArgs
     {
         [Input("deltaRuntimeProperties", required: true)]
-        private Dictionary<string, object>? _deltaRuntimeProperties;
-        public Dictionary<string, object> DeltaRuntimeProperties
+        private Dictionary<string, string>? _deltaRuntimeProperties;
+        public Dictionary<string, string> DeltaRuntimeProperties
         {
-            get => _deltaRuntimeProperties ?? (_deltaRuntimeProperties = new Dictionary<string, object>());
+            get => _deltaRuntimeProperties ?? (_deltaRuntimeProperties = new Dictionary<string, string>());
             set => _deltaRuntimeProperties = value;
         }
 

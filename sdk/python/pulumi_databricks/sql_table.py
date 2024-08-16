@@ -25,10 +25,10 @@ class SqlTableArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  view_definition: Optional[pulumi.Input[str]] = None,
@@ -42,10 +42,10 @@ class SqlTableArgs:
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
@@ -187,14 +187,14 @@ class SqlTableArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of user defined table options. Change forces creation of a new resource.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -223,14 +223,14 @@ class SqlTableArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of table properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -292,10 +292,10 @@ class _SqlTableState:
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -309,10 +309,10 @@ class _SqlTableState:
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
@@ -435,14 +435,14 @@ class _SqlTableState:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of user defined table options. Change forces creation of a new resource.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -471,14 +471,14 @@ class _SqlTableState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of table properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -566,10 +566,10 @@ class SqlTable(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -601,10 +601,10 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
@@ -657,10 +657,10 @@ class SqlTable(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -716,10 +716,10 @@ class SqlTable(pulumi.CustomResource):
             comment: Optional[pulumi.Input[str]] = None,
             data_source_format: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema_name: Optional[pulumi.Input[str]] = None,
             storage_credential_name: Optional[pulumi.Input[str]] = None,
             storage_location: Optional[pulumi.Input[str]] = None,
@@ -738,10 +738,10 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
@@ -824,7 +824,7 @@ class SqlTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of user defined table options. Change forces creation of a new resource.
         """
@@ -848,7 +848,7 @@ class SqlTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Mapping[str, Any]]:
+    def properties(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Map of table properties.
         """

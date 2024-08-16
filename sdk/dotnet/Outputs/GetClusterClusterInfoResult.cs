@@ -37,12 +37,12 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Additional tags for cluster resources.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? CustomTags;
+        public readonly ImmutableDictionary<string, string>? CustomTags;
         /// <summary>
         /// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         /// </summary>
         public readonly string? DataSecurityMode;
-        public readonly ImmutableDictionary<string, object>? DefaultTags;
+        public readonly ImmutableDictionary<string, string>? DefaultTags;
         public readonly Outputs.GetClusterClusterInfoDockerImageResult? DockerImage;
         public readonly Outputs.GetClusterClusterInfoDriverResult? Driver;
         /// <summary>
@@ -91,12 +91,12 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Map with key-value pairs to fine-tune Spark clusters.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? SparkConf;
+        public readonly ImmutableDictionary<string, string>? SparkConf;
         public readonly int? SparkContextId;
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? SparkEnvVars;
+        public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         /// </summary>
@@ -139,11 +139,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? creatorUserName,
 
-            ImmutableDictionary<string, object>? customTags,
+            ImmutableDictionary<string, string>? customTags,
 
             string? dataSecurityMode,
 
-            ImmutableDictionary<string, object>? defaultTags,
+            ImmutableDictionary<string, string>? defaultTags,
 
             Outputs.GetClusterClusterInfoDockerImageResult? dockerImage,
 
@@ -181,11 +181,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? singleUserName,
 
-            ImmutableDictionary<string, object>? sparkConf,
+            ImmutableDictionary<string, string>? sparkConf,
 
             int? sparkContextId,
 
-            ImmutableDictionary<string, object>? sparkEnvVars,
+            ImmutableDictionary<string, string>? sparkEnvVars,
 
             string? sparkVersion,
 

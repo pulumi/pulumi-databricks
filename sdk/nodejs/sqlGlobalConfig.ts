@@ -98,7 +98,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    public readonly dataAccessConfig!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly dataAccessConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
@@ -118,7 +118,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    public readonly sqlConfigParams!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly sqlConfigParams!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SqlGlobalConfig resource with the given unique name, arguments, and options.
@@ -160,7 +160,7 @@ export interface SqlGlobalConfigState {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
+    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
@@ -180,7 +180,7 @@ export interface SqlGlobalConfigState {
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    sqlConfigParams?: pulumi.Input<{[key: string]: any}>;
+    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -190,7 +190,7 @@ export interface SqlGlobalConfigArgs {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
+    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
@@ -210,5 +210,5 @@ export interface SqlGlobalConfigArgs {
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    sqlConfigParams?: pulumi.Input<{[key: string]: any}>;
+    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

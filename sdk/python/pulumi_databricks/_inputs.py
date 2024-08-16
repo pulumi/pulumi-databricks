@@ -3947,7 +3947,7 @@ class JobJobClusterNewClusterArgs:
                  cluster_log_conf: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input['JobJobClusterNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -3964,8 +3964,8 @@ class JobJobClusterNewClusterArgs:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         """
@@ -4115,11 +4115,11 @@ class JobJobClusterNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -4271,20 +4271,20 @@ class JobJobClusterNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -5593,7 +5593,7 @@ class JobNewClusterArgs:
                  cluster_log_conf: Optional[pulumi.Input['JobNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobNewClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input['JobNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -5610,8 +5610,8 @@ class JobNewClusterArgs:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
         """
@@ -5761,11 +5761,11 @@ class JobNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -5917,20 +5917,20 @@ class JobNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -7046,12 +7046,12 @@ class JobNewClusterWorkloadTypeClientsArgs:
 class JobNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: pulumi.Input[str],
-                 base_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 base_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, Any]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -7077,14 +7077,14 @@ class JobNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -7242,12 +7242,12 @@ class JobPipelineTaskArgs:
 class JobPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 named_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 named_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] entry_point: Python function as entry point for the task
-        :param pulumi.Input[Mapping[str, Any]] named_parameters: Named parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] named_parameters: Named parameters for the task
         :param pulumi.Input[str] package_name: Name of Python package
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: Parameters for the task
         """
@@ -7274,14 +7274,14 @@ class JobPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Named parameters for the task
         """
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -7396,10 +7396,10 @@ class JobRunAsArgs:
 class JobRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[int],
-                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 job_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] job_id: (String) ID of the job
-        :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
@@ -7419,14 +7419,14 @@ class JobRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Job parameters for the task
         """
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "job_parameters", value)
 
 
@@ -9441,7 +9441,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  cluster_log_conf: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -9458,8 +9458,8 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs']] = None):
         """
@@ -9609,11 +9609,11 @@ class JobTaskForEachTaskTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -9765,20 +9765,20 @@ class JobTaskForEachTaskTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -10894,12 +10894,12 @@ class JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs:
 class JobTaskForEachTaskTaskNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: pulumi.Input[str],
-                 base_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 base_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, Any]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -10925,14 +10925,14 @@ class JobTaskForEachTaskTaskNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -11065,12 +11065,12 @@ class JobTaskForEachTaskTaskPipelineTaskArgs:
 class JobTaskForEachTaskTaskPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 named_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 named_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] entry_point: Python function as entry point for the task
-        :param pulumi.Input[Mapping[str, Any]] named_parameters: Named parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] named_parameters: Named parameters for the task
         :param pulumi.Input[str] package_name: Name of Python package
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: Parameters for the task
         """
@@ -11097,14 +11097,14 @@ class JobTaskForEachTaskTaskPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Named parameters for the task
         """
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -11138,16 +11138,16 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
                  job_id: pulumi.Input[int],
                  dbt_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 notebook_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 job_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 notebook_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pipeline_params: Optional[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs']] = None,
-                 python_named_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 python_named_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spark_submit_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sql_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 sql_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] job_id: (String) ID of the job
-        :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
         if dbt_commands is not None:
@@ -11201,23 +11201,23 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Job parameters for the task
         """
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "job_parameters", value)
 
     @property
     @pulumi.getter(name="notebookParams")
-    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "notebook_params")
 
     @notebook_params.setter
-    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "notebook_params", value)
 
     @property
@@ -11231,11 +11231,11 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="pythonNamedParams")
-    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "python_named_params")
 
     @python_named_params.setter
-    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "python_named_params", value)
 
     @property
@@ -11258,11 +11258,11 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="sqlParams")
-    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "sql_params")
 
     @sql_params.setter
-    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sql_params", value)
 
 
@@ -11428,14 +11428,14 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
                  alert: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertArgs']] = None,
                  dashboard: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgs']] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query: Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs']] = None):
         """
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertArgs'] alert: block consisting of following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgs'] file: block consisting of single string fields:
-        :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
@@ -11500,14 +11500,14 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -12332,7 +12332,7 @@ class JobTaskNewClusterArgs:
                  cluster_log_conf: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input['JobTaskNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -12349,8 +12349,8 @@ class JobTaskNewClusterArgs:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
         """
@@ -12500,11 +12500,11 @@ class JobTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -12656,20 +12656,20 @@ class JobTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -13785,12 +13785,12 @@ class JobTaskNewClusterWorkloadTypeClientsArgs:
 class JobTaskNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: pulumi.Input[str],
-                 base_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 base_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, Any]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -13816,14 +13816,14 @@ class JobTaskNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def base_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -13956,12 +13956,12 @@ class JobTaskPipelineTaskArgs:
 class JobTaskPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 named_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 named_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] entry_point: Python function as entry point for the task
-        :param pulumi.Input[Mapping[str, Any]] named_parameters: Named parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] named_parameters: Named parameters for the task
         :param pulumi.Input[str] package_name: Name of Python package
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: Parameters for the task
         """
@@ -13988,14 +13988,14 @@ class JobTaskPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def named_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Named parameters for the task
         """
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def named_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -14029,16 +14029,16 @@ class JobTaskRunJobTaskArgs:
                  job_id: pulumi.Input[int],
                  dbt_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 notebook_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 job_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 notebook_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pipeline_params: Optional[pulumi.Input['JobTaskRunJobTaskPipelineParamsArgs']] = None,
-                 python_named_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 python_named_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spark_submit_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sql_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 sql_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] job_id: (String) ID of the job
-        :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
         if dbt_commands is not None:
@@ -14092,23 +14092,23 @@ class JobTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def job_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) Job parameters for the task
         """
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "job_parameters", value)
 
     @property
     @pulumi.getter(name="notebookParams")
-    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def notebook_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "notebook_params")
 
     @notebook_params.setter
-    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def notebook_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "notebook_params", value)
 
     @property
@@ -14122,11 +14122,11 @@ class JobTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="pythonNamedParams")
-    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def python_named_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "python_named_params")
 
     @python_named_params.setter
-    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def python_named_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "python_named_params", value)
 
     @property
@@ -14149,11 +14149,11 @@ class JobTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="sqlParams")
-    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def sql_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "sql_params")
 
     @sql_params.setter
-    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def sql_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sql_params", value)
 
 
@@ -14319,14 +14319,14 @@ class JobTaskSqlTaskArgs:
                  alert: Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']] = None,
                  dashboard: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskSqlTaskFileArgs']] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None):
         """
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         :param pulumi.Input['JobTaskSqlTaskAlertArgs'] alert: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskFileArgs'] file: block consisting of single string fields:
-        :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
@@ -14391,14 +14391,14 @@ class JobTaskSqlTaskArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -16452,7 +16452,7 @@ class ModelServingConfigServedEntityArgs:
     def __init__(__self__, *,
                  entity_name: Optional[pulumi.Input[str]] = None,
                  entity_version: Optional[pulumi.Input[str]] = None,
-                 environment_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  external_model: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelArgs']] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  max_provisioned_throughput: Optional[pulumi.Input[int]] = None,
@@ -16464,7 +16464,7 @@ class ModelServingConfigServedEntityArgs:
         """
         :param pulumi.Input[str] entity_name: The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
         :param pulumi.Input[str] entity_version: The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-        :param pulumi.Input[Mapping[str, Any]] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelArgs'] external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
         :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
         :param pulumi.Input[int] max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
@@ -16523,14 +16523,14 @@ class ModelServingConfigServedEntityArgs:
 
     @property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_vars", value)
 
     @property
@@ -17325,7 +17325,7 @@ class ModelServingConfigServedModelArgs:
                  model_name: pulumi.Input[str],
                  model_version: pulumi.Input[str],
                  workload_size: pulumi.Input[str],
-                 environment_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_to_zero_enabled: Optional[pulumi.Input[bool]] = None,
@@ -17334,7 +17334,7 @@ class ModelServingConfigServedModelArgs:
         :param pulumi.Input[str] model_name: The name of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] model_version: The version of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-        :param pulumi.Input[Mapping[str, Any]] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
         :param pulumi.Input[str] name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
@@ -17392,14 +17392,14 @@ class ModelServingConfigServedModelArgs:
 
     @property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_vars", value)
 
     @property
@@ -19687,7 +19687,7 @@ class PipelineClusterArgs:
                  aws_attributes: Optional[pulumi.Input['PipelineClusterAwsAttributesArgs']] = None,
                  azure_attributes: Optional[pulumi.Input['PipelineClusterAzureAttributesArgs']] = None,
                  cluster_log_conf: Optional[pulumi.Input['PipelineClusterClusterLogConfArgs']] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
                  driver_node_type_id: Optional[pulumi.Input[str]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
@@ -19698,8 +19698,8 @@ class PipelineClusterArgs:
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -19787,11 +19787,11 @@ class PipelineClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -19886,20 +19886,20 @@ class PipelineClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -21828,22 +21828,22 @@ class RecipientIpAccessListArgs:
 @pulumi.input_type
 class RecipientPropertiesKvpairsArgs:
     def __init__(__self__, *,
-                 properties: pulumi.Input[Mapping[str, Any]]):
+                 properties: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Mapping[str, Any]] properties: a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
         """
         pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Input[Mapping[str, Any]]:
+    def properties(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: pulumi.Input[Mapping[str, Any]]):
+    def properties(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -22525,7 +22525,7 @@ class SqlEndpointHealthArgs:
 class SqlEndpointHealthFailureReasonArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -22545,11 +22545,11 @@ class SqlEndpointHealthFailureReasonArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -24565,9 +24565,9 @@ class GetCatalogCatalogInfoArgs:
                  isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 options: Optional[Mapping[str, Any]] = None,
+                 options: Optional[Mapping[str, str]] = None,
                  owner: Optional[str] = None,
-                 properties: Optional[Mapping[str, Any]] = None,
+                 properties: Optional[Mapping[str, str]] = None,
                  provider_name: Optional[str] = None,
                  provisioning_info: Optional['GetCatalogCatalogInfoProvisioningInfoArgs'] = None,
                  securable_kind: Optional[str] = None,
@@ -24589,9 +24589,9 @@ class GetCatalogCatalogInfoArgs:
         :param str isolation_mode: Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
         :param str metastore_id: Unique identifier of parent metastore.
         :param str name: name of the catalog
-        :param Mapping[str, Any] options: A map of key-value properties attached to the securable.
+        :param Mapping[str, str] options: A map of key-value properties attached to the securable.
         :param str owner: Current owner of the catalog
-        :param Mapping[str, Any] properties: A map of key-value properties attached to the securable.
+        :param Mapping[str, str] properties: A map of key-value properties attached to the securable.
         :param str provider_name: The name of delta sharing provider.
         :param str securable_kind: Kind of catalog securable.
         :param str securable_type: Securable type.
@@ -24793,14 +24793,14 @@ class GetCatalogCatalogInfoArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[Mapping[str, Any]]:
+    def options(self) -> Optional[Mapping[str, str]]:
         """
         A map of key-value properties attached to the securable.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[Mapping[str, Any]]):
+    def options(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -24817,14 +24817,14 @@ class GetCatalogCatalogInfoArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         """
         A map of key-value properties attached to the securable.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[Mapping[str, Any]]):
+    def properties(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -25005,9 +25005,9 @@ class GetClusterClusterInfoArgs:
                  cluster_name: Optional[str] = None,
                  cluster_source: Optional[str] = None,
                  creator_user_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
-                 default_tags: Optional[Mapping[str, Any]] = None,
+                 default_tags: Optional[Mapping[str, str]] = None,
                  docker_image: Optional['GetClusterClusterInfoDockerImageArgs'] = None,
                  driver: Optional['GetClusterClusterInfoDriverArgs'] = None,
                  driver_instance_pool_id: Optional[str] = None,
@@ -25026,9 +25026,9 @@ class GetClusterClusterInfoArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
                  spark_context_id: Optional[int] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  spark_version: Optional[str] = None,
                  spec: Optional['GetClusterClusterInfoSpecArgs'] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
@@ -25042,7 +25042,7 @@ class GetClusterClusterInfoArgs:
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
         :param str cluster_id: The id of the cluster
         :param str cluster_name: The exact name of the cluster to search
-        :param Mapping[str, Any] custom_tags: Additional tags for cluster resources.
+        :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
@@ -25053,8 +25053,8 @@ class GetClusterClusterInfoArgs:
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
         :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param Mapping[str, Any] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
-        :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param Mapping[str, str] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
+        :param Mapping[str, str] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
@@ -25268,14 +25268,14 @@ class GetClusterClusterInfoArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         """
         Additional tags for cluster resources.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -25292,11 +25292,11 @@ class GetClusterClusterInfoArgs:
 
     @property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Optional[Mapping[str, Any]]:
+    def default_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "default_tags")
 
     @default_tags.setter
-    def default_tags(self, value: Optional[Mapping[str, Any]]):
+    def default_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "default_tags", value)
 
     @property
@@ -25490,14 +25490,14 @@ class GetClusterClusterInfoArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         """
         Map with key-value pairs to fine-tune Spark clusters.
         """
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
@@ -25511,14 +25511,14 @@ class GetClusterClusterInfoArgs:
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -26644,7 +26644,7 @@ class GetClusterClusterInfoSpecArgs:
                  cluster_log_conf: Optional['GetClusterClusterInfoSpecClusterLogConfArgs'] = None,
                  cluster_mount_infos: Optional[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgs']] = None,
                  cluster_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
                  docker_image: Optional['GetClusterClusterInfoSpecDockerImageArgs'] = None,
                  gcp_attributes: Optional['GetClusterClusterInfoSpecGcpAttributesArgs'] = None,
@@ -26656,8 +26656,8 @@ class GetClusterClusterInfoSpecArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs'] = None):
         """
@@ -26669,15 +26669,15 @@ class GetClusterClusterInfoSpecArgs:
         :param str node_type_id: Any supported get_node_type id.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param str cluster_name: The exact name of the cluster to search
-        :param Mapping[str, Any] custom_tags: Additional tags for cluster resources.
+        :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
         :param str instance_pool_id: The pool of idle instances the cluster is attached to.
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
         :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param Mapping[str, Any] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
-        :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param Mapping[str, str] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
+        :param Mapping[str, str] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -26886,14 +26886,14 @@ class GetClusterClusterInfoSpecArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         """
         Additional tags for cluster resources.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -27015,26 +27015,26 @@ class GetClusterClusterInfoSpecArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         """
         Map with key-value pairs to fine-tune Spark clusters.
         """
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -28138,7 +28138,7 @@ class GetClusterClusterInfoSpecWorkloadTypeClientsArgs:
 class GetClusterClusterInfoTerminationReasonArgs:
     def __init__(__self__, *,
                  code: Optional[str] = None,
-                 parameters: Optional[Mapping[str, Any]] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
                  type: Optional[str] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -28158,11 +28158,11 @@ class GetClusterClusterInfoTerminationReasonArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[Mapping[str, Any]]):
+    def parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -28815,13 +28815,13 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
 @pulumi.input_type
 class GetInstancePoolPoolInfoArgs:
     def __init__(__self__, *,
-                 default_tags: Mapping[str, Any],
+                 default_tags: Mapping[str, str],
                  idle_instance_autotermination_minutes: int,
                  instance_pool_id: str,
                  instance_pool_name: str,
                  aws_attributes: Optional['GetInstancePoolPoolInfoAwsAttributesArgs'] = None,
                  azure_attributes: Optional['GetInstancePoolPoolInfoAzureAttributesArgs'] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  disk_spec: Optional['GetInstancePoolPoolInfoDiskSpecArgs'] = None,
                  enable_elastic_disk: Optional[bool] = None,
                  gcp_attributes: Optional['GetInstancePoolPoolInfoGcpAttributesArgs'] = None,
@@ -28868,11 +28868,11 @@ class GetInstancePoolPoolInfoArgs:
 
     @property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Mapping[str, Any]:
+    def default_tags(self) -> Mapping[str, str]:
         return pulumi.get(self, "default_tags")
 
     @default_tags.setter
-    def default_tags(self, value: Mapping[str, Any]):
+    def default_tags(self, value: Mapping[str, str]):
         pulumi.set(self, "default_tags", value)
 
     @property
@@ -28922,11 +28922,11 @@ class GetInstancePoolPoolInfoArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -29603,7 +29603,7 @@ class GetJobJobSettingsSettingsArgs:
                  spark_jar_task: Optional['GetJobJobSettingsSettingsSparkJarTaskArgs'] = None,
                  spark_python_task: Optional['GetJobJobSettingsSettingsSparkPythonTaskArgs'] = None,
                  spark_submit_task: Optional['GetJobJobSettingsSettingsSparkSubmitTaskArgs'] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  tasks: Optional[Sequence['GetJobJobSettingsSettingsTaskArgs']] = None,
                  timeout_seconds: Optional[int] = None,
                  trigger: Optional['GetJobJobSettingsSettingsTriggerArgs'] = None,
@@ -29966,11 +29966,11 @@ class GetJobJobSettingsSettingsArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[Mapping[str, Any]]):
+    def tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -30491,7 +30491,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
                  cluster_log_conf: Optional['GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs'] = None,
                  cluster_mount_infos: Optional[Sequence['GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs']] = None,
                  cluster_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
                  docker_image: Optional['GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs'] = None,
                  gcp_attributes: Optional['GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs'] = None,
@@ -30501,8 +30501,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -30705,11 +30705,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -30795,20 +30795,20 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -31855,7 +31855,7 @@ class GetJobJobSettingsSettingsNewClusterArgs:
                  cluster_log_conf: Optional['GetJobJobSettingsSettingsNewClusterClusterLogConfArgs'] = None,
                  cluster_mount_infos: Optional[Sequence['GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs']] = None,
                  cluster_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
                  docker_image: Optional['GetJobJobSettingsSettingsNewClusterDockerImageArgs'] = None,
                  gcp_attributes: Optional['GetJobJobSettingsSettingsNewClusterGcpAttributesArgs'] = None,
@@ -31865,8 +31865,8 @@ class GetJobJobSettingsSettingsNewClusterArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -32069,11 +32069,11 @@ class GetJobJobSettingsSettingsNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -32159,20 +32159,20 @@ class GetJobJobSettingsSettingsNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -33019,7 +33019,7 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs:
 class GetJobJobSettingsSettingsNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 base_parameters: Optional[Mapping[str, str]] = None,
                  source: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
@@ -33041,11 +33041,11 @@ class GetJobJobSettingsSettingsNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[Mapping[str, Any]]:
+    def base_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[Mapping[str, Any]]):
+    def base_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -33161,7 +33161,7 @@ class GetJobJobSettingsSettingsPipelineTaskArgs:
 class GetJobJobSettingsSettingsPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[str] = None,
-                 named_parameters: Optional[Mapping[str, Any]] = None,
+                 named_parameters: Optional[Mapping[str, str]] = None,
                  package_name: Optional[str] = None,
                  parameters: Optional[Sequence[str]] = None):
         if entry_point is not None:
@@ -33184,11 +33184,11 @@ class GetJobJobSettingsSettingsPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[Mapping[str, Any]]:
+    def named_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[Mapping[str, Any]]):
+    def named_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -33259,7 +33259,7 @@ class GetJobJobSettingsSettingsRunAsArgs:
 class GetJobJobSettingsSettingsRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: int,
-                 job_parameters: Optional[Mapping[str, Any]] = None):
+                 job_parameters: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
@@ -33275,11 +33275,11 @@ class GetJobJobSettingsSettingsRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+    def job_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[Mapping[str, Any]]):
+    def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
 
@@ -34845,7 +34845,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
                  cluster_log_conf: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs'] = None,
                  cluster_mount_infos: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs']] = None,
                  cluster_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
                  docker_image: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs'] = None,
                  gcp_attributes: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs'] = None,
@@ -34855,8 +34855,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -35059,11 +35059,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -35149,20 +35149,20 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -36009,7 +36009,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsA
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 base_parameters: Optional[Mapping[str, str]] = None,
                  source: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
@@ -36031,11 +36031,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[Mapping[str, Any]]:
+    def base_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[Mapping[str, Any]]):
+    def base_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -36130,7 +36130,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs:
 class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[str] = None,
-                 named_parameters: Optional[Mapping[str, Any]] = None,
+                 named_parameters: Optional[Mapping[str, str]] = None,
                  package_name: Optional[str] = None,
                  parameters: Optional[Sequence[str]] = None):
         if entry_point is not None:
@@ -36153,11 +36153,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[Mapping[str, Any]]:
+    def named_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[Mapping[str, Any]]):
+    def named_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -36183,7 +36183,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs:
 class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: int,
-                 job_parameters: Optional[Mapping[str, Any]] = None):
+                 job_parameters: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
@@ -36199,11 +36199,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+    def job_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[Mapping[str, Any]]):
+    def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
 
@@ -36312,7 +36312,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
                  alert: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs'] = None,
                  dashboard: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs'] = None,
-                 parameters: Optional[Mapping[str, Any]] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
                  query: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs'] = None):
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -36364,11 +36364,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[Mapping[str, Any]]):
+    def parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -37007,7 +37007,7 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
                  cluster_log_conf: Optional['GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs'] = None,
                  cluster_mount_infos: Optional[Sequence['GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs']] = None,
                  cluster_name: Optional[str] = None,
-                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
                  data_security_mode: Optional[str] = None,
                  docker_image: Optional['GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs'] = None,
                  gcp_attributes: Optional['GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs'] = None,
@@ -37017,8 +37017,8 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
                  policy_id: Optional[str] = None,
                  runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
-                 spark_conf: Optional[Mapping[str, Any]] = None,
-                 spark_env_vars: Optional[Mapping[str, Any]] = None,
+                 spark_conf: Optional[Mapping[str, str]] = None,
+                 spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -37221,11 +37221,11 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[Mapping[str, Any]]):
+    def custom_tags(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -37311,20 +37311,20 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[Mapping[str, Any]]:
+    def spark_conf(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[Mapping[str, Any]]):
+    def spark_conf(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[Mapping[str, Any]]:
+    def spark_env_vars(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[Mapping[str, Any]]):
+    def spark_env_vars(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -38171,7 +38171,7 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs:
 class GetJobJobSettingsSettingsTaskNotebookTaskArgs:
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 base_parameters: Optional[Mapping[str, str]] = None,
                  source: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
@@ -38193,11 +38193,11 @@ class GetJobJobSettingsSettingsTaskNotebookTaskArgs:
 
     @property
     @pulumi.getter(name="baseParameters")
-    def base_parameters(self) -> Optional[Mapping[str, Any]]:
+    def base_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "base_parameters")
 
     @base_parameters.setter
-    def base_parameters(self, value: Optional[Mapping[str, Any]]):
+    def base_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "base_parameters", value)
 
     @property
@@ -38292,7 +38292,7 @@ class GetJobJobSettingsSettingsTaskPipelineTaskArgs:
 class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
     def __init__(__self__, *,
                  entry_point: Optional[str] = None,
-                 named_parameters: Optional[Mapping[str, Any]] = None,
+                 named_parameters: Optional[Mapping[str, str]] = None,
                  package_name: Optional[str] = None,
                  parameters: Optional[Sequence[str]] = None):
         if entry_point is not None:
@@ -38315,11 +38315,11 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
 
     @property
     @pulumi.getter(name="namedParameters")
-    def named_parameters(self) -> Optional[Mapping[str, Any]]:
+    def named_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "named_parameters")
 
     @named_parameters.setter
-    def named_parameters(self, value: Optional[Mapping[str, Any]]):
+    def named_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "named_parameters", value)
 
     @property
@@ -38345,7 +38345,7 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
 class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
     def __init__(__self__, *,
                  job_id: int,
-                 job_parameters: Optional[Mapping[str, Any]] = None):
+                 job_parameters: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
             pulumi.set(__self__, "job_parameters", job_parameters)
@@ -38361,11 +38361,11 @@ class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobParameters")
-    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+    def job_parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "job_parameters")
 
     @job_parameters.setter
-    def job_parameters(self, value: Optional[Mapping[str, Any]]):
+    def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
 
@@ -38474,7 +38474,7 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
                  alert: Optional['GetJobJobSettingsSettingsTaskSqlTaskAlertArgs'] = None,
                  dashboard: Optional['GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsTaskSqlTaskFileArgs'] = None,
-                 parameters: Optional[Mapping[str, Any]] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
                  query: Optional['GetJobJobSettingsSettingsTaskSqlTaskQueryArgs'] = None):
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -38526,11 +38526,11 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[Mapping[str, Any]]):
+    def parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -39794,7 +39794,7 @@ class GetSchemaSchemaInfoArgs:
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
                  owner: Optional[str] = None,
-                 properties: Optional[Mapping[str, Any]] = None,
+                 properties: Optional[Mapping[str, str]] = None,
                  schema_id: Optional[str] = None,
                  storage_location: Optional[str] = None,
                  storage_root: Optional[str] = None,
@@ -39813,7 +39813,7 @@ class GetSchemaSchemaInfoArgs:
         :param str metastore_id: the unique identifier of the metastore
         :param str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
         :param str owner: the identifier of the user who owns the schema
-        :param Mapping[str, Any] properties: map of properties set on the schema
+        :param Mapping[str, str] properties: map of properties set on the schema
         :param str schema_id: the unique identifier of the volume
         :param str storage_location: the storage location on the cloud.
         :param str storage_root: storage root URL for managed tables within schema.
@@ -40003,14 +40003,14 @@ class GetSchemaSchemaInfoArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         """
         map of properties set on the schema
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[Mapping[str, Any]]):
+    def properties(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -40437,7 +40437,7 @@ class GetSqlWarehouseHealthArgs:
 class GetSqlWarehouseHealthFailureReasonArgs:
     def __init__(__self__, *,
                  code: Optional[str] = None,
-                 parameters: Optional[Mapping[str, Any]] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
                  type: Optional[str] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -40457,11 +40457,11 @@ class GetSqlWarehouseHealthFailureReasonArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[Mapping[str, Any]]):
+    def parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -41083,7 +41083,7 @@ class GetTableTableInfoArgs:
                  name: Optional[str] = None,
                  owner: Optional[str] = None,
                  pipeline_id: Optional[str] = None,
-                 properties: Optional[Mapping[str, Any]] = None,
+                 properties: Optional[Mapping[str, str]] = None,
                  row_filter: Optional['GetTableTableInfoRowFilterArgs'] = None,
                  schema_name: Optional[str] = None,
                  sql_path: Optional[str] = None,
@@ -41364,11 +41364,11 @@ class GetTableTableInfoArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[Mapping[str, Any]]):
+    def properties(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -41683,16 +41683,16 @@ class GetTableTableInfoColumnMaskArgs:
 @pulumi.input_type
 class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs:
     def __init__(__self__, *,
-                 delta_runtime_properties: Mapping[str, Any]):
+                 delta_runtime_properties: Mapping[str, str]):
         pulumi.set(__self__, "delta_runtime_properties", delta_runtime_properties)
 
     @property
     @pulumi.getter(name="deltaRuntimeProperties")
-    def delta_runtime_properties(self) -> Mapping[str, Any]:
+    def delta_runtime_properties(self) -> Mapping[str, str]:
         return pulumi.get(self, "delta_runtime_properties")
 
     @delta_runtime_properties.setter
-    def delta_runtime_properties(self, value: Mapping[str, Any]):
+    def delta_runtime_properties(self, value: Mapping[str, str]):
         pulumi.set(self, "delta_runtime_properties", value)
 
 

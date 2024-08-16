@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -19,7 +18,7 @@ public final class ModelServingConfigServedModel {
      * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
-    private @Nullable Map<String,Object> environmentVars;
+    private @Nullable Map<String,String> environmentVars;
     /**
      * @return ARN of the instance profile that the served model will use to access AWS resources.
      * 
@@ -61,7 +60,7 @@ public final class ModelServingConfigServedModel {
      * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
-    public Map<String,Object> environmentVars() {
+    public Map<String,String> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
     /**
@@ -123,7 +122,7 @@ public final class ModelServingConfigServedModel {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> environmentVars;
+        private @Nullable Map<String,String> environmentVars;
         private @Nullable String instanceProfileArn;
         private String modelName;
         private String modelVersion;
@@ -145,7 +144,7 @@ public final class ModelServingConfigServedModel {
         }
 
         @CustomType.Setter
-        public Builder environmentVars(@Nullable Map<String,Object> environmentVars) {
+        public Builder environmentVars(@Nullable Map<String,String> environmentVars) {
 
             this.environmentVars = environmentVars;
             return this;

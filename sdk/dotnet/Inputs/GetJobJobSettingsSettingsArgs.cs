@@ -129,10 +129,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.GetJobJobSettingsSettingsSparkSubmitTaskInputArgs>? SparkSubmitTask { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

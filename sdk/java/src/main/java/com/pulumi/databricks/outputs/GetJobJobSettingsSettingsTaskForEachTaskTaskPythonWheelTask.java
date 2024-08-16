@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
     private @Nullable String entryPoint;
-    private @Nullable Map<String,Object> namedParameters;
+    private @Nullable Map<String,String> namedParameters;
     private @Nullable String packageName;
     private @Nullable List<String> parameters;
 
@@ -23,7 +22,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
     public Optional<String> entryPoint() {
         return Optional.ofNullable(this.entryPoint);
     }
-    public Map<String,Object> namedParameters() {
+    public Map<String,String> namedParameters() {
         return this.namedParameters == null ? Map.of() : this.namedParameters;
     }
     public Optional<String> packageName() {
@@ -43,7 +42,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String entryPoint;
-        private @Nullable Map<String,Object> namedParameters;
+        private @Nullable Map<String,String> namedParameters;
         private @Nullable String packageName;
         private @Nullable List<String> parameters;
         public Builder() {}
@@ -62,7 +61,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
             return this;
         }
         @CustomType.Setter
-        public Builder namedParameters(@Nullable Map<String,Object> namedParameters) {
+        public Builder namedParameters(@Nullable Map<String,String> namedParameters) {
 
             this.namedParameters = namedParameters;
             return this;

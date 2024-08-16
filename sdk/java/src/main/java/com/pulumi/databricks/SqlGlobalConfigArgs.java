@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="dataAccessConfig")
-    private @Nullable Output<Map<String,Object>> dataAccessConfig;
+    private @Nullable Output<Map<String,String>> dataAccessConfig;
 
     /**
      * @return Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
-    public Optional<Output<Map<String,Object>>> dataAccessConfig() {
+    public Optional<Output<Map<String,String>>> dataAccessConfig() {
         return Optional.ofNullable(this.dataAccessConfig);
     }
 
@@ -102,13 +101,13 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="sqlConfigParams")
-    private @Nullable Output<Map<String,Object>> sqlConfigParams;
+    private @Nullable Output<Map<String,String>> sqlConfigParams;
 
     /**
      * @return SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      * 
      */
-    public Optional<Output<Map<String,Object>>> sqlConfigParams() {
+    public Optional<Output<Map<String,String>>> sqlConfigParams() {
         return Optional.ofNullable(this.sqlConfigParams);
     }
 
@@ -147,7 +146,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder dataAccessConfig(@Nullable Output<Map<String,Object>> dataAccessConfig) {
+        public Builder dataAccessConfig(@Nullable Output<Map<String,String>> dataAccessConfig) {
             $.dataAccessConfig = dataAccessConfig;
             return this;
         }
@@ -158,7 +157,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder dataAccessConfig(Map<String,Object> dataAccessConfig) {
+        public Builder dataAccessConfig(Map<String,String> dataAccessConfig) {
             return dataAccessConfig(Output.of(dataAccessConfig));
         }
 
@@ -256,7 +255,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder sqlConfigParams(@Nullable Output<Map<String,Object>> sqlConfigParams) {
+        public Builder sqlConfigParams(@Nullable Output<Map<String,String>> sqlConfigParams) {
             $.sqlConfigParams = sqlConfigParams;
             return this;
         }
@@ -267,7 +266,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder sqlConfigParams(Map<String,Object> sqlConfigParams) {
+        public Builder sqlConfigParams(Map<String,String> sqlConfigParams) {
             return sqlConfigParams(Output.of(sqlConfigParams));
         }
 

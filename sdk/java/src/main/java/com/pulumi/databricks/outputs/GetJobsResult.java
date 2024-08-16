@@ -5,7 +5,6 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public final class GetJobsResult {
      * @return map of databricks.Job names to ids
      * 
      */
-    private Map<String,Object> ids;
+    private Map<String,String> ids;
 
     private GetJobsResult() {}
     /**
@@ -35,7 +34,7 @@ public final class GetJobsResult {
      * @return map of databricks.Job names to ids
      * 
      */
-    public Map<String,Object> ids() {
+    public Map<String,String> ids() {
         return this.ids;
     }
 
@@ -49,7 +48,7 @@ public final class GetJobsResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private Map<String,Object> ids;
+        private Map<String,String> ids;
         public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,7 +65,7 @@ public final class GetJobsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ids(Map<String,Object> ids) {
+        public Builder ids(Map<String,String> ids) {
             if (ids == null) {
               throw new MissingRequiredPropertyException("GetJobsResult", "ids");
             }

@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Inputs
         public string? EntryPoint { get; set; }
 
         [Input("namedParameters")]
-        private Dictionary<string, object>? _namedParameters;
-        public Dictionary<string, object> NamedParameters
+        private Dictionary<string, string>? _namedParameters;
+        public Dictionary<string, string> NamedParameters
         {
-            get => _namedParameters ?? (_namedParameters = new Dictionary<string, object>());
+            get => _namedParameters ?? (_namedParameters = new Dictionary<string, string>());
             set => _namedParameters = value;
         }
 

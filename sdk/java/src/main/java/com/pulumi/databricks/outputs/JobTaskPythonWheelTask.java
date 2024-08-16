@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class JobTaskPythonWheelTask {
      * @return Named parameters for the task
      * 
      */
-    private @Nullable Map<String,Object> namedParameters;
+    private @Nullable Map<String,String> namedParameters;
     /**
      * @return Name of Python package
      * 
@@ -47,7 +46,7 @@ public final class JobTaskPythonWheelTask {
      * @return Named parameters for the task
      * 
      */
-    public Map<String,Object> namedParameters() {
+    public Map<String,String> namedParameters() {
         return this.namedParameters == null ? Map.of() : this.namedParameters;
     }
     /**
@@ -75,7 +74,7 @@ public final class JobTaskPythonWheelTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String entryPoint;
-        private @Nullable Map<String,Object> namedParameters;
+        private @Nullable Map<String,String> namedParameters;
         private @Nullable String packageName;
         private @Nullable List<String> parameters;
         public Builder() {}
@@ -94,7 +93,7 @@ public final class JobTaskPythonWheelTask {
             return this;
         }
         @CustomType.Setter
-        public Builder namedParameters(@Nullable Map<String,Object> namedParameters) {
+        public Builder namedParameters(@Nullable Map<String,String> namedParameters) {
 
             this.namedParameters = namedParameters;
             return this;

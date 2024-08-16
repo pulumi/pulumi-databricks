@@ -162,9 +162,9 @@ func (o GetClusterClusterInfoSpecWorkloadTypeClientsPtrOutput) Notebooks() pulum
 }
 
 type GetClusterClusterInfoTerminationReason struct {
-	Code       *string                `pulumi:"code"`
-	Parameters map[string]interface{} `pulumi:"parameters"`
-	Type       *string                `pulumi:"type"`
+	Code       *string           `pulumi:"code"`
+	Parameters map[string]string `pulumi:"parameters"`
+	Type       *string           `pulumi:"type"`
 }
 
 // GetClusterClusterInfoTerminationReasonInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs and GetClusterClusterInfoTerminationReasonOutput values.
@@ -180,7 +180,7 @@ type GetClusterClusterInfoTerminationReasonInput interface {
 
 type GetClusterClusterInfoTerminationReasonArgs struct {
 	Code       pulumi.StringPtrInput `pulumi:"code"`
-	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	Type       pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -265,8 +265,8 @@ func (o GetClusterClusterInfoTerminationReasonOutput) Code() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoTerminationReasonOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o GetClusterClusterInfoTerminationReasonOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoTerminationReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoTerminationReasonOutput) Type() pulumi.StringPtrOutput {
@@ -306,13 +306,13 @@ func (o GetClusterClusterInfoTerminationReasonPtrOutput) Code() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoTerminationReasonPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) map[string]interface{} {
+func (o GetClusterClusterInfoTerminationReasonPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoTerminationReason) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterClusterInfoTerminationReasonPtrOutput) Type() pulumi.StringPtrOutput {
@@ -1870,8 +1870,8 @@ func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDet
 type GetInstancePoolPoolInfo struct {
 	AwsAttributes                      *GetInstancePoolPoolInfoAwsAttributes               `pulumi:"awsAttributes"`
 	AzureAttributes                    *GetInstancePoolPoolInfoAzureAttributes             `pulumi:"azureAttributes"`
-	CustomTags                         map[string]interface{}                              `pulumi:"customTags"`
-	DefaultTags                        map[string]interface{}                              `pulumi:"defaultTags"`
+	CustomTags                         map[string]string                                   `pulumi:"customTags"`
+	DefaultTags                        map[string]string                                   `pulumi:"defaultTags"`
 	DiskSpec                           *GetInstancePoolPoolInfoDiskSpec                    `pulumi:"diskSpec"`
 	EnableElasticDisk                  *bool                                               `pulumi:"enableElasticDisk"`
 	GcpAttributes                      *GetInstancePoolPoolInfoGcpAttributes               `pulumi:"gcpAttributes"`
@@ -1902,8 +1902,8 @@ type GetInstancePoolPoolInfoInput interface {
 type GetInstancePoolPoolInfoArgs struct {
 	AwsAttributes                      GetInstancePoolPoolInfoAwsAttributesPtrInput                `pulumi:"awsAttributes"`
 	AzureAttributes                    GetInstancePoolPoolInfoAzureAttributesPtrInput              `pulumi:"azureAttributes"`
-	CustomTags                         pulumi.MapInput                                             `pulumi:"customTags"`
-	DefaultTags                        pulumi.MapInput                                             `pulumi:"defaultTags"`
+	CustomTags                         pulumi.StringMapInput                                       `pulumi:"customTags"`
+	DefaultTags                        pulumi.StringMapInput                                       `pulumi:"defaultTags"`
 	DiskSpec                           GetInstancePoolPoolInfoDiskSpecPtrInput                     `pulumi:"diskSpec"`
 	EnableElasticDisk                  pulumi.BoolPtrInput                                         `pulumi:"enableElasticDisk"`
 	GcpAttributes                      GetInstancePoolPoolInfoGcpAttributesPtrInput                `pulumi:"gcpAttributes"`
@@ -2005,12 +2005,12 @@ func (o GetInstancePoolPoolInfoOutput) AzureAttributes() GetInstancePoolPoolInfo
 	return o.ApplyT(func(v GetInstancePoolPoolInfo) *GetInstancePoolPoolInfoAzureAttributes { return v.AzureAttributes }).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
 }
 
-func (o GetInstancePoolPoolInfoOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetInstancePoolPoolInfoOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
-func (o GetInstancePoolPoolInfoOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]interface{} { return v.DefaultTags }).(pulumi.MapOutput)
+func (o GetInstancePoolPoolInfoOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfo) map[string]string { return v.DefaultTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancePoolPoolInfoOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {
@@ -2115,22 +2115,22 @@ func (o GetInstancePoolPoolInfoPtrOutput) AzureAttributes() GetInstancePoolPoolI
 	}).(GetInstancePoolPoolInfoAzureAttributesPtrOutput)
 }
 
-func (o GetInstancePoolPoolInfoPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+func (o GetInstancePoolPoolInfoPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o GetInstancePoolPoolInfoPtrOutput) DefaultTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]interface{} {
+func (o GetInstancePoolPoolInfoPtrOutput) DefaultTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancePoolPoolInfoPtrOutput) DiskSpec() GetInstancePoolPoolInfoDiskSpecPtrOutput {
@@ -4342,7 +4342,7 @@ type GetJobJobSettingsSettings struct {
 	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
 	SparkPythonTask      *GetJobJobSettingsSettingsSparkPythonTask      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask      *GetJobJobSettingsSettingsSparkSubmitTask      `pulumi:"sparkSubmitTask"`
-	Tags                 map[string]interface{}                         `pulumi:"tags"`
+	Tags                 map[string]string                              `pulumi:"tags"`
 	Tasks                []GetJobJobSettingsSettingsTask                `pulumi:"tasks"`
 	TimeoutSeconds       *int                                           `pulumi:"timeoutSeconds"`
 	Trigger              *GetJobJobSettingsSettingsTrigger              `pulumi:"trigger"`
@@ -4393,7 +4393,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
 	SparkPythonTask      GetJobJobSettingsSettingsSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask      GetJobJobSettingsSettingsSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
-	Tags                 pulumi.MapInput                                       `pulumi:"tags"`
+	Tags                 pulumi.StringMapInput                                 `pulumi:"tags"`
 	Tasks                GetJobJobSettingsSettingsTaskArrayInput               `pulumi:"tasks"`
 	TimeoutSeconds       pulumi.IntPtrInput                                    `pulumi:"timeoutSeconds"`
 	Trigger              GetJobJobSettingsSettingsTriggerPtrInput              `pulumi:"trigger"`
@@ -4606,8 +4606,8 @@ func (o GetJobJobSettingsSettingsOutput) SparkSubmitTask() GetJobJobSettingsSett
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsSparkSubmitTask { return v.SparkSubmitTask }).(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettings) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) Tasks() GetJobJobSettingsSettingsTaskArrayOutput {
@@ -4932,13 +4932,13 @@ func (o GetJobJobSettingsSettingsPtrOutput) SparkSubmitTask() GetJobJobSettingsS
 	}).(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsPtrOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettings) map[string]interface{} {
+func (o GetJobJobSettingsSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Tags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) Tasks() GetJobJobSettingsSettingsTaskArrayOutput {
@@ -6663,7 +6663,7 @@ type GetJobJobSettingsSettingsJobClusterNewCluster struct {
 	ClusterLogConf            *GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                                         `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                                          `pulumi:"customTags"`
+	CustomTags                map[string]string                                               `pulumi:"customTags"`
 	DataSecurityMode          *string                                                         `pulumi:"dataSecurityMode"`
 	DockerImage               *GetJobJobSettingsSettingsJobClusterNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      string                                                          `pulumi:"driverInstancePoolId"`
@@ -6679,8 +6679,8 @@ type GetJobJobSettingsSettingsJobClusterNewCluster struct {
 	PolicyId                  *string                                                         `pulumi:"policyId"`
 	RuntimeEngine             *string                                                         `pulumi:"runtimeEngine"`
 	SingleUserName            *string                                                         `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                                          `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                                          `pulumi:"sparkEnvVars"`
+	SparkConf                 map[string]string                                               `pulumi:"sparkConf"`
+	SparkEnvVars              map[string]string                                               `pulumi:"sparkEnvVars"`
 	SparkVersion              string                                                          `pulumi:"sparkVersion"`
 	SshPublicKeys             []string                                                        `pulumi:"sshPublicKeys"`
 	WorkloadType              *GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType      `pulumi:"workloadType"`
@@ -6707,7 +6707,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterArgs struct {
 	ClusterLogConf            GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                                                   `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                                         `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                                                   `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                                                   `pulumi:"dataSecurityMode"`
 	DockerImage               GetJobJobSettingsSettingsJobClusterNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringInput                                                      `pulumi:"driverInstancePoolId"`
@@ -6723,8 +6723,8 @@ type GetJobJobSettingsSettingsJobClusterNewClusterArgs struct {
 	PolicyId                  pulumi.StringPtrInput                                                   `pulumi:"policyId"`
 	RuntimeEngine             pulumi.StringPtrInput                                                   `pulumi:"runtimeEngine"`
 	SingleUserName            pulumi.StringPtrInput                                                   `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                                         `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                                         `pulumi:"sparkEnvVars"`
+	SparkConf                 pulumi.StringMapInput                                                   `pulumi:"sparkConf"`
+	SparkEnvVars              pulumi.StringMapInput                                                   `pulumi:"sparkEnvVars"`
 	SparkVersion              pulumi.StringInput                                                      `pulumi:"sparkVersion"`
 	SshPublicKeys             pulumi.StringArrayInput                                                 `pulumi:"sshPublicKeys"`
 	WorkloadType              GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
@@ -6802,8 +6802,8 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) ClusterName() pulum
 	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -6872,12 +6872,12 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SingleUserName() pu
 	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -10683,7 +10683,7 @@ type GetJobJobSettingsSettingsNewCluster struct {
 	ClusterLogConf            *GetJobJobSettingsSettingsNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []GetJobJobSettingsSettingsNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                               `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                                `pulumi:"customTags"`
+	CustomTags                map[string]string                                     `pulumi:"customTags"`
 	DataSecurityMode          *string                                               `pulumi:"dataSecurityMode"`
 	DockerImage               *GetJobJobSettingsSettingsNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      string                                                `pulumi:"driverInstancePoolId"`
@@ -10699,8 +10699,8 @@ type GetJobJobSettingsSettingsNewCluster struct {
 	PolicyId                  *string                                               `pulumi:"policyId"`
 	RuntimeEngine             *string                                               `pulumi:"runtimeEngine"`
 	SingleUserName            *string                                               `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                                `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                                `pulumi:"sparkEnvVars"`
+	SparkConf                 map[string]string                                     `pulumi:"sparkConf"`
+	SparkEnvVars              map[string]string                                     `pulumi:"sparkEnvVars"`
 	SparkVersion              string                                                `pulumi:"sparkVersion"`
 	SshPublicKeys             []string                                              `pulumi:"sshPublicKeys"`
 	WorkloadType              *GetJobJobSettingsSettingsNewClusterWorkloadType      `pulumi:"workloadType"`
@@ -10727,7 +10727,7 @@ type GetJobJobSettingsSettingsNewClusterArgs struct {
 	ClusterLogConf            GetJobJobSettingsSettingsNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         GetJobJobSettingsSettingsNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                                         `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                               `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                                         `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                                         `pulumi:"dataSecurityMode"`
 	DockerImage               GetJobJobSettingsSettingsNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringInput                                            `pulumi:"driverInstancePoolId"`
@@ -10743,8 +10743,8 @@ type GetJobJobSettingsSettingsNewClusterArgs struct {
 	PolicyId                  pulumi.StringPtrInput                                         `pulumi:"policyId"`
 	RuntimeEngine             pulumi.StringPtrInput                                         `pulumi:"runtimeEngine"`
 	SingleUserName            pulumi.StringPtrInput                                         `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                               `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                               `pulumi:"sparkEnvVars"`
+	SparkConf                 pulumi.StringMapInput                                         `pulumi:"sparkConf"`
+	SparkEnvVars              pulumi.StringMapInput                                         `pulumi:"sparkEnvVars"`
 	SparkVersion              pulumi.StringInput                                            `pulumi:"sparkVersion"`
 	SshPublicKeys             pulumi.StringArrayInput                                       `pulumi:"sshPublicKeys"`
 	WorkloadType              GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
@@ -10873,8 +10873,8 @@ func (o GetJobJobSettingsSettingsNewClusterOutput) ClusterName() pulumi.StringPt
 	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -10943,12 +10943,12 @@ func (o GetJobJobSettingsSettingsNewClusterOutput) SingleUserName() pulumi.Strin
 	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -11070,13 +11070,13 @@ func (o GetJobJobSettingsSettingsNewClusterPtrOutput) ClusterName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -11214,22 +11214,22 @@ func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SingleUserName() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -14438,10 +14438,10 @@ func (o GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput) Noteboo
 }
 
 type GetJobJobSettingsSettingsNotebookTask struct {
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
-	NotebookPath   string                 `pulumi:"notebookPath"`
-	Source         *string                `pulumi:"source"`
-	WarehouseId    *string                `pulumi:"warehouseId"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
+	NotebookPath   string            `pulumi:"notebookPath"`
+	Source         *string           `pulumi:"source"`
+	WarehouseId    *string           `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsNotebookTaskArgs and GetJobJobSettingsSettingsNotebookTaskOutput values.
@@ -14456,7 +14456,7 @@ type GetJobJobSettingsSettingsNotebookTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsNotebookTaskArgs struct {
-	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
 	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
@@ -14539,8 +14539,8 @@ func (o GetJobJobSettingsSettingsNotebookTaskOutput) ToGetJobJobSettingsSettings
 	}).(GetJobJobSettingsSettingsNotebookTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
@@ -14579,13 +14579,13 @@ func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) Elem() GetJobJobSettings
 	}).(GetJobJobSettingsSettingsNotebookTaskOutput)
 }
 
-func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
@@ -15015,10 +15015,10 @@ func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) PipelineId() pulumi.Stri
 }
 
 type GetJobJobSettingsSettingsPythonWheelTask struct {
-	EntryPoint      *string                `pulumi:"entryPoint"`
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
-	PackageName     *string                `pulumi:"packageName"`
-	Parameters      []string               `pulumi:"parameters"`
+	EntryPoint      *string           `pulumi:"entryPoint"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
+	PackageName     *string           `pulumi:"packageName"`
+	Parameters      []string          `pulumi:"parameters"`
 }
 
 // GetJobJobSettingsSettingsPythonWheelTaskInput is an input type that accepts GetJobJobSettingsSettingsPythonWheelTaskArgs and GetJobJobSettingsSettingsPythonWheelTaskOutput values.
@@ -15034,7 +15034,7 @@ type GetJobJobSettingsSettingsPythonWheelTaskInput interface {
 
 type GetJobJobSettingsSettingsPythonWheelTaskArgs struct {
 	EntryPoint      pulumi.StringPtrInput   `pulumi:"entryPoint"`
-	NamedParameters pulumi.MapInput         `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput   `pulumi:"namedParameters"`
 	PackageName     pulumi.StringPtrInput   `pulumi:"packageName"`
 	Parameters      pulumi.StringArrayInput `pulumi:"parameters"`
 }
@@ -15120,8 +15120,8 @@ func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) EntryPoint() pulumi.Stri
 	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
@@ -15165,13 +15165,13 @@ func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) EntryPoint() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
@@ -15474,8 +15474,8 @@ func (o GetJobJobSettingsSettingsRunAsPtrOutput) UserName() pulumi.StringPtrOutp
 }
 
 type GetJobJobSettingsSettingsRunJobTask struct {
-	JobId         int                    `pulumi:"jobId"`
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobId         int               `pulumi:"jobId"`
+	JobParameters map[string]string `pulumi:"jobParameters"`
 }
 
 // GetJobJobSettingsSettingsRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsRunJobTaskArgs and GetJobJobSettingsSettingsRunJobTaskOutput values.
@@ -15490,8 +15490,8 @@ type GetJobJobSettingsSettingsRunJobTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsRunJobTaskArgs struct {
-	JobId         pulumi.IntInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobId         pulumi.IntInput       `pulumi:"jobId"`
+	JobParameters pulumi.StringMapInput `pulumi:"jobParameters"`
 }
 
 func (GetJobJobSettingsSettingsRunJobTaskArgs) ElementType() reflect.Type {
@@ -15575,8 +15575,8 @@ func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -15612,13 +15612,13 @@ func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsSchedule struct {
@@ -19483,7 +19483,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster struct {
 	ClusterLogConf            *GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                                                  `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                                                   `pulumi:"customTags"`
+	CustomTags                map[string]string                                                        `pulumi:"customTags"`
 	DataSecurityMode          *string                                                                  `pulumi:"dataSecurityMode"`
 	DockerImage               *GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      string                                                                   `pulumi:"driverInstancePoolId"`
@@ -19499,8 +19499,8 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster struct {
 	PolicyId                  *string                                                                  `pulumi:"policyId"`
 	RuntimeEngine             *string                                                                  `pulumi:"runtimeEngine"`
 	SingleUserName            *string                                                                  `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                                                   `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                                                   `pulumi:"sparkEnvVars"`
+	SparkConf                 map[string]string                                                        `pulumi:"sparkConf"`
+	SparkEnvVars              map[string]string                                                        `pulumi:"sparkEnvVars"`
 	SparkVersion              string                                                                   `pulumi:"sparkVersion"`
 	SshPublicKeys             []string                                                                 `pulumi:"sshPublicKeys"`
 	WorkloadType              *GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType      `pulumi:"workloadType"`
@@ -19527,7 +19527,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs struct {
 	ClusterLogConf            GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                                                            `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                                                  `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                                                            `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                                                            `pulumi:"dataSecurityMode"`
 	DockerImage               GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringInput                                                               `pulumi:"driverInstancePoolId"`
@@ -19543,8 +19543,8 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs struct {
 	PolicyId                  pulumi.StringPtrInput                                                            `pulumi:"policyId"`
 	RuntimeEngine             pulumi.StringPtrInput                                                            `pulumi:"runtimeEngine"`
 	SingleUserName            pulumi.StringPtrInput                                                            `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                                                  `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                                                  `pulumi:"sparkEnvVars"`
+	SparkConf                 pulumi.StringMapInput                                                            `pulumi:"sparkConf"`
+	SparkEnvVars              pulumi.StringMapInput                                                            `pulumi:"sparkEnvVars"`
 	SparkVersion              pulumi.StringInput                                                               `pulumi:"sparkVersion"`
 	SshPublicKeys             pulumi.StringArrayInput                                                          `pulumi:"sshPublicKeys"`
 	WorkloadType              GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
@@ -19675,10 +19675,8 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) ClusterNam
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
-		return v.CustomTags
-	}).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -19749,16 +19747,14 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SingleUser
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
-		return v.SparkConf
-	}).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string {
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -19880,13 +19876,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) Cluster
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -20024,22 +20020,22 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SingleU
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -23322,10 +23318,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClient
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask struct {
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
-	NotebookPath   string                 `pulumi:"notebookPath"`
-	Source         *string                `pulumi:"source"`
-	WarehouseId    *string                `pulumi:"warehouseId"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
+	NotebookPath   string            `pulumi:"notebookPath"`
+	Source         *string           `pulumi:"source"`
+	WarehouseId    *string           `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput values.
@@ -23340,7 +23336,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs struct {
-	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
 	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
@@ -23423,10 +23419,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) ToGetJob
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) map[string]string {
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
@@ -23465,13 +23461,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) Elem(
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
@@ -23819,10 +23815,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskPtrOutput) Pipel
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask struct {
-	EntryPoint      *string                `pulumi:"entryPoint"`
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
-	PackageName     *string                `pulumi:"packageName"`
-	Parameters      []string               `pulumi:"parameters"`
+	EntryPoint      *string           `pulumi:"entryPoint"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
+	PackageName     *string           `pulumi:"packageName"`
+	Parameters      []string          `pulumi:"parameters"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskOutput values.
@@ -23838,7 +23834,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskInput interface 
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs struct {
 	EntryPoint      pulumi.StringPtrInput   `pulumi:"entryPoint"`
-	NamedParameters pulumi.MapInput         `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput   `pulumi:"namedParameters"`
 	PackageName     pulumi.StringPtrInput   `pulumi:"packageName"`
 	Parameters      pulumi.StringArrayInput `pulumi:"parameters"`
 }
@@ -23924,10 +23920,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskOutput) Entry
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask) map[string]string {
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
@@ -23971,13 +23967,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskPtrOutput) En
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
@@ -23999,8 +23995,8 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskPtrOutput) Pa
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask struct {
-	JobId         int                    `pulumi:"jobId"`
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobId         int               `pulumi:"jobId"`
+	JobParameters map[string]string `pulumi:"jobParameters"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskOutput values.
@@ -24015,8 +24011,8 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs struct {
-	JobId         pulumi.IntInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobId         pulumi.IntInput       `pulumi:"jobId"`
+	JobParameters pulumi.StringMapInput `pulumi:"jobParameters"`
 }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -24100,10 +24096,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskOutput) JobId() pu
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask) map[string]string {
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -24139,13 +24135,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskPtrOutput) JobId()
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask struct {
@@ -24611,7 +24607,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask struct {
 	Alert       *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert     `pulumi:"alert"`
 	Dashboard   *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard `pulumi:"dashboard"`
 	File        *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile      `pulumi:"file"`
-	Parameters  map[string]interface{}                                        `pulumi:"parameters"`
+	Parameters  map[string]string                                             `pulumi:"parameters"`
 	Query       *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery     `pulumi:"query"`
 	WarehouseId string                                                        `pulumi:"warehouseId"`
 }
@@ -24631,7 +24627,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs struct {
 	Alert       GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
 	Dashboard   GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
 	File        GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrInput      `pulumi:"file"`
-	Parameters  pulumi.MapInput                                                      `pulumi:"parameters"`
+	Parameters  pulumi.StringMapInput                                                `pulumi:"parameters"`
 	Query       GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryPtrInput     `pulumi:"query"`
 	WarehouseId pulumi.StringInput                                                   `pulumi:"warehouseId"`
 }
@@ -24731,10 +24727,8 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) File() GetJob
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) map[string]interface{} {
-		return v.Parameters
-	}).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskOutput) Query() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryPtrOutput {
@@ -24798,13 +24792,13 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput) File() Get
 	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskPtrOutput) Query() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryPtrOutput {
@@ -27193,7 +27187,7 @@ type GetJobJobSettingsSettingsTaskNewCluster struct {
 	ClusterLogConf            *GetJobJobSettingsSettingsTaskNewClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos         []GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	ClusterName               *string                                                   `pulumi:"clusterName"`
-	CustomTags                map[string]interface{}                                    `pulumi:"customTags"`
+	CustomTags                map[string]string                                         `pulumi:"customTags"`
 	DataSecurityMode          *string                                                   `pulumi:"dataSecurityMode"`
 	DockerImage               *GetJobJobSettingsSettingsTaskNewClusterDockerImage       `pulumi:"dockerImage"`
 	DriverInstancePoolId      string                                                    `pulumi:"driverInstancePoolId"`
@@ -27209,8 +27203,8 @@ type GetJobJobSettingsSettingsTaskNewCluster struct {
 	PolicyId                  *string                                                   `pulumi:"policyId"`
 	RuntimeEngine             *string                                                   `pulumi:"runtimeEngine"`
 	SingleUserName            *string                                                   `pulumi:"singleUserName"`
-	SparkConf                 map[string]interface{}                                    `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]interface{}                                    `pulumi:"sparkEnvVars"`
+	SparkConf                 map[string]string                                         `pulumi:"sparkConf"`
+	SparkEnvVars              map[string]string                                         `pulumi:"sparkEnvVars"`
 	SparkVersion              string                                                    `pulumi:"sparkVersion"`
 	SshPublicKeys             []string                                                  `pulumi:"sshPublicKeys"`
 	WorkloadType              *GetJobJobSettingsSettingsTaskNewClusterWorkloadType      `pulumi:"workloadType"`
@@ -27237,7 +27231,7 @@ type GetJobJobSettingsSettingsTaskNewClusterArgs struct {
 	ClusterLogConf            GetJobJobSettingsSettingsTaskNewClusterClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos         GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
 	ClusterName               pulumi.StringPtrInput                                             `pulumi:"clusterName"`
-	CustomTags                pulumi.MapInput                                                   `pulumi:"customTags"`
+	CustomTags                pulumi.StringMapInput                                             `pulumi:"customTags"`
 	DataSecurityMode          pulumi.StringPtrInput                                             `pulumi:"dataSecurityMode"`
 	DockerImage               GetJobJobSettingsSettingsTaskNewClusterDockerImagePtrInput        `pulumi:"dockerImage"`
 	DriverInstancePoolId      pulumi.StringInput                                                `pulumi:"driverInstancePoolId"`
@@ -27253,8 +27247,8 @@ type GetJobJobSettingsSettingsTaskNewClusterArgs struct {
 	PolicyId                  pulumi.StringPtrInput                                             `pulumi:"policyId"`
 	RuntimeEngine             pulumi.StringPtrInput                                             `pulumi:"runtimeEngine"`
 	SingleUserName            pulumi.StringPtrInput                                             `pulumi:"singleUserName"`
-	SparkConf                 pulumi.MapInput                                                   `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.MapInput                                                   `pulumi:"sparkEnvVars"`
+	SparkConf                 pulumi.StringMapInput                                             `pulumi:"sparkConf"`
+	SparkEnvVars              pulumi.StringMapInput                                             `pulumi:"sparkEnvVars"`
 	SparkVersion              pulumi.StringInput                                                `pulumi:"sparkVersion"`
 	SshPublicKeys             pulumi.StringArrayInput                                           `pulumi:"sshPublicKeys"`
 	WorkloadType              GetJobJobSettingsSettingsTaskNewClusterWorkloadTypePtrInput       `pulumi:"workloadType"`
@@ -27383,8 +27377,8 @@ func (o GetJobJobSettingsSettingsTaskNewClusterOutput) ClusterName() pulumi.Stri
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNewClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -27453,12 +27447,12 @@ func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SingleUserName() pulumi.S
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} { return v.SparkConf }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} { return v.SparkEnvVars }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
@@ -27580,13 +27574,13 @@ func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) ClusterName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
@@ -27724,22 +27718,22 @@ func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SingleUserName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkConf
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewCluster) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SparkEnvVars
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
@@ -30948,10 +30942,10 @@ func (o GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsPtrOutput) Not
 }
 
 type GetJobJobSettingsSettingsTaskNotebookTask struct {
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
-	NotebookPath   string                 `pulumi:"notebookPath"`
-	Source         *string                `pulumi:"source"`
-	WarehouseId    *string                `pulumi:"warehouseId"`
+	BaseParameters map[string]string `pulumi:"baseParameters"`
+	NotebookPath   string            `pulumi:"notebookPath"`
+	Source         *string           `pulumi:"source"`
+	WarehouseId    *string           `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskNotebookTaskArgs and GetJobJobSettingsSettingsTaskNotebookTaskOutput values.
@@ -30966,7 +30960,7 @@ type GetJobJobSettingsSettingsTaskNotebookTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNotebookTaskArgs struct {
-	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
 	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
 	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
@@ -31049,8 +31043,8 @@ func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) ToGetJobJobSettingsSett
 	}).(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
@@ -31089,13 +31083,13 @@ func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) Elem() GetJobJobSett
 	}).(GetJobJobSettingsSettingsTaskNotebookTaskOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.BaseParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
@@ -31437,10 +31431,10 @@ func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) PipelineId() pulumi.
 }
 
 type GetJobJobSettingsSettingsTaskPythonWheelTask struct {
-	EntryPoint      *string                `pulumi:"entryPoint"`
-	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
-	PackageName     *string                `pulumi:"packageName"`
-	Parameters      []string               `pulumi:"parameters"`
+	EntryPoint      *string           `pulumi:"entryPoint"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
+	PackageName     *string           `pulumi:"packageName"`
+	Parameters      []string          `pulumi:"parameters"`
 }
 
 // GetJobJobSettingsSettingsTaskPythonWheelTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskPythonWheelTaskArgs and GetJobJobSettingsSettingsTaskPythonWheelTaskOutput values.
@@ -31456,7 +31450,7 @@ type GetJobJobSettingsSettingsTaskPythonWheelTaskInput interface {
 
 type GetJobJobSettingsSettingsTaskPythonWheelTaskArgs struct {
 	EntryPoint      pulumi.StringPtrInput   `pulumi:"entryPoint"`
-	NamedParameters pulumi.MapInput         `pulumi:"namedParameters"`
+	NamedParameters pulumi.StringMapInput   `pulumi:"namedParameters"`
 	PackageName     pulumi.StringPtrInput   `pulumi:"packageName"`
 	Parameters      pulumi.StringArrayInput `pulumi:"parameters"`
 }
@@ -31542,8 +31536,8 @@ func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) EntryPoint() pulumi.
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]interface{} { return v.NamedParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
@@ -31587,13 +31581,13 @@ func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) EntryPoint() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.NamedParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
@@ -31615,8 +31609,8 @@ func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) Parameters() pulu
 }
 
 type GetJobJobSettingsSettingsTaskRunJobTask struct {
-	JobId         int                    `pulumi:"jobId"`
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+	JobId         int               `pulumi:"jobId"`
+	JobParameters map[string]string `pulumi:"jobParameters"`
 }
 
 // GetJobJobSettingsSettingsTaskRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskRunJobTaskArgs and GetJobJobSettingsSettingsTaskRunJobTaskOutput values.
@@ -31631,8 +31625,8 @@ type GetJobJobSettingsSettingsTaskRunJobTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskRunJobTaskArgs struct {
-	JobId         pulumi.IntInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+	JobId         pulumi.IntInput       `pulumi:"jobId"`
+	JobParameters pulumi.StringMapInput `pulumi:"jobParameters"`
 }
 
 func (GetJobJobSettingsSettingsTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -31716,8 +31710,8 @@ func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobId() pulumi.IntOutput 
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
@@ -31753,13 +31747,13 @@ func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.JobParameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetJobJobSettingsSettingsTaskSparkJarTask struct {
@@ -32225,7 +32219,7 @@ type GetJobJobSettingsSettingsTaskSqlTask struct {
 	Alert       *GetJobJobSettingsSettingsTaskSqlTaskAlert     `pulumi:"alert"`
 	Dashboard   *GetJobJobSettingsSettingsTaskSqlTaskDashboard `pulumi:"dashboard"`
 	File        *GetJobJobSettingsSettingsTaskSqlTaskFile      `pulumi:"file"`
-	Parameters  map[string]interface{}                         `pulumi:"parameters"`
+	Parameters  map[string]string                              `pulumi:"parameters"`
 	Query       *GetJobJobSettingsSettingsTaskSqlTaskQuery     `pulumi:"query"`
 	WarehouseId string                                         `pulumi:"warehouseId"`
 }
@@ -32245,7 +32239,7 @@ type GetJobJobSettingsSettingsTaskSqlTaskArgs struct {
 	Alert       GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
 	Dashboard   GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
 	File        GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput      `pulumi:"file"`
-	Parameters  pulumi.MapInput                                       `pulumi:"parameters"`
+	Parameters  pulumi.StringMapInput                                 `pulumi:"parameters"`
 	Query       GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput     `pulumi:"query"`
 	WarehouseId pulumi.StringInput                                    `pulumi:"warehouseId"`
 }
@@ -32343,8 +32337,8 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) File() GetJobJobSettingsSett
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskFile { return v.File }).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Query() GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput {
@@ -32408,13 +32402,13 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) File() GetJobJobSettingsS
 	}).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) map[string]interface{} {
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Query() GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput {
@@ -36341,7 +36335,7 @@ type GetSchemaSchemaInfo struct {
 	// the identifier of the user who owns the schema
 	Owner *string `pulumi:"owner"`
 	// map of properties set on the schema
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// the unique identifier of the volume
 	SchemaId *string `pulumi:"schemaId"`
 	// the storage location on the cloud.
@@ -36391,7 +36385,7 @@ type GetSchemaSchemaInfoArgs struct {
 	// the identifier of the user who owns the schema
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// map of properties set on the schema
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// the unique identifier of the volume
 	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
 	// the storage location on the cloud.
@@ -36544,8 +36538,8 @@ func (o GetSchemaSchemaInfoOutput) Owner() pulumi.StringPtrOutput {
 }
 
 // map of properties set on the schema
-func (o GetSchemaSchemaInfoOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSchemaSchemaInfo) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o GetSchemaSchemaInfoOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // the unique identifier of the volume
@@ -36718,13 +36712,13 @@ func (o GetSchemaSchemaInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 }
 
 // map of properties set on the schema
-func (o GetSchemaSchemaInfoPtrOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetSchemaSchemaInfo) map[string]interface{} {
+func (o GetSchemaSchemaInfoPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Properties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // the unique identifier of the volume
@@ -37658,9 +37652,9 @@ func (o GetSqlWarehouseHealthPtrOutput) Summary() pulumi.StringPtrOutput {
 }
 
 type GetSqlWarehouseHealthFailureReason struct {
-	Code       *string                `pulumi:"code"`
-	Parameters map[string]interface{} `pulumi:"parameters"`
-	Type       *string                `pulumi:"type"`
+	Code       *string           `pulumi:"code"`
+	Parameters map[string]string `pulumi:"parameters"`
+	Type       *string           `pulumi:"type"`
 }
 
 // GetSqlWarehouseHealthFailureReasonInput is an input type that accepts GetSqlWarehouseHealthFailureReasonArgs and GetSqlWarehouseHealthFailureReasonOutput values.
@@ -37676,7 +37670,7 @@ type GetSqlWarehouseHealthFailureReasonInput interface {
 
 type GetSqlWarehouseHealthFailureReasonArgs struct {
 	Code       pulumi.StringPtrInput `pulumi:"code"`
-	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	Type       pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -37761,8 +37755,8 @@ func (o GetSqlWarehouseHealthFailureReasonOutput) Code() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSqlWarehouseHealthFailureReasonOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o GetSqlWarehouseHealthFailureReasonOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 func (o GetSqlWarehouseHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
@@ -37802,13 +37796,13 @@ func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) map[string]interface{} {
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
@@ -39530,7 +39524,7 @@ type GetTableTableInfo struct {
 	// Current owner of the table
 	Owner      *string                     `pulumi:"owner"`
 	PipelineId *string                     `pulumi:"pipelineId"`
-	Properties map[string]interface{}      `pulumi:"properties"`
+	Properties map[string]string           `pulumi:"properties"`
 	RowFilter  *GetTableTableInfoRowFilter `pulumi:"rowFilter"`
 	// Name of parent schema relative to its parent catalog.
 	SchemaName            *string                            `pulumi:"schemaName"`
@@ -39586,7 +39580,7 @@ type GetTableTableInfoArgs struct {
 	// Current owner of the table
 	Owner      pulumi.StringPtrInput              `pulumi:"owner"`
 	PipelineId pulumi.StringPtrInput              `pulumi:"pipelineId"`
-	Properties pulumi.MapInput                    `pulumi:"properties"`
+	Properties pulumi.StringMapInput              `pulumi:"properties"`
 	RowFilter  GetTableTableInfoRowFilterPtrInput `pulumi:"rowFilter"`
 	// Name of parent schema relative to its parent catalog.
 	SchemaName            pulumi.StringPtrInput                      `pulumi:"schemaName"`
@@ -39768,8 +39762,8 @@ func (o GetTableTableInfoOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetTableTableInfoOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTableTableInfo) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o GetTableTableInfoOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTableTableInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 func (o GetTableTableInfoOutput) RowFilter() GetTableTableInfoRowFilterPtrOutput {
@@ -40025,13 +40019,13 @@ func (o GetTableTableInfoPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetTableTableInfoPtrOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetTableTableInfo) map[string]interface{} {
+func (o GetTableTableInfoPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetTableTableInfo) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Properties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GetTableTableInfoPtrOutput) RowFilter() GetTableTableInfoRowFilterPtrOutput {
@@ -40461,7 +40455,7 @@ func (o GetTableTableInfoColumnMaskPtrOutput) UsingColumnNames() pulumi.StringAr
 }
 
 type GetTableTableInfoDeltaRuntimePropertiesKvpairs struct {
-	DeltaRuntimeProperties map[string]interface{} `pulumi:"deltaRuntimeProperties"`
+	DeltaRuntimeProperties map[string]string `pulumi:"deltaRuntimeProperties"`
 }
 
 // GetTableTableInfoDeltaRuntimePropertiesKvpairsInput is an input type that accepts GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs and GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput values.
@@ -40476,7 +40470,7 @@ type GetTableTableInfoDeltaRuntimePropertiesKvpairsInput interface {
 }
 
 type GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs struct {
-	DeltaRuntimeProperties pulumi.MapInput `pulumi:"deltaRuntimeProperties"`
+	DeltaRuntimeProperties pulumi.StringMapInput `pulumi:"deltaRuntimeProperties"`
 }
 
 func (GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs) ElementType() reflect.Type {
@@ -40556,10 +40550,10 @@ func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput) ToGetTableTableInf
 	}).(GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput)
 }
 
-func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput) DeltaRuntimeProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTableTableInfoDeltaRuntimePropertiesKvpairs) map[string]interface{} {
+func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput) DeltaRuntimeProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTableTableInfoDeltaRuntimePropertiesKvpairs) map[string]string {
 		return v.DeltaRuntimeProperties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput struct{ *pulumi.OutputState }
@@ -40586,13 +40580,13 @@ func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput) Elem() GetTable
 	}).(GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput)
 }
 
-func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput) DeltaRuntimeProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetTableTableInfoDeltaRuntimePropertiesKvpairs) map[string]interface{} {
+func (o GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput) DeltaRuntimeProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetTableTableInfoDeltaRuntimePropertiesKvpairs) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DeltaRuntimeProperties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type GetTableTableInfoEffectivePredictiveOptimizationFlag struct {

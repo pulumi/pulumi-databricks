@@ -403,9 +403,9 @@ import (
 //			this, err := databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
 //				Name:    pulumi.Sprintf("DLT Demo Pipeline (%v)", me.Alphanumeric),
 //				Storage: pulumi.String("/test/tf-pipeline"),
-//				Configuration: pulumi.Map{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
+//				Configuration: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
 //				},
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{

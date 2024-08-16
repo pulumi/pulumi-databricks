@@ -11,7 +11,6 @@ import com.pulumi.databricks.ConnectionArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ConnectionState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -196,14 +195,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
-    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> options;
+    @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> options;
 
     /**
      * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
-    public Output<Map<String,Object>> options() {
+    public Output<Map<String,String>> options() {
         return this.options;
     }
     /**
@@ -224,14 +223,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Free-form connection properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> properties;
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
      * @return Free-form connection properties.
      * 
      */
-    public Output<Optional<Map<String,Object>>> properties() {
+    public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")

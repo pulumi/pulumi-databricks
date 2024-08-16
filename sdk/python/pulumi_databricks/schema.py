@@ -21,7 +21,7 @@ class SchemaArgs:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Schema resource.
@@ -31,7 +31,7 @@ class SchemaArgs:
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -135,14 +135,14 @@ class SchemaArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extensible Schema properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -168,7 +168,7 @@ class _SchemaState:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
@@ -178,7 +178,7 @@ class _SchemaState:
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         if catalog_name is not None:
@@ -283,14 +283,14 @@ class _SchemaState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extensible Schema properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -318,7 +318,7 @@ class Schema(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -375,7 +375,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         ...
@@ -452,7 +452,7 @@ class Schema(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -491,7 +491,7 @@ class Schema(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             storage_root: Optional[pulumi.Input[str]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
@@ -506,7 +506,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -579,7 +579,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Extensible Schema properties.
         """

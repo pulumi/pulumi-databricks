@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseParameters")]
-        private InputMap<object>? _baseParameters;
-        public InputMap<object> BaseParameters
+        private InputMap<string>? _baseParameters;
+        public InputMap<string> BaseParameters
         {
-            get => _baseParameters ?? (_baseParameters = new InputMap<object>());
+            get => _baseParameters ?? (_baseParameters = new InputMap<string>());
             set => _baseParameters = value;
         }
 

@@ -40,7 +40,7 @@ export class Table extends pulumi.CustomResource {
     public readonly dataSourceFormat!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly owner!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly schemaName!: pulumi.Output<string>;
     public readonly storageCredentialName!: pulumi.Output<string | undefined>;
     public readonly storageLocation!: pulumi.Output<string | undefined>;
@@ -117,7 +117,7 @@ export interface TableState {
     dataSourceFormat?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     schemaName?: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;
@@ -135,7 +135,7 @@ export interface TableArgs {
     dataSourceFormat: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     schemaName: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;

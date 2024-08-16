@@ -12,7 +12,6 @@ import com.pulumi.databricks.outputs.PipelineClusterGcpAttributes;
 import com.pulumi.databricks.outputs.PipelineClusterInitScript;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public final class PipelineCluster {
     private @Nullable PipelineClusterAwsAttributes awsAttributes;
     private @Nullable PipelineClusterAzureAttributes azureAttributes;
     private @Nullable PipelineClusterClusterLogConf clusterLogConf;
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
     private @Nullable String driverInstancePoolId;
     private @Nullable String driverNodeTypeId;
     private @Nullable Boolean enableLocalDiskEncryption;
@@ -38,8 +37,8 @@ public final class PipelineCluster {
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
     private @Nullable String policyId;
-    private @Nullable Map<String,Object> sparkConf;
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkConf;
+    private @Nullable Map<String,String> sparkEnvVars;
     private @Nullable List<String> sshPublicKeys;
 
     private PipelineCluster() {}
@@ -58,7 +57,7 @@ public final class PipelineCluster {
     public Optional<PipelineClusterClusterLogConf> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
     }
-    public Map<String,Object> customTags() {
+    public Map<String,String> customTags() {
         return this.customTags == null ? Map.of() : this.customTags;
     }
     public Optional<String> driverInstancePoolId() {
@@ -91,10 +90,10 @@ public final class PipelineCluster {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
-    public Map<String,Object> sparkConf() {
+    public Map<String,String> sparkConf() {
         return this.sparkConf == null ? Map.of() : this.sparkConf;
     }
-    public Map<String,Object> sparkEnvVars() {
+    public Map<String,String> sparkEnvVars() {
         return this.sparkEnvVars == null ? Map.of() : this.sparkEnvVars;
     }
     public List<String> sshPublicKeys() {
@@ -115,7 +114,7 @@ public final class PipelineCluster {
         private @Nullable PipelineClusterAwsAttributes awsAttributes;
         private @Nullable PipelineClusterAzureAttributes azureAttributes;
         private @Nullable PipelineClusterClusterLogConf clusterLogConf;
-        private @Nullable Map<String,Object> customTags;
+        private @Nullable Map<String,String> customTags;
         private @Nullable String driverInstancePoolId;
         private @Nullable String driverNodeTypeId;
         private @Nullable Boolean enableLocalDiskEncryption;
@@ -126,8 +125,8 @@ public final class PipelineCluster {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
-        private @Nullable Map<String,Object> sparkConf;
-        private @Nullable Map<String,Object> sparkEnvVars;
+        private @Nullable Map<String,String> sparkConf;
+        private @Nullable Map<String,String> sparkEnvVars;
         private @Nullable List<String> sshPublicKeys;
         public Builder() {}
         public Builder(PipelineCluster defaults) {
@@ -184,7 +183,7 @@ public final class PipelineCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
 
             this.customTags = customTags;
             return this;
@@ -253,13 +252,13 @@ public final class PipelineCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
 
             this.sparkConf = sparkConf;
             return this;
         }
         @CustomType.Setter
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
 
             this.sparkEnvVars = sparkEnvVars;
             return this;

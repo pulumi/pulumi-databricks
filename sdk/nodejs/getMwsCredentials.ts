@@ -50,7 +50,7 @@ export interface GetMwsCredentialsArgs {
     /**
      * name-to-id map for all of the credentials in the account
      */
-    ids?: {[key: string]: any};
+    ids?: {[key: string]: string};
 }
 
 /**
@@ -64,7 +64,7 @@ export interface GetMwsCredentialsResult {
     /**
      * name-to-id map for all of the credentials in the account
      */
-    readonly ids: {[key: string]: any};
+    readonly ids: {[key: string]: string};
 }
 /**
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -107,5 +107,5 @@ export interface GetMwsCredentialsOutputArgs {
     /**
      * name-to-id map for all of the credentials in the account
      */
-    ids?: pulumi.Input<{[key: string]: any}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

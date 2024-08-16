@@ -22,7 +22,7 @@ class PipelineArgs:
                  channel: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  creator_user_name: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
@@ -52,7 +52,7 @@ class PipelineArgs:
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
-        :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input['PipelineDeploymentArgs'] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -196,14 +196,14 @@ class PipelineArgs:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -462,7 +462,7 @@ class _PipelineState:
                  channel: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  creator_user_name: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
@@ -492,7 +492,7 @@ class _PipelineState:
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
-        :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input['PipelineDeploymentArgs'] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -636,14 +636,14 @@ class _PipelineState:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -904,7 +904,7 @@ class Pipeline(pulumi.CustomResource):
                  channel: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  creator_user_name: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
@@ -1016,7 +1016,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
-        :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -1139,7 +1139,7 @@ class Pipeline(pulumi.CustomResource):
                  channel: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  creator_user_name: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
@@ -1218,7 +1218,7 @@ class Pipeline(pulumi.CustomResource):
             channel: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-            configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             continuous: Optional[pulumi.Input[bool]] = None,
             creator_user_name: Optional[pulumi.Input[str]] = None,
             deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
@@ -1253,7 +1253,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
-        :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -1348,7 +1348,7 @@ class Pipeline(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configuration(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def configuration(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         """

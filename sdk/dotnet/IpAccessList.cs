@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         CustomConfig = 
     ///         {
-    ///             { "enableIpAccessLists", true },
+    ///             { "enableIpAccessLists", "true" },
     ///         },
     ///     });
     /// 

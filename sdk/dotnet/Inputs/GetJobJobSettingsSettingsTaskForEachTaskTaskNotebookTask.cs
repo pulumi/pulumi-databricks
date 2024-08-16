@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs : global::Pulumi.InvokeArgs
     {
         [Input("baseParameters")]
-        private Dictionary<string, object>? _baseParameters;
-        public Dictionary<string, object> BaseParameters
+        private Dictionary<string, string>? _baseParameters;
+        public Dictionary<string, string> BaseParameters
         {
-            get => _baseParameters ?? (_baseParameters = new Dictionary<string, object>());
+            get => _baseParameters ?? (_baseParameters = new Dictionary<string, string>());
             set => _baseParameters = value;
         }
 

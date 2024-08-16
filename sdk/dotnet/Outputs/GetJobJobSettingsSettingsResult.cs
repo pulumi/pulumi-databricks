@@ -47,7 +47,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsSparkJarTaskResult? SparkJarTask;
         public readonly Outputs.GetJobJobSettingsSettingsSparkPythonTaskResult? SparkPythonTask;
         public readonly Outputs.GetJobJobSettingsSettingsSparkSubmitTaskResult? SparkSubmitTask;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> Tasks;
         public readonly int? TimeoutSeconds;
         public readonly Outputs.GetJobJobSettingsSettingsTriggerResult? Trigger;
@@ -117,7 +117,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsSparkSubmitTaskResult? sparkSubmitTask,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> tasks,
 

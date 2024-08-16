@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -204,13 +203,13 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="properties")
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
 
     /**
      * @return map of properties set on the schema
      * 
      */
-    public Optional<Map<String,Object>> properties() {
+    public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -468,7 +467,7 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;
         }

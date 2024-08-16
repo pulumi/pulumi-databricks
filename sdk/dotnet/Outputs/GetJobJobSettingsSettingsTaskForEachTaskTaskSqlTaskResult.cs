@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertResult? Alert;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardResult? Dashboard;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileResult? File;
-        public readonly ImmutableDictionary<string, object>? Parameters;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryResult? Query;
         public readonly string WarehouseId;
 
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileResult? file,
 
-            ImmutableDictionary<string, object>? parameters,
+            ImmutableDictionary<string, string>? parameters,
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryResult? query,
 

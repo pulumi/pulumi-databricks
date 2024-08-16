@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         [Output("properties")]
-        public Output<ImmutableDictionary<string, object>?> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
@@ -118,10 +118,10 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
-        public InputMap<object> Properties
+        private InputMap<string>? _properties;
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -172,10 +172,10 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
-        public InputMap<object> Properties
+        private InputMap<string>? _properties;
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
