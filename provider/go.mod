@@ -7,8 +7,8 @@ toolchain go1.22.4
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/databricks/databricks-sdk-go v0.43.2
-	github.com/databricks/terraform-provider-databricks v1.49.1
+	github.com/databricks/databricks-sdk-go v0.44.0
+	github.com/databricks/terraform-provider-databricks v1.50.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.0
 )
 
@@ -211,7 +211,7 @@ require (
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
-	github.com/zclconf/go-cty v1.14.4 // indirect
+	github.com/zclconf/go-cty v1.15.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect
