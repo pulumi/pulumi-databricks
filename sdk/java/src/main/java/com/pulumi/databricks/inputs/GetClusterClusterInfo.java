@@ -20,7 +20,6 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoWorkloadType;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -146,13 +145,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="customTags")
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
 
     /**
      * @return Additional tags for cluster resources.
      * 
      */
-    public Optional<Map<String,Object>> customTags() {
+    public Optional<Map<String,String>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -172,9 +171,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
     }
 
     @Import(name="defaultTags")
-    private @Nullable Map<String,Object> defaultTags;
+    private @Nullable Map<String,String> defaultTags;
 
-    public Optional<Map<String,Object>> defaultTags() {
+    public Optional<Map<String,String>> defaultTags() {
         return Optional.ofNullable(this.defaultTags);
     }
 
@@ -381,13 +380,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="sparkConf")
-    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,String> sparkConf;
 
     /**
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    public Optional<Map<String,Object>> sparkConf() {
+    public Optional<Map<String,String>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
@@ -403,13 +402,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="sparkEnvVars")
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkEnvVars;
 
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    public Optional<Map<String,Object>> sparkEnvVars() {
+    public Optional<Map<String,String>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
@@ -644,7 +643,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -660,7 +659,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        public Builder defaultTags(@Nullable Map<String,Object> defaultTags) {
+        public Builder defaultTags(@Nullable Map<String,String> defaultTags) {
             $.defaultTags = defaultTags;
             return this;
         }
@@ -823,7 +822,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
@@ -839,7 +838,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }

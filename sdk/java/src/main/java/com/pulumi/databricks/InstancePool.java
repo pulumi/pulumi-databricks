@@ -18,7 +18,6 @@ import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributes;
 import com.pulumi.databricks.outputs.InstancePoolPreloadedDockerImage;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -122,14 +121,14 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
-    @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> customTags;
+    @Export(name="customTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> customTags;
 
     /**
      * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
-    public Output<Optional<Map<String,Object>>> customTags() {
+    public Output<Optional<Map<String,String>>> customTags() {
         return Codegen.optional(this.customTags);
     }
     @Export(name="diskSpec", refs={InstancePoolDiskSpec.class}, tree="[0]")

@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.PipelineClusterAzureAttributes? AzureAttributes;
         public readonly Outputs.PipelineClusterClusterLogConf? ClusterLogConf;
-        public readonly ImmutableDictionary<string, object>? CustomTags;
+        public readonly ImmutableDictionary<string, string>? CustomTags;
         public readonly string? DriverInstancePoolId;
         public readonly string? DriverNodeTypeId;
         public readonly bool? EnableLocalDiskEncryption;
@@ -29,8 +29,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
         public readonly string? PolicyId;
-        public readonly ImmutableDictionary<string, object>? SparkConf;
-        public readonly ImmutableDictionary<string, object>? SparkEnvVars;
+        public readonly ImmutableDictionary<string, string>? SparkConf;
+        public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         public readonly ImmutableArray<string> SshPublicKeys;
 
         [OutputConstructor]
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineClusterClusterLogConf? clusterLogConf,
 
-            ImmutableDictionary<string, object>? customTags,
+            ImmutableDictionary<string, string>? customTags,
 
             string? driverInstancePoolId,
 
@@ -67,9 +67,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
-            ImmutableDictionary<string, object>? sparkConf,
+            ImmutableDictionary<string, string>? sparkConf,
 
-            ImmutableDictionary<string, object>? sparkEnvVars,
+            ImmutableDictionary<string, string>? sparkEnvVars,
 
             ImmutableArray<string> sshPublicKeys)
         {

@@ -41,8 +41,8 @@ import (
 //				MetastoreId: pulumi.Any(thisDatabricksMetastore.Id),
 //				Name:        pulumi.String("sandbox"),
 //				Comment:     pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -52,8 +52,8 @@ import (
 //				CatalogName: sandbox.Name,
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this schema is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"kind": pulumi.Any("various"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
 //				},
 //			})
 //			if err != nil {

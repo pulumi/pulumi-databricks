@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.GetTableTableInfoTableConstraint;
 import com.pulumi.databricks.inputs.GetTableTableInfoViewDependencies;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -208,9 +207,9 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     @Import(name="properties")
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
 
-    public Optional<Map<String,Object>> properties() {
+    public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -526,7 +525,7 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;
         }

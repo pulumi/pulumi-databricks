@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,13 +23,13 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
      * 
      */
     @Import(name="environmentVars")
-    private @Nullable Output<Map<String,Object>> environmentVars;
+    private @Nullable Output<Map<String,String>> environmentVars;
 
     /**
      * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> environmentVars() {
+    public Optional<Output<Map<String,String>>> environmentVars() {
         return Optional.ofNullable(this.environmentVars);
     }
 
@@ -176,7 +175,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder environmentVars(@Nullable Output<Map<String,Object>> environmentVars) {
+        public Builder environmentVars(@Nullable Output<Map<String,String>> environmentVars) {
             $.environmentVars = environmentVars;
             return this;
         }
@@ -187,7 +186,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder environmentVars(Map<String,Object> environmentVars) {
+        public Builder environmentVars(Map<String,String> environmentVars) {
             return environmentVars(Output.of(environmentVars));
         }
 

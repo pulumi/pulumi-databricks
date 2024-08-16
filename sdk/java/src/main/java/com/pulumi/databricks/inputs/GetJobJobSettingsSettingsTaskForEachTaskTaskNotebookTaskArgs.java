@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -19,9 +18,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs();
 
     @Import(name="baseParameters")
-    private @Nullable Output<Map<String,Object>> baseParameters;
+    private @Nullable Output<Map<String,String>> baseParameters;
 
-    public Optional<Output<Map<String,Object>>> baseParameters() {
+    public Optional<Output<Map<String,String>>> baseParameters() {
         return Optional.ofNullable(this.baseParameters);
     }
 
@@ -73,12 +72,12 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs 
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder baseParameters(@Nullable Output<Map<String,Object>> baseParameters) {
+        public Builder baseParameters(@Nullable Output<Map<String,String>> baseParameters) {
             $.baseParameters = baseParameters;
             return this;
         }
 
-        public Builder baseParameters(Map<String,Object> baseParameters) {
+        public Builder baseParameters(Map<String,String> baseParameters) {
             return baseParameters(Output.of(baseParameters));
         }
 

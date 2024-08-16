@@ -48,14 +48,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ClusterName { get; set; }
 
         [Input("customTags")]
-        private InputMap<object>? _customTags;
+        private InputMap<string>? _customTags;
 
         /// <summary>
         /// Additional tags for cluster resources.
         /// </summary>
-        public InputMap<object> CustomTags
+        public InputMap<string> CustomTags
         {
-            get => _customTags ?? (_customTags = new InputMap<object>());
+            get => _customTags ?? (_customTags = new InputMap<string>());
             set => _customTags = value;
         }
 
@@ -151,26 +151,26 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SingleUserName { get; set; }
 
         [Input("sparkConf")]
-        private InputMap<object>? _sparkConf;
+        private InputMap<string>? _sparkConf;
 
         /// <summary>
         /// Map with key-value pairs to fine-tune Spark clusters.
         /// </summary>
-        public InputMap<object> SparkConf
+        public InputMap<string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new InputMap<object>());
+            get => _sparkConf ?? (_sparkConf = new InputMap<string>());
             set => _sparkConf = value;
         }
 
         [Input("sparkEnvVars")]
-        private InputMap<object>? _sparkEnvVars;
+        private InputMap<string>? _sparkEnvVars;
 
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
-        public InputMap<object> SparkEnvVars
+        public InputMap<string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new InputMap<string>());
             set => _sparkEnvVars = value;
         }
 

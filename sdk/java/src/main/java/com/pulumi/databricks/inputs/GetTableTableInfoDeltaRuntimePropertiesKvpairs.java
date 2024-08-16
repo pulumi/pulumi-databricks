@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,9 +15,9 @@ public final class GetTableTableInfoDeltaRuntimePropertiesKvpairs extends com.pu
     public static final GetTableTableInfoDeltaRuntimePropertiesKvpairs Empty = new GetTableTableInfoDeltaRuntimePropertiesKvpairs();
 
     @Import(name="deltaRuntimeProperties", required=true)
-    private Map<String,Object> deltaRuntimeProperties;
+    private Map<String,String> deltaRuntimeProperties;
 
-    public Map<String,Object> deltaRuntimeProperties() {
+    public Map<String,String> deltaRuntimeProperties() {
         return this.deltaRuntimeProperties;
     }
 
@@ -46,7 +45,7 @@ public final class GetTableTableInfoDeltaRuntimePropertiesKvpairs extends com.pu
             $ = new GetTableTableInfoDeltaRuntimePropertiesKvpairs(Objects.requireNonNull(defaults));
         }
 
-        public Builder deltaRuntimeProperties(Map<String,Object> deltaRuntimeProperties) {
+        public Builder deltaRuntimeProperties(Map<String,String> deltaRuntimeProperties) {
             $.deltaRuntimeProperties = deltaRuntimeProperties;
             return this;
         }

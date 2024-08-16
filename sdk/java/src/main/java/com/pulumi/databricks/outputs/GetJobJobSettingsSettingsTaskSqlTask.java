@@ -9,7 +9,6 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboa
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskAlert alert;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file;
-    private @Nullable Map<String,Object> parameters;
+    private @Nullable Map<String,String> parameters;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskQuery query;
     private String warehouseId;
 
@@ -35,7 +34,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
     public Optional<GetJobJobSettingsSettingsTaskSqlTaskFile> file() {
         return Optional.ofNullable(this.file);
     }
-    public Map<String,Object> parameters() {
+    public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     public Optional<GetJobJobSettingsSettingsTaskSqlTaskQuery> query() {
@@ -57,7 +56,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskAlert alert;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file;
-        private @Nullable Map<String,Object> parameters;
+        private @Nullable Map<String,String> parameters;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskQuery query;
         private String warehouseId;
         public Builder() {}
@@ -90,7 +89,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(@Nullable Map<String,Object> parameters) {
+        public Builder parameters(@Nullable Map<String,String> parameters) {
 
             this.parameters = parameters;
             return this;

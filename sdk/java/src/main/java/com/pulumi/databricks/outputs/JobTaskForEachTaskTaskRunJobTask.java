@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,13 +27,13 @@ public final class JobTaskForEachTaskTaskRunJobTask {
      * @return (Map) Job parameters for the task
      * 
      */
-    private @Nullable Map<String,Object> jobParameters;
-    private @Nullable Map<String,Object> notebookParams;
+    private @Nullable Map<String,String> jobParameters;
+    private @Nullable Map<String,String> notebookParams;
     private @Nullable JobTaskForEachTaskTaskRunJobTaskPipelineParams pipelineParams;
-    private @Nullable Map<String,Object> pythonNamedParams;
+    private @Nullable Map<String,String> pythonNamedParams;
     private @Nullable List<String> pythonParams;
     private @Nullable List<String> sparkSubmitParams;
-    private @Nullable Map<String,Object> sqlParams;
+    private @Nullable Map<String,String> sqlParams;
 
     private JobTaskForEachTaskTaskRunJobTask() {}
     public List<String> dbtCommands() {
@@ -54,16 +53,16 @@ public final class JobTaskForEachTaskTaskRunJobTask {
      * @return (Map) Job parameters for the task
      * 
      */
-    public Map<String,Object> jobParameters() {
+    public Map<String,String> jobParameters() {
         return this.jobParameters == null ? Map.of() : this.jobParameters;
     }
-    public Map<String,Object> notebookParams() {
+    public Map<String,String> notebookParams() {
         return this.notebookParams == null ? Map.of() : this.notebookParams;
     }
     public Optional<JobTaskForEachTaskTaskRunJobTaskPipelineParams> pipelineParams() {
         return Optional.ofNullable(this.pipelineParams);
     }
-    public Map<String,Object> pythonNamedParams() {
+    public Map<String,String> pythonNamedParams() {
         return this.pythonNamedParams == null ? Map.of() : this.pythonNamedParams;
     }
     public List<String> pythonParams() {
@@ -72,7 +71,7 @@ public final class JobTaskForEachTaskTaskRunJobTask {
     public List<String> sparkSubmitParams() {
         return this.sparkSubmitParams == null ? List.of() : this.sparkSubmitParams;
     }
-    public Map<String,Object> sqlParams() {
+    public Map<String,String> sqlParams() {
         return this.sqlParams == null ? Map.of() : this.sqlParams;
     }
 
@@ -88,13 +87,13 @@ public final class JobTaskForEachTaskTaskRunJobTask {
         private @Nullable List<String> dbtCommands;
         private @Nullable List<String> jarParams;
         private Integer jobId;
-        private @Nullable Map<String,Object> jobParameters;
-        private @Nullable Map<String,Object> notebookParams;
+        private @Nullable Map<String,String> jobParameters;
+        private @Nullable Map<String,String> notebookParams;
         private @Nullable JobTaskForEachTaskTaskRunJobTaskPipelineParams pipelineParams;
-        private @Nullable Map<String,Object> pythonNamedParams;
+        private @Nullable Map<String,String> pythonNamedParams;
         private @Nullable List<String> pythonParams;
         private @Nullable List<String> sparkSubmitParams;
-        private @Nullable Map<String,Object> sqlParams;
+        private @Nullable Map<String,String> sqlParams;
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskRunJobTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -137,13 +136,13 @@ public final class JobTaskForEachTaskTaskRunJobTask {
             return this;
         }
         @CustomType.Setter
-        public Builder jobParameters(@Nullable Map<String,Object> jobParameters) {
+        public Builder jobParameters(@Nullable Map<String,String> jobParameters) {
 
             this.jobParameters = jobParameters;
             return this;
         }
         @CustomType.Setter
-        public Builder notebookParams(@Nullable Map<String,Object> notebookParams) {
+        public Builder notebookParams(@Nullable Map<String,String> notebookParams) {
 
             this.notebookParams = notebookParams;
             return this;
@@ -155,7 +154,7 @@ public final class JobTaskForEachTaskTaskRunJobTask {
             return this;
         }
         @CustomType.Setter
-        public Builder pythonNamedParams(@Nullable Map<String,Object> pythonNamedParams) {
+        public Builder pythonNamedParams(@Nullable Map<String,String> pythonNamedParams) {
 
             this.pythonNamedParams = pythonNamedParams;
             return this;
@@ -179,7 +178,7 @@ public final class JobTaskForEachTaskTaskRunJobTask {
             return sparkSubmitParams(List.of(sparkSubmitParams));
         }
         @CustomType.Setter
-        public Builder sqlParams(@Nullable Map<String,Object> sqlParams) {
+        public Builder sqlParams(@Nullable Map<String,String> sqlParams) {
 
             this.sqlParams = sqlParams;
             return this;

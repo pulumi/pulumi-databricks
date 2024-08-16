@@ -10,7 +10,6 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSqlTaskDashboardArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSqlTaskFileArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSqlTaskQueryArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -72,13 +71,13 @@ public final class JobTaskForEachTaskTaskSqlTaskArgs extends com.pulumi.resource
      * 
      */
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
     /**
      * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -210,7 +209,7 @@ public final class JobTaskForEachTaskTaskSqlTaskArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
@@ -221,7 +220,7 @@ public final class JobTaskForEachTaskTaskSqlTaskArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 

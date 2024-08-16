@@ -434,7 +434,7 @@ namespace Pulumi.Databricks
         public Output<string?> EncryptionType { get; private set; } = null!;
 
         [Output("extraConfigs")]
-        public Output<ImmutableDictionary<string, object>?> ExtraConfigs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ExtraConfigs { get; private set; } = null!;
 
         [Output("gs")]
         public Output<Outputs.MountGs?> Gs { get; private set; } = null!;
@@ -519,10 +519,10 @@ namespace Pulumi.Databricks
         public Input<string>? EncryptionType { get; set; }
 
         [Input("extraConfigs")]
-        private InputMap<object>? _extraConfigs;
-        public InputMap<object> ExtraConfigs
+        private InputMap<string>? _extraConfigs;
+        public InputMap<string> ExtraConfigs
         {
-            get => _extraConfigs ?? (_extraConfigs = new InputMap<object>());
+            get => _extraConfigs ?? (_extraConfigs = new InputMap<string>());
             set => _extraConfigs = value;
         }
 
@@ -565,10 +565,10 @@ namespace Pulumi.Databricks
         public Input<string>? EncryptionType { get; set; }
 
         [Input("extraConfigs")]
-        private InputMap<object>? _extraConfigs;
-        public InputMap<object> ExtraConfigs
+        private InputMap<string>? _extraConfigs;
+        public InputMap<string> ExtraConfigs
         {
-            get => _extraConfigs ?? (_extraConfigs = new InputMap<object>());
+            get => _extraConfigs ?? (_extraConfigs = new InputMap<string>());
             set => _extraConfigs = value;
         }
 

@@ -10,7 +10,6 @@ import com.pulumi.databricks.inputs.MountAdlArgs;
 import com.pulumi.databricks.inputs.MountGsArgs;
 import com.pulumi.databricks.inputs.MountS3Args;
 import com.pulumi.databricks.inputs.MountWasbArgs;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -51,9 +50,9 @@ public final class MountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="extraConfigs")
-    private @Nullable Output<Map<String,Object>> extraConfigs;
+    private @Nullable Output<Map<String,String>> extraConfigs;
 
-    public Optional<Output<Map<String,Object>>> extraConfigs() {
+    public Optional<Output<Map<String,String>>> extraConfigs() {
         return Optional.ofNullable(this.extraConfigs);
     }
 
@@ -169,12 +168,12 @@ public final class MountArgs extends com.pulumi.resources.ResourceArgs {
             return encryptionType(Output.of(encryptionType));
         }
 
-        public Builder extraConfigs(@Nullable Output<Map<String,Object>> extraConfigs) {
+        public Builder extraConfigs(@Nullable Output<Map<String,String>> extraConfigs) {
             $.extraConfigs = extraConfigs;
             return this;
         }
 
-        public Builder extraConfigs(Map<String,Object> extraConfigs) {
+        public Builder extraConfigs(Map<String,String> extraConfigs) {
             return extraConfigs(Output.of(extraConfigs));
         }
 

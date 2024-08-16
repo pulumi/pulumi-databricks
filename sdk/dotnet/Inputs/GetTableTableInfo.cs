@@ -94,10 +94,10 @@ namespace Pulumi.Databricks.Inputs
         public string? PipelineId { get; set; }
 
         [Input("properties")]
-        private Dictionary<string, object>? _properties;
-        public Dictionary<string, object> Properties
+        private Dictionary<string, string>? _properties;
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new Dictionary<string, object>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 

@@ -57,13 +57,13 @@ import (
 //			_, err := databricks.NewMount(ctx, "this", &databricks.MountArgs{
 //				Name: pulumi.String("tf-abfss"),
 //				Uri:  pulumi.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc),
-//				ExtraConfigs: pulumi.Map{
-//					"fs.azure.account.auth.type":                          pulumi.Any("OAuth"),
-//					"fs.azure.account.oauth.provider.type":                pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
+//				ExtraConfigs: pulumi.StringMap{
+//					"fs.azure.account.auth.type":                          pulumi.String("OAuth"),
+//					"fs.azure.account.oauth.provider.type":                pulumi.String("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
 //					"fs.azure.account.oauth2.client.id":                   pulumi.String(clientId),
-//					"fs.azure.account.oauth2.client.secret":               pulumi.Any(fmt.Sprintf("{{secrets/%v/%v}}", secretScope, secretKey)),
-//					"fs.azure.account.oauth2.client.endpoint":             pulumi.Any(fmt.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", tenantId)),
-//					"fs.azure.createRemoteFileSystemDuringInitialization": pulumi.Any("false"),
+//					"fs.azure.account.oauth2.client.secret":               pulumi.Sprintf("{{secrets/%v/%v}}", secretScope, secretKey),
+//					"fs.azure.account.oauth2.client.endpoint":             pulumi.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", tenantId),
+//					"fs.azure.createRemoteFileSystemDuringInitialization": pulumi.String("false"),
 //				},
 //			})
 //			if err != nil {
@@ -127,14 +127,14 @@ import (
 //				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(10),
 //				NumWorkers:             pulumi.Int(1),
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.cluster.profile":                pulumi.Any("serverless"),
-//					"spark.databricks.repl.allowedLanguages":          pulumi.Any("python,sql"),
-//					"spark.databricks.passthrough.enabled":            pulumi.Any("true"),
-//					"spark.databricks.pyspark.enableProcessIsolation": pulumi.Any("true"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.cluster.profile":                pulumi.String("serverless"),
+//					"spark.databricks.repl.allowedLanguages":          pulumi.String("python,sql"),
+//					"spark.databricks.passthrough.enabled":            pulumi.String("true"),
+//					"spark.databricks.pyspark.enableProcessIsolation": pulumi.String("true"),
 //				},
-//				CustomTags: pulumi.Map{
-//					"ResourceClass": pulumi.Any("Serverless"),
+//				CustomTags: pulumi.StringMap{
+//					"ResourceClass": pulumi.String("Serverless"),
 //				},
 //			})
 //			if err != nil {
@@ -148,9 +148,9 @@ import (
 //				Name:      pulumi.String("passthrough-test"),
 //				ClusterId: sharedPassthrough.ID(),
 //				Uri:       pulumi.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc),
-//				ExtraConfigs: pulumi.Map{
-//					"fs.azure.account.auth.type":                   pulumi.Any("CustomAccessToken"),
-//					"fs.azure.account.custom.token.provider.class": pulumi.Any("{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}"),
+//				ExtraConfigs: pulumi.StringMap{
+//					"fs.azure.account.auth.type":                   pulumi.String("CustomAccessToken"),
+//					"fs.azure.account.custom.token.provider.class": pulumi.String("{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}"),
 //				},
 //			})
 //			if err != nil {
@@ -491,7 +491,7 @@ type Mount struct {
 	Adl            MountAdlPtrOutput      `pulumi:"adl"`
 	ClusterId      pulumi.StringOutput    `pulumi:"clusterId"`
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
-	ExtraConfigs   pulumi.MapOutput       `pulumi:"extraConfigs"`
+	ExtraConfigs   pulumi.StringMapOutput `pulumi:"extraConfigs"`
 	Gs             MountGsPtrOutput       `pulumi:"gs"`
 	Name           pulumi.StringOutput    `pulumi:"name"`
 	ResourceId     pulumi.StringPtrOutput `pulumi:"resourceId"`
@@ -532,15 +532,15 @@ func GetMount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mount resources.
 type mountState struct {
-	Abfs           *MountAbfs             `pulumi:"abfs"`
-	Adl            *MountAdl              `pulumi:"adl"`
-	ClusterId      *string                `pulumi:"clusterId"`
-	EncryptionType *string                `pulumi:"encryptionType"`
-	ExtraConfigs   map[string]interface{} `pulumi:"extraConfigs"`
-	Gs             *MountGs               `pulumi:"gs"`
-	Name           *string                `pulumi:"name"`
-	ResourceId     *string                `pulumi:"resourceId"`
-	S3             *MountS3               `pulumi:"s3"`
+	Abfs           *MountAbfs        `pulumi:"abfs"`
+	Adl            *MountAdl         `pulumi:"adl"`
+	ClusterId      *string           `pulumi:"clusterId"`
+	EncryptionType *string           `pulumi:"encryptionType"`
+	ExtraConfigs   map[string]string `pulumi:"extraConfigs"`
+	Gs             *MountGs          `pulumi:"gs"`
+	Name           *string           `pulumi:"name"`
+	ResourceId     *string           `pulumi:"resourceId"`
+	S3             *MountS3          `pulumi:"s3"`
 	// (String) HDFS-compatible url
 	Source *string    `pulumi:"source"`
 	Uri    *string    `pulumi:"uri"`
@@ -552,7 +552,7 @@ type MountState struct {
 	Adl            MountAdlPtrInput
 	ClusterId      pulumi.StringPtrInput
 	EncryptionType pulumi.StringPtrInput
-	ExtraConfigs   pulumi.MapInput
+	ExtraConfigs   pulumi.StringMapInput
 	Gs             MountGsPtrInput
 	Name           pulumi.StringPtrInput
 	ResourceId     pulumi.StringPtrInput
@@ -568,17 +568,17 @@ func (MountState) ElementType() reflect.Type {
 }
 
 type mountArgs struct {
-	Abfs           *MountAbfs             `pulumi:"abfs"`
-	Adl            *MountAdl              `pulumi:"adl"`
-	ClusterId      *string                `pulumi:"clusterId"`
-	EncryptionType *string                `pulumi:"encryptionType"`
-	ExtraConfigs   map[string]interface{} `pulumi:"extraConfigs"`
-	Gs             *MountGs               `pulumi:"gs"`
-	Name           *string                `pulumi:"name"`
-	ResourceId     *string                `pulumi:"resourceId"`
-	S3             *MountS3               `pulumi:"s3"`
-	Uri            *string                `pulumi:"uri"`
-	Wasb           *MountWasb             `pulumi:"wasb"`
+	Abfs           *MountAbfs        `pulumi:"abfs"`
+	Adl            *MountAdl         `pulumi:"adl"`
+	ClusterId      *string           `pulumi:"clusterId"`
+	EncryptionType *string           `pulumi:"encryptionType"`
+	ExtraConfigs   map[string]string `pulumi:"extraConfigs"`
+	Gs             *MountGs          `pulumi:"gs"`
+	Name           *string           `pulumi:"name"`
+	ResourceId     *string           `pulumi:"resourceId"`
+	S3             *MountS3          `pulumi:"s3"`
+	Uri            *string           `pulumi:"uri"`
+	Wasb           *MountWasb        `pulumi:"wasb"`
 }
 
 // The set of arguments for constructing a Mount resource.
@@ -587,7 +587,7 @@ type MountArgs struct {
 	Adl            MountAdlPtrInput
 	ClusterId      pulumi.StringPtrInput
 	EncryptionType pulumi.StringPtrInput
-	ExtraConfigs   pulumi.MapInput
+	ExtraConfigs   pulumi.StringMapInput
 	Gs             MountGsPtrInput
 	Name           pulumi.StringPtrInput
 	ResourceId     pulumi.StringPtrInput
@@ -699,8 +699,8 @@ func (o MountOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mount) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
-func (o MountOutput) ExtraConfigs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Mount) pulumi.MapOutput { return v.ExtraConfigs }).(pulumi.MapOutput)
+func (o MountOutput) ExtraConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Mount) pulumi.StringMapOutput { return v.ExtraConfigs }).(pulumi.StringMapOutput)
 }
 
 func (o MountOutput) Gs() MountGsPtrOutput {

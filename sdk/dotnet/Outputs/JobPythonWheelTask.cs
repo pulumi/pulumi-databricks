@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Named parameters for the task
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? NamedParameters;
+        public readonly ImmutableDictionary<string, string>? NamedParameters;
         /// <summary>
         /// Name of Python package
         /// </summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Databricks.Outputs
         private JobPythonWheelTask(
             string? entryPoint,
 
-            ImmutableDictionary<string, object>? namedParameters,
+            ImmutableDictionary<string, string>? namedParameters,
 
             string? packageName,
 

@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         /// </summary>
         [Output("options")]
-        public Output<ImmutableDictionary<string, object>?> Options { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
         /// Username/groupname/sp application_id of the catalog owner.
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         /// Extensible Catalog properties.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableDictionary<string, object>?> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
         /// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -227,14 +227,14 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
@@ -245,14 +245,14 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Extensible Catalog properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -325,14 +325,14 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
@@ -343,14 +343,14 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// Extensible Catalog properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

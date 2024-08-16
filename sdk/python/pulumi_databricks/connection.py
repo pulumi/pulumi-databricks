@@ -15,21 +15,21 @@ __all__ = ['ConnectionArgs', 'Connection']
 class ConnectionArgs:
     def __init__(__self__, *,
                  connection_type: pulumi.Input[str],
-                 options: pulumi.Input[Mapping[str, Any]],
+                 options: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  comment: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
         """
         pulumi.set(__self__, "connection_type", connection_type)
         pulumi.set(__self__, "options", options)
@@ -60,14 +60,14 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Input[Mapping[str, Any]]:
+    def options(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: pulumi.Input[Mapping[str, Any]]):
+    def options(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -117,14 +117,14 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Free-form connection properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -144,18 +144,18 @@ class _ConnectionState:
                  connection_type: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -221,14 +221,14 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -245,14 +245,14 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Free-form connection properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -274,9 +274,9 @@ class Connection(pulumi.CustomResource):
                  connection_type: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -361,9 +361,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
         """
         ...
     @overload
@@ -467,9 +467,9 @@ class Connection(pulumi.CustomResource):
                  connection_type: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -508,9 +508,9 @@ class Connection(pulumi.CustomResource):
             connection_type: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             read_only: Optional[pulumi.Input[bool]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
@@ -522,9 +522,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -571,7 +571,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Mapping[str, Any]]:
+    def options(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
@@ -587,7 +587,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Free-form connection properties.
         """

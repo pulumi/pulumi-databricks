@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<int> JobId { get; set; } = null!;
 
         [Input("jobParameters")]
-        private InputMap<object>? _jobParameters;
-        public InputMap<object> JobParameters
+        private InputMap<string>? _jobParameters;
+        public InputMap<string> JobParameters
         {
-            get => _jobParameters ?? (_jobParameters = new InputMap<object>());
+            get => _jobParameters ?? (_jobParameters = new InputMap<string>());
             set => _jobParameters = value;
         }
 

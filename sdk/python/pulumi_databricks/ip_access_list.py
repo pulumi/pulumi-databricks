@@ -174,7 +174,7 @@ class IpAccessList(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": True,
+            "enableIpAccessLists": "true",
         })
         allowed_list = databricks.IpAccessList("allowed-list",
             label="allow_in",
@@ -233,7 +233,7 @@ class IpAccessList(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": True,
+            "enableIpAccessLists": "true",
         })
         allowed_list = databricks.IpAccessList("allowed-list",
             label="allow_in",

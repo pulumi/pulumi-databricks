@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -21,13 +20,13 @@ public final class RecipientPropertiesKvpairsArgs extends com.pulumi.resources.R
      * 
      */
     @Import(name="properties", required=true)
-    private Output<Map<String,Object>> properties;
+    private Output<Map<String,String>> properties;
 
     /**
      * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
      * 
      */
-    public Output<Map<String,Object>> properties() {
+    public Output<Map<String,String>> properties() {
         return this.properties;
     }
 
@@ -61,7 +60,7 @@ public final class RecipientPropertiesKvpairsArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder properties(Output<Map<String,Object>> properties) {
+        public Builder properties(Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
@@ -72,7 +71,7 @@ public final class RecipientPropertiesKvpairsArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }
 

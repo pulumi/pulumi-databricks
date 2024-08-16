@@ -24,7 +24,7 @@ class TableArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  view_definition: Optional[pulumi.Input[str]] = None):
@@ -125,11 +125,11 @@ class TableArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -169,7 +169,7 @@ class _TableState:
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -259,11 +259,11 @@ class _TableState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -323,7 +323,7 @@ class Table(pulumi.CustomResource):
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -364,7 +364,7 @@ class Table(pulumi.CustomResource):
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
@@ -417,7 +417,7 @@ class Table(pulumi.CustomResource):
             data_source_format: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema_name: Optional[pulumi.Input[str]] = None,
             storage_credential_name: Optional[pulumi.Input[str]] = None,
             storage_location: Optional[pulumi.Input[str]] = None,
@@ -481,7 +481,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "properties")
 
     @property

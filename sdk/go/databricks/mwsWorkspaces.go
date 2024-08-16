@@ -238,8 +238,8 @@ import (
 //				CredentialsId:          thisMwsCredentials.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
 //				Token:                  nil,
-//				CustomTags: pulumi.Map{
-//					"SoldToCode": pulumi.Any("1234"),
+//				CustomTags: pulumi.StringMap{
+//					"SoldToCode": pulumi.String("1234"),
 //				},
 //			})
 //			if err != nil {
@@ -342,7 +342,7 @@ type MwsWorkspaces struct {
 	CreationTime  pulumi.IntOutput       `pulumi:"creationTime"`
 	CredentialsId pulumi.StringPtrOutput `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-	CustomTags pulumi.MapOutput `pulumi:"customTags"`
+	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
@@ -435,7 +435,7 @@ type mwsWorkspacesState struct {
 	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
@@ -486,7 +486,7 @@ type MwsWorkspacesState struct {
 	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
@@ -541,7 +541,7 @@ type mwsWorkspacesArgs struct {
 	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-	CustomTags map[string]interface{} `pulumi:"customTags"`
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
@@ -591,7 +591,7 @@ type MwsWorkspacesArgs struct {
 	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
@@ -744,8 +744,8 @@ func (o MwsWorkspacesOutput) CredentialsId() pulumi.StringPtrOutput {
 }
 
 // The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-func (o MwsWorkspacesOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) pulumi.MapOutput { return v.CustomTags }).(pulumi.MapOutput)
+func (o MwsWorkspacesOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringMapOutput { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 // Deprecated: Use managedServicesCustomerManagedKeyId instead

@@ -64,7 +64,7 @@ func GetMetastores(ctx *pulumi.Context, args *GetMetastoresArgs, opts ...pulumi.
 // A collection of arguments for invoking getMetastores.
 type GetMetastoresArgs struct {
 	// Mapping of name to id of databricks_metastore
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMetastores.
@@ -72,7 +72,7 @@ type GetMetastoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Mapping of name to id of databricks_metastore
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 func GetMetastoresOutput(ctx *pulumi.Context, args GetMetastoresOutputArgs, opts ...pulumi.InvokeOption) GetMetastoresResultOutput {
@@ -91,7 +91,7 @@ func GetMetastoresOutput(ctx *pulumi.Context, args GetMetastoresOutputArgs, opts
 // A collection of arguments for invoking getMetastores.
 type GetMetastoresOutputArgs struct {
 	// Mapping of name to id of databricks_metastore
-	Ids pulumi.MapInput `pulumi:"ids"`
+	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
 func (GetMetastoresOutputArgs) ElementType() reflect.Type {
@@ -119,8 +119,8 @@ func (o GetMetastoresResultOutput) Id() pulumi.StringOutput {
 }
 
 // Mapping of name to id of databricks_metastore
-func (o GetMetastoresResultOutput) Ids() pulumi.MapOutput {
-	return o.ApplyT(func(v GetMetastoresResult) map[string]interface{} { return v.Ids }).(pulumi.MapOutput)
+func (o GetMetastoresResultOutput) Ids() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMetastoresResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Properties;
+        public readonly ImmutableDictionary<string, string> Properties;
 
         [OutputConstructor]
-        private RecipientPropertiesKvpairs(ImmutableDictionary<string, object> properties)
+        private RecipientPropertiesKvpairs(ImmutableDictionary<string, string> properties)
         {
             Properties = properties;
         }

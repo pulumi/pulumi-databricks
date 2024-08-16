@@ -63,7 +63,7 @@ func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opt
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesArgs struct {
 	// name-to-id map for all of the workspaces in the account
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMwsWorkspaces.
@@ -71,7 +71,7 @@ type LookupMwsWorkspacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the workspaces in the account
-	Ids map[string]interface{} `pulumi:"ids"`
+	Ids map[string]string `pulumi:"ids"`
 }
 
 func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutputArgs, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
@@ -90,7 +90,7 @@ func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutp
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesOutputArgs struct {
 	// name-to-id map for all of the workspaces in the account
-	Ids pulumi.MapInput `pulumi:"ids"`
+	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
 func (LookupMwsWorkspacesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +118,8 @@ func (o LookupMwsWorkspacesResultOutput) Id() pulumi.StringOutput {
 }
 
 // name-to-id map for all of the workspaces in the account
-func (o LookupMwsWorkspacesResultOutput) Ids() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupMwsWorkspacesResult) map[string]interface{} { return v.Ids }).(pulumi.MapOutput)
+func (o LookupMwsWorkspacesResultOutput) Ids() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMwsWorkspacesResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsNotebookTaskResult
     {
-        public readonly ImmutableDictionary<string, object>? BaseParameters;
+        public readonly ImmutableDictionary<string, string>? BaseParameters;
         public readonly string NotebookPath;
         public readonly string? Source;
         public readonly string? WarehouseId;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsNotebookTaskResult(
-            ImmutableDictionary<string, object>? baseParameters,
+            ImmutableDictionary<string, string>? baseParameters,
 
             string notebookPath,
 

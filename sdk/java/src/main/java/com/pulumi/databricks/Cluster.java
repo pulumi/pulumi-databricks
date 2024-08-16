@@ -22,7 +22,6 @@ import com.pulumi.databricks.outputs.ClusterLibrary;
 import com.pulumi.databricks.outputs.ClusterWorkloadType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -252,8 +251,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> customTags;
+    @Export(name="customTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> customTags;
 
     /**
      * @return should have tag `ResourceClass` set to value `Serverless`
@@ -302,7 +301,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Output<Optional<Map<String,Object>>> customTags() {
+    public Output<Optional<Map<String,String>>> customTags() {
         return Codegen.optional(this.customTags);
     }
     /**
@@ -323,14 +322,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
-    @Export(name="defaultTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> defaultTags;
+    @Export(name="defaultTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> defaultTags;
 
     /**
      * @return (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
-    public Output<Map<String,Object>> defaultTags() {
+    public Output<Map<String,String>> defaultTags() {
         return this.defaultTags;
     }
     @Export(name="dockerImage", refs={ClusterDockerImage.class}, tree="[0]")
@@ -649,8 +648,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
-    @Export(name="sparkConf", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> sparkConf;
+    @Export(name="sparkConf", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> sparkConf;
 
     /**
      * @return should have following items:
@@ -658,21 +657,21 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
-    public Output<Optional<Map<String,Object>>> sparkConf() {
+    public Output<Optional<Map<String,String>>> sparkConf() {
         return Codegen.optional(this.sparkConf);
     }
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    @Export(name="sparkEnvVars", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> sparkEnvVars;
+    @Export(name="sparkEnvVars", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> sparkEnvVars;
 
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    public Output<Optional<Map<String,Object>>> sparkEnvVars() {
+    public Output<Optional<Map<String,String>>> sparkEnvVars() {
         return Codegen.optional(this.sparkEnvVars);
     }
     /**

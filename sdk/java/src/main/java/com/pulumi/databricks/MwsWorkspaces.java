@@ -17,7 +17,6 @@ import com.pulumi.databricks.outputs.MwsWorkspacesGkeConfig;
 import com.pulumi.databricks.outputs.MwsWorkspacesToken;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -428,14 +427,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
-    @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> customTags;
+    @Export(name="customTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> customTags;
 
     /**
      * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
-    public Output<Optional<Map<String,Object>>> customTags() {
+    public Output<Optional<Map<String,String>>> customTags() {
         return Codegen.optional(this.customTags);
     }
     /**

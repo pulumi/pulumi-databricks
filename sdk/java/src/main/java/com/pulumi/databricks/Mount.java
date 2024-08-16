@@ -15,7 +15,6 @@ import com.pulumi.databricks.outputs.MountAdl;
 import com.pulumi.databricks.outputs.MountGs;
 import com.pulumi.databricks.outputs.MountS3;
 import com.pulumi.databricks.outputs.MountWasb;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -576,10 +575,10 @@ public class Mount extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> encryptionType() {
         return Codegen.optional(this.encryptionType);
     }
-    @Export(name="extraConfigs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> extraConfigs;
+    @Export(name="extraConfigs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> extraConfigs;
 
-    public Output<Optional<Map<String,Object>>> extraConfigs() {
+    public Output<Optional<Map<String,String>>> extraConfigs() {
         return Codegen.optional(this.extraConfigs);
     }
     @Export(name="gs", refs={MountGs.class}, tree="[0]")

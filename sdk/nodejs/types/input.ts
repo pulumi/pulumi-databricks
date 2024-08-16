@@ -560,7 +560,7 @@ export interface GetCatalogCatalogInfo {
     /**
      * A map of key-value properties attached to the securable.
      */
-    options?: {[key: string]: any};
+    options?: {[key: string]: string};
     /**
      * Current owner of the catalog
      */
@@ -568,7 +568,7 @@ export interface GetCatalogCatalogInfo {
     /**
      * A map of key-value properties attached to the securable.
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * The name of delta sharing provider.
      */
@@ -653,7 +653,7 @@ export interface GetCatalogCatalogInfoArgs {
     /**
      * A map of key-value properties attached to the securable.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Current owner of the catalog
      */
@@ -661,7 +661,7 @@ export interface GetCatalogCatalogInfoArgs {
     /**
      * A map of key-value properties attached to the securable.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of delta sharing provider.
      */
@@ -742,12 +742,12 @@ export interface GetClusterClusterInfo {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
-    defaultTags?: {[key: string]: any};
+    defaultTags?: {[key: string]: string};
     dockerImage?: inputs.GetClusterClusterInfoDockerImage;
     driver?: inputs.GetClusterClusterInfoDriver;
     /**
@@ -796,12 +796,12 @@ export interface GetClusterClusterInfo {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
     sparkContextId?: number;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: string};
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -844,12 +844,12 @@ export interface GetClusterClusterInfoArgs {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: pulumi.Input<string>;
-    defaultTags?: pulumi.Input<{[key: string]: any}>;
+    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
     driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
     /**
@@ -898,12 +898,12 @@ export interface GetClusterClusterInfoArgs {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkContextId?: pulumi.Input<number>;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -1229,7 +1229,7 @@ export interface GetClusterClusterInfoSpec {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
@@ -1282,11 +1282,11 @@ export interface GetClusterClusterInfoSpec {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: string};
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -1316,7 +1316,7 @@ export interface GetClusterClusterInfoSpecArgs {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
@@ -1369,11 +1369,11 @@ export interface GetClusterClusterInfoSpecArgs {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -1709,13 +1709,13 @@ export interface GetClusterClusterInfoSpecWorkloadTypeClientsArgs {
 
 export interface GetClusterClusterInfoTerminationReason {
     code?: string;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     type?: string;
 }
 
 export interface GetClusterClusterInfoTerminationReasonArgs {
     code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
 }
 
@@ -2024,8 +2024,8 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
-    customTags?: {[key: string]: any};
-    defaultTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
+    defaultTags?: {[key: string]: string};
     diskSpec?: inputs.GetInstancePoolPoolInfoDiskSpec;
     enableElasticDisk?: boolean;
     gcpAttributes?: inputs.GetInstancePoolPoolInfoGcpAttributes;
@@ -2045,8 +2045,8 @@ export interface GetInstancePoolPoolInfo {
 export interface GetInstancePoolPoolInfoArgs {
     awsAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAwsAttributesArgs>;
     azureAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAzureAttributesArgs>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
-    defaultTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     diskSpec?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecArgs>;
     enableElasticDisk?: pulumi.Input<boolean>;
     gcpAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoGcpAttributesArgs>;
@@ -2284,7 +2284,7 @@ export interface GetJobJobSettingsSettings {
     sparkJarTask?: inputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsSparkPythonTask;
     sparkSubmitTask?: inputs.GetJobJobSettingsSettingsSparkSubmitTask;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     tasks?: inputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
     trigger?: inputs.GetJobJobSettingsSettingsTrigger;
@@ -2326,7 +2326,7 @@ export interface GetJobJobSettingsSettingsArgs {
     sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkJarTaskArgs>;
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs>;
     sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskArgs>[]>;
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerArgs>;
@@ -2479,7 +2479,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     clusterLogConf?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
     clusterMountInfos?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImage;
     driverInstancePoolId?: string;
@@ -2495,8 +2495,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType;
@@ -2512,7 +2512,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -2528,8 +2528,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs>;
@@ -2845,7 +2845,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     clusterLogConf?: inputs.GetJobJobSettingsSettingsNewClusterClusterLogConf;
     clusterMountInfos?: inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: inputs.GetJobJobSettingsSettingsNewClusterDockerImage;
     driverInstancePoolId?: string;
@@ -2861,8 +2861,8 @@ export interface GetJobJobSettingsSettingsNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsNewClusterWorkloadType;
@@ -2878,7 +2878,7 @@ export interface GetJobJobSettingsSettingsNewClusterArgs {
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterDockerImageArgs>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -2894,8 +2894,8 @@ export interface GetJobJobSettingsSettingsNewClusterArgs {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs>;
@@ -3150,14 +3150,14 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs {
 }
 
 export interface GetJobJobSettingsSettingsNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
@@ -3201,14 +3201,14 @@ export interface GetJobJobSettingsSettingsPipelineTaskArgs {
 
 export interface GetJobJobSettingsSettingsPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
 
 export interface GetJobJobSettingsSettingsPythonWheelTaskArgs {
     entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     packageName?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3233,12 +3233,12 @@ export interface GetJobJobSettingsSettingsRunAsArgs {
 
 export interface GetJobJobSettingsSettingsRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -3621,7 +3621,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     clusterLogConf?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf;
     clusterMountInfos?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage;
     driverInstancePoolId?: string;
@@ -3637,8 +3637,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType;
@@ -3654,7 +3654,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs {
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -3670,8 +3670,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs>;
@@ -3926,14 +3926,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadT
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
@@ -3963,26 +3963,26 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs {
     entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     packageName?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
@@ -4021,7 +4021,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     alert?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert;
     dashboard?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
     file?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     query?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
     warehouseId: string;
 }
@@ -4030,7 +4030,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
     alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs>;
     dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs>;
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs>;
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs>;
     warehouseId: pulumi.Input<string>;
 }
@@ -4267,7 +4267,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     clusterLogConf?: inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
     clusterMountInfos?: inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImage;
     driverInstancePoolId?: string;
@@ -4283,8 +4283,8 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadType;
@@ -4300,7 +4300,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -4316,8 +4316,8 @@ export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs>;
@@ -4572,14 +4572,14 @@ export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs 
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
@@ -4609,26 +4609,26 @@ export interface GetJobJobSettingsSettingsTaskPipelineTaskArgs {
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTaskArgs {
     entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     packageName?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTask {
@@ -4667,7 +4667,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
     alert?: inputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
     dashboard?: inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
     file?: inputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     query?: inputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
     warehouseId: string;
 }
@@ -4676,7 +4676,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
     alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertArgs>;
     dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs>;
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs>;
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs>;
     warehouseId: pulumi.Input<string>;
 }
@@ -5195,7 +5195,7 @@ export interface GetSchemaSchemaInfo {
     /**
      * map of properties set on the schema
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * the unique identifier of the volume
      */
@@ -5270,7 +5270,7 @@ export interface GetSchemaSchemaInfoArgs {
     /**
      * map of properties set on the schema
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * the unique identifier of the volume
      */
@@ -5413,13 +5413,13 @@ export interface GetSqlWarehouseHealthArgs {
 
 export interface GetSqlWarehouseHealthFailureReason {
     code?: string;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     type?: string;
 }
 
 export interface GetSqlWarehouseHealthFailureReasonArgs {
     code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
 }
 
@@ -5717,7 +5717,7 @@ export interface GetTableTableInfo {
      */
     owner?: string;
     pipelineId?: string;
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     rowFilter?: inputs.GetTableTableInfoRowFilter;
     /**
      * Name of parent schema relative to its parent catalog.
@@ -5782,7 +5782,7 @@ export interface GetTableTableInfoArgs {
      */
     owner?: pulumi.Input<string>;
     pipelineId?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     rowFilter?: pulumi.Input<inputs.GetTableTableInfoRowFilterArgs>;
     /**
      * Name of parent schema relative to its parent catalog.
@@ -5862,11 +5862,11 @@ export interface GetTableTableInfoColumnMaskArgs {
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
-    deltaRuntimeProperties: {[key: string]: any};
+    deltaRuntimeProperties: {[key: string]: string};
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs {
-    deltaRuntimeProperties: pulumi.Input<{[key: string]: any}>;
+    deltaRuntimeProperties: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface GetTableTableInfoEffectivePredictiveOptimizationFlag {
@@ -6457,7 +6457,7 @@ export interface JobJobClusterNewCluster {
     clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -6477,8 +6477,8 @@ export interface JobJobClusterNewCluster {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6689,7 +6689,7 @@ export interface JobNewCluster {
     clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -6709,8 +6709,8 @@ export interface JobNewCluster {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6890,7 +6890,7 @@ export interface JobNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -6952,7 +6952,7 @@ export interface JobPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Python package
      */
@@ -7000,7 +7000,7 @@ export interface JobRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface JobSchedule {
@@ -7483,7 +7483,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -7503,8 +7503,8 @@ export interface JobTaskForEachTaskTaskNewCluster {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -7684,7 +7684,7 @@ export interface JobTaskForEachTaskTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -7737,7 +7737,7 @@ export interface JobTaskForEachTaskTaskPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Python package
      */
@@ -7758,13 +7758,13 @@ export interface JobTaskForEachTaskTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
-    notebookParams?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pipelineParams?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams>;
-    pythonNamedParams?: pulumi.Input<{[key: string]: any}>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
     sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sqlParams?: pulumi.Input<{[key: string]: any}>;
+    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
@@ -7826,7 +7826,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
      */
@@ -8064,7 +8064,7 @@ export interface JobTaskNewCluster {
     clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobTaskNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
@@ -8084,8 +8084,8 @@ export interface JobTaskNewCluster {
     policyId?: pulumi.Input<string>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -8265,7 +8265,7 @@ export interface JobTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -8318,7 +8318,7 @@ export interface JobTaskPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Python package
      */
@@ -8339,13 +8339,13 @@ export interface JobTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
-    notebookParams?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pipelineParams?: pulumi.Input<inputs.JobTaskRunJobTaskPipelineParams>;
-    pythonNamedParams?: pulumi.Input<{[key: string]: any}>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
     sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sqlParams?: pulumi.Input<{[key: string]: any}>;
+    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface JobTaskRunJobTaskPipelineParams {
@@ -8407,7 +8407,7 @@ export interface JobTaskSqlTask {
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
      */
@@ -8964,7 +8964,7 @@ export interface ModelServingConfigServedEntity {
     /**
      * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
      */
-    environmentVars?: pulumi.Input<{[key: string]: any}>;
+    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      */
@@ -9153,7 +9153,7 @@ export interface ModelServingConfigServedModel {
     /**
      * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
-    environmentVars?: pulumi.Input<{[key: string]: any}>;
+    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ARN of the instance profile that the served model will use to access AWS resources.
      */
@@ -9662,7 +9662,7 @@ export interface PipelineCluster {
     awsAttributes?: pulumi.Input<inputs.PipelineClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.PipelineClusterAzureAttributes>;
     clusterLogConf?: pulumi.Input<inputs.PipelineClusterClusterLogConf>;
-    customTags?: pulumi.Input<{[key: string]: any}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     driverInstancePoolId?: pulumi.Input<string>;
     driverNodeTypeId?: pulumi.Input<string>;
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
@@ -9673,8 +9673,8 @@ export interface PipelineCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -10044,7 +10044,7 @@ export interface RecipientPropertiesKvpairs {
     /**
      * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
      */
-    properties: pulumi.Input<{[key: string]: any}>;
+    properties: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface RecipientToken {
@@ -10214,7 +10214,7 @@ export interface SqlEndpointHealth {
 
 export interface SqlEndpointHealthFailureReason {
     code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
 }
 

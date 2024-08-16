@@ -20,7 +20,6 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoWorkloadType;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -58,13 +57,13 @@ public final class GetClusterClusterInfo {
      * @return Additional tags for cluster resources.
      * 
      */
-    private @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,String> customTags;
     /**
      * @return Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      * 
      */
     private @Nullable String dataSecurityMode;
-    private @Nullable Map<String,Object> defaultTags;
+    private @Nullable Map<String,String> defaultTags;
     private @Nullable GetClusterClusterInfoDockerImage dockerImage;
     private @Nullable GetClusterClusterInfoDriver driver;
     /**
@@ -123,13 +122,13 @@ public final class GetClusterClusterInfo {
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,String> sparkConf;
     private @Nullable Integer sparkContextId;
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,String> sparkEnvVars;
     /**
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
@@ -201,7 +200,7 @@ public final class GetClusterClusterInfo {
      * @return Additional tags for cluster resources.
      * 
      */
-    public Map<String,Object> customTags() {
+    public Map<String,String> customTags() {
         return this.customTags == null ? Map.of() : this.customTags;
     }
     /**
@@ -211,7 +210,7 @@ public final class GetClusterClusterInfo {
     public Optional<String> dataSecurityMode() {
         return Optional.ofNullable(this.dataSecurityMode);
     }
-    public Map<String,Object> defaultTags() {
+    public Map<String,String> defaultTags() {
         return this.defaultTags == null ? Map.of() : this.defaultTags;
     }
     public Optional<GetClusterClusterInfoDockerImage> dockerImage() {
@@ -308,7 +307,7 @@ public final class GetClusterClusterInfo {
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    public Map<String,Object> sparkConf() {
+    public Map<String,String> sparkConf() {
         return this.sparkConf == null ? Map.of() : this.sparkConf;
     }
     public Optional<Integer> sparkContextId() {
@@ -318,7 +317,7 @@ public final class GetClusterClusterInfo {
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    public Map<String,Object> sparkEnvVars() {
+    public Map<String,String> sparkEnvVars() {
         return this.sparkEnvVars == null ? Map.of() : this.sparkEnvVars;
     }
     /**
@@ -378,9 +377,9 @@ public final class GetClusterClusterInfo {
         private @Nullable String clusterName;
         private @Nullable String clusterSource;
         private @Nullable String creatorUserName;
-        private @Nullable Map<String,Object> customTags;
+        private @Nullable Map<String,String> customTags;
         private @Nullable String dataSecurityMode;
-        private @Nullable Map<String,Object> defaultTags;
+        private @Nullable Map<String,String> defaultTags;
         private @Nullable GetClusterClusterInfoDockerImage dockerImage;
         private @Nullable GetClusterClusterInfoDriver driver;
         private @Nullable String driverInstancePoolId;
@@ -399,9 +398,9 @@ public final class GetClusterClusterInfo {
         private @Nullable String policyId;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
-        private @Nullable Map<String,Object> sparkConf;
+        private @Nullable Map<String,String> sparkConf;
         private @Nullable Integer sparkContextId;
-        private @Nullable Map<String,Object> sparkEnvVars;
+        private @Nullable Map<String,String> sparkEnvVars;
         private @Nullable String sparkVersion;
         private @Nullable GetClusterClusterInfoSpec spec;
         private @Nullable List<String> sshPublicKeys;
@@ -534,7 +533,7 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable Map<String,Object> customTags) {
+        public Builder customTags(@Nullable Map<String,String> customTags) {
 
             this.customTags = customTags;
             return this;
@@ -546,7 +545,7 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultTags(@Nullable Map<String,Object> defaultTags) {
+        public Builder defaultTags(@Nullable Map<String,String> defaultTags) {
 
             this.defaultTags = defaultTags;
             return this;
@@ -666,7 +665,7 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+        public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
 
             this.sparkConf = sparkConf;
             return this;
@@ -678,7 +677,7 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+        public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
 
             this.sparkEnvVars = sparkEnvVars;
             return this;

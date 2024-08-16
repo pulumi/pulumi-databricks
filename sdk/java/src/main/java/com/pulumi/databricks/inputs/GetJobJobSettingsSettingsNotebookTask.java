@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,9 +17,9 @@ public final class GetJobJobSettingsSettingsNotebookTask extends com.pulumi.reso
     public static final GetJobJobSettingsSettingsNotebookTask Empty = new GetJobJobSettingsSettingsNotebookTask();
 
     @Import(name="baseParameters")
-    private @Nullable Map<String,Object> baseParameters;
+    private @Nullable Map<String,String> baseParameters;
 
-    public Optional<Map<String,Object>> baseParameters() {
+    public Optional<Map<String,String>> baseParameters() {
         return Optional.ofNullable(this.baseParameters);
     }
 
@@ -72,7 +71,7 @@ public final class GetJobJobSettingsSettingsNotebookTask extends com.pulumi.reso
             $ = new GetJobJobSettingsSettingsNotebookTask(Objects.requireNonNull(defaults));
         }
 
-        public Builder baseParameters(@Nullable Map<String,Object> baseParameters) {
+        public Builder baseParameters(@Nullable Map<String,String> baseParameters) {
             $.baseParameters = baseParameters;
             return this;
         }

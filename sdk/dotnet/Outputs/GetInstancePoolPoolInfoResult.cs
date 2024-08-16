@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.GetInstancePoolPoolInfoAwsAttributesResult? AwsAttributes;
         public readonly Outputs.GetInstancePoolPoolInfoAzureAttributesResult? AzureAttributes;
-        public readonly ImmutableDictionary<string, object>? CustomTags;
-        public readonly ImmutableDictionary<string, object> DefaultTags;
+        public readonly ImmutableDictionary<string, string>? CustomTags;
+        public readonly ImmutableDictionary<string, string> DefaultTags;
         public readonly Outputs.GetInstancePoolPoolInfoDiskSpecResult? DiskSpec;
         public readonly bool? EnableElasticDisk;
         public readonly Outputs.GetInstancePoolPoolInfoGcpAttributesResult? GcpAttributes;
@@ -38,9 +38,9 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetInstancePoolPoolInfoAzureAttributesResult? azureAttributes,
 
-            ImmutableDictionary<string, object>? customTags,
+            ImmutableDictionary<string, string>? customTags,
 
-            ImmutableDictionary<string, object> defaultTags,
+            ImmutableDictionary<string, string> defaultTags,
 
             Outputs.GetInstancePoolPoolInfoDiskSpecResult? diskSpec,
 

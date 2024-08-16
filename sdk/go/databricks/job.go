@@ -178,7 +178,7 @@ type Job struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrOutput `pulumi:"sparkSubmitTask"`
 	// An optional map of the tags associated with the job. See tags Configuration Map
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	Tasks JobTaskArrayOutput `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -288,7 +288,7 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
 	// An optional map of the tags associated with the job. See tags Configuration Map
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -369,7 +369,7 @@ type JobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	// An optional map of the tags associated with the job. See tags Configuration Map
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -454,7 +454,7 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
 	// An optional map of the tags associated with the job. See tags Configuration Map
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -534,7 +534,7 @@ type JobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	// An optional map of the tags associated with the job. See tags Configuration Map
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -798,8 +798,8 @@ func (o JobOutput) SparkSubmitTask() JobSparkSubmitTaskPtrOutput {
 }
 
 // An optional map of the tags associated with the job. See tags Configuration Map
-func (o JobOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o JobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of task specification that the job will execute. See task Configuration Block below.

@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Inputs
         public int JobId { get; set; }
 
         [Input("jobParameters")]
-        private Dictionary<string, object>? _jobParameters;
-        public Dictionary<string, object> JobParameters
+        private Dictionary<string, string>? _jobParameters;
+        public Dictionary<string, string> JobParameters
         {
-            get => _jobParameters ?? (_jobParameters = new Dictionary<string, object>());
+            get => _jobParameters ?? (_jobParameters = new Dictionary<string, string>());
             set => _jobParameters = value;
         }
 

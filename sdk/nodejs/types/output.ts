@@ -560,7 +560,7 @@ export interface GetCatalogCatalogInfo {
     /**
      * A map of key-value properties attached to the securable.
      */
-    options?: {[key: string]: any};
+    options?: {[key: string]: string};
     /**
      * Current owner of the catalog
      */
@@ -568,7 +568,7 @@ export interface GetCatalogCatalogInfo {
     /**
      * A map of key-value properties attached to the securable.
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * The name of delta sharing provider.
      */
@@ -639,12 +639,12 @@ export interface GetClusterClusterInfo {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
     dataSecurityMode?: string;
-    defaultTags?: {[key: string]: any};
+    defaultTags?: {[key: string]: string};
     dockerImage?: outputs.GetClusterClusterInfoDockerImage;
     driver?: outputs.GetClusterClusterInfoDriver;
     /**
@@ -693,12 +693,12 @@ export interface GetClusterClusterInfo {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
     sparkContextId?: number;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: string};
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -879,7 +879,7 @@ export interface GetClusterClusterInfoSpec {
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
@@ -932,11 +932,11 @@ export interface GetClusterClusterInfoSpec {
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: string};
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
@@ -1111,7 +1111,7 @@ export interface GetClusterClusterInfoSpecWorkloadTypeClients {
 
 export interface GetClusterClusterInfoTerminationReason {
     code?: string;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     type?: string;
 }
 
@@ -1277,8 +1277,8 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;
-    customTags?: {[key: string]: any};
-    defaultTags: {[key: string]: any};
+    customTags?: {[key: string]: string};
+    defaultTags: {[key: string]: string};
     diskSpec?: outputs.GetInstancePoolPoolInfoDiskSpec;
     enableElasticDisk?: boolean;
     gcpAttributes?: outputs.GetInstancePoolPoolInfoGcpAttributes;
@@ -1423,7 +1423,7 @@ export interface GetJobJobSettingsSettings {
     sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsSparkPythonTask;
     sparkSubmitTask?: outputs.GetJobJobSettingsSettingsSparkSubmitTask;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     tasks?: outputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
     trigger?: outputs.GetJobJobSettingsSettingsTrigger;
@@ -1508,7 +1508,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     clusterLogConf?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
     clusterMountInfos?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -1524,8 +1524,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType;
@@ -1691,7 +1691,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     clusterLogConf?: outputs.GetJobJobSettingsSettingsNewClusterClusterLogConf;
     clusterMountInfos?: outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.GetJobJobSettingsSettingsNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -1707,8 +1707,8 @@ export interface GetJobJobSettingsSettingsNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: outputs.GetJobJobSettingsSettingsNewClusterWorkloadType;
@@ -1839,7 +1839,7 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
 }
 
 export interface GetJobJobSettingsSettingsNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
@@ -1865,7 +1865,7 @@ export interface GetJobJobSettingsSettingsPipelineTask {
 
 export interface GetJobJobSettingsSettingsPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
@@ -1881,7 +1881,7 @@ export interface GetJobJobSettingsSettingsRunAs {
 
 export interface GetJobJobSettingsSettingsRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -2079,7 +2079,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     clusterLogConf?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -2095,8 +2095,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType;
@@ -2227,7 +2227,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadT
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
@@ -2246,14 +2246,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
@@ -2276,7 +2276,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
     alert?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert;
     dashboard?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
     file?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     query?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
     warehouseId: string;
 }
@@ -2402,7 +2402,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     clusterLogConf?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -2418,8 +2418,8 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     workloadType?: outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadType;
@@ -2550,7 +2550,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients {
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTask {
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     notebookPath: string;
     source?: string;
     warehouseId?: string;
@@ -2569,14 +2569,14 @@ export interface GetJobJobSettingsSettingsTaskPipelineTask {
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
     entryPoint?: string;
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     packageName?: string;
     parameters?: string[];
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTask {
     jobId: number;
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTask {
@@ -2599,7 +2599,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
     alert?: outputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
     dashboard?: outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
     file?: outputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     query?: outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
     warehouseId: string;
 }
@@ -2895,7 +2895,7 @@ export interface GetSchemaSchemaInfo {
     /**
      * map of properties set on the schema
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * the unique identifier of the volume
      */
@@ -2979,7 +2979,7 @@ export interface GetSqlWarehouseHealth {
 
 export interface GetSqlWarehouseHealthFailureReason {
     code?: string;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     type?: string;
 }
 
@@ -3149,7 +3149,7 @@ export interface GetTableTableInfo {
      */
     owner?: string;
     pipelineId?: string;
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     rowFilter?: outputs.GetTableTableInfoRowFilter;
     /**
      * Name of parent schema relative to its parent catalog.
@@ -3203,7 +3203,7 @@ export interface GetTableTableInfoColumnMask {
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
-    deltaRuntimeProperties: {[key: string]: any};
+    deltaRuntimeProperties: {[key: string]: string};
 }
 
 export interface GetTableTableInfoEffectivePredictiveOptimizationFlag {
@@ -3646,7 +3646,7 @@ export interface JobJobClusterNewCluster {
     clusterLogConf?: outputs.JobJobClusterNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.JobJobClusterNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -3666,8 +3666,8 @@ export interface JobJobClusterNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     /**
@@ -3878,7 +3878,7 @@ export interface JobNewCluster {
     clusterLogConf?: outputs.JobNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.JobNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -3898,8 +3898,8 @@ export interface JobNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     /**
@@ -4079,7 +4079,7 @@ export interface JobNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -4141,7 +4141,7 @@ export interface JobPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     /**
      * Name of Python package
      */
@@ -4189,7 +4189,7 @@ export interface JobRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
 }
 
 export interface JobSchedule {
@@ -4672,7 +4672,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     clusterLogConf?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.JobTaskForEachTaskTaskNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -4692,8 +4692,8 @@ export interface JobTaskForEachTaskTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     /**
@@ -4873,7 +4873,7 @@ export interface JobTaskForEachTaskTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -4926,7 +4926,7 @@ export interface JobTaskForEachTaskTaskPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     /**
      * Name of Python package
      */
@@ -4947,13 +4947,13 @@ export interface JobTaskForEachTaskTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: {[key: string]: any};
-    notebookParams?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
+    notebookParams?: {[key: string]: string};
     pipelineParams?: outputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams;
-    pythonNamedParams?: {[key: string]: any};
+    pythonNamedParams?: {[key: string]: string};
     pythonParams?: string[];
     sparkSubmitParams?: string[];
-    sqlParams?: {[key: string]: any};
+    sqlParams?: {[key: string]: string};
 }
 
 export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
@@ -5015,7 +5015,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
      */
@@ -5253,7 +5253,7 @@ export interface JobTaskNewCluster {
     clusterLogConf?: outputs.JobTaskNewClusterClusterLogConf;
     clusterMountInfos?: outputs.JobTaskNewClusterClusterMountInfo[];
     clusterName?: string;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     dataSecurityMode?: string;
     dockerImage?: outputs.JobTaskNewClusterDockerImage;
     driverInstancePoolId: string;
@@ -5273,8 +5273,8 @@ export interface JobTaskNewCluster {
     policyId?: string;
     runtimeEngine?: string;
     singleUserName?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
     /**
@@ -5454,7 +5454,7 @@ export interface JobTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: {[key: string]: any};
+    baseParameters?: {[key: string]: string};
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -5507,7 +5507,7 @@ export interface JobTaskPythonWheelTask {
     /**
      * Named parameters for the task
      */
-    namedParameters?: {[key: string]: any};
+    namedParameters?: {[key: string]: string};
     /**
      * Name of Python package
      */
@@ -5528,13 +5528,13 @@ export interface JobTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: {[key: string]: any};
-    notebookParams?: {[key: string]: any};
+    jobParameters?: {[key: string]: string};
+    notebookParams?: {[key: string]: string};
     pipelineParams?: outputs.JobTaskRunJobTaskPipelineParams;
-    pythonNamedParams?: {[key: string]: any};
+    pythonNamedParams?: {[key: string]: string};
     pythonParams?: string[];
     sparkSubmitParams?: string[];
-    sqlParams?: {[key: string]: any};
+    sqlParams?: {[key: string]: string};
 }
 
 export interface JobTaskRunJobTaskPipelineParams {
@@ -5596,7 +5596,7 @@ export interface JobTaskSqlTask {
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
      */
@@ -6153,7 +6153,7 @@ export interface ModelServingConfigServedEntity {
     /**
      * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
      */
-    environmentVars?: {[key: string]: any};
+    environmentVars?: {[key: string]: string};
     /**
      * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      */
@@ -6342,7 +6342,7 @@ export interface ModelServingConfigServedModel {
     /**
      * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
-    environmentVars?: {[key: string]: any};
+    environmentVars?: {[key: string]: string};
     /**
      * ARN of the instance profile that the served model will use to access AWS resources.
      */
@@ -6851,7 +6851,7 @@ export interface PipelineCluster {
     awsAttributes?: outputs.PipelineClusterAwsAttributes;
     azureAttributes?: outputs.PipelineClusterAzureAttributes;
     clusterLogConf?: outputs.PipelineClusterClusterLogConf;
-    customTags?: {[key: string]: any};
+    customTags?: {[key: string]: string};
     driverInstancePoolId?: string;
     driverNodeTypeId: string;
     enableLocalDiskEncryption: boolean;
@@ -6862,8 +6862,8 @@ export interface PipelineCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
-    sparkConf?: {[key: string]: any};
-    sparkEnvVars?: {[key: string]: any};
+    sparkConf?: {[key: string]: string};
+    sparkEnvVars?: {[key: string]: string};
     sshPublicKeys?: string[];
 }
 
@@ -7233,7 +7233,7 @@ export interface RecipientPropertiesKvpairs {
     /**
      * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
      */
-    properties: {[key: string]: any};
+    properties: {[key: string]: string};
 }
 
 export interface RecipientToken {
@@ -7403,7 +7403,7 @@ export interface SqlEndpointHealth {
 
 export interface SqlEndpointHealthFailureReason {
     code?: string;
-    parameters?: {[key: string]: any};
+    parameters?: {[key: string]: string};
     type?: string;
 }
 

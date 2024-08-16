@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class GetMetastoresArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="ids")
-    private @Nullable Output<Map<String,Object>> ids;
+    private @Nullable Output<Map<String,String>> ids;
 
     /**
      * @return Mapping of name to id of databricks_metastore
      * 
      */
-    public Optional<Output<Map<String,Object>>> ids() {
+    public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
@@ -62,7 +61,7 @@ public final class GetMetastoresArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder ids(@Nullable Output<Map<String,Object>> ids) {
+        public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
@@ -73,7 +72,7 @@ public final class GetMetastoresArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder ids(Map<String,Object> ids) {
+        public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
         }
 

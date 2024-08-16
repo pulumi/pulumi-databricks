@@ -9,7 +9,6 @@ import com.pulumi.databricks.inputs.GetCatalogCatalogInfoEffectivePredictiveOpti
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoProvisioningInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -198,13 +197,13 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="options")
-    private @Nullable Output<Map<String,Object>> options;
+    private @Nullable Output<Map<String,String>> options;
 
     /**
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Optional<Output<Map<String,Object>>> options() {
+    public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -228,13 +227,13 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="properties")
-    private @Nullable Output<Map<String,Object>> properties;
+    private @Nullable Output<Map<String,String>> properties;
 
     /**
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Optional<Output<Map<String,Object>>> properties() {
+    public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -658,7 +657,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder options(@Nullable Output<Map<String,Object>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
@@ -669,7 +668,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 
@@ -700,7 +699,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Output<Map<String,Object>> properties) {
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
@@ -711,7 +710,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }
 

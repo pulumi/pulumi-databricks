@@ -97,8 +97,8 @@ import (
 //				MetastoreId: pulumi.Any(this.Id),
 //				Name:        pulumi.String("sandbox"),
 //				Comment:     pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {
@@ -169,8 +169,8 @@ import (
 //				CatalogName: pulumi.Any(sandbox.Id),
 //				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this schema is managed by terraform"),
-//				Properties: pulumi.Map{
-//					"kind": pulumi.Any("various"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
 //				},
 //			})
 //			if err != nil {
@@ -619,14 +619,14 @@ import (
 //				Name:           pulumi.String("mysql_connection"),
 //				ConnectionType: pulumi.String("MYSQL"),
 //				Comment:        pulumi.String("this is a connection to mysql db"),
-//				Options: pulumi.Map{
-//					"host":     pulumi.Any("test.mysql.database.azure.com"),
-//					"port":     pulumi.Any("3306"),
-//					"user":     pulumi.Any("user"),
-//					"password": pulumi.Any("password"),
+//				Options: pulumi.StringMap{
+//					"host":     pulumi.String("test.mysql.database.azure.com"),
+//					"port":     pulumi.String("3306"),
+//					"user":     pulumi.String("user"),
+//					"password": pulumi.String("password"),
 //				},
-//				Properties: pulumi.Map{
-//					"purpose": pulumi.Any("testing"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
 //				},
 //			})
 //			if err != nil {

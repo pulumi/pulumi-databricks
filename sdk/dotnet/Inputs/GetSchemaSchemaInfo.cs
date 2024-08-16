@@ -85,14 +85,14 @@ namespace Pulumi.Databricks.Inputs
         public string? Owner { get; set; }
 
         [Input("properties")]
-        private Dictionary<string, object>? _properties;
+        private Dictionary<string, string>? _properties;
 
         /// <summary>
         /// map of properties set on the schema
         /// </summary>
-        public Dictionary<string, object> Properties
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new Dictionary<string, object>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 

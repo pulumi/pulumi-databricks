@@ -11,7 +11,6 @@ import com.pulumi.databricks.SqlTableArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlTableState;
 import com.pulumi.databricks.outputs.SqlTableColumn;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -124,14 +123,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * Map of user defined table options. Change forces creation of a new resource.
      * 
      */
-    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> options;
+    @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> options;
 
     /**
      * @return Map of user defined table options. Change forces creation of a new resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> options() {
+    public Output<Optional<Map<String,String>>> options() {
         return Codegen.optional(this.options);
     }
     /**
@@ -166,14 +165,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * Map of table properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> properties;
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> properties;
 
     /**
      * @return Map of table properties.
      * 
      */
-    public Output<Map<String,Object>> properties() {
+    public Output<Map<String,String>> properties() {
         return this.properties;
     }
     /**

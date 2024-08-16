@@ -11,7 +11,6 @@ import com.pulumi.databricks.CatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -184,14 +183,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      * 
      */
-    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> options;
+    @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> options;
 
     /**
      * @return For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      * 
      */
-    public Output<Optional<Map<String,Object>>> options() {
+    public Output<Optional<Map<String,String>>> options() {
         return Codegen.optional(this.options);
     }
     /**
@@ -212,14 +211,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Extensible Catalog properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> properties;
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
      * @return Extensible Catalog properties.
      * 
      */
-    public Output<Optional<Map<String,Object>>> properties() {
+    public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }
     /**

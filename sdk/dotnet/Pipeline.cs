@@ -154,7 +154,7 @@ namespace Pulumi.Databricks
         /// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         /// </summary>
         [Output("configuration")]
-        public Output<ImmutableDictionary<string, object>?> Configuration { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Configuration { get; private set; } = null!;
 
         /// <summary>
         /// A flag indicating whether to run the pipeline continuously. The default value is `false`.
@@ -347,14 +347,14 @@ namespace Pulumi.Databricks
         }
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        private InputMap<string>? _configuration;
 
         /// <summary>
         /// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         /// </summary>
-        public InputMap<object> Configuration
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 
@@ -527,14 +527,14 @@ namespace Pulumi.Databricks
         }
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        private InputMap<string>? _configuration;
 
         /// <summary>
         /// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         /// </summary>
-        public InputMap<object> Configuration
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 

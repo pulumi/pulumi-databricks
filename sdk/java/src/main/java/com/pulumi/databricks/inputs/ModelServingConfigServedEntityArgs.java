@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -55,13 +54,13 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
      * 
      */
     @Import(name="environmentVars")
-    private @Nullable Output<Map<String,Object>> environmentVars;
+    private @Nullable Output<Map<String,String>> environmentVars;
 
     /**
      * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
      * 
      */
-    public Optional<Output<Map<String,Object>>> environmentVars() {
+    public Optional<Output<Map<String,String>>> environmentVars() {
         return Optional.ofNullable(this.environmentVars);
     }
 
@@ -267,7 +266,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder environmentVars(@Nullable Output<Map<String,Object>> environmentVars) {
+        public Builder environmentVars(@Nullable Output<Map<String,String>> environmentVars) {
             $.environmentVars = environmentVars;
             return this;
         }
@@ -278,7 +277,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder environmentVars(Map<String,Object> environmentVars) {
+        public Builder environmentVars(Map<String,String> environmentVars) {
             return environmentVars(Output.of(environmentVars));
         }
 

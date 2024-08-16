@@ -14,7 +14,6 @@ import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -46,13 +45,13 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="customTags")
-    private @Nullable Output<Map<String,Object>> customTags;
+    private @Nullable Output<Map<String,String>> customTags;
 
     /**
      * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
-    public Optional<Output<Map<String,Object>>> customTags() {
+    public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
@@ -258,7 +257,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+        public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -269,7 +268,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder customTags(Map<String,Object> customTags) {
+        public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 

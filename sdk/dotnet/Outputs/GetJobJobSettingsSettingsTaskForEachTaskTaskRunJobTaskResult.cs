@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskResult
     {
         public readonly int JobId;
-        public readonly ImmutableDictionary<string, object>? JobParameters;
+        public readonly ImmutableDictionary<string, string>? JobParameters;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskResult(
             int jobId,
 
-            ImmutableDictionary<string, object>? jobParameters)
+            ImmutableDictionary<string, string>? jobParameters)
         {
             JobId = jobId;
             JobParameters = jobParameters;

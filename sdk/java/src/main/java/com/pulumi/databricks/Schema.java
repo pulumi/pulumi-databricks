@@ -11,7 +11,6 @@ import com.pulumi.databricks.SchemaArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SchemaState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -185,14 +184,14 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Extensible Schema properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> properties;
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
      * @return Extensible Schema properties.
      * 
      */
-    public Output<Optional<Map<String,Object>>> properties() {
+    public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }
     /**

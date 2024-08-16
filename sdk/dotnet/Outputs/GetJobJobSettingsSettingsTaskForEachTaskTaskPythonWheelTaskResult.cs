@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult
     {
         public readonly string? EntryPoint;
-        public readonly ImmutableDictionary<string, object>? NamedParameters;
+        public readonly ImmutableDictionary<string, string>? NamedParameters;
         public readonly string? PackageName;
         public readonly ImmutableArray<string> Parameters;
 
@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         private GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult(
             string? entryPoint,
 
-            ImmutableDictionary<string, object>? namedParameters,
+            ImmutableDictionary<string, string>? namedParameters,
 
             string? packageName,
 

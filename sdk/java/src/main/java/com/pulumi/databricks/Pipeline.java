@@ -21,7 +21,6 @@ import com.pulumi.databricks.outputs.PipelineNotification;
 import com.pulumi.databricks.outputs.PipelineTrigger;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -210,14 +209,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      * 
      */
-    @Export(name="configuration", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> configuration;
+    @Export(name="configuration", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> configuration;
 
     /**
      * @return An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      * 
      */
-    public Output<Optional<Map<String,Object>>> configuration() {
+    public Output<Optional<Map<String,String>>> configuration() {
         return Codegen.optional(this.configuration);
     }
     /**

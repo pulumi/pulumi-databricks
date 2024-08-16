@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
-//				SparkConf: pulumi.Map{
-//					"spark.databricks.acl.dfAclsEnabled":     pulumi.Any("true"),
-//					"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
+//				SparkConf: pulumi.StringMap{
+//					"spark.databricks.acl.dfAclsEnabled":     pulumi.String("true"),
+//					"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
 //				},
 //			})
 //			if err != nil {

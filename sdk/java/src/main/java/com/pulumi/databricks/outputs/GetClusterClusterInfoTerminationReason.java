@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterClusterInfoTerminationReason {
     private @Nullable String code;
-    private @Nullable Map<String,Object> parameters;
+    private @Nullable Map<String,String> parameters;
     private @Nullable String type;
 
     private GetClusterClusterInfoTerminationReason() {}
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
-    public Map<String,Object> parameters() {
+    public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     public Optional<String> type() {
@@ -38,7 +37,7 @@ public final class GetClusterClusterInfoTerminationReason {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String code;
-        private @Nullable Map<String,Object> parameters;
+        private @Nullable Map<String,String> parameters;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetClusterClusterInfoTerminationReason defaults) {
@@ -55,7 +54,7 @@ public final class GetClusterClusterInfoTerminationReason {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(@Nullable Map<String,Object> parameters) {
+        public Builder parameters(@Nullable Map<String,String> parameters) {
 
             this.parameters = parameters;
             return this;

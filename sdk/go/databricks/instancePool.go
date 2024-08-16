@@ -82,7 +82,7 @@ type InstancePool struct {
 	AwsAttributes   InstancePoolAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
 	AzureAttributes InstancePoolAzureAttributesPtrOutput `pulumi:"azureAttributes"`
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-	CustomTags pulumi.MapOutput              `pulumi:"customTags"`
+	CustomTags pulumi.StringMapOutput        `pulumi:"customTags"`
 	DiskSpec   InstancePoolDiskSpecPtrOutput `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk pulumi.BoolPtrOutput               `pulumi:"enableElasticDisk"`
@@ -143,8 +143,8 @@ type instancePoolState struct {
 	AwsAttributes   *InstancePoolAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes *InstancePoolAzureAttributes `pulumi:"azureAttributes"`
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-	CustomTags map[string]interface{} `pulumi:"customTags"`
-	DiskSpec   *InstancePoolDiskSpec  `pulumi:"diskSpec"`
+	CustomTags map[string]string     `pulumi:"customTags"`
+	DiskSpec   *InstancePoolDiskSpec `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk *bool                      `pulumi:"enableElasticDisk"`
 	GcpAttributes     *InstancePoolGcpAttributes `pulumi:"gcpAttributes"`
@@ -169,7 +169,7 @@ type InstancePoolState struct {
 	AwsAttributes   InstancePoolAwsAttributesPtrInput
 	AzureAttributes InstancePoolAzureAttributesPtrInput
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	DiskSpec   InstancePoolDiskSpecPtrInput
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk pulumi.BoolPtrInput
@@ -199,8 +199,8 @@ type instancePoolArgs struct {
 	AwsAttributes   *InstancePoolAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes *InstancePoolAzureAttributes `pulumi:"azureAttributes"`
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-	CustomTags map[string]interface{} `pulumi:"customTags"`
-	DiskSpec   *InstancePoolDiskSpec  `pulumi:"diskSpec"`
+	CustomTags map[string]string     `pulumi:"customTags"`
+	DiskSpec   *InstancePoolDiskSpec `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk *bool                      `pulumi:"enableElasticDisk"`
 	GcpAttributes     *InstancePoolGcpAttributes `pulumi:"gcpAttributes"`
@@ -226,7 +226,7 @@ type InstancePoolArgs struct {
 	AwsAttributes   InstancePoolAwsAttributesPtrInput
 	AzureAttributes InstancePoolAzureAttributesPtrInput
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-	CustomTags pulumi.MapInput
+	CustomTags pulumi.StringMapInput
 	DiskSpec   InstancePoolDiskSpecPtrInput
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk pulumi.BoolPtrInput
@@ -344,8 +344,8 @@ func (o InstancePoolOutput) AzureAttributes() InstancePoolAzureAttributesPtrOutp
 }
 
 // (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-func (o InstancePoolOutput) CustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *InstancePool) pulumi.MapOutput { return v.CustomTags }).(pulumi.MapOutput)
+func (o InstancePoolOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstancePool) pulumi.StringMapOutput { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
 func (o InstancePoolOutput) DiskSpec() InstancePoolDiskSpecPtrOutput {

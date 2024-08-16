@@ -11,7 +11,6 @@ import com.pulumi.databricks.SqlGlobalConfigArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlGlobalConfigState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -131,14 +130,14 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
-    @Export(name="dataAccessConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> dataAccessConfig;
+    @Export(name="dataAccessConfig", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> dataAccessConfig;
 
     /**
      * @return Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
-    public Output<Optional<Map<String,Object>>> dataAccessConfig() {
+    public Output<Optional<Map<String,String>>> dataAccessConfig() {
         return Codegen.optional(this.dataAccessConfig);
     }
     /**
@@ -199,14 +198,14 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      * 
      */
-    @Export(name="sqlConfigParams", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> sqlConfigParams;
+    @Export(name="sqlConfigParams", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> sqlConfigParams;
 
     /**
      * @return SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      * 
      */
-    public Output<Optional<Map<String,Object>>> sqlConfigParams() {
+    public Output<Optional<Map<String,String>>> sqlConfigParams() {
         return Codegen.optional(this.sqlConfigParams);
     }
 

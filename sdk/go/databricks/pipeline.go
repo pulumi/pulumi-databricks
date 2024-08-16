@@ -40,23 +40,23 @@ import (
 //			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
 //				Name:    pulumi.String("Pipeline Name"),
 //				Storage: pulumi.String("/test/first-pipeline"),
-//				Configuration: pulumi.Map{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
+//				Configuration: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
 //				},
 //				Clusters: databricks.PipelineClusterArray{
 //					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("default"),
 //						NumWorkers: pulumi.Int(2),
-//						CustomTags: pulumi.Map{
-//							"cluster_type": pulumi.Any("default"),
+//						CustomTags: pulumi.StringMap{
+//							"cluster_type": pulumi.String("default"),
 //						},
 //					},
 //					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("maintenance"),
 //						NumWorkers: pulumi.Int(1),
-//						CustomTags: pulumi.Map{
-//							"cluster_type": pulumi.Any("maintenance"),
+//						CustomTags: pulumi.StringMap{
+//							"cluster_type": pulumi.String("maintenance"),
 //						},
 //					},
 //				},
@@ -132,7 +132,7 @@ type Pipeline struct {
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayOutput `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-	Configuration pulumi.MapOutput `pulumi:"configuration"`
+	Configuration pulumi.StringMapOutput `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous      pulumi.BoolPtrOutput `pulumi:"continuous"`
 	CreatorUserName pulumi.StringOutput  `pulumi:"creatorUserName"`
@@ -212,7 +212,7 @@ type pipelineState struct {
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous      *bool   `pulumi:"continuous"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
@@ -263,7 +263,7 @@ type PipelineState struct {
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-	Configuration pulumi.MapInput
+	Configuration pulumi.StringMapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous      pulumi.BoolPtrInput
 	CreatorUserName pulumi.StringPtrInput
@@ -318,7 +318,7 @@ type pipelineArgs struct {
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous      *bool   `pulumi:"continuous"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
@@ -370,7 +370,7 @@ type PipelineArgs struct {
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-	Configuration pulumi.MapInput
+	Configuration pulumi.StringMapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous      pulumi.BoolPtrInput
 	CreatorUserName pulumi.StringPtrInput
@@ -525,8 +525,8 @@ func (o PipelineOutput) Clusters() PipelineClusterArrayOutput {
 }
 
 // An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
-func (o PipelineOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *Pipeline) pulumi.MapOutput { return v.Configuration }).(pulumi.MapOutput)
+func (o PipelineOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
 // A flag indicating whether to run the pipeline continuously. The default value is `false`.

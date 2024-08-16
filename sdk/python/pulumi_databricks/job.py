@@ -49,7 +49,7 @@ class JobArgs:
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
@@ -75,7 +75,7 @@ class JobArgs:
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTriggerArgs'] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
@@ -558,14 +558,14 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional map of the tags associated with the job. See tags Configuration Map
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -653,7 +653,7 @@ class _JobState:
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
@@ -680,7 +680,7 @@ class _JobState:
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobTriggerArgs'] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
@@ -1166,14 +1166,14 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional map of the tags associated with the job. See tags Configuration Map
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1275,7 +1275,7 @@ class Job(pulumi.CustomResource):
                  spark_jar_task: Optional[pulumi.Input[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
                  spark_python_task: Optional[pulumi.Input[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
                  spark_submit_task: Optional[pulumi.Input[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
@@ -1381,7 +1381,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
@@ -1520,7 +1520,7 @@ class Job(pulumi.CustomResource):
                  spark_jar_task: Optional[pulumi.Input[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
                  spark_python_task: Optional[pulumi.Input[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
                  spark_submit_task: Optional[pulumi.Input[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
@@ -1616,7 +1616,7 @@ class Job(pulumi.CustomResource):
             spark_jar_task: Optional[pulumi.Input[Union['JobSparkJarTaskArgs', 'JobSparkJarTaskArgsDict']]] = None,
             spark_python_task: Optional[pulumi.Input[Union['JobSparkPythonTaskArgs', 'JobSparkPythonTaskArgsDict']]] = None,
             spark_submit_task: Optional[pulumi.Input[Union['JobSparkSubmitTaskArgs', 'JobSparkSubmitTaskArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
             timeout_seconds: Optional[pulumi.Input[int]] = None,
             trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
@@ -1648,7 +1648,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        :param pulumi.Input[Mapping[str, Any]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
@@ -1932,7 +1932,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An optional map of the tags associated with the job. See tags Configuration Map
         """

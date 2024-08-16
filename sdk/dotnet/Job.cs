@@ -274,7 +274,7 @@ namespace Pulumi.Databricks
         /// An optional map of the tags associated with the job. See tags Configuration Map
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// A list of task specification that the job will execute. See task Configuration Block below.
@@ -528,14 +528,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobSparkSubmitTaskArgs>? SparkSubmitTask { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// An optional map of the tags associated with the job. See tags Configuration Map
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -753,14 +753,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobSparkSubmitTaskGetArgs>? SparkSubmitTask { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// An optional map of the tags associated with the job. See tags Configuration Map
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

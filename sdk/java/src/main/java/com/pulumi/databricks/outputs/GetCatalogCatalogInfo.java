@@ -8,7 +8,6 @@ import com.pulumi.databricks.outputs.GetCatalogCatalogInfoEffectivePredictiveOpt
 import com.pulumi.databricks.outputs.GetCatalogCatalogInfoProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -77,7 +76,7 @@ public final class GetCatalogCatalogInfo {
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     /**
      * @return Current owner of the catalog
      * 
@@ -87,7 +86,7 @@ public final class GetCatalogCatalogInfo {
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The name of delta sharing provider.
      * 
@@ -215,7 +214,7 @@ public final class GetCatalogCatalogInfo {
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
@@ -229,7 +228,7 @@ public final class GetCatalogCatalogInfo {
      * @return A map of key-value properties attached to the securable.
      * 
      */
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
@@ -313,9 +312,9 @@ public final class GetCatalogCatalogInfo {
         private @Nullable String isolationMode;
         private @Nullable String metastoreId;
         private @Nullable String name;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         private @Nullable String owner;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         private @Nullable String providerName;
         private @Nullable GetCatalogCatalogInfoProvisioningInfo provisioningInfo;
         private @Nullable String securableKind;
@@ -427,7 +426,7 @@ public final class GetCatalogCatalogInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;
@@ -439,7 +438,7 @@ public final class GetCatalogCatalogInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

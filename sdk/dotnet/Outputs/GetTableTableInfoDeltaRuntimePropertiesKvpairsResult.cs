@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetTableTableInfoDeltaRuntimePropertiesKvpairsResult
     {
-        public readonly ImmutableDictionary<string, object> DeltaRuntimeProperties;
+        public readonly ImmutableDictionary<string, string> DeltaRuntimeProperties;
 
         [OutputConstructor]
-        private GetTableTableInfoDeltaRuntimePropertiesKvpairsResult(ImmutableDictionary<string, object> deltaRuntimeProperties)
+        private GetTableTableInfoDeltaRuntimePropertiesKvpairsResult(ImmutableDictionary<string, string> deltaRuntimeProperties)
         {
             DeltaRuntimeProperties = deltaRuntimeProperties;
         }

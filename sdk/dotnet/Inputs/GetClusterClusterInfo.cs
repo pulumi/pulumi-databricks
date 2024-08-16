@@ -58,14 +58,14 @@ namespace Pulumi.Databricks.Inputs
         public string? CreatorUserName { get; set; }
 
         [Input("customTags")]
-        private Dictionary<string, object>? _customTags;
+        private Dictionary<string, string>? _customTags;
 
         /// <summary>
         /// Additional tags for cluster resources.
         /// </summary>
-        public Dictionary<string, object> CustomTags
+        public Dictionary<string, string> CustomTags
         {
-            get => _customTags ?? (_customTags = new Dictionary<string, object>());
+            get => _customTags ?? (_customTags = new Dictionary<string, string>());
             set => _customTags = value;
         }
 
@@ -76,10 +76,10 @@ namespace Pulumi.Databricks.Inputs
         public string? DataSecurityMode { get; set; }
 
         [Input("defaultTags")]
-        private Dictionary<string, object>? _defaultTags;
-        public Dictionary<string, object> DefaultTags
+        private Dictionary<string, string>? _defaultTags;
+        public Dictionary<string, string> DefaultTags
         {
-            get => _defaultTags ?? (_defaultTags = new Dictionary<string, object>());
+            get => _defaultTags ?? (_defaultTags = new Dictionary<string, string>());
             set => _defaultTags = value;
         }
 
@@ -175,14 +175,14 @@ namespace Pulumi.Databricks.Inputs
         public string? SingleUserName { get; set; }
 
         [Input("sparkConf")]
-        private Dictionary<string, object>? _sparkConf;
+        private Dictionary<string, string>? _sparkConf;
 
         /// <summary>
         /// Map with key-value pairs to fine-tune Spark clusters.
         /// </summary>
-        public Dictionary<string, object> SparkConf
+        public Dictionary<string, string> SparkConf
         {
-            get => _sparkConf ?? (_sparkConf = new Dictionary<string, object>());
+            get => _sparkConf ?? (_sparkConf = new Dictionary<string, string>());
             set => _sparkConf = value;
         }
 
@@ -190,14 +190,14 @@ namespace Pulumi.Databricks.Inputs
         public int? SparkContextId { get; set; }
 
         [Input("sparkEnvVars")]
-        private Dictionary<string, object>? _sparkEnvVars;
+        private Dictionary<string, string>? _sparkEnvVars;
 
         /// <summary>
         /// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         /// </summary>
-        public Dictionary<string, object> SparkEnvVars
+        public Dictionary<string, string> SparkEnvVars
         {
-            get => _sparkEnvVars ?? (_sparkEnvVars = new Dictionary<string, object>());
+            get => _sparkEnvVars ?? (_sparkEnvVars = new Dictionary<string, string>());
             set => _sparkEnvVars = value;
         }
 

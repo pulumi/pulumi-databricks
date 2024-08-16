@@ -25,7 +25,7 @@ class ClusterArgs:
                  cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -43,8 +43,8 @@ class ClusterArgs:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
@@ -53,7 +53,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
                For example:
                
@@ -101,7 +101,7 @@ class ClusterArgs:
                        "max_workers": 50,
                    },
                    spark_conf={
-                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.enabled": "true",
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
@@ -111,10 +111,10 @@ class ClusterArgs:
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param pulumi.Input[Mapping[str, Any]] spark_conf: should have following items:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
-        :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
         pulumi.set(__self__, "spark_version", spark_version)
@@ -274,7 +274,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         should have tag `ResourceClass` set to value `Serverless`
 
@@ -301,7 +301,7 @@ class ClusterArgs:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -439,7 +439,7 @@ class ClusterArgs:
                 "max_workers": 50,
             },
             spark_conf={
-                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.enabled": "true",
                 "spark.databricks.io.cache.maxDiskUsage": "50g",
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
@@ -522,7 +522,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         should have following items:
         * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -531,19 +531,19 @@ class ClusterArgs:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -580,9 +580,9 @@ class _ClusterState:
                  cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
-                 default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
                  driver_node_type_id: Optional[pulumi.Input[str]] = None,
@@ -599,8 +599,8 @@ class _ClusterState:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -611,7 +611,7 @@ class _ClusterState:
         :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
                For example:
                
@@ -633,7 +633,7 @@ class _ClusterState:
                    })
                ```
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
-        :param pulumi.Input[Mapping[str, Any]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         :param pulumi.Input[bool] enable_elastic_disk: If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -660,7 +660,7 @@ class _ClusterState:
                        "max_workers": 50,
                    },
                    spark_conf={
-                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.enabled": "true",
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
@@ -670,10 +670,10 @@ class _ClusterState:
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param pulumi.Input[Mapping[str, Any]] spark_conf: should have following items:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
-        :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
@@ -841,7 +841,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         should have tag `ResourceClass` set to value `Serverless`
 
@@ -868,7 +868,7 @@ class _ClusterState:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @property
@@ -885,14 +885,14 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def default_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         """
         return pulumi.get(self, "default_tags")
 
     @default_tags.setter
-    def default_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def default_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "default_tags", value)
 
     @property
@@ -1018,7 +1018,7 @@ class _ClusterState:
                 "max_workers": 50,
             },
             spark_conf={
-                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.enabled": "true",
                 "spark.databricks.io.cache.maxDiskUsage": "50g",
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
@@ -1101,7 +1101,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         should have following items:
         * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -1110,19 +1110,19 @@ class _ClusterState:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @property
@@ -1193,7 +1193,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -1211,8 +1211,8 @@ class Cluster(pulumi.CustomResource):
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
@@ -1282,7 +1282,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
                For example:
                
@@ -1330,7 +1330,7 @@ class Cluster(pulumi.CustomResource):
                        "max_workers": 50,
                    },
                    spark_conf={
-                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.enabled": "true",
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
@@ -1340,10 +1340,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param pulumi.Input[Mapping[str, Any]] spark_conf: should have following items:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
-        :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
@@ -1436,7 +1436,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
@@ -1454,8 +1454,8 @@ class Cluster(pulumi.CustomResource):
                  policy_id: Optional[pulumi.Input[str]] = None,
                  runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
@@ -1524,9 +1524,9 @@ class Cluster(pulumi.CustomResource):
             cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
             cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
-            custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             data_security_mode: Optional[pulumi.Input[str]] = None,
-            default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
             driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
             driver_node_type_id: Optional[pulumi.Input[str]] = None,
@@ -1543,8 +1543,8 @@ class Cluster(pulumi.CustomResource):
             policy_id: Optional[pulumi.Input[str]] = None,
             runtime_engine: Optional[pulumi.Input[str]] = None,
             single_user_name: Optional[pulumi.Input[str]] = None,
-            spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             spark_version: Optional[pulumi.Input[str]] = None,
             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -1560,7 +1560,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-        :param pulumi.Input[Mapping[str, Any]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: should have tag `ResourceClass` set to value `Serverless`
                
                For example:
                
@@ -1582,7 +1582,7 @@ class Cluster(pulumi.CustomResource):
                    })
                ```
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
-        :param pulumi.Input[Mapping[str, Any]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         :param pulumi.Input[bool] enable_elastic_disk: If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -1609,7 +1609,7 @@ class Cluster(pulumi.CustomResource):
                        "max_workers": 50,
                    },
                    spark_conf={
-                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.enabled": "true",
                        "spark.databricks.io.cache.maxDiskUsage": "50g",
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
@@ -1619,10 +1619,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-        :param pulumi.Input[Mapping[str, Any]] spark_conf: should have following items:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
-        :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
@@ -1724,7 +1724,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def custom_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         should have tag `ResourceClass` set to value `Serverless`
 
@@ -1760,7 +1760,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> pulumi.Output[Mapping[str, Any]]:
+    def default_tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         """
@@ -1853,7 +1853,7 @@ class Cluster(pulumi.CustomResource):
                 "max_workers": 50,
             },
             spark_conf={
-                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.enabled": "true",
                 "spark.databricks.io.cache.maxDiskUsage": "50g",
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
@@ -1908,7 +1908,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def spark_conf(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         should have following items:
         * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -1918,7 +1918,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def spark_env_vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """

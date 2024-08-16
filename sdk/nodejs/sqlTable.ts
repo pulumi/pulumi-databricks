@@ -76,7 +76,7 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    public readonly options!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
@@ -88,7 +88,7 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * Map of table properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: any}>;
+    public readonly properties!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
@@ -207,7 +207,7 @@ export interface SqlTableState {
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
@@ -219,7 +219,7 @@ export interface SqlTableState {
     /**
      * Map of table properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
@@ -275,7 +275,7 @@ export interface SqlTableArgs {
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
@@ -287,7 +287,7 @@ export interface SqlTableArgs {
     /**
      * Map of table properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */

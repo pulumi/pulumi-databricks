@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Code { get; set; }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
-        public InputMap<object> Parameters
+        private InputMap<string>? _parameters;
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 

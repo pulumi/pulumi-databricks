@@ -22,10 +22,10 @@ namespace Pulumi.Databricks.Inputs
         public Inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs? File { get; set; }
 
         [Input("parameters")]
-        private Dictionary<string, object>? _parameters;
-        public Dictionary<string, object> Parameters
+        private Dictionary<string, string>? _parameters;
+        public Dictionary<string, string> Parameters
         {
-            get => _parameters ?? (_parameters = new Dictionary<string, object>());
+            get => _parameters ?? (_parameters = new Dictionary<string, string>());
             set => _parameters = value;
         }
 
