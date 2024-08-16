@@ -78,6 +78,34 @@ def get_schema(id: Optional[str] = None,
     Retrieves details about Schema that was created by Pulumi or manually.
     A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
 
+    ## Example Usage
+
+    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_schemas(catalog_name="sandbox")
+    this = {__key: databricks.get_schema(name=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific schema by its fully qualified name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_schema(name="catalog.schema")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
@@ -104,6 +132,34 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Retrieves details about Schema that was created by Pulumi or manually.
     A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
+
+    ## Example Usage
+
+    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_schemas(catalog_name="sandbox")
+    this = {__key: databricks.get_schema(name=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific schema by its fully qualified name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_schema(name="catalog.schema")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.

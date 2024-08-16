@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
- *             .name("external-location")
+ *             .name("external_location")
  *             .url(String.format("s3://%s/some", externalAwsS3Bucket.id()))
  *             .credentialName(external.name())
  *             .build());

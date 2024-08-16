@@ -17,14 +17,14 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
     public static final MetastoreAssignmentArgs Empty = new MetastoreAssignmentArgs();
 
     /**
-     * Default catalog used for this assignment, default to `hive_metastore`
+     * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
      */
     @Import(name="defaultCatalogName")
     private @Nullable Output<String> defaultCatalogName;
 
     /**
-     * @return Default catalog used for this assignment, default to `hive_metastore`
+     * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
      */
     public Optional<Output<String>> defaultCatalogName() {
@@ -88,7 +88,7 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultCatalogName Default catalog used for this assignment, default to `hive_metastore`
+         * @param defaultCatalogName Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultCatalogName Default catalog used for this assignment, default to `hive_metastore`
+         * @param defaultCatalogName Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
          * 
          * @return builder
          * 

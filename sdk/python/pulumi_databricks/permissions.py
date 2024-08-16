@@ -876,6 +876,8 @@ class Permissions(pulumi.CustomResource):
 
         Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
 
+        A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Notebook` resource as shown below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -887,7 +889,7 @@ class Permissions(pulumi.CustomResource):
             content_base64=std.base64encode(input="# Welcome to your Python notebook").result,
             path="/Production/ETL/Features",
             language="PYTHON")
-        notebook_usage = databricks.Permissions("notebook_usage",
+        notebook_usage_by_path = databricks.Permissions("notebook_usage_by_path",
             notebook_path=this.path,
             access_controls=[
                 {
@@ -903,24 +905,8 @@ class Permissions(pulumi.CustomResource):
                     "permission_level": "CAN_EDIT",
                 },
             ])
-        ```
-
-        ## Workspace file usage
-
-        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.WorkspaceFile("this",
-            content_base64=std.base64encode(input="print('Hello World')").result,
-            path="/Production/ETL/Features.py")
-        workspace_file_usage = databricks.Permissions("workspace_file_usage",
-            workspace_file_path=this.path,
+        notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
+            notebook_id=this.object_id,
             access_controls=[
                 {
                     "group_name": "users",
@@ -937,6 +923,60 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
+        > **Note**: when importing a permissions resource, only the `notebook_id` is filled!
+
+        ## Workspace file usage
+
+        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+
+        A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `WorkspaceFile` resource as shown below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        auto = databricks.Group("auto", display_name="Automation")
+        eng = databricks.Group("eng", display_name="Engineering")
+        this = databricks.WorkspaceFile("this",
+            content_base64=std.base64encode(input="print('Hello World')").result,
+            path="/Production/ETL/Features.py")
+        workspace_file_usage_by_path = databricks.Permissions("workspace_file_usage_by_path",
+            workspace_file_path=this.path,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
+            workspace_file_id=this.object_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        > **Note**: when importing a permissions resource, only the `workspace_file_id` is filled!
+
         ## Folder usage
 
         Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
@@ -946,6 +986,8 @@ class Permissions(pulumi.CustomResource):
         - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
         - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
 
+        A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Directory` resource as shown below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -953,7 +995,7 @@ class Permissions(pulumi.CustomResource):
         auto = databricks.Group("auto", display_name="Automation")
         eng = databricks.Group("eng", display_name="Engineering")
         this = databricks.Directory("this", path="/Production/ETL")
-        folder_usage = databricks.Permissions("folder_usage",
+        folder_usage_by_path = databricks.Permissions("folder_usage_by_path",
             directory_path=this.path,
             access_controls=[
                 {
@@ -968,9 +1010,26 @@ class Permissions(pulumi.CustomResource):
                     "group_name": eng.display_name,
                     "permission_level": "CAN_EDIT",
                 },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
+            ])
+        folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
+            directory_id=this.object_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
         ```
+
+        > **Note**: when importing a permissions resource, only the `directory_id` is filled!
 
         ## Repos usage
 
@@ -1150,6 +1209,10 @@ class Permissions(pulumi.CustomResource):
         ## SQL warehouse usage
 
         [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+
+        - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
+        - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
+        - A warehouse cannot have a group as an owner.
 
         ```python
         import pulumi
@@ -1549,6 +1612,8 @@ class Permissions(pulumi.CustomResource):
 
         Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
 
+        A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Notebook` resource as shown below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1560,7 +1625,7 @@ class Permissions(pulumi.CustomResource):
             content_base64=std.base64encode(input="# Welcome to your Python notebook").result,
             path="/Production/ETL/Features",
             language="PYTHON")
-        notebook_usage = databricks.Permissions("notebook_usage",
+        notebook_usage_by_path = databricks.Permissions("notebook_usage_by_path",
             notebook_path=this.path,
             access_controls=[
                 {
@@ -1576,24 +1641,8 @@ class Permissions(pulumi.CustomResource):
                     "permission_level": "CAN_EDIT",
                 },
             ])
-        ```
-
-        ## Workspace file usage
-
-        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.WorkspaceFile("this",
-            content_base64=std.base64encode(input="print('Hello World')").result,
-            path="/Production/ETL/Features.py")
-        workspace_file_usage = databricks.Permissions("workspace_file_usage",
-            workspace_file_path=this.path,
+        notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
+            notebook_id=this.object_id,
             access_controls=[
                 {
                     "group_name": "users",
@@ -1610,6 +1659,60 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
+        > **Note**: when importing a permissions resource, only the `notebook_id` is filled!
+
+        ## Workspace file usage
+
+        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+
+        A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `WorkspaceFile` resource as shown below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        auto = databricks.Group("auto", display_name="Automation")
+        eng = databricks.Group("eng", display_name="Engineering")
+        this = databricks.WorkspaceFile("this",
+            content_base64=std.base64encode(input="print('Hello World')").result,
+            path="/Production/ETL/Features.py")
+        workspace_file_usage_by_path = databricks.Permissions("workspace_file_usage_by_path",
+            workspace_file_path=this.path,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
+            workspace_file_id=this.object_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        > **Note**: when importing a permissions resource, only the `workspace_file_id` is filled!
+
         ## Folder usage
 
         Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
@@ -1619,6 +1722,8 @@ class Permissions(pulumi.CustomResource):
         - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
         - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
 
+        A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Directory` resource as shown below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1626,7 +1731,7 @@ class Permissions(pulumi.CustomResource):
         auto = databricks.Group("auto", display_name="Automation")
         eng = databricks.Group("eng", display_name="Engineering")
         this = databricks.Directory("this", path="/Production/ETL")
-        folder_usage = databricks.Permissions("folder_usage",
+        folder_usage_by_path = databricks.Permissions("folder_usage_by_path",
             directory_path=this.path,
             access_controls=[
                 {
@@ -1641,9 +1746,26 @@ class Permissions(pulumi.CustomResource):
                     "group_name": eng.display_name,
                     "permission_level": "CAN_EDIT",
                 },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
+            ])
+        folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
+            directory_id=this.object_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_READ",
+                },
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
         ```
+
+        > **Note**: when importing a permissions resource, only the `directory_id` is filled!
 
         ## Repos usage
 
@@ -1823,6 +1945,10 @@ class Permissions(pulumi.CustomResource):
         ## SQL warehouse usage
 
         [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+
+        - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
+        - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
+        - A warehouse cannot have a group as an owner.
 
         ```python
         import pulumi

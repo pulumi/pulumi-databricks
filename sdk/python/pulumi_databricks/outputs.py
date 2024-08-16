@@ -294,6 +294,7 @@ __all__ = [
     'MetastoreDataAccessAwsIamRole',
     'MetastoreDataAccessAzureManagedIdentity',
     'MetastoreDataAccessAzureServicePrincipal',
+    'MetastoreDataAccessCloudflareApiToken',
     'MetastoreDataAccessDatabricksGcpServiceAccount',
     'MetastoreDataAccessGcpServiceAccountKey',
     'MlflowModelTag',
@@ -308,6 +309,7 @@ __all__ = [
     'ModelServingConfigServedEntityExternalModelAnthropicConfig',
     'ModelServingConfigServedEntityExternalModelCohereConfig',
     'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig',
+    'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig',
     'ModelServingConfigServedEntityExternalModelOpenaiConfig',
     'ModelServingConfigServedEntityExternalModelPalmConfig',
     'ModelServingConfigServedModel',
@@ -338,6 +340,12 @@ __all__ = [
     'MwsWorkspacesGcpManagedNetworkConfig',
     'MwsWorkspacesGkeConfig',
     'MwsWorkspacesToken',
+    'NotificationDestinationConfig',
+    'NotificationDestinationConfigEmail',
+    'NotificationDestinationConfigGenericWebhook',
+    'NotificationDestinationConfigMicrosoftTeams',
+    'NotificationDestinationConfigPagerduty',
+    'NotificationDestinationConfigSlack',
     'OnlineTableSpec',
     'OnlineTableSpecRunContinuously',
     'OnlineTableSpecRunTriggered',
@@ -354,6 +362,7 @@ __all__ = [
     'PipelineClusterAutoscale',
     'PipelineClusterAwsAttributes',
     'PipelineClusterAzureAttributes',
+    'PipelineClusterAzureAttributesLogAnalyticsInfo',
     'PipelineClusterClusterLogConf',
     'PipelineClusterClusterLogConfDbfs',
     'PipelineClusterClusterLogConfS3',
@@ -368,11 +377,23 @@ __all__ = [
     'PipelineClusterInitScriptWorkspace',
     'PipelineDeployment',
     'PipelineFilters',
+    'PipelineGatewayDefinition',
+    'PipelineIngestionDefinition',
+    'PipelineIngestionDefinitionObject',
+    'PipelineIngestionDefinitionObjectSchema',
+    'PipelineIngestionDefinitionObjectSchemaTableConfiguration',
+    'PipelineIngestionDefinitionObjectTable',
+    'PipelineIngestionDefinitionObjectTableTableConfiguration',
+    'PipelineIngestionDefinitionTableConfiguration',
+    'PipelineLatestUpdate',
     'PipelineLibrary',
     'PipelineLibraryFile',
     'PipelineLibraryMaven',
     'PipelineLibraryNotebook',
     'PipelineNotification',
+    'PipelineTrigger',
+    'PipelineTriggerCron',
+    'PipelineTriggerManual',
     'QualityMonitorCustomMetric',
     'QualityMonitorDataClassificationConfig',
     'QualityMonitorInferenceLog',
@@ -425,6 +446,7 @@ __all__ = [
     'StorageCredentialAwsIamRole',
     'StorageCredentialAzureManagedIdentity',
     'StorageCredentialAzureServicePrincipal',
+    'StorageCredentialCloudflareApiToken',
     'StorageCredentialDatabricksGcpServiceAccount',
     'StorageCredentialGcpServiceAccountKey',
     'TableColumn',
@@ -1350,7 +1372,7 @@ class ClusterAzureAttributes(dict):
         """
         :param str availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
         :param int first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-        :param float spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        :param float spot_bid_max_price: The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1386,7 +1408,7 @@ class ClusterAzureAttributes(dict):
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -2814,7 +2836,7 @@ class InstancePoolAzureAttributes(dict):
                  spot_bid_max_price: Optional[float] = None):
         """
         :param str availability: Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-        :param float spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        :param float spot_bid_max_price: The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -2833,7 +2855,7 @@ class InstancePoolAzureAttributes(dict):
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -7409,13 +7431,12 @@ class JobTask(dict):
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param Sequence['JobTaskDependsOnArgs'] depends_ons: block specifying dependency(-ies) for a given task.
-        :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param str description: description for this task.
+        :param bool disable_auto_optimization: A flag to disable auto optimization in serverless tasks.
+        :param 'JobTaskEmailNotificationsArgs' email_notifications: An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         :param str environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param str existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param 'JobTaskHealthArgs' health: block described below that specifies health conditions for a given task.
-               
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param str job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param Sequence['JobTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
@@ -7426,6 +7447,8 @@ class JobTask(dict):
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -7516,20 +7539,23 @@ class JobTask(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        description for this task.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="disableAutoOptimization")
     def disable_auto_optimization(self) -> Optional[bool]:
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
         return pulumi.get(self, "disable_auto_optimization")
 
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.JobTaskEmailNotifications']:
         """
-        (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -7559,8 +7585,6 @@ class JobTask(dict):
     def health(self) -> Optional['outputs.JobTaskHealth']:
         """
         block described below that specifies health conditions for a given task.
-
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
@@ -7681,6 +7705,8 @@ class JobTask(dict):
     def webhook_notifications(self) -> Optional['outputs.JobTaskWebhookNotifications']:
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -8146,13 +8172,12 @@ class JobTaskForEachTaskTask(dict):
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param Sequence['JobTaskForEachTaskTaskDependsOnArgs'] depends_ons: block specifying dependency(-ies) for a given task.
-        :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        :param 'JobTaskForEachTaskTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param str description: description for this task.
+        :param bool disable_auto_optimization: A flag to disable auto optimization in serverless tasks.
+        :param 'JobTaskForEachTaskTaskEmailNotificationsArgs' email_notifications: An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         :param str environment_key: identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
         :param str existing_cluster_id: Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         :param 'JobTaskForEachTaskTaskHealthArgs' health: block described below that specifies health conditions for a given task.
-               
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         :param str job_cluster_key: Identifier of the Job cluster specified in the `job_cluster` block.
         :param Sequence['JobTaskForEachTaskTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
@@ -8163,6 +8188,8 @@ class JobTaskForEachTaskTask(dict):
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskForEachTaskTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+               
+               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -8251,20 +8278,23 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        description for this task.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="disableAutoOptimization")
     def disable_auto_optimization(self) -> Optional[bool]:
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
         return pulumi.get(self, "disable_auto_optimization")
 
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.JobTaskForEachTaskTaskEmailNotifications']:
         """
-        (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -8289,8 +8319,6 @@ class JobTaskForEachTaskTask(dict):
     def health(self) -> Optional['outputs.JobTaskForEachTaskTaskHealth']:
         """
         block described below that specifies health conditions for a given task.
-
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "health")
 
@@ -8411,6 +8439,8 @@ class JobTaskForEachTaskTask(dict):
     def webhook_notifications(self) -> Optional['outputs.JobTaskForEachTaskTaskWebhookNotifications']:
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -15331,6 +15361,53 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
 
 
 @pulumi.output_type
+class MetastoreDataAccessCloudflareApiToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "accountId":
+            suggest = "account_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreDataAccessCloudflareApiToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreDataAccessCloudflareApiToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreDataAccessCloudflareApiToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: str,
+                 account_id: str,
+                 secret_access_key: str):
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> str:
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
 class MetastoreDataAccessDatabricksGcpServiceAccount(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15911,6 +15988,8 @@ class ModelServingConfigServedEntityExternalModel(dict):
             suggest = "cohere_config"
         elif key == "databricksModelServingConfig":
             suggest = "databricks_model_serving_config"
+        elif key == "googleCloudVertexAiConfig":
+            suggest = "google_cloud_vertex_ai_config"
         elif key == "openaiConfig":
             suggest = "openai_config"
         elif key == "palmConfig":
@@ -15936,6 +16015,7 @@ class ModelServingConfigServedEntityExternalModel(dict):
                  anthropic_config: Optional['outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig'] = None,
                  cohere_config: Optional['outputs.ModelServingConfigServedEntityExternalModelCohereConfig'] = None,
                  databricks_model_serving_config: Optional['outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig'] = None,
+                 google_cloud_vertex_ai_config: Optional['outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig'] = None,
                  openai_config: Optional['outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig'] = None,
                  palm_config: Optional['outputs.ModelServingConfigServedEntityExternalModelPalmConfig'] = None):
         """
@@ -15963,6 +16043,8 @@ class ModelServingConfigServedEntityExternalModel(dict):
             pulumi.set(__self__, "cohere_config", cohere_config)
         if databricks_model_serving_config is not None:
             pulumi.set(__self__, "databricks_model_serving_config", databricks_model_serving_config)
+        if google_cloud_vertex_ai_config is not None:
+            pulumi.set(__self__, "google_cloud_vertex_ai_config", google_cloud_vertex_ai_config)
         if openai_config is not None:
             pulumi.set(__self__, "openai_config", openai_config)
         if palm_config is not None:
@@ -16033,6 +16115,11 @@ class ModelServingConfigServedEntityExternalModel(dict):
         return pulumi.get(self, "databricks_model_serving_config")
 
     @property
+    @pulumi.getter(name="googleCloudVertexAiConfig")
+    def google_cloud_vertex_ai_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig']:
+        return pulumi.get(self, "google_cloud_vertex_ai_config")
+
+    @property
     @pulumi.getter(name="openaiConfig")
     def openai_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig']:
         """
@@ -16056,6 +16143,8 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
         suggest = None
         if key == "ai21labsApiKey":
             suggest = "ai21labs_api_key"
+        elif key == "ai21labsApiKeyPlaintext":
+            suggest = "ai21labs_api_key_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelAi21labsConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16069,19 +16158,28 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ai21labs_api_key: str):
+                 ai21labs_api_key: Optional[str] = None,
+                 ai21labs_api_key_plaintext: Optional[str] = None):
         """
         :param str ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
         """
-        pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+        if ai21labs_api_key is not None:
+            pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+        if ai21labs_api_key_plaintext is not None:
+            pulumi.set(__self__, "ai21labs_api_key_plaintext", ai21labs_api_key_plaintext)
 
     @property
     @pulumi.getter(name="ai21labsApiKey")
-    def ai21labs_api_key(self) -> str:
+    def ai21labs_api_key(self) -> Optional[str]:
         """
         The Databricks secret key reference for an AI21Labs API key.
         """
         return pulumi.get(self, "ai21labs_api_key")
+
+    @property
+    @pulumi.getter(name="ai21labsApiKeyPlaintext")
+    def ai21labs_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "ai21labs_api_key_plaintext")
 
 
 @pulumi.output_type
@@ -16089,14 +16187,18 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsAccessKeyId":
-            suggest = "aws_access_key_id"
-        elif key == "awsRegion":
+        if key == "awsRegion":
             suggest = "aws_region"
-        elif key == "awsSecretAccessKey":
-            suggest = "aws_secret_access_key"
         elif key == "bedrockProvider":
             suggest = "bedrock_provider"
+        elif key == "awsAccessKeyId":
+            suggest = "aws_access_key_id"
+        elif key == "awsAccessKeyIdPlaintext":
+            suggest = "aws_access_key_id_plaintext"
+        elif key == "awsSecretAccessKey":
+            suggest = "aws_secret_access_key"
+        elif key == "awsSecretAccessKeyPlaintext":
+            suggest = "aws_secret_access_key_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelAmazonBedrockConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16110,28 +16212,28 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 aws_access_key_id: str,
                  aws_region: str,
-                 aws_secret_access_key: str,
-                 bedrock_provider: str):
+                 bedrock_provider: str,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_access_key_id_plaintext: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_secret_access_key_plaintext: Optional[str] = None):
         """
-        :param str aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
         :param str aws_region: The AWS region to use. Bedrock has to be enabled there.
-        :param str aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
         :param str bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        :param str aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        :param str aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
         """
-        pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         pulumi.set(__self__, "aws_region", aws_region)
-        pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
         pulumi.set(__self__, "bedrock_provider", bedrock_provider)
-
-    @property
-    @pulumi.getter(name="awsAccessKeyId")
-    def aws_access_key_id(self) -> str:
-        """
-        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-        """
-        return pulumi.get(self, "aws_access_key_id")
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_access_key_id_plaintext is not None:
+            pulumi.set(__self__, "aws_access_key_id_plaintext", aws_access_key_id_plaintext)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_secret_access_key_plaintext is not None:
+            pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
 
     @property
     @pulumi.getter(name="awsRegion")
@@ -16142,20 +16244,38 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
         return pulumi.get(self, "aws_region")
 
     @property
-    @pulumi.getter(name="awsSecretAccessKey")
-    def aws_secret_access_key(self) -> str:
-        """
-        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-        """
-        return pulumi.get(self, "aws_secret_access_key")
-
-    @property
     @pulumi.getter(name="bedrockProvider")
     def bedrock_provider(self) -> str:
         """
         The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
         """
         return pulumi.get(self, "bedrock_provider")
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsAccessKeyIdPlaintext")
+    def aws_access_key_id_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id_plaintext")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKeyPlaintext")
+    def aws_secret_access_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key_plaintext")
 
 
 @pulumi.output_type
@@ -16165,6 +16285,8 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
         suggest = None
         if key == "anthropicApiKey":
             suggest = "anthropic_api_key"
+        elif key == "anthropicApiKeyPlaintext":
+            suggest = "anthropic_api_key_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelAnthropicConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16178,21 +16300,30 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 anthropic_api_key: str):
+                 anthropic_api_key: Optional[str] = None,
+                 anthropic_api_key_plaintext: Optional[str] = None):
         """
         :param str anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
                The Databricks secret key reference for an Anthropic API key.
         """
-        pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+        if anthropic_api_key is not None:
+            pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+        if anthropic_api_key_plaintext is not None:
+            pulumi.set(__self__, "anthropic_api_key_plaintext", anthropic_api_key_plaintext)
 
     @property
     @pulumi.getter(name="anthropicApiKey")
-    def anthropic_api_key(self) -> str:
+    def anthropic_api_key(self) -> Optional[str]:
         """
         The Databricks secret key reference for an Anthropic API key.
         The Databricks secret key reference for an Anthropic API key.
         """
         return pulumi.get(self, "anthropic_api_key")
+
+    @property
+    @pulumi.getter(name="anthropicApiKeyPlaintext")
+    def anthropic_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "anthropic_api_key_plaintext")
 
 
 @pulumi.output_type
@@ -16200,8 +16331,12 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cohereApiKey":
+        if key == "cohereApiBase":
+            suggest = "cohere_api_base"
+        elif key == "cohereApiKey":
             suggest = "cohere_api_key"
+        elif key == "cohereApiKeyPlaintext":
+            suggest = "cohere_api_key_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelCohereConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16215,19 +16350,36 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cohere_api_key: str):
+                 cohere_api_base: Optional[str] = None,
+                 cohere_api_key: Optional[str] = None,
+                 cohere_api_key_plaintext: Optional[str] = None):
         """
         :param str cohere_api_key: The Databricks secret key reference for a Cohere API key.
         """
-        pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+        if cohere_api_base is not None:
+            pulumi.set(__self__, "cohere_api_base", cohere_api_base)
+        if cohere_api_key is not None:
+            pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+        if cohere_api_key_plaintext is not None:
+            pulumi.set(__self__, "cohere_api_key_plaintext", cohere_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="cohereApiBase")
+    def cohere_api_base(self) -> Optional[str]:
+        return pulumi.get(self, "cohere_api_base")
 
     @property
     @pulumi.getter(name="cohereApiKey")
-    def cohere_api_key(self) -> str:
+    def cohere_api_key(self) -> Optional[str]:
         """
         The Databricks secret key reference for a Cohere API key.
         """
         return pulumi.get(self, "cohere_api_key")
+
+    @property
+    @pulumi.getter(name="cohereApiKeyPlaintext")
+    def cohere_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "cohere_api_key_plaintext")
 
 
 @pulumi.output_type
@@ -16235,10 +16387,12 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "databricksApiToken":
-            suggest = "databricks_api_token"
-        elif key == "databricksWorkspaceUrl":
+        if key == "databricksWorkspaceUrl":
             suggest = "databricks_workspace_url"
+        elif key == "databricksApiToken":
+            suggest = "databricks_api_token"
+        elif key == "databricksApiTokenPlaintext":
+            suggest = "databricks_api_token_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16252,22 +16406,18 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 databricks_api_token: str,
-                 databricks_workspace_url: str):
+                 databricks_workspace_url: str,
+                 databricks_api_token: Optional[str] = None,
+                 databricks_api_token_plaintext: Optional[str] = None):
         """
-        :param str databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
         :param str databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        :param str databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
         """
-        pulumi.set(__self__, "databricks_api_token", databricks_api_token)
         pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
-
-    @property
-    @pulumi.getter(name="databricksApiToken")
-    def databricks_api_token(self) -> str:
-        """
-        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-        """
-        return pulumi.get(self, "databricks_api_token")
+        if databricks_api_token is not None:
+            pulumi.set(__self__, "databricks_api_token", databricks_api_token)
+        if databricks_api_token_plaintext is not None:
+            pulumi.set(__self__, "databricks_api_token_plaintext", databricks_api_token_plaintext)
 
     @property
     @pulumi.getter(name="databricksWorkspaceUrl")
@@ -16276,6 +16426,77 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
         The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
         """
         return pulumi.get(self, "databricks_workspace_url")
+
+    @property
+    @pulumi.getter(name="databricksApiToken")
+    def databricks_api_token(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        """
+        return pulumi.get(self, "databricks_api_token")
+
+    @property
+    @pulumi.getter(name="databricksApiTokenPlaintext")
+    def databricks_api_token_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "databricks_api_token_plaintext")
+
+
+@pulumi.output_type
+class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyPlaintext":
+            suggest = "private_key_plaintext"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key: Optional[str] = None,
+                 private_key_plaintext: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 region: Optional[str] = None):
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_plaintext is not None:
+            pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyPlaintext")
+    def private_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_plaintext")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -16287,12 +16508,16 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
             suggest = "microsoft_entra_client_id"
         elif key == "microsoftEntraClientSecret":
             suggest = "microsoft_entra_client_secret"
+        elif key == "microsoftEntraClientSecretPlaintext":
+            suggest = "microsoft_entra_client_secret_plaintext"
         elif key == "microsoftEntraTenantId":
             suggest = "microsoft_entra_tenant_id"
         elif key == "openaiApiBase":
             suggest = "openai_api_base"
         elif key == "openaiApiKey":
             suggest = "openai_api_key"
+        elif key == "openaiApiKeyPlaintext":
+            suggest = "openai_api_key_plaintext"
         elif key == "openaiApiType":
             suggest = "openai_api_type"
         elif key == "openaiApiVersion":
@@ -16316,9 +16541,11 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     def __init__(__self__, *,
                  microsoft_entra_client_id: Optional[str] = None,
                  microsoft_entra_client_secret: Optional[str] = None,
+                 microsoft_entra_client_secret_plaintext: Optional[str] = None,
                  microsoft_entra_tenant_id: Optional[str] = None,
                  openai_api_base: Optional[str] = None,
                  openai_api_key: Optional[str] = None,
+                 openai_api_key_plaintext: Optional[str] = None,
                  openai_api_type: Optional[str] = None,
                  openai_api_version: Optional[str] = None,
                  openai_deployment_name: Optional[str] = None,
@@ -16335,12 +16562,16 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
             pulumi.set(__self__, "microsoft_entra_client_id", microsoft_entra_client_id)
         if microsoft_entra_client_secret is not None:
             pulumi.set(__self__, "microsoft_entra_client_secret", microsoft_entra_client_secret)
+        if microsoft_entra_client_secret_plaintext is not None:
+            pulumi.set(__self__, "microsoft_entra_client_secret_plaintext", microsoft_entra_client_secret_plaintext)
         if microsoft_entra_tenant_id is not None:
             pulumi.set(__self__, "microsoft_entra_tenant_id", microsoft_entra_tenant_id)
         if openai_api_base is not None:
             pulumi.set(__self__, "openai_api_base", openai_api_base)
         if openai_api_key is not None:
             pulumi.set(__self__, "openai_api_key", openai_api_key)
+        if openai_api_key_plaintext is not None:
+            pulumi.set(__self__, "openai_api_key_plaintext", openai_api_key_plaintext)
         if openai_api_type is not None:
             pulumi.set(__self__, "openai_api_type", openai_api_type)
         if openai_api_version is not None:
@@ -16359,6 +16590,11 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @pulumi.getter(name="microsoftEntraClientSecret")
     def microsoft_entra_client_secret(self) -> Optional[str]:
         return pulumi.get(self, "microsoft_entra_client_secret")
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientSecretPlaintext")
+    def microsoft_entra_client_secret_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "microsoft_entra_client_secret_plaintext")
 
     @property
     @pulumi.getter(name="microsoftEntraTenantId")
@@ -16380,6 +16616,11 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
         The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
         """
         return pulumi.get(self, "openai_api_key")
+
+    @property
+    @pulumi.getter(name="openaiApiKeyPlaintext")
+    def openai_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_key_plaintext")
 
     @property
     @pulumi.getter(name="openaiApiType")
@@ -16421,6 +16662,8 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
         suggest = None
         if key == "palmApiKey":
             suggest = "palm_api_key"
+        elif key == "palmApiKeyPlaintext":
+            suggest = "palm_api_key_plaintext"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelPalmConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16434,19 +16677,28 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 palm_api_key: str):
+                 palm_api_key: Optional[str] = None,
+                 palm_api_key_plaintext: Optional[str] = None):
         """
         :param str palm_api_key: The Databricks secret key reference for a PaLM API key.
         """
-        pulumi.set(__self__, "palm_api_key", palm_api_key)
+        if palm_api_key is not None:
+            pulumi.set(__self__, "palm_api_key", palm_api_key)
+        if palm_api_key_plaintext is not None:
+            pulumi.set(__self__, "palm_api_key_plaintext", palm_api_key_plaintext)
 
     @property
     @pulumi.getter(name="palmApiKey")
-    def palm_api_key(self) -> str:
+    def palm_api_key(self) -> Optional[str]:
         """
         The Databricks secret key reference for a PaLM API key.
         """
         return pulumi.get(self, "palm_api_key")
+
+    @property
+    @pulumi.getter(name="palmApiKeyPlaintext")
+    def palm_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "palm_api_key_plaintext")
 
 
 @pulumi.output_type
@@ -18048,6 +18300,337 @@ class MwsWorkspacesToken(dict):
 
 
 @pulumi.output_type
+class NotificationDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "genericWebhook":
+            suggest = "generic_webhook"
+        elif key == "microsoftTeams":
+            suggest = "microsoft_teams"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: Optional['outputs.NotificationDestinationConfigEmail'] = None,
+                 generic_webhook: Optional['outputs.NotificationDestinationConfigGenericWebhook'] = None,
+                 microsoft_teams: Optional['outputs.NotificationDestinationConfigMicrosoftTeams'] = None,
+                 pagerduty: Optional['outputs.NotificationDestinationConfigPagerduty'] = None,
+                 slack: Optional['outputs.NotificationDestinationConfigSlack'] = None):
+        """
+        :param 'NotificationDestinationConfigEmailArgs' email: The email configuration of the Notification Destination. It must contain the following:
+        :param 'NotificationDestinationConfigGenericWebhookArgs' generic_webhook: The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        :param 'NotificationDestinationConfigMicrosoftTeamsArgs' microsoft_teams: The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        :param 'NotificationDestinationConfigPagerdutyArgs' pagerduty: The PagerDuty configuration of the Notification Destination. It must contain the following:
+        :param 'NotificationDestinationConfigSlackArgs' slack: The Slack configuration of the Notification Destination. It must contain the following:
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if generic_webhook is not None:
+            pulumi.set(__self__, "generic_webhook", generic_webhook)
+        if microsoft_teams is not None:
+            pulumi.set(__self__, "microsoft_teams", microsoft_teams)
+        if pagerduty is not None:
+            pulumi.set(__self__, "pagerduty", pagerduty)
+        if slack is not None:
+            pulumi.set(__self__, "slack", slack)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional['outputs.NotificationDestinationConfigEmail']:
+        """
+        The email configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="genericWebhook")
+    def generic_webhook(self) -> Optional['outputs.NotificationDestinationConfigGenericWebhook']:
+        """
+        The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "generic_webhook")
+
+    @property
+    @pulumi.getter(name="microsoftTeams")
+    def microsoft_teams(self) -> Optional['outputs.NotificationDestinationConfigMicrosoftTeams']:
+        """
+        The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "microsoft_teams")
+
+    @property
+    @pulumi.getter
+    def pagerduty(self) -> Optional['outputs.NotificationDestinationConfigPagerduty']:
+        """
+        The PagerDuty configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "pagerduty")
+
+    @property
+    @pulumi.getter
+    def slack(self) -> Optional['outputs.NotificationDestinationConfigSlack']:
+        """
+        The Slack configuration of the Notification Destination. It must contain the following:
+        """
+        return pulumi.get(self, "slack")
+
+
+@pulumi.output_type
+class NotificationDestinationConfigEmail(dict):
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] addresses: The list of email addresses to send notifications to.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence[str]]:
+        """
+        The list of email addresses to send notifications to.
+        """
+        return pulumi.get(self, "addresses")
+
+
+@pulumi.output_type
+class NotificationDestinationConfigGenericWebhook(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordSet":
+            suggest = "password_set"
+        elif key == "urlSet":
+            suggest = "url_set"
+        elif key == "usernameSet":
+            suggest = "username_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationDestinationConfigGenericWebhook. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationDestinationConfigGenericWebhook.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationDestinationConfigGenericWebhook.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 password_set: Optional[bool] = None,
+                 url: Optional[str] = None,
+                 url_set: Optional[bool] = None,
+                 username: Optional[str] = None,
+                 username_set: Optional[bool] = None):
+        """
+        :param str password: The password for basic authentication.
+               
+               > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        :param str url: The Generic Webhook URL.
+        :param str username: The username for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_set is not None:
+            pulumi.set(__self__, "password_set", password_set)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_set is not None:
+            pulumi.set(__self__, "username_set", username_set)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password for basic authentication.
+
+        > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> Optional[bool]:
+        return pulumi.get(self, "password_set")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The Generic Webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[bool]:
+        return pulumi.get(self, "url_set")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username for basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameSet")
+    def username_set(self) -> Optional[bool]:
+        return pulumi.get(self, "username_set")
+
+
+@pulumi.output_type
+class NotificationDestinationConfigMicrosoftTeams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlSet":
+            suggest = "url_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationDestinationConfigMicrosoftTeams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationDestinationConfigMicrosoftTeams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationDestinationConfigMicrosoftTeams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 url: Optional[str] = None,
+                 url_set: Optional[bool] = None):
+        """
+        :param str url: The Microsoft Teams webhook URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The Microsoft Teams webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[bool]:
+        return pulumi.get(self, "url_set")
+
+
+@pulumi.output_type
+class NotificationDestinationConfigPagerduty(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationKey":
+            suggest = "integration_key"
+        elif key == "integrationKeySet":
+            suggest = "integration_key_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationDestinationConfigPagerduty. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationDestinationConfigPagerduty.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationDestinationConfigPagerduty.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 integration_key: Optional[str] = None,
+                 integration_key_set: Optional[bool] = None):
+        """
+        :param str integration_key: The PagerDuty integration key.
+        """
+        if integration_key is not None:
+            pulumi.set(__self__, "integration_key", integration_key)
+        if integration_key_set is not None:
+            pulumi.set(__self__, "integration_key_set", integration_key_set)
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> Optional[str]:
+        """
+        The PagerDuty integration key.
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter(name="integrationKeySet")
+    def integration_key_set(self) -> Optional[bool]:
+        return pulumi.get(self, "integration_key_set")
+
+
+@pulumi.output_type
+class NotificationDestinationConfigSlack(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlSet":
+            suggest = "url_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationDestinationConfigSlack. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationDestinationConfigSlack.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationDestinationConfigSlack.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 url: Optional[str] = None,
+                 url_set: Optional[bool] = None):
+        """
+        :param str url: The Slack webhook URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if url_set is not None:
+            pulumi.set(__self__, "url_set", url_set)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="urlSet")
+    def url_set(self) -> Optional[bool]:
+        return pulumi.get(self, "url_set")
+
+
+@pulumi.output_type
 class OnlineTableSpec(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18950,24 +19533,22 @@ class PipelineClusterAutoscale(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 max_workers: Optional[int] = None,
-                 min_workers: Optional[int] = None,
+                 max_workers: int,
+                 min_workers: int,
                  mode: Optional[str] = None):
-        if max_workers is not None:
-            pulumi.set(__self__, "max_workers", max_workers)
-        if min_workers is not None:
-            pulumi.set(__self__, "min_workers", min_workers)
+        pulumi.set(__self__, "max_workers", max_workers)
+        pulumi.set(__self__, "min_workers", min_workers)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[int]:
+    def max_workers(self) -> int:
         return pulumi.get(self, "max_workers")
 
     @property
     @pulumi.getter(name="minWorkers")
-    def min_workers(self) -> Optional[int]:
+    def min_workers(self) -> int:
         return pulumi.get(self, "min_workers")
 
     @property
@@ -18983,8 +19564,12 @@ class PipelineClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -19010,7 +19595,9 @@ class PipelineClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -19020,8 +19607,12 @@ class PipelineClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -19044,9 +19635,19 @@ class PipelineClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -19081,6 +19682,8 @@ class PipelineClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -19098,11 +19701,14 @@ class PipelineClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.PipelineClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -19117,9 +19723,54 @@ class PipelineClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.PipelineClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class PipelineClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
 
 
 @pulumi.output_type
@@ -19535,6 +20186,10 @@ class PipelineDeployment(dict):
     def __init__(__self__, *,
                  kind: Optional[str] = None,
                  metadata_file_path: Optional[str] = None):
+        """
+        :param str kind: The deployment method that manages the pipeline.
+        :param str metadata_file_path: The path to the file containing metadata about the deployment.
+        """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if metadata_file_path is not None:
@@ -19543,11 +20198,17 @@ class PipelineDeployment(dict):
     @property
     @pulumi.getter
     def kind(self) -> Optional[str]:
+        """
+        The deployment method that manages the pipeline.
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter(name="metadataFilePath")
     def metadata_file_path(self) -> Optional[str]:
+        """
+        The path to the file containing metadata about the deployment.
+        """
         return pulumi.get(self, "metadata_file_path")
 
 
@@ -19556,6 +20217,10 @@ class PipelineFilters(dict):
     def __init__(__self__, *,
                  excludes: Optional[Sequence[str]] = None,
                  includes: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] excludes: Paths to exclude.
+        :param Sequence[str] includes: Paths to include.
+        """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
@@ -19564,12 +20229,533 @@ class PipelineFilters(dict):
     @property
     @pulumi.getter
     def excludes(self) -> Optional[Sequence[str]]:
+        """
+        Paths to exclude.
+        """
         return pulumi.get(self, "excludes")
 
     @property
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
+        """
+        Paths to include.
+        """
         return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class PipelineGatewayDefinition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "gatewayStorageCatalog":
+            suggest = "gateway_storage_catalog"
+        elif key == "gatewayStorageName":
+            suggest = "gateway_storage_name"
+        elif key == "gatewayStorageSchema":
+            suggest = "gateway_storage_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineGatewayDefinition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineGatewayDefinition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineGatewayDefinition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: Optional[str] = None,
+                 gateway_storage_catalog: Optional[str] = None,
+                 gateway_storage_name: Optional[str] = None,
+                 gateway_storage_schema: Optional[str] = None):
+        """
+        :param str connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        :param str gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        :param str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        :param str gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if gateway_storage_catalog is not None:
+            pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
+        if gateway_storage_name is not None:
+            pulumi.set(__self__, "gateway_storage_name", gateway_storage_name)
+        if gateway_storage_schema is not None:
+            pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[str]:
+        """
+        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="gatewayStorageCatalog")
+    def gateway_storage_catalog(self) -> Optional[str]:
+        """
+        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_catalog")
+
+    @property
+    @pulumi.getter(name="gatewayStorageName")
+    def gateway_storage_name(self) -> Optional[str]:
+        """
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        """
+        return pulumi.get(self, "gateway_storage_name")
+
+    @property
+    @pulumi.getter(name="gatewayStorageSchema")
+    def gateway_storage_schema(self) -> Optional[str]:
+        """
+        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_schema")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionName":
+            suggest = "connection_name"
+        elif key == "ingestionGatewayId":
+            suggest = "ingestion_gateway_id"
+        elif key == "tableConfiguration":
+            suggest = "table_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_name: Optional[str] = None,
+                 ingestion_gateway_id: Optional[str] = None,
+                 objects: Optional[Sequence['outputs.PipelineIngestionDefinitionObject']] = None,
+                 table_configuration: Optional['outputs.PipelineIngestionDefinitionTableConfiguration'] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+        if ingestion_gateway_id is not None:
+            pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
+        if objects is not None:
+            pulumi.set(__self__, "objects", objects)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[str]:
+        return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="ingestionGatewayId")
+    def ingestion_gateway_id(self) -> Optional[str]:
+        return pulumi.get(self, "ingestion_gateway_id")
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Optional[Sequence['outputs.PipelineIngestionDefinitionObject']]:
+        return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional['outputs.PipelineIngestionDefinitionTableConfiguration']:
+        return pulumi.get(self, "table_configuration")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObject(dict):
+    def __init__(__self__, *,
+                 schema: Optional['outputs.PipelineIngestionDefinitionObjectSchema'] = None,
+                 table: Optional['outputs.PipelineIngestionDefinitionObjectTable'] = None):
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchema']:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTable']:
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCatalog":
+            suggest = "destination_catalog"
+        elif key == "destinationSchema":
+            suggest = "destination_schema"
+        elif key == "sourceCatalog":
+            suggest = "source_catalog"
+        elif key == "sourceSchema":
+            suggest = "source_schema"
+        elif key == "tableConfiguration":
+            suggest = "table_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_catalog: Optional[str] = None,
+                 destination_schema: Optional[str] = None,
+                 source_catalog: Optional[str] = None,
+                 source_schema: Optional[str] = None,
+                 table_configuration: Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration'] = None):
+        if destination_catalog is not None:
+            pulumi.set(__self__, "destination_catalog", destination_catalog)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="destinationCatalog")
+    def destination_catalog(self) -> Optional[str]:
+        return pulumi.get(self, "destination_catalog")
+
+    @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[str]:
+        return pulumi.get(self, "destination_schema")
+
+    @property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[str]:
+        return pulumi.get(self, "source_catalog")
+
+    @property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> Optional[str]:
+        return pulumi.get(self, "source_schema")
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration']:
+        return pulumi.get(self, "table_configuration")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryKeys":
+            suggest = "primary_keys"
+        elif key == "salesforceIncludeFormulaFields":
+            suggest = "salesforce_include_formula_fields"
+        elif key == "scdType":
+            suggest = "scd_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaTableConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_keys: Optional[Sequence[str]] = None,
+                 salesforce_include_formula_fields: Optional[bool] = None,
+                 scd_type: Optional[str] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[bool]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[str]:
+        return pulumi.get(self, "scd_type")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCatalog":
+            suggest = "destination_catalog"
+        elif key == "destinationSchema":
+            suggest = "destination_schema"
+        elif key == "destinationTable":
+            suggest = "destination_table"
+        elif key == "sourceCatalog":
+            suggest = "source_catalog"
+        elif key == "sourceSchema":
+            suggest = "source_schema"
+        elif key == "sourceTable":
+            suggest = "source_table"
+        elif key == "tableConfiguration":
+            suggest = "table_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_catalog: Optional[str] = None,
+                 destination_schema: Optional[str] = None,
+                 destination_table: Optional[str] = None,
+                 source_catalog: Optional[str] = None,
+                 source_schema: Optional[str] = None,
+                 source_table: Optional[str] = None,
+                 table_configuration: Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfiguration'] = None):
+        if destination_catalog is not None:
+            pulumi.set(__self__, "destination_catalog", destination_catalog)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
+        if destination_table is not None:
+            pulumi.set(__self__, "destination_table", destination_table)
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+        if source_schema is not None:
+            pulumi.set(__self__, "source_schema", source_schema)
+        if source_table is not None:
+            pulumi.set(__self__, "source_table", source_table)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="destinationCatalog")
+    def destination_catalog(self) -> Optional[str]:
+        return pulumi.get(self, "destination_catalog")
+
+    @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[str]:
+        return pulumi.get(self, "destination_schema")
+
+    @property
+    @pulumi.getter(name="destinationTable")
+    def destination_table(self) -> Optional[str]:
+        return pulumi.get(self, "destination_table")
+
+    @property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[str]:
+        return pulumi.get(self, "source_catalog")
+
+    @property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> Optional[str]:
+        return pulumi.get(self, "source_schema")
+
+    @property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> Optional[str]:
+        return pulumi.get(self, "source_table")
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfiguration']:
+        return pulumi.get(self, "table_configuration")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryKeys":
+            suggest = "primary_keys"
+        elif key == "salesforceIncludeFormulaFields":
+            suggest = "salesforce_include_formula_fields"
+        elif key == "scdType":
+            suggest = "scd_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableTableConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_keys: Optional[Sequence[str]] = None,
+                 salesforce_include_formula_fields: Optional[bool] = None,
+                 scd_type: Optional[str] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[bool]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[str]:
+        return pulumi.get(self, "scd_type")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionTableConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryKeys":
+            suggest = "primary_keys"
+        elif key == "salesforceIncludeFormulaFields":
+            suggest = "salesforce_include_formula_fields"
+        elif key == "scdType":
+            suggest = "scd_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionTableConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionTableConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionTableConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_keys: Optional[Sequence[str]] = None,
+                 salesforce_include_formula_fields: Optional[bool] = None,
+                 scd_type: Optional[str] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[bool]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[str]:
+        return pulumi.get(self, "scd_type")
+
+
+@pulumi.output_type
+class PipelineLatestUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creationTime":
+            suggest = "creation_time"
+        elif key == "updateId":
+            suggest = "update_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineLatestUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineLatestUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineLatestUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 creation_time: Optional[str] = None,
+                 state: Optional[str] = None,
+                 update_id: Optional[str] = None):
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_id is not None:
+            pulumi.set(__self__, "update_id", update_id)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[str]:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateId")
+    def update_id(self) -> Optional[str]:
+        return pulumi.get(self, "update_id")
 
 
 @pulumi.output_type
@@ -19613,6 +20799,7 @@ class PipelineLibrary(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The 'whl' field is deprecated""")
     def whl(self) -> Optional[str]:
         return pulumi.get(self, "whl")
 
@@ -19620,12 +20807,13 @@ class PipelineLibrary(dict):
 @pulumi.output_type
 class PipelineLibraryFile(dict):
     def __init__(__self__, *,
-                 path: str):
-        pulumi.set(__self__, "path", path)
+                 path: Optional[str] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> Optional[str]:
         return pulumi.get(self, "path")
 
 
@@ -19660,12 +20848,13 @@ class PipelineLibraryMaven(dict):
 @pulumi.output_type
 class PipelineLibraryNotebook(dict):
     def __init__(__self__, *,
-                 path: str):
-        pulumi.set(__self__, "path", path)
+                 path: Optional[str] = None):
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> Optional[str]:
         return pulumi.get(self, "path")
 
 
@@ -19689,8 +20878,8 @@ class PipelineNotification(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alerts: Sequence[str],
-                 email_recipients: Sequence[str]):
+                 alerts: Optional[Sequence[str]] = None,
+                 email_recipients: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] alerts: non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
                * `on-update-success` - a pipeline update completes successfully.
@@ -19699,12 +20888,14 @@ class PipelineNotification(dict):
                * `on-flow-failure` - a single data flow fails.
         :param Sequence[str] email_recipients: non-empty list of emails to notify.
         """
-        pulumi.set(__self__, "alerts", alerts)
-        pulumi.set(__self__, "email_recipients", email_recipients)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if email_recipients is not None:
+            pulumi.set(__self__, "email_recipients", email_recipients)
 
     @property
     @pulumi.getter
-    def alerts(self) -> Sequence[str]:
+    def alerts(self) -> Optional[Sequence[str]]:
         """
         non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
         * `on-update-success` - a pipeline update completes successfully.
@@ -19716,11 +20907,78 @@ class PipelineNotification(dict):
 
     @property
     @pulumi.getter(name="emailRecipients")
-    def email_recipients(self) -> Sequence[str]:
+    def email_recipients(self) -> Optional[Sequence[str]]:
         """
         non-empty list of emails to notify.
         """
         return pulumi.get(self, "email_recipients")
+
+
+@pulumi.output_type
+class PipelineTrigger(dict):
+    def __init__(__self__, *,
+                 cron: Optional['outputs.PipelineTriggerCron'] = None,
+                 manual: Optional['outputs.PipelineTriggerManual'] = None):
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional['outputs.PipelineTriggerCron']:
+        return pulumi.get(self, "cron")
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional['outputs.PipelineTriggerManual']:
+        return pulumi.get(self, "manual")
+
+
+@pulumi.output_type
+class PipelineTriggerCron(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quartzCronSchedule":
+            suggest = "quartz_cron_schedule"
+        elif key == "timezoneId":
+            suggest = "timezone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineTriggerCron. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineTriggerCron.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineTriggerCron.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 quartz_cron_schedule: Optional[str] = None,
+                 timezone_id: Optional[str] = None):
+        if quartz_cron_schedule is not None:
+            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @property
+    @pulumi.getter(name="quartzCronSchedule")
+    def quartz_cron_schedule(self) -> Optional[str]:
+        return pulumi.get(self, "quartz_cron_schedule")
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> Optional[str]:
+        return pulumi.get(self, "timezone_id")
+
+
+@pulumi.output_type
+class PipelineTriggerManual(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -22074,6 +23332,71 @@ class StorageCredentialAzureServicePrincipal(dict):
 
 
 @pulumi.output_type
+class StorageCredentialCloudflareApiToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "accountId":
+            suggest = "account_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageCredentialCloudflareApiToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageCredentialCloudflareApiToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageCredentialCloudflareApiToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: str,
+                 account_id: str,
+                 secret_access_key: str):
+        """
+        :param str access_key_id: R2 API token access key ID
+        :param str account_id: R2 account ID
+        :param str secret_access_key: R2 API token secret access key
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        """
+        R2 API token access key ID
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        R2 account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> str:
+        """
+        R2 API token secret access key
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        """
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
 class StorageCredentialDatabricksGcpServiceAccount(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -22098,7 +23421,7 @@ class StorageCredentialDatabricksGcpServiceAccount(dict):
         """
         :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
                
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+               `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -22116,7 +23439,7 @@ class StorageCredentialDatabricksGcpServiceAccount(dict):
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
 
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         return pulumi.get(self, "email")
 
@@ -22149,7 +23472,7 @@ class StorageCredentialGcpServiceAccountKey(dict):
         """
         :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
                
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+               `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
@@ -22161,7 +23484,7 @@ class StorageCredentialGcpServiceAccountKey(dict):
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
 
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
         """
         return pulumi.get(self, "email")
 

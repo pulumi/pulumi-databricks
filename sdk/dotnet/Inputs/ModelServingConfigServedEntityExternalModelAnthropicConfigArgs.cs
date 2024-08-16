@@ -16,8 +16,11 @@ namespace Pulumi.Databricks.Inputs
         /// The Databricks secret key reference for an Anthropic API key.
         /// The Databricks secret key reference for an Anthropic API key.
         /// </summary>
-        [Input("anthropicApiKey", required: true)]
-        public Input<string> AnthropicApiKey { get; set; } = null!;
+        [Input("anthropicApiKey")]
+        public Input<string>? AnthropicApiKey { get; set; }
+
+        [Input("anthropicApiKeyPlaintext")]
+        public Input<string>? AnthropicApiKeyPlaintext { get; set; }
 
         public ModelServingConfigServedEntityExternalModelAnthropicConfigArgs()
         {

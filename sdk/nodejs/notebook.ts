@@ -75,6 +75,10 @@ export class Notebook extends pulumi.CustomResource {
      * Routable URL of the notebook
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
 
     /**
      * Create a Notebook resource with the given unique name, arguments, and options.
@@ -98,6 +102,7 @@ export class Notebook extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
         } else {
             const args = argsOrState as NotebookArgs | undefined;
             if ((!args || args.path === undefined) && !opts.urn) {
@@ -112,6 +117,7 @@ export class Notebook extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["url"] = undefined /*out*/;
+            resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Notebook.__pulumiType, name, resourceInputs, opts);
@@ -152,6 +158,10 @@ export interface NotebookState {
      * Routable URL of the notebook
      */
     url?: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    workspacePath?: pulumi.Input<string>;
 }
 
 /**

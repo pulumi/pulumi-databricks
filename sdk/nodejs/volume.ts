@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const some = new databricks.ExternalLocation("some", {
- *     name: "external-location",
+ *     name: "external_location",
  *     url: `s3://${externalAwsS3Bucket.id}/some`,
  *     credentialName: external.name,
  * });

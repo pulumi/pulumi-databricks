@@ -109,6 +109,7 @@ from .mws_storage_configurations import *
 from .mws_vpc_endpoint import *
 from .mws_workspaces import *
 from .notebook import *
+from .notification_destination import *
 from .obo_token import *
 from .online_table import *
 from .permission_assignment import *
@@ -585,6 +586,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/notebook:Notebook": "Notebook"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/notificationDestination",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/notificationDestination:NotificationDestination": "NotificationDestination"
   }
  },
  {

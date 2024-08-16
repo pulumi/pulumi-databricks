@@ -76,6 +76,10 @@ export interface GetUserResult {
      */
     readonly aclPrincipalId: string;
     /**
+     * Whether the user is active.
+     */
+    readonly active: boolean;
+    /**
      * Alphanumeric representation of user local name. e.g. `mrFoo`.
      */
     readonly alphanumeric: string;

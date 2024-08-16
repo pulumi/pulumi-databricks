@@ -21,7 +21,7 @@ class MetastoreAssignmentArgs:
         The set of arguments for constructing a MetastoreAssignment resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
-        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
+        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         pulumi.set(__self__, "metastore_id", metastore_id)
         pulumi.set(__self__, "workspace_id", workspace_id)
@@ -56,7 +56,7 @@ class MetastoreAssignmentArgs:
     @pulumi.getter(name="defaultCatalogName")
     def default_catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Default catalog used for this assignment, default to `hive_metastore`
+        Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         return pulumi.get(self, "default_catalog_name")
 
@@ -73,7 +73,7 @@ class _MetastoreAssignmentState:
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreAssignment resources.
-        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
+        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
@@ -88,7 +88,7 @@ class _MetastoreAssignmentState:
     @pulumi.getter(name="defaultCatalogName")
     def default_catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Default catalog used for this assignment, default to `hive_metastore`
+        Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         return pulumi.get(self, "default_catalog_name")
 
@@ -164,7 +164,7 @@ class MetastoreAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
+        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
@@ -260,7 +260,7 @@ class MetastoreAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
+        :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
@@ -277,7 +277,7 @@ class MetastoreAssignment(pulumi.CustomResource):
     @pulumi.getter(name="defaultCatalogName")
     def default_catalog_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Default catalog used for this assignment, default to `hive_metastore`
+        Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         return pulumi.get(self, "default_catalog_name")
 

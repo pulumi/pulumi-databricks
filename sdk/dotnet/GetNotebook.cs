@@ -169,6 +169,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ObjectType;
         public readonly string Path;
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        public readonly string WorkspacePath;
 
         [OutputConstructor]
         private GetNotebookResult(
@@ -184,7 +188,9 @@ namespace Pulumi.Databricks
 
             string objectType,
 
-            string path)
+            string path,
+
+            string workspacePath)
         {
             Content = content;
             Format = format;
@@ -193,6 +199,7 @@ namespace Pulumi.Databricks
             ObjectId = objectId;
             ObjectType = objectType;
             Path = path;
+            WorkspacePath = workspacePath;
         }
     }
 }

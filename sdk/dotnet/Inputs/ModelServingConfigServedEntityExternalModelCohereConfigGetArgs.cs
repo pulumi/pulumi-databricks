@@ -12,11 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelCohereConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cohereApiBase")]
+        public Input<string>? CohereApiBase { get; set; }
+
         /// <summary>
         /// The Databricks secret key reference for a Cohere API key.
         /// </summary>
-        [Input("cohereApiKey", required: true)]
-        public Input<string> CohereApiKey { get; set; } = null!;
+        [Input("cohereApiKey")]
+        public Input<string>? CohereApiKey { get; set; }
+
+        [Input("cohereApiKeyPlaintext")]
+        public Input<string>? CohereApiKeyPlaintext { get; set; }
 
         public ModelServingConfigServedEntityExternalModelCohereConfigGetArgs()
         {

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -14,7 +16,8 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
      * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      * 
      */
-    private String databricksApiToken;
+    private @Nullable String databricksApiToken;
+    private @Nullable String databricksApiTokenPlaintext;
     /**
      * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
      * 
@@ -26,8 +29,11 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
      * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      * 
      */
-    public String databricksApiToken() {
-        return this.databricksApiToken;
+    public Optional<String> databricksApiToken() {
+        return Optional.ofNullable(this.databricksApiToken);
+    }
+    public Optional<String> databricksApiTokenPlaintext() {
+        return Optional.ofNullable(this.databricksApiTokenPlaintext);
     }
     /**
      * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
@@ -46,21 +52,27 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
     }
     @CustomType.Builder
     public static final class Builder {
-        private String databricksApiToken;
+        private @Nullable String databricksApiToken;
+        private @Nullable String databricksApiTokenPlaintext;
         private String databricksWorkspaceUrl;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databricksApiToken = defaults.databricksApiToken;
+    	      this.databricksApiTokenPlaintext = defaults.databricksApiTokenPlaintext;
     	      this.databricksWorkspaceUrl = defaults.databricksWorkspaceUrl;
         }
 
         @CustomType.Setter
-        public Builder databricksApiToken(String databricksApiToken) {
-            if (databricksApiToken == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig", "databricksApiToken");
-            }
+        public Builder databricksApiToken(@Nullable String databricksApiToken) {
+
             this.databricksApiToken = databricksApiToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databricksApiTokenPlaintext(@Nullable String databricksApiTokenPlaintext) {
+
+            this.databricksApiTokenPlaintext = databricksApiTokenPlaintext;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +86,7 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
         public ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig();
             _resultValue.databricksApiToken = databricksApiToken;
+            _resultValue.databricksApiTokenPlaintext = databricksApiTokenPlaintext;
             _resultValue.databricksWorkspaceUrl = databricksWorkspaceUrl;
             return _resultValue;
         }

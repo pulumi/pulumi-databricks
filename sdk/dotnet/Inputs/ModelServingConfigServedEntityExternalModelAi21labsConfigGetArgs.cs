@@ -15,8 +15,11 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The Databricks secret key reference for an AI21Labs API key.
         /// </summary>
-        [Input("ai21labsApiKey", required: true)]
-        public Input<string> Ai21labsApiKey { get; set; } = null!;
+        [Input("ai21labsApiKey")]
+        public Input<string>? Ai21labsApiKey { get; set; }
+
+        [Input("ai21labsApiKeyPlaintext")]
+        public Input<string>? Ai21labsApiKeyPlaintext { get; set; }
 
         public ModelServingConfigServedEntityExternalModelAi21labsConfigGetArgs()
         {

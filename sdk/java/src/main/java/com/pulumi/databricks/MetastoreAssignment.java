@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/metastoreAssignment:MetastoreAssignment")
 public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * Default catalog used for this assignment, default to `hive_metastore`
+     * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
      */
     @Export(name="defaultCatalogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCatalogName;
 
     /**
-     * @return Default catalog used for this assignment, default to `hive_metastore`
+     * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
      */
     public Output<Optional<String>> defaultCatalogName() {

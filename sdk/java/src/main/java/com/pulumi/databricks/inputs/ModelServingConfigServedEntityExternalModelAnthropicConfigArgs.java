@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,22 +20,30 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
      * The Databricks secret key reference for an Anthropic API key.
      * 
      */
-    @Import(name="anthropicApiKey", required=true)
-    private Output<String> anthropicApiKey;
+    @Import(name="anthropicApiKey")
+    private @Nullable Output<String> anthropicApiKey;
 
     /**
      * @return The Databricks secret key reference for an Anthropic API key.
      * The Databricks secret key reference for an Anthropic API key.
      * 
      */
-    public Output<String> anthropicApiKey() {
-        return this.anthropicApiKey;
+    public Optional<Output<String>> anthropicApiKey() {
+        return Optional.ofNullable(this.anthropicApiKey);
+    }
+
+    @Import(name="anthropicApiKeyPlaintext")
+    private @Nullable Output<String> anthropicApiKeyPlaintext;
+
+    public Optional<Output<String>> anthropicApiKeyPlaintext() {
+        return Optional.ofNullable(this.anthropicApiKeyPlaintext);
     }
 
     private ModelServingConfigServedEntityExternalModelAnthropicConfigArgs() {}
 
     private ModelServingConfigServedEntityExternalModelAnthropicConfigArgs(ModelServingConfigServedEntityExternalModelAnthropicConfigArgs $) {
         this.anthropicApiKey = $.anthropicApiKey;
+        this.anthropicApiKeyPlaintext = $.anthropicApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -62,7 +71,7 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
          * @return builder
          * 
          */
-        public Builder anthropicApiKey(Output<String> anthropicApiKey) {
+        public Builder anthropicApiKey(@Nullable Output<String> anthropicApiKey) {
             $.anthropicApiKey = anthropicApiKey;
             return this;
         }
@@ -78,10 +87,16 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
             return anthropicApiKey(Output.of(anthropicApiKey));
         }
 
+        public Builder anthropicApiKeyPlaintext(@Nullable Output<String> anthropicApiKeyPlaintext) {
+            $.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
+            return this;
+        }
+
+        public Builder anthropicApiKeyPlaintext(String anthropicApiKeyPlaintext) {
+            return anthropicApiKeyPlaintext(Output.of(anthropicApiKeyPlaintext));
+        }
+
         public ModelServingConfigServedEntityExternalModelAnthropicConfigArgs build() {
-            if ($.anthropicApiKey == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAnthropicConfigArgs", "anthropicApiKey");
-            }
             return $;
         }
     }

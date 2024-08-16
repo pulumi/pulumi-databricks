@@ -44,7 +44,7 @@ class SqlTableArgs:
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
@@ -213,7 +213,7 @@ class SqlTableArgs:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 
@@ -311,7 +311,7 @@ class _SqlTableState:
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -461,7 +461,7 @@ class _SqlTableState:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 
@@ -603,7 +603,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -740,7 +740,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
@@ -842,7 +842,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 

@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,21 +19,29 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
      * The Databricks secret key reference for a PaLM API key.
      * 
      */
-    @Import(name="palmApiKey", required=true)
-    private Output<String> palmApiKey;
+    @Import(name="palmApiKey")
+    private @Nullable Output<String> palmApiKey;
 
     /**
      * @return The Databricks secret key reference for a PaLM API key.
      * 
      */
-    public Output<String> palmApiKey() {
-        return this.palmApiKey;
+    public Optional<Output<String>> palmApiKey() {
+        return Optional.ofNullable(this.palmApiKey);
+    }
+
+    @Import(name="palmApiKeyPlaintext")
+    private @Nullable Output<String> palmApiKeyPlaintext;
+
+    public Optional<Output<String>> palmApiKeyPlaintext() {
+        return Optional.ofNullable(this.palmApiKeyPlaintext);
     }
 
     private ModelServingConfigServedEntityExternalModelPalmConfigArgs() {}
 
     private ModelServingConfigServedEntityExternalModelPalmConfigArgs(ModelServingConfigServedEntityExternalModelPalmConfigArgs $) {
         this.palmApiKey = $.palmApiKey;
+        this.palmApiKeyPlaintext = $.palmApiKeyPlaintext;
     }
 
     public static Builder builder() {
@@ -59,7 +68,7 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
          * @return builder
          * 
          */
-        public Builder palmApiKey(Output<String> palmApiKey) {
+        public Builder palmApiKey(@Nullable Output<String> palmApiKey) {
             $.palmApiKey = palmApiKey;
             return this;
         }
@@ -74,10 +83,16 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
             return palmApiKey(Output.of(palmApiKey));
         }
 
+        public Builder palmApiKeyPlaintext(@Nullable Output<String> palmApiKeyPlaintext) {
+            $.palmApiKeyPlaintext = palmApiKeyPlaintext;
+            return this;
+        }
+
+        public Builder palmApiKeyPlaintext(String palmApiKeyPlaintext) {
+            return palmApiKeyPlaintext(Output.of(palmApiKeyPlaintext));
+        }
+
         public ModelServingConfigServedEntityExternalModelPalmConfigArgs build() {
-            if ($.palmApiKey == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelPalmConfigArgs", "palmApiKey");
-            }
             return $;
         }
     }

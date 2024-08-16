@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         [Output("partitions")]
         public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -373,7 +373,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         public InputList<string> Partitions
         {

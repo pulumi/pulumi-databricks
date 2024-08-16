@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModel
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelCohereConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
+import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelPalmConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -44,6 +45,7 @@ public final class ModelServingConfigServedEntityExternalModel {
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig databricksModelServingConfig;
+    private @Nullable ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig googleCloudVertexAiConfig;
     /**
      * @return The name of the external model.
      * 
@@ -106,6 +108,9 @@ public final class ModelServingConfigServedEntityExternalModel {
     public Optional<ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfig() {
         return Optional.ofNullable(this.databricksModelServingConfig);
     }
+    public Optional<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfig() {
+        return Optional.ofNullable(this.googleCloudVertexAiConfig);
+    }
     /**
      * @return The name of the external model.
      * 
@@ -156,6 +161,7 @@ public final class ModelServingConfigServedEntityExternalModel {
         private @Nullable ModelServingConfigServedEntityExternalModelAnthropicConfig anthropicConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig databricksModelServingConfig;
+        private @Nullable ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig googleCloudVertexAiConfig;
         private String name;
         private @Nullable ModelServingConfigServedEntityExternalModelOpenaiConfig openaiConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelPalmConfig palmConfig;
@@ -169,6 +175,7 @@ public final class ModelServingConfigServedEntityExternalModel {
     	      this.anthropicConfig = defaults.anthropicConfig;
     	      this.cohereConfig = defaults.cohereConfig;
     	      this.databricksModelServingConfig = defaults.databricksModelServingConfig;
+    	      this.googleCloudVertexAiConfig = defaults.googleCloudVertexAiConfig;
     	      this.name = defaults.name;
     	      this.openaiConfig = defaults.openaiConfig;
     	      this.palmConfig = defaults.palmConfig;
@@ -204,6 +211,12 @@ public final class ModelServingConfigServedEntityExternalModel {
         public Builder databricksModelServingConfig(@Nullable ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig databricksModelServingConfig) {
 
             this.databricksModelServingConfig = databricksModelServingConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder googleCloudVertexAiConfig(@Nullable ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig googleCloudVertexAiConfig) {
+
+            this.googleCloudVertexAiConfig = googleCloudVertexAiConfig;
             return this;
         }
         @CustomType.Setter
@@ -249,6 +262,7 @@ public final class ModelServingConfigServedEntityExternalModel {
             _resultValue.anthropicConfig = anthropicConfig;
             _resultValue.cohereConfig = cohereConfig;
             _resultValue.databricksModelServingConfig = databricksModelServingConfig;
+            _resultValue.googleCloudVertexAiConfig = googleCloudVertexAiConfig;
             _resultValue.name = name;
             _resultValue.openaiConfig = openaiConfig;
             _resultValue.palmConfig = palmConfig;

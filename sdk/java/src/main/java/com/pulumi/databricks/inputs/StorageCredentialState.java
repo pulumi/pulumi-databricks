@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.StorageCredentialCloudflareApiTokenArgs;
 import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.StorageCredentialGcpServiceAccountKeyArgs;
 import java.lang.Boolean;
@@ -40,6 +41,13 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<StorageCredentialAzureServicePrincipalArgs>> azureServicePrincipal() {
         return Optional.ofNullable(this.azureServicePrincipal);
+    }
+
+    @Import(name="cloudflareApiToken")
+    private @Nullable Output<StorageCredentialCloudflareApiTokenArgs> cloudflareApiToken;
+
+    public Optional<Output<StorageCredentialCloudflareApiTokenArgs>> cloudflareApiToken() {
+        return Optional.ofNullable(this.cloudflareApiToken);
     }
 
     @Import(name="comment")
@@ -208,6 +216,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.awsIamRole = $.awsIamRole;
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
+        this.cloudflareApiToken = $.cloudflareApiToken;
         this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.forceDestroy = $.forceDestroy;
@@ -265,6 +274,15 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         public Builder azureServicePrincipal(StorageCredentialAzureServicePrincipalArgs azureServicePrincipal) {
             return azureServicePrincipal(Output.of(azureServicePrincipal));
+        }
+
+        public Builder cloudflareApiToken(@Nullable Output<StorageCredentialCloudflareApiTokenArgs> cloudflareApiToken) {
+            $.cloudflareApiToken = cloudflareApiToken;
+            return this;
+        }
+
+        public Builder cloudflareApiToken(StorageCredentialCloudflareApiTokenArgs cloudflareApiToken) {
+            return cloudflareApiToken(Output.of(cloudflareApiToken));
         }
 
         public Builder comment(@Nullable Output<String> comment) {

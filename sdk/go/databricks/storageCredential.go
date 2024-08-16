@@ -164,6 +164,7 @@ type StorageCredential struct {
 	AwsIamRole                  StorageCredentialAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          StorageCredentialCloudflareApiTokenPtrOutput       `pulumi:"cloudflareApiToken"`
 	Comment                     pulumi.StringPtrOutput                             `pulumi:"comment"`
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
 	// Delete storage credential regardless of its dependencies.
@@ -222,6 +223,7 @@ type storageCredentialState struct {
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          *StorageCredentialCloudflareApiToken          `pulumi:"cloudflareApiToken"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	// Delete storage credential regardless of its dependencies.
@@ -251,6 +253,7 @@ type StorageCredentialState struct {
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
+	CloudflareApiToken          StorageCredentialCloudflareApiTokenPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
 	// Delete storage credential regardless of its dependencies.
@@ -284,6 +287,7 @@ type storageCredentialArgs struct {
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          *StorageCredentialCloudflareApiToken          `pulumi:"cloudflareApiToken"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	// Delete storage credential regardless of its dependencies.
@@ -312,6 +316,7 @@ type StorageCredentialArgs struct {
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
+	CloudflareApiToken          StorageCredentialCloudflareApiTokenPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
 	// Delete storage credential regardless of its dependencies.
@@ -436,6 +441,10 @@ func (o StorageCredentialOutput) AzureServicePrincipal() StorageCredentialAzureS
 	return o.ApplyT(func(v *StorageCredential) StorageCredentialAzureServicePrincipalPtrOutput {
 		return v.AzureServicePrincipal
 	}).(StorageCredentialAzureServicePrincipalPtrOutput)
+}
+
+func (o StorageCredentialOutput) CloudflareApiToken() StorageCredentialCloudflareApiTokenPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) StorageCredentialCloudflareApiTokenPtrOutput { return v.CloudflareApiToken }).(StorageCredentialCloudflareApiTokenPtrOutput)
 }
 
 func (o StorageCredentialOutput) Comment() pulumi.StringPtrOutput {

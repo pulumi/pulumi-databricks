@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.MetastoreDataAccessState;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAwsIamRole;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAzureManagedIdentity;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAzureServicePrincipal;
+import com.pulumi.databricks.outputs.MetastoreDataAccessCloudflareApiToken;
 import com.pulumi.databricks.outputs.MetastoreDataAccessDatabricksGcpServiceAccount;
 import com.pulumi.databricks.outputs.MetastoreDataAccessGcpServiceAccountKey;
 import java.lang.Boolean;
@@ -110,6 +111,12 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<MetastoreDataAccessAzureServicePrincipal>> azureServicePrincipal() {
         return Codegen.optional(this.azureServicePrincipal);
+    }
+    @Export(name="cloudflareApiToken", refs={MetastoreDataAccessCloudflareApiToken.class}, tree="[0]")
+    private Output</* @Nullable */ MetastoreDataAccessCloudflareApiToken> cloudflareApiToken;
+
+    public Output<Optional<MetastoreDataAccessCloudflareApiToken>> cloudflareApiToken() {
+        return Codegen.optional(this.cloudflareApiToken);
     }
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.StorageCredentialState;
 import com.pulumi.databricks.outputs.StorageCredentialAwsIamRole;
 import com.pulumi.databricks.outputs.StorageCredentialAzureManagedIdentity;
 import com.pulumi.databricks.outputs.StorageCredentialAzureServicePrincipal;
+import com.pulumi.databricks.outputs.StorageCredentialCloudflareApiToken;
 import com.pulumi.databricks.outputs.StorageCredentialDatabricksGcpServiceAccount;
 import com.pulumi.databricks.outputs.StorageCredentialGcpServiceAccountKey;
 import java.lang.Boolean;
@@ -210,6 +211,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<StorageCredentialAzureServicePrincipal>> azureServicePrincipal() {
         return Codegen.optional(this.azureServicePrincipal);
+    }
+    @Export(name="cloudflareApiToken", refs={StorageCredentialCloudflareApiToken.class}, tree="[0]")
+    private Output</* @Nullable */ StorageCredentialCloudflareApiToken> cloudflareApiToken;
+
+    public Output<Optional<StorageCredentialCloudflareApiToken>> cloudflareApiToken() {
+        return Codegen.optional(this.cloudflareApiToken);
     }
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;

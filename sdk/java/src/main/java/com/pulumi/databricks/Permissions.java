@@ -473,6 +473,8 @@ import javax.annotation.Nullable;
  * 
  * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for databricks.Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
  * 
+ * A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Notebook` resource as shown below.
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -517,8 +519,25 @@ import javax.annotation.Nullable;
  *             .language("PYTHON")
  *             .build());
  * 
- *         var notebookUsage = new Permissions("notebookUsage", PermissionsArgs.builder()
+ *         var notebookUsageByPath = new Permissions("notebookUsageByPath", PermissionsArgs.builder()
  *             .notebookPath(this_.path())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_READ")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(auto.displayName())
+ *                     .permissionLevel("CAN_RUN")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_EDIT")
+ *                     .build())
+ *             .build());
+ * 
+ *         var notebookUsageById = new Permissions("notebookUsageById", PermissionsArgs.builder()
+ *             .notebookId(this_.objectId())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")
@@ -540,9 +559,13 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * &gt; **Note**: when importing a permissions resource, only the `notebook_id` is filled!
+ * 
  * ## Workspace file usage
  * 
  * Valid permission levels for databricks.WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ * 
+ * A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.WorkspaceFile` resource as shown below.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -587,8 +610,25 @@ import javax.annotation.Nullable;
  *             .path("/Production/ETL/Features.py")
  *             .build());
  * 
- *         var workspaceFileUsage = new Permissions("workspaceFileUsage", PermissionsArgs.builder()
+ *         var workspaceFileUsageByPath = new Permissions("workspaceFileUsageByPath", PermissionsArgs.builder()
  *             .workspaceFilePath(this_.path())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_READ")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(auto.displayName())
+ *                     .permissionLevel("CAN_RUN")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_EDIT")
+ *                     .build())
+ *             .build());
+ * 
+ *         var workspaceFileUsageById = new Permissions("workspaceFileUsageById", PermissionsArgs.builder()
+ *             .workspaceFileId(this_.objectId())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")
@@ -610,6 +650,8 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * &gt; **Note**: when importing a permissions resource, only the `workspace_file_id` is filled!
+ * 
  * ## Folder usage
  * 
  * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of databricks.Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
@@ -618,6 +660,8 @@ import javax.annotation.Nullable;
  * - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace &gt; Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
  * - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
  * - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
+ * 
+ * A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Directory` resource as shown below.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -634,7 +678,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.Permissions;
  * import com.pulumi.databricks.PermissionsArgs;
  * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -660,7 +703,7 @@ import javax.annotation.Nullable;
  *             .path("/Production/ETL")
  *             .build());
  * 
- *         var folderUsage = new Permissions("folderUsage", PermissionsArgs.builder()
+ *         var folderUsageByPath = new Permissions("folderUsageByPath", PermissionsArgs.builder()
  *             .directoryPath(this_.path())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
@@ -675,15 +718,32 @@ import javax.annotation.Nullable;
  *                     .groupName(eng.displayName())
  *                     .permissionLevel("CAN_EDIT")
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(this_)
- *                 .build());
+ *             .build());
+ * 
+ *         var folderUsageById = new Permissions("folderUsageById", PermissionsArgs.builder()
+ *             .directoryId(this_.objectId())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_READ")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(auto.displayName())
+ *                     .permissionLevel("CAN_RUN")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_EDIT")
+ *                     .build())
+ *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &gt; **Note**: when importing a permissions resource, only the `directory_id` is filled!
  * 
  * ## Repos usage
  * 
@@ -1080,6 +1140,10 @@ import javax.annotation.Nullable;
  * ## SQL warehouse usage
  * 
  * [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
+ * 
+ * - The creator of a warehouse has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a warehouse would revert ownership to the creator.
+ * - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
+ * - A warehouse cannot have a group as an owner.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

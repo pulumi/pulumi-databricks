@@ -42,6 +42,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("databricksModelServingConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs>? DatabricksModelServingConfig { get; set; }
 
+        [Input("googleCloudVertexAiConfig")]
+        public Input<Inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>? GoogleCloudVertexAiConfig { get; set; }
+
         /// <summary>
         /// The name of the external model.
         /// </summary>

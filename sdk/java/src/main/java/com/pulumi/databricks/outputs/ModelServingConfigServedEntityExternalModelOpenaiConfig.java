@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     private @Nullable String microsoftEntraClientId;
     private @Nullable String microsoftEntraClientSecret;
+    private @Nullable String microsoftEntraClientSecretPlaintext;
     private @Nullable String microsoftEntraTenantId;
     /**
      * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
@@ -24,6 +25,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
      * 
      */
     private @Nullable String openaiApiKey;
+    private @Nullable String openaiApiKeyPlaintext;
     /**
      * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
      * 
@@ -52,6 +54,9 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     public Optional<String> microsoftEntraClientSecret() {
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
+    public Optional<String> microsoftEntraClientSecretPlaintext() {
+        return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
+    }
     public Optional<String> microsoftEntraTenantId() {
         return Optional.ofNullable(this.microsoftEntraTenantId);
     }
@@ -68,6 +73,9 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
      */
     public Optional<String> openaiApiKey() {
         return Optional.ofNullable(this.openaiApiKey);
+    }
+    public Optional<String> openaiApiKeyPlaintext() {
+        return Optional.ofNullable(this.openaiApiKeyPlaintext);
     }
     /**
      * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
@@ -109,9 +117,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     public static final class Builder {
         private @Nullable String microsoftEntraClientId;
         private @Nullable String microsoftEntraClientSecret;
+        private @Nullable String microsoftEntraClientSecretPlaintext;
         private @Nullable String microsoftEntraTenantId;
         private @Nullable String openaiApiBase;
         private @Nullable String openaiApiKey;
+        private @Nullable String openaiApiKeyPlaintext;
         private @Nullable String openaiApiType;
         private @Nullable String openaiApiVersion;
         private @Nullable String openaiDeploymentName;
@@ -121,9 +131,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
     	      Objects.requireNonNull(defaults);
     	      this.microsoftEntraClientId = defaults.microsoftEntraClientId;
     	      this.microsoftEntraClientSecret = defaults.microsoftEntraClientSecret;
+    	      this.microsoftEntraClientSecretPlaintext = defaults.microsoftEntraClientSecretPlaintext;
     	      this.microsoftEntraTenantId = defaults.microsoftEntraTenantId;
     	      this.openaiApiBase = defaults.openaiApiBase;
     	      this.openaiApiKey = defaults.openaiApiKey;
+    	      this.openaiApiKeyPlaintext = defaults.openaiApiKeyPlaintext;
     	      this.openaiApiType = defaults.openaiApiType;
     	      this.openaiApiVersion = defaults.openaiApiVersion;
     	      this.openaiDeploymentName = defaults.openaiDeploymentName;
@@ -143,6 +155,12 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder microsoftEntraClientSecretPlaintext(@Nullable String microsoftEntraClientSecretPlaintext) {
+
+            this.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
+            return this;
+        }
+        @CustomType.Setter
         public Builder microsoftEntraTenantId(@Nullable String microsoftEntraTenantId) {
 
             this.microsoftEntraTenantId = microsoftEntraTenantId;
@@ -158,6 +176,12 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
         public Builder openaiApiKey(@Nullable String openaiApiKey) {
 
             this.openaiApiKey = openaiApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder openaiApiKeyPlaintext(@Nullable String openaiApiKeyPlaintext) {
+
+            this.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             return this;
         }
         @CustomType.Setter
@@ -188,9 +212,11 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelOpenaiConfig();
             _resultValue.microsoftEntraClientId = microsoftEntraClientId;
             _resultValue.microsoftEntraClientSecret = microsoftEntraClientSecret;
+            _resultValue.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             _resultValue.microsoftEntraTenantId = microsoftEntraTenantId;
             _resultValue.openaiApiBase = openaiApiBase;
             _resultValue.openaiApiKey = openaiApiKey;
+            _resultValue.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             _resultValue.openaiApiType = openaiApiType;
             _resultValue.openaiApiVersion = openaiApiVersion;
             _resultValue.openaiDeploymentName = openaiDeploymentName;

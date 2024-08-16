@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "databricks-kms",
+        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
         ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
@@ -85,7 +85,7 @@ namespace Pulumi.Databricks
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "databricks-kms",
+        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
         ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
         public string BucketName { get; set; } = null!;
 
         /// <summary>
-        /// If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+        /// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
         /// </summary>
         [Input("kmsName")]
         public string? KmsName { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// If encryption is enabled, provide the name of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+        /// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
         /// </summary>
         [Input("kmsName")]
         public Input<string>? KmsName { get; set; }

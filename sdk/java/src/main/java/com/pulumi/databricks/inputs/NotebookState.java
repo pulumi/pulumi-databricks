@@ -139,6 +139,21 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    @Import(name="workspacePath")
+    private @Nullable Output<String> workspacePath;
+
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public Optional<Output<String>> workspacePath() {
+        return Optional.ofNullable(this.workspacePath);
+    }
+
     private NotebookState() {}
 
     private NotebookState(NotebookState $) {
@@ -151,6 +166,7 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
         this.path = $.path;
         this.source = $.source;
         this.url = $.url;
+        this.workspacePath = $.workspacePath;
     }
 
     public static Builder builder() {
@@ -338,6 +354,27 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(@Nullable Output<String> workspacePath) {
+            $.workspacePath = workspacePath;
+            return this;
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(String workspacePath) {
+            return workspacePath(Output.of(workspacePath));
         }
 
         public NotebookState build() {

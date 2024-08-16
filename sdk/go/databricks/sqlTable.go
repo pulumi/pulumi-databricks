@@ -46,7 +46,7 @@ type SqlTable struct {
 	Options pulumi.MapOutput `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayOutput `pulumi:"partitions"`
 	// Map of table properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
@@ -119,7 +119,7 @@ type sqlTableState struct {
 	Options map[string]interface{} `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions []string `pulumi:"partitions"`
 	// Map of table properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -154,7 +154,7 @@ type SqlTableState struct {
 	Options pulumi.MapInput
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayInput
 	// Map of table properties.
 	Properties pulumi.MapInput
@@ -193,7 +193,7 @@ type sqlTableArgs struct {
 	Options map[string]interface{} `pulumi:"options"`
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions []string `pulumi:"partitions"`
 	// Map of table properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -229,7 +229,7 @@ type SqlTableArgs struct {
 	Options pulumi.MapInput
 	// Username/groupname/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayInput
 	// Map of table properties.
 	Properties pulumi.MapInput
@@ -377,7 +377,7 @@ func (o SqlTableOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`.
+// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 func (o SqlTableOutput) Partitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringArrayOutput { return v.Partitions }).(pulumi.StringArrayOutput)
 }

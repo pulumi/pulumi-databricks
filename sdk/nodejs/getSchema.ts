@@ -9,6 +9,40 @@ import * as utilities from "./utilities";
 /**
  * Retrieves details about databricks.Schema that was created by Pulumi or manually.
  * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+ *
+ * ## Example Usage
+ *
+ * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSchemas({
+ *     catalogName: "sandbox",
+ * });
+ * const this = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getSchema({
+ *     name: __value,
+ * }) })));
+ * ```
+ *
+ * * Search for a specific schema by its fully qualified name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getSchema({
+ *     name: "catalog.schema",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaResult> {
 
@@ -58,6 +92,40 @@ export interface GetSchemaResult {
 /**
  * Retrieves details about databricks.Schema that was created by Pulumi or manually.
  * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+ *
+ * ## Example Usage
+ *
+ * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSchemas({
+ *     catalogName: "sandbox",
+ * });
+ * const this = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getSchema({
+ *     name: __value,
+ * }) })));
+ * ```
+ *
+ * * Search for a specific schema by its fully qualified name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getSchema({
+ *     name: "catalog.schema",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaResult> {
     return pulumi.output(args).apply((a: any) => getSchema(a, opts))

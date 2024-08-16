@@ -77,6 +77,7 @@ type MetastoreDataAccess struct {
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          MetastoreDataAccessCloudflareApiTokenPtrOutput       `pulumi:"cloudflareApiToken"`
 	Comment                     pulumi.StringPtrOutput                               `pulumi:"comment"`
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                pulumi.BoolPtrOutput                                 `pulumi:"forceDestroy"`
@@ -125,6 +126,7 @@ type metastoreDataAccessState struct {
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          *MetastoreDataAccessCloudflareApiToken          `pulumi:"cloudflareApiToken"`
 	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
@@ -144,6 +146,7 @@ type MetastoreDataAccessState struct {
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
+	CloudflareApiToken          MetastoreDataAccessCloudflareApiTokenPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
@@ -167,6 +170,7 @@ type metastoreDataAccessArgs struct {
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken          *MetastoreDataAccessCloudflareApiToken          `pulumi:"cloudflareApiToken"`
 	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
@@ -187,6 +191,7 @@ type MetastoreDataAccessArgs struct {
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
+	CloudflareApiToken          MetastoreDataAccessCloudflareApiTokenPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
@@ -303,6 +308,12 @@ func (o MetastoreDataAccessOutput) AzureServicePrincipal() MetastoreDataAccessAz
 	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessAzureServicePrincipalPtrOutput {
 		return v.AzureServicePrincipal
 	}).(MetastoreDataAccessAzureServicePrincipalPtrOutput)
+}
+
+func (o MetastoreDataAccessOutput) CloudflareApiToken() MetastoreDataAccessCloudflareApiTokenPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessCloudflareApiTokenPtrOutput {
+		return v.CloudflareApiToken
+	}).(MetastoreDataAccessCloudflareApiTokenPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) Comment() pulumi.StringPtrOutput {

@@ -18,11 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * &gt; **Note:** Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
  * 
- * **Note:** documentation for this resource is a work in progress.
+ * To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
- * A widget is always tied to a dashboard. Every dashboard may have one or more widgets.
+ * &gt; **Note:** documentation for this resource is a work in progress.
+ * 
+ * A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
  * 
  * ## Example Usage
  * 

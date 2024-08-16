@@ -16,7 +16,16 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> ApplicationId { get; set; } = null!;
 
         [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        private Input<string>? _clientSecret;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;

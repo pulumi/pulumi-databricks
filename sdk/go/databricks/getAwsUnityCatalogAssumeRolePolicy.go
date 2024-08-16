@@ -36,7 +36,7 @@ import (
 //				AwsAccountId: awsAccountId,
 //				BucketName:   "databricks-bucket",
 //				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				KmsName:      pulumi.StringRef("databricks-kms"),
+//				KmsName:      pulumi.StringRef("arn:aws:kms:us-west-2:111122223333:key/databricks-kms"),
 //			}, nil)
 //			if err != nil {
 //				return err

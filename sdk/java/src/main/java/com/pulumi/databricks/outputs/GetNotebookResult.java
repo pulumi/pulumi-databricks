@@ -38,6 +38,11 @@ public final class GetNotebookResult {
      */
     private String objectType;
     private String path;
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    private String workspacePath;
 
     private GetNotebookResult() {}
     /**
@@ -81,6 +86,13 @@ public final class GetNotebookResult {
     public String path() {
         return this.path;
     }
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public String workspacePath() {
+        return this.workspacePath;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -98,6 +110,7 @@ public final class GetNotebookResult {
         private Integer objectId;
         private String objectType;
         private String path;
+        private String workspacePath;
         public Builder() {}
         public Builder(GetNotebookResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -108,6 +121,7 @@ public final class GetNotebookResult {
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.path = defaults.path;
+    	      this.workspacePath = defaults.workspacePath;
         }
 
         @CustomType.Setter
@@ -166,6 +180,14 @@ public final class GetNotebookResult {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspacePath(String workspacePath) {
+            if (workspacePath == null) {
+              throw new MissingRequiredPropertyException("GetNotebookResult", "workspacePath");
+            }
+            this.workspacePath = workspacePath;
+            return this;
+        }
         public GetNotebookResult build() {
             final var _resultValue = new GetNotebookResult();
             _resultValue.content = content;
@@ -175,6 +197,7 @@ public final class GetNotebookResult {
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.path = path;
+            _resultValue.workspacePath = workspacePath;
             return _resultValue;
         }
     }

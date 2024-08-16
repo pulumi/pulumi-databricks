@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,22 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      * 
      */
-    @Import(name="awsAccessKeyId", required=true)
-    private Output<String> awsAccessKeyId;
+    @Import(name="awsAccessKeyId")
+    private @Nullable Output<String> awsAccessKeyId;
 
     /**
      * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      * 
      */
-    public Output<String> awsAccessKeyId() {
-        return this.awsAccessKeyId;
+    public Optional<Output<String>> awsAccessKeyId() {
+        return Optional.ofNullable(this.awsAccessKeyId);
+    }
+
+    @Import(name="awsAccessKeyIdPlaintext")
+    private @Nullable Output<String> awsAccessKeyIdPlaintext;
+
+    public Optional<Output<String>> awsAccessKeyIdPlaintext() {
+        return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
     }
 
     /**
@@ -48,15 +57,22 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      * 
      */
-    @Import(name="awsSecretAccessKey", required=true)
-    private Output<String> awsSecretAccessKey;
+    @Import(name="awsSecretAccessKey")
+    private @Nullable Output<String> awsSecretAccessKey;
 
     /**
      * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      * 
      */
-    public Output<String> awsSecretAccessKey() {
-        return this.awsSecretAccessKey;
+    public Optional<Output<String>> awsSecretAccessKey() {
+        return Optional.ofNullable(this.awsSecretAccessKey);
+    }
+
+    @Import(name="awsSecretAccessKeyPlaintext")
+    private @Nullable Output<String> awsSecretAccessKeyPlaintext;
+
+    public Optional<Output<String>> awsSecretAccessKeyPlaintext() {
+        return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
     }
 
     /**
@@ -78,8 +94,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
 
     private ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs(ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs $) {
         this.awsAccessKeyId = $.awsAccessKeyId;
+        this.awsAccessKeyIdPlaintext = $.awsAccessKeyIdPlaintext;
         this.awsRegion = $.awsRegion;
         this.awsSecretAccessKey = $.awsSecretAccessKey;
+        this.awsSecretAccessKeyPlaintext = $.awsSecretAccessKeyPlaintext;
         this.bedrockProvider = $.bedrockProvider;
     }
 
@@ -107,7 +125,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
          * @return builder
          * 
          */
-        public Builder awsAccessKeyId(Output<String> awsAccessKeyId) {
+        public Builder awsAccessKeyId(@Nullable Output<String> awsAccessKeyId) {
             $.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
@@ -120,6 +138,15 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
          */
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             return awsAccessKeyId(Output.of(awsAccessKeyId));
+        }
+
+        public Builder awsAccessKeyIdPlaintext(@Nullable Output<String> awsAccessKeyIdPlaintext) {
+            $.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
+            return this;
+        }
+
+        public Builder awsAccessKeyIdPlaintext(String awsAccessKeyIdPlaintext) {
+            return awsAccessKeyIdPlaintext(Output.of(awsAccessKeyIdPlaintext));
         }
 
         /**
@@ -149,7 +176,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
          * @return builder
          * 
          */
-        public Builder awsSecretAccessKey(Output<String> awsSecretAccessKey) {
+        public Builder awsSecretAccessKey(@Nullable Output<String> awsSecretAccessKey) {
             $.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
@@ -162,6 +189,15 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
          */
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
+        }
+
+        public Builder awsSecretAccessKeyPlaintext(@Nullable Output<String> awsSecretAccessKeyPlaintext) {
+            $.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
+            return this;
+        }
+
+        public Builder awsSecretAccessKeyPlaintext(String awsSecretAccessKeyPlaintext) {
+            return awsSecretAccessKeyPlaintext(Output.of(awsSecretAccessKeyPlaintext));
         }
 
         /**
@@ -186,14 +222,8 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
         }
 
         public ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs build() {
-            if ($.awsAccessKeyId == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsAccessKeyId");
-            }
             if ($.awsRegion == null) {
                 throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsRegion");
-            }
-            if ($.awsSecretAccessKey == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs", "awsSecretAccessKey");
             }
             if ($.bedrockProvider == null) {
                 throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs", "bedrockProvider");

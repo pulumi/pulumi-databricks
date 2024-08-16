@@ -158,7 +158,7 @@ export interface ClusterAzureAttributes {
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.ClusterAzureAttributesLogAnalyticsInfo;
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
     spotBidMaxPrice?: number;
 }
@@ -3380,7 +3380,7 @@ export interface InstancePoolAzureAttributes {
      */
     availability?: string;
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
     spotBidMaxPrice?: number;
 }
@@ -4249,12 +4249,15 @@ export interface JobTask {
      */
     dependsOns?: outputs.JobTaskDependsOn[];
     /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * description for this task.
      */
     description?: string;
+    /**
+     * A flag to disable auto optimization in serverless tasks.
+     */
     disableAutoOptimization?: boolean;
     /**
-     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
     /**
@@ -4268,8 +4271,6 @@ export interface JobTask {
     forEachTask?: outputs.JobTaskForEachTask;
     /**
      * block described below that specifies health conditions for a given task.
-     *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: outputs.JobTaskHealth;
     /**
@@ -4323,6 +4324,8 @@ export interface JobTask {
     timeoutSeconds?: number;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
 }
@@ -4441,12 +4444,15 @@ export interface JobTaskForEachTaskTask {
      */
     dependsOns?: outputs.JobTaskForEachTaskTaskDependsOn[];
     /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * description for this task.
      */
     description?: string;
+    /**
+     * A flag to disable auto optimization in serverless tasks.
+     */
     disableAutoOptimization?: boolean;
     /**
-     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
     emailNotifications?: outputs.JobTaskForEachTaskTaskEmailNotifications;
     /**
@@ -4459,8 +4465,6 @@ export interface JobTaskForEachTaskTask {
     existingClusterId?: string;
     /**
      * block described below that specifies health conditions for a given task.
-     *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     health?: outputs.JobTaskForEachTaskTaskHealth;
     /**
@@ -4514,6 +4518,8 @@ export interface JobTaskForEachTaskTask {
     timeoutSeconds?: number;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     *
+     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
 }
@@ -6039,6 +6045,12 @@ export interface MetastoreDataAccessAzureServicePrincipal {
     directoryId: string;
 }
 
+export interface MetastoreDataAccessCloudflareApiToken {
+    accessKeyId: string;
+    accountId: string;
+    secretAccessKey: string;
+}
+
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     credentialId: string;
     email: string;
@@ -6197,6 +6209,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Databricks Model Serving Config
      */
     databricksModelServingConfig?: outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
+    googleCloudVertexAiConfig?: outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
     /**
      * The name of the external model.
      */
@@ -6223,14 +6236,16 @@ export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
     /**
      * The Databricks secret key reference for an AI21Labs API key.
      */
-    ai21labsApiKey: string;
+    ai21labsApiKey?: string;
+    ai21labsApiKeyPlaintext?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
     /**
      * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      */
-    awsAccessKeyId: string;
+    awsAccessKeyId?: string;
+    awsAccessKeyIdPlaintext?: string;
     /**
      * The AWS region to use. Bedrock has to be enabled there.
      */
@@ -6238,7 +6253,8 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
     /**
      * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      */
-    awsSecretAccessKey: string;
+    awsSecretAccessKey?: string;
+    awsSecretAccessKeyPlaintext?: string;
     /**
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      */
@@ -6250,30 +6266,42 @@ export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
      * The Databricks secret key reference for an Anthropic API key.
      * The Databricks secret key reference for an Anthropic API key.
      */
-    anthropicApiKey: string;
+    anthropicApiKey?: string;
+    anthropicApiKeyPlaintext?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
+    cohereApiBase?: string;
     /**
      * The Databricks secret key reference for a Cohere API key.
      */
-    cohereApiKey: string;
+    cohereApiKey?: string;
+    cohereApiKeyPlaintext?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
     /**
      * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      */
-    databricksApiToken: string;
+    databricksApiToken?: string;
+    databricksApiTokenPlaintext?: string;
     /**
      * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
      */
     databricksWorkspaceUrl: string;
 }
 
+export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    privateKey?: string;
+    privateKeyPlaintext?: string;
+    projectId?: string;
+    region?: string;
+}
+
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
     microsoftEntraClientId?: string;
     microsoftEntraClientSecret?: string;
+    microsoftEntraClientSecretPlaintext?: string;
     microsoftEntraTenantId?: string;
     /**
      * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
@@ -6283,6 +6311,7 @@ export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
      * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
      */
     openaiApiKey?: string;
+    openaiApiKeyPlaintext?: string;
     /**
      * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
      */
@@ -6305,7 +6334,8 @@ export interface ModelServingConfigServedEntityExternalModelPalmConfig {
     /**
      * The Databricks secret key reference for a PaLM API key.
      */
-    palmApiKey: string;
+    palmApiKey?: string;
+    palmApiKeyPlaintext?: string;
 }
 
 export interface ModelServingConfigServedModel {
@@ -6623,6 +6653,80 @@ export interface MwsWorkspacesToken {
     tokenValue: string;
 }
 
+export interface NotificationDestinationConfig {
+    /**
+     * The email configuration of the Notification Destination. It must contain the following:
+     */
+    email?: outputs.NotificationDestinationConfigEmail;
+    /**
+     * The Generic Webhook configuration of the Notification Destination. It must contain the following:
+     */
+    genericWebhook?: outputs.NotificationDestinationConfigGenericWebhook;
+    /**
+     * The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+     */
+    microsoftTeams?: outputs.NotificationDestinationConfigMicrosoftTeams;
+    /**
+     * The PagerDuty configuration of the Notification Destination. It must contain the following:
+     */
+    pagerduty?: outputs.NotificationDestinationConfigPagerduty;
+    /**
+     * The Slack configuration of the Notification Destination. It must contain the following:
+     */
+    slack?: outputs.NotificationDestinationConfigSlack;
+}
+
+export interface NotificationDestinationConfigEmail {
+    /**
+     * The list of email addresses to send notifications to.
+     */
+    addresses?: string[];
+}
+
+export interface NotificationDestinationConfigGenericWebhook {
+    /**
+     * The password for basic authentication.
+     *
+     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+     */
+    password?: string;
+    passwordSet: boolean;
+    /**
+     * The Generic Webhook URL.
+     */
+    url?: string;
+    urlSet: boolean;
+    /**
+     * The username for basic authentication.
+     */
+    username?: string;
+    usernameSet: boolean;
+}
+
+export interface NotificationDestinationConfigMicrosoftTeams {
+    /**
+     * The Microsoft Teams webhook URL.
+     */
+    url?: string;
+    urlSet: boolean;
+}
+
+export interface NotificationDestinationConfigPagerduty {
+    /**
+     * The PagerDuty integration key.
+     */
+    integrationKey?: string;
+    integrationKeySet: boolean;
+}
+
+export interface NotificationDestinationConfigSlack {
+    /**
+     * The Slack webhook URL.
+     */
+    url?: string;
+    urlSet: boolean;
+}
+
 export interface OnlineTableSpec {
     /**
      * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
@@ -6764,15 +6868,17 @@ export interface PipelineCluster {
 }
 
 export interface PipelineClusterAutoscale {
-    maxWorkers?: number;
-    minWorkers?: number;
+    maxWorkers: number;
+    minWorkers: number;
     mode?: string;
 }
 
 export interface PipelineClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
@@ -6783,7 +6889,13 @@ export interface PipelineClusterAwsAttributes {
 export interface PipelineClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.PipelineClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
+}
+
+export interface PipelineClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
 }
 
 export interface PipelineClusterClusterLogConf {
@@ -6860,13 +6972,98 @@ export interface PipelineClusterInitScriptWorkspace {
 }
 
 export interface PipelineDeployment {
+    /**
+     * The deployment method that manages the pipeline.
+     */
     kind?: string;
+    /**
+     * The path to the file containing metadata about the deployment.
+     */
     metadataFilePath?: string;
 }
 
 export interface PipelineFilters {
+    /**
+     * Paths to exclude.
+     */
     excludes?: string[];
+    /**
+     * Paths to include.
+     */
     includes?: string[];
+}
+
+export interface PipelineGatewayDefinition {
+    /**
+     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     */
+    connectionId?: string;
+    /**
+     * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+     */
+    gatewayStorageCatalog?: string;
+    /**
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     */
+    gatewayStorageName?: string;
+    /**
+     * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+     */
+    gatewayStorageSchema?: string;
+}
+
+export interface PipelineIngestionDefinition {
+    connectionName?: string;
+    ingestionGatewayId?: string;
+    objects?: outputs.PipelineIngestionDefinitionObject[];
+    tableConfiguration?: outputs.PipelineIngestionDefinitionTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObject {
+    schema?: outputs.PipelineIngestionDefinitionObjectSchema;
+    table?: outputs.PipelineIngestionDefinitionObjectTable;
+}
+
+export interface PipelineIngestionDefinitionObjectSchema {
+    destinationCatalog?: string;
+    destinationSchema?: string;
+    sourceCatalog?: string;
+    sourceSchema?: string;
+    tableConfiguration?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    primaryKeys?: string[];
+    salesforceIncludeFormulaFields?: boolean;
+    scdType?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTable {
+    destinationCatalog?: string;
+    destinationSchema?: string;
+    destinationTable?: string;
+    sourceCatalog?: string;
+    sourceSchema?: string;
+    sourceTable?: string;
+    tableConfiguration?: outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    primaryKeys?: string[];
+    salesforceIncludeFormulaFields?: boolean;
+    scdType?: string;
+}
+
+export interface PipelineIngestionDefinitionTableConfiguration {
+    primaryKeys?: string[];
+    salesforceIncludeFormulaFields?: boolean;
+    scdType?: string;
+}
+
+export interface PipelineLatestUpdate {
+    creationTime?: string;
+    state?: string;
+    updateId?: string;
 }
 
 export interface PipelineLibrary {
@@ -6874,11 +7071,14 @@ export interface PipelineLibrary {
     jar?: string;
     maven?: outputs.PipelineLibraryMaven;
     notebook?: outputs.PipelineLibraryNotebook;
+    /**
+     * @deprecated The 'whl' field is deprecated
+     */
     whl?: string;
 }
 
 export interface PipelineLibraryFile {
-    path: string;
+    path?: string;
 }
 
 export interface PipelineLibraryMaven {
@@ -6888,7 +7088,7 @@ export interface PipelineLibraryMaven {
 }
 
 export interface PipelineLibraryNotebook {
-    path: string;
+    path?: string;
 }
 
 export interface PipelineNotification {
@@ -6899,11 +7099,24 @@ export interface PipelineNotification {
      * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
      * * `on-flow-failure` - a single data flow fails.
      */
-    alerts: string[];
+    alerts?: string[];
     /**
      * non-empty list of emails to notify.
      */
-    emailRecipients: string[];
+    emailRecipients?: string[];
+}
+
+export interface PipelineTrigger {
+    cron?: outputs.PipelineTriggerCron;
+    manual?: outputs.PipelineTriggerManual;
+}
+
+export interface PipelineTriggerCron {
+    quartzCronSchedule?: string;
+    timezoneId?: string;
+}
+
+export interface PipelineTriggerManual {
 }
 
 export interface QualityMonitorCustomMetric {
@@ -7451,12 +7664,29 @@ export interface StorageCredentialAzureServicePrincipal {
     directoryId: string;
 }
 
+export interface StorageCredentialCloudflareApiToken {
+    /**
+     * R2 API token access key ID
+     */
+    accessKeyId: string;
+    /**
+     * R2 account ID
+     */
+    accountId: string;
+    /**
+     * R2 API token secret access key
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     */
+    secretAccessKey: string;
+}
+
 export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      */
     email: string;
 }
@@ -7465,7 +7695,7 @@ export interface StorageCredentialGcpServiceAccountKey {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      */
     email: string;
     privateKey: string;

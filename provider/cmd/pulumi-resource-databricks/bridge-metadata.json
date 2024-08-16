@@ -1666,6 +1666,9 @@
                     "azure_service_principal": {
                         "maxItemsOne": true
                     },
+                    "cloudflare_api_token": {
+                        "maxItemsOne": true
+                    },
                     "databricks_gcp_service_account": {
                         "maxItemsOne": true
                     },
@@ -1734,6 +1737,9 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "databricks_model_serving_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "google_cloud_vertex_ai_config": {
                                                             "maxItemsOne": true
                                                         },
                                                         "openai_config": {
@@ -1976,6 +1982,41 @@
                 "current": "databricks:index/notebook:Notebook",
                 "majorVersion": 1
             },
+            "databricks_notification_destination": {
+                "current": "databricks:index/notificationDestination:NotificationDestination",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "email": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "generic_webhook": {
+                                    "maxItemsOne": true
+                                },
+                                "microsoft_teams": {
+                                    "maxItemsOne": true
+                                },
+                                "pagerduty": {
+                                    "maxItemsOne": true
+                                },
+                                "slack": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_obo_token": {
                 "current": "databricks:index/oboToken:OboToken",
                 "majorVersion": 1
@@ -2075,7 +2116,14 @@
                                     "maxItemsOne": true
                                 },
                                 "azure_attributes": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log_analytics_info": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "cluster_log_conf": {
                                     "maxItemsOne": true,
@@ -2143,6 +2191,70 @@
                             }
                         }
                     },
+                    "gateway_definition": {
+                        "maxItemsOne": true
+                    },
+                    "ingestion_definition": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "objects": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "schema": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "table_configuration": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "primary_keys": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "table": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "table_configuration": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "primary_keys": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "table_configuration": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "primary_keys": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "latest_updates": {
+                        "maxItemsOne": false
+                    },
                     "library": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2175,6 +2287,19 @@
                                 },
                                 "email_recipients": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trigger": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cron": {
+                                    "maxItemsOne": true
+                                },
+                                "manual": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -2592,6 +2717,9 @@
                         "maxItemsOne": true
                     },
                     "azure_service_principal": {
+                        "maxItemsOne": true
+                    },
+                    "cloudflare_api_token": {
                         "maxItemsOne": true
                     },
                     "databricks_gcp_service_account": {

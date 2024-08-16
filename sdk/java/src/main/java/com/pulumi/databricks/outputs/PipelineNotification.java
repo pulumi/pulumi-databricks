@@ -4,10 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineNotification {
@@ -19,12 +19,12 @@ public final class PipelineNotification {
      * * `on-flow-failure` - a single data flow fails.
      * 
      */
-    private List<String> alerts;
+    private @Nullable List<String> alerts;
     /**
      * @return non-empty list of emails to notify.
      * 
      */
-    private List<String> emailRecipients;
+    private @Nullable List<String> emailRecipients;
 
     private PipelineNotification() {}
     /**
@@ -36,14 +36,14 @@ public final class PipelineNotification {
      * 
      */
     public List<String> alerts() {
-        return this.alerts;
+        return this.alerts == null ? List.of() : this.alerts;
     }
     /**
      * @return non-empty list of emails to notify.
      * 
      */
     public List<String> emailRecipients() {
-        return this.emailRecipients;
+        return this.emailRecipients == null ? List.of() : this.emailRecipients;
     }
 
     public static Builder builder() {
@@ -55,8 +55,8 @@ public final class PipelineNotification {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> alerts;
-        private List<String> emailRecipients;
+        private @Nullable List<String> alerts;
+        private @Nullable List<String> emailRecipients;
         public Builder() {}
         public Builder(PipelineNotification defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,10 +65,8 @@ public final class PipelineNotification {
         }
 
         @CustomType.Setter
-        public Builder alerts(List<String> alerts) {
-            if (alerts == null) {
-              throw new MissingRequiredPropertyException("PipelineNotification", "alerts");
-            }
+        public Builder alerts(@Nullable List<String> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -76,10 +74,8 @@ public final class PipelineNotification {
             return alerts(List.of(alerts));
         }
         @CustomType.Setter
-        public Builder emailRecipients(List<String> emailRecipients) {
-            if (emailRecipients == null) {
-              throw new MissingRequiredPropertyException("PipelineNotification", "emailRecipients");
-            }
+        public Builder emailRecipients(@Nullable List<String> emailRecipients) {
+
             this.emailRecipients = emailRecipients;
             return this;
         }

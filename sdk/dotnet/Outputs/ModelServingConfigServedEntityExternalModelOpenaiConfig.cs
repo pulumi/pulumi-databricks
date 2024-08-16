@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? MicrosoftEntraClientId;
         public readonly string? MicrosoftEntraClientSecret;
+        public readonly string? MicrosoftEntraClientSecretPlaintext;
         public readonly string? MicrosoftEntraTenantId;
         /// <summary>
         /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
@@ -24,6 +25,7 @@ namespace Pulumi.Databricks.Outputs
         /// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
         /// </summary>
         public readonly string? OpenaiApiKey;
+        public readonly string? OpenaiApiKeyPlaintext;
         /// <summary>
         /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
         /// </summary>
@@ -47,11 +49,15 @@ namespace Pulumi.Databricks.Outputs
 
             string? microsoftEntraClientSecret,
 
+            string? microsoftEntraClientSecretPlaintext,
+
             string? microsoftEntraTenantId,
 
             string? openaiApiBase,
 
             string? openaiApiKey,
+
+            string? openaiApiKeyPlaintext,
 
             string? openaiApiType,
 
@@ -63,9 +69,11 @@ namespace Pulumi.Databricks.Outputs
         {
             MicrosoftEntraClientId = microsoftEntraClientId;
             MicrosoftEntraClientSecret = microsoftEntraClientSecret;
+            MicrosoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             MicrosoftEntraTenantId = microsoftEntraTenantId;
             OpenaiApiBase = openaiApiBase;
             OpenaiApiKey = openaiApiKey;
+            OpenaiApiKeyPlaintext = openaiApiKeyPlaintext;
             OpenaiApiType = openaiApiType;
             OpenaiApiVersion = openaiApiVersion;
             OpenaiDeploymentName = openaiDeploymentName;

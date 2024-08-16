@@ -149,14 +149,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<List<String>>> partitions() {

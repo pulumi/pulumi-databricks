@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var some = new Databricks.ExternalLocation("some", new()
     ///     {
-    ///         Name = "external-location",
+    ///         Name = "external_location",
     ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
     ///         CredentialName = external.Name,
     ///     });

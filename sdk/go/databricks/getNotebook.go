@@ -79,6 +79,8 @@ type LookupNotebookResult struct {
 	// notebook object type
 	ObjectType string `pulumi:"objectType"`
 	Path       string `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath string `pulumi:"workspacePath"`
 }
 
 func LookupNotebookOutput(ctx *pulumi.Context, args LookupNotebookOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookResultOutput {
@@ -158,6 +160,11 @@ func (o LookupNotebookResultOutput) ObjectType() pulumi.StringOutput {
 
 func (o LookupNotebookResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o LookupNotebookResultOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotebookResult) string { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 func init() {

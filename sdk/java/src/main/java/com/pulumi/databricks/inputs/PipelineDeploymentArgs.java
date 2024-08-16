@@ -15,16 +15,32 @@ public final class PipelineDeploymentArgs extends com.pulumi.resources.ResourceA
 
     public static final PipelineDeploymentArgs Empty = new PipelineDeploymentArgs();
 
+    /**
+     * The deployment method that manages the pipeline.
+     * 
+     */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
+    /**
+     * @return The deployment method that manages the pipeline.
+     * 
+     */
     public Optional<Output<String>> kind() {
         return Optional.ofNullable(this.kind);
     }
 
+    /**
+     * The path to the file containing metadata about the deployment.
+     * 
+     */
     @Import(name="metadataFilePath")
     private @Nullable Output<String> metadataFilePath;
 
+    /**
+     * @return The path to the file containing metadata about the deployment.
+     * 
+     */
     public Optional<Output<String>> metadataFilePath() {
         return Optional.ofNullable(this.metadataFilePath);
     }
@@ -54,20 +70,44 @@ public final class PipelineDeploymentArgs extends com.pulumi.resources.ResourceA
             $ = new PipelineDeploymentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kind The deployment method that manages the pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(@Nullable Output<String> kind) {
             $.kind = kind;
             return this;
         }
 
+        /**
+         * @param kind The deployment method that manages the pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
         }
 
+        /**
+         * @param metadataFilePath The path to the file containing metadata about the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadataFilePath(@Nullable Output<String> metadataFilePath) {
             $.metadataFilePath = metadataFilePath;
             return this;
         }
 
+        /**
+         * @param metadataFilePath The path to the file containing metadata about the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadataFilePath(String metadataFilePath) {
             return metadataFilePath(Output.of(metadataFilePath));
         }
