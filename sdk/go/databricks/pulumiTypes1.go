@@ -1180,6 +1180,7 @@ type GetExternalLocationExternalLocationInfo struct {
 	CredentialName *string `pulumi:"credentialName"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *GetExternalLocationExternalLocationInfoEncryptionDetails `pulumi:"encryptionDetails"`
+	Fallback          *bool                                                     `pulumi:"fallback"`
 	IsolationMode     *string                                                   `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -1224,6 +1225,7 @@ type GetExternalLocationExternalLocationInfoArgs struct {
 	CredentialName pulumi.StringPtrInput `pulumi:"credentialName"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
+	Fallback          pulumi.BoolPtrInput                                              `pulumi:"fallback"`
 	IsolationMode     pulumi.StringPtrInput                                            `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore.
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
@@ -1357,6 +1359,10 @@ func (o GetExternalLocationExternalLocationInfoOutput) EncryptionDetails() GetEx
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfoEncryptionDetails {
 		return v.EncryptionDetails
 	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoOutput) Fallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *bool { return v.Fallback }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetExternalLocationExternalLocationInfoOutput) IsolationMode() pulumi.StringPtrOutput {
@@ -1499,6 +1505,15 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) EncryptionDetails() Ge
 		}
 		return v.EncryptionDetails
 	}).(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput)
+}
+
+func (o GetExternalLocationExternalLocationInfoPtrOutput) Fallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Fallback
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetExternalLocationExternalLocationInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {

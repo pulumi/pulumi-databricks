@@ -1234,6 +1234,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    fallback?: boolean;
     isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.

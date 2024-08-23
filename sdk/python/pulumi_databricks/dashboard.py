@@ -31,7 +31,7 @@ class DashboardArgs:
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] display_name: The display name of the dashboard.
-        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
@@ -79,7 +79,7 @@ class DashboardArgs:
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Input[str]:
         """
-        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         """
         return pulumi.get(self, "parent_path")
 
@@ -230,7 +230,7 @@ class _DashboardState:
         :param pulumi.Input[str] display_name: The display name of the dashboard.
         :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
-        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
@@ -357,7 +357,7 @@ class _DashboardState:
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         """
         return pulumi.get(self, "parent_path")
 
@@ -465,7 +465,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the dashboard.
         :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
-        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
@@ -599,7 +599,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the dashboard.
         :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
-        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
@@ -681,7 +681,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Output[str]:
         """
-        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         """
         return pulumi.get(self, "parent_path")
 

@@ -86,7 +86,7 @@ export class Dashboard extends pulumi.CustomResource {
     public readonly lifecycleState!: pulumi.Output<string>;
     public readonly md5!: pulumi.Output<string>;
     /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
     public readonly parentPath!: pulumi.Output<string>;
     public readonly path!: pulumi.Output<string>;
@@ -181,7 +181,7 @@ export interface DashboardState {
     lifecycleState?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
     /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
     parentPath?: pulumi.Input<string>;
     path?: pulumi.Input<string>;
@@ -219,7 +219,7 @@ export interface DashboardArgs {
     lifecycleState?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
     /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
     parentPath: pulumi.Input<string>;
     path?: pulumi.Input<string>;

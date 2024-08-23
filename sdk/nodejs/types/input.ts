@@ -1911,6 +1911,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    fallback?: boolean;
     isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
@@ -1972,6 +1973,7 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
+    fallback?: pulumi.Input<boolean>;
     isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore.

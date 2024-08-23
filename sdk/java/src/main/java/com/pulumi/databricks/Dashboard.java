@@ -159,14 +159,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.md5;
     }
     /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
      * 
      */
     @Export(name="parentPath", refs={String.class}, tree="[0]")
     private Output<String> parentPath;
 
     /**
-     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
      * 
      */
     public Output<String> parentPath() {

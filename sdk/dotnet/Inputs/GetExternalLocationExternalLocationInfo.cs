@@ -57,6 +57,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("encryptionDetails")]
         public Inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs? EncryptionDetails { get; set; }
 
+        [Input("fallback")]
+        public bool? Fallback { get; set; }
+
         [Input("isolationMode")]
         public string? IsolationMode { get; set; }
 

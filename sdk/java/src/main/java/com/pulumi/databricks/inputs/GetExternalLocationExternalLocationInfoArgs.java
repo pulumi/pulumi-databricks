@@ -130,6 +130,13 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    @Import(name="fallback")
+    private @Nullable Output<Boolean> fallback;
+
+    public Optional<Output<Boolean>> fallback() {
+        return Optional.ofNullable(this.fallback);
+    }
+
     @Import(name="isolationMode")
     private @Nullable Output<String> isolationMode;
 
@@ -253,6 +260,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.encryptionDetails = $.encryptionDetails;
+        this.fallback = $.fallback;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -435,6 +443,15 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
          */
         public Builder encryptionDetails(GetExternalLocationExternalLocationInfoEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
+        }
+
+        public Builder fallback(@Nullable Output<Boolean> fallback) {
+            $.fallback = fallback;
+            return this;
+        }
+
+        public Builder fallback(Boolean fallback) {
+            return fallback(Output.of(fallback));
         }
 
         public Builder isolationMode(@Nullable Output<String> isolationMode) {

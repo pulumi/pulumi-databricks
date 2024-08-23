@@ -26924,6 +26924,7 @@ class GetExternalLocationExternalLocationInfoResult(dict):
                  credential_id: Optional[str] = None,
                  credential_name: Optional[str] = None,
                  encryption_details: Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult'] = None,
+                 fallback: Optional[bool] = None,
                  isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -26964,6 +26965,8 @@ class GetExternalLocationExternalLocationInfoResult(dict):
             pulumi.set(__self__, "credential_name", credential_name)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
         if isolation_mode is not None:
             pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
@@ -27041,6 +27044,11 @@ class GetExternalLocationExternalLocationInfoResult(dict):
         The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         """
         return pulumi.get(self, "encryption_details")
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[bool]:
+        return pulumi.get(self, "fallback")
 
     @property
     @pulumi.getter(name="isolationMode")

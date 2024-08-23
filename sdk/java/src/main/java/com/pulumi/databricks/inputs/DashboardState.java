@@ -104,14 +104,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
      * 
      */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
     /**
-     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
      * 
      */
     public Optional<Output<String>> parentPath() {
@@ -317,7 +317,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
          * 
          * @return builder
          * 
