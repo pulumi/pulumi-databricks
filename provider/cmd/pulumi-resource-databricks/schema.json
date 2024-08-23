@@ -10938,6 +10938,9 @@
                     "$ref": "#/types/databricks:index/getExternalLocationExternalLocationInfoEncryptionDetails:getExternalLocationExternalLocationInfoEncryptionDetails",
                     "description": "The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).\n"
                 },
+                "fallback": {
+                    "type": "boolean"
+                },
                 "isolationMode": {
                     "type": "string"
                 },
@@ -17892,7 +17895,7 @@
                 },
                 "parentPath": {
                     "type": "string",
-                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n"
+                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.\n"
                 },
                 "path": {
                     "type": "string"
@@ -17954,7 +17957,7 @@
                 },
                 "parentPath": {
                     "type": "string",
-                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n",
+                    "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "path": {
@@ -18012,7 +18015,7 @@
                     },
                     "parentPath": {
                         "type": "string",
-                        "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.\n",
+                        "description": "The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "path": {
