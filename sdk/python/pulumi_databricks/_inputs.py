@@ -28522,6 +28522,7 @@ class GetExternalLocationExternalLocationInfoArgs:
                  credential_id: Optional[str] = None,
                  credential_name: Optional[str] = None,
                  encryption_details: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs'] = None,
+                 fallback: Optional[bool] = None,
                  isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -28562,6 +28563,8 @@ class GetExternalLocationExternalLocationInfoArgs:
             pulumi.set(__self__, "credential_name", credential_name)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
         if isolation_mode is not None:
             pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
@@ -28671,6 +28674,15 @@ class GetExternalLocationExternalLocationInfoArgs:
     @encryption_details.setter
     def encryption_details(self, value: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs']):
         pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[bool]:
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: Optional[bool]):
+        pulumi.set(self, "fallback", value)
 
     @property
     @pulumi.getter(name="isolationMode")

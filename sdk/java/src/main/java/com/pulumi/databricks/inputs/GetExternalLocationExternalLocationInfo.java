@@ -129,6 +129,13 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    @Import(name="fallback")
+    private @Nullable Boolean fallback;
+
+    public Optional<Boolean> fallback() {
+        return Optional.ofNullable(this.fallback);
+    }
+
     @Import(name="isolationMode")
     private @Nullable String isolationMode;
 
@@ -252,6 +259,7 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.encryptionDetails = $.encryptionDetails;
+        this.fallback = $.fallback;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -359,6 +367,11 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
          */
         public Builder encryptionDetails(@Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails) {
             $.encryptionDetails = encryptionDetails;
+            return this;
+        }
+
+        public Builder fallback(@Nullable Boolean fallback) {
+            $.fallback = fallback;
             return this;
         }
 

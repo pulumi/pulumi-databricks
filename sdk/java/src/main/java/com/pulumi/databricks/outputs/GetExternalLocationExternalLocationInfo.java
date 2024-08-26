@@ -50,6 +50,7 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
+    private @Nullable Boolean fallback;
     private @Nullable String isolationMode;
     /**
      * @return Unique identifier of the parent Metastore.
@@ -140,6 +141,9 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
+    public Optional<Boolean> fallback() {
+        return Optional.ofNullable(this.fallback);
+    }
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
@@ -210,6 +214,7 @@ public final class GetExternalLocationExternalLocationInfo {
         private @Nullable String credentialId;
         private @Nullable String credentialName;
         private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
+        private @Nullable Boolean fallback;
         private @Nullable String isolationMode;
         private @Nullable String metastoreId;
         private @Nullable String name;
@@ -229,6 +234,7 @@ public final class GetExternalLocationExternalLocationInfo {
     	      this.credentialId = defaults.credentialId;
     	      this.credentialName = defaults.credentialName;
     	      this.encryptionDetails = defaults.encryptionDetails;
+    	      this.fallback = defaults.fallback;
     	      this.isolationMode = defaults.isolationMode;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
@@ -285,6 +291,12 @@ public final class GetExternalLocationExternalLocationInfo {
         public Builder encryptionDetails(@Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails) {
 
             this.encryptionDetails = encryptionDetails;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fallback(@Nullable Boolean fallback) {
+
+            this.fallback = fallback;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +357,7 @@ public final class GetExternalLocationExternalLocationInfo {
             _resultValue.credentialId = credentialId;
             _resultValue.credentialName = credentialName;
             _resultValue.encryptionDetails = encryptionDetails;
+            _resultValue.fallback = fallback;
             _resultValue.isolationMode = isolationMode;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;

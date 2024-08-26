@@ -93,7 +93,7 @@ namespace Pulumi.Databricks
         public Output<string> Md5 { get; private set; } = null!;
 
         /// <summary>
-        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         /// </summary>
         [Output("parentPath")]
         public Output<string> ParentPath { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Databricks
         public Input<string>? Md5 { get; set; }
 
         /// <summary>
-        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         /// </summary>
         [Input("parentPath", required: true)]
         public Input<string> ParentPath { get; set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.Databricks
         public Input<string>? Md5 { get; set; }
 
         /// <summary>
-        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }

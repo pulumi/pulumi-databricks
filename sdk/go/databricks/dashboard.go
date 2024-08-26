@@ -78,7 +78,7 @@ type Dashboard struct {
 	FilePath       pulumi.StringPtrOutput `pulumi:"filePath"`
 	LifecycleState pulumi.StringOutput    `pulumi:"lifecycleState"`
 	Md5            pulumi.StringOutput    `pulumi:"md5"`
-	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringOutput `pulumi:"parentPath"`
 	Path       pulumi.StringOutput `pulumi:"path"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
@@ -139,7 +139,7 @@ type dashboardState struct {
 	FilePath       *string `pulumi:"filePath"`
 	LifecycleState *string `pulumi:"lifecycleState"`
 	Md5            *string `pulumi:"md5"`
-	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath *string `pulumi:"parentPath"`
 	Path       *string `pulumi:"path"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
@@ -162,7 +162,7 @@ type DashboardState struct {
 	FilePath       pulumi.StringPtrInput
 	LifecycleState pulumi.StringPtrInput
 	Md5            pulumi.StringPtrInput
-	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringPtrInput
 	Path       pulumi.StringPtrInput
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
@@ -189,7 +189,7 @@ type dashboardArgs struct {
 	FilePath       *string `pulumi:"filePath"`
 	LifecycleState *string `pulumi:"lifecycleState"`
 	Md5            *string `pulumi:"md5"`
-	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath string  `pulumi:"parentPath"`
 	Path       *string `pulumi:"path"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
@@ -213,7 +213,7 @@ type DashboardArgs struct {
 	FilePath       pulumi.StringPtrInput
 	LifecycleState pulumi.StringPtrInput
 	Md5            pulumi.StringPtrInput
-	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringInput
 	Path       pulumi.StringPtrInput
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
@@ -349,7 +349,7 @@ func (o DashboardOutput) Md5() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Md5 }).(pulumi.StringOutput)
 }
 
-// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.
+// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 func (o DashboardOutput) ParentPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.ParentPath }).(pulumi.StringOutput)
 }
