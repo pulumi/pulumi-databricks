@@ -50,14 +50,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}`
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<Map<String,String>> environmentVars;
 
     /**
-     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}`
      * 
      */
     public Optional<Output<Map<String,String>>> environmentVars() {
@@ -261,7 +261,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}`
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}`
          * 
          * @return builder
          * 

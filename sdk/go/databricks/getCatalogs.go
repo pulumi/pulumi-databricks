@@ -13,7 +13,7 @@ import (
 
 // > **Note** This data source could be only used with workspace-level provider!
 //
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
 //
 // Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
 //

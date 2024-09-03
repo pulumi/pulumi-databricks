@@ -177,7 +177,7 @@ def get_node_type(category: Optional[str] = None,
                   support_port_forwarding: Optional[bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypeResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Gets the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
 
@@ -225,19 +225,19 @@ def get_node_type(category: Optional[str] = None,
            * `Memory Optimized (Remote HDD)` (Azure)
            * `Storage Optimized` (AWS, Azure)
            * `GPU Accelerated` (AWS, Azure)
-    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
-    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
     :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
-    :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.
-    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
-    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to _0_.
-    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to _0_.
-    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
-    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
-    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
-    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
+    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
+    :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to *0*.
+    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to *0*.
+    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to *0*.
+    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to *false*.
+    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to *false*.
+    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to *false*.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -291,7 +291,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          support_port_forwarding: Optional[pulumi.Input[Optional[bool]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Gets the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
 
@@ -339,18 +339,18 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
            * `Memory Optimized (Remote HDD)` (Azure)
            * `Storage Optimized` (AWS, Azure)
            * `GPU Accelerated` (AWS, Azure)
-    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
-    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
     :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
-    :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.
-    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
-    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to _0_.
-    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to _0_.
-    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
-    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
-    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
-    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
+    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
+    :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to *0*.
+    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to *0*.
+    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to *0*.
+    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to *false*.
+    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to *false*.
+    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to *false*.
     """
     ...

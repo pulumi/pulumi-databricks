@@ -60,10 +60,14 @@ import javax.annotation.Nullable;
  * 
  * It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
  * 
- * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
- * * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
- * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge{@literal @}example.com`  ```
- * * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
+ * ## Example Usage
+ * 
+ * The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+ * 
+ * * ` SHOW GRANT ON TABLE  `default`.`foo` `
+ * * ` REVOKE ALL PRIVILEGES ON TABLE  `default`.`foo`  FROM ... every group and user that has access to it ... `
+ * * ` GRANT MODIFY, SELECT ON TABLE  `default`.`foo`TO`serge{@literal @}example.com` `
+ * * ` GRANT SELECT ON TABLE  `default`.`foo`TO`special group` `
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -187,17 +191,9 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> catalog() {
         return Codegen.optional(this.catalog);
     }
-    /**
-     * Id of an existing databricks_cluster, otherwise resource creation will fail.
-     * 
-     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
-    /**
-     * @return Id of an existing databricks_cluster, otherwise resource creation will fail.
-     * 
-     */
     public Output<String> clusterId() {
         return this.clusterId;
     }

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ * * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +95,7 @@ export interface GetSchemaResult {
  *
  * ## Example Usage
  *
- * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+ * * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

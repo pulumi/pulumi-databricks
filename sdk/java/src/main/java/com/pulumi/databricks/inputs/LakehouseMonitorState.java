@@ -102,14 +102,14 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     @Import(name="driftMetricsTableName")
     private @Nullable Output<String> driftMetricsTableName;
 
     /**
-     * @return The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * @return The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     public Optional<Output<String>> driftMetricsTableName() {
@@ -184,14 +184,14 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     @Import(name="profileMetricsTableName")
     private @Nullable Output<String> profileMetricsTableName;
 
     /**
-     * @return The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * @return The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     public Optional<Output<String>> profileMetricsTableName() {
@@ -479,7 +479,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param driftMetricsTableName The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+         * @param driftMetricsTableName The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param driftMetricsTableName The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+         * @param driftMetricsTableName The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param profileMetricsTableName The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+         * @param profileMetricsTableName The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param profileMetricsTableName The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+         * @param profileMetricsTableName The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
          * 
          * @return builder
          * 

@@ -1218,55 +1218,6 @@ class Cluster(pulumi.CustomResource):
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-
-        > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        smallest = databricks.get_node_type(local_disk=True)
-        latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest_lts.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=20,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 50,
-            })
-        ```
-
-        ## Access Control
-
-        * Group and User can control which groups or individual users can create clusters.
-        * ClusterPolicy can control which kinds of clusters users can create.
-        * Users, who have access to Cluster Policy, but do not have an `allow_cluster_create` argument set would still be able to create clusters, but within the boundary of the policy.
-        * Permissions can control which groups or individual users can *Manage*, *Restart* or *Attach to* individual clusters.
-        * `instance_profile_arn` *(AWS only)* can control which data a given cluster can access through cloud-native controls.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Dynamic Passthrough Clusters for a Group guide.
-        * End to end workspace management guide.
-        * get_clusters data to retrieve a list of Cluster ids.
-        * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-        * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
-        * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-        * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
-        * get_zones data to fetch all available AWS availability zones on your workspace on AWS.
-
         ## Import
 
         The resource cluster can be imported using cluster id.
@@ -1354,55 +1305,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-
-        > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        smallest = databricks.get_node_type(local_disk=True)
-        latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest_lts.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=20,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 50,
-            })
-        ```
-
-        ## Access Control
-
-        * Group and User can control which groups or individual users can create clusters.
-        * ClusterPolicy can control which kinds of clusters users can create.
-        * Users, who have access to Cluster Policy, but do not have an `allow_cluster_create` argument set would still be able to create clusters, but within the boundary of the policy.
-        * Permissions can control which groups or individual users can *Manage*, *Restart* or *Attach to* individual clusters.
-        * `instance_profile_arn` *(AWS only)* can control which data a given cluster can access through cloud-native controls.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Dynamic Passthrough Clusters for a Group guide.
-        * End to end workspace management guide.
-        * get_clusters data to retrieve a list of Cluster ids.
-        * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-        * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
-        * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-        * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
-        * get_zones data to fetch all available AWS availability zones on your workspace on AWS.
-
         ## Import
 
         The resource cluster can be imported using cluster id.

@@ -23,10 +23,14 @@ import * as utilities from "./utilities";
  *
  * It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
  *
- * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
- * * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
- * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
- * * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
+ * ## Example Usage
+ *
+ * The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+ *
+ * * ` SHOW GRANT ON TABLE  `default`.`foo` `
+ * * ` REVOKE ALL PRIVILEGES ON TABLE  `default`.`foo`  FROM ... every group and user that has access to it ... `
+ * * ` GRANT MODIFY, SELECT ON TABLE  `default`.`foo`TO`serge@example.com` `
+ * * ` GRANT SELECT ON TABLE  `default`.`foo`TO`special group` `
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -122,9 +126,6 @@ export class SqlPermissions extends pulumi.CustomResource {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     public readonly catalog!: pulumi.Output<boolean | undefined>;
-    /**
-     * Id of an existing databricks_cluster, otherwise resource creation will fail.
-     */
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * Name of the database. Has default value of `default`.
@@ -193,9 +194,6 @@ export interface SqlPermissionsState {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
-    /**
-     * Id of an existing databricks_cluster, otherwise resource creation will fail.
-     */
     clusterId?: pulumi.Input<string>;
     /**
      * Name of the database. Has default value of `default`.
@@ -228,9 +226,6 @@ export interface SqlPermissionsArgs {
      * If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
-    /**
-     * Id of an existing databricks_cluster, otherwise resource creation will fail.
-     */
     clusterId?: pulumi.Input<string>;
     /**
      * Name of the database. Has default value of `default`.

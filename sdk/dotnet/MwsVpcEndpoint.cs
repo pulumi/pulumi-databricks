@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// ### Databricks on AWS usage
     /// 
-    /// Before using this resource, you will need to create the necessary VPC Endpoints as per your VPC endpoint requirements resource for this, for example:
+    /// Before using this resource, you will need to create the necessary VPC Endpoints as per your [VPC endpoint requirements](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#vpc-endpoint-requirements). You can use the aws_vpc_endpoint resource for this, for example:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

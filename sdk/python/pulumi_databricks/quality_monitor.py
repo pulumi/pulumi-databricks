@@ -287,12 +287,12 @@ class _QualityMonitorState:
         :param pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[str] dashboard_id: The ID of the generated dashboard.
         :param pulumi.Input['QualityMonitorDataClassificationConfigArgs'] data_classification_config: The data classification config for the monitor
-        :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         :param pulumi.Input['QualityMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
-        :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -408,7 +408,7 @@ class _QualityMonitorState:
     @pulumi.getter(name="driftMetricsTableName")
     def drift_metrics_table_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         """
         return pulumi.get(self, "drift_metrics_table_name")
 
@@ -477,7 +477,7 @@ class _QualityMonitorState:
     @pulumi.getter(name="profileMetricsTableName")
     def profile_metrics_table_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         """
         return pulumi.get(self, "profile_metrics_table_name")
 
@@ -626,6 +626,7 @@ class QualityMonitor(pulumi.CustomResource):
                 "problem_type": "PROBLEM_TYPE_REGRESSION",
             })
         ```
+
         ### Snapshot Monitor
         ```python
         import pulumi
@@ -693,6 +694,7 @@ class QualityMonitor(pulumi.CustomResource):
                 "problem_type": "PROBLEM_TYPE_REGRESSION",
             })
         ```
+
         ### Snapshot Monitor
         ```python
         import pulumi
@@ -821,12 +823,12 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[str] dashboard_id: The ID of the generated dashboard.
         :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
-        :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
-        :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -907,7 +909,7 @@ class QualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="driftMetricsTableName")
     def drift_metrics_table_name(self) -> pulumi.Output[str]:
         """
-        The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         """
         return pulumi.get(self, "drift_metrics_table_name")
 
@@ -952,7 +954,7 @@ class QualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="profileMetricsTableName")
     def profile_metrics_table_name(self) -> pulumi.Output[str]:
         """
-        The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         """
         return pulumi.get(self, "profile_metrics_table_name")
 

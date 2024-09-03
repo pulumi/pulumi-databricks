@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
 //
 // Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along getNodeType data source.
 //
@@ -93,7 +93,7 @@ type GetSparkVersionArgs struct {
 	Genomics *bool `pulumi:"genomics"`
 	// if we should limit the search only to runtimes that support GPUs. Default to `false`.
 	Gpu *bool `pulumi:"gpu"`
-	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
 	//
 	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton *bool `pulumi:"graviton"`
@@ -154,7 +154,7 @@ type GetSparkVersionOutputArgs struct {
 	Genomics pulumi.BoolPtrInput `pulumi:"genomics"`
 	// if we should limit the search only to runtimes that support GPUs. Default to `false`.
 	Gpu pulumi.BoolPtrInput `pulumi:"gpu"`
-	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
 	//
 	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`

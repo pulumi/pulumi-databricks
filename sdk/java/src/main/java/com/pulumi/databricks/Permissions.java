@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace. It would guarantee that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
+ * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace. It would guarantee that only *admins*, *authenticated principal* and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from *admins* group.
  * 
  * &gt; **Note** Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset unless the changes are also reflected in the configuration.
  * 
@@ -268,7 +268,7 @@ import javax.annotation.Nullable;
  * - The creator of a job has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a job would revert ownership to the creator.
  * - A job must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the job. Nothing would change, per se, if the job was created through Pulumi.
  * - A job cannot have a group as an owner.
- * - Jobs triggered through _Run Now_ assume the permissions of the job owner and not the user, and service principal who issued Run Now.
+ * - Jobs triggered through *Run Now* assume the permissions of the job owner and not the user, and service principal who issued Run Now.
  * - Read [main documentation](https://docs.databricks.com/security/access-control/jobs-acl.html) for additional detail.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  * - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
  * - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
  * - A DLT pipeline cannot have a group as an owner.
- * - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+ * - DLT Pipelines triggered through *Start* assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
  * - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1082,7 +1082,7 @@ import javax.annotation.Nullable;
  * 
  * !&gt; **Warning** There can be only one `authorization = &#34;tokens&#34;` permissions resource per workspace, otherwise there&#39;ll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
  * 
- * Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
+ * Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where *admins* `CAN_MANAGE` all tokens:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

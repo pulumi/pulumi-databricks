@@ -81,13 +81,13 @@ def get_tables(catalog_name: Optional[str] = None,
     """
     > **Note** This data source could be only used with workspace-level provider!
 
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use get_views for retrieving a list of views.
 
     ## Example Usage
 
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a *things* Schema from *sandbox* databricks_catalog:
 
     ```python
     import pulumi
@@ -142,13 +142,13 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
     """
     > **Note** This data source could be only used with workspace-level provider!
 
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use get_views for retrieving a list of views.
 
     ## Example Usage
 
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a *things* Schema from *sandbox* databricks_catalog:
 
     ```python
     import pulumi

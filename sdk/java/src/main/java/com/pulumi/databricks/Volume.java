@@ -29,19 +29,19 @@ import javax.annotation.Nullable;
  * 
  * An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
  * 
- * A volume can be referenced using its identifier: ```&lt;catalogName&gt;.&lt;schemaName&gt;.&lt;volumeName&gt;```, where:
+ * A volume can be referenced using its identifier: `&lt;catalogName&gt;.&lt;schemaName&gt;.&lt;volumeName&gt;`, where:
  * 
- * * ```&lt;catalogName&gt;```: The name of the catalog containing the Volume.
- * * ```&lt;schemaName&gt;```: The name of the schema containing the Volume.
- * * ```&lt;volumeName&gt;```: The name of the Volume. It identifies the volume object.
+ * * `&lt;catalogName&gt;`: The name of the catalog containing the Volume.
+ * * `&lt;schemaName&gt;`: The name of the schema containing the Volume.
+ * * `&lt;volumeName&gt;`: The name of the Volume. It identifies the volume object.
  * 
  * The path to access files in volumes uses the following format:
  * 
- * ```/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;```
+ * `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;`
  * 
- * Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+ * Databricks also supports an optional `dbfs:/` scheme, so the following path also works:
  * 
- * ```dbfs:/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;```
+ * `dbfs:/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;`
  * 
  * This resource manages Volumes in Unity Catalog.
  * 

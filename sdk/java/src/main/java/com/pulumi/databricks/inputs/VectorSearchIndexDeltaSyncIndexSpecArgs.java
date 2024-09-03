@@ -33,9 +33,17 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.embeddingSourceColumns);
     }
 
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     @Import(name="embeddingVectorColumns")
     private @Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns;
 
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     public Optional<Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>>> embeddingVectorColumns() {
         return Optional.ofNullable(this.embeddingVectorColumns);
     }
@@ -156,15 +164,33 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return embeddingSourceColumns(List.of(embeddingSourceColumns));
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(@Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns) {
             $.embeddingVectorColumns = embeddingVectorColumns;
             return this;
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs> embeddingVectorColumns) {
             return embeddingVectorColumns(Output.of(embeddingVectorColumns));
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs... embeddingVectorColumns) {
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
         }

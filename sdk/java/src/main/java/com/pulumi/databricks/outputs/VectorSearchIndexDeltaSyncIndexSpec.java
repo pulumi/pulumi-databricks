@@ -19,6 +19,10 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
      * 
      */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     private @Nullable String embeddingWritebackTable;
     /**
@@ -47,6 +51,10 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }

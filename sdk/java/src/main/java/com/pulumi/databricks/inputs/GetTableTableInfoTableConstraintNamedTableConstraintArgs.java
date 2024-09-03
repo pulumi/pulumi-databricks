@@ -15,14 +15,14 @@ public final class GetTableTableInfoTableConstraintNamedTableConstraintArgs exte
     public static final GetTableTableInfoTableConstraintNamedTableConstraintArgs Empty = new GetTableTableInfoTableConstraintNamedTableConstraintArgs();
 
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class GetTableTableInfoTableConstraintNamedTableConstraintArgs exte
         }
 
         /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * @param name Full name of the databricks_table: *`catalog`.`schema`.`table`*
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetTableTableInfoTableConstraintNamedTableConstraintArgs exte
         }
 
         /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * @param name Full name of the databricks_table: *`catalog`.`schema`.`table`*
          * 
          * @return builder
          * 

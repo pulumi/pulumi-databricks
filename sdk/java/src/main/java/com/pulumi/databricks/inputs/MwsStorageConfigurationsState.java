@@ -16,16 +16,32 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
 
     public static final MwsStorageConfigurationsState Empty = new MwsStorageConfigurationsState();
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * name of AWS S3 bucket
+     * 
+     */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
+    /**
+     * @return name of AWS S3 bucket
+     * 
+     */
     public Optional<Output<String>> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -52,9 +68,17 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.storageConfigurationId);
     }
 
+    /**
+     * name under which this storage configuration is stored
+     * 
+     */
     @Import(name="storageConfigurationName")
     private @Nullable Output<String> storageConfigurationName;
 
+    /**
+     * @return name under which this storage configuration is stored
+     * 
+     */
     public Optional<Output<String>> storageConfigurationName() {
         return Optional.ofNullable(this.storageConfigurationName);
     }
@@ -87,20 +111,44 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
             $ = new MwsStorageConfigurationsState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param bucketName name of AWS S3 bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(@Nullable Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
         }
 
+        /**
+         * @param bucketName name of AWS S3 bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
         }
@@ -135,11 +183,23 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
             return storageConfigurationId(Output.of(storageConfigurationId));
         }
 
+        /**
+         * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationName(@Nullable Output<String> storageConfigurationName) {
             $.storageConfigurationName = storageConfigurationName;
             return this;
         }
 
+        /**
+         * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationName(String storageConfigurationName) {
             return storageConfigurationName(Output.of(storageConfigurationName));
         }

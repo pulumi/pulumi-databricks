@@ -5,14 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+ * ## Example Usage
  *
- * This resource to configure root bucket new workspaces within AWS.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
  *
- * It is important to understand that this will require you to configure your provider separately for the multiple workspaces resources. This will point to <https://accounts.cloud.databricks.com> for the HOST and it will use basic auth as that is the only authentication method available for multiple workspaces api.
- *
- * Please follow this complete runnable example
- * * `storageConfigurationName` - name under which this storage configuration is stored
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const rootStorageBucket = new aws.s3.BucketV2("root_storage_bucket", {
+ *     bucket: `${prefix}-rootbucket`,
+ *     acl: "private",
+ * });
+ * const rootVersioning = new aws.s3.BucketVersioningV2("root_versioning", {
+ *     bucket: rootStorageBucket.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
+ * });
+ * const _this = new databricks.MwsStorageConfigurations("this", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${prefix}-storage`,
+ *     bucketName: rootStorageBucket.bucket,
+ * });
+ * ```
  *
  * ## Related Resources
  *
@@ -58,13 +76,22 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsStorageConfigurations.__pulumiType;
     }
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     public readonly bucketName!: pulumi.Output<string>;
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
     public /*out*/ readonly storageConfigurationId!: pulumi.Output<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     public readonly storageConfigurationName!: pulumi.Output<string>;
 
     /**
@@ -113,13 +140,22 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MwsStorageConfigurations resources.
  */
 export interface MwsStorageConfigurationsState {
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     bucketName?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
     /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
     storageConfigurationId?: pulumi.Input<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     storageConfigurationName?: pulumi.Input<string>;
 }
 
@@ -127,7 +163,16 @@ export interface MwsStorageConfigurationsState {
  * The set of arguments for constructing a MwsStorageConfigurations resource.
  */
 export interface MwsStorageConfigurationsArgs {
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     bucketName: pulumi.Input<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     storageConfigurationName: pulumi.Input<string>;
 }

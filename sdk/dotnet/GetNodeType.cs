@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetNodeType
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
         /// 
         /// Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypeResult>("databricks:index/getNodeType:getNodeType", args ?? new GetNodeTypeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
         /// 
         /// Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
         /// 
@@ -149,19 +149,19 @@ namespace Pulumi.Databricks
         public string? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
         /// </summary>
         [Input("fleet")]
         public bool? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
         /// </summary>
         [Input("gbPerCore")]
         public int? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -173,55 +173,55 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
-        /// . Pick only nodes that have IO Cache. Defaults to _false_.
+        /// . Pick only nodes that have IO Cache. Defaults to *false*.
         /// </summary>
         [Input("isIoCacheEnabled")]
         public bool? IsIoCacheEnabled { get; set; }
 
         /// <summary>
-        /// Pick only nodes with local storage. Defaults to _false_.
+        /// Pick only nodes with local storage. Defaults to *false*.
         /// </summary>
         [Input("localDisk")]
         public bool? LocalDisk { get; set; }
 
         /// <summary>
-        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
         /// </summary>
         [Input("localDiskMinSize")]
         public int? LocalDiskMinSize { get; set; }
 
         /// <summary>
-        /// Minimum number of CPU cores available on instance. Defaults to _0_.
+        /// Minimum number of CPU cores available on instance. Defaults to *0*.
         /// </summary>
         [Input("minCores")]
         public int? MinCores { get; set; }
 
         /// <summary>
-        /// Minimum number of GPU's attached to instance. Defaults to _0_.
+        /// Minimum number of GPU's attached to instance. Defaults to *0*.
         /// </summary>
         [Input("minGpus")]
         public int? MinGpus { get; set; }
 
         /// <summary>
-        /// Minimum amount of memory per node in gigabytes. Defaults to _0_.
+        /// Minimum amount of memory per node in gigabytes. Defaults to *0*.
         /// </summary>
         [Input("minMemoryGb")]
         public int? MinMemoryGb { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon driver. Defaults to _false_.
+        /// Pick only nodes that can run Photon driver. Defaults to *false*.
         /// </summary>
         [Input("photonDriverCapable")]
         public bool? PhotonDriverCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon workers. Defaults to _false_.
+        /// Pick only nodes that can run Photon workers. Defaults to *false*.
         /// </summary>
         [Input("photonWorkerCapable")]
         public bool? PhotonWorkerCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that support port forwarding. Defaults to _false_.
+        /// Pick only nodes that support port forwarding. Defaults to *false*.
         /// </summary>
         [Input("supportPortForwarding")]
         public bool? SupportPortForwarding { get; set; }
@@ -248,19 +248,19 @@ namespace Pulumi.Databricks
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
         /// </summary>
         [Input("fleet")]
         public Input<bool>? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
         /// </summary>
         [Input("gbPerCore")]
         public Input<int>? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
@@ -272,55 +272,55 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// . Pick only nodes that have IO Cache. Defaults to _false_.
+        /// . Pick only nodes that have IO Cache. Defaults to *false*.
         /// </summary>
         [Input("isIoCacheEnabled")]
         public Input<bool>? IsIoCacheEnabled { get; set; }
 
         /// <summary>
-        /// Pick only nodes with local storage. Defaults to _false_.
+        /// Pick only nodes with local storage. Defaults to *false*.
         /// </summary>
         [Input("localDisk")]
         public Input<bool>? LocalDisk { get; set; }
 
         /// <summary>
-        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
         /// </summary>
         [Input("localDiskMinSize")]
         public Input<int>? LocalDiskMinSize { get; set; }
 
         /// <summary>
-        /// Minimum number of CPU cores available on instance. Defaults to _0_.
+        /// Minimum number of CPU cores available on instance. Defaults to *0*.
         /// </summary>
         [Input("minCores")]
         public Input<int>? MinCores { get; set; }
 
         /// <summary>
-        /// Minimum number of GPU's attached to instance. Defaults to _0_.
+        /// Minimum number of GPU's attached to instance. Defaults to *0*.
         /// </summary>
         [Input("minGpus")]
         public Input<int>? MinGpus { get; set; }
 
         /// <summary>
-        /// Minimum amount of memory per node in gigabytes. Defaults to _0_.
+        /// Minimum amount of memory per node in gigabytes. Defaults to *0*.
         /// </summary>
         [Input("minMemoryGb")]
         public Input<int>? MinMemoryGb { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon driver. Defaults to _false_.
+        /// Pick only nodes that can run Photon driver. Defaults to *false*.
         /// </summary>
         [Input("photonDriverCapable")]
         public Input<bool>? PhotonDriverCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon workers. Defaults to _false_.
+        /// Pick only nodes that can run Photon workers. Defaults to *false*.
         /// </summary>
         [Input("photonWorkerCapable")]
         public Input<bool>? PhotonWorkerCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that support port forwarding. Defaults to _false_.
+        /// Pick only nodes that support port forwarding. Defaults to *false*.
         /// </summary>
         [Input("supportPortForwarding")]
         public Input<bool>? SupportPortForwarding { get; set; }

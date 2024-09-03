@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Inputs
         public Inputs.GetTableTableInfoColumnMaskArgs? Mask { get; set; }
 
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: *`catalog`.`schema`.`table`*
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }

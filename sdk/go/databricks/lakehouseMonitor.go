@@ -56,6 +56,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Snapshot Monitor
 // ```go
 // package main
@@ -107,7 +108,7 @@ type LakehouseMonitor struct {
 	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
 	// The data classification config for the monitor
 	DataClassificationConfig LakehouseMonitorDataClassificationConfigPtrOutput `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName pulumi.StringOutput `pulumi:"driftMetricsTableName"`
 	// Configuration for the inference log monitor
 	InferenceLog            LakehouseMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
@@ -118,7 +119,7 @@ type LakehouseMonitor struct {
 	Notifications LakehouseMonitorNotificationsPtrOutput `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrOutput `pulumi:"schedule"`
@@ -188,7 +189,7 @@ type lakehouseMonitorState struct {
 	DashboardId *string `pulumi:"dashboardId"`
 	// The data classification config for the monitor
 	DataClassificationConfig *LakehouseMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName *string `pulumi:"driftMetricsTableName"`
 	// Configuration for the inference log monitor
 	InferenceLog            *LakehouseMonitorInferenceLog `pulumi:"inferenceLog"`
@@ -199,7 +200,7 @@ type lakehouseMonitorState struct {
 	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName *string `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *LakehouseMonitorSchedule `pulumi:"schedule"`
@@ -231,7 +232,7 @@ type LakehouseMonitorState struct {
 	DashboardId pulumi.StringPtrInput
 	// The data classification config for the monitor
 	DataClassificationConfig LakehouseMonitorDataClassificationConfigPtrInput
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName pulumi.StringPtrInput
 	// Configuration for the inference log monitor
 	InferenceLog            LakehouseMonitorInferenceLogPtrInput
@@ -242,7 +243,7 @@ type LakehouseMonitorState struct {
 	Notifications LakehouseMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringPtrInput
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName pulumi.StringPtrInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrInput
@@ -448,7 +449,7 @@ func (o LakehouseMonitorOutput) DataClassificationConfig() LakehouseMonitorDataC
 	}).(LakehouseMonitorDataClassificationConfigPtrOutput)
 }
 
-// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 func (o LakehouseMonitorOutput) DriftMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.DriftMetricsTableName }).(pulumi.StringOutput)
 }
@@ -477,7 +478,7 @@ func (o LakehouseMonitorOutput) OutputSchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.OutputSchemaName }).(pulumi.StringOutput)
 }
 
-// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 func (o LakehouseMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }

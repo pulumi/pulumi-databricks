@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
 //
 // Lists all MwsWorkspaces in Databricks Account.
 //
@@ -49,7 +49,7 @@ import (
 // The following resources are used in the same context:
 //
 // * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-// * MetastoreAssignment
+// * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurermDatabricksWorkspace
 func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsWorkspacesResult

@@ -10,15 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
-    /// 
-    /// This resource to configure KMS keys for new workspaces within AWS or GCP. This is to support the following features:
-    /// 
-    /// * [Customer-managed keys for managed services](https://docs.databricks.com/security/keys/customer-managed-keys-managed-services-aws.html): Encrypt the workspace’s managed services data in the control plane, including notebooks, secrets, Databricks SQL queries, and Databricks SQL query history  with a CMK.
-    /// * [Customer-managed keys for workspace storage](https://docs.databricks.com/security/keys/customer-managed-keys-storage-aws.html): Encrypt the workspace's root S3 bucket and clusters' EBS volumes with a CMK.
-    /// 
-    /// Please follow this complete runnable example, you should use the provider aliasing feature of Pulumi. We strongly recommend having one Pulumi module for creation of workspace + PAT token and the rest in different modules.
-    /// 
     /// ## Example Usage
     /// 
     /// &gt; **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
@@ -27,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// You must configure this during workspace creation
     /// 
-    /// ### For AWS
+    /// #### For AWS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -128,7 +119,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ### For GCP
+    /// #### For GCP
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -161,7 +152,7 @@ namespace Pulumi.Databricks
     /// 
     /// ### Customer-managed key for workspace storage
     /// 
-    /// ### For AWS
+    /// #### For AWS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -342,7 +333,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ### For GCP
+    /// #### For GCP
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

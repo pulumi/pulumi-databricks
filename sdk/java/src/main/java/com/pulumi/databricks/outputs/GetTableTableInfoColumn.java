@@ -21,7 +21,7 @@ public final class GetTableTableInfoColumn {
     private @Nullable String comment;
     private @Nullable GetTableTableInfoColumnMask mask;
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     private @Nullable String name;
@@ -47,7 +47,7 @@ public final class GetTableTableInfoColumn {
         return Optional.ofNullable(this.mask);
     }
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     public Optional<String> name() {

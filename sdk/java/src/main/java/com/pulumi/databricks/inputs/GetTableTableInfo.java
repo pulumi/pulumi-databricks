@@ -170,14 +170,14 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     public Optional<String> name() {
@@ -499,7 +499,7 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * @param name Full name of the databricks_table: *`catalog`.`schema`.`table`*
          * 
          * @return builder
          * 

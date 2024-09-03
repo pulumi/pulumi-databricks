@@ -11,7 +11,7 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// &gt; **Note**
-    ///   It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+    /// It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
     /// 
     /// &gt; **Note** This resource could be only used with workspace-level provider!
     /// 

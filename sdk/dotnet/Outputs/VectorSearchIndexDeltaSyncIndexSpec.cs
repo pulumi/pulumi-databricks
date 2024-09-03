@@ -17,6 +17,9 @@ namespace Pulumi.Databricks.Outputs
         /// array of objects representing columns that contain the embedding source.  Each entry consists of:
         /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> EmbeddingSourceColumns;
+        /// <summary>
+        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> EmbeddingVectorColumns;
         public readonly string? EmbeddingWritebackTable;
         /// <summary>

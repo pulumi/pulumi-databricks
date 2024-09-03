@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
         public Output<string?> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.Databricks
         public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Databricks
         public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        /// Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

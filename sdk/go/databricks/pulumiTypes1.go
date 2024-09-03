@@ -39534,7 +39534,7 @@ type GetTableTableInfo struct {
 	EncryptionDetails                   *GetTableTableInfoEncryptionDetails                   `pulumi:"encryptionDetails"`
 	FullName                            *string                                               `pulumi:"fullName"`
 	MetastoreId                         *string                                               `pulumi:"metastoreId"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name *string `pulumi:"name"`
 	// Current owner of the table
 	Owner      *string                     `pulumi:"owner"`
@@ -39590,7 +39590,7 @@ type GetTableTableInfoArgs struct {
 	EncryptionDetails                   GetTableTableInfoEncryptionDetailsPtrInput                   `pulumi:"encryptionDetails"`
 	FullName                            pulumi.StringPtrInput                                        `pulumi:"fullName"`
 	MetastoreId                         pulumi.StringPtrInput                                        `pulumi:"metastoreId"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Current owner of the table
 	Owner      pulumi.StringPtrInput              `pulumi:"owner"`
@@ -39763,7 +39763,7 @@ func (o GetTableTableInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -40005,7 +40005,7 @@ func (o GetTableTableInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -40159,7 +40159,7 @@ type GetTableTableInfoColumn struct {
 	// Free-form text description
 	Comment *string                      `pulumi:"comment"`
 	Mask    *GetTableTableInfoColumnMask `pulumi:"mask"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name             *string `pulumi:"name"`
 	Nullable         *bool   `pulumi:"nullable"`
 	PartitionIndex   *int    `pulumi:"partitionIndex"`
@@ -40187,7 +40187,7 @@ type GetTableTableInfoColumnArgs struct {
 	// Free-form text description
 	Comment pulumi.StringPtrInput               `pulumi:"comment"`
 	Mask    GetTableTableInfoColumnMaskPtrInput `pulumi:"mask"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name             pulumi.StringPtrInput `pulumi:"name"`
 	Nullable         pulumi.BoolPtrInput   `pulumi:"nullable"`
 	PartitionIndex   pulumi.IntPtrInput    `pulumi:"partitionIndex"`
@@ -40260,7 +40260,7 @@ func (o GetTableTableInfoColumnOutput) Mask() GetTableTableInfoColumnMaskPtrOutp
 	return o.ApplyT(func(v GetTableTableInfoColumn) *GetTableTableInfoColumnMask { return v.Mask }).(GetTableTableInfoColumnMaskPtrOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfoColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -41312,7 +41312,7 @@ func (o GetTableTableInfoTableConstraintArrayOutput) Index(i pulumi.IntInput) Ge
 
 type GetTableTableInfoTableConstraintForeignKeyConstraint struct {
 	ChildColumns []string `pulumi:"childColumns"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name          string   `pulumi:"name"`
 	ParentColumns []string `pulumi:"parentColumns"`
 	ParentTable   string   `pulumi:"parentTable"`
@@ -41331,7 +41331,7 @@ type GetTableTableInfoTableConstraintForeignKeyConstraintInput interface {
 
 type GetTableTableInfoTableConstraintForeignKeyConstraintArgs struct {
 	ChildColumns pulumi.StringArrayInput `pulumi:"childColumns"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name          pulumi.StringInput      `pulumi:"name"`
 	ParentColumns pulumi.StringArrayInput `pulumi:"parentColumns"`
 	ParentTable   pulumi.StringInput      `pulumi:"parentTable"`
@@ -41418,7 +41418,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintOutput) ChildColumns
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintForeignKeyConstraint) []string { return v.ChildColumns }).(pulumi.StringArrayOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintForeignKeyConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintForeignKeyConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -41464,7 +41464,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) ChildColu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintForeignKeyConstraint) *string {
 		if v == nil {
@@ -41493,7 +41493,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) ParentTab
 }
 
 type GetTableTableInfoTableConstraintNamedTableConstraint struct {
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name string `pulumi:"name"`
 }
 
@@ -41509,7 +41509,7 @@ type GetTableTableInfoTableConstraintNamedTableConstraintInput interface {
 }
 
 type GetTableTableInfoTableConstraintNamedTableConstraintArgs struct {
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -41590,7 +41590,7 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintOutput) ToGetTableTa
 	}).(GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintNamedTableConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintNamedTableConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -41619,7 +41619,7 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Elem() Ge
 	}).(GetTableTableInfoTableConstraintNamedTableConstraintOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintNamedTableConstraint) *string {
 		if v == nil {
@@ -41631,7 +41631,7 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Name() pu
 
 type GetTableTableInfoTableConstraintPrimaryKeyConstraint struct {
 	ChildColumns []string `pulumi:"childColumns"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name string `pulumi:"name"`
 }
 
@@ -41648,7 +41648,7 @@ type GetTableTableInfoTableConstraintPrimaryKeyConstraintInput interface {
 
 type GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs struct {
 	ChildColumns pulumi.StringArrayInput `pulumi:"childColumns"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -41733,7 +41733,7 @@ func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintOutput) ChildColumns
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintPrimaryKeyConstraint) []string { return v.ChildColumns }).(pulumi.StringArrayOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintPrimaryKeyConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -41771,7 +41771,7 @@ func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintPtrOutput) ChildColu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintPrimaryKeyConstraint) *string {
 		if v == nil {

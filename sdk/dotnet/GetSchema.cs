@@ -12,12 +12,12 @@ namespace Pulumi.Databricks
     public static class GetSchema
     {
         /// <summary>
-        /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
+        /// Retrieves details about databricks.Schema that was created by Pulumi or manually.
         /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
         /// 
         /// ## Example Usage
         /// 
-        /// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+        /// * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -66,12 +66,12 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaResult>("databricks:index/getSchema:getSchema", args ?? new GetSchemaArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
+        /// Retrieves details about databricks.Schema that was created by Pulumi or manually.
         /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
         /// 
         /// ## Example Usage
         /// 
-        /// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+        /// * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

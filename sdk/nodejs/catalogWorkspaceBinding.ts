@@ -12,10 +12,10 @@ import * as utilities from "./utilities";
  * By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `databricks.CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
  *
  * > **Note**
- *   To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `databricks.Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
+ * To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `databricks.Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
  *
  * > **Note**
- *   If the catalog's isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
+ * If the catalog's isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
  *
  * ## Example Usage
  *

@@ -13,8 +13,7 @@ import (
 )
 
 // > **Note**
-//
-//	It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+// It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 //
 // > **Note** This resource could be only used with workspace-level provider!
 //

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * import json
- *  
+ * 
  * event_message = dbutils.widgets.get("event_message")
  * event_message_dict = json.loads(event_message)
  * print(f"event data={event_message_dict}")

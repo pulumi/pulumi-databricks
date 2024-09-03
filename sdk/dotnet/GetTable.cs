@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This data source could be only used with workspace-level provider!
         /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
         /// 
         /// Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This data source could be only used with workspace-level provider!
         /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
         /// 
         /// Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
         /// 
@@ -127,7 +127,7 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: *`catalog`.`schema`.`table`*
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: *`catalog`.`schema`.`table`*
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
