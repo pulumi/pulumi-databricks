@@ -79,7 +79,7 @@ export class GitCredential extends pulumi.CustomResource {
      */
     public readonly gitUsername!: pulumi.Output<string | undefined>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     public readonly personalAccessToken!: pulumi.Output<string | undefined>;
 
@@ -132,7 +132,7 @@ export interface GitCredentialState {
      */
     gitUsername?: pulumi.Input<string>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string>;
 }
@@ -154,7 +154,7 @@ export interface GitCredentialArgs {
      */
     gitUsername?: pulumi.Input<string>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string>;
 }

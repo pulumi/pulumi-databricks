@@ -18,6 +18,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     public static final MwsCredentialsArgs Empty = new MwsCredentialsArgs();
 
     /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
      * 
@@ -27,6 +29,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> accountId;
 
     /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
      * 
@@ -66,9 +70,17 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.credentialsId);
     }
 
+    /**
+     * name of credentials to register
+     * 
+     */
     @Import(name="credentialsName", required=true)
     private Output<String> credentialsName;
 
+    /**
+     * @return name of credentials to register
+     * 
+     */
     public Output<String> credentialsName() {
         return this.credentialsName;
     }
@@ -80,9 +92,17 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * ARN of cross-account role
+     * 
+     */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
+    /**
+     * @return ARN of cross-account role
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }
@@ -117,6 +137,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
          * @return builder
          * 
          * @deprecated
@@ -130,6 +152,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
          * @return builder
          * 
          * @deprecated
@@ -183,11 +207,23 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
             return credentialsId(Output.of(credentialsId));
         }
 
+        /**
+         * @param credentialsName name of credentials to register
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsName(Output<String> credentialsName) {
             $.credentialsName = credentialsName;
             return this;
         }
 
+        /**
+         * @param credentialsName name of credentials to register
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsName(String credentialsName) {
             return credentialsName(Output.of(credentialsName));
         }
@@ -201,11 +237,23 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param roleArn ARN of cross-account role
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn ARN of cross-account role
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

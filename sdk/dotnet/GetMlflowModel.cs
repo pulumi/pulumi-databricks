@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetMlflowModel
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Retrieves the settings of databricks.MlflowModel by name.
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMlflowModelResult>("databricks:index/getMlflowModel:getMlflowModel", args ?? new GetMlflowModelArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Retrieves the settings of databricks.MlflowModel by name.
         /// 

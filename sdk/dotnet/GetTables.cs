@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This data source could be only used with workspace-level provider!
         /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
         /// 
@@ -73,7 +73,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// &gt; **Note** This data source could be only used with workspace-level provider!
         /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
         /// 

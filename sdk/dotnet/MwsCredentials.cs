@@ -10,13 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+    /// ## Example Usage
     /// 
-    /// This resource to configure the cross-account role for creation of new workspaces within AWS.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
     /// 
-    /// Please follow this complete runnable example Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-    /// * `credentials_name` - (Required) name of credentials to register
-    /// * `role_arn` - (Required) ARN of cross-account role
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     {
+    ///         ExternalId = databricksAccountId,
+    ///     });
+    /// 
+    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
+    ///     {
+    ///         Name = $"{prefix}-crossaccount",
+    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
+    ///         Tags = tags,
+    ///     });
+    /// 
+    ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+    /// 
+    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
+    ///     {
+    ///         Name = $"{prefix}-policy",
+    ///         Role = crossAccountRole.Id,
+    ///         Policy = thisGetAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+    ///     });
+    /// 
+    ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsName = $"{prefix}-creds",
+    ///         RoleArn = crossAccountRole.Arn,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Related Resources
     /// 
@@ -42,6 +79,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/mwsCredentials:MwsCredentials")]
     public partial class MwsCredentials : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
@@ -57,12 +97,18 @@ namespace Pulumi.Databricks
         [Output("credentialsId")]
         public Output<string> CredentialsId { get; private set; } = null!;
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Output("credentialsName")]
         public Output<string> CredentialsName { get; private set; } = null!;
 
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
@@ -112,6 +158,9 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -127,12 +176,18 @@ namespace Pulumi.Databricks
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Input("credentialsName", required: true)]
         public Input<string> CredentialsName { get; set; } = null!;
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
@@ -144,6 +199,9 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -159,12 +217,18 @@ namespace Pulumi.Databricks
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Input("credentialsName")]
         public Input<string>? CredentialsName { get; set; }
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

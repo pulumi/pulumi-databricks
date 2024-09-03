@@ -1778,7 +1778,7 @@ class ClusterDockerImage(dict):
         :param str url: URL for the Docker image
         :param 'ClusterDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
                
-               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
                
                ```python
                import pulumi
@@ -1815,7 +1815,7 @@ class ClusterDockerImage(dict):
         """
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 
-        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
 
         ```python
         import pulumi
@@ -3215,7 +3215,7 @@ class InstancePoolPreloadedDockerImage(dict):
         :param str url: URL for the Docker image
         :param 'InstancePoolPreloadedDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
                
-               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
                
                ```python
                import pulumi
@@ -3252,7 +3252,7 @@ class InstancePoolPreloadedDockerImage(dict):
         """
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 
-        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
 
         ```python
         import pulumi
