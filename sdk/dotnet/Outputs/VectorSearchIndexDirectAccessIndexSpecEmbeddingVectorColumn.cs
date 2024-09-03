@@ -13,9 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn
     {
+        /// <summary>
+        /// Dimension of the embedding vector.
+        /// </summary>
         public readonly int? EmbeddingDimension;
         /// <summary>
-        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        /// The name of the column.
         /// </summary>
         public readonly string? Name;
 

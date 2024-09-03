@@ -18,10 +18,10 @@ import javax.annotation.Nullable;
 
 /**
  * &gt; **Note**
- *   This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+ * This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
  * 
  * &gt; **Note**
- *   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+ * Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
  * 
  * Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
  * 
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  * ## Schema grants
  * 
- * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to *`catalog.schema`* specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  * 
  * ## Table grants
  * 
- * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to *`catalog.schema.table`* specified in the `table` attribute.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -328,7 +328,7 @@ import javax.annotation.Nullable;
  * 
  * ## View grants
  * 
- * You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to *`catalog.schema.view`* specified in `table` attribute.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -429,7 +429,7 @@ import javax.annotation.Nullable;
  * 
  * ## Volume grants
  * 
- * You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+ * You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to *`catalog.schema.volume`* specified in the `volume` attribute.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -482,7 +482,7 @@ import javax.annotation.Nullable;
  * 
  * ## Registered model grants
  * 
- * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+ * You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to *`catalog.schema.model`* specified in the `model` attribute.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -531,7 +531,7 @@ import javax.annotation.Nullable;
  * 
  * ## Function grants
  * 
- * You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+ * You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to *`catalog.schema.function`* specified in the `function` attribute.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

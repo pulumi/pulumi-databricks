@@ -259,7 +259,7 @@ export interface ClusterDockerImage {
     /**
      * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
      *
-     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -5711,7 +5711,7 @@ export interface GetTableTableInfo {
     fullName?: string;
     metastoreId?: string;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name?: string;
     /**
@@ -5776,7 +5776,7 @@ export interface GetTableTableInfoArgs {
     fullName?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name?: pulumi.Input<string>;
     /**
@@ -5818,7 +5818,7 @@ export interface GetTableTableInfoColumn {
     comment?: string;
     mask?: inputs.GetTableTableInfoColumnMask;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name?: string;
     nullable?: boolean;
@@ -5839,7 +5839,7 @@ export interface GetTableTableInfoColumnArgs {
     comment?: pulumi.Input<string>;
     mask?: pulumi.Input<inputs.GetTableTableInfoColumnMaskArgs>;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name?: pulumi.Input<string>;
     nullable?: pulumi.Input<boolean>;
@@ -5926,7 +5926,7 @@ export interface GetTableTableInfoTableConstraintArgs {
 export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
     childColumns: string[];
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: string;
     parentColumns: string[];
@@ -5936,7 +5936,7 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
 export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
     childColumns: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: pulumi.Input<string>;
     parentColumns: pulumi.Input<pulumi.Input<string>[]>;
@@ -5945,14 +5945,14 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraint {
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: string;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraintArgs {
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: pulumi.Input<string>;
 }
@@ -5960,7 +5960,7 @@ export interface GetTableTableInfoTableConstraintNamedTableConstraintArgs {
 export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
     childColumns: string[];
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: string;
 }
@@ -5968,7 +5968,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
 export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
     childColumns: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * Full name of the databricks_table: *`catalog`.`schema`.`table`*
      */
     name: pulumi.Input<string>;
 }
@@ -6255,7 +6255,7 @@ export interface InstancePoolPreloadedDockerImage {
     /**
      * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
      *
-     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -8964,7 +8964,7 @@ export interface ModelServingConfigServedEntity {
      */
     entityVersion?: pulumi.Input<string>;
     /**
-     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
      */
     environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -10545,6 +10545,9 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
     embeddingWritebackTable?: pulumi.Input<string>;
     /**
@@ -10564,17 +10567,23 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: pulumi.Input<string>;
 }
@@ -10584,6 +10593,9 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[]>;
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -10592,17 +10604,23 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: pulumi.Input<string>;
 }

@@ -243,7 +243,7 @@ class MlflowWebhook(pulumi.CustomResource):
             path=f"{me.home}/MLFlowWebhook",
             language="PYTHON",
             content_base64=std.base64encode(input=\"\"\"import json
-         
+
         event_message = dbutils.widgets.get("event_message")
         event_message_dict = json.loads(event_message)
         print(f"event data={event_message_dict}")
@@ -343,7 +343,7 @@ class MlflowWebhook(pulumi.CustomResource):
             path=f"{me.home}/MLFlowWebhook",
             language="PYTHON",
             content_base64=std.base64encode(input=\"\"\"import json
-         
+
         event_message = dbutils.widgets.get("event_message")
         event_message_dict = json.loads(event_message)
         print(f"event data={event_message_dict}")

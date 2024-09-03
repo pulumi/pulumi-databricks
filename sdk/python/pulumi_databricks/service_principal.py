@@ -40,7 +40,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
@@ -190,7 +190,7 @@ class ServicePrincipalArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
@@ -288,7 +288,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
@@ -438,7 +438,7 @@ class _ServicePrincipalState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
@@ -630,7 +630,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
@@ -829,7 +829,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
@@ -933,7 +933,7 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 

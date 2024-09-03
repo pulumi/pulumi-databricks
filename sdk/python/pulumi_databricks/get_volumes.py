@@ -85,7 +85,7 @@ def get_volumes(catalog_name: Optional[str] = None,
 
     ## Example Usage
 
-    Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+    Listing all volumes in a *things* Schema of a  *sandbox* databricks_catalog:
 
     ```python
     import pulumi
@@ -135,7 +135,7 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+    Listing all volumes in a *things* Schema of a  *sandbox* databricks_catalog:
 
     ```python
     import pulumi

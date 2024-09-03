@@ -74,7 +74,7 @@ def get_table(id: Optional[str] = None,
     """
     > **Note** This data source could be only used with workspace-level provider!
 
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
 
@@ -106,7 +106,7 @@ def get_table(id: Optional[str] = None,
     * get_tables to list all tables within a schema in Unity Catalog.
 
 
-    :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+    :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
     :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     __args__ = dict()
@@ -130,7 +130,7 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     > **Note** This data source could be only used with workspace-level provider!
 
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
 
@@ -162,7 +162,7 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     * get_tables to list all tables within a schema in Unity Catalog.
 
 
-    :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+    :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
     :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     ...

@@ -46,6 +46,7 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
     /// ### Snapshot Monitor
     /// ```csharp
     /// using System.Collections.Generic;
@@ -109,7 +110,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.LakehouseMonitorDataClassificationConfig?> DataClassificationConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        /// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         /// </summary>
         [Output("driftMetricsTableName")]
         public Output<string> DriftMetricsTableName { get; private set; } = null!;
@@ -142,7 +143,7 @@ namespace Pulumi.Databricks
         public Output<string> OutputSchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        /// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         /// </summary>
         [Output("profileMetricsTableName")]
         public Output<string> ProfileMetricsTableName { get; private set; } = null!;
@@ -387,7 +388,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.LakehouseMonitorDataClassificationConfigGetArgs>? DataClassificationConfig { get; set; }
 
         /// <summary>
-        /// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        /// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         /// </summary>
         [Input("driftMetricsTableName")]
         public Input<string>? DriftMetricsTableName { get; set; }
@@ -420,7 +421,7 @@ namespace Pulumi.Databricks
         public Input<string>? OutputSchemaName { get; set; }
 
         /// <summary>
-        /// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        /// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
         /// </summary>
         [Input("profileMetricsTableName")]
         public Input<string>? ProfileMetricsTableName { get; set; }

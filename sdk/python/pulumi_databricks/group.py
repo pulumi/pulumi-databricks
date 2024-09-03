@@ -31,7 +31,7 @@ class GroupArgs:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         if acl_principal_id is not None:
@@ -129,7 +129,7 @@ class GroupArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
@@ -179,7 +179,7 @@ class _GroupState:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         if acl_principal_id is not None:
@@ -277,7 +277,7 @@ class _GroupState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
@@ -403,7 +403,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         ...
@@ -559,7 +559,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        :param pulumi.Input[bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -629,7 +629,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+        Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 

@@ -156,6 +156,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Snapshot Monitor
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -278,14 +279,14 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataClassificationConfig);
     }
     /**
-     * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     @Export(name="driftMetricsTableName", refs={String.class}, tree="[0]")
     private Output<String> driftMetricsTableName;
 
     /**
-     * @return The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * @return The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     public Output<String> driftMetricsTableName() {
@@ -354,14 +355,14 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
         return this.outputSchemaName;
     }
     /**
-     * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     @Export(name="profileMetricsTableName", refs={String.class}, tree="[0]")
     private Output<String> profileMetricsTableName;
 
     /**
-     * @return The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * @return The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      * 
      */
     public Output<String> profileMetricsTableName() {

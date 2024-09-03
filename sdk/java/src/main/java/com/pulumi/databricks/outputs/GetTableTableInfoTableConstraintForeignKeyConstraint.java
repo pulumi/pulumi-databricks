@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
     private List<String> childColumns;
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     private String name;
@@ -25,7 +25,7 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
         return this.childColumns;
     }
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     public String name() {

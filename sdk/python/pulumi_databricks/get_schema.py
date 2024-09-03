@@ -80,7 +80,7 @@ def get_schema(id: Optional[str] = None,
 
     ## Example Usage
 
-    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+    * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
 
     ```python
     import pulumi
@@ -135,7 +135,7 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+    * Retrieve details of all schemas in in a *sandbox* databricks_catalog:
 
     ```python
     import pulumi

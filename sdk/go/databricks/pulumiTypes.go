@@ -2916,7 +2916,7 @@ func (o ClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress() pulu
 type ClusterDockerImage struct {
 	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	//
-	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 	//
 	// ```go
 	// package main
@@ -2975,7 +2975,7 @@ type ClusterDockerImageInput interface {
 type ClusterDockerImageArgs struct {
 	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	//
-	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 	//
 	// ```go
 	// package main
@@ -3099,7 +3099,7 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 
 // `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 //
-// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 //
 // ```go
 // package main
@@ -3177,7 +3177,7 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 
 // `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 //
-// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 //
 // ```go
 // package main
@@ -8618,7 +8618,7 @@ func (o InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayOutput
 type InstancePoolPreloadedDockerImage struct {
 	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	//
-	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 	//
 	// ```go
 	// package main
@@ -8679,7 +8679,7 @@ type InstancePoolPreloadedDockerImageInput interface {
 type InstancePoolPreloadedDockerImageArgs struct {
 	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	//
-	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 	//
 	// ```go
 	// package main
@@ -8779,7 +8779,7 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 
 // `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 //
-// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+// Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
 //
 // ```go
 // package main
@@ -48517,7 +48517,7 @@ type ModelServingConfigServedEntity struct {
 	EntityName *string `pulumi:"entityName"`
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion *string `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
 	EnvironmentVars map[string]string `pulumi:"environmentVars"`
 	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel *ModelServingConfigServedEntityExternalModel `pulumi:"externalModel"`
@@ -48553,7 +48553,7 @@ type ModelServingConfigServedEntityArgs struct {
 	EntityName pulumi.StringPtrInput `pulumi:"entityName"`
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion pulumi.StringPtrInput `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
 	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
 	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel ModelServingConfigServedEntityExternalModelPtrInput `pulumi:"externalModel"`
@@ -48634,7 +48634,7 @@ func (o ModelServingConfigServedEntityOutput) EntityVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.EntityVersion }).(pulumi.StringPtrOutput)
 }
 
-// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
 func (o ModelServingConfigServedEntityOutput) EnvironmentVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntity) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
 }
@@ -72450,7 +72450,8 @@ func (o VectorSearchEndpointEndpointStatusArrayOutput) Index(i pulumi.IntInput) 
 
 type VectorSearchIndexDeltaSyncIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
-	EmbeddingSourceColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	EmbeddingSourceColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
 	EmbeddingWritebackTable *string                                                    `pulumi:"embeddingWritebackTable"`
 	// ID of the associated Delta Live Table pipeline.
@@ -72476,7 +72477,8 @@ type VectorSearchIndexDeltaSyncIndexSpecInput interface {
 
 type VectorSearchIndexDeltaSyncIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
-	EmbeddingSourceColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	EmbeddingSourceColumns VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
 	EmbeddingWritebackTable pulumi.StringPtrInput                                              `pulumi:"embeddingWritebackTable"`
 	// ID of the associated Delta Live Table pipeline.
@@ -72573,6 +72575,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingSourceColumns() Vect
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
@@ -72634,6 +72637,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		if v == nil {
@@ -72685,8 +72689,9 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) SourceTable() pulumi.Strin
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name *string `pulumi:"name"`
 }
 
@@ -72702,8 +72707,9 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -72758,13 +72764,14 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ToVector
 	return o
 }
 
+// The name of the embedding model endpoint
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -72790,8 +72797,9 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) Ind
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name *string `pulumi:"name"`
 }
 
@@ -72807,8 +72815,9 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -72863,11 +72872,12 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ToVector
 	return o
 }
 
+// Dimension of the embedding vector.
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column.
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -72895,6 +72905,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) Ind
 type VectorSearchIndexDirectAccessIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson *string `pulumi:"schemaJson"`
@@ -72914,6 +72925,7 @@ type VectorSearchIndexDirectAccessIndexSpecInput interface {
 type VectorSearchIndexDirectAccessIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson pulumi.StringPtrInput `pulumi:"schemaJson"`
@@ -73003,6 +73015,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
@@ -73048,6 +73061,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingSourceColumns(
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		if v == nil {
@@ -73068,8 +73082,9 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.Str
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name *string `pulumi:"name"`
 }
 
@@ -73085,8 +73100,9 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -73141,13 +73157,14 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVec
 	return o
 }
 
+// The name of the embedding model endpoint
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -73173,8 +73190,9 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name *string `pulumi:"name"`
 }
 
@@ -73190,8 +73208,9 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -73246,11 +73265,12 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVec
 	return o
 }
 
+// Dimension of the embedding vector.
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column.
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

@@ -19,15 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
- * 
- * This resource to configure KMS keys for new workspaces within AWS or GCP. This is to support the following features:
- * 
- * * [Customer-managed keys for managed services](https://docs.databricks.com/security/keys/customer-managed-keys-managed-services-aws.html): Encrypt the workspace’s managed services data in the control plane, including notebooks, secrets, Databricks SQL queries, and Databricks SQL query history  with a CMK.
- * * [Customer-managed keys for workspace storage](https://docs.databricks.com/security/keys/customer-managed-keys-storage-aws.html): Encrypt the workspace&#39;s root S3 bucket and clusters&#39; EBS volumes with a CMK.
- * 
- * Please follow this complete runnable example, you should use the provider aliasing feature of Pulumi. We strongly recommend having one Pulumi module for creation of workspace + PAT token and the rest in different modules.
- * 
  * ## Example Usage
  * 
  * &gt; **Note** If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
@@ -36,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * You must configure this during workspace creation
  * 
- * ### For AWS
+ * #### For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -125,7 +116,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### For GCP
+ * #### For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -170,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  * ### Customer-managed key for workspace storage
  * 
- * ### For AWS
+ * #### For AWS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -296,7 +287,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### For GCP
+ * #### For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

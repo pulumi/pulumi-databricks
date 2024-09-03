@@ -164,7 +164,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public readonly externalId!: pulumi.Output<string | undefined>;
     /**
-     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -280,7 +280,7 @@ export interface ServicePrincipalState {
      */
     externalId?: pulumi.Input<string>;
     /**
-     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -346,7 +346,7 @@ export interface ServicePrincipalArgs {
      */
     externalId?: pulumi.Input<string>;
     /**
-     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
     /**

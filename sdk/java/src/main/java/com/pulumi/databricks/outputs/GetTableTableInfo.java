@@ -55,7 +55,7 @@ public final class GetTableTableInfo {
     private @Nullable String fullName;
     private @Nullable String metastoreId;
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     private @Nullable String name;
@@ -161,7 +161,7 @@ public final class GetTableTableInfo {
         return Optional.ofNullable(this.metastoreId);
     }
     /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * @return Full name of the databricks_table: *`catalog`.`schema`.`table`*
      * 
      */
     public Optional<String> name() {

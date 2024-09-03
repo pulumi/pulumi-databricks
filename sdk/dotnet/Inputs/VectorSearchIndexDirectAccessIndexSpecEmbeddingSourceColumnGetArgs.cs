@@ -12,11 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the embedding model endpoint
+        /// </summary>
         [Input("embeddingModelEndpointName")]
         public Input<string>? EmbeddingModelEndpointName { get; set; }
 
         /// <summary>
-        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        /// The name of the column
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

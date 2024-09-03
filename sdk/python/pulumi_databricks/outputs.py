@@ -1778,7 +1778,7 @@ class ClusterDockerImage(dict):
         :param str url: URL for the Docker image
         :param 'ClusterDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
                
-               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
                
                ```python
                import pulumi
@@ -1815,7 +1815,7 @@ class ClusterDockerImage(dict):
         """
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 
-        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
 
         ```python
         import pulumi
@@ -3215,7 +3215,7 @@ class InstancePoolPreloadedDockerImage(dict):
         :param str url: URL for the Docker image
         :param 'InstancePoolPreloadedDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
                
-               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
                
                ```python
                import pulumi
@@ -3252,7 +3252,7 @@ class InstancePoolPreloadedDockerImage(dict):
         """
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 
-        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
 
         ```python
         import pulumi
@@ -15851,7 +15851,7 @@ class ModelServingConfigServedEntity(dict):
         """
         :param str entity_name: The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
         :param str entity_version: The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-        :param Mapping[str, str] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        :param Mapping[str, str] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
         :param 'ModelServingConfigServedEntityExternalModelArgs' external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
         :param str instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
         :param int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
@@ -15904,7 +15904,7 @@ class ModelServingConfigServedEntity(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Mapping[str, str]]:
         """
-        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: `{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}`
         """
         return pulumi.get(self, "environment_vars")
 
@@ -23686,6 +23686,7 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
                  source_table: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param str pipeline_id: ID of the associated Delta Live Table pipeline.
         :param str pipeline_type: Pipeline execution mode. Possible values are:
                * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
@@ -23716,6 +23717,9 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn']]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property
@@ -23773,7 +23777,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn(dict):
                  embedding_model_endpoint_name: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param str embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param str name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -23783,13 +23788,16 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn(dict):
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[str]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -23817,7 +23825,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn(dict):
                  embedding_dimension: Optional[int] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param int embedding_dimension: Dimension of the embedding vector.
+        :param str name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -23827,13 +23836,16 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn(dict):
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[int]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -23867,6 +23879,7 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
                  schema_json: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param str schema_json: The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
         """
         if embedding_source_columns is not None:
@@ -23887,6 +23900,9 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn']]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property
@@ -23921,7 +23937,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn(dict):
                  embedding_model_endpoint_name: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param str embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param str name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -23931,13 +23948,16 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn(dict):
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[str]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -23965,7 +23985,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn(dict):
                  embedding_dimension: Optional[int] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param int embedding_dimension: Dimension of the embedding vector.
+        :param str name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -23975,13 +23996,16 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn(dict):
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[int]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -35806,7 +35830,7 @@ class GetTableTableInfoResult(dict):
         :param Sequence['GetTableTableInfoColumnArgs'] columns: Array of ColumnInfo objects of the table's columns
         :param str comment: Free-form text description
         :param str data_source_format: Table format, e.g. DELTA, CSV, JSON
-        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
         :param str owner: Current owner of the table
         :param str schema_name: Name of parent schema relative to its parent catalog.
         :param str table_type: Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -35974,7 +35998,7 @@ class GetTableTableInfoResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         return pulumi.get(self, "name")
 
@@ -36086,7 +36110,7 @@ class GetTableTableInfoColumnResult(dict):
                  type_text: Optional[str] = None):
         """
         :param str comment: Free-form text description
-        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -36130,7 +36154,7 @@ class GetTableTableInfoColumnResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         return pulumi.get(self, "name")
 
@@ -36331,7 +36355,7 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
                  parent_columns: Sequence[str],
                  parent_table: str):
         """
-        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
@@ -36347,7 +36371,7 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         return pulumi.get(self, "name")
 
@@ -36367,7 +36391,7 @@ class GetTableTableInfoTableConstraintNamedTableConstraintResult(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         pulumi.set(__self__, "name", name)
 
@@ -36375,7 +36399,7 @@ class GetTableTableInfoTableConstraintNamedTableConstraintResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         return pulumi.get(self, "name")
 
@@ -36386,7 +36410,7 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
                  child_columns: Sequence[str],
                  name: str):
         """
-        :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        :param str name: Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
@@ -36400,7 +36424,7 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        Full name of the databricks_table: *`catalog`.`schema`.`table`*
         """
         return pulumi.get(self, "name")
 

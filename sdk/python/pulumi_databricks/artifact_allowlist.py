@@ -192,7 +192,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  __props__=None):
         """
         > **Note**
-          It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+        It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
         > **Note** This resource could be only used with workspace-level provider!
 
@@ -244,7 +244,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > **Note**
-          It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+        It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
         > **Note** This resource could be only used with workspace-level provider!
 

@@ -36,10 +36,14 @@ namespace Pulumi.Databricks
     /// 
     /// It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
     /// 
-    /// ``` SHOW GRANT ON TABLE `default`.`foo`  ```
-    /// * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
-    /// * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
-    /// * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
+    /// ## Example Usage
+    /// 
+    /// The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+    /// 
+    /// * ` SHOW GRANT ON TABLE  `default`.`foo` `
+    /// * ` REVOKE ALL PRIVILEGES ON TABLE  `default`.`foo`  FROM ... every group and user that has access to it ... `
+    /// * ` GRANT MODIFY, SELECT ON TABLE  `default`.`foo`TO`serge@example.com` `
+    /// * ` GRANT SELECT ON TABLE  `default`.`foo`TO`special group` `
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -130,9 +134,6 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<bool?> Catalog { get; private set; } = null!;
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -221,9 +222,6 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -279,9 +277,6 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 

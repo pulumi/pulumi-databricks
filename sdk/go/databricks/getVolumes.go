@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+// Listing all volumes in a *things* Schema of a  *sandbox* databricks_catalog:
 //
 // ```go
 // package main

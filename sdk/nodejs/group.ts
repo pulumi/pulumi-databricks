@@ -133,7 +133,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly externalId!: pulumi.Output<string | undefined>;
     /**
-     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     public readonly url!: pulumi.Output<string>;
@@ -210,7 +210,7 @@ export interface GroupState {
      */
     externalId?: pulumi.Input<string>;
     /**
-     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
     url?: pulumi.Input<string>;
@@ -249,7 +249,7 @@ export interface GroupArgs {
      */
     externalId?: pulumi.Input<string>;
     /**
-     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. *This functionality is experimental* and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
     url?: pulumi.Input<string>;

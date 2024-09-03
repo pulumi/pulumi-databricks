@@ -16,13 +16,69 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
+ * ## Example Usage
  * 
- * This resource to configure the cross-account role for creation of new workspaces within AWS.
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * Please follow this complete runnable example Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
- * * `credentials_name` - (Required) name of credentials to register
- * * `role_arn` - (Required) ARN of cross-account role
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+ * import com.pulumi.aws.iam.Role;
+ * import com.pulumi.aws.iam.RoleArgs;
+ * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
+ * import com.pulumi.aws.iam.RolePolicy;
+ * import com.pulumi.aws.iam.RolePolicyArgs;
+ * import com.pulumi.databricks.MwsCredentials;
+ * import com.pulumi.databricks.MwsCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+ *             .externalId(databricksAccountId)
+ *             .build());
+ * 
+ *         var crossAccountRole = new Role("crossAccountRole", RoleArgs.builder()
+ *             .name(String.format("%s-crossaccount", prefix))
+ *             .assumeRolePolicy(this_.json())
+ *             .tags(tags)
+ *             .build());
+ * 
+ *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+ * 
+ *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
+ *             .name(String.format("%s-policy", prefix))
+ *             .role(crossAccountRole.id())
+ *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -> getAwsCrossAccountPolicyResult.json()))
+ *             .build());
+ * 
+ *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .credentialsName(String.format("%s-creds", prefix))
+ *             .roleArn(crossAccountRole.arn())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources
  * 
@@ -49,6 +105,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsCredentials:MwsCredentials")
 public class MwsCredentials extends com.pulumi.resources.CustomResource {
     /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
      * 
@@ -57,6 +115,10 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
+     */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
@@ -88,9 +150,17 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     public Output<String> credentialsId() {
         return this.credentialsId;
     }
+    /**
+     * name of credentials to register
+     * 
+     */
     @Export(name="credentialsName", refs={String.class}, tree="[0]")
     private Output<String> credentialsName;
 
+    /**
+     * @return name of credentials to register
+     * 
+     */
     public Output<String> credentialsName() {
         return this.credentialsName;
     }
@@ -100,9 +170,17 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     public Output<String> externalId() {
         return this.externalId;
     }
+    /**
+     * ARN of cross-account role
+     * 
+     */
     @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
+    /**
+     * @return ARN of cross-account role
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }

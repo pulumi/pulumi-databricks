@@ -54,6 +54,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Snapshot Monitor
 // ```go
 // package main
@@ -105,7 +106,7 @@ type QualityMonitor struct {
 	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
 	// The data classification config for the monitor
 	DataClassificationConfig QualityMonitorDataClassificationConfigPtrOutput `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName pulumi.StringOutput `pulumi:"driftMetricsTableName"`
 	// Configuration for the inference log monitor
 	InferenceLog            QualityMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
@@ -116,7 +117,7 @@ type QualityMonitor struct {
 	Notifications QualityMonitorNotificationsPtrOutput `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrOutput `pulumi:"schedule"`
@@ -186,7 +187,7 @@ type qualityMonitorState struct {
 	DashboardId *string `pulumi:"dashboardId"`
 	// The data classification config for the monitor
 	DataClassificationConfig *QualityMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName *string `pulumi:"driftMetricsTableName"`
 	// Configuration for the inference log monitor
 	InferenceLog            *QualityMonitorInferenceLog `pulumi:"inferenceLog"`
@@ -197,7 +198,7 @@ type qualityMonitorState struct {
 	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName *string `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
@@ -229,7 +230,7 @@ type QualityMonitorState struct {
 	DashboardId pulumi.StringPtrInput
 	// The data classification config for the monitor
 	DataClassificationConfig QualityMonitorDataClassificationConfigPtrInput
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	DriftMetricsTableName pulumi.StringPtrInput
 	// Configuration for the inference log monitor
 	InferenceLog            QualityMonitorInferenceLogPtrInput
@@ -240,7 +241,7 @@ type QualityMonitorState struct {
 	Notifications QualityMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringPtrInput
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 	ProfileMetricsTableName pulumi.StringPtrInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrInput
@@ -446,7 +447,7 @@ func (o QualityMonitorOutput) DataClassificationConfig() QualityMonitorDataClass
 	}).(QualityMonitorDataClassificationConfigPtrOutput)
 }
 
-// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+// The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 func (o QualityMonitorOutput) DriftMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.DriftMetricsTableName }).(pulumi.StringOutput)
 }
@@ -475,7 +476,7 @@ func (o QualityMonitorOutput) OutputSchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.OutputSchemaName }).(pulumi.StringOutput)
 }
 
-// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+// The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
 func (o QualityMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }

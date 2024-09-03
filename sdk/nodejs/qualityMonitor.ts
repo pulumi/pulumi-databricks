@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
  * ### Snapshot Monitor
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +102,7 @@ export class QualityMonitor extends pulumi.CustomResource {
      */
     public readonly dataClassificationConfig!: pulumi.Output<outputs.QualityMonitorDataClassificationConfig | undefined>;
     /**
-     * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      */
     public /*out*/ readonly driftMetricsTableName!: pulumi.Output<string>;
     /**
@@ -122,7 +123,7 @@ export class QualityMonitor extends pulumi.CustomResource {
      */
     public readonly outputSchemaName!: pulumi.Output<string>;
     /**
-     * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      */
     public /*out*/ readonly profileMetricsTableName!: pulumi.Output<string>;
     /**
@@ -254,7 +255,7 @@ export interface QualityMonitorState {
      */
     dataClassificationConfig?: pulumi.Input<inputs.QualityMonitorDataClassificationConfig>;
     /**
-     * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the drift metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      */
     driftMetricsTableName?: pulumi.Input<string>;
     /**
@@ -275,7 +276,7 @@ export interface QualityMonitorState {
      */
     outputSchemaName?: pulumi.Input<string>;
     /**
-     * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+     * The full name of the profile metrics table. Format: **catalog_name**.**schema_name**.**table_name**.
      */
     profileMetricsTableName?: pulumi.Input<string>;
     /**

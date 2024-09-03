@@ -92,7 +92,7 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
 
     ## Example Usage
 
-    End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
 
     ```python
     import pulumi
@@ -158,7 +158,7 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
 
     ## Example Usage
 
-    End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
 
     ```python
     import pulumi

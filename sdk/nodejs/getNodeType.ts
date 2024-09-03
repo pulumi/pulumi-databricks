@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
  *
  * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
  *
@@ -87,15 +87,15 @@ export interface GetNodeTypeArgs {
      */
     category?: string;
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      */
     fleet?: boolean;
     /**
-     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
+     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
      */
     gbPerCore?: number;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      */
     graviton?: boolean;
     /**
@@ -103,39 +103,39 @@ export interface GetNodeTypeArgs {
      */
     id?: string;
     /**
-     * . Pick only nodes that have IO Cache. Defaults to _false_.
+     * . Pick only nodes that have IO Cache. Defaults to *false*.
      */
     isIoCacheEnabled?: boolean;
     /**
-     * Pick only nodes with local storage. Defaults to _false_.
+     * Pick only nodes with local storage. Defaults to *false*.
      */
     localDisk?: boolean;
     /**
-     * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
      */
     localDiskMinSize?: number;
     /**
-     * Minimum number of CPU cores available on instance. Defaults to _0_.
+     * Minimum number of CPU cores available on instance. Defaults to *0*.
      */
     minCores?: number;
     /**
-     * Minimum number of GPU's attached to instance. Defaults to _0_.
+     * Minimum number of GPU's attached to instance. Defaults to *0*.
      */
     minGpus?: number;
     /**
-     * Minimum amount of memory per node in gigabytes. Defaults to _0_.
+     * Minimum amount of memory per node in gigabytes. Defaults to *0*.
      */
     minMemoryGb?: number;
     /**
-     * Pick only nodes that can run Photon driver. Defaults to _false_.
+     * Pick only nodes that can run Photon driver. Defaults to *false*.
      */
     photonDriverCapable?: boolean;
     /**
-     * Pick only nodes that can run Photon workers. Defaults to _false_.
+     * Pick only nodes that can run Photon workers. Defaults to *false*.
      */
     photonWorkerCapable?: boolean;
     /**
-     * Pick only nodes that support port forwarding. Defaults to _false_.
+     * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: boolean;
 }
@@ -163,7 +163,7 @@ export interface GetNodeTypeResult {
     readonly supportPortForwarding?: boolean;
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
  *
  * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
  *
@@ -227,15 +227,15 @@ export interface GetNodeTypeOutputArgs {
      */
     category?: pulumi.Input<string>;
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      */
     fleet?: pulumi.Input<boolean>;
     /**
-     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
+     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
      */
     gbPerCore?: pulumi.Input<number>;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      */
     graviton?: pulumi.Input<boolean>;
     /**
@@ -243,39 +243,39 @@ export interface GetNodeTypeOutputArgs {
      */
     id?: pulumi.Input<string>;
     /**
-     * . Pick only nodes that have IO Cache. Defaults to _false_.
+     * . Pick only nodes that have IO Cache. Defaults to *false*.
      */
     isIoCacheEnabled?: pulumi.Input<boolean>;
     /**
-     * Pick only nodes with local storage. Defaults to _false_.
+     * Pick only nodes with local storage. Defaults to *false*.
      */
     localDisk?: pulumi.Input<boolean>;
     /**
-     * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
      */
     localDiskMinSize?: pulumi.Input<number>;
     /**
-     * Minimum number of CPU cores available on instance. Defaults to _0_.
+     * Minimum number of CPU cores available on instance. Defaults to *0*.
      */
     minCores?: pulumi.Input<number>;
     /**
-     * Minimum number of GPU's attached to instance. Defaults to _0_.
+     * Minimum number of GPU's attached to instance. Defaults to *0*.
      */
     minGpus?: pulumi.Input<number>;
     /**
-     * Minimum amount of memory per node in gigabytes. Defaults to _0_.
+     * Minimum amount of memory per node in gigabytes. Defaults to *0*.
      */
     minMemoryGb?: pulumi.Input<number>;
     /**
-     * Pick only nodes that can run Photon driver. Defaults to _false_.
+     * Pick only nodes that can run Photon driver. Defaults to *false*.
      */
     photonDriverCapable?: pulumi.Input<boolean>;
     /**
-     * Pick only nodes that can run Photon workers. Defaults to _false_.
+     * Pick only nodes that can run Photon workers. Defaults to *false*.
      */
     photonWorkerCapable?: pulumi.Input<boolean>;
     /**
-     * Pick only nodes that support port forwarding. Defaults to _false_.
+     * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: pulumi.Input<boolean>;
 }

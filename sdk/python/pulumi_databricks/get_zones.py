@@ -73,7 +73,7 @@ def get_zones(default_zone: Optional[str] = None,
               zones: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
 
@@ -110,7 +110,7 @@ def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
                      zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent *default auth: cannot configure default credentials* errors.
 
     This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
 

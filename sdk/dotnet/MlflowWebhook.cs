@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
     ///         ContentBase64 = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"import json
-    ///  
+    /// 
     /// event_message = dbutils.widgets.get(""event_message"")
     /// event_message_dict = json.loads(event_message)
     /// print(f""event data={event_message_dict}"")

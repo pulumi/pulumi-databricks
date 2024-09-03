@@ -19,19 +19,19 @@ import * as utilities from "./utilities";
  *
  * An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
  *
- * A volume can be referenced using its identifier: ```<catalogName>.<schemaName>.<volumeName>```, where:
+ * A volume can be referenced using its identifier: `<catalogName>.<schemaName>.<volumeName>`, where:
  *
- * * ```<catalogName>```: The name of the catalog containing the Volume.
- * * ```<schemaName>```: The name of the schema containing the Volume.
- * * ```<volumeName>```: The name of the Volume. It identifies the volume object.
+ * * `<catalogName>`: The name of the catalog containing the Volume.
+ * * `<schemaName>`: The name of the schema containing the Volume.
+ * * `<volumeName>`: The name of the Volume. It identifies the volume object.
  *
  * The path to access files in volumes uses the following format:
  *
- * ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+ * `/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>`
  *
- * Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+ * Databricks also supports an optional `dbfs:/` scheme, so the following path also works:
  *
- * ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+ * `dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>`
  *
  * This resource manages Volumes in Unity Catalog.
  *

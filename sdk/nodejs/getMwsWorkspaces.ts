@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
  *
  * Lists all databricks.MwsWorkspaces in Databricks Account.
  *
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * The following resources are used in the same context:
  *
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
- * * databricks.MetastoreAssignment
+ * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
 export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
     args = args || {};
@@ -63,7 +63,7 @@ export interface GetMwsWorkspacesResult {
     readonly ids: {[key: string]: string};
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
  *
  * Lists all databricks.MwsWorkspaces in Databricks Account.
  *
@@ -86,7 +86,7 @@ export interface GetMwsWorkspacesResult {
  * The following resources are used in the same context:
  *
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
- * * databricks.MetastoreAssignment
+ * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
 export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsWorkspacesResult> {
     return pulumi.output(args).apply((a: any) => getMwsWorkspaces(a, opts))

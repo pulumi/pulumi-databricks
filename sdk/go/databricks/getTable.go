@@ -13,7 +13,7 @@ import (
 
 // > **Note** This data source could be only used with workspace-level provider!
 //
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent *default auth: cannot configure default credentials* errors.
 //
 // Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use getTables to retrieve multiple tables in Unity Catalog
 //
@@ -79,7 +79,7 @@ func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getTable.
 type LookupTableArgs struct {
 	Id *string `pulumi:"id"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name string `pulumi:"name"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo *GetTableTableInfo `pulumi:"tableInfo"`
@@ -110,7 +110,7 @@ func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...
 // A collection of arguments for invoking getTable.
 type LookupTableOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	// Full name of the databricks_table: *`catalog`.`schema`.`table`*
 	Name pulumi.StringInput `pulumi:"name"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfoPtrInput `pulumi:"tableInfo"`
