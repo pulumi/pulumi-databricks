@@ -59,7 +59,7 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
 def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Lists all MwsWorkspaces in Databricks Account.
 
@@ -82,7 +82,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
     The following resources are used in the same context:
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-    * MetastoreAssignment
+    * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
     :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
@@ -101,7 +101,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
 def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Lists all MwsWorkspaces in Databricks Account.
 
@@ -124,7 +124,7 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, s
     The following resources are used in the same context:
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-    * MetastoreAssignment
+    * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
     :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account

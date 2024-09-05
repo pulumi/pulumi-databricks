@@ -71,7 +71,7 @@ def get_instance_pool(name: Optional[str] = None,
                       pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Retrieves information about databricks_instance_pool.
 
@@ -108,7 +108,7 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
                              pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Retrieves information about databricks_instance_pool.
 

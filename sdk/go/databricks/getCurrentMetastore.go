@@ -15,7 +15,7 @@ import (
 //
 // > **Note** This is the workspace-level data source.
 //
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute to prevent _authentication is not configured for provider_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute to prevent _authentication is not configured for provider_ errors.
 //
 // ## Example Usage
 //

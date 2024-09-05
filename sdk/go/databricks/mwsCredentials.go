@@ -12,13 +12,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+// ## Example Usage
 //
-// This resource to configure the cross-account role for creation of new workspaces within AWS.
+// ```go
+// package main
 //
-// Please follow this complete runnable example Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-// * `credentialsName` - (Required) name of credentials to register
-// * `roleArn` - (Required) ARN of cross-account role
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//				ExternalId: databricksAccountId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
+//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
+//				AssumeRolePolicy: pulumi.String(this.Json),
+//				Tags:             pulumi.Any(tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
+//				Name:   pulumi.Sprintf("%v-policy", prefix),
+//				Role:   crossAccountRole.ID(),
+//				Policy: pulumi.String(thisGetAwsCrossAccountPolicy.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
+//				RoleArn:         crossAccountRole.Arn,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Related Resources
 //
@@ -43,15 +96,19 @@ import (
 type MwsCredentials struct {
 	pulumi.CustomResourceState
 
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
 	// (String) identifier of credentials
-	CredentialsId   pulumi.StringOutput `pulumi:"credentialsId"`
+	CredentialsId pulumi.StringOutput `pulumi:"credentialsId"`
+	// name of credentials to register
 	CredentialsName pulumi.StringOutput `pulumi:"credentialsName"`
 	ExternalId      pulumi.StringOutput `pulumi:"externalId"`
-	RoleArn         pulumi.StringOutput `pulumi:"roleArn"`
+	// ARN of cross-account role
+	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 }
 
 // NewMwsCredentials registers a new resource with the given unique name, arguments, and options.
@@ -90,27 +147,35 @@ func GetMwsCredentials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsCredentials resources.
 type mwsCredentialsState struct {
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime *int `pulumi:"creationTime"`
 	// (String) identifier of credentials
-	CredentialsId   *string `pulumi:"credentialsId"`
+	CredentialsId *string `pulumi:"credentialsId"`
+	// name of credentials to register
 	CredentialsName *string `pulumi:"credentialsName"`
 	ExternalId      *string `pulumi:"externalId"`
-	RoleArn         *string `pulumi:"roleArn"`
+	// ARN of cross-account role
+	RoleArn *string `pulumi:"roleArn"`
 }
 
 type MwsCredentialsState struct {
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntPtrInput
 	// (String) identifier of credentials
-	CredentialsId   pulumi.StringPtrInput
+	CredentialsId pulumi.StringPtrInput
+	// name of credentials to register
 	CredentialsName pulumi.StringPtrInput
 	ExternalId      pulumi.StringPtrInput
-	RoleArn         pulumi.StringPtrInput
+	// ARN of cross-account role
+	RoleArn pulumi.StringPtrInput
 }
 
 func (MwsCredentialsState) ElementType() reflect.Type {
@@ -118,28 +183,36 @@ func (MwsCredentialsState) ElementType() reflect.Type {
 }
 
 type mwsCredentialsArgs struct {
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime *int `pulumi:"creationTime"`
 	// (String) identifier of credentials
-	CredentialsId   *string `pulumi:"credentialsId"`
+	CredentialsId *string `pulumi:"credentialsId"`
+	// name of credentials to register
 	CredentialsName string  `pulumi:"credentialsName"`
 	ExternalId      *string `pulumi:"externalId"`
-	RoleArn         string  `pulumi:"roleArn"`
+	// ARN of cross-account role
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // The set of arguments for constructing a MwsCredentials resource.
 type MwsCredentialsArgs struct {
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntPtrInput
 	// (String) identifier of credentials
-	CredentialsId   pulumi.StringPtrInput
+	CredentialsId pulumi.StringPtrInput
+	// name of credentials to register
 	CredentialsName pulumi.StringInput
 	ExternalId      pulumi.StringPtrInput
-	RoleArn         pulumi.StringInput
+	// ARN of cross-account role
+	RoleArn pulumi.StringInput
 }
 
 func (MwsCredentialsArgs) ElementType() reflect.Type {
@@ -229,6 +302,8 @@ func (o MwsCredentialsOutput) ToMwsCredentialsOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+//
 // Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 func (o MwsCredentialsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
@@ -244,6 +319,7 @@ func (o MwsCredentialsOutput) CredentialsId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringOutput { return v.CredentialsId }).(pulumi.StringOutput)
 }
 
+// name of credentials to register
 func (o MwsCredentialsOutput) CredentialsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringOutput { return v.CredentialsName }).(pulumi.StringOutput)
 }
@@ -252,6 +328,7 @@ func (o MwsCredentialsOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// ARN of cross-account role
 func (o MwsCredentialsOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }

@@ -168,7 +168,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -256,7 +256,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -344,7 +344,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -432,7 +432,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1624,7 +1624,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
      * 
@@ -1690,7 +1690,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
      * 
@@ -1756,7 +1756,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
      * 
@@ -1822,7 +1822,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
      * 
@@ -1888,7 +1888,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -1942,7 +1942,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -1996,7 +1996,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -2050,7 +2050,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -2104,7 +2104,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -2158,7 +2158,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -2210,7 +2210,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2238,7 +2238,7 @@ public final class DatabricksFunctions {
         return getCluster(GetClusterArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2266,7 +2266,7 @@ public final class DatabricksFunctions {
         return getClusterPlain(GetClusterPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2294,7 +2294,7 @@ public final class DatabricksFunctions {
         return getCluster(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2322,7 +2322,7 @@ public final class DatabricksFunctions {
         return getClusterPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2350,7 +2350,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
@@ -2378,7 +2378,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2430,7 +2430,7 @@ public final class DatabricksFunctions {
         return getClusterPolicy(GetClusterPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2482,7 +2482,7 @@ public final class DatabricksFunctions {
         return getClusterPolicyPlain(GetClusterPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2534,7 +2534,7 @@ public final class DatabricksFunctions {
         return getClusterPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2586,7 +2586,7 @@ public final class DatabricksFunctions {
         return getClusterPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2638,7 +2638,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_cluster_policy.
      * 
@@ -2690,7 +2690,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -2781,7 +2781,7 @@ public final class DatabricksFunctions {
         return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -2872,7 +2872,7 @@ public final class DatabricksFunctions {
         return getClustersPlain(GetClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -2963,7 +2963,7 @@ public final class DatabricksFunctions {
         return getClusters(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -3054,7 +3054,7 @@ public final class DatabricksFunctions {
         return getClustersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -3145,7 +3145,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
      * 
@@ -3438,7 +3438,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3494,7 +3494,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3550,7 +3550,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3606,7 +3606,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3662,7 +3662,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3718,7 +3718,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This is the workspace-level data source.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -3770,7 +3770,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentMetastore:getCurrentMetastore", TypeShape.of(GetCurrentMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3779,7 +3779,7 @@ public final class DatabricksFunctions {
         return getCurrentUser(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3788,7 +3788,7 @@ public final class DatabricksFunctions {
         return getCurrentUserPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3797,7 +3797,7 @@ public final class DatabricksFunctions {
         return getCurrentUser(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3806,7 +3806,7 @@ public final class DatabricksFunctions {
         return getCurrentUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3815,7 +3815,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
      * 
@@ -3824,7 +3824,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -3878,7 +3878,7 @@ public final class DatabricksFunctions {
         return getDbfsFile(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -3932,7 +3932,7 @@ public final class DatabricksFunctions {
         return getDbfsFilePlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -3986,7 +3986,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDbfsFile:getDbfsFile", TypeShape.of(GetDbfsFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -4040,7 +4040,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDbfsFile:getDbfsFile", TypeShape.of(GetDbfsFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -4096,7 +4096,7 @@ public final class DatabricksFunctions {
         return getDbfsFilePaths(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -4152,7 +4152,7 @@ public final class DatabricksFunctions {
         return getDbfsFilePathsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -4208,7 +4208,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", TypeShape.of(GetDbfsFilePathsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
@@ -4264,7 +4264,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDbfsFilePaths:getDbfsFilePaths", TypeShape.of(GetDbfsFilePathsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
@@ -4308,7 +4308,7 @@ public final class DatabricksFunctions {
         return getDirectory(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
@@ -4352,7 +4352,7 @@ public final class DatabricksFunctions {
         return getDirectoryPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
@@ -4396,7 +4396,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
@@ -4968,7 +4968,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.Group members, entitlements and instance profiles.
      * 
@@ -5038,7 +5038,7 @@ public final class DatabricksFunctions {
         return getGroup(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.Group members, entitlements and instance profiles.
      * 
@@ -5108,7 +5108,7 @@ public final class DatabricksFunctions {
         return getGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.Group members, entitlements and instance profiles.
      * 
@@ -5178,7 +5178,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.Group members, entitlements and instance profiles.
      * 
@@ -5248,7 +5248,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_instance_pool.
      * 
@@ -5300,7 +5300,7 @@ public final class DatabricksFunctions {
         return getInstancePool(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_instance_pool.
      * 
@@ -5352,7 +5352,7 @@ public final class DatabricksFunctions {
         return getInstancePoolPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_instance_pool.
      * 
@@ -5404,7 +5404,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_instance_pool.
      * 
@@ -5714,7 +5714,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getInstanceProfiles:getInstanceProfiles", TypeShape.of(GetInstanceProfilesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -5768,7 +5768,7 @@ public final class DatabricksFunctions {
         return getJob(GetJobArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -5822,7 +5822,7 @@ public final class DatabricksFunctions {
         return getJobPlain(GetJobPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -5876,7 +5876,7 @@ public final class DatabricksFunctions {
         return getJob(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -5930,7 +5930,7 @@ public final class DatabricksFunctions {
         return getJobPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -5984,7 +5984,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
      * 
@@ -6038,7 +6038,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6145,7 +6145,7 @@ public final class DatabricksFunctions {
         return getJobs(GetJobsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6252,7 +6252,7 @@ public final class DatabricksFunctions {
         return getJobsPlain(GetJobsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6359,7 +6359,7 @@ public final class DatabricksFunctions {
         return getJobs(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6466,7 +6466,7 @@ public final class DatabricksFunctions {
         return getJobsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6573,7 +6573,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6684,7 +6684,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -6750,7 +6750,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -6816,7 +6816,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -6882,7 +6882,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -6948,7 +6948,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -7014,7 +7014,7 @@ public final class DatabricksFunctions {
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * ## Example Usage
      * 
@@ -7406,7 +7406,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7415,7 +7415,7 @@ public final class DatabricksFunctions {
         return getMlflowExperiment(GetMlflowExperimentArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7424,7 +7424,7 @@ public final class DatabricksFunctions {
         return getMlflowExperimentPlain(GetMlflowExperimentPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7433,7 +7433,7 @@ public final class DatabricksFunctions {
         return getMlflowExperiment(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7442,7 +7442,7 @@ public final class DatabricksFunctions {
         return getMlflowExperimentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7451,7 +7451,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMlflowExperiment:getMlflowExperiment", TypeShape.of(GetMlflowExperimentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowExperiment by id or name.
      * 
@@ -7460,7 +7460,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMlflowExperiment:getMlflowExperiment", TypeShape.of(GetMlflowExperimentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
@@ -7571,7 +7571,7 @@ public final class DatabricksFunctions {
         return getMlflowModel(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
@@ -7682,7 +7682,7 @@ public final class DatabricksFunctions {
         return getMlflowModelPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
@@ -7793,7 +7793,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
@@ -7904,7 +7904,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -7962,7 +7962,7 @@ public final class DatabricksFunctions {
         return getMwsCredentials(GetMwsCredentialsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -8020,7 +8020,7 @@ public final class DatabricksFunctions {
         return getMwsCredentialsPlain(GetMwsCredentialsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -8078,7 +8078,7 @@ public final class DatabricksFunctions {
         return getMwsCredentials(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -8136,7 +8136,7 @@ public final class DatabricksFunctions {
         return getMwsCredentialsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -8194,7 +8194,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -8252,7 +8252,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8299,14 +8299,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
         return getMwsWorkspaces(GetMwsWorkspacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8353,14 +8353,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain() {
         return getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8407,14 +8407,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args) {
         return getMwsWorkspaces(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8461,14 +8461,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args) {
         return getMwsWorkspacesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8515,14 +8515,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsWorkspaces in Databricks Account.
      * 
@@ -8569,14 +8569,14 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -8655,7 +8655,7 @@ public final class DatabricksFunctions {
         return getNodeType(GetNodeTypeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -8734,7 +8734,7 @@ public final class DatabricksFunctions {
         return getNodeTypePlain(GetNodeTypePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -8813,7 +8813,7 @@ public final class DatabricksFunctions {
         return getNodeType(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -8892,7 +8892,7 @@ public final class DatabricksFunctions {
         return getNodeTypePlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -8971,7 +8971,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNodeType:getNodeType", TypeShape.of(GetNodeTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
      * 
@@ -9050,7 +9050,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNodeType:getNodeType", TypeShape.of(GetNodeTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to export a notebook from Databricks Workspace.
      * 
@@ -9095,7 +9095,7 @@ public final class DatabricksFunctions {
         return getNotebook(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to export a notebook from Databricks Workspace.
      * 
@@ -9140,7 +9140,7 @@ public final class DatabricksFunctions {
         return getNotebookPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to export a notebook from Databricks Workspace.
      * 
@@ -9185,7 +9185,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNotebook:getNotebook", TypeShape.of(GetNotebookResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to export a notebook from Databricks Workspace.
      * 
@@ -9230,7 +9230,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebook:getNotebook", TypeShape.of(GetNotebookResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
@@ -9275,7 +9275,7 @@ public final class DatabricksFunctions {
         return getNotebookPaths(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
@@ -9320,7 +9320,7 @@ public final class DatabricksFunctions {
         return getNotebookPathsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
@@ -9365,7 +9365,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
@@ -9410,7 +9410,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -9537,7 +9537,7 @@ public final class DatabricksFunctions {
         return getPipelines(GetPipelinesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -9664,7 +9664,7 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(GetPipelinesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -9791,7 +9791,7 @@ public final class DatabricksFunctions {
         return getPipelines(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -9918,7 +9918,7 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -10045,7 +10045,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -10402,7 +10402,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -10458,7 +10458,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -10514,7 +10514,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -10570,7 +10570,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -10624,7 +10624,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -10695,7 +10695,7 @@ public final class DatabricksFunctions {
         return getServicePrincipal(GetServicePrincipalArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -10766,7 +10766,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(GetServicePrincipalPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -10837,7 +10837,7 @@ public final class DatabricksFunctions {
         return getServicePrincipal(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -10908,7 +10908,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -10979,7 +10979,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_service_principal.
      * 
@@ -11050,7 +11050,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11059,7 +11059,7 @@ public final class DatabricksFunctions {
         return getServicePrincipals(GetServicePrincipalsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11068,7 +11068,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(GetServicePrincipalsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11077,7 +11077,7 @@ public final class DatabricksFunctions {
         return getServicePrincipals(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11086,7 +11086,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11095,7 +11095,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
@@ -11728,7 +11728,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -11807,7 +11807,7 @@ public final class DatabricksFunctions {
         return getSparkVersion(GetSparkVersionArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -11886,7 +11886,7 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(GetSparkVersionPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -11965,7 +11965,7 @@ public final class DatabricksFunctions {
         return getSparkVersion(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -12044,7 +12044,7 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -12123,7 +12123,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
@@ -12202,7 +12202,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12263,7 +12263,7 @@ public final class DatabricksFunctions {
         return getSqlWarehouse(GetSqlWarehouseArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12324,7 +12324,7 @@ public final class DatabricksFunctions {
         return getSqlWarehousePlain(GetSqlWarehousePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12385,7 +12385,7 @@ public final class DatabricksFunctions {
         return getSqlWarehouse(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12446,7 +12446,7 @@ public final class DatabricksFunctions {
         return getSqlWarehousePlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12507,7 +12507,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
@@ -12568,7 +12568,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -12657,7 +12657,7 @@ public final class DatabricksFunctions {
         return getSqlWarehouses(GetSqlWarehousesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -12746,7 +12746,7 @@ public final class DatabricksFunctions {
         return getSqlWarehousesPlain(GetSqlWarehousesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -12835,7 +12835,7 @@ public final class DatabricksFunctions {
         return getSqlWarehouses(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -12924,7 +12924,7 @@ public final class DatabricksFunctions {
         return getSqlWarehousesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -13013,7 +13013,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
      * 
@@ -13632,7 +13632,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
      * 
@@ -13700,7 +13700,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
      * 
@@ -13768,7 +13768,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
      * 
@@ -13836,7 +13836,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
      * 
@@ -13904,7 +13904,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
      * 
@@ -13983,7 +13983,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
      * 
@@ -14062,7 +14062,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
      * 
@@ -14141,7 +14141,7 @@ public final class DatabricksFunctions {
     /**
      * &gt; **Note** This data source could be only used with workspace-level provider!
      * 
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
      * 
@@ -14218,7 +14218,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14290,7 +14290,7 @@ public final class DatabricksFunctions {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14362,7 +14362,7 @@ public final class DatabricksFunctions {
         return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14434,7 +14434,7 @@ public final class DatabricksFunctions {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14506,7 +14506,7 @@ public final class DatabricksFunctions {
         return getUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14578,7 +14578,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks_user.
      * 
@@ -14650,7 +14650,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
      * 
@@ -14673,7 +14673,7 @@ public final class DatabricksFunctions {
         return getViews(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
      * 
@@ -14696,7 +14696,7 @@ public final class DatabricksFunctions {
         return getViewsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
      * 
@@ -14719,7 +14719,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
      * 
@@ -14998,7 +14998,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
@@ -15040,7 +15040,7 @@ public final class DatabricksFunctions {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
@@ -15082,7 +15082,7 @@ public final class DatabricksFunctions {
         return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
@@ -15124,7 +15124,7 @@ public final class DatabricksFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
@@ -15166,7 +15166,7 @@ public final class DatabricksFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
@@ -15208,7 +15208,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 

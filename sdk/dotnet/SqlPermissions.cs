@@ -130,9 +130,6 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<bool?> Catalog { get; private set; } = null!;
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -221,9 +218,6 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -279,9 +273,6 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
-        /// <summary>
-        /// Id of an existing databricks_cluster, otherwise resource creation will fail.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
