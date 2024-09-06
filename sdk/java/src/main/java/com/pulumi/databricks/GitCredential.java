@@ -119,14 +119,14 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gitUsername);
     }
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      * 
      */
     @Export(name="personalAccessToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> personalAccessToken;
 
     /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      * 
      */
     public Output<Optional<String>> personalAccessToken() {

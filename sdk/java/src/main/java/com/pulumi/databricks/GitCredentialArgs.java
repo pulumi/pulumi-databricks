@@ -63,14 +63,14 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      * 
      */
     @Import(name="personalAccessToken")
     private @Nullable Output<String> personalAccessToken;
 
     /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      * 
      */
     public Optional<Output<String>> personalAccessToken() {
@@ -168,7 +168,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
          * 
          * @return builder
          * 

@@ -68,7 +68,7 @@ type GitCredential struct {
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
 	// user name at Git provider.
 	GitUsername pulumi.StringPtrOutput `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
 }
 
@@ -111,7 +111,7 @@ type gitCredentialState struct {
 	GitProvider *string `pulumi:"gitProvider"`
 	// user name at Git provider.
 	GitUsername *string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
@@ -122,7 +122,7 @@ type GitCredentialState struct {
 	GitProvider pulumi.StringPtrInput
 	// user name at Git provider.
 	GitUsername pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -137,7 +137,7 @@ type gitCredentialArgs struct {
 	GitProvider string `pulumi:"gitProvider"`
 	// user name at Git provider.
 	GitUsername *string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
@@ -149,7 +149,7 @@ type GitCredentialArgs struct {
 	GitProvider pulumi.StringInput
 	// user name at Git provider.
 	GitUsername pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -255,7 +255,7 @@ func (o GitCredentialOutput) GitUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.GitUsername }).(pulumi.StringPtrOutput)
 }
 
-// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }

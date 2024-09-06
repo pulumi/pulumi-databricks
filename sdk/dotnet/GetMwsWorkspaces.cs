@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetMwsWorkspaces
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Lists all databricks.MwsWorkspaces in Databricks Account.
         /// 
@@ -44,13 +44,13 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-        /// * databricks.MetastoreAssignment
+        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
         /// </summary>
         public static Task<GetMwsWorkspacesResult> InvokeAsync(GetMwsWorkspacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Lists all databricks.MwsWorkspaces in Databricks Account.
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-        /// * databricks.MetastoreAssignment
+        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
         /// </summary>
         public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
