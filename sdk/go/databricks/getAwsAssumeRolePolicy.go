@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+// End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
 //
 // ```go
 // package main

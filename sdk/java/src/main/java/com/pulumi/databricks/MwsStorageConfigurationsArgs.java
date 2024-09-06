@@ -14,23 +14,47 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
 
     public static final MwsStorageConfigurationsArgs Empty = new MwsStorageConfigurationsArgs();
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * name of AWS S3 bucket
+     * 
+     */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
+    /**
+     * @return name of AWS S3 bucket
+     * 
+     */
     public Output<String> bucketName() {
         return this.bucketName;
     }
 
+    /**
+     * name under which this storage configuration is stored
+     * 
+     */
     @Import(name="storageConfigurationName", required=true)
     private Output<String> storageConfigurationName;
 
+    /**
+     * @return name under which this storage configuration is stored
+     * 
+     */
     public Output<String> storageConfigurationName() {
         return this.storageConfigurationName;
     }
@@ -61,29 +85,65 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
             $ = new MwsStorageConfigurationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param bucketName name of AWS S3 bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
         }
 
+        /**
+         * @param bucketName name of AWS S3 bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
         }
 
+        /**
+         * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationName(Output<String> storageConfigurationName) {
             $.storageConfigurationName = storageConfigurationName;
             return this;
         }
 
+        /**
+         * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationName(String storageConfigurationName) {
             return storageConfigurationName(Output.of(storageConfigurationName));
         }

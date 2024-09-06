@@ -63,17 +63,9 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.catalog);
     }
 
-    /**
-     * Id of an existing databricks_cluster, otherwise resource creation will fail.
-     * 
-     */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
-    /**
-     * @return Id of an existing databricks_cluster, otherwise resource creation will fail.
-     * 
-     */
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
@@ -224,23 +216,11 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
             return catalog(Output.of(catalog));
         }
 
-        /**
-         * @param clusterId Id of an existing databricks_cluster, otherwise resource creation will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
-        /**
-         * @param clusterId Id of an existing databricks_cluster, otherwise resource creation will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
         }

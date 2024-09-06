@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  * * Provisioning Databricks on AWS with Private Link guide.
  * * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
  * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
- * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * * databricks.MwsVpcEndpoint to register awsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  *

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+        /// End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+        /// End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 //
 // Retrieves the settings of MlflowExperiment by id or name.
 func LookupMlflowExperiment(ctx *pulumi.Context, args *LookupMlflowExperimentArgs, opts ...pulumi.InvokeOption) (*LookupMlflowExperimentResult, error) {

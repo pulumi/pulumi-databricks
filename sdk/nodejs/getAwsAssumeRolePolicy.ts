@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+ * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,7 +98,7 @@ export interface GetAwsAssumeRolePolicyResult {
  *
  * ## Example Usage
  *
- * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+ * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
