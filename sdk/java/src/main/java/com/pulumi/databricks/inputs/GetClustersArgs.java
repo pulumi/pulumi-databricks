@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<String>> clusterNameContains() {
         return Optional.ofNullable(this.clusterNameContains);
+    }
+
+    /**
+     * Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * 
+     */
+    @Import(name="filterBy")
+    private @Nullable Output<GetClustersFilterByArgs> filterBy;
+
+    /**
+     * @return Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * 
+     */
+    public Optional<Output<GetClustersFilterByArgs>> filterBy() {
+        return Optional.ofNullable(this.filterBy);
     }
 
     @Import(name="id")
@@ -57,6 +73,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetClustersArgs(GetClustersArgs $) {
         this.clusterNameContains = $.clusterNameContains;
+        this.filterBy = $.filterBy;
         this.id = $.id;
         this.ids = $.ids;
     }
@@ -98,6 +115,27 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder clusterNameContains(String clusterNameContains) {
             return clusterNameContains(Output.of(clusterNameContains));
+        }
+
+        /**
+         * @param filterBy Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterBy(@Nullable Output<GetClustersFilterByArgs> filterBy) {
+            $.filterBy = filterBy;
+            return this;
+        }
+
+        /**
+         * @param filterBy Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterBy(GetClustersFilterByArgs filterBy) {
+            return filterBy(Output.of(filterBy));
         }
 
         public Builder id(@Nullable Output<String> id) {

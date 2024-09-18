@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetShareObjectPartitionInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("values", required: true)]
+        [Input("values")]
         private InputList<Inputs.GetShareObjectPartitionValueInputArgs>? _values;
         public InputList<Inputs.GetShareObjectPartitionValueInputArgs> Values
         {

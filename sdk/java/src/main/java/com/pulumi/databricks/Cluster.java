@@ -353,130 +353,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      * 
-     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-     *             .localDisk(true)
-     *             .build());
-     * 
-     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-     *             .longTermSupport(true)
-     *             .build());
-     * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-     *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
-     *             .autoterminationMinutes(20)
-     *             .autoscale(ClusterAutoscaleArgs.builder()
-     *                 .minWorkers(1)
-     *                 .maxWorkers(50)
-     *                 .build())
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", true),
-     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     @Export(name="isPinned", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPinned;
 
     /**
      * @return boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-     * 
-     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-     *             .localDisk(true)
-     *             .build());
-     * 
-     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-     *             .longTermSupport(true)
-     *             .build());
-     * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-     *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
-     *             .autoterminationMinutes(20)
-     *             .autoscale(ClusterAutoscaleArgs.builder()
-     *                 .minWorkers(1)
-     *                 .maxWorkers(50)
-     *                 .build())
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", true),
-     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Boolean>> isPinned() {
@@ -487,6 +369,138 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<ClusterLibrary>>> libraries() {
         return Codegen.optional(this.libraries);
+    }
+    /**
+     * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+     * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    @Export(name="noWait", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> noWait;
+
+    /**
+     * @return If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+     * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public Output<Optional<Boolean>> noWait() {
+        return Codegen.optional(this.noWait);
     }
     /**
      * Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.

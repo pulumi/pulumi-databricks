@@ -49,14 +49,14 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the Vector Search Endpoint that will be used for indexing the data.
+     * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      * 
      */
     @Import(name="endpointName", required=true)
     private Output<String> endpointName;
 
     /**
-     * @return The name of the Vector Search Endpoint that will be used for indexing the data.
+     * @return The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      * 
      */
     public Output<String> endpointName() {
@@ -64,7 +64,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Vector Search index type. Currently supported values are:
+     * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
@@ -73,7 +73,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     private Output<String> indexType;
 
     /**
-     * @return Vector Search index type. Currently supported values are:
+     * @return Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
@@ -83,14 +83,14 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Optional<Output<String>> name() {
@@ -184,7 +184,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointName The name of the Vector Search Endpoint that will be used for indexing the data.
+         * @param endpointName The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointName The name of the Vector Search Endpoint that will be used for indexing the data.
+         * @param endpointName The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexType Vector Search index type. Currently supported values are:
+         * @param indexType Mosaic AI Vector Search index type. Currently supported values are:
          * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
          * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
          * 
@@ -218,7 +218,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexType Vector Search index type. Currently supported values are:
+         * @param indexType Mosaic AI Vector Search index type. Currently supported values are:
          * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
          * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
          * 
@@ -230,7 +230,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 

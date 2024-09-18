@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("dayOfWeek")]
-        public Input<string>? DayOfWeek { get; set; }
+        [Input("dayOfWeek", required: true)]
+        public Input<string> DayOfWeek { get; set; } = null!;
 
-        [Input("frequency")]
-        public Input<string>? Frequency { get; set; }
+        [Input("frequency", required: true)]
+        public Input<string> Frequency { get; set; } = null!;
 
         [Input("windowStartTime")]
         public Input<Inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>? WindowStartTime { get; set; }

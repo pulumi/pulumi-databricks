@@ -4,18 +4,17 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
-    private @Nullable Boolean isEnabled;
+    private Boolean isEnabled;
 
     private EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace() {}
-    public Optional<Boolean> isEnabled() {
-        return Optional.ofNullable(this.isEnabled);
+    public Boolean isEnabled() {
+        return this.isEnabled;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMon
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean isEnabled;
+        private Boolean isEnabled;
         public Builder() {}
         public Builder(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMon
         }
 
         @CustomType.Setter
-        public Builder isEnabled(@Nullable Boolean isEnabled) {
-
+        public Builder isEnabled(Boolean isEnabled) {
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace", "isEnabled");
+            }
             this.isEnabled = isEnabled;
             return this;
         }

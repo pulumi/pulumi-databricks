@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetStorageCredentials
     {
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
         /// Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageCredentialsResult>("databricks:index/getStorageCredentials:getStorageCredentials", args ?? new GetStorageCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
         /// Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
         /// 

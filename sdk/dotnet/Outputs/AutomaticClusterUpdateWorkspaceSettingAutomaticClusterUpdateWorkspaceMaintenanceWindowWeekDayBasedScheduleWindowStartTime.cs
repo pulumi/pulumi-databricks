@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime
     {
-        public readonly int? Hours;
-        public readonly int? Minutes;
+        public readonly int Hours;
+        public readonly int Minutes;
 
         [OutputConstructor]
         private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime(
-            int? hours,
+            int hours,
 
-            int? minutes)
+            int minutes)
         {
             Hours = hours;
             Minutes = minutes;

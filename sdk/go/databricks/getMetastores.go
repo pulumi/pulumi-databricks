@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source could be only used with account-level provider!
+// > **Note** This data source can only be used with an account-level provider!
 //
 // Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
 //

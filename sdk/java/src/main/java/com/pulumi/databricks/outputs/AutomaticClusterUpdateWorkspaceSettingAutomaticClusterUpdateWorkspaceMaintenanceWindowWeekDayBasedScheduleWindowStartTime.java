@@ -4,22 +4,21 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    private @Nullable Integer hours;
-    private @Nullable Integer minutes;
+    private Integer hours;
+    private Integer minutes;
 
     private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime() {}
-    public Optional<Integer> hours() {
-        return Optional.ofNullable(this.hours);
+    public Integer hours() {
+        return this.hours;
     }
-    public Optional<Integer> minutes() {
-        return Optional.ofNullable(this.minutes);
+    public Integer minutes() {
+        return this.minutes;
     }
 
     public static Builder builder() {
@@ -31,8 +30,8 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer hours;
-        private @Nullable Integer minutes;
+        private Integer hours;
+        private Integer minutes;
         public Builder() {}
         public Builder(AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,14 +40,18 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         }
 
         @CustomType.Setter
-        public Builder hours(@Nullable Integer hours) {
-
+        public Builder hours(Integer hours) {
+            if (hours == null) {
+              throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime", "hours");
+            }
             this.hours = hours;
             return this;
         }
         @CustomType.Setter
-        public Builder minutes(@Nullable Integer minutes) {
-
+        public Builder minutes(Integer minutes) {
+            if (minutes == null) {
+              throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime", "minutes");
+            }
             this.minutes = minutes;
             return this;
         }

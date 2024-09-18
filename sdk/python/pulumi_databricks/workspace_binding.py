@@ -23,7 +23,7 @@ class WorkspaceBindingArgs:
         The set of arguments for constructing a WorkspaceBinding resource.
         :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         if binding_type is not None:
@@ -78,7 +78,7 @@ class WorkspaceBindingArgs:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_type")
 
@@ -111,7 +111,7 @@ class _WorkspaceBindingState:
         Input properties used for looking up and filtering WorkspaceBinding resources.
         :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         if binding_type is not None:
@@ -166,7 +166,7 @@ class _WorkspaceBindingState:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_type")
 
@@ -199,7 +199,7 @@ class WorkspaceBinding(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 
@@ -237,7 +237,7 @@ class WorkspaceBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         ...
@@ -247,7 +247,7 @@ class WorkspaceBinding(pulumi.CustomResource):
                  args: Optional[WorkspaceBindingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 
@@ -339,7 +339,7 @@ class WorkspaceBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -379,7 +379,7 @@ class WorkspaceBinding(pulumi.CustomResource):
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_type")
 

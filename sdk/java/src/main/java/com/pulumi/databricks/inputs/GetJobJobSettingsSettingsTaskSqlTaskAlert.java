@@ -32,11 +32,11 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert extends com.pulumi.
         return Optional.ofNullable(this.pauseSubscriptions);
     }
 
-    @Import(name="subscriptions", required=true)
-    private List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
+    @Import(name="subscriptions")
+    private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
 
-    public List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions() {
-        return this.subscriptions;
+    public Optional<List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private GetJobJobSettingsSettingsTaskSqlTaskAlert() {}
@@ -75,7 +75,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert extends com.pulumi.
             return this;
         }
 
-        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions) {
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
@@ -87,9 +87,6 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert extends com.pulumi.
         public GetJobJobSettingsSettingsTaskSqlTaskAlert build() {
             if ($.alertId == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskAlert", "alertId");
-            }
-            if ($.subscriptions == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskAlert", "subscriptions");
             }
             return $;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,16 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    private @Nullable String dayOfWeek;
-    private @Nullable String frequency;
+    private String dayOfWeek;
+    private String frequency;
     private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime windowStartTime;
 
     private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule() {}
-    public Optional<String> dayOfWeek() {
-        return Optional.ofNullable(this.dayOfWeek);
+    public String dayOfWeek() {
+        return this.dayOfWeek;
     }
-    public Optional<String> frequency() {
-        return Optional.ofNullable(this.frequency);
+    public String frequency() {
+        return this.frequency;
     }
     public Optional<AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime> windowStartTime() {
         return Optional.ofNullable(this.windowStartTime);
@@ -36,8 +37,8 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String dayOfWeek;
-        private @Nullable String frequency;
+        private String dayOfWeek;
+        private String frequency;
         private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime windowStartTime;
         public Builder() {}
         public Builder(AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule defaults) {
@@ -48,14 +49,18 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         }
 
         @CustomType.Setter
-        public Builder dayOfWeek(@Nullable String dayOfWeek) {
-
+        public Builder dayOfWeek(String dayOfWeek) {
+            if (dayOfWeek == null) {
+              throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule", "dayOfWeek");
+            }
             this.dayOfWeek = dayOfWeek;
             return this;
         }
         @CustomType.Setter
-        public Builder frequency(@Nullable String frequency) {
-
+        public Builder frequency(String frequency) {
+            if (frequency == null) {
+              throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule", "frequency");
+            }
             this.frequency = frequency;
             return this;
         }

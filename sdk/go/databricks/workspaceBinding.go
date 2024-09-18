@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource could be only used with workspace-level provider!
+// > **Note** This resource can only be used with a workspace-level provider!
 //
 // # If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 //
@@ -75,7 +75,7 @@ type WorkspaceBinding struct {
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
@@ -117,7 +117,7 @@ type workspaceBindingState struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -130,7 +130,7 @@ type WorkspaceBindingState struct {
 	CatalogName pulumi.StringPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrInput
@@ -147,7 +147,7 @@ type workspaceBindingArgs struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -161,7 +161,7 @@ type WorkspaceBindingArgs struct {
 	CatalogName pulumi.StringPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+	// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
 	WorkspaceId pulumi.StringPtrInput
@@ -269,7 +269,7 @@ func (o WorkspaceBindingOutput) SecurableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringOutput { return v.SecurableName }).(pulumi.StringOutput)
 }
 
-// Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
 func (o WorkspaceBindingOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.SecurableType }).(pulumi.StringPtrOutput)
 }

@@ -32,11 +32,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert exte
         return Optional.ofNullable(this.pauseSubscriptions);
     }
 
-    @Import(name="subscriptions", required=true)
-    private List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
+    @Import(name="subscriptions")
+    private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
 
-    public List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions() {
-        return this.subscriptions;
+    public Optional<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert() {}
@@ -75,7 +75,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert exte
             return this;
         }
 
-        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions) {
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
@@ -87,9 +87,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert exte
         public GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert build() {
             if ($.alertId == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert", "alertId");
-            }
-            if ($.subscriptions == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert", "subscriptions");
             }
             return $;
         }

@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("canToggle")]
         public Input<bool>? CanToggle { get; set; }
 
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         [Input("enablementDetails")]
         public Input<Inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsGetArgs>? EnablementDetails { get; set; }

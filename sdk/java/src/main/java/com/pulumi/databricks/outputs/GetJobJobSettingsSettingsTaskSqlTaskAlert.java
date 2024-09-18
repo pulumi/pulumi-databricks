@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
     private String alertId;
     private @Nullable Boolean pauseSubscriptions;
-    private List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
+    private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
 
     private GetJobJobSettingsSettingsTaskSqlTaskAlert() {}
     public String alertId() {
@@ -27,7 +27,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
     public List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions() {
-        return this.subscriptions;
+        return this.subscriptions == null ? List.of() : this.subscriptions;
     }
 
     public static Builder builder() {
@@ -41,7 +41,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
     public static final class Builder {
         private String alertId;
         private @Nullable Boolean pauseSubscriptions;
-        private List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
+        private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskSqlTaskAlert defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,10 +65,8 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
             return this;
         }
         @CustomType.Setter
-        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions) {
-            if (subscriptions == null) {
-              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskAlert", "subscriptions");
-            }
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions) {
+
             this.subscriptions = subscriptions;
             return this;
         }

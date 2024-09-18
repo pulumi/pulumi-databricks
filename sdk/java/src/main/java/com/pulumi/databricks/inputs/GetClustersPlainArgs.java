@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetClustersFilterBy;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,21 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
      */
     public Optional<String> clusterNameContains() {
         return Optional.ofNullable(this.clusterNameContains);
+    }
+
+    /**
+     * Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * 
+     */
+    @Import(name="filterBy")
+    private @Nullable GetClustersFilterBy filterBy;
+
+    /**
+     * @return Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * 
+     */
+    public Optional<GetClustersFilterBy> filterBy() {
+        return Optional.ofNullable(this.filterBy);
     }
 
     @Import(name="id")
@@ -56,6 +72,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetClustersPlainArgs(GetClustersPlainArgs $) {
         this.clusterNameContains = $.clusterNameContains;
+        this.filterBy = $.filterBy;
         this.id = $.id;
         this.ids = $.ids;
     }
@@ -86,6 +103,17 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder clusterNameContains(@Nullable String clusterNameContains) {
             $.clusterNameContains = clusterNameContains;
+            return this;
+        }
+
+        /**
+         * @param filterBy Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterBy(@Nullable GetClustersFilterBy filterBy) {
+            $.filterBy = filterBy;
             return this;
         }
 

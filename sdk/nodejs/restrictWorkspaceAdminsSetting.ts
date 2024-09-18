@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource could be only used with workspace-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
  *
  * The `databricks.RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
  *

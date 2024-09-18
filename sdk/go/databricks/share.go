@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource could be only used with workspace-level provider!
+// > **Note** This resource can only be used with a workspace-level provider!
 //
 // In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
 //
@@ -19,6 +19,7 @@ import (
 type Share struct {
 	pulumi.CustomResourceState
 
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// The principal that created the share.
@@ -27,7 +28,11 @@ type Share struct {
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Objects ShareObjectArrayOutput `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner pulumi.StringPtrOutput `pulumi:"owner"`
+	Owner           pulumi.StringPtrOutput `pulumi:"owner"`
+	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
+	StorageRoot     pulumi.StringPtrOutput `pulumi:"storageRoot"`
+	UpdatedAt       pulumi.IntOutput       `pulumi:"updatedAt"`
+	UpdatedBy       pulumi.StringOutput    `pulumi:"updatedBy"`
 }
 
 // NewShare registers a new resource with the given unique name, arguments, and options.
@@ -60,6 +65,7 @@ func GetShare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Share resources.
 type shareState struct {
+	Comment *string `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt *int `pulumi:"createdAt"`
 	// The principal that created the share.
@@ -68,10 +74,15 @@ type shareState struct {
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner *string `pulumi:"owner"`
+	Owner           *string `pulumi:"owner"`
+	StorageLocation *string `pulumi:"storageLocation"`
+	StorageRoot     *string `pulumi:"storageRoot"`
+	UpdatedAt       *int    `pulumi:"updatedAt"`
+	UpdatedBy       *string `pulumi:"updatedBy"`
 }
 
 type ShareState struct {
+	Comment pulumi.StringPtrInput
 	// Time when the share was created.
 	CreatedAt pulumi.IntPtrInput
 	// The principal that created the share.
@@ -80,7 +91,11 @@ type ShareState struct {
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 	// User name/group name/sp applicationId of the share owner.
-	Owner pulumi.StringPtrInput
+	Owner           pulumi.StringPtrInput
+	StorageLocation pulumi.StringPtrInput
+	StorageRoot     pulumi.StringPtrInput
+	UpdatedAt       pulumi.IntPtrInput
+	UpdatedBy       pulumi.StringPtrInput
 }
 
 func (ShareState) ElementType() reflect.Type {
@@ -88,6 +103,7 @@ func (ShareState) ElementType() reflect.Type {
 }
 
 type shareArgs struct {
+	Comment *string `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt *int `pulumi:"createdAt"`
 	// The principal that created the share.
@@ -96,11 +112,16 @@ type shareArgs struct {
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner *string `pulumi:"owner"`
+	Owner           *string `pulumi:"owner"`
+	StorageLocation *string `pulumi:"storageLocation"`
+	StorageRoot     *string `pulumi:"storageRoot"`
+	UpdatedAt       *int    `pulumi:"updatedAt"`
+	UpdatedBy       *string `pulumi:"updatedBy"`
 }
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
+	Comment pulumi.StringPtrInput
 	// Time when the share was created.
 	CreatedAt pulumi.IntPtrInput
 	// The principal that created the share.
@@ -109,7 +130,11 @@ type ShareArgs struct {
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 	// User name/group name/sp applicationId of the share owner.
-	Owner pulumi.StringPtrInput
+	Owner           pulumi.StringPtrInput
+	StorageLocation pulumi.StringPtrInput
+	StorageRoot     pulumi.StringPtrInput
+	UpdatedAt       pulumi.IntPtrInput
+	UpdatedBy       pulumi.StringPtrInput
 }
 
 func (ShareArgs) ElementType() reflect.Type {
@@ -199,6 +224,10 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
 }
 
+func (o ShareOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
 // Time when the share was created.
 func (o ShareOutput) CreatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
@@ -221,6 +250,22 @@ func (o ShareOutput) Objects() ShareObjectArrayOutput {
 // User name/group name/sp applicationId of the share owner.
 func (o ShareOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+func (o ShareOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+func (o ShareOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+func (o ShareOutput) UpdatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+func (o ShareOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 type ShareArrayOutput struct{ *pulumi.OutputState }

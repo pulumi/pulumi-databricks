@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource could be used with account or workspace-level provider.
+    /// &gt; **Note** This resource can be used with an account or workspace-level provider.
     /// 
     /// This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
     /// 

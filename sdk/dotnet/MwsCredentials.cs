@@ -47,7 +47,6 @@ namespace Pulumi.Databricks
     /// 
     ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
     ///     {
-    ///         AccountId = databricksAccountId,
     ///         CredentialsName = $"{prefix}-creds",
     ///         RoleArn = crossAccountRole.Arn,
     ///     });
@@ -80,7 +79,7 @@ namespace Pulumi.Databricks
     public partial class MwsCredentials : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -159,7 +158,7 @@ namespace Pulumi.Databricks
     public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -200,7 +199,7 @@ namespace Pulumi.Databricks
     public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

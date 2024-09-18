@@ -118,7 +118,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
                                  vpc_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsCrossAccountPolicyResult:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
@@ -181,7 +181,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
                                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 

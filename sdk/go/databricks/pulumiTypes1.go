@@ -605,6 +605,200 @@ func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) Notebooks() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetClustersFilterBy struct {
+	// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+	ClusterSources []string `pulumi:"clusterSources"`
+	// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+	ClusterStates []string `pulumi:"clusterStates"`
+	// Whether to filter by pinned clusters.
+	IsPinned *bool `pulumi:"isPinned"`
+	// Filter by ClusterPolicy id.
+	PolicyId *string `pulumi:"policyId"`
+}
+
+// GetClustersFilterByInput is an input type that accepts GetClustersFilterByArgs and GetClustersFilterByOutput values.
+// You can construct a concrete instance of `GetClustersFilterByInput` via:
+//
+//	GetClustersFilterByArgs{...}
+type GetClustersFilterByInput interface {
+	pulumi.Input
+
+	ToGetClustersFilterByOutput() GetClustersFilterByOutput
+	ToGetClustersFilterByOutputWithContext(context.Context) GetClustersFilterByOutput
+}
+
+type GetClustersFilterByArgs struct {
+	// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+	ClusterSources pulumi.StringArrayInput `pulumi:"clusterSources"`
+	// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+	ClusterStates pulumi.StringArrayInput `pulumi:"clusterStates"`
+	// Whether to filter by pinned clusters.
+	IsPinned pulumi.BoolPtrInput `pulumi:"isPinned"`
+	// Filter by ClusterPolicy id.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+}
+
+func (GetClustersFilterByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersFilterBy)(nil)).Elem()
+}
+
+func (i GetClustersFilterByArgs) ToGetClustersFilterByOutput() GetClustersFilterByOutput {
+	return i.ToGetClustersFilterByOutputWithContext(context.Background())
+}
+
+func (i GetClustersFilterByArgs) ToGetClustersFilterByOutputWithContext(ctx context.Context) GetClustersFilterByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersFilterByOutput)
+}
+
+func (i GetClustersFilterByArgs) ToGetClustersFilterByPtrOutput() GetClustersFilterByPtrOutput {
+	return i.ToGetClustersFilterByPtrOutputWithContext(context.Background())
+}
+
+func (i GetClustersFilterByArgs) ToGetClustersFilterByPtrOutputWithContext(ctx context.Context) GetClustersFilterByPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersFilterByOutput).ToGetClustersFilterByPtrOutputWithContext(ctx)
+}
+
+// GetClustersFilterByPtrInput is an input type that accepts GetClustersFilterByArgs, GetClustersFilterByPtr and GetClustersFilterByPtrOutput values.
+// You can construct a concrete instance of `GetClustersFilterByPtrInput` via:
+//
+//	        GetClustersFilterByArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClustersFilterByPtrInput interface {
+	pulumi.Input
+
+	ToGetClustersFilterByPtrOutput() GetClustersFilterByPtrOutput
+	ToGetClustersFilterByPtrOutputWithContext(context.Context) GetClustersFilterByPtrOutput
+}
+
+type getClustersFilterByPtrType GetClustersFilterByArgs
+
+func GetClustersFilterByPtr(v *GetClustersFilterByArgs) GetClustersFilterByPtrInput {
+	return (*getClustersFilterByPtrType)(v)
+}
+
+func (*getClustersFilterByPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClustersFilterBy)(nil)).Elem()
+}
+
+func (i *getClustersFilterByPtrType) ToGetClustersFilterByPtrOutput() GetClustersFilterByPtrOutput {
+	return i.ToGetClustersFilterByPtrOutputWithContext(context.Background())
+}
+
+func (i *getClustersFilterByPtrType) ToGetClustersFilterByPtrOutputWithContext(ctx context.Context) GetClustersFilterByPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersFilterByPtrOutput)
+}
+
+type GetClustersFilterByOutput struct{ *pulumi.OutputState }
+
+func (GetClustersFilterByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersFilterBy)(nil)).Elem()
+}
+
+func (o GetClustersFilterByOutput) ToGetClustersFilterByOutput() GetClustersFilterByOutput {
+	return o
+}
+
+func (o GetClustersFilterByOutput) ToGetClustersFilterByOutputWithContext(ctx context.Context) GetClustersFilterByOutput {
+	return o
+}
+
+func (o GetClustersFilterByOutput) ToGetClustersFilterByPtrOutput() GetClustersFilterByPtrOutput {
+	return o.ToGetClustersFilterByPtrOutputWithContext(context.Background())
+}
+
+func (o GetClustersFilterByOutput) ToGetClustersFilterByPtrOutputWithContext(ctx context.Context) GetClustersFilterByPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClustersFilterBy) *GetClustersFilterBy {
+		return &v
+	}).(GetClustersFilterByPtrOutput)
+}
+
+// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+func (o GetClustersFilterByOutput) ClusterSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersFilterBy) []string { return v.ClusterSources }).(pulumi.StringArrayOutput)
+}
+
+// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+func (o GetClustersFilterByOutput) ClusterStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersFilterBy) []string { return v.ClusterStates }).(pulumi.StringArrayOutput)
+}
+
+// Whether to filter by pinned clusters.
+func (o GetClustersFilterByOutput) IsPinned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClustersFilterBy) *bool { return v.IsPinned }).(pulumi.BoolPtrOutput)
+}
+
+// Filter by ClusterPolicy id.
+func (o GetClustersFilterByOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClustersFilterBy) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+type GetClustersFilterByPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClustersFilterByPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClustersFilterBy)(nil)).Elem()
+}
+
+func (o GetClustersFilterByPtrOutput) ToGetClustersFilterByPtrOutput() GetClustersFilterByPtrOutput {
+	return o
+}
+
+func (o GetClustersFilterByPtrOutput) ToGetClustersFilterByPtrOutputWithContext(ctx context.Context) GetClustersFilterByPtrOutput {
+	return o
+}
+
+func (o GetClustersFilterByPtrOutput) Elem() GetClustersFilterByOutput {
+	return o.ApplyT(func(v *GetClustersFilterBy) GetClustersFilterBy {
+		if v != nil {
+			return *v
+		}
+		var ret GetClustersFilterBy
+		return ret
+	}).(GetClustersFilterByOutput)
+}
+
+// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+func (o GetClustersFilterByPtrOutput) ClusterSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetClustersFilterBy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+func (o GetClustersFilterByPtrOutput) ClusterStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetClustersFilterBy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to filter by pinned clusters.
+func (o GetClustersFilterByPtrOutput) IsPinned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClustersFilterBy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPinned
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Filter by ClusterPolicy id.
+func (o GetClustersFilterByPtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClustersFilterBy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetCurrentMetastoreMetastoreInfo struct {
 	Cloud *string `pulumi:"cloud"`
 	// Timestamp (in milliseconds) when the current metastore was created.
@@ -36955,15 +37149,17 @@ type GetShareObject struct {
 	CdfEnabled *bool  `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment *string `pulumi:"comment"`
+	Content *string `pulumi:"content"`
 	// Type of the object.
 	DataObjectType           string  `pulumi:"dataObjectType"`
 	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
 	// The name of the share
-	Name         string                    `pulumi:"name"`
-	Partitions   []GetShareObjectPartition `pulumi:"partitions"`
-	SharedAs     *string                   `pulumi:"sharedAs"`
-	StartVersion *int                      `pulumi:"startVersion"`
-	Status       string                    `pulumi:"status"`
+	Name           string                    `pulumi:"name"`
+	Partitions     []GetShareObjectPartition `pulumi:"partitions"`
+	SharedAs       *string                   `pulumi:"sharedAs"`
+	StartVersion   *int                      `pulumi:"startVersion"`
+	Status         string                    `pulumi:"status"`
+	StringSharedAs *string                   `pulumi:"stringSharedAs"`
 }
 
 // GetShareObjectInput is an input type that accepts GetShareObjectArgs and GetShareObjectOutput values.
@@ -36983,15 +37179,17 @@ type GetShareObjectArgs struct {
 	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Type of the object.
 	DataObjectType           pulumi.StringInput    `pulumi:"dataObjectType"`
 	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
 	// The name of the share
-	Name         pulumi.StringInput                `pulumi:"name"`
-	Partitions   GetShareObjectPartitionArrayInput `pulumi:"partitions"`
-	SharedAs     pulumi.StringPtrInput             `pulumi:"sharedAs"`
-	StartVersion pulumi.IntPtrInput                `pulumi:"startVersion"`
-	Status       pulumi.StringInput                `pulumi:"status"`
+	Name           pulumi.StringInput                `pulumi:"name"`
+	Partitions     GetShareObjectPartitionArrayInput `pulumi:"partitions"`
+	SharedAs       pulumi.StringPtrInput             `pulumi:"sharedAs"`
+	StartVersion   pulumi.IntPtrInput                `pulumi:"startVersion"`
+	Status         pulumi.StringInput                `pulumi:"status"`
+	StringSharedAs pulumi.StringPtrInput             `pulumi:"stringSharedAs"`
 }
 
 func (GetShareObjectArgs) ElementType() reflect.Type {
@@ -37062,6 +37260,10 @@ func (o GetShareObjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+func (o GetShareObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
 // Type of the object.
 func (o GetShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
@@ -37090,6 +37292,10 @@ func (o GetShareObjectOutput) StartVersion() pulumi.IntPtrOutput {
 
 func (o GetShareObjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectOutput) StringSharedAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.StringSharedAs }).(pulumi.StringPtrOutput)
 }
 
 type GetShareObjectArrayOutput struct{ *pulumi.OutputState }
@@ -43019,6 +43225,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypePtrInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClientsInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoWorkloadTypeClientsPtrInput)(nil)).Elem(), GetClusterClusterInfoWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersFilterByInput)(nil)).Elem(), GetClustersFilterByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersFilterByPtrInput)(nil)).Elem(), GetClustersFilterByArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
@@ -43528,6 +43736,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypeClientsOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(GetClustersFilterByOutput{})
+	pulumi.RegisterOutputType(GetClustersFilterByPtrOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})

@@ -514,6 +514,7 @@ __all__ = [
     'GetClusterClusterInfoTerminationReasonArgs',
     'GetClusterClusterInfoWorkloadTypeArgs',
     'GetClusterClusterInfoWorkloadTypeClientsArgs',
+    'GetClustersFilterByArgs',
     'GetCurrentMetastoreMetastoreInfoArgs',
     'GetExternalLocationExternalLocationInfoArgs',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs',
@@ -859,21 +860,29 @@ class ArtifactAllowlistArtifactMatcherArgs:
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs:
     def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
                  can_toggle: Optional[pulumi.Input[bool]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
                  enablement_details: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']] = None,
                  restart_even_if_no_updates_available: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "enabled", enabled)
         if can_toggle is not None:
             pulumi.set(__self__, "can_toggle", can_toggle)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if enablement_details is not None:
             pulumi.set(__self__, "enablement_details", enablement_details)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if restart_even_if_no_updates_available is not None:
             pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="canToggle")
@@ -883,15 +892,6 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs:
     @can_toggle.setter
     def can_toggle(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "can_toggle", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="enablementDetails")
@@ -982,32 +982,30 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input[str]] = None,
-                 frequency: Optional[pulumi.Input[str]] = None,
+                 day_of_week: pulumi.Input[str],
+                 frequency: pulumi.Input[str],
                  window_start_time: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "frequency", frequency)
         if window_start_time is not None:
             pulumi.set(__self__, "window_start_time", window_start_time)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+    def day_of_week(self) -> pulumi.Input[str]:
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+    def day_of_week(self, value: pulumi.Input[str]):
         pulumi.set(self, "day_of_week", value)
 
     @property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[str]]:
+    def frequency(self) -> pulumi.Input[str]:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[str]]):
+    def frequency(self, value: pulumi.Input[str]):
         pulumi.set(self, "frequency", value)
 
     @property
@@ -1023,29 +1021,27 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[int]] = None,
-                 minutes: Optional[pulumi.Input[int]] = None):
-        if hours is not None:
-            pulumi.set(__self__, "hours", hours)
-        if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+                 hours: pulumi.Input[int],
+                 minutes: pulumi.Input[int]):
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
 
     @property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[int]]:
+    def hours(self) -> pulumi.Input[int]:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[int]]):
+    def hours(self, value: pulumi.Input[int]):
         pulumi.set(self, "hours", value)
 
     @property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[int]]:
+    def minutes(self) -> pulumi.Input[int]:
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[int]]):
+    def minutes(self, value: pulumi.Input[int]):
         pulumi.set(self, "minutes", value)
 
 
@@ -2708,29 +2704,27 @@ class ClusterWorkloadTypeClientsArgs:
 @pulumi.input_type
 class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs:
     def __init__(__self__, *,
-                 compliance_standards: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 is_enabled: Optional[pulumi.Input[bool]] = None):
-        if compliance_standards is not None:
-            pulumi.set(__self__, "compliance_standards", compliance_standards)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+                 compliance_standards: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 is_enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "compliance_standards", compliance_standards)
+        pulumi.set(__self__, "is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="complianceStandards")
-    def compliance_standards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def compliance_standards(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "compliance_standards")
 
     @compliance_standards.setter
-    def compliance_standards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def compliance_standards(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "compliance_standards", value)
 
     @property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+    def is_enabled(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+    def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
 
 
@@ -2760,17 +2754,16 @@ class DefaultNamespaceSettingNamespaceArgs:
 @pulumi.input_type
 class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs:
     def __init__(__self__, *,
-                 is_enabled: Optional[pulumi.Input[bool]] = None):
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+                 is_enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+    def is_enabled(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+    def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
 
 
@@ -11527,17 +11520,18 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
 class JobTaskForEachTaskTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
                  alert_id: pulumi.Input[str],
-                 subscriptions: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]],
-                 pause_subscriptions: Optional[pulumi.Input[bool]] = None):
+                 pause_subscriptions: Optional[pulumi.Input[bool]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]] = None):
         """
         :param pulumi.Input[str] alert_id: (String) identifier of the Databricks SQL Alert.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
         pulumi.set(__self__, "alert_id", alert_id)
-        pulumi.set(__self__, "subscriptions", subscriptions)
         if pause_subscriptions is not None:
             pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
@@ -11552,18 +11546,6 @@ class JobTaskForEachTaskTaskSqlTaskAlertArgs:
         pulumi.set(self, "alert_id", value)
 
     @property
-    @pulumi.getter
-    def subscriptions(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]:
-        """
-        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
-        """
-        return pulumi.get(self, "subscriptions")
-
-    @subscriptions.setter
-    def subscriptions(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]):
-        pulumi.set(self, "subscriptions", value)
-
-    @property
     @pulumi.getter(name="pauseSubscriptions")
     def pause_subscriptions(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -11574,6 +11556,18 @@ class JobTaskForEachTaskTaskSqlTaskAlertArgs:
     @pause_subscriptions.setter
     def pause_subscriptions(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]]:
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]]):
+        pulumi.set(self, "subscriptions", value)
 
 
 @pulumi.input_type
@@ -14418,17 +14412,18 @@ class JobTaskSqlTaskArgs:
 class JobTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
                  alert_id: pulumi.Input[str],
-                 subscriptions: pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]],
-                 pause_subscriptions: Optional[pulumi.Input[bool]] = None):
+                 pause_subscriptions: Optional[pulumi.Input[bool]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]] = None):
         """
         :param pulumi.Input[str] alert_id: (String) identifier of the Databricks SQL Alert.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
         pulumi.set(__self__, "alert_id", alert_id)
-        pulumi.set(__self__, "subscriptions", subscriptions)
         if pause_subscriptions is not None:
             pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
@@ -14443,18 +14438,6 @@ class JobTaskSqlTaskAlertArgs:
         pulumi.set(self, "alert_id", value)
 
     @property
-    @pulumi.getter
-    def subscriptions(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]:
-        """
-        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
-        """
-        return pulumi.get(self, "subscriptions")
-
-    @subscriptions.setter
-    def subscriptions(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]):
-        pulumi.set(self, "subscriptions", value)
-
-    @property
     @pulumi.getter(name="pauseSubscriptions")
     def pause_subscriptions(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -14465,6 +14448,18 @@ class JobTaskSqlTaskAlertArgs:
     @pause_subscriptions.setter
     def pause_subscriptions(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]]:
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]]):
+        pulumi.set(self, "subscriptions", value)
 
 
 @pulumi.input_type
@@ -17324,33 +17319,42 @@ class ModelServingConfigServedModelArgs:
     def __init__(__self__, *,
                  model_name: pulumi.Input[str],
                  model_version: pulumi.Input[str],
-                 workload_size: pulumi.Input[str],
                  environment_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
+                 max_provisioned_throughput: Optional[pulumi.Input[int]] = None,
+                 min_provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_to_zero_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_size: Optional[pulumi.Input[str]] = None,
                  workload_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] model_name: The name of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] model_version: The version of the model in Databricks Model Registry to be served.
-        :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
+        :param pulumi.Input[int] max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
+        :param pulumi.Input[int] min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
         :param pulumi.Input[str] name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         :param pulumi.Input[str] workload_type: The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
         """
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "model_version", model_version)
-        pulumi.set(__self__, "workload_size", workload_size)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if max_provisioned_throughput is not None:
+            pulumi.set(__self__, "max_provisioned_throughput", max_provisioned_throughput)
+        if min_provisioned_throughput is not None:
+            pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scale_to_zero_enabled is not None:
             pulumi.set(__self__, "scale_to_zero_enabled", scale_to_zero_enabled)
+        if workload_size is not None:
+            pulumi.set(__self__, "workload_size", workload_size)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -17379,18 +17383,6 @@ class ModelServingConfigServedModelArgs:
         pulumi.set(self, "model_version", value)
 
     @property
-    @pulumi.getter(name="workloadSize")
-    def workload_size(self) -> pulumi.Input[str]:
-        """
-        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-        """
-        return pulumi.get(self, "workload_size")
-
-    @workload_size.setter
-    def workload_size(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workload_size", value)
-
-    @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -17415,6 +17407,30 @@ class ModelServingConfigServedModelArgs:
         pulumi.set(self, "instance_profile_arn", value)
 
     @property
+    @pulumi.getter(name="maxProvisionedThroughput")
+    def max_provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum tokens per second that the endpoint can scale up to.
+        """
+        return pulumi.get(self, "max_provisioned_throughput")
+
+    @max_provisioned_throughput.setter
+    def max_provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_provisioned_throughput", value)
+
+    @property
+    @pulumi.getter(name="minProvisionedThroughput")
+    def min_provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum tokens per second that the endpoint can scale down to.
+        """
+        return pulumi.get(self, "min_provisioned_throughput")
+
+    @min_provisioned_throughput.setter
+    def min_provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_provisioned_throughput", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -17437,6 +17453,18 @@ class ModelServingConfigServedModelArgs:
     @scale_to_zero_enabled.setter
     def scale_to_zero_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scale_to_zero_enabled", value)
+
+    @property
+    @pulumi.getter(name="workloadSize")
+    def workload_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
+        """
+        return pulumi.get(self, "workload_size")
+
+    @workload_size.setter
+    def workload_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_size", value)
 
     @property
     @pulumi.getter(name="workloadType")
@@ -22050,11 +22078,13 @@ class ShareObjectArgs:
                  added_by: Optional[pulumi.Input[str]] = None,
                  cdf_enabled: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
                  history_data_sharing_status: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]] = None,
                  shared_as: Optional[pulumi.Input[str]] = None,
                  start_version: Optional[pulumi.Input[int]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 string_shared_as: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] data_object_type: Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
@@ -22077,6 +22107,8 @@ class ShareObjectArgs:
             pulumi.set(__self__, "cdf_enabled", cdf_enabled)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if history_data_sharing_status is not None:
             pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
         if partitions is not None:
@@ -22087,6 +22119,8 @@ class ShareObjectArgs:
             pulumi.set(__self__, "start_version", start_version)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if string_shared_as is not None:
+            pulumi.set(__self__, "string_shared_as", string_shared_as)
 
     @property
     @pulumi.getter(name="dataObjectType")
@@ -22155,6 +22189,15 @@ class ShareObjectArgs:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
     @pulumi.getter(name="historyDataSharingStatus")
     def history_data_sharing_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -22213,26 +22256,36 @@ class ShareObjectArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter(name="stringSharedAs")
+    def string_shared_as(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "string_shared_as")
+
+    @string_shared_as.setter
+    def string_shared_as(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_shared_as", value)
+
 
 @pulumi.input_type
 class ShareObjectPartitionArgs:
     def __init__(__self__, *,
-                 values: pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]] values: The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
         """
-        pulumi.set(__self__, "values", values)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]:
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]]:
         """
         The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]):
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]]):
         pulumi.set(self, "values", value)
 
 
@@ -24294,7 +24347,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -24314,7 +24367,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -24329,7 +24382,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -24349,7 +24402,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -24415,7 +24468,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -24435,7 +24488,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -24450,7 +24503,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -24470,7 +24523,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         return pulumi.get(self, "name")
 
@@ -28218,6 +28271,77 @@ class GetClusterClusterInfoWorkloadTypeClientsArgs:
     @notebooks.setter
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
+
+
+@pulumi.input_type
+class GetClustersFilterByArgs:
+    def __init__(__self__, *,
+                 cluster_sources: Optional[Sequence[str]] = None,
+                 cluster_states: Optional[Sequence[str]] = None,
+                 is_pinned: Optional[bool] = None,
+                 policy_id: Optional[str] = None):
+        """
+        :param Sequence[str] cluster_sources: List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+        :param Sequence[str] cluster_states: List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+        :param bool is_pinned: Whether to filter by pinned clusters.
+        :param str policy_id: Filter by ClusterPolicy id.
+        """
+        if cluster_sources is not None:
+            pulumi.set(__self__, "cluster_sources", cluster_sources)
+        if cluster_states is not None:
+            pulumi.set(__self__, "cluster_states", cluster_states)
+        if is_pinned is not None:
+            pulumi.set(__self__, "is_pinned", is_pinned)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @property
+    @pulumi.getter(name="clusterSources")
+    def cluster_sources(self) -> Optional[Sequence[str]]:
+        """
+        List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+        """
+        return pulumi.get(self, "cluster_sources")
+
+    @cluster_sources.setter
+    def cluster_sources(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "cluster_sources", value)
+
+    @property
+    @pulumi.getter(name="clusterStates")
+    def cluster_states(self) -> Optional[Sequence[str]]:
+        """
+        List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+        """
+        return pulumi.get(self, "cluster_states")
+
+    @cluster_states.setter
+    def cluster_states(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "cluster_states", value)
+
+    @property
+    @pulumi.getter(name="isPinned")
+    def is_pinned(self) -> Optional[bool]:
+        """
+        Whether to filter by pinned clusters.
+        """
+        return pulumi.get(self, "is_pinned")
+
+    @is_pinned.setter
+    def is_pinned(self, value: Optional[bool]):
+        pulumi.set(self, "is_pinned", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[str]:
+        """
+        Filter by ClusterPolicy id.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[str]):
+        pulumi.set(self, "policy_id", value)
 
 
 @pulumi.input_type
@@ -36397,12 +36521,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
                  alert_id: str,
-                 subscriptions: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs'],
-                 pause_subscriptions: Optional[bool] = None):
+                 pause_subscriptions: Optional[bool] = None,
+                 subscriptions: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']] = None):
         pulumi.set(__self__, "alert_id", alert_id)
-        pulumi.set(__self__, "subscriptions", subscriptions)
         if pause_subscriptions is not None:
             pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
@@ -36414,15 +36539,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs:
         pulumi.set(self, "alert_id", value)
 
     @property
-    @pulumi.getter
-    def subscriptions(self) -> Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']:
-        return pulumi.get(self, "subscriptions")
-
-    @subscriptions.setter
-    def subscriptions(self, value: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']):
-        pulumi.set(self, "subscriptions", value)
-
-    @property
     @pulumi.getter(name="pauseSubscriptions")
     def pause_subscriptions(self) -> Optional[bool]:
         return pulumi.get(self, "pause_subscriptions")
@@ -36430,6 +36546,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs:
     @pause_subscriptions.setter
     def pause_subscriptions(self, value: Optional[bool]):
         pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]):
+        pulumi.set(self, "subscriptions", value)
 
 
 @pulumi.input_type
@@ -38559,12 +38684,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
 class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
                  alert_id: str,
-                 subscriptions: Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs'],
-                 pause_subscriptions: Optional[bool] = None):
+                 pause_subscriptions: Optional[bool] = None,
+                 subscriptions: Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']] = None):
         pulumi.set(__self__, "alert_id", alert_id)
-        pulumi.set(__self__, "subscriptions", subscriptions)
         if pause_subscriptions is not None:
             pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
@@ -38576,15 +38702,6 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
         pulumi.set(self, "alert_id", value)
 
     @property
-    @pulumi.getter
-    def subscriptions(self) -> Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']:
-        return pulumi.get(self, "subscriptions")
-
-    @subscriptions.setter
-    def subscriptions(self, value: Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']):
-        pulumi.set(self, "subscriptions", value)
-
-    @property
     @pulumi.getter(name="pauseSubscriptions")
     def pause_subscriptions(self) -> Optional[bool]:
         return pulumi.get(self, "pause_subscriptions")
@@ -38592,6 +38709,15 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
     @pause_subscriptions.setter
     def pause_subscriptions(self, value: Optional[bool]):
         pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']]:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']]):
+        pulumi.set(self, "subscriptions", value)
 
 
 @pulumi.input_type
@@ -40136,10 +40262,12 @@ class GetShareObjectArgs:
                  status: str,
                  cdf_enabled: Optional[bool] = None,
                  comment: Optional[str] = None,
+                 content: Optional[str] = None,
                  history_data_sharing_status: Optional[str] = None,
                  partitions: Optional[Sequence['GetShareObjectPartitionArgs']] = None,
                  shared_as: Optional[str] = None,
-                 start_version: Optional[int] = None):
+                 start_version: Optional[int] = None,
+                 string_shared_as: Optional[str] = None):
         """
         :param str data_object_type: Type of the object.
         :param str name: The name of the share
@@ -40154,6 +40282,8 @@ class GetShareObjectArgs:
             pulumi.set(__self__, "cdf_enabled", cdf_enabled)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if history_data_sharing_status is not None:
             pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
         if partitions is not None:
@@ -40162,6 +40292,8 @@ class GetShareObjectArgs:
             pulumi.set(__self__, "shared_as", shared_as)
         if start_version is not None:
             pulumi.set(__self__, "start_version", start_version)
+        if string_shared_as is not None:
+            pulumi.set(__self__, "string_shared_as", string_shared_as)
 
     @property
     @pulumi.getter(name="addedAt")
@@ -40236,6 +40368,15 @@ class GetShareObjectArgs:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[str]):
+        pulumi.set(self, "content", value)
+
+    @property
     @pulumi.getter(name="historyDataSharingStatus")
     def history_data_sharing_status(self) -> Optional[str]:
         return pulumi.get(self, "history_data_sharing_status")
@@ -40271,20 +40412,30 @@ class GetShareObjectArgs:
     def start_version(self, value: Optional[int]):
         pulumi.set(self, "start_version", value)
 
+    @property
+    @pulumi.getter(name="stringSharedAs")
+    def string_shared_as(self) -> Optional[str]:
+        return pulumi.get(self, "string_shared_as")
+
+    @string_shared_as.setter
+    def string_shared_as(self, value: Optional[str]):
+        pulumi.set(self, "string_shared_as", value)
+
 
 @pulumi.input_type
 class GetShareObjectPartitionArgs:
     def __init__(__self__, *,
-                 values: Sequence['GetShareObjectPartitionValueArgs']):
-        pulumi.set(__self__, "values", values)
+                 values: Optional[Sequence['GetShareObjectPartitionValueArgs']] = None):
+        if values is not None:
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence['GetShareObjectPartitionValueArgs']:
+    def values(self) -> Optional[Sequence['GetShareObjectPartitionValueArgs']]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence['GetShareObjectPartitionValueArgs']):
+    def values(self, value: Optional[Sequence['GetShareObjectPartitionValueArgs']]):
         pulumi.set(self, "values", value)
 
 

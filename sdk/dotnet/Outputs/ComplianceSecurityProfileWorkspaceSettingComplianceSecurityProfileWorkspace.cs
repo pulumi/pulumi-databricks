@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace
     {
         public readonly ImmutableArray<string> ComplianceStandards;
-        public readonly bool? IsEnabled;
+        public readonly bool IsEnabled;
 
         [OutputConstructor]
         private ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace(
             ImmutableArray<string> complianceStandards,
 
-            bool? isEnabled)
+            bool isEnabled)
         {
             ComplianceStandards = complianceStandards;
             IsEnabled = isEnabled;

@@ -20,8 +20,8 @@ class VectorSearchEndpointArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
-        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
+        :param pulumi.Input[str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] name: Name of the Mosaic AI Vector Search Endpoint to create.
         """
         pulumi.set(__self__, "endpoint_type", endpoint_type)
         if name is not None:
@@ -31,7 +31,7 @@ class VectorSearchEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[str]:
         """
-        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -43,7 +43,7 @@ class VectorSearchEndpointArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 
@@ -70,10 +70,10 @@ class _VectorSearchEndpointState:
         :param pulumi.Input[str] creator: Creator of the endpoint.
         :param pulumi.Input[str] endpoint_id: Unique internal identifier of the endpoint (UUID).
         :param pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
-        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         :param pulumi.Input[int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
+        :param pulumi.Input[str] name: Name of the Mosaic AI Vector Search Endpoint to create.
         :param pulumi.Input[int] num_indexes: Number of indexes on the endpoint.
         """
         if creation_timestamp is not None:
@@ -147,7 +147,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -183,7 +183,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 
@@ -213,9 +213,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used on Unity Catalog-enabled workspace!
+        > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
 
-        This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+        This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
 
         ## Example Usage
 
@@ -230,7 +230,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the name of the Vector Search Endpoint
+        The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
 
         bash
 
@@ -240,8 +240,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
+        :param pulumi.Input[str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] name: Name of the Mosaic AI Vector Search Endpoint to create.
         """
         ...
     @overload
@@ -250,9 +250,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  args: VectorSearchEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used on Unity Catalog-enabled workspace!
+        > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
 
-        This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+        This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
 
         ## Example Usage
 
@@ -267,7 +267,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using the name of the Vector Search Endpoint
+        The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
 
         bash
 
@@ -342,10 +342,10 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] creator: Creator of the endpoint.
         :param pulumi.Input[str] endpoint_id: Unique internal identifier of the endpoint (UUID).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
-        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         :param pulumi.Input[int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
+        :param pulumi.Input[str] name: Name of the Mosaic AI Vector Search Endpoint to create.
         :param pulumi.Input[int] num_indexes: Number of indexes on the endpoint.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -399,7 +399,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
         """
-        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -423,7 +423,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 

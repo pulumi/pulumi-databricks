@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
 
         public EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceGetArgs()
         {

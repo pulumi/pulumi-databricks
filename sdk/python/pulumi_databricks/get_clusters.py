@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetClustersResult',
@@ -21,10 +23,13 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, cluster_name_contains=None, id=None, ids=None):
+    def __init__(__self__, cluster_name_contains=None, filter_by=None, id=None, ids=None):
         if cluster_name_contains and not isinstance(cluster_name_contains, str):
             raise TypeError("Expected argument 'cluster_name_contains' to be a str")
         pulumi.set(__self__, "cluster_name_contains", cluster_name_contains)
+        if filter_by and not isinstance(filter_by, dict):
+            raise TypeError("Expected argument 'filter_by' to be a dict")
+        pulumi.set(__self__, "filter_by", filter_by)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,6 +41,11 @@ class GetClustersResult:
     @pulumi.getter(name="clusterNameContains")
     def cluster_name_contains(self) -> Optional[str]:
         return pulumi.get(self, "cluster_name_contains")
+
+    @property
+    @pulumi.getter(name="filterBy")
+    def filter_by(self) -> Optional['outputs.GetClustersFilterByResult']:
+        return pulumi.get(self, "filter_by")
 
     @property
     @pulumi.getter
@@ -58,11 +68,13 @@ class AwaitableGetClustersResult(GetClustersResult):
             yield self
         return GetClustersResult(
             cluster_name_contains=self.cluster_name_contains,
+            filter_by=self.filter_by,
             id=self.id,
             ids=self.ids)
 
 
 def get_clusters(cluster_name_contains: Optional[str] = None,
+                 filter_by: Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']] = None,
                  id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
@@ -105,10 +117,12 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
 
 
     :param str cluster_name_contains: Only return Cluster ids that match the given name string.
+    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[str] ids: list of Cluster ids
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
+    __args__['filterBy'] = filter_by
     __args__['id'] = id
     __args__['ids'] = ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,12 +130,14 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
 
     return AwaitableGetClustersResult(
         cluster_name_contains=pulumi.get(__ret__, 'cluster_name_contains'),
+        filter_by=pulumi.get(__ret__, 'filter_by'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_clusters)
 def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
+                        filter_by: Optional[pulumi.Input[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
@@ -164,6 +180,7 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
 
 
     :param str cluster_name_contains: Only return Cluster ids that match the given name string.
+    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[str] ids: list of Cluster ids
     """
     ...

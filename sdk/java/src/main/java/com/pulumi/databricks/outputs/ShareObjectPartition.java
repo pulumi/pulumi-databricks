@@ -5,9 +5,9 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ShareObjectPartitionValue;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ShareObjectPartition {
@@ -15,7 +15,7 @@ public final class ShareObjectPartition {
      * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
      * 
      */
-    private List<ShareObjectPartitionValue> values;
+    private @Nullable List<ShareObjectPartitionValue> values;
 
     private ShareObjectPartition() {}
     /**
@@ -23,7 +23,7 @@ public final class ShareObjectPartition {
      * 
      */
     public List<ShareObjectPartitionValue> values() {
-        return this.values;
+        return this.values == null ? List.of() : this.values;
     }
 
     public static Builder builder() {
@@ -35,7 +35,7 @@ public final class ShareObjectPartition {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<ShareObjectPartitionValue> values;
+        private @Nullable List<ShareObjectPartitionValue> values;
         public Builder() {}
         public Builder(ShareObjectPartition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,10 +43,8 @@ public final class ShareObjectPartition {
         }
 
         @CustomType.Setter
-        public Builder values(List<ShareObjectPartitionValue> values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("ShareObjectPartition", "values");
-            }
+        public Builder values(@Nullable List<ShareObjectPartitionValue> values) {
+
             this.values = values;
             return this;
         }

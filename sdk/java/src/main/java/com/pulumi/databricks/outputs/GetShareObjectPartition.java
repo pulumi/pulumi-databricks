@@ -5,17 +5,17 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetShareObjectPartitionValue;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetShareObjectPartition {
-    private List<GetShareObjectPartitionValue> values;
+    private @Nullable List<GetShareObjectPartitionValue> values;
 
     private GetShareObjectPartition() {}
     public List<GetShareObjectPartitionValue> values() {
-        return this.values;
+        return this.values == null ? List.of() : this.values;
     }
 
     public static Builder builder() {
@@ -27,7 +27,7 @@ public final class GetShareObjectPartition {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetShareObjectPartitionValue> values;
+        private @Nullable List<GetShareObjectPartitionValue> values;
         public Builder() {}
         public Builder(GetShareObjectPartition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,10 +35,8 @@ public final class GetShareObjectPartition {
         }
 
         @CustomType.Setter
-        public Builder values(List<GetShareObjectPartitionValue> values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("GetShareObjectPartition", "values");
-            }
+        public Builder values(@Nullable List<GetShareObjectPartitionValue> values) {
+
             this.values = values;
             return this;
         }

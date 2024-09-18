@@ -19,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource could be only used on Unity Catalog-enabled workspace!
+ * &gt; **Note** This resource can only be used on a Unity Catalog-enabled workspace!
  * 
- * This resource allows you to create [Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Index provides the ability to search data in the linked Delta Table.
+ * This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
  * 
  * ## Example Usage
  * 
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource can be imported using the name of the Vector Search Index
+ * The resource can be imported using the name of the Mosaic AI Vector Search Index
  * 
  * bash
  * 
@@ -126,21 +126,21 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.directAccessIndexSpec);
     }
     /**
-     * The name of the Vector Search Endpoint that will be used for indexing the data.
+     * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      * 
      */
     @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
     /**
-     * @return The name of the Vector Search Endpoint that will be used for indexing the data.
+     * @return The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      * 
      */
     public Output<String> endpointName() {
         return this.endpointName;
     }
     /**
-     * Vector Search index type. Currently supported values are:
+     * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
@@ -149,7 +149,7 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
     private Output<String> indexType;
 
     /**
-     * @return Vector Search index type. Currently supported values are:
+     * @return Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      * 
@@ -158,14 +158,14 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
         return this.indexType;
     }
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Output<String> name() {

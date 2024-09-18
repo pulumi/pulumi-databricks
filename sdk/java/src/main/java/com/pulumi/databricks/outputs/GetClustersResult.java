@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetClustersFilterBy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClustersResult {
     private @Nullable String clusterNameContains;
+    private @Nullable GetClustersFilterBy filterBy;
     private String id;
     /**
      * @return list of databricks.Cluster ids
@@ -24,6 +26,9 @@ public final class GetClustersResult {
     private GetClustersResult() {}
     public Optional<String> clusterNameContains() {
         return Optional.ofNullable(this.clusterNameContains);
+    }
+    public Optional<GetClustersFilterBy> filterBy() {
+        return Optional.ofNullable(this.filterBy);
     }
     public String id() {
         return this.id;
@@ -46,12 +51,14 @@ public final class GetClustersResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterNameContains;
+        private @Nullable GetClustersFilterBy filterBy;
         private String id;
         private List<String> ids;
         public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterNameContains = defaults.clusterNameContains;
+    	      this.filterBy = defaults.filterBy;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
         }
@@ -60,6 +67,12 @@ public final class GetClustersResult {
         public Builder clusterNameContains(@Nullable String clusterNameContains) {
 
             this.clusterNameContains = clusterNameContains;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filterBy(@Nullable GetClustersFilterBy filterBy) {
+
+            this.filterBy = filterBy;
             return this;
         }
         @CustomType.Setter
@@ -84,6 +97,7 @@ public final class GetClustersResult {
         public GetClustersResult build() {
             final var _resultValue = new GetClustersResult();
             _resultValue.clusterNameContains = clusterNameContains;
+            _resultValue.filterBy = filterBy;
             _resultValue.id = id;
             _resultValue.ids = ids;
             return _resultValue;

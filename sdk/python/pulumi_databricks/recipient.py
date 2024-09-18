@@ -472,7 +472,7 @@ class Recipient(pulumi.CustomResource):
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
 
@@ -525,7 +525,7 @@ class Recipient(pulumi.CustomResource):
                  args: RecipientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
 

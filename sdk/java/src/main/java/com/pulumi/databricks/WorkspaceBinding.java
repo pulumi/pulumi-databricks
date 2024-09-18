@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource could be only used with workspace-level provider!
+ * &gt; **Note** This resource can only be used with a workspace-level provider!
  * 
  * If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
  * 
@@ -122,14 +122,14 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
         return this.securableName;
     }
     /**
-     * Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     @Export(name="securableType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securableType;
 
     /**
-     * @return Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+     * @return Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> securableType() {

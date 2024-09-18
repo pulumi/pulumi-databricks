@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource could be only used on Unity Catalog-enabled workspace!
+ * > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
  *
- * This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+ * This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
  *
  * ## Example Usage
  *
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource can be imported using the name of the Vector Search Endpoint
+ * The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
  *
  * bash
  *
@@ -78,7 +78,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointStatuses!: pulumi.Output<outputs.VectorSearchEndpointEndpointStatus[]>;
     /**
-     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -90,7 +90,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastUpdatedUser!: pulumi.Output<string>;
     /**
-     * Name of the Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface VectorSearchEndpointState {
      */
     endpointStatuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointEndpointStatus>[]>;
     /**
-     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -173,7 +173,7 @@ export interface VectorSearchEndpointState {
      */
     lastUpdatedUser?: pulumi.Input<string>;
     /**
-     * Name of the Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create.
      */
     name?: pulumi.Input<string>;
     /**
@@ -187,11 +187,11 @@ export interface VectorSearchEndpointState {
  */
 export interface VectorSearchEndpointArgs {
     /**
-     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     endpointType: pulumi.Input<string>;
     /**
-     * Name of the Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create.
      */
     name?: pulumi.Input<string>;
 }

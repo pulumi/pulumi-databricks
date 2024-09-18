@@ -131,7 +131,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with account-level provider!
+        > **Note** This resource can be used with an account or workspace-level provider.
 
         A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
 
@@ -175,7 +175,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  args: MetastoreAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with account-level provider!
+        > **Note** This resource can be used with an account or workspace-level provider.
 
         A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
 

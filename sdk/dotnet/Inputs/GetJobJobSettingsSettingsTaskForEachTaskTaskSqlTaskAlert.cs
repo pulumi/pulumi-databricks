@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseSubscriptions")]
         public bool? PauseSubscriptions { get; set; }
 
-        [Input("subscriptions", required: true)]
+        [Input("subscriptions")]
         private List<Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>? _subscriptions;
         public List<Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs> Subscriptions
         {

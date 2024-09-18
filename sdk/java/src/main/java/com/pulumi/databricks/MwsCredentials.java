@@ -69,7 +69,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
- *             .accountId(databricksAccountId)
  *             .credentialsName(String.format("%s-creds", prefix))
  *             .roleArn(crossAccountRole.arn())
  *             .build());
@@ -105,7 +104,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsCredentials:MwsCredentials")
 public class MwsCredentials extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
@@ -116,7 +115,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      */
     public Output<Optional<String>> accountId() {

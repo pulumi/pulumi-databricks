@@ -59,7 +59,7 @@ class AwaitableGetMetastoresResult(GetMetastoresResult):
 def get_metastores(ids: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoresResult:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
 
@@ -102,7 +102,7 @@ def get_metastores(ids: Optional[Mapping[str, str]] = None,
 def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoresResult]:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
 

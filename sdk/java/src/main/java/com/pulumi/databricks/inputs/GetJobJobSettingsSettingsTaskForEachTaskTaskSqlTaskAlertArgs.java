@@ -33,11 +33,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs 
         return Optional.ofNullable(this.pauseSubscriptions);
     }
 
-    @Import(name="subscriptions", required=true)
-    private Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
+    @Import(name="subscriptions")
+    private @Nullable Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
 
-    public Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions() {
-        return this.subscriptions;
+    public Optional<Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs() {}
@@ -84,7 +84,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs 
             return pauseSubscriptions(Output.of(pauseSubscriptions));
         }
 
-        public Builder subscriptions(Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
+        public Builder subscriptions(@Nullable Output<List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
@@ -100,9 +100,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs build() {
             if ($.alertId == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs", "alertId");
-            }
-            if ($.subscriptions == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs", "subscriptions");
             }
             return $;
         }

@@ -30,6 +30,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        [Input("content")]
+        public Input<string>? Content { get; set; }
+
         /// <summary>
         /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         /// </summary>
@@ -75,6 +78,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("stringSharedAs")]
+        public Input<string>? StringSharedAs { get; set; }
 
         public ShareObjectArgs()
         {

@@ -55,6 +55,13 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.comment);
     }
 
+    @Import(name="content")
+    private @Nullable String content;
+
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
+    }
+
     /**
      * Type of the object.
      * 
@@ -120,6 +127,13 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return this.status;
     }
 
+    @Import(name="stringSharedAs")
+    private @Nullable String stringSharedAs;
+
+    public Optional<String> stringSharedAs() {
+        return Optional.ofNullable(this.stringSharedAs);
+    }
+
     private GetShareObject() {}
 
     private GetShareObject(GetShareObject $) {
@@ -127,6 +141,7 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         this.addedBy = $.addedBy;
         this.cdfEnabled = $.cdfEnabled;
         this.comment = $.comment;
+        this.content = $.content;
         this.dataObjectType = $.dataObjectType;
         this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
@@ -134,6 +149,7 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         this.sharedAs = $.sharedAs;
         this.startVersion = $.startVersion;
         this.status = $.status;
+        this.stringSharedAs = $.stringSharedAs;
     }
 
     public static Builder builder() {
@@ -177,6 +193,11 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
          */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
+            return this;
+        }
+
+        public Builder content(@Nullable String content) {
+            $.content = content;
             return this;
         }
 
@@ -228,6 +249,11 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
 
         public Builder status(String status) {
             $.status = status;
+            return this;
+        }
+
+        public Builder stringSharedAs(@Nullable String stringSharedAs) {
+            $.stringSharedAs = stringSharedAs;
             return this;
         }
 

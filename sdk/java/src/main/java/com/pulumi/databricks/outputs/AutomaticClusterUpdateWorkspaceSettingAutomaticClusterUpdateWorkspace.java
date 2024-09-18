@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails;
 import com.pulumi.databricks.outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
     private @Nullable Boolean canToggle;
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails enablementDetails;
     private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow maintenanceWindow;
     private @Nullable Boolean restartEvenIfNoUpdatesAvailable;
@@ -23,8 +24,8 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
     public Optional<Boolean> canToggle() {
         return Optional.ofNullable(this.canToggle);
     }
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     public Optional<AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails> enablementDetails() {
         return Optional.ofNullable(this.enablementDetails);
@@ -46,7 +47,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean canToggle;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails enablementDetails;
         private @Nullable AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow maintenanceWindow;
         private @Nullable Boolean restartEvenIfNoUpdatesAvailable;
@@ -67,8 +68,10 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace", "enabled");
+            }
             this.enabled = enabled;
             return this;
         }

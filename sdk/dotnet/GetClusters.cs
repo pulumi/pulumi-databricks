@@ -131,6 +131,12 @@ namespace Pulumi.Databricks
         [Input("clusterNameContains")]
         public string? ClusterNameContains { get; set; }
 
+        /// <summary>
+        /// Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+        /// </summary>
+        [Input("filterBy")]
+        public Inputs.GetClustersFilterByArgs? FilterBy { get; set; }
+
         [Input("id")]
         public string? Id { get; set; }
 
@@ -160,6 +166,12 @@ namespace Pulumi.Databricks
         [Input("clusterNameContains")]
         public Input<string>? ClusterNameContains { get; set; }
 
+        /// <summary>
+        /// Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+        /// </summary>
+        [Input("filterBy")]
+        public Input<Inputs.GetClustersFilterByInputArgs>? FilterBy { get; set; }
+
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -186,6 +198,7 @@ namespace Pulumi.Databricks
     public sealed class GetClustersResult
     {
         public readonly string? ClusterNameContains;
+        public readonly Outputs.GetClustersFilterByResult? FilterBy;
         public readonly string Id;
         /// <summary>
         /// list of databricks.Cluster ids
@@ -196,11 +209,14 @@ namespace Pulumi.Databricks
         private GetClustersResult(
             string? clusterNameContains,
 
+            Outputs.GetClustersFilterByResult? filterBy,
+
             string id,
 
             ImmutableArray<string> ids)
         {
             ClusterNameContains = clusterNameContains;
+            FilterBy = filterBy;
             Id = id;
             Ids = ids;
         }

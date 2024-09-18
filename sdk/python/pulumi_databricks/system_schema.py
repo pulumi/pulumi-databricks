@@ -130,7 +130,7 @@ class SystemSchema(pulumi.CustomResource):
         """
         > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
 
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
@@ -169,7 +169,7 @@ class SystemSchema(pulumi.CustomResource):
         """
         > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
 
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 

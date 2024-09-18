@@ -69,6 +69,7 @@ export class SqlTable extends pulumi.CustomResource {
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      */
     public readonly dataSourceFormat!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly effectiveProperties!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
      */
@@ -88,7 +89,7 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * Map of table properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string}>;
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
@@ -133,6 +134,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["columns"] = state ? state.columns : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["dataSourceFormat"] = state ? state.dataSourceFormat : undefined;
+            resourceInputs["effectiveProperties"] = state ? state.effectiveProperties : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -172,6 +174,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["tableType"] = args ? args.tableType : undefined;
             resourceInputs["viewDefinition"] = args ? args.viewDefinition : undefined;
             resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["effectiveProperties"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlTable.__pulumiType, name, resourceInputs, opts);
@@ -200,6 +203,7 @@ export interface SqlTableState {
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      */
     dataSourceFormat?: pulumi.Input<string>;
+    effectiveProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
      */

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source could be only used with account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
  *
@@ -100,7 +100,7 @@ export interface GetMetastoreResult {
     readonly region: string;
 }
 /**
- * > **Note** This data source could be only used with account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
  *

@@ -31,6 +31,18 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
+        /// The maximum tokens per second that the endpoint can scale up to.
+        /// </summary>
+        [Input("maxProvisionedThroughput")]
+        public Input<int>? MaxProvisionedThroughput { get; set; }
+
+        /// <summary>
+        /// The minimum tokens per second that the endpoint can scale down to.
+        /// </summary>
+        [Input("minProvisionedThroughput")]
+        public Input<int>? MinProvisionedThroughput { get; set; }
+
+        /// <summary>
         /// The name of the model in Databricks Model Registry to be served.
         /// </summary>
         [Input("modelName", required: true)]
@@ -57,8 +69,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         /// </summary>
-        [Input("workloadSize", required: true)]
-        public Input<string> WorkloadSize { get; set; } = null!;
+        [Input("workloadSize")]
+        public Input<string>? WorkloadSize { get; set; }
 
         /// <summary>
         /// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.

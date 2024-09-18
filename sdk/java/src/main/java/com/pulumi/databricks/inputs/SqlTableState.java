@@ -92,6 +92,13 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataSourceFormat);
     }
 
+    @Import(name="effectiveProperties")
+    private @Nullable Output<Map<String,String>> effectiveProperties;
+
+    public Optional<Output<Map<String,String>>> effectiveProperties() {
+        return Optional.ofNullable(this.effectiveProperties);
+    }
+
     /**
      * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
      * 
@@ -266,6 +273,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         this.columns = $.columns;
         this.comment = $.comment;
         this.dataSourceFormat = $.dataSourceFormat;
+        this.effectiveProperties = $.effectiveProperties;
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
@@ -411,6 +419,15 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataSourceFormat(String dataSourceFormat) {
             return dataSourceFormat(Output.of(dataSourceFormat));
+        }
+
+        public Builder effectiveProperties(@Nullable Output<Map<String,String>> effectiveProperties) {
+            $.effectiveProperties = effectiveProperties;
+            return this;
+        }
+
+        public Builder effectiveProperties(Map<String,String> effectiveProperties) {
+            return effectiveProperties(Output.of(effectiveProperties));
         }
 
         /**

@@ -6,9 +6,10 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ShareObjectPartitionValueArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ShareObjectPartitionArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +20,15 @@ public final class ShareObjectPartitionArgs extends com.pulumi.resources.Resourc
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
      * 
      */
-    @Import(name="values", required=true)
-    private Output<List<ShareObjectPartitionValueArgs>> values;
+    @Import(name="values")
+    private @Nullable Output<List<ShareObjectPartitionValueArgs>> values;
 
     /**
      * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
      * 
      */
-    public Output<List<ShareObjectPartitionValueArgs>> values() {
-        return this.values;
+    public Optional<Output<List<ShareObjectPartitionValueArgs>>> values() {
+        return Optional.ofNullable(this.values);
     }
 
     private ShareObjectPartitionArgs() {}
@@ -60,7 +61,7 @@ public final class ShareObjectPartitionArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder values(Output<List<ShareObjectPartitionValueArgs>> values) {
+        public Builder values(@Nullable Output<List<ShareObjectPartitionValueArgs>> values) {
             $.values = values;
             return this;
         }
@@ -86,9 +87,6 @@ public final class ShareObjectPartitionArgs extends com.pulumi.resources.Resourc
         }
 
         public ShareObjectPartitionArgs build() {
-            if ($.values == null) {
-                throw new MissingRequiredPropertyException("ShareObjectPartitionArgs", "values");
-            }
             return $;
         }
     }

@@ -92,15 +92,18 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 type GetClustersArgs struct {
 	// Only return Cluster ids that match the given name string.
 	ClusterNameContains *string `pulumi:"clusterNameContains"`
-	Id                  *string `pulumi:"id"`
+	// Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+	FilterBy *GetClustersFilterBy `pulumi:"filterBy"`
+	Id       *string              `pulumi:"id"`
 	// list of Cluster ids
 	Ids []string `pulumi:"ids"`
 }
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
-	ClusterNameContains *string `pulumi:"clusterNameContains"`
-	Id                  string  `pulumi:"id"`
+	ClusterNameContains *string              `pulumi:"clusterNameContains"`
+	FilterBy            *GetClustersFilterBy `pulumi:"filterBy"`
+	Id                  string               `pulumi:"id"`
 	// list of Cluster ids
 	Ids []string `pulumi:"ids"`
 }
@@ -122,7 +125,9 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 type GetClustersOutputArgs struct {
 	// Only return Cluster ids that match the given name string.
 	ClusterNameContains pulumi.StringPtrInput `pulumi:"clusterNameContains"`
-	Id                  pulumi.StringPtrInput `pulumi:"id"`
+	// Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+	FilterBy GetClustersFilterByPtrInput `pulumi:"filterBy"`
+	Id       pulumi.StringPtrInput       `pulumi:"id"`
 	// list of Cluster ids
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
@@ -148,6 +153,10 @@ func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx contex
 
 func (o GetClustersResultOutput) ClusterNameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterNameContains }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClustersResultOutput) FilterBy() GetClustersFilterByPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *GetClustersFilterBy { return v.FilterBy }).(GetClustersFilterByPtrOutput)
 }
 
 func (o GetClustersResultOutput) Id() pulumi.StringOutput {

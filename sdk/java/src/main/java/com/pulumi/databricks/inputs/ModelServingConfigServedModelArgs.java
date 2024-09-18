@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -46,6 +47,36 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
      */
     public Optional<Output<String>> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
+    }
+
+    /**
+     * The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
+    @Import(name="maxProvisionedThroughput")
+    private @Nullable Output<Integer> maxProvisionedThroughput;
+
+    /**
+     * @return The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
+    public Optional<Output<Integer>> maxProvisionedThroughput() {
+        return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+
+    /**
+     * The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
+    @Import(name="minProvisionedThroughput")
+    private @Nullable Output<Integer> minProvisionedThroughput;
+
+    /**
+     * @return The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
+    public Optional<Output<Integer>> minProvisionedThroughput() {
+        return Optional.ofNullable(this.minProvisionedThroughput);
     }
 
     /**
@@ -112,15 +143,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
      * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
-    @Import(name="workloadSize", required=true)
-    private Output<String> workloadSize;
+    @Import(name="workloadSize")
+    private @Nullable Output<String> workloadSize;
 
     /**
      * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
-    public Output<String> workloadSize() {
-        return this.workloadSize;
+    public Optional<Output<String>> workloadSize() {
+        return Optional.ofNullable(this.workloadSize);
     }
 
     /**
@@ -143,6 +174,8 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
         this.environmentVars = $.environmentVars;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.maxProvisionedThroughput = $.maxProvisionedThroughput;
+        this.minProvisionedThroughput = $.minProvisionedThroughput;
         this.modelName = $.modelName;
         this.modelVersion = $.modelVersion;
         this.name = $.name;
@@ -209,6 +242,48 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          */
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
+        }
+
+        /**
+         * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedThroughput(@Nullable Output<Integer> maxProvisionedThroughput) {
+            $.maxProvisionedThroughput = maxProvisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedThroughput(Integer maxProvisionedThroughput) {
+            return maxProvisionedThroughput(Output.of(maxProvisionedThroughput));
+        }
+
+        /**
+         * @param minProvisionedThroughput The minimum tokens per second that the endpoint can scale down to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedThroughput(@Nullable Output<Integer> minProvisionedThroughput) {
+            $.minProvisionedThroughput = minProvisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param minProvisionedThroughput The minimum tokens per second that the endpoint can scale down to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedThroughput(Integer minProvisionedThroughput) {
+            return minProvisionedThroughput(Output.of(minProvisionedThroughput));
         }
 
         /**
@@ -301,7 +376,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder workloadSize(Output<String> workloadSize) {
+        public Builder workloadSize(@Nullable Output<String> workloadSize) {
             $.workloadSize = workloadSize;
             return this;
         }
@@ -343,9 +418,6 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
             }
             if ($.modelVersion == null) {
                 throw new MissingRequiredPropertyException("ModelServingConfigServedModelArgs", "modelVersion");
-            }
-            if ($.workloadSize == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigServedModelArgs", "workloadSize");
             }
             return $;
         }

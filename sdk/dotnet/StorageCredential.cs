@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource could be used with account or workspace-level provider.
+    /// &gt; **Note** This resource can be used with an account or workspace-level provider.
     /// 
     /// To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
     /// 

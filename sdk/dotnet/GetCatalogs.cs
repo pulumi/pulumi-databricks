@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetCatalogs
     {
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogsResult>("databricks:index/getCatalogs:getCatalogs", args ?? new GetCatalogsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 

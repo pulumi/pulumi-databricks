@@ -24,14 +24,14 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
     }
 
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      * 
      */
     public Optional<Output<String>> name() {
@@ -73,7 +73,7 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
         }
 
         /**
-         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnAr
         }
 
         /**
-         * @param name Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
          * 
          * @return builder
          * 
