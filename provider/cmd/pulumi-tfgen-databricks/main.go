@@ -15,13 +15,13 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 
 	databricks "github.com/pulumi/pulumi-databricks/provider"
-	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("databricks", version.Version, databricks.Provider())
+
+	tfgen.MainWithMuxer("databricks", databricks.Provider())
 }
