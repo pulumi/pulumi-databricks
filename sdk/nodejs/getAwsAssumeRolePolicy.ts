@@ -53,7 +53,6 @@ import * as utilities from "./utilities";
  * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
  */
 export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAssumeRolePolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
         "databricksAccountId": args.databricksAccountId,
@@ -142,7 +141,12 @@ export interface GetAwsAssumeRolePolicyResult {
  * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
  */
 export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsAssumeRolePolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
+        "databricksAccountId": args.databricksAccountId,
+        "externalId": args.externalId,
+        "forLogDelivery": args.forLogDelivery,
+    }, opts);
 }
 
 /**

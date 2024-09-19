@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  */
 export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNodeType:getNodeType", {
         "category": args.category,
@@ -208,7 +207,24 @@ export interface GetNodeTypeResult {
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  */
 export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypeResult> {
-    return pulumi.output(args).apply((a: any) => getNodeType(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getNodeType:getNodeType", {
+        "category": args.category,
+        "fleet": args.fleet,
+        "gbPerCore": args.gbPerCore,
+        "graviton": args.graviton,
+        "id": args.id,
+        "isIoCacheEnabled": args.isIoCacheEnabled,
+        "localDisk": args.localDisk,
+        "localDiskMinSize": args.localDiskMinSize,
+        "minCores": args.minCores,
+        "minGpus": args.minGpus,
+        "minMemoryGb": args.minMemoryGb,
+        "photonDriverCapable": args.photonDriverCapable,
+        "photonWorkerCapable": args.photonWorkerCapable,
+        "supportPortForwarding": args.supportPortForwarding,
+    }, opts);
 }
 
 /**

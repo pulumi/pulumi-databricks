@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  */
 export function getShares(args?: GetSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetSharesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getShares:getShares", {
         "shares": args.shares,
@@ -83,7 +82,11 @@ export interface GetSharesResult {
  * * databricks.Grants to manage Delta Sharing permissions.
  */
 export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharesResult> {
-    return pulumi.output(args).apply((a: any) => getShares(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getShares:getShares", {
+        "shares": args.shares,
+    }, opts);
 }
 
 /**

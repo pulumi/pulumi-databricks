@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  */
 export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusterPolicy:getClusterPolicy", {
         "definition": args.definition,
@@ -131,7 +130,18 @@ export interface GetClusterPolicyResult {
  * ```
  */
 export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getClusterPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getClusterPolicy:getClusterPolicy", {
+        "definition": args.definition,
+        "description": args.description,
+        "id": args.id,
+        "isDefault": args.isDefault,
+        "maxClustersPerUser": args.maxClustersPerUser,
+        "name": args.name,
+        "policyFamilyDefinitionOverrides": args.policyFamilyDefinitionOverrides,
+        "policyFamilyId": args.policyFamilyId,
+    }, opts);
 }
 
 /**

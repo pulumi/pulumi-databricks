@@ -44,7 +44,6 @@ import * as utilities from "./utilities";
  * * databricks.getTables to list all tables within a schema in Unity Catalog.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTable:getTable", {
         "id": args.id,
@@ -120,7 +119,12 @@ export interface GetTableResult {
  * * databricks.getTables to list all tables within a schema in Unity Catalog.
  */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
-    return pulumi.output(args).apply((a: any) => getTable(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getTable:getTable", {
+        "id": args.id,
+        "name": args.name,
+        "tableInfo": args.tableInfo,
+    }, opts);
 }
 
 /**

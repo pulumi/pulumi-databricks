@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDirectory:getDirectory", {
         "id": args.id,
@@ -82,7 +81,13 @@ export interface GetDirectoryResult {
  * ```
  */
 export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryResult> {
-    return pulumi.output(args).apply((a: any) => getDirectory(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getDirectory:getDirectory", {
+        "id": args.id,
+        "objectId": args.objectId,
+        "path": args.path,
+        "workspacePath": args.workspacePath,
+    }, opts);
 }
 
 /**

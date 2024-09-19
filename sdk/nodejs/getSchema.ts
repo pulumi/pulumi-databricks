@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSchema:getSchema", {
         "id": args.id,
@@ -128,7 +127,12 @@ export interface GetSchemaResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaResult> {
-    return pulumi.output(args).apply((a: any) => getSchema(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getSchema:getSchema", {
+        "id": args.id,
+        "name": args.name,
+        "schemaInfo": args.schemaInfo,
+    }, opts);
 }
 
 /**

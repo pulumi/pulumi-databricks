@@ -43,7 +43,6 @@ import * as utilities from "./utilities";
  */
 export function getSqlWarehouses(args?: GetSqlWarehousesArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehousesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", {
         "ids": args.ids,
@@ -117,7 +116,12 @@ export interface GetSqlWarehousesResult {
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
 export function getSqlWarehousesOutput(args?: GetSqlWarehousesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehousesResult> {
-    return pulumi.output(args).apply((a: any) => getSqlWarehouses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getSqlWarehouses:getSqlWarehouses", {
+        "ids": args.ids,
+        "warehouseNameContains": args.warehouseNameContains,
+    }, opts);
 }
 
 /**

@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookPathsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebookPaths:getNotebookPaths", {
         "path": args.path,
@@ -79,7 +78,11 @@ export interface GetNotebookPathsResult {
  * ```
  */
 export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookPathsResult> {
-    return pulumi.output(args).apply((a: any) => getNotebookPaths(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", {
+        "path": args.path,
+        "recursive": args.recursive,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getInstanceProfiles(args?: GetInstanceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceProfilesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getInstanceProfiles:getInstanceProfiles", {
         "instanceProfiles": args.instanceProfiles,
@@ -69,7 +68,11 @@ export interface GetInstanceProfilesResult {
  * ```
  */
 export function getInstanceProfilesOutput(args?: GetInstanceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceProfilesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceProfiles(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getInstanceProfiles:getInstanceProfiles", {
+        "instanceProfiles": args.instanceProfiles,
+    }, opts);
 }
 
 /**

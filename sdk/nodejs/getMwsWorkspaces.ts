@@ -32,7 +32,6 @@ import * as utilities from "./utilities";
  */
 export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
         "ids": args.ids,
@@ -89,7 +88,11 @@ export interface GetMwsWorkspacesResult {
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
 export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsWorkspacesResult> {
-    return pulumi.output(args).apply((a: any) => getMwsWorkspaces(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

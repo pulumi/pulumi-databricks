@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  */
 export function getAwsCrossAccountPolicy(args?: GetAwsCrossAccountPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsCrossAccountPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", {
         "awsAccountId": args.awsAccountId,
@@ -119,7 +118,16 @@ export interface GetAwsCrossAccountPolicyResult {
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  */
 export function getAwsCrossAccountPolicyOutput(args?: GetAwsCrossAccountPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCrossAccountPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsCrossAccountPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", {
+        "awsAccountId": args.awsAccountId,
+        "passRoles": args.passRoles,
+        "policyType": args.policyType,
+        "region": args.region,
+        "securityGroupId": args.securityGroupId,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

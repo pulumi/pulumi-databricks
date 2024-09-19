@@ -57,7 +57,6 @@ import * as utilities from "./utilities";
  */
 export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentConfigResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentConfig:getCurrentConfig", {
         "accountId": args.accountId,
@@ -145,7 +144,15 @@ export interface GetCurrentConfigResult {
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  */
 export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentConfigResult> {
-    return pulumi.output(args).apply((a: any) => getCurrentConfig(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", {
+        "accountId": args.accountId,
+        "authType": args.authType,
+        "cloudType": args.cloudType,
+        "host": args.host,
+        "isAccount": args.isAccount,
+    }, opts);
 }
 
 /**

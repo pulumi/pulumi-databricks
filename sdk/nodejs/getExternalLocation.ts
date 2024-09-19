@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  * * databricks.ExternalLocation to manage external locations within Unity Catalog.
  */
 export function getExternalLocation(args: GetExternalLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLocationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalLocation:getExternalLocation", {
         "externalLocationInfo": args.externalLocationInfo,
@@ -101,7 +100,12 @@ export interface GetExternalLocationResult {
  * * databricks.ExternalLocation to manage external locations within Unity Catalog.
  */
 export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLocationResult> {
-    return pulumi.output(args).apply((a: any) => getExternalLocation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getExternalLocation:getExternalLocation", {
+        "externalLocationInfo": args.externalLocationInfo,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

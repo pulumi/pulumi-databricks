@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  */
 export function getMetastores(args?: GetMetastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoresResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMetastores:getMetastores", {
         "ids": args.ids,
@@ -91,7 +90,11 @@ export interface GetMetastoresResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getMetastoresOutput(args?: GetMetastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoresResult> {
-    return pulumi.output(args).apply((a: any) => getMetastores(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getMetastores:getMetastores", {
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

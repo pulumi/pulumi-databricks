@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getVolumes(args: GetVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getVolumes:getVolumes", {
         "catalogName": args.catalogName,
@@ -104,7 +103,12 @@ export interface GetVolumesResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumesResult> {
-    return pulumi.output(args).apply((a: any) => getVolumes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getVolumes:getVolumes", {
+        "catalogName": args.catalogName,
+        "ids": args.ids,
+        "schemaName": args.schemaName,
+    }, opts);
 }
 
 /**
