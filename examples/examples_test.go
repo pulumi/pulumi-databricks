@@ -16,7 +16,8 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions() integration.ProgramTestOptions {
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	t.Skip("Need to enable OIDC for databricks")
 	return integration.ProgramTestOptions{
 		RunUpdateTest:        false,
 		ExpectRefreshChanges: true,

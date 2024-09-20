@@ -20,7 +20,7 @@ func TestAccGroupPython(t *testing.T) {
 }
 
 func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	basePython := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			filepath.Join("..", "sdk", "python", "bin"),
