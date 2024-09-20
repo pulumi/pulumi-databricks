@@ -92,14 +92,20 @@ type GetAwsCrossAccountPolicyResult struct {
 
 func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccountPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsCrossAccountPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAwsCrossAccountPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetAwsCrossAccountPolicyResultOutput, error) {
 			args := v.(GetAwsCrossAccountPolicyArgs)
-			r, err := GetAwsCrossAccountPolicy(ctx, &args, opts...)
-			var s GetAwsCrossAccountPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAwsCrossAccountPolicyResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetAwsCrossAccountPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAwsCrossAccountPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAwsCrossAccountPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetAwsCrossAccountPolicyResultOutput)
 }
 

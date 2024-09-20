@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAwsUnityCatalogAssumeRolePolicy(args: GetAwsUnityCatalogAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsUnityCatalogAssumeRolePolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", {
         "awsAccountId": args.awsAccountId,
@@ -120,7 +119,13 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
  * ```
  */
 export function getAwsUnityCatalogAssumeRolePolicyOutput(args: GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogAssumeRolePolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsUnityCatalogAssumeRolePolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", {
+        "awsAccountId": args.awsAccountId,
+        "externalId": args.externalId,
+        "roleName": args.roleName,
+        "unityCatalogIamArn": args.unityCatalogIamArn,
+    }, opts);
 }
 
 /**

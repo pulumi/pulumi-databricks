@@ -145,14 +145,20 @@ type LookupMlflowModelResult struct {
 
 func LookupMlflowModelOutput(ctx *pulumi.Context, args LookupMlflowModelOutputArgs, opts ...pulumi.InvokeOption) LookupMlflowModelResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMlflowModelResult, error) {
+		ApplyT(func(v interface{}) (LookupMlflowModelResultOutput, error) {
 			args := v.(LookupMlflowModelArgs)
-			r, err := LookupMlflowModel(ctx, &args, opts...)
-			var s LookupMlflowModelResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMlflowModelResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getMlflowModel:getMlflowModel", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMlflowModelResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMlflowModelResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMlflowModelResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMlflowModelResultOutput)
 }
 

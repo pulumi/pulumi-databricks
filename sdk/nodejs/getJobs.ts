@@ -52,7 +52,6 @@ import * as utilities from "./utilities";
  */
 export function getJobs(args?: GetJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetJobsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getJobs:getJobs", {
         "ids": args.ids,
@@ -129,7 +128,11 @@ export interface GetJobsResult {
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  */
 export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobsResult> {
-    return pulumi.output(args).apply((a: any) => getJobs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getJobs:getJobs", {
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

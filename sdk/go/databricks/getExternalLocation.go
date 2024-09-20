@@ -81,14 +81,20 @@ type LookupExternalLocationResult struct {
 
 func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocationOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLocationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExternalLocationResult, error) {
+		ApplyT(func(v interface{}) (LookupExternalLocationResultOutput, error) {
 			args := v.(LookupExternalLocationArgs)
-			r, err := LookupExternalLocation(ctx, &args, opts...)
-			var s LookupExternalLocationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupExternalLocationResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getExternalLocation:getExternalLocation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExternalLocationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExternalLocationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExternalLocationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExternalLocationResultOutput)
 }
 

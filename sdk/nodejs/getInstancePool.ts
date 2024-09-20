@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getInstancePool:getInstancePool", {
         "name": args.name,
@@ -82,7 +81,11 @@ export interface GetInstancePoolResult {
  * ```
  */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
-    return pulumi.output(args).apply((a: any) => getInstancePool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getInstancePool:getInstancePool", {
+        "name": args.name,
+        "poolInfo": args.poolInfo,
+    }, opts);
 }
 
 /**

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
  */
 export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsBucketPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
         "bucket": args.bucket,
@@ -58,7 +57,13 @@ export interface GetAwsBucketPolicyResult {
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
  */
 export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsBucketPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsBucketPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
+        "bucket": args.bucket,
+        "databricksAccountId": args.databricksAccountId,
+        "databricksE2AccountId": args.databricksE2AccountId,
+        "fullAccessRole": args.fullAccessRole,
+    }, opts);
 }
 
 /**

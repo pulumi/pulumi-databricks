@@ -32,7 +32,6 @@ import * as utilities from "./utilities";
  */
 export function getCatalogs(args?: GetCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCatalogs:getCatalogs", {
         "ids": args.ids,
@@ -89,7 +88,11 @@ export interface GetCatalogsResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getCatalogsOutput(args?: GetCatalogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogsResult> {
-    return pulumi.output(args).apply((a: any) => getCatalogs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getCatalogs:getCatalogs", {
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

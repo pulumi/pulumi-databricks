@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCatalog:getCatalog", {
         "catalogInfo": args.catalogInfo,
@@ -120,7 +119,12 @@ export interface GetCatalogResult {
  * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
  */
 export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
-    return pulumi.output(args).apply((a: any) => getCatalog(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getCatalog:getCatalog", {
+        "catalogInfo": args.catalogInfo,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

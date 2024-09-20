@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions): Promise<GetDbfsFileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFile:getDbfsFile", {
         "limitFileSize": args.limitFileSize,
@@ -99,7 +98,11 @@ export interface GetDbfsFileResult {
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFileResult> {
-    return pulumi.output(args).apply((a: any) => getDbfsFile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getDbfsFile:getDbfsFile", {
+        "limitFileSize": args.limitFileSize,
+        "path": args.path,
+    }, opts);
 }
 
 /**

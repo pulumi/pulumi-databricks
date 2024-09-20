@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  */
 export function getSparkVersion(args?: GetSparkVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSparkVersionResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSparkVersion:getSparkVersion", {
         "beta": args.beta,
@@ -193,7 +192,21 @@ export interface GetSparkVersionResult {
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  */
 export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSparkVersionResult> {
-    return pulumi.output(args).apply((a: any) => getSparkVersion(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getSparkVersion:getSparkVersion", {
+        "beta": args.beta,
+        "genomics": args.genomics,
+        "gpu": args.gpu,
+        "graviton": args.graviton,
+        "id": args.id,
+        "latest": args.latest,
+        "longTermSupport": args.longTermSupport,
+        "ml": args.ml,
+        "photon": args.photon,
+        "scala": args.scala,
+        "sparkVersion": args.sparkVersion,
+    }, opts);
 }
 
 /**

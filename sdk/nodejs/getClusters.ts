@@ -47,7 +47,6 @@ import * as utilities from "./utilities";
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusters:getClusters", {
         "clusterNameContains": args.clusterNameContains,
@@ -128,7 +127,14 @@ export interface GetClustersResult {
  * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getClusters:getClusters", {
+        "clusterNameContains": args.clusterNameContains,
+        "filterBy": args.filterBy,
+        "id": args.id,
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

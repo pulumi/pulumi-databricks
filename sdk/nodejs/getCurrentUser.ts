@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentUser:getCurrentUser", {
     }, opts);
@@ -38,5 +37,7 @@ export interface GetCurrentUserResult {
  * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
  */
 export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
-    return pulumi.output(getCurrentUser(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getCurrentUser:getCurrentUser", {
+    }, opts);
 }

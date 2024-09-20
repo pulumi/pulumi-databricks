@@ -59,7 +59,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowModelResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMlflowModel:getMlflowModel", {
         "description": args.description,
@@ -187,7 +186,15 @@ export interface GetMlflowModelResult {
  * ```
  */
 export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowModelResult> {
-    return pulumi.output(args).apply((a: any) => getMlflowModel(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getMlflowModel:getMlflowModel", {
+        "description": args.description,
+        "latestVersions": args.latestVersions,
+        "name": args.name,
+        "permissionLevel": args.permissionLevel,
+        "tags": args.tags,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

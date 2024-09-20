@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebook:getNotebook", {
         "format": args.format,
@@ -108,7 +107,14 @@ export interface GetNotebookResult {
  * ```
  */
 export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookResult> {
-    return pulumi.output(args).apply((a: any) => getNotebook(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getNotebook:getNotebook", {
+        "format": args.format,
+        "language": args.language,
+        "objectId": args.objectId,
+        "objectType": args.objectType,
+        "path": args.path,
+    }, opts);
 }
 
 /**

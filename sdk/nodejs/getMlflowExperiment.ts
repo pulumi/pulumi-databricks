@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getMlflowExperiment(args?: GetMlflowExperimentArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowExperimentResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMlflowExperiment:getMlflowExperiment", {
         "artifactLocation": args.artifactLocation,
@@ -108,7 +107,18 @@ export interface GetMlflowExperimentResult {
  * Retrieves the settings of databricks.MlflowExperiment by id or name.
  */
 export function getMlflowExperimentOutput(args?: GetMlflowExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowExperimentResult> {
-    return pulumi.output(args).apply((a: any) => getMlflowExperiment(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getMlflowExperiment:getMlflowExperiment", {
+        "artifactLocation": args.artifactLocation,
+        "creationTime": args.creationTime,
+        "experimentId": args.experimentId,
+        "id": args.id,
+        "lastUpdateTime": args.lastUpdateTime,
+        "lifecycleStage": args.lifecycleStage,
+        "name": args.name,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**
