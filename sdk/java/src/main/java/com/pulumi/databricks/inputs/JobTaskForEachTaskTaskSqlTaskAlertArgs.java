@@ -53,15 +53,15 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
      * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
      * 
      */
-    @Import(name="subscriptions", required=true)
-    private Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
+    @Import(name="subscriptions")
+    private @Nullable Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
 
     /**
      * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
      * 
      */
-    public Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions() {
-        return this.subscriptions;
+    public Optional<Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private JobTaskForEachTaskTaskSqlTaskAlertArgs() {}
@@ -138,7 +138,7 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder subscriptions(Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
+        public Builder subscriptions(@Nullable Output<List<JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
@@ -166,9 +166,6 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
         public JobTaskForEachTaskTaskSqlTaskAlertArgs build() {
             if ($.alertId == null) {
                 throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskSqlTaskAlertArgs", "alertId");
-            }
-            if ($.subscriptions == null) {
-                throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskSqlTaskAlertArgs", "subscriptions");
             }
             return $;
         }

@@ -24,7 +24,7 @@ class MwsCredentialsArgs:
         The set of arguments for constructing a MwsCredentials resource.
         :param pulumi.Input[str] credentials_name: name of credentials to register
         :param pulumi.Input[str] role_arn: ARN of cross-account role
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         """
@@ -71,7 +71,7 @@ class MwsCredentialsArgs:
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         """
         return pulumi.get(self, "account_id")
 
@@ -124,7 +124,7 @@ class _MwsCredentialsState:
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsCredentials resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
@@ -151,7 +151,7 @@ class _MwsCredentialsState:
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         """
         return pulumi.get(self, "account_id")
 
@@ -251,7 +251,6 @@ class MwsCredentials(pulumi.CustomResource):
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
-            account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
             role_arn=cross_account_role.arn)
         ```
@@ -279,7 +278,7 @@ class MwsCredentials(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
@@ -313,7 +312,6 @@ class MwsCredentials(pulumi.CustomResource):
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
-            account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
             role_arn=cross_account_role.arn)
         ```
@@ -402,7 +400,7 @@ class MwsCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
@@ -425,7 +423,7 @@ class MwsCredentials(pulumi.CustomResource):
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         """
         return pulumi.get(self, "account_id")
 

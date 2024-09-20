@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource could be only used with workspace-level provider!
+ * &gt; **Note** This resource can only be used with a workspace-level provider!
  * 
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
  * 

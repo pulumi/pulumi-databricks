@@ -17,9 +17,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource could be only used on Unity Catalog-enabled workspace!
+ * &gt; **Note** This resource can only be used on a Unity Catalog-enabled workspace!
  * 
- * This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+ * This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
  * 
  * ## Example Usage
  * 
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource can be imported using the name of the Vector Search Endpoint
+ * The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
  * 
  * bash
  * 
@@ -127,14 +127,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.endpointStatuses;
     }
     /**
-     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     public Output<String> endpointType() {
@@ -169,14 +169,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.lastUpdatedUser;
     }
     /**
-     * Name of the Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Vector Search Endpoint to create.
+     * @return Name of the Mosaic AI Vector Search Endpoint to create.
      * 
      */
     public Output<String> name() {

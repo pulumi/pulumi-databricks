@@ -27,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public string? Comment { get; set; }
 
+        [Input("content")]
+        public string? Content { get; set; }
+
         /// <summary>
         /// Type of the object.
         /// </summary>
@@ -58,6 +61,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("status", required: true)]
         public string Status { get; set; } = null!;
+
+        [Input("stringSharedAs")]
+        public string? StringSharedAs { get; set; }
 
         public GetShareObjectArgs()
         {

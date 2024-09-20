@@ -248,7 +248,7 @@ func (o ArtifactAllowlistArtifactMatcherArrayOutput) Index(i pulumi.IntInput) Ar
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace struct {
 	CanToggle                       *bool                                                                                   `pulumi:"canToggle"`
-	Enabled                         *bool                                                                                   `pulumi:"enabled"`
+	Enabled                         bool                                                                                    `pulumi:"enabled"`
 	EnablementDetails               *AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails `pulumi:"enablementDetails"`
 	MaintenanceWindow               *AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	RestartEvenIfNoUpdatesAvailable *bool                                                                                   `pulumi:"restartEvenIfNoUpdatesAvailable"`
@@ -267,7 +267,7 @@ type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceInput 
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs struct {
 	CanToggle                       pulumi.BoolPtrInput                                                                            `pulumi:"canToggle"`
-	Enabled                         pulumi.BoolPtrInput                                                                            `pulumi:"enabled"`
+	Enabled                         pulumi.BoolInput                                                                               `pulumi:"enabled"`
 	EnablementDetails               AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput `pulumi:"enablementDetails"`
 	MaintenanceWindow               AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	RestartEvenIfNoUpdatesAvailable pulumi.BoolPtrInput                                                                            `pulumi:"restartEvenIfNoUpdatesAvailable"`
@@ -356,8 +356,8 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceOutput) EnablementDetails() AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
@@ -416,7 +416,7 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspacePtr
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -752,8 +752,8 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 }
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule struct {
-	DayOfWeek       *string                                                                                                                    `pulumi:"dayOfWeek"`
-	Frequency       *string                                                                                                                    `pulumi:"frequency"`
+	DayOfWeek       string                                                                                                                     `pulumi:"dayOfWeek"`
+	Frequency       string                                                                                                                     `pulumi:"frequency"`
 	WindowStartTime *AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime `pulumi:"windowStartTime"`
 }
 
@@ -769,8 +769,8 @@ type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMainte
 }
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs struct {
-	DayOfWeek       pulumi.StringPtrInput                                                                                                             `pulumi:"dayOfWeek"`
-	Frequency       pulumi.StringPtrInput                                                                                                             `pulumi:"frequency"`
+	DayOfWeek       pulumi.StringInput                                                                                                                `pulumi:"dayOfWeek"`
+	Frequency       pulumi.StringInput                                                                                                                `pulumi:"frequency"`
 	WindowStartTime AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput `pulumi:"windowStartTime"`
 }
 
@@ -851,16 +851,16 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 	}).(AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
 }
 
-func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) string {
 		return v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
-func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) string {
 		return v.Frequency
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) WindowStartTime() AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
@@ -898,7 +898,7 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 		if v == nil {
 			return nil
 		}
-		return v.DayOfWeek
+		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -907,7 +907,7 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 		if v == nil {
 			return nil
 		}
-		return v.Frequency
+		return &v.Frequency
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -921,8 +921,8 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 }
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime struct {
-	Hours   *int `pulumi:"hours"`
-	Minutes *int `pulumi:"minutes"`
+	Hours   int `pulumi:"hours"`
+	Minutes int `pulumi:"minutes"`
 }
 
 // AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput is an input type that accepts AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs and AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput values.
@@ -937,8 +937,8 @@ type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMainte
 }
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs struct {
-	Hours   pulumi.IntPtrInput `pulumi:"hours"`
-	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	Hours   pulumi.IntInput `pulumi:"hours"`
+	Minutes pulumi.IntInput `pulumi:"minutes"`
 }
 
 func (AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ElementType() reflect.Type {
@@ -1018,16 +1018,16 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 	}).(AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
 }
 
-func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) int {
 		return v.Hours
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.IntOutput)
 }
 
-func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) int {
 		return v.Minutes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.IntOutput)
 }
 
 type AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput struct{ *pulumi.OutputState }
@@ -1059,7 +1059,7 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 		if v == nil {
 			return nil
 		}
-		return v.Hours
+		return &v.Hours
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1068,7 +1068,7 @@ func (o AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMai
 		if v == nil {
 			return nil
 		}
-		return v.Minutes
+		return &v.Minutes
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -6416,7 +6416,7 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
 
 type ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace struct {
 	ComplianceStandards []string `pulumi:"complianceStandards"`
-	IsEnabled           *bool    `pulumi:"isEnabled"`
+	IsEnabled           bool     `pulumi:"isEnabled"`
 }
 
 // ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceInput is an input type that accepts ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs and ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput values.
@@ -6432,7 +6432,7 @@ type ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace
 
 type ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs struct {
 	ComplianceStandards pulumi.StringArrayInput `pulumi:"complianceStandards"`
-	IsEnabled           pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	IsEnabled           pulumi.BoolInput        `pulumi:"isEnabled"`
 }
 
 func (ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs) ElementType() reflect.Type {
@@ -6518,10 +6518,10 @@ func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorksp
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace) *bool {
+func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace) bool {
 		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.BoolOutput)
 }
 
 type ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -6562,7 +6562,7 @@ func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorksp
 		if v == nil {
 			return nil
 		}
-		return v.IsEnabled
+		return &v.IsEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6704,7 +6704,7 @@ func (o DefaultNamespaceSettingNamespacePtrOutput) Value() pulumi.StringPtrOutpu
 }
 
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
-	IsEnabled *bool `pulumi:"isEnabled"`
+	IsEnabled bool `pulumi:"isEnabled"`
 }
 
 // EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput is an input type that accepts EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs and EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput values.
@@ -6719,7 +6719,7 @@ type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspa
 }
 
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs struct {
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 }
 
 func (EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs) ElementType() reflect.Type {
@@ -6799,10 +6799,10 @@ func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWork
 	}).(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput)
 }
 
-func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) *bool {
+func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace) bool {
 		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.BoolOutput)
 }
 
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -6834,7 +6834,7 @@ func (o EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWork
 		if v == nil {
 			return nil
 		}
-		return v.IsEnabled
+		return &v.IsEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -50590,6 +50590,10 @@ type ModelServingConfigServedModel struct {
 	EnvironmentVars map[string]string `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	// The maximum tokens per second that the endpoint can scale up to.
+	MaxProvisionedThroughput *int `pulumi:"maxProvisionedThroughput"`
+	// The minimum tokens per second that the endpoint can scale down to.
+	MinProvisionedThroughput *int `pulumi:"minProvisionedThroughput"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName string `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -50599,7 +50603,7 @@ type ModelServingConfigServedModel struct {
 	// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
 	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-	WorkloadSize string `pulumi:"workloadSize"`
+	WorkloadSize *string `pulumi:"workloadSize"`
 	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
 	WorkloadType *string `pulumi:"workloadType"`
 }
@@ -50620,6 +50624,10 @@ type ModelServingConfigServedModelArgs struct {
 	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
+	// The maximum tokens per second that the endpoint can scale up to.
+	MaxProvisionedThroughput pulumi.IntPtrInput `pulumi:"maxProvisionedThroughput"`
+	// The minimum tokens per second that the endpoint can scale down to.
+	MinProvisionedThroughput pulumi.IntPtrInput `pulumi:"minProvisionedThroughput"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -50629,7 +50637,7 @@ type ModelServingConfigServedModelArgs struct {
 	// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
 	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-	WorkloadSize pulumi.StringInput `pulumi:"workloadSize"`
+	WorkloadSize pulumi.StringPtrInput `pulumi:"workloadSize"`
 	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
 	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
 }
@@ -50695,6 +50703,16 @@ func (o ModelServingConfigServedModelOutput) InstanceProfileArn() pulumi.StringP
 	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
 
+// The maximum tokens per second that the endpoint can scale up to.
+func (o ModelServingConfigServedModelOutput) MaxProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MaxProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
+// The minimum tokens per second that the endpoint can scale down to.
+func (o ModelServingConfigServedModelOutput) MinProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *int { return v.MinProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
 // The name of the model in Databricks Model Registry to be served.
 func (o ModelServingConfigServedModelOutput) ModelName() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.ModelName }).(pulumi.StringOutput)
@@ -50716,8 +50734,8 @@ func (o ModelServingConfigServedModelOutput) ScaleToZeroEnabled() pulumi.BoolPtr
 }
 
 // The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.WorkloadSize }).(pulumi.StringOutput)
+func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadSize }).(pulumi.StringPtrOutput)
 }
 
 // The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
@@ -65999,6 +66017,7 @@ type ShareObject struct {
 	CdfEnabled *bool `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment *string `pulumi:"comment"`
+	Content *string `pulumi:"content"`
 	// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 	DataObjectType string `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
@@ -66013,7 +66032,8 @@ type ShareObject struct {
 	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
 	StartVersion *int `pulumi:"startVersion"`
 	// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-	Status *string `pulumi:"status"`
+	Status         *string `pulumi:"status"`
+	StringSharedAs *string `pulumi:"stringSharedAs"`
 }
 
 // ShareObjectInput is an input type that accepts ShareObjectArgs and ShareObjectOutput values.
@@ -66034,6 +66054,7 @@ type ShareObjectArgs struct {
 	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 	DataObjectType pulumi.StringInput `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
@@ -66048,7 +66069,8 @@ type ShareObjectArgs struct {
 	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
 	StartVersion pulumi.IntPtrInput `pulumi:"startVersion"`
 	// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status         pulumi.StringPtrInput `pulumi:"status"`
+	StringSharedAs pulumi.StringPtrInput `pulumi:"stringSharedAs"`
 }
 
 func (ShareObjectArgs) ElementType() reflect.Type {
@@ -66120,6 +66142,10 @@ func (o ShareObjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+func (o ShareObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObject) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
 // Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 func (o ShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
@@ -66154,6 +66180,10 @@ func (o ShareObjectOutput) StartVersion() pulumi.IntPtrOutput {
 // Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
 func (o ShareObjectOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o ShareObjectOutput) StringSharedAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObject) *string { return v.StringSharedAs }).(pulumi.StringPtrOutput)
 }
 
 type ShareObjectArrayOutput struct{ *pulumi.OutputState }
@@ -72686,7 +72716,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) SourceTable() pulumi.Strin
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn struct {
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -72703,7 +72733,7 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput interface {
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs struct {
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -72764,7 +72794,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Embeddin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -72791,7 +72821,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) Ind
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn struct {
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -72808,7 +72838,7 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput interface {
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs struct {
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -72867,7 +72897,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Embeddin
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -73069,7 +73099,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.Str
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -73086,7 +73116,7 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface 
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -73147,7 +73177,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Embed
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -73174,7 +73204,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) 
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 }
 
@@ -73191,7 +73221,7 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface 
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -73250,7 +73280,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Embed
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

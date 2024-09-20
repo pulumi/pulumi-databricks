@@ -5,28 +5,27 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs Empty = new AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs();
 
-    @Import(name="hours")
-    private @Nullable Output<Integer> hours;
+    @Import(name="hours", required=true)
+    private Output<Integer> hours;
 
-    public Optional<Output<Integer>> hours() {
-        return Optional.ofNullable(this.hours);
+    public Output<Integer> hours() {
+        return this.hours;
     }
 
-    @Import(name="minutes")
-    private @Nullable Output<Integer> minutes;
+    @Import(name="minutes", required=true)
+    private Output<Integer> minutes;
 
-    public Optional<Output<Integer>> minutes() {
-        return Optional.ofNullable(this.minutes);
+    public Output<Integer> minutes() {
+        return this.minutes;
     }
 
     private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs() {}
@@ -54,7 +53,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             $ = new AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder hours(@Nullable Output<Integer> hours) {
+        public Builder hours(Output<Integer> hours) {
             $.hours = hours;
             return this;
         }
@@ -63,7 +62,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             return hours(Output.of(hours));
         }
 
-        public Builder minutes(@Nullable Output<Integer> minutes) {
+        public Builder minutes(Output<Integer> minutes) {
             $.minutes = minutes;
             return this;
         }
@@ -73,6 +72,12 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         }
 
         public AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs build() {
+            if ($.hours == null) {
+                throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs", "hours");
+            }
+            if ($.minutes == null) {
+                throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs", "minutes");
+            }
             return $;
         }
     }

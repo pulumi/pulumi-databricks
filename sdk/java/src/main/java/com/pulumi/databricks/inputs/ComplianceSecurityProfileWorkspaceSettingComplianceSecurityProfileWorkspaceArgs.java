@@ -5,30 +5,29 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs Empty = new ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs();
 
-    @Import(name="complianceStandards")
-    private @Nullable Output<List<String>> complianceStandards;
+    @Import(name="complianceStandards", required=true)
+    private Output<List<String>> complianceStandards;
 
-    public Optional<Output<List<String>>> complianceStandards() {
-        return Optional.ofNullable(this.complianceStandards);
+    public Output<List<String>> complianceStandards() {
+        return this.complianceStandards;
     }
 
-    @Import(name="isEnabled")
-    private @Nullable Output<Boolean> isEnabled;
+    @Import(name="isEnabled", required=true)
+    private Output<Boolean> isEnabled;
 
-    public Optional<Output<Boolean>> isEnabled() {
-        return Optional.ofNullable(this.isEnabled);
+    public Output<Boolean> isEnabled() {
+        return this.isEnabled;
     }
 
     private ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs() {}
@@ -56,7 +55,7 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
             $ = new ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder complianceStandards(@Nullable Output<List<String>> complianceStandards) {
+        public Builder complianceStandards(Output<List<String>> complianceStandards) {
             $.complianceStandards = complianceStandards;
             return this;
         }
@@ -69,7 +68,7 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
             return complianceStandards(List.of(complianceStandards));
         }
 
-        public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
+        public Builder isEnabled(Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
@@ -79,6 +78,12 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
         }
 
         public ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs build() {
+            if ($.complianceStandards == null) {
+                throw new MissingRequiredPropertyException("ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs", "complianceStandards");
+            }
+            if ($.isEnabled == null) {
+                throw new MissingRequiredPropertyException("ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs", "isEnabled");
+            }
             return $;
         }
     }

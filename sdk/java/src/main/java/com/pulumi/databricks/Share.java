@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource could be only used with workspace-level provider!
+ * &gt; **Note** This resource can only be used with a workspace-level provider!
  * 
  * In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
  * 
@@ -147,6 +147,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/share:Share")
 public class Share extends com.pulumi.resources.CustomResource {
+    @Export(name="comment", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> comment;
+
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
+    }
     /**
      * Time when the share was created.
      * 
@@ -208,6 +214,30 @@ public class Share extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> owner() {
         return Codegen.optional(this.owner);
+    }
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageLocation;
+
+    public Output<Optional<String>> storageLocation() {
+        return Codegen.optional(this.storageLocation);
+    }
+    @Export(name="storageRoot", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageRoot;
+
+    public Output<Optional<String>> storageRoot() {
+        return Codegen.optional(this.storageRoot);
+    }
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    public Output<String> updatedBy() {
+        return this.updatedBy;
     }
 
     /**

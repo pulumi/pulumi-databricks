@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs;
 import com.pulumi.databricks.inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,11 +25,11 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         return Optional.ofNullable(this.canToggle);
     }
 
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     @Import(name="enablementDetails")
@@ -89,7 +90,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             return canToggle(Output.of(canToggle));
         }
 
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -126,6 +127,9 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         }
 
         public AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs build() {
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs", "enabled");
+            }
             return $;
         }
     }

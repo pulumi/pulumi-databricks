@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource could be only used with workspace-level provider!
+    /// &gt; **Note** This resource can only be used with a workspace-level provider!
     /// 
     /// If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
     /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         public Output<string> SecurableName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Output("securableType")]
         public Output<string?> SecurableType { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Can be `catalog`, `external_location` or `storage_credential`. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }

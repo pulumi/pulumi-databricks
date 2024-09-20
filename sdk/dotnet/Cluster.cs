@@ -154,6 +154,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// </summary>
+        [Output("isPinned")]
+        public Output<bool?> IsPinned { get; private set; } = null!;
+
+        [Output("libraries")]
+        public Output<ImmutableArray<Outputs.ClusterLibrary>> Libraries { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
@@ -197,11 +206,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        [Output("isPinned")]
-        public Output<bool?> IsPinned { get; private set; } = null!;
-
-        [Output("libraries")]
-        public Output<ImmutableArray<Outputs.ClusterLibrary>> Libraries { get; private set; } = null!;
+        [Output("noWait")]
+        public Output<bool?> NoWait { get; private set; } = null!;
 
         /// <summary>
         /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
@@ -455,6 +461,20 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// </summary>
+        [Input("isPinned")]
+        public Input<bool>? IsPinned { get; set; }
+
+        [Input("libraries")]
+        private InputList<Inputs.ClusterLibraryArgs>? _libraries;
+        public InputList<Inputs.ClusterLibraryArgs> Libraries
+        {
+            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterLibraryArgs>());
+            set => _libraries = value;
+        }
+
+        /// <summary>
+        /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
@@ -498,16 +518,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        [Input("isPinned")]
-        public Input<bool>? IsPinned { get; set; }
-
-        [Input("libraries")]
-        private InputList<Inputs.ClusterLibraryArgs>? _libraries;
-        public InputList<Inputs.ClusterLibraryArgs> Libraries
-        {
-            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterLibraryArgs>());
-            set => _libraries = value;
-        }
+        [Input("noWait")]
+        public Input<bool>? NoWait { get; set; }
 
         /// <summary>
         /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
@@ -747,6 +759,20 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// </summary>
+        [Input("isPinned")]
+        public Input<bool>? IsPinned { get; set; }
+
+        [Input("libraries")]
+        private InputList<Inputs.ClusterLibraryGetArgs>? _libraries;
+        public InputList<Inputs.ClusterLibraryGetArgs> Libraries
+        {
+            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterLibraryGetArgs>());
+            set => _libraries = value;
+        }
+
+        /// <summary>
+        /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
@@ -790,16 +816,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        [Input("isPinned")]
-        public Input<bool>? IsPinned { get; set; }
-
-        [Input("libraries")]
-        private InputList<Inputs.ClusterLibraryGetArgs>? _libraries;
-        public InputList<Inputs.ClusterLibraryGetArgs> Libraries
-        {
-            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterLibraryGetArgs>());
-            set => _libraries = value;
-        }
+        [Input("noWait")]
+        public Input<bool>? NoWait { get; set; }
 
         /// <summary>
         /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.

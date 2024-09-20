@@ -16,6 +16,7 @@ package databricks
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"path"
 	"strings"
@@ -24,8 +25,9 @@ import (
 	_ "embed"
 
 	"github.com/databricks/databricks-sdk-go/useragent"
-	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
+	databricks "github.com/databricks/terraform-provider-databricks/shim"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -75,7 +77,10 @@ func Provider() tfbridge.ProviderInfo {
 	// Set the user agent to the provider version, this is not the version of the Pulumi CLI.
 	useragent.WithUserAgentExtra("pulumi", userAgentValue(version.Version))
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(databricksProv.DatabricksProvider())
+	p := pfbridge.MuxShimWithPF(context.Background(),
+		shimv2.NewProvider(databricks.SDKv2()),
+		databricks.PF(),
+	)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -115,6 +120,13 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_azure_adls_gen1_mount",
 			"databricks_azure_adls_gen2_mount",
 			"databricks_azure_blob_mount",
+			// Upstream is silently introducing replacement resources postfixed with
+			// _pluginframework. They plan to move "${RES}_pluginframework" to "${RES}". We only
+			// want the suggested version, so we omit these.
+			"databricks_library_pluginframework",
+			"databricks_quality_monitor_pluginframework",
+			"databricks_cluster_pluginframework",
+			"databricks_volumes_pluginframework",
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"databricks_default_namespace_setting": {
@@ -187,7 +199,7 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	prov.MustComputeTokens(tokens.SingleModule("databricks_",
-		mainMod, tokens.MakeStandard(mainPkg)))
+		mainMod, tokens.MakeStandard(mainPkg)).Ignore("_pluginframework"))
 
 	prov.SetAutonaming(255, "-")
 	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIDToString)

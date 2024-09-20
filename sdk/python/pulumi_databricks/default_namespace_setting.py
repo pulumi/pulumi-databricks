@@ -118,7 +118,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
         Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
@@ -159,7 +159,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  args: DefaultNamespaceSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
         Setting the default catalog for the workspace determines the catalog that is used when queries do not reference

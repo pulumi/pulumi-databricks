@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
  * });
  * const thisMwsCredentials = new databricks.MwsCredentials("this", {
- *     accountId: databricksAccountId,
  *     credentialsName: `${prefix}-creds`,
  *     roleArn: crossAccountRole.arn,
  * });
@@ -86,7 +85,7 @@ export class MwsCredentials extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
@@ -153,7 +152,7 @@ export class MwsCredentials extends pulumi.CustomResource {
  */
 export interface MwsCredentialsState {
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
@@ -182,7 +181,7 @@ export interface MwsCredentialsState {
  */
 export interface MwsCredentialsArgs {
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */

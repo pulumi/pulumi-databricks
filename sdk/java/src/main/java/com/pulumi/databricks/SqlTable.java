@@ -105,6 +105,12 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dataSourceFormat() {
         return Codegen.optional(this.dataSourceFormat);
     }
+    @Export(name="effectiveProperties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveProperties;
+
+    public Output<Map<String,String>> effectiveProperties() {
+        return this.effectiveProperties;
+    }
     /**
      * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
      * 
@@ -166,14 +172,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> properties;
+    private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
      * @return Map of table properties.
      * 
      */
-    public Output<Map<String,String>> properties() {
-        return this.properties;
+    public Output<Optional<Map<String,String>>> properties() {
+        return Codegen.optional(this.properties);
     }
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

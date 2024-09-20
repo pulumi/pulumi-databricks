@@ -79,14 +79,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -124,14 +124,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Vector Search Endpoint to create.
+     * @return Name of the Mosaic AI Vector Search Endpoint to create.
      * 
      */
     public Optional<Output<String>> name() {
@@ -280,7 +280,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
          * 
          * @return builder
          * 

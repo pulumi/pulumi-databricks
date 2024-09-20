@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// Description about the object.
         /// </summary>
         public readonly string? Comment;
+        public readonly string? Content;
         /// <summary>
         /// Type of the object.
         /// </summary>
@@ -33,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? SharedAs;
         public readonly int? StartVersion;
         public readonly string Status;
+        public readonly string? StringSharedAs;
 
         [OutputConstructor]
         private GetShareObjectResult(
@@ -43,6 +45,8 @@ namespace Pulumi.Databricks.Outputs
             bool? cdfEnabled,
 
             string? comment,
+
+            string? content,
 
             string dataObjectType,
 
@@ -56,12 +60,15 @@ namespace Pulumi.Databricks.Outputs
 
             int? startVersion,
 
-            string status)
+            string status,
+
+            string? stringSharedAs)
         {
             AddedAt = addedAt;
             AddedBy = addedBy;
             CdfEnabled = cdfEnabled;
             Comment = comment;
+            Content = content;
             DataObjectType = dataObjectType;
             HistoryDataSharingStatus = historyDataSharingStatus;
             Name = name;
@@ -69,6 +76,7 @@ namespace Pulumi.Databricks.Outputs
             SharedAs = sharedAs;
             StartVersion = startVersion;
             Status = status;
+            StringSharedAs = stringSharedAs;
         }
     }
 }

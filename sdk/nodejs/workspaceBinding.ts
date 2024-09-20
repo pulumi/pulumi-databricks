@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource could be only used with workspace-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
  *
  * If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
  *
@@ -82,7 +82,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
      */
     public readonly securableName!: pulumi.Output<string>;
     /**
-     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     public readonly securableType!: pulumi.Output<string | undefined>;
     /**
@@ -138,7 +138,7 @@ export interface WorkspaceBindingState {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**
@@ -164,7 +164,7 @@ export interface WorkspaceBindingArgs {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `externalLocation` or `storageCredential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**

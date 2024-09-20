@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int? EmbeddingDimension;
         /// <summary>
-        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        /// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         /// </summary>
         public readonly string? Name;
 

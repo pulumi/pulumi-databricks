@@ -72,7 +72,7 @@ def get_table(id: Optional[str] = None,
               table_info: Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
-    > **Note** This data source could be only used with workspace-level provider!
+    > **Note** This data source can only be used with a workspace-level provider!
 
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -128,7 +128,7 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                      table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
     """
-    > **Note** This data source could be only used with workspace-level provider!
+    > **Note** This data source can only be used with a workspace-level provider!
 
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 

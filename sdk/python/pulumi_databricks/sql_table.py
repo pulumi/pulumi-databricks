@@ -291,6 +291,7 @@ class _SqlTableState:
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
+                 effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -332,6 +333,8 @@ class _SqlTableState:
             pulumi.set(__self__, "comment", comment)
         if data_source_format is not None:
             pulumi.set(__self__, "data_source_format", data_source_format)
+        if effective_properties is not None:
+            pulumi.set(__self__, "effective_properties", effective_properties)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -420,6 +423,15 @@ class _SqlTableState:
     @data_source_format.setter
     def data_source_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_source_format", value)
+
+    @property
+    @pulumi.getter(name="effectiveProperties")
+    def effective_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "effective_properties")
+
+    @effective_properties.setter
+    def effective_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_properties", value)
 
     @property
     @pulumi.getter
@@ -699,6 +711,7 @@ class SqlTable(pulumi.CustomResource):
             __props__.__dict__["table_type"] = table_type
             __props__.__dict__["view_definition"] = view_definition
             __props__.__dict__["warehouse_id"] = warehouse_id
+            __props__.__dict__["effective_properties"] = None
         super(SqlTable, __self__).__init__(
             'databricks:index/sqlTable:SqlTable',
             resource_name,
@@ -715,6 +728,7 @@ class SqlTable(pulumi.CustomResource):
             columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             data_source_format: Optional[pulumi.Input[str]] = None,
+            effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -759,6 +773,7 @@ class SqlTable(pulumi.CustomResource):
         __props__.__dict__["columns"] = columns
         __props__.__dict__["comment"] = comment
         __props__.__dict__["data_source_format"] = data_source_format
+        __props__.__dict__["effective_properties"] = effective_properties
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
@@ -815,6 +830,11 @@ class SqlTable(pulumi.CustomResource):
         return pulumi.get(self, "data_source_format")
 
     @property
+    @pulumi.getter(name="effectiveProperties")
+    def effective_properties(self) -> pulumi.Output[Mapping[str, str]]:
+        return pulumi.get(self, "effective_properties")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -848,7 +868,7 @@ class SqlTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Mapping[str, str]]:
+    def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of table properties.
         """

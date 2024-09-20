@@ -95,7 +95,7 @@ def get_metastore(id: Optional[str] = None,
                   region: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreResult:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
 
@@ -158,7 +158,7 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreResult]:
     """
-    > **Note** This data source could be only used with account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
 

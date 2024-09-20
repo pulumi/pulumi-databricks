@@ -36,7 +36,7 @@ export interface ArtifactAllowlistArtifactMatcher {
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
     canToggle?: pulumi.Input<boolean>;
-    enabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     enablementDetails?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails>;
     maintenanceWindow?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
     restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
@@ -53,14 +53,14 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    dayOfWeek?: pulumi.Input<string>;
-    frequency?: pulumi.Input<string>;
+    dayOfWeek: pulumi.Input<string>;
+    frequency: pulumi.Input<string>;
     windowStartTime?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    hours?: pulumi.Input<number>;
-    minutes?: pulumi.Input<number>;
+    hours: pulumi.Input<number>;
+    minutes: pulumi.Input<number>;
 }
 
 export interface ClusterAutoscale {
@@ -487,8 +487,8 @@ export interface ClusterWorkloadTypeClients {
 }
 
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
-    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
-    isEnabled?: pulumi.Input<boolean>;
+    complianceStandards: pulumi.Input<pulumi.Input<string>[]>;
+    isEnabled: pulumi.Input<boolean>;
 }
 
 export interface DefaultNamespaceSettingNamespace {
@@ -499,7 +499,7 @@ export interface DefaultNamespaceSettingNamespace {
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled: pulumi.Input<boolean>;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -1735,6 +1735,44 @@ export interface GetClusterClusterInfoWorkloadTypeClients {
 export interface GetClusterClusterInfoWorkloadTypeClientsArgs {
     jobs?: pulumi.Input<boolean>;
     notebooks?: pulumi.Input<boolean>;
+}
+
+export interface GetClustersFilterBy {
+    /**
+     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+     */
+    clusterSources?: string[];
+    /**
+     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+     */
+    clusterStates?: string[];
+    /**
+     * Whether to filter by pinned clusters.
+     */
+    isPinned?: boolean;
+    /**
+     * Filter by databricks.ClusterPolicy id.
+     */
+    policyId?: string;
+}
+
+export interface GetClustersFilterByArgs {
+    /**
+     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+     */
+    clusterSources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+     */
+    clusterStates?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to filter by pinned clusters.
+     */
+    isPinned?: pulumi.Input<boolean>;
+    /**
+     * Filter by databricks.ClusterPolicy id.
+     */
+    policyId?: pulumi.Input<string>;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -4040,13 +4078,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
     alertId: string;
     pauseSubscriptions?: boolean;
-    subscriptions: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription[];
+    subscriptions?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription[];
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs {
     alertId: pulumi.Input<string>;
     pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>[]>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription {
@@ -4686,13 +4724,13 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
     alertId: string;
     pauseSubscriptions?: boolean;
-    subscriptions: inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription[];
+    subscriptions?: inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription[];
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertArgs {
     alertId: pulumi.Input<string>;
     pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>[]>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
@@ -5315,6 +5353,7 @@ export interface GetShareObject {
      * Description about the object.
      */
     comment?: string;
+    content?: string;
     /**
      * Type of the object.
      */
@@ -5328,6 +5367,7 @@ export interface GetShareObject {
     sharedAs?: string;
     startVersion?: number;
     status?: string;
+    stringSharedAs?: string;
 }
 
 export interface GetShareObjectArgs {
@@ -5338,6 +5378,7 @@ export interface GetShareObjectArgs {
      * Description about the object.
      */
     comment?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Type of the object.
      */
@@ -5351,14 +5392,15 @@ export interface GetShareObjectArgs {
     sharedAs?: pulumi.Input<string>;
     startVersion?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
+    stringSharedAs?: pulumi.Input<string>;
 }
 
 export interface GetShareObjectPartition {
-    values: inputs.GetShareObjectPartitionValue[];
+    values?: inputs.GetShareObjectPartitionValue[];
 }
 
 export interface GetShareObjectPartitionArgs {
-    values: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionValueArgs>[]>;
 }
 
 export interface GetShareObjectPartitionValue {
@@ -7851,7 +7893,7 @@ export interface JobTaskForEachTaskTaskSqlTaskAlert {
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[]>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
@@ -8432,7 +8474,7 @@ export interface JobTaskSqlTaskAlert {
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[]>;
 }
 
 export interface JobTaskSqlTaskAlertSubscription {
@@ -9161,6 +9203,14 @@ export interface ModelServingConfigServedModel {
      */
     instanceProfileArn?: pulumi.Input<string>;
     /**
+     * The maximum tokens per second that the endpoint can scale up to.
+     */
+    maxProvisionedThroughput?: pulumi.Input<number>;
+    /**
+     * The minimum tokens per second that the endpoint can scale down to.
+     */
+    minProvisionedThroughput?: pulumi.Input<number>;
+    /**
      * The name of the model in Databricks Model Registry to be served.
      */
     modelName: pulumi.Input<string>;
@@ -9179,7 +9229,7 @@ export interface ModelServingConfigServedModel {
     /**
      * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      */
-    workloadSize: pulumi.Input<string>;
+    workloadSize?: pulumi.Input<string>;
     /**
      * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
      */
@@ -10112,6 +10162,7 @@ export interface ShareObject {
      * Description about the object.
      */
     comment?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
@@ -10139,13 +10190,14 @@ export interface ShareObject {
      * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
      */
     status?: pulumi.Input<string>;
+    stringSharedAs?: pulumi.Input<string>;
 }
 
 export interface ShareObjectPartition {
     /**
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
-    values: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
+    values?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
 }
 
 export interface ShareObjectPartitionValue {
@@ -10566,7 +10618,7 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
@@ -10574,7 +10626,7 @@ export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
@@ -10594,7 +10646,7 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }
@@ -10602,7 +10654,7 @@ export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
     name?: pulumi.Input<string>;
 }

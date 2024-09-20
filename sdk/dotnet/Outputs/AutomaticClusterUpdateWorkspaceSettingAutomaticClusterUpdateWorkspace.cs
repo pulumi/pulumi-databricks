@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace
     {
         public readonly bool? CanToggle;
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         public readonly Outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails? EnablementDetails;
         public readonly Outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow? MaintenanceWindow;
         public readonly bool? RestartEvenIfNoUpdatesAvailable;
@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
         private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace(
             bool? canToggle,
 
-            bool? enabled,
+            bool enabled,
 
             Outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails? enablementDetails,
 

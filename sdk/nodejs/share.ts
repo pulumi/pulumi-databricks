@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource could be only used with workspace-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
  *
  * In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
  *
@@ -127,6 +127,7 @@ export class Share extends pulumi.CustomResource {
         return obj['__pulumiType'] === Share.__pulumiType;
     }
 
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * Time when the share was created.
      */
@@ -144,6 +145,10 @@ export class Share extends pulumi.CustomResource {
      * User name/group name/sp applicationId of the share owner.
      */
     public readonly owner!: pulumi.Output<string | undefined>;
+    public readonly storageLocation!: pulumi.Output<string | undefined>;
+    public readonly storageRoot!: pulumi.Output<string | undefined>;
+    public readonly updatedAt!: pulumi.Output<number>;
+    public readonly updatedBy!: pulumi.Output<string>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -158,18 +163,28 @@ export class Share extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareState | undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["objects"] = state ? state.objects : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
+            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
         } else {
             const args = argsOrState as ShareArgs | undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["createdBy"] = args ? args.createdBy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["objects"] = args ? args.objects : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
+            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
+            resourceInputs["updatedBy"] = args ? args.updatedBy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Share.__pulumiType, name, resourceInputs, opts);
@@ -180,6 +195,7 @@ export class Share extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Share resources.
  */
 export interface ShareState {
+    comment?: pulumi.Input<string>;
     /**
      * Time when the share was created.
      */
@@ -197,12 +213,17 @@ export interface ShareState {
      * User name/group name/sp applicationId of the share owner.
      */
     owner?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Share resource.
  */
 export interface ShareArgs {
+    comment?: pulumi.Input<string>;
     /**
      * Time when the share was created.
      */
@@ -220,4 +241,8 @@ export interface ShareArgs {
      * User name/group name/sp applicationId of the share owner.
      */
     owner?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }

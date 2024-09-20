@@ -125,6 +125,11 @@ export class Cluster extends pulumi.CustomResource {
     public readonly instancePoolId!: pulumi.Output<string | undefined>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+     */
+    public readonly isPinned!: pulumi.Output<boolean | undefined>;
+    public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
+    /**
+     * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
@@ -155,8 +160,7 @@ export class Cluster extends pulumi.CustomResource {
      * });
      * ```
      */
-    public readonly isPinned!: pulumi.Output<boolean | undefined>;
-    public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
+    public readonly noWait!: pulumi.Output<boolean | undefined>;
     /**
      * Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      */
@@ -238,6 +242,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
             resourceInputs["isPinned"] = state ? state.isPinned : undefined;
             resourceInputs["libraries"] = state ? state.libraries : undefined;
+            resourceInputs["noWait"] = state ? state.noWait : undefined;
             resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = state ? state.numWorkers : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
@@ -276,6 +281,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["instancePoolId"] = args ? args.instancePoolId : undefined;
             resourceInputs["isPinned"] = args ? args.isPinned : undefined;
             resourceInputs["libraries"] = args ? args.libraries : undefined;
+            resourceInputs["noWait"] = args ? args.noWait : undefined;
             resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = args ? args.numWorkers : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
@@ -380,6 +386,11 @@ export interface ClusterState {
     instancePoolId?: pulumi.Input<string>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+     */
+    isPinned?: pulumi.Input<boolean>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
+    /**
+     * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
@@ -410,8 +421,7 @@ export interface ClusterState {
      * });
      * ```
      */
-    isPinned?: pulumi.Input<boolean>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
+    noWait?: pulumi.Input<boolean>;
     /**
      * Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      */
@@ -537,6 +547,11 @@ export interface ClusterArgs {
     instancePoolId?: pulumi.Input<string>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+     */
+    isPinned?: pulumi.Input<boolean>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
+    /**
+     * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
@@ -567,8 +582,7 @@ export interface ClusterArgs {
      * });
      * ```
      */
-    isPinned?: pulumi.Input<boolean>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
+    noWait?: pulumi.Input<boolean>;
     /**
      * Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      */

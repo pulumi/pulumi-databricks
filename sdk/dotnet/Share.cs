@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource could be only used with workspace-level provider!
+    /// &gt; **Note** This resource can only be used with a workspace-level provider!
     /// 
     /// In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
     /// 
@@ -143,6 +143,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/share:Share")]
     public partial class Share : global::Pulumi.CustomResource
     {
+        [Output("comment")]
+        public Output<string?> Comment { get; private set; } = null!;
+
         /// <summary>
         /// Time when the share was created.
         /// </summary>
@@ -169,6 +172,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
+
+        [Output("storageLocation")]
+        public Output<string?> StorageLocation { get; private set; } = null!;
+
+        [Output("storageRoot")]
+        public Output<string?> StorageRoot { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<int> UpdatedAt { get; private set; } = null!;
+
+        [Output("updatedBy")]
+        public Output<string> UpdatedBy { get; private set; } = null!;
 
 
         /// <summary>
@@ -216,6 +231,9 @@ namespace Pulumi.Databricks
 
     public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
         /// <summary>
         /// Time when the share was created.
         /// </summary>
@@ -248,6 +266,18 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        [Input("storageLocation")]
+        public Input<string>? StorageLocation { get; set; }
+
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
+
+        [Input("updatedAt")]
+        public Input<int>? UpdatedAt { get; set; }
+
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
+
         public ShareArgs()
         {
         }
@@ -256,6 +286,9 @@ namespace Pulumi.Databricks
 
     public sealed class ShareState : global::Pulumi.ResourceArgs
     {
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
         /// <summary>
         /// Time when the share was created.
         /// </summary>
@@ -287,6 +320,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        [Input("storageLocation")]
+        public Input<string>? StorageLocation { get; set; }
+
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
+
+        [Input("updatedAt")]
+        public Input<int>? UpdatedAt { get; set; }
+
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
 
         public ShareState()
         {

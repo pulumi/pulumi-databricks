@@ -38,6 +38,7 @@ class ClusterArgs:
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
+                 no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -82,6 +83,7 @@ class ClusterArgs:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
@@ -160,6 +162,8 @@ class ClusterArgs:
             pulumi.set(__self__, "is_pinned", is_pinned)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
+        if no_wait is not None:
+            pulumi.set(__self__, "no_wait", no_wait)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -420,6 +424,27 @@ class ClusterArgs:
     def is_pinned(self) -> Optional[pulumi.Input[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        """
+        return pulumi.get(self, "is_pinned")
+
+    @is_pinned.setter
+    def is_pinned(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_pinned", value)
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
@@ -445,20 +470,11 @@ class ClusterArgs:
             })
         ```
         """
-        return pulumi.get(self, "is_pinned")
+        return pulumi.get(self, "no_wait")
 
-    @is_pinned.setter
-    def is_pinned(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_pinned", value)
-
-    @property
-    @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
-        return pulumi.get(self, "libraries")
-
-    @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
-        pulumi.set(self, "libraries", value)
+    @no_wait.setter
+    def no_wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_wait", value)
 
     @property
     @pulumi.getter(name="nodeTypeId")
@@ -594,6 +610,7 @@ class _ClusterState:
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
+                 no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -641,6 +658,7 @@ class _ClusterState:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
@@ -724,6 +742,8 @@ class _ClusterState:
             pulumi.set(__self__, "is_pinned", is_pinned)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
+        if no_wait is not None:
+            pulumi.set(__self__, "no_wait", no_wait)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
@@ -999,6 +1019,27 @@ class _ClusterState:
     def is_pinned(self) -> Optional[pulumi.Input[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        """
+        return pulumi.get(self, "is_pinned")
+
+    @is_pinned.setter
+    def is_pinned(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_pinned", value)
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
+        return pulumi.get(self, "libraries")
+
+    @libraries.setter
+    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
+        pulumi.set(self, "libraries", value)
+
+    @property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
@@ -1024,20 +1065,11 @@ class _ClusterState:
             })
         ```
         """
-        return pulumi.get(self, "is_pinned")
+        return pulumi.get(self, "no_wait")
 
-    @is_pinned.setter
-    def is_pinned(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_pinned", value)
-
-    @property
-    @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
-        return pulumi.get(self, "libraries")
-
-    @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
-        pulumi.set(self, "libraries", value)
+    @no_wait.setter
+    def no_wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_wait", value)
 
     @property
     @pulumi.getter(name="nodeTypeId")
@@ -1206,6 +1238,7 @@ class Cluster(pulumi.CustomResource):
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+                 no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -1262,6 +1295,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
@@ -1351,6 +1385,7 @@ class Cluster(pulumi.CustomResource):
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+                 no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
@@ -1391,6 +1426,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["instance_pool_id"] = instance_pool_id
             __props__.__dict__["is_pinned"] = is_pinned
             __props__.__dict__["libraries"] = libraries
+            __props__.__dict__["no_wait"] = no_wait
             __props__.__dict__["node_type_id"] = node_type_id
             __props__.__dict__["num_workers"] = num_workers
             __props__.__dict__["policy_id"] = policy_id
@@ -1440,6 +1476,7 @@ class Cluster(pulumi.CustomResource):
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             is_pinned: Optional[pulumi.Input[bool]] = None,
             libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+            no_wait: Optional[pulumi.Input[bool]] = None,
             node_type_id: Optional[pulumi.Input[str]] = None,
             num_workers: Optional[pulumi.Input[int]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
@@ -1492,6 +1529,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
@@ -1556,6 +1594,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["instance_pool_id"] = instance_pool_id
         __props__.__dict__["is_pinned"] = is_pinned
         __props__.__dict__["libraries"] = libraries
+        __props__.__dict__["no_wait"] = no_wait
         __props__.__dict__["node_type_id"] = node_type_id
         __props__.__dict__["num_workers"] = num_workers
         __props__.__dict__["policy_id"] = policy_id
@@ -1736,6 +1775,19 @@ class Cluster(pulumi.CustomResource):
     def is_pinned(self) -> pulumi.Output[Optional[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        """
+        return pulumi.get(self, "is_pinned")
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterLibrary']]]:
+        return pulumi.get(self, "libraries")
+
+    @property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
@@ -1761,12 +1813,7 @@ class Cluster(pulumi.CustomResource):
             })
         ```
         """
-        return pulumi.get(self, "is_pinned")
-
-    @property
-    @pulumi.getter
-    def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterLibrary']]]:
-        return pulumi.get(self, "libraries")
+        return pulumi.get(self, "no_wait")
 
     @property
     @pulumi.getter(name="nodeTypeId")

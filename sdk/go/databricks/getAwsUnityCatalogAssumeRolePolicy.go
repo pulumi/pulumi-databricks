@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.GetAwsUnityCatalogAssumeRolePolicy(ctx, &databricks.GetAwsUnityCatalogAssumeRolePolicyArgs{
+//			thisGetAwsUnityCatalogAssumeRolePolicy, err := databricks.GetAwsUnityCatalogAssumeRolePolicy(ctx, &databricks.GetAwsUnityCatalogAssumeRolePolicyArgs{
 //				AwsAccountId: awsAccountId,
 //				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
 //				ExternalId:   "12345",
@@ -58,7 +58,7 @@ import (
 //			}
 //			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
 //				Name:             pulumi.Sprintf("%v-uc-access", prefix),
-//				AssumeRolePolicy: pulumi.Any(thisAwsIamPolicyDocument.Json),
+//				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
 //				ManagedPolicyArns: pulumi.StringArray{
 //					unityMetastore.Arn,
 //				},

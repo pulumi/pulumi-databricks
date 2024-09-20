@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
 
     public static final AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs Empty = new AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs();
 
-    @Import(name="dayOfWeek")
-    private @Nullable Output<String> dayOfWeek;
+    @Import(name="dayOfWeek", required=true)
+    private Output<String> dayOfWeek;
 
-    public Optional<Output<String>> dayOfWeek() {
-        return Optional.ofNullable(this.dayOfWeek);
+    public Output<String> dayOfWeek() {
+        return this.dayOfWeek;
     }
 
-    @Import(name="frequency")
-    private @Nullable Output<String> frequency;
+    @Import(name="frequency", required=true)
+    private Output<String> frequency;
 
-    public Optional<Output<String>> frequency() {
-        return Optional.ofNullable(this.frequency);
+    public Output<String> frequency() {
+        return this.frequency;
     }
 
     @Import(name="windowStartTime")
@@ -63,7 +64,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             $ = new AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder dayOfWeek(@Nullable Output<String> dayOfWeek) {
+        public Builder dayOfWeek(Output<String> dayOfWeek) {
             $.dayOfWeek = dayOfWeek;
             return this;
         }
@@ -72,7 +73,7 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
             return dayOfWeek(Output.of(dayOfWeek));
         }
 
-        public Builder frequency(@Nullable Output<String> frequency) {
+        public Builder frequency(Output<String> frequency) {
             $.frequency = frequency;
             return this;
         }
@@ -91,6 +92,12 @@ public final class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateW
         }
 
         public AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs build() {
+            if ($.dayOfWeek == null) {
+                throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs", "dayOfWeek");
+            }
+            if ($.frequency == null) {
+                throw new MissingRequiredPropertyException("AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs", "frequency");
+            }
             return $;
         }
     }

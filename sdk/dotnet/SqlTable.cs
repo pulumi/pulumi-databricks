@@ -59,6 +59,9 @@ namespace Pulumi.Databricks
         [Output("dataSourceFormat")]
         public Output<string?> DataSourceFormat { get; private set; } = null!;
 
+        [Output("effectiveProperties")]
+        public Output<ImmutableDictionary<string, string>> EffectiveProperties { get; private set; } = null!;
+
         /// <summary>
         /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
         /// </summary>
@@ -87,7 +90,7 @@ namespace Pulumi.Databricks
         /// Map of table properties.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableDictionary<string, string>> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
@@ -344,6 +347,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
+
+        [Input("effectiveProperties")]
+        private InputMap<string>? _effectiveProperties;
+        public InputMap<string> EffectiveProperties
+        {
+            get => _effectiveProperties ?? (_effectiveProperties = new InputMap<string>());
+            set => _effectiveProperties = value;
+        }
 
         /// <summary>
         /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.

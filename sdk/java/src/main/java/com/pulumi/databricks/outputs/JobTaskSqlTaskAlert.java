@@ -29,7 +29,7 @@ public final class JobTaskSqlTaskAlert {
      * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
      * 
      */
-    private List<JobTaskSqlTaskAlertSubscription> subscriptions;
+    private @Nullable List<JobTaskSqlTaskAlertSubscription> subscriptions;
 
     private JobTaskSqlTaskAlert() {}
     /**
@@ -51,7 +51,7 @@ public final class JobTaskSqlTaskAlert {
      * 
      */
     public List<JobTaskSqlTaskAlertSubscription> subscriptions() {
-        return this.subscriptions;
+        return this.subscriptions == null ? List.of() : this.subscriptions;
     }
 
     public static Builder builder() {
@@ -65,7 +65,7 @@ public final class JobTaskSqlTaskAlert {
     public static final class Builder {
         private String alertId;
         private @Nullable Boolean pauseSubscriptions;
-        private List<JobTaskSqlTaskAlertSubscription> subscriptions;
+        private @Nullable List<JobTaskSqlTaskAlertSubscription> subscriptions;
         public Builder() {}
         public Builder(JobTaskSqlTaskAlert defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,10 +89,8 @@ public final class JobTaskSqlTaskAlert {
             return this;
         }
         @CustomType.Setter
-        public Builder subscriptions(List<JobTaskSqlTaskAlertSubscription> subscriptions) {
-            if (subscriptions == null) {
-              throw new MissingRequiredPropertyException("JobTaskSqlTaskAlert", "subscriptions");
-            }
+        public Builder subscriptions(@Nullable List<JobTaskSqlTaskAlertSubscription> subscriptions) {
+
             this.subscriptions = subscriptions;
             return this;
         }

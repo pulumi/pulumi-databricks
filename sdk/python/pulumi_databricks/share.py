@@ -16,11 +16,16 @@ __all__ = ['ShareArgs', 'Share']
 @pulumi.input_type
 class ShareArgs:
     def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
-                 owner: Optional[pulumi.Input[str]] = None):
+                 owner: Optional[pulumi.Input[str]] = None,
+                 storage_location: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Share resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
@@ -28,6 +33,8 @@ class ShareArgs:
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -38,6 +45,23 @@ class ShareArgs:
             pulumi.set(__self__, "objects", objects)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -96,15 +120,56 @@ class ShareArgs:
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
 
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
 
 @pulumi.input_type
 class _ShareState:
     def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
-                 owner: Optional[pulumi.Input[str]] = None):
+                 owner: Optional[pulumi.Input[str]] = None,
+                 storage_location: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
         :param pulumi.Input[int] created_at: Time when the share was created.
@@ -112,6 +177,8 @@ class _ShareState:
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -122,6 +189,23 @@ class _ShareState:
             pulumi.set(__self__, "objects", objects)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -180,20 +264,61 @@ class _ShareState:
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
 
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
 
 class Share(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 storage_location: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
 
@@ -294,7 +419,7 @@ class Share(pulumi.CustomResource):
                  args: Optional[ShareArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
 
@@ -396,11 +521,16 @@ class Share(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 storage_location: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -410,11 +540,16 @@ class Share(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ShareArgs.__new__(ShareArgs)
 
+            __props__.__dict__["comment"] = comment
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["name"] = name
             __props__.__dict__["objects"] = objects
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["storage_location"] = storage_location
+            __props__.__dict__["storage_root"] = storage_root
+            __props__.__dict__["updated_at"] = updated_at
+            __props__.__dict__["updated_by"] = updated_by
         super(Share, __self__).__init__(
             'databricks:index/share:Share',
             resource_name,
@@ -425,11 +560,16 @@ class Share(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            comment: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
-            owner: Optional[pulumi.Input[str]] = None) -> 'Share':
+            owner: Optional[pulumi.Input[str]] = None,
+            storage_location: Optional[pulumi.Input[str]] = None,
+            storage_root: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[int]] = None,
+            updated_by: Optional[pulumi.Input[str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -446,12 +586,22 @@ class Share(pulumi.CustomResource):
 
         __props__ = _ShareState.__new__(_ShareState)
 
+        __props__.__dict__["comment"] = comment
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["name"] = name
         __props__.__dict__["objects"] = objects
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["storage_location"] = storage_location
+        __props__.__dict__["storage_root"] = storage_root
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["updated_by"] = updated_by
         return Share(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -489,4 +639,24 @@ class Share(pulumi.CustomResource):
         User name/group name/sp application_id of the share owner.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_location")
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_root")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_by")
 

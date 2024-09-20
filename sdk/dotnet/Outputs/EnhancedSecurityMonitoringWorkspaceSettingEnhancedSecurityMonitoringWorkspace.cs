@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace
     {
-        public readonly bool? IsEnabled;
+        public readonly bool IsEnabled;
 
         [OutputConstructor]
-        private EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace(bool? isEnabled)
+        private EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace(bool isEnabled)
         {
             IsEnabled = isEnabled;
         }

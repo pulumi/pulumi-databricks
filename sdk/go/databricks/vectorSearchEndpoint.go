@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource could be only used on Unity Catalog-enabled workspace!
+// > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
 //
-// This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+// This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
 //
 // ## Example Usage
 //
@@ -45,7 +45,7 @@ import (
 //
 // ## Import
 //
-// # The resource can be imported using the name of the Vector Search Endpoint
+// # The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
 //
 // bash
 //
@@ -63,13 +63,13 @@ type VectorSearchEndpoint struct {
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses VectorSearchEndpointEndpointStatusArrayOutput `pulumi:"endpointStatuses"`
-	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp pulumi.IntOutput `pulumi:"lastUpdatedTimestamp"`
 	// User who last updated the endpoint.
 	LastUpdatedUser pulumi.StringOutput `pulumi:"lastUpdatedUser"`
-	// Name of the Vector Search Endpoint to create.
+	// Name of the Mosaic AI Vector Search Endpoint to create.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntOutput `pulumi:"numIndexes"`
@@ -116,13 +116,13 @@ type vectorSearchEndpointState struct {
 	EndpointId *string `pulumi:"endpointId"`
 	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses []VectorSearchEndpointEndpointStatus `pulumi:"endpointStatuses"`
-	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType *string `pulumi:"endpointType"`
 	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp *int `pulumi:"lastUpdatedTimestamp"`
 	// User who last updated the endpoint.
 	LastUpdatedUser *string `pulumi:"lastUpdatedUser"`
-	// Name of the Vector Search Endpoint to create.
+	// Name of the Mosaic AI Vector Search Endpoint to create.
 	Name *string `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes *int `pulumi:"numIndexes"`
@@ -137,13 +137,13 @@ type VectorSearchEndpointState struct {
 	EndpointId pulumi.StringPtrInput
 	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses VectorSearchEndpointEndpointStatusArrayInput
-	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringPtrInput
 	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp pulumi.IntPtrInput
 	// User who last updated the endpoint.
 	LastUpdatedUser pulumi.StringPtrInput
-	// Name of the Vector Search Endpoint to create.
+	// Name of the Mosaic AI Vector Search Endpoint to create.
 	Name pulumi.StringPtrInput
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntPtrInput
@@ -154,17 +154,17 @@ func (VectorSearchEndpointState) ElementType() reflect.Type {
 }
 
 type vectorSearchEndpointArgs struct {
-	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType string `pulumi:"endpointType"`
-	// Name of the Vector Search Endpoint to create.
+	// Name of the Mosaic AI Vector Search Endpoint to create.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a VectorSearchEndpoint resource.
 type VectorSearchEndpointArgs struct {
-	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringInput
-	// Name of the Vector Search Endpoint to create.
+	// Name of the Mosaic AI Vector Search Endpoint to create.
 	Name pulumi.StringPtrInput
 }
 
@@ -275,7 +275,7 @@ func (o VectorSearchEndpointOutput) EndpointStatuses() VectorSearchEndpointEndpo
 	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointEndpointStatusArrayOutput { return v.EndpointStatuses }).(VectorSearchEndpointEndpointStatusArrayOutput)
 }
 
-// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 func (o VectorSearchEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -290,7 +290,7 @@ func (o VectorSearchEndpointOutput) LastUpdatedUser() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.LastUpdatedUser }).(pulumi.StringOutput)
 }
 
-// Name of the Vector Search Endpoint to create.
+// Name of the Mosaic AI Vector Search Endpoint to create.
 func (o VectorSearchEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

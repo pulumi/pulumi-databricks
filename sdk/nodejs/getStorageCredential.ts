@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source could be only used with workspace-level provider!
+ * > **Note** This data source can only be used with a workspace-level provider!
  *
  * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
  *
@@ -75,7 +75,7 @@ export interface GetStorageCredentialResult {
     readonly storageCredentialInfo: outputs.GetStorageCredentialStorageCredentialInfo;
 }
 /**
- * > **Note** This data source could be only used with workspace-level provider!
+ * > **Note** This data source can only be used with a workspace-level provider!
  *
  * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
  *

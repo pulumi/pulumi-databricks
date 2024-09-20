@@ -5,21 +5,20 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs Empty = new EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs();
 
-    @Import(name="isEnabled")
-    private @Nullable Output<Boolean> isEnabled;
+    @Import(name="isEnabled", required=true)
+    private Output<Boolean> isEnabled;
 
-    public Optional<Output<Boolean>> isEnabled() {
-        return Optional.ofNullable(this.isEnabled);
+    public Output<Boolean> isEnabled() {
+        return this.isEnabled;
     }
 
     private EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs() {}
@@ -46,7 +45,7 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMon
             $ = new EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
+        public Builder isEnabled(Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
@@ -56,6 +55,9 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMon
         }
 
         public EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs build() {
+            if ($.isEnabled == null) {
+                throw new MissingRequiredPropertyException("EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs", "isEnabled");
+            }
             return $;
         }
     }

@@ -64,6 +64,13 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.comment);
     }
 
+    @Import(name="content")
+    private @Nullable Output<String> content;
+
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
+    }
+
     /**
      * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      * 
@@ -165,6 +172,13 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="stringSharedAs")
+    private @Nullable Output<String> stringSharedAs;
+
+    public Optional<Output<String>> stringSharedAs() {
+        return Optional.ofNullable(this.stringSharedAs);
+    }
+
     private ShareObjectArgs() {}
 
     private ShareObjectArgs(ShareObjectArgs $) {
@@ -172,6 +186,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.addedBy = $.addedBy;
         this.cdfEnabled = $.cdfEnabled;
         this.comment = $.comment;
+        this.content = $.content;
         this.dataObjectType = $.dataObjectType;
         this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
@@ -179,6 +194,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.sharedAs = $.sharedAs;
         this.startVersion = $.startVersion;
         this.status = $.status;
+        this.stringSharedAs = $.stringSharedAs;
     }
 
     public static Builder builder() {
@@ -257,6 +273,15 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        public Builder content(@Nullable Output<String> content) {
+            $.content = content;
+            return this;
+        }
+
+        public Builder content(String content) {
+            return content(Output.of(content));
         }
 
         /**
@@ -400,6 +425,15 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder stringSharedAs(@Nullable Output<String> stringSharedAs) {
+            $.stringSharedAs = stringSharedAs;
+            return this;
+        }
+
+        public Builder stringSharedAs(String stringSharedAs) {
+            return stringSharedAs(Output.of(stringSharedAs));
         }
 
         public ShareObjectArgs build() {

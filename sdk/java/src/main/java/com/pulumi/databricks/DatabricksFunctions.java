@@ -752,7 +752,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", TypeShape.of(GetAwsBucketPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -805,7 +805,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -858,7 +858,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(GetAwsCrossAccountPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -911,7 +911,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -964,7 +964,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -1017,7 +1017,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
@@ -1124,7 +1124,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1193,7 +1193,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1262,7 +1262,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1331,7 +1331,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1622,7 +1622,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1688,7 +1688,7 @@ public final class DatabricksFunctions {
         return getCatalog(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1754,7 +1754,7 @@ public final class DatabricksFunctions {
         return getCatalogPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1820,7 +1820,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1886,7 +1886,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalog:getCatalog", TypeShape.of(GetCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1940,7 +1940,7 @@ public final class DatabricksFunctions {
         return getCatalogs(GetCatalogsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -1994,7 +1994,7 @@ public final class DatabricksFunctions {
         return getCatalogsPlain(GetCatalogsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -2048,7 +2048,7 @@ public final class DatabricksFunctions {
         return getCatalogs(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -2102,7 +2102,7 @@ public final class DatabricksFunctions {
         return getCatalogsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -2156,7 +2156,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -4440,7 +4440,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
      * 
@@ -4494,7 +4494,7 @@ public final class DatabricksFunctions {
         return getExternalLocation(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
      * 
@@ -4548,7 +4548,7 @@ public final class DatabricksFunctions {
         return getExternalLocationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
      * 
@@ -4602,7 +4602,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
      * 
@@ -4656,7 +4656,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -4708,7 +4708,7 @@ public final class DatabricksFunctions {
         return getExternalLocations(GetExternalLocationsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -4760,7 +4760,7 @@ public final class DatabricksFunctions {
         return getExternalLocationsPlain(GetExternalLocationsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -4812,7 +4812,7 @@ public final class DatabricksFunctions {
         return getExternalLocations(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -4864,7 +4864,7 @@ public final class DatabricksFunctions {
         return getExternalLocationsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -4916,7 +4916,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6680,7 +6680,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6746,7 +6746,7 @@ public final class DatabricksFunctions {
         return getMetastore(GetMetastoreArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6812,7 +6812,7 @@ public final class DatabricksFunctions {
         return getMetastorePlain(GetMetastorePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6878,7 +6878,7 @@ public final class DatabricksFunctions {
         return getMetastore(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -6944,7 +6944,7 @@ public final class DatabricksFunctions {
         return getMetastorePlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7010,7 +7010,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7076,7 +7076,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7131,7 +7131,7 @@ public final class DatabricksFunctions {
         return getMetastores(GetMetastoresArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7186,7 +7186,7 @@ public final class DatabricksFunctions {
         return getMetastoresPlain(GetMetastoresPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7241,7 +7241,7 @@ public final class DatabricksFunctions {
         return getMetastores(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7296,7 +7296,7 @@ public final class DatabricksFunctions {
         return getMetastoresPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -7351,7 +7351,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -10400,7 +10400,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchema:getSchema", TypeShape.of(GetSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -10456,7 +10456,7 @@ public final class DatabricksFunctions {
         return getSchemas(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -10512,7 +10512,7 @@ public final class DatabricksFunctions {
         return getSchemasPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -10568,7 +10568,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13102,7 +13102,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
      * 
@@ -13156,7 +13156,7 @@ public final class DatabricksFunctions {
         return getStorageCredential(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
      * 
@@ -13210,7 +13210,7 @@ public final class DatabricksFunctions {
         return getStorageCredentialPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
      * 
@@ -13264,7 +13264,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
      * 
@@ -13318,7 +13318,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13370,7 +13370,7 @@ public final class DatabricksFunctions {
         return getStorageCredentials(GetStorageCredentialsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13422,7 +13422,7 @@ public final class DatabricksFunctions {
         return getStorageCredentialsPlain(GetStorageCredentialsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13474,7 +13474,7 @@ public final class DatabricksFunctions {
         return getStorageCredentials(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13526,7 +13526,7 @@ public final class DatabricksFunctions {
         return getStorageCredentialsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13578,7 +13578,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
      * 
@@ -13630,7 +13630,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13698,7 +13698,7 @@ public final class DatabricksFunctions {
         return getTable(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13766,7 +13766,7 @@ public final class DatabricksFunctions {
         return getTablePlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13834,7 +13834,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13902,7 +13902,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTable:getTable", TypeShape.of(GetTableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -13981,7 +13981,7 @@ public final class DatabricksFunctions {
         return getTables(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -14060,7 +14060,7 @@ public final class DatabricksFunctions {
         return getTablesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -14139,7 +14139,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
@@ -14774,7 +14774,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 
@@ -14830,7 +14830,7 @@ public final class DatabricksFunctions {
         return getVolumes(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 
@@ -14886,7 +14886,7 @@ public final class DatabricksFunctions {
         return getVolumesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 
@@ -14942,7 +14942,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 

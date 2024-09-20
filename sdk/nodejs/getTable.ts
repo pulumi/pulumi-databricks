@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source could be only used with workspace-level provider!
+ * > **Note** This data source can only be used with a workspace-level provider!
  *
  * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
@@ -83,7 +83,7 @@ export interface GetTableResult {
     readonly tableInfo: outputs.GetTableTableInfo;
 }
 /**
- * > **Note** This data source could be only used with workspace-level provider!
+ * > **Note** This data source can only be used with a workspace-level provider!
  *
  * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *

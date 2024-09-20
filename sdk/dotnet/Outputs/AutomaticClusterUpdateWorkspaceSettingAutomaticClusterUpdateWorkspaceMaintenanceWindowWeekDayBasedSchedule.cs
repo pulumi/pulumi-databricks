@@ -13,15 +13,15 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule
     {
-        public readonly string? DayOfWeek;
-        public readonly string? Frequency;
+        public readonly string DayOfWeek;
+        public readonly string Frequency;
         public readonly Outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime? WindowStartTime;
 
         [OutputConstructor]
         private AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule(
-            string? dayOfWeek,
+            string dayOfWeek,
 
-            string? frequency,
+            string frequency,
 
             Outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime? windowStartTime)
         {

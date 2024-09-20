@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,6 +25,16 @@ public final class ModelServingConfigServedModel {
      * 
      */
     private @Nullable String instanceProfileArn;
+    /**
+     * @return The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
+    private @Nullable Integer maxProvisionedThroughput;
+    /**
+     * @return The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
+    private @Nullable Integer minProvisionedThroughput;
     /**
      * @return The name of the model in Databricks Model Registry to be served.
      * 
@@ -48,7 +59,7 @@ public final class ModelServingConfigServedModel {
      * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
-    private String workloadSize;
+    private @Nullable String workloadSize;
     /**
      * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
      * 
@@ -69,6 +80,20 @@ public final class ModelServingConfigServedModel {
      */
     public Optional<String> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
+    }
+    /**
+     * @return The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
+    public Optional<Integer> maxProvisionedThroughput() {
+        return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+    /**
+     * @return The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
+    public Optional<Integer> minProvisionedThroughput() {
+        return Optional.ofNullable(this.minProvisionedThroughput);
     }
     /**
      * @return The name of the model in Databricks Model Registry to be served.
@@ -102,8 +127,8 @@ public final class ModelServingConfigServedModel {
      * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
-    public String workloadSize() {
-        return this.workloadSize;
+    public Optional<String> workloadSize() {
+        return Optional.ofNullable(this.workloadSize);
     }
     /**
      * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
@@ -124,17 +149,21 @@ public final class ModelServingConfigServedModel {
     public static final class Builder {
         private @Nullable Map<String,String> environmentVars;
         private @Nullable String instanceProfileArn;
+        private @Nullable Integer maxProvisionedThroughput;
+        private @Nullable Integer minProvisionedThroughput;
         private String modelName;
         private String modelVersion;
         private @Nullable String name;
         private @Nullable Boolean scaleToZeroEnabled;
-        private String workloadSize;
+        private @Nullable String workloadSize;
         private @Nullable String workloadType;
         public Builder() {}
         public Builder(ModelServingConfigServedModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.environmentVars = defaults.environmentVars;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
+    	      this.maxProvisionedThroughput = defaults.maxProvisionedThroughput;
+    	      this.minProvisionedThroughput = defaults.minProvisionedThroughput;
     	      this.modelName = defaults.modelName;
     	      this.modelVersion = defaults.modelVersion;
     	      this.name = defaults.name;
@@ -153,6 +182,18 @@ public final class ModelServingConfigServedModel {
         public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
 
             this.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxProvisionedThroughput(@Nullable Integer maxProvisionedThroughput) {
+
+            this.maxProvisionedThroughput = maxProvisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minProvisionedThroughput(@Nullable Integer minProvisionedThroughput) {
+
+            this.minProvisionedThroughput = minProvisionedThroughput;
             return this;
         }
         @CustomType.Setter
@@ -184,10 +225,8 @@ public final class ModelServingConfigServedModel {
             return this;
         }
         @CustomType.Setter
-        public Builder workloadSize(String workloadSize) {
-            if (workloadSize == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigServedModel", "workloadSize");
-            }
+        public Builder workloadSize(@Nullable String workloadSize) {
+
             this.workloadSize = workloadSize;
             return this;
         }
@@ -201,6 +240,8 @@ public final class ModelServingConfigServedModel {
             final var _resultValue = new ModelServingConfigServedModel();
             _resultValue.environmentVars = environmentVars;
             _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.maxProvisionedThroughput = maxProvisionedThroughput;
+            _resultValue.minProvisionedThroughput = minProvisionedThroughput;
             _resultValue.modelName = modelName;
             _resultValue.modelVersion = modelVersion;
             _resultValue.name = name;

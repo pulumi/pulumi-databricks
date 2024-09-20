@@ -6,20 +6,21 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetShareObjectPartitionValueArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetShareObjectPartitionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetShareObjectPartitionArgs Empty = new GetShareObjectPartitionArgs();
 
-    @Import(name="values", required=true)
-    private Output<List<GetShareObjectPartitionValueArgs>> values;
+    @Import(name="values")
+    private @Nullable Output<List<GetShareObjectPartitionValueArgs>> values;
 
-    public Output<List<GetShareObjectPartitionValueArgs>> values() {
-        return this.values;
+    public Optional<Output<List<GetShareObjectPartitionValueArgs>>> values() {
+        return Optional.ofNullable(this.values);
     }
 
     private GetShareObjectPartitionArgs() {}
@@ -46,7 +47,7 @@ public final class GetShareObjectPartitionArgs extends com.pulumi.resources.Reso
             $ = new GetShareObjectPartitionArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder values(Output<List<GetShareObjectPartitionValueArgs>> values) {
+        public Builder values(@Nullable Output<List<GetShareObjectPartitionValueArgs>> values) {
             $.values = values;
             return this;
         }
@@ -60,9 +61,6 @@ public final class GetShareObjectPartitionArgs extends com.pulumi.resources.Reso
         }
 
         public GetShareObjectPartitionArgs build() {
-            if ($.values == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectPartitionArgs", "values");
-            }
             return $;
         }
     }

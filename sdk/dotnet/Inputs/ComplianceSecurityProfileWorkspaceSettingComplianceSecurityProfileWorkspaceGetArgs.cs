@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("complianceStandards")]
+        [Input("complianceStandards", required: true)]
         private InputList<string>? _complianceStandards;
         public InputList<string> ComplianceStandards
         {
@@ -20,8 +20,8 @@ namespace Pulumi.Databricks.Inputs
             set => _complianceStandards = value;
         }
 
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
 
         public ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceGetArgs()
         {

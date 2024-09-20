@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? EmbeddingDimension { get; set; }
 
         /// <summary>
-        /// Three-level name of the Vector Search Index to create (`catalog.schema.index_name`).
+        /// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -39,7 +39,8 @@ type SqlTable struct {
 	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-	DataSourceFormat pulumi.StringPtrOutput `pulumi:"dataSourceFormat"`
+	DataSourceFormat    pulumi.StringPtrOutput `pulumi:"dataSourceFormat"`
+	EffectiveProperties pulumi.StringMapOutput `pulumi:"effectiveProperties"`
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
@@ -112,7 +113,8 @@ type sqlTableState struct {
 	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
 	Comment *string `pulumi:"comment"`
 	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-	DataSourceFormat *string `pulumi:"dataSourceFormat"`
+	DataSourceFormat    *string           `pulumi:"dataSourceFormat"`
+	EffectiveProperties map[string]string `pulumi:"effectiveProperties"`
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
@@ -147,7 +149,8 @@ type SqlTableState struct {
 	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
 	Comment pulumi.StringPtrInput
 	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-	DataSourceFormat pulumi.StringPtrInput
+	DataSourceFormat    pulumi.StringPtrInput
+	EffectiveProperties pulumi.StringMapInput
 	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Map of user defined table options. Change forces creation of a new resource.
@@ -360,6 +363,10 @@ func (o SqlTableOutput) Comment() pulumi.StringPtrOutput {
 // External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 func (o SqlTableOutput) DataSourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.DataSourceFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlTableOutput) EffectiveProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.EffectiveProperties }).(pulumi.StringMapOutput)
 }
 
 // Name of table relative to parent catalog and schema. Change forces creation of a new resource.

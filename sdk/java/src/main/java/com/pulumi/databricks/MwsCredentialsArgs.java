@@ -18,7 +18,7 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     public static final MwsCredentialsArgs Empty = new MwsCredentialsArgs();
 
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
@@ -29,7 +29,7 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
@@ -137,7 +137,7 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
          * 
          * @return builder
          * 

@@ -118,7 +118,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 
@@ -168,7 +168,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  args: RestrictWorkspaceAdminsSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource could be only used with workspace-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
 
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 

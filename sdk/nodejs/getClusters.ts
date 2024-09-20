@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -49,6 +51,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusters:getClusters", {
         "clusterNameContains": args.clusterNameContains,
+        "filterBy": args.filterBy,
         "id": args.id,
         "ids": args.ids,
     }, opts);
@@ -62,6 +65,10 @@ export interface GetClustersArgs {
      * Only return databricks.Cluster ids that match the given name string.
      */
     clusterNameContains?: string;
+    /**
+     * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+     */
+    filterBy?: inputs.GetClustersFilterBy;
     id?: string;
     /**
      * list of databricks.Cluster ids
@@ -74,6 +81,7 @@ export interface GetClustersArgs {
  */
 export interface GetClustersResult {
     readonly clusterNameContains?: string;
+    readonly filterBy?: outputs.GetClustersFilterBy;
     readonly id: string;
     /**
      * list of databricks.Cluster ids
@@ -131,6 +139,10 @@ export interface GetClustersOutputArgs {
      * Only return databricks.Cluster ids that match the given name string.
      */
     clusterNameContains?: pulumi.Input<string>;
+    /**
+     * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+     */
+    filterBy?: pulumi.Input<inputs.GetClustersFilterByArgs>;
     id?: pulumi.Input<string>;
     /**
      * list of databricks.Cluster ids

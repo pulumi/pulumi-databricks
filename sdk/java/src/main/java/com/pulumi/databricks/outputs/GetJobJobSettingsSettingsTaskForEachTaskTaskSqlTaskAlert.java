@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
     private String alertId;
     private @Nullable Boolean pauseSubscriptions;
-    private List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
+    private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert() {}
     public String alertId() {
@@ -27,7 +27,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
     public List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions() {
-        return this.subscriptions;
+        return this.subscriptions == null ? List.of() : this.subscriptions;
     }
 
     public static Builder builder() {
@@ -41,7 +41,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
     public static final class Builder {
         private String alertId;
         private @Nullable Boolean pauseSubscriptions;
-        private List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
+        private @Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,10 +65,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
             return this;
         }
         @CustomType.Setter
-        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions) {
-            if (subscriptions == null) {
-              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert", "subscriptions");
-            }
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription> subscriptions) {
+
             this.subscriptions = subscriptions;
             return this;
         }

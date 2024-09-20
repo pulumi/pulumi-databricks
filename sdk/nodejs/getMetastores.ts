@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source could be only used with account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
  *
@@ -64,7 +64,7 @@ export interface GetMetastoresResult {
     readonly ids: {[key: string]: string};
 }
 /**
- * > **Note** This data source could be only used with account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
  *

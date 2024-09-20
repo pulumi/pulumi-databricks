@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource could be only used on Unity Catalog-enabled workspace!
+    /// &gt; **Note** This resource can only be used on a Unity Catalog-enabled workspace!
     /// 
-    /// This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
+    /// This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
     /// 
     /// ## Example Usage
     /// 
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource can be imported using the name of the Vector Search Endpoint
+    /// The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
     /// 
     /// bash
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.VectorSearchEndpointEndpointStatus>> EndpointStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         public Output<string> LastUpdatedUser { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.
+        /// Name of the Mosaic AI Vector Search Endpoint to create.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -147,13 +147,13 @@ namespace Pulumi.Databricks
     public sealed class VectorSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.
+        /// Name of the Mosaic AI Vector Search Endpoint to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
         public Input<string>? LastUpdatedUser { get; set; }
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.
+        /// Name of the Mosaic AI Vector Search Endpoint to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

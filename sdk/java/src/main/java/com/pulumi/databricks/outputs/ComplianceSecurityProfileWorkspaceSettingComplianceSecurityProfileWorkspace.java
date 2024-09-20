@@ -4,24 +4,23 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
-    private @Nullable List<String> complianceStandards;
-    private @Nullable Boolean isEnabled;
+    private List<String> complianceStandards;
+    private Boolean isEnabled;
 
     private ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace() {}
     public List<String> complianceStandards() {
-        return this.complianceStandards == null ? List.of() : this.complianceStandards;
+        return this.complianceStandards;
     }
-    public Optional<Boolean> isEnabled() {
-        return Optional.ofNullable(this.isEnabled);
+    public Boolean isEnabled() {
+        return this.isEnabled;
     }
 
     public static Builder builder() {
@@ -33,8 +32,8 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> complianceStandards;
-        private @Nullable Boolean isEnabled;
+        private List<String> complianceStandards;
+        private Boolean isEnabled;
         public Builder() {}
         public Builder(ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
         }
 
         @CustomType.Setter
-        public Builder complianceStandards(@Nullable List<String> complianceStandards) {
-
+        public Builder complianceStandards(List<String> complianceStandards) {
+            if (complianceStandards == null) {
+              throw new MissingRequiredPropertyException("ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace", "complianceStandards");
+            }
             this.complianceStandards = complianceStandards;
             return this;
         }
@@ -52,8 +53,10 @@ public final class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityPr
             return complianceStandards(List.of(complianceStandards));
         }
         @CustomType.Setter
-        public Builder isEnabled(@Nullable Boolean isEnabled) {
-
+        public Builder isEnabled(Boolean isEnabled) {
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace", "isEnabled");
+            }
             this.isEnabled = isEnabled;
             return this;
         }

@@ -28,6 +28,7 @@ public final class ShareObject {
      * 
      */
     private @Nullable String comment;
+    private @Nullable String content;
     /**
      * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      * 
@@ -61,6 +62,7 @@ public final class ShareObject {
      * 
      */
     private @Nullable String status;
+    private @Nullable String stringSharedAs;
 
     private ShareObject() {}
     public Optional<Integer> addedAt() {
@@ -82,6 +84,9 @@ public final class ShareObject {
      */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
+    }
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
     }
     /**
      * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
@@ -130,6 +135,9 @@ public final class ShareObject {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    public Optional<String> stringSharedAs() {
+        return Optional.ofNullable(this.stringSharedAs);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -144,6 +152,7 @@ public final class ShareObject {
         private @Nullable String addedBy;
         private @Nullable Boolean cdfEnabled;
         private @Nullable String comment;
+        private @Nullable String content;
         private String dataObjectType;
         private @Nullable String historyDataSharingStatus;
         private String name;
@@ -151,6 +160,7 @@ public final class ShareObject {
         private @Nullable String sharedAs;
         private @Nullable Integer startVersion;
         private @Nullable String status;
+        private @Nullable String stringSharedAs;
         public Builder() {}
         public Builder(ShareObject defaults) {
     	      Objects.requireNonNull(defaults);
@@ -158,6 +168,7 @@ public final class ShareObject {
     	      this.addedBy = defaults.addedBy;
     	      this.cdfEnabled = defaults.cdfEnabled;
     	      this.comment = defaults.comment;
+    	      this.content = defaults.content;
     	      this.dataObjectType = defaults.dataObjectType;
     	      this.historyDataSharingStatus = defaults.historyDataSharingStatus;
     	      this.name = defaults.name;
@@ -165,6 +176,7 @@ public final class ShareObject {
     	      this.sharedAs = defaults.sharedAs;
     	      this.startVersion = defaults.startVersion;
     	      this.status = defaults.status;
+    	      this.stringSharedAs = defaults.stringSharedAs;
         }
 
         @CustomType.Setter
@@ -189,6 +201,12 @@ public final class ShareObject {
         public Builder comment(@Nullable String comment) {
 
             this.comment = comment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder content(@Nullable String content) {
+
+            this.content = content;
             return this;
         }
         @CustomType.Setter
@@ -240,12 +258,19 @@ public final class ShareObject {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder stringSharedAs(@Nullable String stringSharedAs) {
+
+            this.stringSharedAs = stringSharedAs;
+            return this;
+        }
         public ShareObject build() {
             final var _resultValue = new ShareObject();
             _resultValue.addedAt = addedAt;
             _resultValue.addedBy = addedBy;
             _resultValue.cdfEnabled = cdfEnabled;
             _resultValue.comment = comment;
+            _resultValue.content = content;
             _resultValue.dataObjectType = dataObjectType;
             _resultValue.historyDataSharingStatus = historyDataSharingStatus;
             _resultValue.name = name;
@@ -253,6 +278,7 @@ public final class ShareObject {
             _resultValue.sharedAs = sharedAs;
             _resultValue.startVersion = startVersion;
             _resultValue.status = status;
+            _resultValue.stringSharedAs = stringSharedAs;
             return _resultValue;
         }
     }

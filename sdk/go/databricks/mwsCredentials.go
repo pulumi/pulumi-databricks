@@ -60,7 +60,6 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
-//				AccountId:       pulumi.Any(databricksAccountId),
 //				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
 //				RoleArn:         crossAccountRole.Arn,
 //			})
@@ -96,7 +95,7 @@ import (
 type MwsCredentials struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
@@ -147,7 +146,7 @@ func GetMwsCredentials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsCredentials resources.
 type mwsCredentialsState struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
@@ -163,7 +162,7 @@ type mwsCredentialsState struct {
 }
 
 type MwsCredentialsState struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
@@ -183,7 +182,7 @@ func (MwsCredentialsState) ElementType() reflect.Type {
 }
 
 type mwsCredentialsArgs struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
@@ -200,7 +199,7 @@ type mwsCredentialsArgs struct {
 
 // The set of arguments for constructing a MwsCredentials resource.
 type MwsCredentialsArgs struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 	//
 	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
@@ -302,7 +301,7 @@ func (o MwsCredentialsOutput) ToMwsCredentialsOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
 //
 // Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 func (o MwsCredentialsOutput) AccountId() pulumi.StringPtrOutput {

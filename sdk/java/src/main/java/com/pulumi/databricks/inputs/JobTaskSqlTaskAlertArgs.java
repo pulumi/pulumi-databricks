@@ -53,15 +53,15 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
      * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
      * 
      */
-    @Import(name="subscriptions", required=true)
-    private Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
+    @Import(name="subscriptions")
+    private @Nullable Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
 
     /**
      * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
      * 
      */
-    public Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions() {
-        return this.subscriptions;
+    public Optional<Output<List<JobTaskSqlTaskAlertSubscriptionArgs>>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private JobTaskSqlTaskAlertArgs() {}
@@ -138,7 +138,7 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder subscriptions(Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
+        public Builder subscriptions(@Nullable Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
@@ -166,9 +166,6 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
         public JobTaskSqlTaskAlertArgs build() {
             if ($.alertId == null) {
                 throw new MissingRequiredPropertyException("JobTaskSqlTaskAlertArgs", "alertId");
-            }
-            if ($.subscriptions == null) {
-                throw new MissingRequiredPropertyException("JobTaskSqlTaskAlertArgs", "subscriptions");
             }
             return $;
         }
