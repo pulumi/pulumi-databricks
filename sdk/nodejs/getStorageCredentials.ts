@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  */
 export function getStorageCredentials(args?: GetStorageCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageCredentialsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getStorageCredentials:getStorageCredentials", {
         "names": args.names,
@@ -85,7 +84,11 @@ export interface GetStorageCredentialsResult {
  * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
  */
 export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageCredentialsResult> {
-    return pulumi.output(args).apply((a: any) => getStorageCredentials(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getStorageCredentials:getStorageCredentials", {
+        "names": args.names,
+    }, opts);
 }
 
 /**

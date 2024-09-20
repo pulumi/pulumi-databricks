@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getVolume:getVolume", {
         "id": args.id,
@@ -60,7 +59,12 @@ export interface GetVolumeResult {
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
-    return pulumi.output(args).apply((a: any) => getVolume(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getVolume:getVolume", {
+        "id": args.id,
+        "name": args.name,
+        "volumeInfo": args.volumeInfo,
+    }, opts);
 }
 
 /**

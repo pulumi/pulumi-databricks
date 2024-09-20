@@ -47,14 +47,20 @@ type GetAwsBucketPolicyResult struct {
 
 func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsBucketPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAwsBucketPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetAwsBucketPolicyResultOutput, error) {
 			args := v.(GetAwsBucketPolicyArgs)
-			r, err := GetAwsBucketPolicy(ctx, &args, opts...)
-			var s GetAwsBucketPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAwsBucketPolicyResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetAwsBucketPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAwsBucketPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAwsBucketPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetAwsBucketPolicyResultOutput)
 }
 

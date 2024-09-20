@@ -122,14 +122,20 @@ type GetAwsAssumeRolePolicyResult struct {
 
 func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsAssumeRolePolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAwsAssumeRolePolicyResult, error) {
+		ApplyT(func(v interface{}) (GetAwsAssumeRolePolicyResultOutput, error) {
 			args := v.(GetAwsAssumeRolePolicyArgs)
-			r, err := GetAwsAssumeRolePolicy(ctx, &args, opts...)
-			var s GetAwsAssumeRolePolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAwsAssumeRolePolicyResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetAwsAssumeRolePolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAwsAssumeRolePolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAwsAssumeRolePolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetAwsAssumeRolePolicyResultOutput)
 }
 

@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
  */
 export function getViews(args: GetViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetViewsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getViews:getViews", {
         "catalogName": args.catalogName,
@@ -58,7 +57,12 @@ export interface GetViewsResult {
  * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
  */
 export function getViewsOutput(args: GetViewsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewsResult> {
-    return pulumi.output(args).apply((a: any) => getViews(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getViews:getViews", {
+        "catalogName": args.catalogName,
+        "ids": args.ids,
+        "schemaName": args.schemaName,
+    }, opts);
 }
 
 /**
