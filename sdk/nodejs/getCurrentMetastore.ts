@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  */
 export function getCurrentMetastore(args?: GetCurrentMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentMetastoreResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentMetastore:getCurrentMetastore", {
         "id": args.id,
@@ -100,7 +99,12 @@ export interface GetCurrentMetastoreResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getCurrentMetastoreOutput(args?: GetCurrentMetastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentMetastoreResult> {
-    return pulumi.output(args).apply((a: any) => getCurrentMetastore(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getCurrentMetastore:getCurrentMetastore", {
+        "id": args.id,
+        "metastoreInfo": args.metastoreInfo,
+    }, opts);
 }
 
 /**

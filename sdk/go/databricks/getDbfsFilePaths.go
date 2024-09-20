@@ -82,14 +82,20 @@ type GetDbfsFilePathsResult struct {
 
 func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs, opts ...pulumi.InvokeOption) GetDbfsFilePathsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDbfsFilePathsResult, error) {
+		ApplyT(func(v interface{}) (GetDbfsFilePathsResultOutput, error) {
 			args := v.(GetDbfsFilePathsArgs)
-			r, err := GetDbfsFilePaths(ctx, &args, opts...)
-			var s GetDbfsFilePathsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDbfsFilePathsResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args, &rv, "", opts...)
+			if err != nil {
+				return GetDbfsFilePathsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDbfsFilePathsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDbfsFilePathsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDbfsFilePathsResultOutput)
 }
 

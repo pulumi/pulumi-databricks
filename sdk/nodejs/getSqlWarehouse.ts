@@ -48,7 +48,6 @@ import * as utilities from "./utilities";
  */
 export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehouseResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", {
         "autoStopMins": args.autoStopMins,
@@ -289,7 +288,31 @@ export interface GetSqlWarehouseResult {
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
 export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehouseResult> {
-    return pulumi.output(args).apply((a: any) => getSqlWarehouse(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getSqlWarehouse:getSqlWarehouse", {
+        "autoStopMins": args.autoStopMins,
+        "channel": args.channel,
+        "clusterSize": args.clusterSize,
+        "creatorName": args.creatorName,
+        "dataSourceId": args.dataSourceId,
+        "enablePhoton": args.enablePhoton,
+        "enableServerlessCompute": args.enableServerlessCompute,
+        "health": args.health,
+        "id": args.id,
+        "instanceProfileArn": args.instanceProfileArn,
+        "jdbcUrl": args.jdbcUrl,
+        "maxNumClusters": args.maxNumClusters,
+        "minNumClusters": args.minNumClusters,
+        "name": args.name,
+        "numActiveSessions": args.numActiveSessions,
+        "numClusters": args.numClusters,
+        "odbcParams": args.odbcParams,
+        "spotInstancePolicy": args.spotInstancePolicy,
+        "state": args.state,
+        "tags": args.tags,
+        "warehouseType": args.warehouseType,
+    }, opts);
 }
 
 /**

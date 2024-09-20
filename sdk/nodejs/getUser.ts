@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getUser:getUser", {
         "userId": args.userId,
@@ -150,7 +149,12 @@ export interface GetUserResult {
  * - databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getUser:getUser", {
+        "userId": args.userId,
+        "userName": args.userName,
+    }, opts);
 }
 
 /**

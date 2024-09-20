@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  */
 export function getMwsCredentials(args?: GetMwsCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsCredentialsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsCredentials:getMwsCredentials", {
         "ids": args.ids,
@@ -97,7 +96,11 @@ export interface GetMwsCredentialsResult {
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  */
 export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsCredentialsResult> {
-    return pulumi.output(args).apply((a: any) => getMwsCredentials(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getMwsCredentials:getMwsCredentials", {
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

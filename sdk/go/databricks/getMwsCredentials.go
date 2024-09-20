@@ -80,14 +80,20 @@ type LookupMwsCredentialsResult struct {
 
 func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOutputArgs, opts ...pulumi.InvokeOption) LookupMwsCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMwsCredentialsResult, error) {
+		ApplyT(func(v interface{}) (LookupMwsCredentialsResultOutput, error) {
 			args := v.(LookupMwsCredentialsArgs)
-			r, err := LookupMwsCredentials(ctx, &args, opts...)
-			var s LookupMwsCredentialsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMwsCredentialsResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getMwsCredentials:getMwsCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMwsCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMwsCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMwsCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMwsCredentialsResultOutput)
 }
 

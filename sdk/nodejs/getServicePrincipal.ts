@@ -44,7 +44,6 @@ import * as utilities from "./utilities";
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServicePrincipal:getServicePrincipal", {
         "aclPrincipalId": args.aclPrincipalId,
@@ -172,7 +171,19 @@ export interface GetServicePrincipalResult {
  * - databricksService principal to manage service principals
  */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
-    return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipal:getServicePrincipal", {
+        "aclPrincipalId": args.aclPrincipalId,
+        "active": args.active,
+        "applicationId": args.applicationId,
+        "displayName": args.displayName,
+        "externalId": args.externalId,
+        "home": args.home,
+        "id": args.id,
+        "repos": args.repos,
+        "spId": args.spId,
+    }, opts);
 }
 
 /**

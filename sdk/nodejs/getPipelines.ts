@@ -57,7 +57,6 @@ import * as utilities from "./utilities";
  */
 export function getPipelines(args?: GetPipelinesArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelinesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPipelines:getPipelines", {
         "ids": args.ids,
@@ -145,7 +144,12 @@ export interface GetPipelinesResult {
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
  */
 export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelinesResult> {
-    return pulumi.output(args).apply((a: any) => getPipelines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getPipelines:getPipelines", {
+        "ids": args.ids,
+        "pipelineName": args.pipelineName,
+    }, opts);
 }
 
 /**

@@ -48,7 +48,6 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTables:getTables", {
         "catalogName": args.catalogName,
@@ -134,7 +133,12 @@ export interface GetTablesResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
-    return pulumi.output(args).apply((a: any) => getTables(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getTables:getTables", {
+        "catalogName": args.catalogName,
+        "ids": args.ids,
+        "schemaName": args.schemaName,
+    }, opts);
 }
 
 /**

@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchemas(args: GetSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSchemas:getSchemas", {
         "catalogName": args.catalogName,
@@ -98,7 +97,11 @@ export interface GetSchemasResult {
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
-    return pulumi.output(args).apply((a: any) => getSchemas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getSchemas:getSchemas", {
+        "catalogName": args.catalogName,
+        "ids": args.ids,
+    }, opts);
 }
 
 /**

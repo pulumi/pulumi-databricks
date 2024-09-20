@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFilePaths(args: GetDbfsFilePathsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbfsFilePathsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
         "path": args.path,
@@ -101,7 +100,11 @@ export interface GetDbfsFilePathsResult {
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFilePathsOutput(args: GetDbfsFilePathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFilePathsResult> {
-    return pulumi.output(args).apply((a: any) => getDbfsFilePaths(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
+        "path": args.path,
+        "recursive": args.recursive,
+    }, opts);
 }
 
 /**

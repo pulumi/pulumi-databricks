@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAwsUnityCatalogPolicy(args: GetAwsUnityCatalogPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsUnityCatalogPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
         "awsAccountId": args.awsAccountId,
@@ -123,7 +122,13 @@ export interface GetAwsUnityCatalogPolicyResult {
  * ```
  */
 export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsUnityCatalogPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
+        "awsAccountId": args.awsAccountId,
+        "bucketName": args.bucketName,
+        "kmsName": args.kmsName,
+        "roleName": args.roleName,
+    }, opts);
 }
 
 /**

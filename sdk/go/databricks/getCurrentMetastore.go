@@ -80,14 +80,20 @@ type GetCurrentMetastoreResult struct {
 
 func GetCurrentMetastoreOutput(ctx *pulumi.Context, args GetCurrentMetastoreOutputArgs, opts ...pulumi.InvokeOption) GetCurrentMetastoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCurrentMetastoreResult, error) {
+		ApplyT(func(v interface{}) (GetCurrentMetastoreResultOutput, error) {
 			args := v.(GetCurrentMetastoreArgs)
-			r, err := GetCurrentMetastore(ctx, &args, opts...)
-			var s GetCurrentMetastoreResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCurrentMetastoreResult
+			secret, err := ctx.InvokePackageRaw("databricks:index/getCurrentMetastore:getCurrentMetastore", args, &rv, "", opts...)
+			if err != nil {
+				return GetCurrentMetastoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCurrentMetastoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCurrentMetastoreResultOutput), nil
+			}
+			return output, nil
 		}).(GetCurrentMetastoreResultOutput)
 }
 
