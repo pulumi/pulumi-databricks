@@ -9,8 +9,8 @@ replace github.com/databricks/terraform-provider-databricks/shim => ./shim
 require (
 	github.com/databricks/databricks-sdk-go v0.46.0
 	github.com/databricks/terraform-provider-databricks/shim v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
 )
 
 require (
