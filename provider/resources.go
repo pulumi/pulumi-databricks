@@ -164,9 +164,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
@@ -175,9 +172,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			RespectSchemaVersion: true,
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+
 			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -248,7 +243,7 @@ var rewritePermissions = tfbridge.DocsEdit{
 		// Find and split off the import section
 		importSectionSplit := bytes.SplitAfterN(content, []byte("## Import"), -1)
 		returnContent := importSectionSplit[0]
-		//Rewrite and append the import section
+		// Rewrite and append the import section
 		importContent := []byte("\n\n## Import\n\nThe resource permissions can be imported using the object id\n\n" +
 			"```\nterraform import databricks_permissions <object type>/<object id>\n```")
 		returnContent = append(returnContent, importContent...)
