@@ -2933,7 +2933,7 @@ type ClusterDockerImage struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
-	// 				nil,
+	// 				map[string]interface{}{},
 	// 			},
 	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
@@ -2992,7 +2992,7 @@ type ClusterDockerImageArgs struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
-	// 				nil,
+	// 				map[string]interface{}{},
 	// 			},
 	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
@@ -3118,7 +3118,7 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
-//					nil,
+//					map[string]interface{}{},
 //				},
 //				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})
@@ -3196,7 +3196,7 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
-//					nil,
+//					map[string]interface{}{},
 //				},
 //				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})
@@ -8635,7 +8635,7 @@ type InstancePoolPreloadedDockerImage struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
-	// 				nil,
+	// 				map[string]interface{}{},
 	// 			},
 	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
@@ -8696,7 +8696,7 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
-	// 				nil,
+	// 				map[string]interface{}{},
 	// 			},
 	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
@@ -8798,7 +8798,7 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
-//					nil,
+//					map[string]interface{}{},
 //				},
 //				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})

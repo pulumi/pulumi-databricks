@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -170,9 +175,6 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_aws_cross_account_policy)
 def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         pass_roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         policy_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,21 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
     :param str security_group_id: — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
     :param str vpc_id: — ID of the AWS VPC where you want to launch workspaces.
     """
-    ...
+    __args__ = dict()
+    __args__['awsAccountId'] = aws_account_id
+    __args__['passRoles'] = pass_roles
+    __args__['policyType'] = policy_type
+    __args__['region'] = region
+    __args__['securityGroupId'] = security_group_id
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy', __args__, opts=opts, typ=GetAwsCrossAccountPolicyResult)
+    return __ret__.apply(lambda __response__: GetAwsCrossAccountPolicyResult(
+        aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json'),
+        pass_roles=pulumi.get(__response__, 'pass_roles'),
+        policy_type=pulumi.get(__response__, 'policy_type'),
+        region=pulumi.get(__response__, 'region'),
+        security_group_id=pulumi.get(__response__, 'security_group_id'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

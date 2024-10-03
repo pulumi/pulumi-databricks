@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -108,9 +113,6 @@ def get_notebook_paths(path: Optional[str] = None,
         notebook_path_lists=pulumi.get(__ret__, 'notebook_path_lists'),
         path=pulumi.get(__ret__, 'path'),
         recursive=pulumi.get(__ret__, 'recursive'))
-
-
-@_utilities.lift_output_func(get_notebook_paths)
 def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
                               recursive: Optional[pulumi.Input[bool]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotebookPathsResult]:
@@ -133,4 +135,13 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
     :param str path: Path to workspace directory
     :param bool recursive: Either or recursively walk given path
     """
-    ...
+    __args__ = dict()
+    __args__['path'] = path
+    __args__['recursive'] = recursive
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotebookPaths:getNotebookPaths', __args__, opts=opts, typ=GetNotebookPathsResult)
+    return __ret__.apply(lambda __response__: GetNotebookPathsResult(
+        id=pulumi.get(__response__, 'id'),
+        notebook_path_lists=pulumi.get(__response__, 'notebook_path_lists'),
+        path=pulumi.get(__response__, 'path'),
+        recursive=pulumi.get(__response__, 'recursive')))

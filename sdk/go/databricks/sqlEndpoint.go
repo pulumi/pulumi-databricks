@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

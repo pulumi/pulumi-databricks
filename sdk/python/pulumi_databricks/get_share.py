@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -142,9 +147,6 @@ def get_share(created_at: Optional[int] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         objects=pulumi.get(__ret__, 'objects'))
-
-
-@_utilities.lift_output_func(get_share)
 def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
                      created_by: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -179,4 +181,16 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
     :param str name: The name of the share
     :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
     """
-    ...
+    __args__ = dict()
+    __args__['createdAt'] = created_at
+    __args__['createdBy'] = created_by
+    __args__['name'] = name
+    __args__['objects'] = objects
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getShare:getShare', __args__, opts=opts, typ=GetShareResult)
+    return __ret__.apply(lambda __response__: GetShareResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        objects=pulumi.get(__response__, 'objects')))
