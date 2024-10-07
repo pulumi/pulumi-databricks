@@ -15,9 +15,15 @@
 package databricks
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/databricks/databricks-sdk-go/useragent"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+
+	"github.com/pulumi/providertest/pulumitest"
 )
 
 func TestWithUserAgent(t *testing.T) {
@@ -50,5 +56,29 @@ func TestWithUserAgent(t *testing.T) {
 			useragent.WithUserAgentExtra("pulumi", userAgentValue(v.version))
 			// No error return value to check.
 		})
+	}
+}
+
+func TestNoDebugLogsOnStartup(t *testing.T) {
+	dir := t.TempDir()
+	binPath, err := filepath.Abs(filepath.Join("..", "bin"))
+	require.NoError(t, err)
+
+	require.NoError(t, os.WriteFile(filepath.Join(dir, "Pulumi.yaml"), []byte(`name: dev
+runtime: yaml
+resources:
+  p:
+    type: pulumi:providers:databricks
+
+plugins:
+  providers:
+    - name: databricks
+      path: "`+binPath+`"
+`), 0600))
+	test := pulumitest.NewPulumiTest(t, dir)
+	result := test.Preview()
+	for _, msg := range []string{"[DEBUG]", "[TRACE]"} {
+		assert.NotContains(t, result.StdErr, msg)
+		assert.NotContains(t, result.StdOut, msg)
 	}
 }

@@ -21,8 +21,7 @@ import (
 	"path"
 	"strings"
 
-	// embed package is not used directly
-	_ "embed"
+	_ "embed" // embed package is not used directly
 
 	"github.com/databricks/databricks-sdk-go/useragent"
 	databricks "github.com/databricks/terraform-provider-databricks/shim"
@@ -33,6 +32,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 
+	"github.com/pulumi/pulumi-databricks/provider/disablelogs" // Disable logging before terraform-provider-databricks is loaded
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 )
 
@@ -71,6 +71,8 @@ func setWorkspaceIDToString(p tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisi
 
 	return tfbridge.PropertyVisitResult{HasEffect: true}, nil
 }
+
+func init() { disablelogs.Undo() }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
