@@ -13,6 +13,50 @@ import * as utilities from "./utilities";
  *
  * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
  *
+ * ## Use an Identity Column
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const things = new databricks.Schema("things", {
+ *     catalogName: sandbox.id,
+ *     name: "things",
+ *     comment: "this database is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const thing = new databricks.SqlTable("thing", {
+ *     name: "quickstart_table",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "MANAGED",
+ *     dataSourceFormat: "DELTA",
+ *     storageLocation: "",
+ *     columns: [
+ *         {
+ *             name: "id",
+ *             type: "bigint",
+ *             identity: "default",
+ *         },
+ *         {
+ *             name: "name",
+ *             type: "string",
+ *             comment: "name of thing",
+ *         },
+ *     ],
+ *     comment: "this table is managed by terraform",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by its full name:

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Databricks on AWS usage
  *
- * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+ * > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * ## Databricks on GCP usage
  *
- * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+ * > Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,7 +86,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * !> Importing this resource is not currently supported.
  */
 export class MwsPrivateAccessSettings extends pulumi.CustomResource {
     /**

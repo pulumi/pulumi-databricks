@@ -120,6 +120,7 @@ export class Pipeline extends pulumi.CustomResource {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      */
@@ -182,6 +183,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
     public readonly runAsUserName!: pulumi.Output<string>;
+    public readonly schema!: pulumi.Output<string | undefined>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
@@ -215,6 +217,7 @@ export class Pipeline extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
             resourceInputs["allowDuplicateNames"] = state ? state.allowDuplicateNames : undefined;
+            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
             resourceInputs["cause"] = state ? state.cause : undefined;
             resourceInputs["channel"] = state ? state.channel : undefined;
@@ -238,6 +241,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["photon"] = state ? state.photon : undefined;
             resourceInputs["runAsUserName"] = state ? state.runAsUserName : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["serverless"] = state ? state.serverless : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
@@ -247,6 +251,7 @@ export class Pipeline extends pulumi.CustomResource {
         } else {
             const args = argsOrState as PipelineArgs | undefined;
             resourceInputs["allowDuplicateNames"] = args ? args.allowDuplicateNames : undefined;
+            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["catalog"] = args ? args.catalog : undefined;
             resourceInputs["cause"] = args ? args.cause : undefined;
             resourceInputs["channel"] = args ? args.channel : undefined;
@@ -270,6 +275,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["photon"] = args ? args.photon : undefined;
             resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["serverless"] = args ? args.serverless : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
@@ -290,6 +296,7 @@ export interface PipelineState {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      */
@@ -352,6 +359,7 @@ export interface PipelineState {
      */
     photon?: pulumi.Input<boolean>;
     runAsUserName?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
@@ -380,6 +388,7 @@ export interface PipelineArgs {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      */
@@ -442,6 +451,7 @@ export interface PipelineArgs {
      */
     photon?: pulumi.Input<boolean>;
     runAsUserName?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */

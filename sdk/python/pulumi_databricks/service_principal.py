@@ -536,9 +536,9 @@ class ServicePrincipal(pulumi.CustomResource):
         * Databricks-managed - exists only inside the Databricks platform (all clouds) and couldn't be used for accessing non-Databricks services.
         * Azure-managed - existing Azure service principal (enterprise application) is registered inside Databricks.  It could be used to work with other Azure services.
 
-        > **Note** To assign account level service principals to workspace use databricks_mws_permission_assignment.
+        > To assign account level service principals to workspace use databricks_mws_permission_assignment.
 
-        > **Note** Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
 
         To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using the supported authentication method for account operations.
 
@@ -651,9 +651,9 @@ class ServicePrincipal(pulumi.CustomResource):
         * Databricks-managed - exists only inside the Databricks platform (all clouds) and couldn't be used for accessing non-Databricks services.
         * Azure-managed - existing Azure service principal (enterprise application) is registered inside Databricks.  It could be used to work with other Azure services.
 
-        > **Note** To assign account level service principals to workspace use databricks_mws_permission_assignment.
+        > To assign account level service principals to workspace use databricks_mws_permission_assignment.
 
-        > **Note** Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
 
         To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using the supported authentication method for account operations.
 

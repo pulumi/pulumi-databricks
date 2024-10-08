@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
     /// 
-    /// **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+    /// &gt; If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
     /// 
     /// ## Example Usage
     /// 
@@ -99,6 +99,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/modelServing:ModelServing")]
     public partial class ModelServing : global::Pulumi.CustomResource
     {
+        [Output("aiGateway")]
+        public Output<Outputs.ModelServingAiGateway?> AiGateway { get; private set; } = null!;
+
         /// <summary>
         /// The model serving endpoint configuration.
         /// </summary>
@@ -181,6 +184,9 @@ namespace Pulumi.Databricks
 
     public sealed class ModelServingArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aiGateway")]
+        public Input<Inputs.ModelServingAiGatewayArgs>? AiGateway { get; set; }
+
         /// <summary>
         /// The model serving endpoint configuration.
         /// </summary>
@@ -231,6 +237,9 @@ namespace Pulumi.Databricks
 
     public sealed class ModelServingState : global::Pulumi.ResourceArgs
     {
+        [Input("aiGateway")]
+        public Input<Inputs.ModelServingAiGatewayGetArgs>? AiGateway { get; set; }
+
         /// <summary>
         /// The model serving endpoint configuration.
         /// </summary>

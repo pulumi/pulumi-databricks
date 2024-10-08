@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -87,6 +88,13 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
+    }
+
+    @Import(name="externalAccessEnabled")
+    private @Nullable Output<Boolean> externalAccessEnabled;
+
+    public Optional<Output<Boolean>> externalAccessEnabled() {
+        return Optional.ofNullable(this.externalAccessEnabled);
     }
 
     @Import(name="globalMetastoreId")
@@ -216,6 +224,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         this.deltaSharingOrganizationName = $.deltaSharingOrganizationName;
         this.deltaSharingRecipientTokenLifetimeInSeconds = $.deltaSharingRecipientTokenLifetimeInSeconds;
         this.deltaSharingScope = $.deltaSharingScope;
+        this.externalAccessEnabled = $.externalAccessEnabled;
         this.globalMetastoreId = $.globalMetastoreId;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -344,6 +353,15 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
          */
         public Builder deltaSharingScope(String deltaSharingScope) {
             return deltaSharingScope(Output.of(deltaSharingScope));
+        }
+
+        public Builder externalAccessEnabled(@Nullable Output<Boolean> externalAccessEnabled) {
+            $.externalAccessEnabled = externalAccessEnabled;
+            return this;
+        }
+
+        public Builder externalAccessEnabled(Boolean externalAccessEnabled) {
+            return externalAccessEnabled(Output.of(externalAccessEnabled));
         }
 
         public Builder globalMetastoreId(@Nullable Output<String> globalMetastoreId) {

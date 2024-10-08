@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+    /// &gt; Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
     /// 
     /// Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
     /// 
@@ -315,7 +315,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// -&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint")]
     public partial class MwsVpcEndpoint : global::Pulumi.CustomResource

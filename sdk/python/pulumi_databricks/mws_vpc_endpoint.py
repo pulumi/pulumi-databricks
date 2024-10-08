@@ -349,7 +349,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
         Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 
@@ -523,7 +523,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        -> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,7 +543,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  args: MwsVpcEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
         Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 
@@ -717,7 +717,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        -> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param MwsVpcEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -126,6 +126,9 @@ namespace Pulumi.Databricks
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
+        [Output("budgetPolicyId")]
+        public Output<string?> BudgetPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         /// </summary>
@@ -234,6 +237,9 @@ namespace Pulumi.Databricks
         [Output("runAsUserName")]
         public Output<string> RunAsUserName { get; private set; } = null!;
 
+        [Output("schema")]
+        public Output<string?> Schema { get; private set; } = null!;
+
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
@@ -315,6 +321,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
+
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
         /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
@@ -452,6 +461,9 @@ namespace Pulumi.Databricks
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
+
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
@@ -495,6 +507,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
+
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
         /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
@@ -631,6 +646,9 @@ namespace Pulumi.Databricks
 
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
+
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
 
         /// <summary>
         /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.

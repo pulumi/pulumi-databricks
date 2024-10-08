@@ -20,6 +20,11 @@ export type AutomaticClusterUpdateWorkspaceSetting = import("./automaticClusterU
 export const AutomaticClusterUpdateWorkspaceSetting: typeof import("./automaticClusterUpdateWorkspaceSetting").AutomaticClusterUpdateWorkspaceSetting = null as any;
 utilities.lazyLoad(exports, ["AutomaticClusterUpdateWorkspaceSetting"], () => require("./automaticClusterUpdateWorkspaceSetting"));
 
+export { BudgetArgs, BudgetState } from "./budget";
+export type Budget = import("./budget").Budget;
+export const Budget: typeof import("./budget").Budget = null as any;
+utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -224,6 +229,11 @@ export { GetMlflowModelArgs, GetMlflowModelResult, GetMlflowModelOutputArgs } fr
 export const getMlflowModel: typeof import("./getMlflowModel").getMlflowModel = null as any;
 export const getMlflowModelOutput: typeof import("./getMlflowModel").getMlflowModelOutput = null as any;
 utilities.lazyLoad(exports, ["getMlflowModel","getMlflowModelOutput"], () => require("./getMlflowModel"));
+
+export { GetMlflowModelsArgs, GetMlflowModelsResult, GetMlflowModelsOutputArgs } from "./getMlflowModels";
+export const getMlflowModels: typeof import("./getMlflowModels").getMlflowModels = null as any;
+export const getMlflowModelsOutput: typeof import("./getMlflowModels").getMlflowModelsOutput = null as any;
+utilities.lazyLoad(exports, ["getMlflowModels","getMlflowModelsOutput"], () => require("./getMlflowModels"));
 
 export { GetMwsCredentialsArgs, GetMwsCredentialsResult, GetMwsCredentialsOutputArgs } from "./getMwsCredentials";
 export const getMwsCredentials: typeof import("./getMwsCredentials").getMwsCredentials = null as any;
@@ -755,6 +765,8 @@ const _module = {
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
                 return new AutomaticClusterUpdateWorkspaceSetting(name, <any>undefined, { urn })
+            case "databricks:index/budget:Budget":
+                return new Budget(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -945,6 +957,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)

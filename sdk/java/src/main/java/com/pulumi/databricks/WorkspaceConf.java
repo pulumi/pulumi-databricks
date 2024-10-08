@@ -16,11 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
+ * &gt; This resource has an evolving API, which may change in future versions of the provider.
  * 
  * Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there&#39;s no deterministic behavior, when they manage the same property. We strongly recommend to use a single `databricks.WorkspaceConf` per workspace.
  * 
- * &gt; **Note** Deleting `databricks.WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
+ * &gt; Deleting `databricks.WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
  * 
  * ## Example Usage
  * 
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * !&gt; Importing this resource is not currently supported.
  * 
  */
 @ResourceType(type="databricks:index/workspaceConf:WorkspaceConf")

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// !&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mount:Mount")]
     public partial class Mount : global::Pulumi.CustomResource

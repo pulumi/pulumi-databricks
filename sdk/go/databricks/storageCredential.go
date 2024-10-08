@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource can be used with an account or workspace-level provider.
+// > This resource can be used with an account or workspace-level provider.
 //
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 //

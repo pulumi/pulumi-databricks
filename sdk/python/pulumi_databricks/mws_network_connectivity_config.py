@@ -234,7 +234,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  updated_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        > **Note** Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
 
         > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
 
@@ -286,7 +286,7 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  args: MwsNetworkConnectivityConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
 
         > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
 

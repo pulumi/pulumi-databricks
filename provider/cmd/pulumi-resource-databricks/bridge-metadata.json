@@ -59,6 +59,56 @@
                     }
                 }
             },
+            "databricks_budget": {
+                "current": "databricks:index/budget:Budget",
+                "majorVersion": 1,
+                "fields": {
+                    "alert_configurations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "action_configurations": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "value": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "workspace_id": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_catalog": {
                 "current": "databricks:index/catalog:Catalog",
                 "majorVersion": 1
@@ -1709,6 +1759,61 @@
                 "current": "databricks:index/modelServing:ModelServing",
                 "majorVersion": 1,
                 "fields": {
+                    "ai_gateway": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "guardrails": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "input": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "invalid_keywords": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "pii": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "valid_topics": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "output": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "invalid_keywords": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "pii": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "valid_topics": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "inference_table_config": {
+                                    "maxItemsOne": true
+                                },
+                                "rate_limits": {
+                                    "maxItemsOne": false
+                                },
+                                "usage_tracking_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4336,6 +4441,15 @@
                     }
                 }
             },
+            "databricks_mlflow_models": {
+                "current": "databricks:index/getMlflowModels:getMlflowModels",
+                "majorVersion": 1,
+                "fields": {
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_mws_credentials": {
                 "current": "databricks:index/getMwsCredentials:getMwsCredentials",
                 "majorVersion": 1
@@ -4725,6 +4839,7 @@
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
+            "databricks:index/budget:Budget": 0,
             "databricks:index/catalog:Catalog": 0,
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": 0,
             "databricks:index/cluster:Cluster": 0,
@@ -4845,6 +4960,7 @@
             "databricks:index/getMetastores:getMetastores": 0,
             "databricks:index/getMlflowExperiment:getMlflowExperiment": 0,
             "databricks:index/getMlflowModel:getMlflowModel": 0,
+            "databricks:index/getMlflowModels:getMlflowModels": 0,
             "databricks:index/getMwsCredentials:getMwsCredentials": 0,
             "databricks:index/getMwsWorkspaces:getMwsWorkspaces": 0,
             "databricks:index/getNodeType:getNodeType": 0,
@@ -7794,6 +7910,9 @@
     },
     "workspace-id": {
         "resources": {
+            "databricks_budget": [
+                "filter.$.workspace_id"
+            ],
             "databricks_catalog_workspace_binding": [
                 "workspace_id"
             ],

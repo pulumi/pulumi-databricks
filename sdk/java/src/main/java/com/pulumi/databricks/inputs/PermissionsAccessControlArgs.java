@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,8 +36,8 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
      * Exactly one of the below arguments is required:
      * 
      */
-    @Import(name="permissionLevel", required=true)
-    private Output<String> permissionLevel;
+    @Import(name="permissionLevel")
+    private @Nullable Output<String> permissionLevel;
 
     /**
      * @return permission level according to specific resource. See examples above for the reference.
@@ -46,8 +45,8 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
      * Exactly one of the below arguments is required:
      * 
      */
-    public Output<String> permissionLevel() {
-        return this.permissionLevel;
+    public Optional<Output<String>> permissionLevel() {
+        return Optional.ofNullable(this.permissionLevel);
     }
 
     /**
@@ -136,7 +135,7 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder permissionLevel(Output<String> permissionLevel) {
+        public Builder permissionLevel(@Nullable Output<String> permissionLevel) {
             $.permissionLevel = permissionLevel;
             return this;
         }
@@ -196,9 +195,6 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
         }
 
         public PermissionsAccessControlArgs build() {
-            if ($.permissionLevel == null) {
-                throw new MissingRequiredPropertyException("PermissionsAccessControlArgs", "permissionLevel");
-            }
             return $;
         }
     }

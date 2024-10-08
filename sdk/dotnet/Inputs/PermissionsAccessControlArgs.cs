@@ -23,8 +23,8 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// Exactly one of the below arguments is required:
         /// </summary>
-        [Input("permissionLevel", required: true)]
-        public Input<string> PermissionLevel { get; set; } = null!;
+        [Input("permissionLevel")]
+        public Input<string>? PermissionLevel { get; set; }
 
         /// <summary>
         /// Application ID of the service_principal.

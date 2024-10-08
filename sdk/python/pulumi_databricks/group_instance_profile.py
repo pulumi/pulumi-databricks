@@ -131,7 +131,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,7 +178,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param GroupInstanceProfileArgs args: The arguments to use to populate this resource's properties.

@@ -367,7 +367,7 @@ class SqlQuery(pulumi.CustomResource):
         """
         To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        **Note:** documentation for this resource is a work in progress.
+        > documentation for this resource is a work in progress.
 
         A query may have one or more visualizations.
 
@@ -492,7 +492,7 @@ class SqlQuery(pulumi.CustomResource):
         """
         To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        **Note:** documentation for this resource is a work in progress.
+        > documentation for this resource is a work in progress.
 
         A query may have one or more visualizations.
 

@@ -51,6 +51,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("deltaSharingScope")]
         public string? DeltaSharingScope { get; set; }
 
+        [Input("externalAccessEnabled")]
+        public bool? ExternalAccessEnabled { get; set; }
+
         /// <summary>
         /// Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
         /// </summary>

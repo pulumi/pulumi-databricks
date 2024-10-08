@@ -18,7 +18,7 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      * 
-     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * &gt; The following configuration blocks are only supported inside a `task` block
      * 
      */
     @Import(name="fullRefresh")
@@ -27,7 +27,7 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
     /**
      * @return (Bool) Specifies if there should be full refresh of the pipeline.
      * 
-     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * &gt; The following configuration blocks are only supported inside a `task` block
      * 
      */
     public Optional<Output<Boolean>> fullRefresh() {
@@ -61,7 +61,7 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
         /**
          * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
          * 
-         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+         * &gt; The following configuration blocks are only supported inside a `task` block
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
         /**
          * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
          * 
-         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+         * &gt; The following configuration blocks are only supported inside a `task` block
          * 
          * @return builder
          * 

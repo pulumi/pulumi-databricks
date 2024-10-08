@@ -42,6 +42,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("deltaSharingScope")]
         public string? DeltaSharingScope { get; set; }
 
+        [Input("externalAccessEnabled")]
+        public bool? ExternalAccessEnabled { get; set; }
+
         [Input("globalMetastoreId")]
         public string? GlobalMetastoreId { get; set; }
 

@@ -33,6 +33,21 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
+    @Import(name="identity")
+    private @Nullable Output<String> identity;
+
+    /**
+     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
+    public Optional<Output<String>> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+
+    /**
      * User-visible name of column
      * 
      */
@@ -77,13 +92,22 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.type);
     }
 
+    @Import(name="typeJson")
+    private @Nullable Output<String> typeJson;
+
+    public Optional<Output<String>> typeJson() {
+        return Optional.ofNullable(this.typeJson);
+    }
+
     private SqlTableColumnArgs() {}
 
     private SqlTableColumnArgs(SqlTableColumnArgs $) {
         this.comment = $.comment;
+        this.identity = $.identity;
         this.name = $.name;
         this.nullable = $.nullable;
         this.type = $.type;
+        this.typeJson = $.typeJson;
     }
 
     public static Builder builder() {
@@ -123,6 +147,27 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param identity Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(@Nullable Output<String> identity) {
+            $.identity = identity;
+            return this;
+        }
+
+        /**
+         * @param identity Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(String identity) {
+            return identity(Output.of(identity));
         }
 
         /**
@@ -186,6 +231,15 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        public Builder typeJson(@Nullable Output<String> typeJson) {
+            $.typeJson = typeJson;
+            return this;
+        }
+
+        public Builder typeJson(String typeJson) {
+            return typeJson(Output.of(typeJson));
         }
 
         public SqlTableColumnArgs build() {

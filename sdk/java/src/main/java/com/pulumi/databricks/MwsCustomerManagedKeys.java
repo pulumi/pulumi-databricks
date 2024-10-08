@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &gt; **Note** If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
+ * &gt; If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
  * 
  * ### Customer-managed key for managed services
  * 
@@ -343,7 +343,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * !&gt; Importing this resource is not currently supported.
  * 
  */
 @ResourceType(type="databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys")

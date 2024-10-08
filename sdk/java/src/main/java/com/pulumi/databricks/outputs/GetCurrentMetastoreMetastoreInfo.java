@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -43,6 +44,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
      * 
      */
     private @Nullable String deltaSharingScope;
+    private @Nullable Boolean externalAccessEnabled;
     /**
      * @return Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
      * 
@@ -145,6 +147,9 @@ public final class GetCurrentMetastoreMetastoreInfo {
     public Optional<String> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
+    public Optional<Boolean> externalAccessEnabled() {
+        return Optional.ofNullable(this.externalAccessEnabled);
+    }
     /**
      * @return Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
      * 
@@ -239,6 +244,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
         private @Nullable String deltaSharingOrganizationName;
         private @Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds;
         private @Nullable String deltaSharingScope;
+        private @Nullable Boolean externalAccessEnabled;
         private @Nullable String globalMetastoreId;
         private @Nullable String metastoreId;
         private @Nullable String name;
@@ -260,6 +266,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
     	      this.deltaSharingOrganizationName = defaults.deltaSharingOrganizationName;
     	      this.deltaSharingRecipientTokenLifetimeInSeconds = defaults.deltaSharingRecipientTokenLifetimeInSeconds;
     	      this.deltaSharingScope = defaults.deltaSharingScope;
+    	      this.externalAccessEnabled = defaults.externalAccessEnabled;
     	      this.globalMetastoreId = defaults.globalMetastoreId;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
@@ -313,6 +320,12 @@ public final class GetCurrentMetastoreMetastoreInfo {
         public Builder deltaSharingScope(@Nullable String deltaSharingScope) {
 
             this.deltaSharingScope = deltaSharingScope;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalAccessEnabled(@Nullable Boolean externalAccessEnabled) {
+
+            this.externalAccessEnabled = externalAccessEnabled;
             return this;
         }
         @CustomType.Setter
@@ -390,6 +403,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
             _resultValue.deltaSharingOrganizationName = deltaSharingOrganizationName;
             _resultValue.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             _resultValue.deltaSharingScope = deltaSharingScope;
+            _resultValue.externalAccessEnabled = externalAccessEnabled;
             _resultValue.globalMetastoreId = globalMetastoreId;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;

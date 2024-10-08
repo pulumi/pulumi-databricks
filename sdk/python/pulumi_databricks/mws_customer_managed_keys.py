@@ -242,7 +242,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         """
         ## Example Usage
 
-        > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+        > If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
 
         ### Customer-managed key for managed services
 
@@ -444,7 +444,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,7 +466,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         """
         ## Example Usage
 
-        > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+        > If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
 
         ### Customer-managed key for managed services
 
@@ -668,7 +668,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param MwsCustomerManagedKeysArgs args: The arguments to use to populate this resource's properties.

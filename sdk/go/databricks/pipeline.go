@@ -122,7 +122,8 @@ type Pipeline struct {
 	pulumi.CustomResourceState
 
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames pulumi.BoolPtrOutput   `pulumi:"allowDuplicateNames"`
+	BudgetPolicyId      pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
 	Cause   pulumi.StringOutput    `pulumi:"cause"`
@@ -157,8 +158,9 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrOutput `pulumi:"photon"`
-	RunAsUserName pulumi.StringOutput  `pulumi:"runAsUserName"`
+	Photon        pulumi.BoolPtrOutput   `pulumi:"photon"`
+	RunAsUserName pulumi.StringOutput    `pulumi:"runAsUserName"`
+	Schema        pulumi.StringPtrOutput `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
 	State      pulumi.StringOutput  `pulumi:"state"`
@@ -202,7 +204,8 @@ func GetPipeline(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
+	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
@@ -239,6 +242,7 @@ type pipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool   `pulumi:"photon"`
 	RunAsUserName *string `pulumi:"runAsUserName"`
+	Schema        *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
@@ -254,6 +258,7 @@ type pipelineState struct {
 type PipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
+	BudgetPolicyId      pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
@@ -290,6 +295,7 @@ type PipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RunAsUserName pulumi.StringPtrInput
+	Schema        pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
@@ -308,7 +314,8 @@ func (PipelineState) ElementType() reflect.Type {
 
 type pipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
+	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
@@ -345,6 +352,7 @@ type pipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool   `pulumi:"photon"`
 	RunAsUserName *string `pulumi:"runAsUserName"`
+	Schema        *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
@@ -361,6 +369,7 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
+	BudgetPolicyId      pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
@@ -397,6 +406,7 @@ type PipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RunAsUserName pulumi.StringPtrInput
+	Schema        pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
@@ -499,6 +509,10 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 // Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
@@ -604,6 +618,10 @@ func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 
 func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.RunAsUserName }).(pulumi.StringOutput)
+}
+
+func (o PipelineOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
 // An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.

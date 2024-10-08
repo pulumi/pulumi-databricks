@@ -18,6 +18,12 @@ __all__ = [
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime',
+    'BudgetAlertConfiguration',
+    'BudgetAlertConfigurationActionConfiguration',
+    'BudgetFilter',
+    'BudgetFilterTag',
+    'BudgetFilterTagValue',
+    'BudgetFilterWorkspaceId',
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
@@ -300,6 +306,15 @@ __all__ = [
     'MlflowModelTag',
     'MlflowWebhookHttpUrlSpec',
     'MlflowWebhookJobSpec',
+    'ModelServingAiGateway',
+    'ModelServingAiGatewayGuardrails',
+    'ModelServingAiGatewayGuardrailsInput',
+    'ModelServingAiGatewayGuardrailsInputPii',
+    'ModelServingAiGatewayGuardrailsOutput',
+    'ModelServingAiGatewayGuardrailsOutputPii',
+    'ModelServingAiGatewayInferenceTableConfig',
+    'ModelServingAiGatewayRateLimit',
+    'ModelServingAiGatewayUsageTrackingConfig',
     'ModelServingConfig',
     'ModelServingConfigAutoCaptureConfig',
     'ModelServingConfigServedEntity',
@@ -1071,6 +1086,307 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
     @pulumi.getter
     def minutes(self) -> int:
         return pulumi.get(self, "minutes")
+
+
+@pulumi.output_type
+class BudgetAlertConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionConfigurations":
+            suggest = "action_configurations"
+        elif key == "alertConfigurationId":
+            suggest = "alert_configuration_id"
+        elif key == "quantityThreshold":
+            suggest = "quantity_threshold"
+        elif key == "quantityType":
+            suggest = "quantity_type"
+        elif key == "timePeriod":
+            suggest = "time_period"
+        elif key == "triggerType":
+            suggest = "trigger_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetAlertConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetAlertConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetAlertConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_configurations: Optional[Sequence['outputs.BudgetAlertConfigurationActionConfiguration']] = None,
+                 alert_configuration_id: Optional[str] = None,
+                 quantity_threshold: Optional[str] = None,
+                 quantity_type: Optional[str] = None,
+                 time_period: Optional[str] = None,
+                 trigger_type: Optional[str] = None):
+        """
+        :param Sequence['BudgetAlertConfigurationActionConfigurationArgs'] action_configurations: List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+        :param str quantity_threshold: The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+        :param str quantity_type: The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+        :param str time_period: The time window of usage data for the budget. (Enum: `MONTH`)
+        :param str trigger_type: The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+        """
+        if action_configurations is not None:
+            pulumi.set(__self__, "action_configurations", action_configurations)
+        if alert_configuration_id is not None:
+            pulumi.set(__self__, "alert_configuration_id", alert_configuration_id)
+        if quantity_threshold is not None:
+            pulumi.set(__self__, "quantity_threshold", quantity_threshold)
+        if quantity_type is not None:
+            pulumi.set(__self__, "quantity_type", quantity_type)
+        if time_period is not None:
+            pulumi.set(__self__, "time_period", time_period)
+        if trigger_type is not None:
+            pulumi.set(__self__, "trigger_type", trigger_type)
+
+    @property
+    @pulumi.getter(name="actionConfigurations")
+    def action_configurations(self) -> Optional[Sequence['outputs.BudgetAlertConfigurationActionConfiguration']]:
+        """
+        List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+        """
+        return pulumi.get(self, "action_configurations")
+
+    @property
+    @pulumi.getter(name="alertConfigurationId")
+    def alert_configuration_id(self) -> Optional[str]:
+        return pulumi.get(self, "alert_configuration_id")
+
+    @property
+    @pulumi.getter(name="quantityThreshold")
+    def quantity_threshold(self) -> Optional[str]:
+        """
+        The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+        """
+        return pulumi.get(self, "quantity_threshold")
+
+    @property
+    @pulumi.getter(name="quantityType")
+    def quantity_type(self) -> Optional[str]:
+        """
+        The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+        """
+        return pulumi.get(self, "quantity_type")
+
+    @property
+    @pulumi.getter(name="timePeriod")
+    def time_period(self) -> Optional[str]:
+        """
+        The time window of usage data for the budget. (Enum: `MONTH`)
+        """
+        return pulumi.get(self, "time_period")
+
+    @property
+    @pulumi.getter(name="triggerType")
+    def trigger_type(self) -> Optional[str]:
+        """
+        The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+        """
+        return pulumi.get(self, "trigger_type")
+
+
+@pulumi.output_type
+class BudgetAlertConfigurationActionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionConfigurationId":
+            suggest = "action_configuration_id"
+        elif key == "actionType":
+            suggest = "action_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetAlertConfigurationActionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetAlertConfigurationActionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetAlertConfigurationActionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_configuration_id: Optional[str] = None,
+                 action_type: Optional[str] = None,
+                 target: Optional[str] = None):
+        """
+        :param str action_type: The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+        :param str target: The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+        """
+        if action_configuration_id is not None:
+            pulumi.set(__self__, "action_configuration_id", action_configuration_id)
+        if action_type is not None:
+            pulumi.set(__self__, "action_type", action_type)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="actionConfigurationId")
+    def action_configuration_id(self) -> Optional[str]:
+        return pulumi.get(self, "action_configuration_id")
+
+    @property
+    @pulumi.getter(name="actionType")
+    def action_type(self) -> Optional[str]:
+        """
+        The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+        """
+        return pulumi.get(self, "action_type")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        """
+        The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class BudgetFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workspaceId":
+            suggest = "workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tags: Optional[Sequence['outputs.BudgetFilterTag']] = None,
+                 workspace_id: Optional['outputs.BudgetFilterWorkspaceId'] = None):
+        """
+        :param Sequence['BudgetFilterTagArgs'] tags: List of tags to filter by. Consists of the following fields:
+        :param 'BudgetFilterWorkspaceIdArgs' workspace_id: Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.BudgetFilterTag']]:
+        """
+        List of tags to filter by. Consists of the following fields:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional['outputs.BudgetFilterWorkspaceId']:
+        """
+        Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+        """
+        return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class BudgetFilterTag(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional['outputs.BudgetFilterTagValue'] = None):
+        """
+        :param str key: The key of the tag.
+        :param 'BudgetFilterTagValueArgs' value: Consists of the following fields:
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of the tag.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.BudgetFilterTagValue']:
+        """
+        Consists of the following fields:
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class BudgetFilterTagValue(dict):
+    def __init__(__self__, *,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str operator: The operator to use for the filter. (Enum: `IN`)
+        :param Sequence[str] values: The values to filter by.
+        """
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator to use for the filter. (Enum: `IN`)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The values to filter by.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class BudgetFilterWorkspaceId(dict):
+    def __init__(__self__, *,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[int]] = None):
+        """
+        :param str operator: The operator to use for the filter. (Enum: `IN`)
+        :param Sequence[int] values: The values to filter by.
+        """
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator to use for the filter. (Enum: `IN`)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[int]]:
+        """
+        The values to filter by.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -6883,7 +7199,7 @@ class JobPipelineTask(dict):
         :param str pipeline_id: The pipeline's unique ID.
         :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
                
-               > **Note** The following configuration blocks are only supported inside a `task` block
+               > The following configuration blocks are only supported inside a `task` block
         """
         pulumi.set(__self__, "pipeline_id", pipeline_id)
         if full_refresh is not None:
@@ -6903,7 +7219,7 @@ class JobPipelineTask(dict):
         """
         (Bool) Specifies if there should be full refresh of the pipeline.
 
-        > **Note** The following configuration blocks are only supported inside a `task` block
+        > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
 
@@ -7441,7 +7757,7 @@ class JobTask(dict):
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
                
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+               > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -7699,7 +8015,7 @@ class JobTask(dict):
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -7893,7 +8209,7 @@ class JobTaskDependsOn(dict):
         :param str task_key: The name of the task this task depends on.
         :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
                
-               > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+               > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -7913,7 +8229,7 @@ class JobTaskDependsOn(dict):
         """
         Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 
-        > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         return pulumi.get(self, "outcome")
 
@@ -8182,7 +8498,7 @@ class JobTaskForEachTaskTask(dict):
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskForEachTaskTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
                
-               > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+               > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
@@ -8433,7 +8749,7 @@ class JobTaskForEachTaskTask(dict):
         """
         (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 
-        > **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -8627,7 +8943,7 @@ class JobTaskForEachTaskTaskDependsOn(dict):
         :param str task_key: The name of the task this task depends on.
         :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
                
-               > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+               > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -8647,7 +8963,7 @@ class JobTaskForEachTaskTaskDependsOn(dict):
         """
         Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 
-        > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         """
         return pulumi.get(self, "outcome")
 
@@ -10425,7 +10741,7 @@ class JobTaskForEachTaskTaskPipelineTask(dict):
         :param str pipeline_id: The pipeline's unique ID.
         :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
                
-               > **Note** The following configuration blocks are only supported inside a `task` block
+               > The following configuration blocks are only supported inside a `task` block
         """
         pulumi.set(__self__, "pipeline_id", pipeline_id)
         if full_refresh is not None:
@@ -10445,7 +10761,7 @@ class JobTaskForEachTaskTaskPipelineTask(dict):
         """
         (Bool) Specifies if there should be full refresh of the pipeline.
 
-        > **Note** The following configuration blocks are only supported inside a `task` block
+        > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
 
@@ -10679,7 +10995,7 @@ class JobTaskForEachTaskTaskRunJobTaskPipelineParams(dict):
         """
         :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
                
-               > **Note** The following configuration blocks are only supported inside a `task` block
+               > The following configuration blocks are only supported inside a `task` block
         """
         if full_refresh is not None:
             pulumi.set(__self__, "full_refresh", full_refresh)
@@ -10690,7 +11006,7 @@ class JobTaskForEachTaskTaskRunJobTaskPipelineParams(dict):
         """
         (Bool) Specifies if there should be full refresh of the pipeline.
 
-        > **Note** The following configuration blocks are only supported inside a `task` block
+        > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
 
@@ -13156,7 +13472,7 @@ class JobTaskPipelineTask(dict):
         :param str pipeline_id: The pipeline's unique ID.
         :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
                
-               > **Note** The following configuration blocks are only supported inside a `task` block
+               > The following configuration blocks are only supported inside a `task` block
         """
         pulumi.set(__self__, "pipeline_id", pipeline_id)
         if full_refresh is not None:
@@ -13176,7 +13492,7 @@ class JobTaskPipelineTask(dict):
         """
         (Bool) Specifies if there should be full refresh of the pipeline.
 
-        > **Note** The following configuration blocks are only supported inside a `task` block
+        > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
 
@@ -13410,7 +13726,7 @@ class JobTaskRunJobTaskPipelineParams(dict):
         """
         :param bool full_refresh: (Bool) Specifies if there should be full refresh of the pipeline.
                
-               > **Note** The following configuration blocks are only supported inside a `task` block
+               > The following configuration blocks are only supported inside a `task` block
         """
         if full_refresh is not None:
             pulumi.set(__self__, "full_refresh", full_refresh)
@@ -13421,7 +13737,7 @@ class JobTaskRunJobTaskPipelineParams(dict):
         """
         (Bool) Specifies if there should be full refresh of the pipeline.
 
-        > **Note** The following configuration blocks are only supported inside a `task` block
+        > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
 
@@ -15637,6 +15953,380 @@ class MlflowWebhookJobSpec(dict):
         URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
         """
         return pulumi.get(self, "workspace_url")
+
+
+@pulumi.output_type
+class ModelServingAiGateway(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inferenceTableConfig":
+            suggest = "inference_table_config"
+        elif key == "rateLimits":
+            suggest = "rate_limits"
+        elif key == "usageTrackingConfig":
+            suggest = "usage_tracking_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingAiGateway. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingAiGateway.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingAiGateway.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guardrails: Optional['outputs.ModelServingAiGatewayGuardrails'] = None,
+                 inference_table_config: Optional['outputs.ModelServingAiGatewayInferenceTableConfig'] = None,
+                 rate_limits: Optional[Sequence['outputs.ModelServingAiGatewayRateLimit']] = None,
+                 usage_tracking_config: Optional['outputs.ModelServingAiGatewayUsageTrackingConfig'] = None):
+        """
+        :param Sequence['ModelServingAiGatewayRateLimitArgs'] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
+        if guardrails is not None:
+            pulumi.set(__self__, "guardrails", guardrails)
+        if inference_table_config is not None:
+            pulumi.set(__self__, "inference_table_config", inference_table_config)
+        if rate_limits is not None:
+            pulumi.set(__self__, "rate_limits", rate_limits)
+        if usage_tracking_config is not None:
+            pulumi.set(__self__, "usage_tracking_config", usage_tracking_config)
+
+    @property
+    @pulumi.getter
+    def guardrails(self) -> Optional['outputs.ModelServingAiGatewayGuardrails']:
+        return pulumi.get(self, "guardrails")
+
+    @property
+    @pulumi.getter(name="inferenceTableConfig")
+    def inference_table_config(self) -> Optional['outputs.ModelServingAiGatewayInferenceTableConfig']:
+        return pulumi.get(self, "inference_table_config")
+
+    @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Optional[Sequence['outputs.ModelServingAiGatewayRateLimit']]:
+        """
+        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
+        return pulumi.get(self, "rate_limits")
+
+    @property
+    @pulumi.getter(name="usageTrackingConfig")
+    def usage_tracking_config(self) -> Optional['outputs.ModelServingAiGatewayUsageTrackingConfig']:
+        return pulumi.get(self, "usage_tracking_config")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayGuardrails(dict):
+    def __init__(__self__, *,
+                 input: Optional['outputs.ModelServingAiGatewayGuardrailsInput'] = None,
+                 output: Optional['outputs.ModelServingAiGatewayGuardrailsOutput'] = None):
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if output is not None:
+            pulumi.set(__self__, "output", output)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsInput']:
+        return pulumi.get(self, "input")
+
+    @property
+    @pulumi.getter
+    def output(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsOutput']:
+        return pulumi.get(self, "output")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayGuardrailsInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "invalidKeywords":
+            suggest = "invalid_keywords"
+        elif key == "validTopics":
+            suggest = "valid_topics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingAiGatewayGuardrailsInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingAiGatewayGuardrailsInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingAiGatewayGuardrailsInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[Sequence[str]] = None,
+                 pii: Optional['outputs.ModelServingAiGatewayGuardrailsInputPii'] = None,
+                 safety: Optional[bool] = None,
+                 valid_topics: Optional[Sequence[str]] = None):
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if pii is not None:
+            pulumi.set(__self__, "pii", pii)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "invalid_keywords")
+
+    @property
+    @pulumi.getter
+    def pii(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsInputPii']:
+        return pulumi.get(self, "pii")
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[bool]:
+        return pulumi.get(self, "safety")
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "valid_topics")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayGuardrailsInputPii(dict):
+    def __init__(__self__, *,
+                 behavior: str):
+        pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> str:
+        return pulumi.get(self, "behavior")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayGuardrailsOutput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "invalidKeywords":
+            suggest = "invalid_keywords"
+        elif key == "validTopics":
+            suggest = "valid_topics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingAiGatewayGuardrailsOutput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingAiGatewayGuardrailsOutput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingAiGatewayGuardrailsOutput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[Sequence[str]] = None,
+                 pii: Optional['outputs.ModelServingAiGatewayGuardrailsOutputPii'] = None,
+                 safety: Optional[bool] = None,
+                 valid_topics: Optional[Sequence[str]] = None):
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if pii is not None:
+            pulumi.set(__self__, "pii", pii)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "invalid_keywords")
+
+    @property
+    @pulumi.getter
+    def pii(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsOutputPii']:
+        return pulumi.get(self, "pii")
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[bool]:
+        return pulumi.get(self, "safety")
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "valid_topics")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayGuardrailsOutputPii(dict):
+    def __init__(__self__, *,
+                 behavior: str):
+        pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> str:
+        return pulumi.get(self, "behavior")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayInferenceTableConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogName":
+            suggest = "catalog_name"
+        elif key == "schemaName":
+            suggest = "schema_name"
+        elif key == "tableNamePrefix":
+            suggest = "table_name_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingAiGatewayInferenceTableConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingAiGatewayInferenceTableConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingAiGatewayInferenceTableConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog_name: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 schema_name: Optional[str] = None,
+                 table_name_prefix: Optional[str] = None):
+        """
+        :param str catalog_name: The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        :param str schema_name: The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        :param str table_name_prefix: The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if table_name_prefix is not None:
+            pulumi.set(__self__, "table_name_prefix", table_name_prefix)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> Optional[str]:
+        """
+        The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
+        return pulumi.get(self, "table_name_prefix")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayRateLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "renewalPeriod":
+            suggest = "renewal_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingAiGatewayRateLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingAiGatewayRateLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingAiGatewayRateLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 calls: int,
+                 renewal_period: str,
+                 key: Optional[str] = None):
+        """
+        :param int calls: Used to specify how many calls are allowed for a key within the renewal_period.
+        :param str renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        :param str key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
+        pulumi.set(__self__, "calls", calls)
+        pulumi.set(__self__, "renewal_period", renewal_period)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def calls(self) -> int:
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        return pulumi.get(self, "calls")
+
+    @property
+    @pulumi.getter(name="renewalPeriod")
+    def renewal_period(self) -> str:
+        """
+        Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        """
+        return pulumi.get(self, "renewal_period")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class ModelServingAiGatewayUsageTrackingConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -19253,10 +19943,10 @@ class PermissionsAccessControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "permissionLevel":
-            suggest = "permission_level"
-        elif key == "groupName":
+        if key == "groupName":
             suggest = "group_name"
+        elif key == "permissionLevel":
+            suggest = "permission_level"
         elif key == "servicePrincipalName":
             suggest = "service_principal_name"
         elif key == "userName":
@@ -19274,35 +19964,26 @@ class PermissionsAccessControl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 permission_level: str,
                  group_name: Optional[str] = None,
+                 permission_level: Optional[str] = None,
                  service_principal_name: Optional[str] = None,
                  user_name: Optional[str] = None):
         """
+        :param str group_name: name of the group. We recommend setting permissions on groups.
         :param str permission_level: permission level according to specific resource. See examples above for the reference.
                
                Exactly one of the below arguments is required:
-        :param str group_name: name of the group. We recommend setting permissions on groups.
         :param str service_principal_name: Application ID of the service_principal.
         :param str user_name: name of the user.
         """
-        pulumi.set(__self__, "permission_level", permission_level)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+        if permission_level is not None:
+            pulumi.set(__self__, "permission_level", permission_level)
         if service_principal_name is not None:
             pulumi.set(__self__, "service_principal_name", service_principal_name)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
-
-    @property
-    @pulumi.getter(name="permissionLevel")
-    def permission_level(self) -> str:
-        """
-        permission level according to specific resource. See examples above for the reference.
-
-        Exactly one of the below arguments is required:
-        """
-        return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter(name="groupName")
@@ -19311,6 +19992,16 @@ class PermissionsAccessControl(dict):
         name of the group. We recommend setting permissions on groups.
         """
         return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="permissionLevel")
+    def permission_level(self) -> Optional[str]:
+        """
+        permission level according to specific resource. See examples above for the reference.
+
+        Exactly one of the below arguments is required:
+        """
+        return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter(name="servicePrincipalName")
@@ -23003,24 +23694,48 @@ class SqlQueryScheduleWeekly(dict):
 
 @pulumi.output_type
 class SqlTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeJson":
+            suggest = "type_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlTableColumn.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  comment: Optional[str] = None,
+                 identity: Optional[str] = None,
                  nullable: Optional[bool] = None,
-                 type: Optional[str] = None):
+                 type: Optional[str] = None,
+                 type_json: Optional[str] = None):
         """
         :param str name: User-visible name of column
         :param str comment: User-supplied free-form text.
+        :param str identity: Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
         :param bool nullable: Whether field is nullable (Default: `true`)
         :param str type: Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         """
         pulumi.set(__self__, "name", name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
         if nullable is not None:
             pulumi.set(__self__, "nullable", nullable)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
 
     @property
     @pulumi.getter
@@ -23040,6 +23755,14 @@ class SqlTableColumn(dict):
 
     @property
     @pulumi.getter
+    def identity(self) -> Optional[str]:
+        """
+        Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        """
+        return pulumi.get(self, "identity")
+
+    @property
+    @pulumi.getter
     def nullable(self) -> Optional[bool]:
         """
         Whether field is nullable (Default: `true`)
@@ -23053,6 +23776,11 @@ class SqlTableColumn(dict):
         Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[str]:
+        return pulumi.get(self, "type_json")
 
 
 @pulumi.output_type
@@ -26775,6 +27503,7 @@ class GetCurrentMetastoreMetastoreInfoResult(dict):
                  delta_sharing_organization_name: Optional[str] = None,
                  delta_sharing_recipient_token_lifetime_in_seconds: Optional[int] = None,
                  delta_sharing_scope: Optional[str] = None,
+                 external_access_enabled: Optional[bool] = None,
                  global_metastore_id: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -26819,6 +27548,8 @@ class GetCurrentMetastoreMetastoreInfoResult(dict):
             pulumi.set(__self__, "delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
         if delta_sharing_scope is not None:
             pulumi.set(__self__, "delta_sharing_scope", delta_sharing_scope)
+        if external_access_enabled is not None:
+            pulumi.set(__self__, "external_access_enabled", external_access_enabled)
         if global_metastore_id is not None:
             pulumi.set(__self__, "global_metastore_id", global_metastore_id)
         if metastore_id is not None:
@@ -26894,6 +27625,11 @@ class GetCurrentMetastoreMetastoreInfoResult(dict):
         Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
+
+    @property
+    @pulumi.getter(name="externalAccessEnabled")
+    def external_access_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "external_access_enabled")
 
     @property
     @pulumi.getter(name="globalMetastoreId")
@@ -34534,6 +35270,7 @@ class GetMetastoreMetastoreInfoResult(dict):
                  delta_sharing_organization_name: Optional[str] = None,
                  delta_sharing_recipient_token_lifetime_in_seconds: Optional[int] = None,
                  delta_sharing_scope: Optional[str] = None,
+                 external_access_enabled: Optional[bool] = None,
                  global_metastore_id: Optional[str] = None,
                  metastore_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -34569,6 +35306,8 @@ class GetMetastoreMetastoreInfoResult(dict):
             pulumi.set(__self__, "delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
         if delta_sharing_scope is not None:
             pulumi.set(__self__, "delta_sharing_scope", delta_sharing_scope)
+        if external_access_enabled is not None:
+            pulumi.set(__self__, "external_access_enabled", external_access_enabled)
         if global_metastore_id is not None:
             pulumi.set(__self__, "global_metastore_id", global_metastore_id)
         if metastore_id is not None:
@@ -34635,6 +35374,11 @@ class GetMetastoreMetastoreInfoResult(dict):
         Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
+
+    @property
+    @pulumi.getter(name="externalAccessEnabled")
+    def external_access_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "external_access_enabled")
 
     @property
     @pulumi.getter(name="globalMetastoreId")

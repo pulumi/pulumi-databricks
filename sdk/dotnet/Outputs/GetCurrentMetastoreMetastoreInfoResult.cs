@@ -38,6 +38,7 @@ namespace Pulumi.Databricks.Outputs
         /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         public readonly string? DeltaSharingScope;
+        public readonly bool? ExternalAccessEnabled;
         /// <summary>
         /// Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
         /// </summary>
@@ -99,6 +100,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? deltaSharingScope,
 
+            bool? externalAccessEnabled,
+
             string? globalMetastoreId,
 
             string? metastoreId,
@@ -128,6 +131,7 @@ namespace Pulumi.Databricks.Outputs
             DeltaSharingOrganizationName = deltaSharingOrganizationName;
             DeltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             DeltaSharingScope = deltaSharingScope;
+            ExternalAccessEnabled = externalAccessEnabled;
             GlobalMetastoreId = globalMetastoreId;
             MetastoreId = metastoreId;
             Name = name;

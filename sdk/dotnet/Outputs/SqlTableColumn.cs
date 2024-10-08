@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
+        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// </summary>
+        public readonly string? Identity;
+        /// <summary>
         /// User-visible name of column
         /// </summary>
         public readonly string Name;
@@ -29,21 +33,28 @@ namespace Pulumi.Databricks.Outputs
         /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         /// </summary>
         public readonly string? Type;
+        public readonly string? TypeJson;
 
         [OutputConstructor]
         private SqlTableColumn(
             string? comment,
 
+            string? identity,
+
             string name,
 
             bool? nullable,
 
-            string? type)
+            string? type,
+
+            string? typeJson)
         {
             Comment = comment;
+            Identity = identity;
             Name = name;
             Nullable = nullable;
             Type = type;
+            TypeJson = typeJson;
         }
     }
 }

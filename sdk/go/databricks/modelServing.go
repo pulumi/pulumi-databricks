@@ -14,7 +14,7 @@ import (
 
 // This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 //
-// **Note** If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+// > If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
 //
 // ## Example Usage
 //
@@ -100,6 +100,7 @@ import (
 type ModelServing struct {
 	pulumi.CustomResourceState
 
+	AiGateway ModelServingAiGatewayPtrOutput `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config ModelServingConfigOutput `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
@@ -147,6 +148,7 @@ func GetModelServing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ModelServing resources.
 type modelServingState struct {
+	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
@@ -162,6 +164,7 @@ type modelServingState struct {
 }
 
 type ModelServingState struct {
+	AiGateway ModelServingAiGatewayPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
@@ -181,6 +184,7 @@ func (ModelServingState) ElementType() reflect.Type {
 }
 
 type modelServingArgs struct {
+	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
@@ -195,6 +199,7 @@ type modelServingArgs struct {
 
 // The set of arguments for constructing a ModelServing resource.
 type ModelServingArgs struct {
+	AiGateway ModelServingAiGatewayPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingConfigInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
@@ -292,6 +297,10 @@ func (o ModelServingOutput) ToModelServingOutput() ModelServingOutput {
 
 func (o ModelServingOutput) ToModelServingOutputWithContext(ctx context.Context) ModelServingOutput {
 	return o
+}
+
+func (o ModelServingOutput) AiGateway() ModelServingAiGatewayPtrOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingAiGatewayPtrOutput { return v.AiGateway }).(ModelServingAiGatewayPtrOutput)
 }
 
 // The model serving endpoint configuration.

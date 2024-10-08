@@ -19,6 +19,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
+        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// </summary>
+        [Input("identity")]
+        public Input<string>? Identity { get; set; }
+
+        /// <summary>
         /// User-visible name of column
         /// </summary>
         [Input("name", required: true)]
@@ -35,6 +41,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("typeJson")]
+        public Input<string>? TypeJson { get; set; }
 
         public SqlTableColumnArgs()
         {

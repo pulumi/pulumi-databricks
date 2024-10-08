@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * > **Note** If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+ * > If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
  *
  * ### Customer-managed key for managed services
  *
@@ -221,7 +221,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * !> Importing this resource is not currently supported.
  */
 export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     /**

@@ -15,17 +15,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE**This resource has been deprecated and will be removed soon. Please use the databricks.WorkspaceBinding resource instead.
+ * &gt; This resource has been deprecated and will be removed soon. Please use the databricks.WorkspaceBinding resource instead.
  * 
  * If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
  * 
  * By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `databricks.CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
  * 
- * &gt; **Note**
- *   To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `databricks.Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
+ * &gt; To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `databricks.Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
  * 
- * &gt; **Note**
- *   If the catalog&#39;s isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
+ * &gt; If the catalog&#39;s isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
  * 
  * ## Example Usage
  * 

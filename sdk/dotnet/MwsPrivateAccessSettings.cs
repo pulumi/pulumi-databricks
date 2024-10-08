@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Databricks on AWS usage
     /// 
-    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+    /// &gt; Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Databricks on GCP usage
     /// 
-    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+    /// &gt; Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -123,7 +123,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// !&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")]
     public partial class MwsPrivateAccessSettings : global::Pulumi.CustomResource

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &gt; **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+    /// &gt; If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
     /// 
     /// ### Customer-managed key for managed services
     /// 
@@ -377,7 +377,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// !&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys")]
     public partial class MwsCustomerManagedKeys : global::Pulumi.CustomResource

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
     /// 
-    /// **Note:** documentation for this resource is a work in progress.
+    /// &gt; documentation for this resource is a work in progress.
     /// 
     /// A query may have one or more visualizations.
     /// 

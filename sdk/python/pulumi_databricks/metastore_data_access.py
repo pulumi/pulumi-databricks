@@ -444,7 +444,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        > **Note** This resource can be used with an account or workspace-level provider.
+        > This resource can be used with an account or workspace-level provider.
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 
@@ -494,7 +494,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  args: Optional[MetastoreDataAccessArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can be used with an account or workspace-level provider.
+        > This resource can be used with an account or workspace-level provider.
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 

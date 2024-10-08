@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
+// > This resource can only be used on a Unity Catalog-enabled workspace!
 //
 // This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
 //
@@ -65,8 +65,9 @@ type OnlineTable struct {
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrOutput `pulumi:"spec"`
 	// object describing status of the online table:
-	Statuses        OnlineTableStatusArrayOutput `pulumi:"statuses"`
-	TableServingUrl pulumi.StringPtrOutput       `pulumi:"tableServingUrl"`
+	Statuses OnlineTableStatusArrayOutput `pulumi:"statuses"`
+	// Data serving REST API URL for this table.
+	TableServingUrl pulumi.StringOutput `pulumi:"tableServingUrl"`
 }
 
 // NewOnlineTable registers a new resource with the given unique name, arguments, and options.
@@ -104,8 +105,9 @@ type onlineTableState struct {
 	// object containing specification of the online table:
 	Spec *OnlineTableSpec `pulumi:"spec"`
 	// object describing status of the online table:
-	Statuses        []OnlineTableStatus `pulumi:"statuses"`
-	TableServingUrl *string             `pulumi:"tableServingUrl"`
+	Statuses []OnlineTableStatus `pulumi:"statuses"`
+	// Data serving REST API URL for this table.
+	TableServingUrl *string `pulumi:"tableServingUrl"`
 }
 
 type OnlineTableState struct {
@@ -114,7 +116,8 @@ type OnlineTableState struct {
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrInput
 	// object describing status of the online table:
-	Statuses        OnlineTableStatusArrayInput
+	Statuses OnlineTableStatusArrayInput
+	// Data serving REST API URL for this table.
 	TableServingUrl pulumi.StringPtrInput
 }
 
@@ -126,8 +129,7 @@ type onlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name *string `pulumi:"name"`
 	// object containing specification of the online table:
-	Spec            *OnlineTableSpec `pulumi:"spec"`
-	TableServingUrl *string          `pulumi:"tableServingUrl"`
+	Spec *OnlineTableSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a OnlineTable resource.
@@ -135,8 +137,7 @@ type OnlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name pulumi.StringPtrInput
 	// object containing specification of the online table:
-	Spec            OnlineTableSpecPtrInput
-	TableServingUrl pulumi.StringPtrInput
+	Spec OnlineTableSpecPtrInput
 }
 
 func (OnlineTableArgs) ElementType() reflect.Type {
@@ -241,8 +242,9 @@ func (o OnlineTableOutput) Statuses() OnlineTableStatusArrayOutput {
 	return o.ApplyT(func(v *OnlineTable) OnlineTableStatusArrayOutput { return v.Statuses }).(OnlineTableStatusArrayOutput)
 }
 
-func (o OnlineTableOutput) TableServingUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineTable) pulumi.StringPtrOutput { return v.TableServingUrl }).(pulumi.StringPtrOutput)
+// Data serving REST API URL for this table.
+func (o OnlineTableOutput) TableServingUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.TableServingUrl }).(pulumi.StringOutput)
 }
 
 type OnlineTableArrayOutput struct{ *pulumi.OutputState }

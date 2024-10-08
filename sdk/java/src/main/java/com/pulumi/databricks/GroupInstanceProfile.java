@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * !&gt; Importing this resource is not currently supported.
  * 
  */
 @ResourceType(type="databricks:index/groupInstanceProfile:GroupInstanceProfile")

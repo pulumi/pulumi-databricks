@@ -17,6 +17,7 @@ __all__ = ['ModelServingArgs', 'ModelServing']
 class ModelServingArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['ModelServingConfigArgs'],
+                 ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[bool]] = None,
@@ -30,6 +31,8 @@ class ModelServingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         pulumi.set(__self__, "config", config)
+        if ai_gateway is not None:
+            pulumi.set(__self__, "ai_gateway", ai_gateway)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
@@ -50,6 +53,15 @@ class ModelServingArgs:
     @config.setter
     def config(self, value: pulumi.Input['ModelServingConfigArgs']):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="aiGateway")
+    def ai_gateway(self) -> Optional[pulumi.Input['ModelServingAiGatewayArgs']]:
+        return pulumi.get(self, "ai_gateway")
+
+    @ai_gateway.setter
+    def ai_gateway(self, value: Optional[pulumi.Input['ModelServingAiGatewayArgs']]):
+        pulumi.set(self, "ai_gateway", value)
 
     @property
     @pulumi.getter
@@ -103,6 +115,7 @@ class ModelServingArgs:
 @pulumi.input_type
 class _ModelServingState:
     def __init__(__self__, *,
+                 ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
@@ -118,6 +131,8 @@ class _ModelServingState:
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
+        if ai_gateway is not None:
+            pulumi.set(__self__, "ai_gateway", ai_gateway)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if name is not None:
@@ -130,6 +145,15 @@ class _ModelServingState:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="aiGateway")
+    def ai_gateway(self) -> Optional[pulumi.Input['ModelServingAiGatewayArgs']]:
+        return pulumi.get(self, "ai_gateway")
+
+    @ai_gateway.setter
+    def ai_gateway(self, value: Optional[pulumi.Input['ModelServingAiGatewayArgs']]):
+        pulumi.set(self, "ai_gateway", value)
 
     @property
     @pulumi.getter
@@ -209,6 +233,7 @@ class ModelServing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -218,7 +243,7 @@ class ModelServing(pulumi.CustomResource):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 
-        **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+        > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
 
         ## Example Usage
 
@@ -303,7 +328,7 @@ class ModelServing(pulumi.CustomResource):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 
-        **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+        > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
 
         ## Example Usage
 
@@ -386,6 +411,7 @@ class ModelServing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -400,6 +426,7 @@ class ModelServing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ModelServingArgs.__new__(ModelServingArgs)
 
+            __props__.__dict__["ai_gateway"] = ai_gateway
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -418,6 +445,7 @@ class ModelServing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
             config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -442,6 +470,7 @@ class ModelServing(pulumi.CustomResource):
 
         __props__ = _ModelServingState.__new__(_ModelServingState)
 
+        __props__.__dict__["ai_gateway"] = ai_gateway
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_limits"] = rate_limits
@@ -449,6 +478,11 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
         return ModelServing(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aiGateway")
+    def ai_gateway(self) -> pulumi.Output[Optional['outputs.ModelServingAiGateway']]:
+        return pulumi.get(self, "ai_gateway")
 
     @property
     @pulumi.getter

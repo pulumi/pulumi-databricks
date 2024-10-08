@@ -280,7 +280,7 @@ class Connection(pulumi.CustomResource):
                  read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
 
@@ -372,7 +372,7 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
 

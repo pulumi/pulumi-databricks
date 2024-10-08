@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (Bool) Specifies if there should be full refresh of the pipeline.
         /// 
-        /// &gt; **Note** The following configuration blocks are only supported inside a `task` block
+        /// &gt; The following configuration blocks are only supported inside a `task` block
         /// </summary>
         public readonly bool? FullRefresh;
         /// <summary>

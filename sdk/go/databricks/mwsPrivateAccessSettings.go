@@ -18,7 +18,7 @@ import (
 //
 // ## Databricks on AWS usage
 //
-// > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+// > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 //
 // ```go
 // package main
@@ -85,7 +85,7 @@ import (
 //
 // ## Databricks on GCP usage
 //
-// > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+// > Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
 //
 // ```go
 // package main
@@ -140,7 +140,7 @@ import (
 //
 // ## Import
 //
-// -> **Note** Importing this resource is not currently supported.
+// !> Importing this resource is not currently supported.
 type MwsPrivateAccessSettings struct {
 	pulumi.CustomResourceState
 

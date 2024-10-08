@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// Creating a token for a narrowly-scoped service principal, that would be the only one (besides admins) allowed to use PAT token in this given workspace, keeping your automated deployment highly secure.
     /// 
-    /// &gt; **Note** A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `access_control` blocks in the Pulumi configuration file.
+    /// &gt; A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `access_control` blocks in the Pulumi configuration file.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -119,7 +119,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// !&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/oboToken:OboToken")]
     public partial class OboToken : global::Pulumi.CustomResource
