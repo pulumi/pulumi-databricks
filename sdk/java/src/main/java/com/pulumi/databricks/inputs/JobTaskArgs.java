@@ -374,7 +374,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     @Import(name="webhookNotifications")
@@ -383,7 +383,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<Output<JobTaskWebhookNotificationsArgs>> webhookNotifications() {
@@ -923,7 +923,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
-         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
-         * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 

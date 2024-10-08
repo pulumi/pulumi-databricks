@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
     /// 
-    /// &gt; **Note** `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
+    /// &gt; `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
     /// 
     /// ## Installing library on all clusters
     /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
     /// 
     /// Installing Python PyPI artifacts. You can optionally also specify the `repo` parameter for a custom PyPI mirror, which should be accessible without any authentication for the network that cluster runs in.
     /// 
-    /// &gt; **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
+    /// &gt; `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -162,7 +162,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// !&gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/library:Library")]
     public partial class Library : global::Pulumi.CustomResource

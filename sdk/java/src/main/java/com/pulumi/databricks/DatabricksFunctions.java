@@ -58,6 +58,8 @@ import com.pulumi.databricks.inputs.GetMlflowExperimentArgs;
 import com.pulumi.databricks.inputs.GetMlflowExperimentPlainArgs;
 import com.pulumi.databricks.inputs.GetMlflowModelArgs;
 import com.pulumi.databricks.inputs.GetMlflowModelPlainArgs;
+import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+import com.pulumi.databricks.inputs.GetMlflowModelsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
@@ -133,6 +135,7 @@ import com.pulumi.databricks.outputs.GetMetastoreResult;
 import com.pulumi.databricks.outputs.GetMetastoresResult;
 import com.pulumi.databricks.outputs.GetMlflowExperimentResult;
 import com.pulumi.databricks.outputs.GetMlflowModelResult;
+import com.pulumi.databricks.outputs.GetMlflowModelsResult;
 import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
@@ -7902,6 +7905,264 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetMlflowModelResult> getMlflowModelPlain(GetMlflowModelPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMlflowModelsResult> getMlflowModels() {
+        return getMlflowModels(GetMlflowModelsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMlflowModelsResult> getMlflowModelsPlain() {
+        return getMlflowModelsPlain(GetMlflowModelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMlflowModelsResult> getMlflowModels(GetMlflowModelsArgs args) {
+        return getMlflowModels(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMlflowModelsResult> getMlflowModelsPlain(GetMlflowModelsPlainArgs args) {
+        return getMlflowModelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMlflowModelsResult> getMlflowModels(GetMlflowModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMlflowModels:getMlflowModels", TypeShape.of(GetMlflowModelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source could be only used with workspace-level provider!
+     * 
+     * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModels();
+     * 
+     *         ctx.export("model", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMlflowModelsResult> getMlflowModelsPlain(GetMlflowModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMlflowModels:getMlflowModels", TypeShape.of(GetMlflowModelsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.

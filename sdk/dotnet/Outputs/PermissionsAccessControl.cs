@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// Exactly one of the below arguments is required:
         /// </summary>
-        public readonly string PermissionLevel;
+        public readonly string? PermissionLevel;
         /// <summary>
         /// Application ID of the service_principal.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         private PermissionsAccessControl(
             string? groupName,
 
-            string permissionLevel,
+            string? permissionLevel,
 
             string? servicePrincipalName,
 

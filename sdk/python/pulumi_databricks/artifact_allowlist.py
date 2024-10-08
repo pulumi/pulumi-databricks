@@ -191,10 +191,9 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note**
-          It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+        > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
 
@@ -243,10 +242,9 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  args: ArtifactAllowlistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note**
-          It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+        > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
 

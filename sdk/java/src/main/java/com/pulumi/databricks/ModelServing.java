@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ModelServingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ModelServingState;
+import com.pulumi.databricks.outputs.ModelServingAiGateway;
 import com.pulumi.databricks.outputs.ModelServingConfig;
 import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
@@ -22,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
  * 
- * **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ * &gt; If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
  * 
  * ## Example Usage
  * 
@@ -118,6 +119,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/modelServing:ModelServing")
 public class ModelServing extends com.pulumi.resources.CustomResource {
+    @Export(name="aiGateway", refs={ModelServingAiGateway.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingAiGateway> aiGateway;
+
+    public Output<Optional<ModelServingAiGateway>> aiGateway() {
+        return Codegen.optional(this.aiGateway);
+    }
     /**
      * The model serving endpoint configuration.
      * 

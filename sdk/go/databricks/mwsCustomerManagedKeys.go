@@ -14,7 +14,7 @@ import (
 
 // ## Example Usage
 //
-// > **Note** If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+// > If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
 //
 // ### Customer-managed key for managed services
 //
@@ -370,7 +370,7 @@ import (
 //
 // ## Import
 //
-// -> **Note** Importing this resource is not currently supported.
+// !> Importing this resource is not currently supported.
 type MwsCustomerManagedKeys struct {
 	pulumi.CustomResourceState
 

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
         /// 
-        /// &gt; **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        /// &gt; Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
         /// </summary>
         public readonly string? Outcome;
         /// <summary>

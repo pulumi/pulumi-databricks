@@ -17,8 +17,7 @@ __all__ = ['OnlineTableArgs', 'OnlineTable']
 class OnlineTableArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
-                 table_serving_url: Optional[pulumi.Input[str]] = None):
+                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None):
         """
         The set of arguments for constructing a OnlineTable resource.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
@@ -28,8 +27,6 @@ class OnlineTableArgs:
             pulumi.set(__self__, "name", name)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
-        if table_serving_url is not None:
-            pulumi.set(__self__, "table_serving_url", table_serving_url)
 
     @property
     @pulumi.getter
@@ -55,15 +52,6 @@ class OnlineTableArgs:
     def spec(self, value: Optional[pulumi.Input['OnlineTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
-    @property
-    @pulumi.getter(name="tableServingUrl")
-    def table_serving_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "table_serving_url")
-
-    @table_serving_url.setter
-    def table_serving_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "table_serving_url", value)
-
 
 @pulumi.input_type
 class _OnlineTableState:
@@ -77,6 +65,7 @@ class _OnlineTableState:
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]] statuses: object describing status of the online table:
+        :param pulumi.Input[str] table_serving_url: Data serving REST API URL for this table.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -126,6 +115,9 @@ class _OnlineTableState:
     @property
     @pulumi.getter(name="tableServingUrl")
     def table_serving_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data serving REST API URL for this table.
+        """
         return pulumi.get(self, "table_serving_url")
 
     @table_serving_url.setter
@@ -140,10 +132,9 @@ class OnlineTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
-                 table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
+        > This resource can only be used on a Unity Catalog-enabled workspace!
 
         This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
 
@@ -184,7 +175,7 @@ class OnlineTable(pulumi.CustomResource):
                  args: Optional[OnlineTableArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
+        > This resource can only be used on a Unity Catalog-enabled workspace!
 
         This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
 
@@ -230,7 +221,6 @@ class OnlineTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
-                 table_serving_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,8 +232,8 @@ class OnlineTable(pulumi.CustomResource):
 
             __props__.__dict__["name"] = name
             __props__.__dict__["spec"] = spec
-            __props__.__dict__["table_serving_url"] = table_serving_url
             __props__.__dict__["statuses"] = None
+            __props__.__dict__["table_serving_url"] = None
         super(OnlineTable, __self__).__init__(
             'databricks:index/onlineTable:OnlineTable',
             resource_name,
@@ -268,6 +258,7 @@ class OnlineTable(pulumi.CustomResource):
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
         :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]] statuses: object describing status of the online table:
+        :param pulumi.Input[str] table_serving_url: Data serving REST API URL for this table.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -305,6 +296,9 @@ class OnlineTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tableServingUrl")
-    def table_serving_url(self) -> pulumi.Output[Optional[str]]:
+    def table_serving_url(self) -> pulumi.Output[str]:
+        """
+        Data serving REST API URL for this table.
+        """
         return pulumi.get(self, "table_serving_url")
 

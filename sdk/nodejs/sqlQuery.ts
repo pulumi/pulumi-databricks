@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  *
- * **Note:** documentation for this resource is a work in progress.
+ * > documentation for this resource is a work in progress.
  *
  * A query may have one or more visualizations.
  *

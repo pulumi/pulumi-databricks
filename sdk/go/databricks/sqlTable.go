@@ -18,6 +18,71 @@ import (
 //
 // This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
 //
+// ## Use an Identity Column
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlTable(ctx, "thing", &databricks.SqlTableArgs{
+//				Name:             pulumi.String("quickstart_table"),
+//				CatalogName:      sandbox.Name,
+//				SchemaName:       things.Name,
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				StorageLocation:  pulumi.String(""),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name:     pulumi.String("id"),
+//						Type:     pulumi.String("bigint"),
+//						Identity: pulumi.String("default"),
+//					},
+//					&databricks.SqlTableColumnArgs{
+//						Name:    pulumi.String("name"),
+//						Type:    pulumi.String("string"),
+//						Comment: pulumi.String("name of thing"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by its full name:

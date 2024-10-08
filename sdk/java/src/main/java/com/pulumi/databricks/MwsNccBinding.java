@@ -14,9 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * &gt; Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
  * 
- * &gt; **Public Preview** This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
+ * &gt; This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
  * 
  * Allows you to attach a Network Connectivity Config object to a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
  * 

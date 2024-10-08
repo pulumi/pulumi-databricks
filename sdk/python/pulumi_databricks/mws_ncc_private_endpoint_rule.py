@@ -381,9 +381,9 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  updated_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        > **Note** Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
 
-        > **Note** This feature is only available in Azure.
+        > This feature is only available in Azure.
 
         Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
@@ -445,9 +445,9 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  args: MwsNccPrivateEndpointRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
 
-        > **Note** This feature is only available in Azure.
+        > This feature is only available in Azure.
 
         Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 

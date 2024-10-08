@@ -118,7 +118,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 
@@ -134,7 +134,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         2. Only change a job owner to themselves.
         3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
 
-        > **Note** Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
+        > Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
 
         ## Example Usage
 
@@ -168,7 +168,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  args: RestrictWorkspaceAdminsSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 
@@ -184,7 +184,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         2. Only change a job owner to themselves.
         3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
 
-        > **Note** Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
+        > Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
 
         ## Example Usage
 

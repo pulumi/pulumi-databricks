@@ -7,15 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace. It would guarantee that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
+ * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
  *
- * > **Note** Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset unless the changes are also reflected in the configuration.
+ * > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
  *
- * > **Note** It is not possible to lower permissions for `admins` or your own user anywhere from `CAN_MANAGE` level, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.
+ * > It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.
  *
- * > **Note** If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
+ * > If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
  *
- * > **Warning** To manage access control on service principals, use databricks_access_control_rule_set.
+ * > To manage access control on service principals, use databricks_access_control_rule_set.
  *
  * ## Cluster usage
  *
@@ -310,7 +310,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > **Note**: when importing a permissions resource, only the `notebookId` is filled!
+ * > when importing a permissions resource, only the `notebookId` is filled!
  *
  * ## Workspace file usage
  *
@@ -367,7 +367,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > **Note**: when importing a permissions resource, only the `workspaceFileId` is filled!
+ * > when importing a permissions resource, only the `workspaceFileId` is filled!
  *
  * ## Folder usage
  *
@@ -423,7 +423,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > **Note**: when importing a permissions resource, only the `directoryId` is filled!
+ * > when importing a permissions resource, only the `directoryId` is filled!
  *
  * ## Repos usage
  *
@@ -704,7 +704,7 @@ import * as utilities from "./utilities";
  *
  * [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
  *
- * > **Note** If you do not define an `accessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
+ * > If you do not define an `accessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

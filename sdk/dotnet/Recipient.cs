@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource can only be used with a workspace-level provider!
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
     /// 

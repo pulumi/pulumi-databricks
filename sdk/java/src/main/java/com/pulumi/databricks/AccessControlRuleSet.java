@@ -17,13 +17,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource can be used with an account or workspace-level provider.
+ * &gt; This resource can be used with an account or workspace-level provider.
  * 
  * This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
  * 
- * &gt; **Note** Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
+ * &gt; Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
  * 
- * &gt; **Warning** `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+ * !&gt; `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
  * 
  * ## Service principal rule set usage
  * 

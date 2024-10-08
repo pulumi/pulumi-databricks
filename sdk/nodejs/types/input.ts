@@ -63,6 +63,86 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
     minutes: pulumi.Input<number>;
 }
 
+export interface BudgetAlertConfiguration {
+    /**
+     * List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     */
+    actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[]>;
+    alertConfigurationId?: pulumi.Input<string>;
+    /**
+     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
+     */
+    quantityThreshold?: pulumi.Input<string>;
+    /**
+     * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     */
+    quantityType?: pulumi.Input<string>;
+    /**
+     * The time window of usage data for the budget. (Enum: `MONTH`)
+     */
+    timePeriod?: pulumi.Input<string>;
+    /**
+     * The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     */
+    triggerType?: pulumi.Input<string>;
+}
+
+export interface BudgetAlertConfigurationActionConfiguration {
+    actionConfigurationId?: pulumi.Input<string>;
+    /**
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     */
+    actionType?: pulumi.Input<string>;
+    /**
+     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     */
+    target?: pulumi.Input<string>;
+}
+
+export interface BudgetFilter {
+    /**
+     * List of tags to filter by. Consists of the following fields:
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.BudgetFilterTag>[]>;
+    /**
+     * Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     */
+    workspaceId?: pulumi.Input<inputs.BudgetFilterWorkspaceId>;
+}
+
+export interface BudgetFilterTag {
+    /**
+     * The key of the tag.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Consists of the following fields:
+     */
+    value?: pulumi.Input<inputs.BudgetFilterTagValue>;
+}
+
+export interface BudgetFilterTagValue {
+    /**
+     * The operator to use for the filter. (Enum: `IN`)
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The values to filter by.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BudgetFilterWorkspaceId {
+    /**
+     * The operator to use for the filter. (Enum: `IN`)
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The values to filter by.
+     */
+    values?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -1801,6 +1881,7 @@ export interface GetCurrentMetastoreMetastoreInfo {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
+    externalAccessEnabled?: boolean;
     /**
      * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
      */
@@ -1873,6 +1954,7 @@ export interface GetCurrentMetastoreMetastoreInfoArgs {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
+    externalAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
      */
@@ -5024,6 +5106,7 @@ export interface GetMetastoreMetastoreInfo {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
+    externalAccessEnabled?: boolean;
     globalMetastoreId?: string;
     /**
      * ID of the metastore
@@ -5069,6 +5152,7 @@ export interface GetMetastoreMetastoreInfoArgs {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
+    externalAccessEnabled?: pulumi.Input<boolean>;
     globalMetastoreId?: pulumi.Input<string>;
     /**
      * ID of the metastore
@@ -6979,7 +7063,7 @@ export interface JobPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: pulumi.Input<boolean>;
     /**
@@ -7180,7 +7264,7 @@ export interface JobTask {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
 }
@@ -7241,7 +7325,7 @@ export interface JobTaskDependsOn {
     /**
      * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
      *
-     * > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
+     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
     outcome?: pulumi.Input<string>;
     /**
@@ -7374,7 +7458,7 @@ export interface JobTaskForEachTaskTask {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
 }
@@ -7435,7 +7519,7 @@ export interface JobTaskForEachTaskTaskDependsOn {
     /**
      * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
      *
-     * > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
+     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
     outcome?: pulumi.Input<string>;
     /**
@@ -7764,7 +7848,7 @@ export interface JobTaskForEachTaskTaskPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: pulumi.Input<boolean>;
     /**
@@ -7815,7 +7899,7 @@ export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: pulumi.Input<boolean>;
 }
@@ -8345,7 +8429,7 @@ export interface JobTaskPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: pulumi.Input<boolean>;
     /**
@@ -8396,7 +8480,7 @@ export interface JobTaskRunJobTaskPipelineParams {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: pulumi.Input<boolean>;
 }
@@ -8954,6 +9038,84 @@ export interface MlflowWebhookJobSpec {
      * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      */
     workspaceUrl?: pulumi.Input<string>;
+}
+
+export interface ModelServingAiGateway {
+    guardrails?: pulumi.Input<inputs.ModelServingAiGatewayGuardrails>;
+    inferenceTableConfig?: pulumi.Input<inputs.ModelServingAiGatewayInferenceTableConfig>;
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingAiGatewayRateLimit>[]>;
+    usageTrackingConfig?: pulumi.Input<inputs.ModelServingAiGatewayUsageTrackingConfig>;
+}
+
+export interface ModelServingAiGatewayGuardrails {
+    input?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInput>;
+    output?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutput>;
+}
+
+export interface ModelServingAiGatewayGuardrailsInput {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInputPii>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ModelServingAiGatewayGuardrailsInputPii {
+    behavior: pulumi.Input<string>;
+}
+
+export interface ModelServingAiGatewayGuardrailsOutput {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutputPii>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ModelServingAiGatewayGuardrailsOutputPii {
+    behavior: pulumi.Input<string>;
+}
+
+export interface ModelServingAiGatewayInferenceTableConfig {
+    /**
+     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     */
+    schemaName?: pulumi.Input<string>;
+    /**
+     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     */
+    tableNamePrefix?: pulumi.Input<string>;
+}
+
+export interface ModelServingAiGatewayRateLimit {
+    /**
+     * Used to specify how many calls are allowed for a key within the renewal_period.
+     */
+    calls: pulumi.Input<number>;
+    /**
+     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     */
+    renewalPeriod: pulumi.Input<string>;
+}
+
+export interface ModelServingAiGatewayUsageTrackingConfig {
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ModelServingConfig {
@@ -9697,7 +9859,7 @@ export interface PermissionsAccessControl {
      *
      * Exactly one of the below arguments is required:
      */
-    permissionLevel: pulumi.Input<string>;
+    permissionLevel?: pulumi.Input<string>;
     /**
      * Application ID of the service_principal.
      */
@@ -10459,6 +10621,10 @@ export interface SqlTableColumn {
      */
     comment?: pulumi.Input<string>;
     /**
+     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * User-visible name of column
      */
     name: pulumi.Input<string>;
@@ -10470,6 +10636,7 @@ export interface SqlTableColumn {
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      */
     type?: pulumi.Input<string>;
+    typeJson?: pulumi.Input<string>;
 }
 
 export interface SqlWidgetParameter {

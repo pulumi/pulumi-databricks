@@ -151,6 +151,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
     }
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> budgetPolicyId;
+
+    public Output<Optional<String>> budgetPolicyId() {
+        return Codegen.optional(this.budgetPolicyId);
+    }
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      * 
@@ -392,6 +398,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
 
     public Output<String> runAsUserName() {
         return this.runAsUserName;
+    }
+    @Export(name="schema", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> schema;
+
+    public Output<Optional<String>> schema() {
+        return Codegen.optional(this.schema);
     }
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.

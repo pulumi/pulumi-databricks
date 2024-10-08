@@ -16,6 +16,66 @@ namespace Pulumi.Databricks
     /// 
     /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
     /// 
+    /// ## Use an Identity Column
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "quickstart_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         StorageLocation = "",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Type = "bigint",
+    ///                 Identity = "default",
+    ///             },
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by its full name:

@@ -24,6 +24,76 @@ import javax.annotation.Nullable;
  * 
  * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
  * 
+ * ## Use an Identity Column
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.id())
+ *             .name("things")
+ *             .comment("this database is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var thing = new SqlTable("thing", SqlTableArgs.builder()
+ *             .name("quickstart_table")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("MANAGED")
+ *             .dataSourceFormat("DELTA")
+ *             .storageLocation("")
+ *             .columns(            
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("id")
+ *                     .type("bigint")
+ *                     .identity("default")
+ *                     .build(),
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("name")
+ *                     .type("string")
+ *                     .comment("name of thing")
+ *                     .build())
+ *             .comment("this table is managed by terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * This resource can be imported by its full name:

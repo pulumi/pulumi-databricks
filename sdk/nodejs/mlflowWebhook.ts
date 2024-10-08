@@ -98,7 +98,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * !> Importing this resource is not currently supported.
  */
 export class MlflowWebhook extends pulumi.CustomResource {
     /**

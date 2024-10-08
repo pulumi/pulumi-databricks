@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource can only be used on a Unity Catalog-enabled workspace!
+ * > This resource can only be used on a Unity Catalog-enabled workspace!
  *
  * This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
  *
@@ -77,7 +77,10 @@ export class OnlineTable extends pulumi.CustomResource {
      * object describing status of the online table:
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.OnlineTableStatus[]>;
-    public readonly tableServingUrl!: pulumi.Output<string | undefined>;
+    /**
+     * Data serving REST API URL for this table.
+     */
+    public /*out*/ readonly tableServingUrl!: pulumi.Output<string>;
 
     /**
      * Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -100,8 +103,8 @@ export class OnlineTable extends pulumi.CustomResource {
             const args = argsOrState as OnlineTableArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["tableServingUrl"] = args ? args.tableServingUrl : undefined;
             resourceInputs["statuses"] = undefined /*out*/;
+            resourceInputs["tableServingUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OnlineTable.__pulumiType, name, resourceInputs, opts);
@@ -124,6 +127,9 @@ export interface OnlineTableState {
      * object describing status of the online table:
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.OnlineTableStatus>[]>;
+    /**
+     * Data serving REST API URL for this table.
+     */
     tableServingUrl?: pulumi.Input<string>;
 }
 
@@ -139,5 +145,4 @@ export interface OnlineTableArgs {
      * object containing specification of the online table:
      */
     spec?: pulumi.Input<inputs.OnlineTableSpec>;
-    tableServingUrl?: pulumi.Input<string>;
 }

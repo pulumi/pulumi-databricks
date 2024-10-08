@@ -235,11 +235,11 @@ class SqlWidget(pulumi.CustomResource):
                  widget_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note:** Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
+        > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 
         To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        > **Note:** documentation for this resource is a work in progress.
+        > documentation for this resource is a work in progress.
 
         A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
 
@@ -299,11 +299,11 @@ class SqlWidget(pulumi.CustomResource):
                  args: SqlWidgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note:** Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
+        > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 
         To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        > **Note:** documentation for this resource is a work in progress.
+        > documentation for this resource is a work in progress.
 
         A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
 

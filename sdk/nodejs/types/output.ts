@@ -63,6 +63,86 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
     minutes: number;
 }
 
+export interface BudgetAlertConfiguration {
+    /**
+     * List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     */
+    actionConfigurations?: outputs.BudgetAlertConfigurationActionConfiguration[];
+    alertConfigurationId: string;
+    /**
+     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
+     */
+    quantityThreshold?: string;
+    /**
+     * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     */
+    quantityType?: string;
+    /**
+     * The time window of usage data for the budget. (Enum: `MONTH`)
+     */
+    timePeriod?: string;
+    /**
+     * The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     */
+    triggerType?: string;
+}
+
+export interface BudgetAlertConfigurationActionConfiguration {
+    actionConfigurationId: string;
+    /**
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     */
+    actionType?: string;
+    /**
+     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     */
+    target?: string;
+}
+
+export interface BudgetFilter {
+    /**
+     * List of tags to filter by. Consists of the following fields:
+     */
+    tags?: outputs.BudgetFilterTag[];
+    /**
+     * Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     */
+    workspaceId?: outputs.BudgetFilterWorkspaceId;
+}
+
+export interface BudgetFilterTag {
+    /**
+     * The key of the tag.
+     */
+    key?: string;
+    /**
+     * Consists of the following fields:
+     */
+    value?: outputs.BudgetFilterTagValue;
+}
+
+export interface BudgetFilterTagValue {
+    /**
+     * The operator to use for the filter. (Enum: `IN`)
+     */
+    operator?: string;
+    /**
+     * The values to filter by.
+     */
+    values?: string[];
+}
+
+export interface BudgetFilterWorkspaceId {
+    /**
+     * The operator to use for the filter. (Enum: `IN`)
+     */
+    operator?: string;
+    /**
+     * The values to filter by.
+     */
+    values?: number[];
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -1169,6 +1249,7 @@ export interface GetCurrentMetastoreMetastoreInfo {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
+    externalAccessEnabled?: boolean;
     /**
      * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
      */
@@ -2784,6 +2865,7 @@ export interface GetMetastoreMetastoreInfo {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
+    externalAccessEnabled?: boolean;
     globalMetastoreId?: string;
     /**
      * ID of the metastore
@@ -4146,7 +4228,7 @@ export interface JobPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
     /**
@@ -4347,7 +4429,7 @@ export interface JobTask {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
 }
@@ -4408,7 +4490,7 @@ export interface JobTaskDependsOn {
     /**
      * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
      *
-     * > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
+     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
     outcome?: string;
     /**
@@ -4541,7 +4623,7 @@ export interface JobTaskForEachTaskTask {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      *
-     * > **Note** If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
 }
@@ -4602,7 +4684,7 @@ export interface JobTaskForEachTaskTaskDependsOn {
     /**
      * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
      *
-     * > **Note** Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
+     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
     outcome?: string;
     /**
@@ -4931,7 +5013,7 @@ export interface JobTaskForEachTaskTaskPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
     /**
@@ -4982,7 +5064,7 @@ export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
 }
@@ -5512,7 +5594,7 @@ export interface JobTaskPipelineTask {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
     /**
@@ -5563,7 +5645,7 @@ export interface JobTaskRunJobTaskPipelineParams {
     /**
      * (Bool) Specifies if there should be full refresh of the pipeline.
      *
-     * > **Note** The following configuration blocks are only supported inside a `task` block
+     * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
 }
@@ -6121,6 +6203,84 @@ export interface MlflowWebhookJobSpec {
      * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      */
     workspaceUrl?: string;
+}
+
+export interface ModelServingAiGateway {
+    guardrails?: outputs.ModelServingAiGatewayGuardrails;
+    inferenceTableConfig?: outputs.ModelServingAiGatewayInferenceTableConfig;
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     */
+    rateLimits?: outputs.ModelServingAiGatewayRateLimit[];
+    usageTrackingConfig?: outputs.ModelServingAiGatewayUsageTrackingConfig;
+}
+
+export interface ModelServingAiGatewayGuardrails {
+    input?: outputs.ModelServingAiGatewayGuardrailsInput;
+    output?: outputs.ModelServingAiGatewayGuardrailsOutput;
+}
+
+export interface ModelServingAiGatewayGuardrailsInput {
+    invalidKeywords?: string[];
+    pii?: outputs.ModelServingAiGatewayGuardrailsInputPii;
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface ModelServingAiGatewayGuardrailsInputPii {
+    behavior: string;
+}
+
+export interface ModelServingAiGatewayGuardrailsOutput {
+    invalidKeywords?: string[];
+    pii?: outputs.ModelServingAiGatewayGuardrailsOutputPii;
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface ModelServingAiGatewayGuardrailsOutputPii {
+    behavior: string;
+}
+
+export interface ModelServingAiGatewayInferenceTableConfig {
+    /**
+     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     */
+    catalogName?: string;
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
+    enabled?: boolean;
+    /**
+     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     */
+    schemaName?: string;
+    /**
+     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     */
+    tableNamePrefix?: string;
+}
+
+export interface ModelServingAiGatewayRateLimit {
+    /**
+     * Used to specify how many calls are allowed for a key within the renewal_period.
+     */
+    calls: number;
+    /**
+     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     */
+    key?: string;
+    /**
+     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     */
+    renewalPeriod: string;
+}
+
+export interface ModelServingAiGatewayUsageTrackingConfig {
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
+    enabled?: boolean;
 }
 
 export interface ModelServingConfig {
@@ -6864,7 +7024,7 @@ export interface PermissionsAccessControl {
      *
      * Exactly one of the below arguments is required:
      */
-    permissionLevel: string;
+    permissionLevel?: string;
     /**
      * Application ID of the service_principal.
      */
@@ -7626,6 +7786,10 @@ export interface SqlTableColumn {
      */
     comment?: string;
     /**
+     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     */
+    identity?: string;
+    /**
      * User-visible name of column
      */
     name: string;
@@ -7637,6 +7801,7 @@ export interface SqlTableColumn {
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      */
     type: string;
+    typeJson: string;
 }
 
 export interface SqlWidgetParameter {

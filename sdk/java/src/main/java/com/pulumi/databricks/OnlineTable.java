@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource can only be used on a Unity Catalog-enabled workspace!
+ * &gt; This resource can only be used on a Unity Catalog-enabled workspace!
  * 
  * This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
  * 
@@ -119,11 +119,19 @@ public class OnlineTable extends com.pulumi.resources.CustomResource {
     public Output<List<OnlineTableStatus>> statuses() {
         return this.statuses;
     }
+    /**
+     * Data serving REST API URL for this table.
+     * 
+     */
     @Export(name="tableServingUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tableServingUrl;
+    private Output<String> tableServingUrl;
 
-    public Output<Optional<String>> tableServingUrl() {
-        return Codegen.optional(this.tableServingUrl);
+    /**
+     * @return Data serving REST API URL for this table.
+     * 
+     */
+    public Output<String> tableServingUrl() {
+        return this.tableServingUrl;
     }
 
     /**

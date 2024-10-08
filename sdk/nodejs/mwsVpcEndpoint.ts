@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+ * > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
  *
  * Enables you to register awsVpcEndpoint resources or gcp vpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
  *
@@ -201,7 +201,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * -> Importing this resource is not currently supported.
  */
 export class MwsVpcEndpoint extends pulumi.CustomResource {
     /**

@@ -131,7 +131,7 @@ public final class JobTaskForEachTaskTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
@@ -290,7 +290,7 @@ public final class JobTaskForEachTaskTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; **Note** If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<JobTaskForEachTaskTaskWebhookNotifications> webhookNotifications() {

@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,7 +22,7 @@ public final class PermissionsAccessControl {
      * Exactly one of the below arguments is required:
      * 
      */
-    private String permissionLevel;
+    private @Nullable String permissionLevel;
     /**
      * @return Application ID of the service_principal.
      * 
@@ -49,8 +48,8 @@ public final class PermissionsAccessControl {
      * Exactly one of the below arguments is required:
      * 
      */
-    public String permissionLevel() {
-        return this.permissionLevel;
+    public Optional<String> permissionLevel() {
+        return Optional.ofNullable(this.permissionLevel);
     }
     /**
      * @return Application ID of the service_principal.
@@ -77,7 +76,7 @@ public final class PermissionsAccessControl {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String groupName;
-        private String permissionLevel;
+        private @Nullable String permissionLevel;
         private @Nullable String servicePrincipalName;
         private @Nullable String userName;
         public Builder() {}
@@ -96,10 +95,8 @@ public final class PermissionsAccessControl {
             return this;
         }
         @CustomType.Setter
-        public Builder permissionLevel(String permissionLevel) {
-            if (permissionLevel == null) {
-              throw new MissingRequiredPropertyException("PermissionsAccessControl", "permissionLevel");
-            }
+        public Builder permissionLevel(@Nullable String permissionLevel) {
+
             this.permissionLevel = permissionLevel;
             return this;
         }

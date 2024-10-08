@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note:** Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
+// > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
 //
 // This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
 //
-// > **Note:** documentation for this resource is a work in progress.
+// > documentation for this resource is a work in progress.
 //
 // A dashboard may have one or more widgets.
 //

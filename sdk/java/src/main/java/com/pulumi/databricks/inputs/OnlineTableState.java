@@ -63,9 +63,17 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.statuses);
     }
 
+    /**
+     * Data serving REST API URL for this table.
+     * 
+     */
     @Import(name="tableServingUrl")
     private @Nullable Output<String> tableServingUrl;
 
+    /**
+     * @return Data serving REST API URL for this table.
+     * 
+     */
     public Optional<Output<String>> tableServingUrl() {
         return Optional.ofNullable(this.tableServingUrl);
     }
@@ -170,11 +178,23 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
             return statuses(List.of(statuses));
         }
 
+        /**
+         * @param tableServingUrl Data serving REST API URL for this table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableServingUrl(@Nullable Output<String> tableServingUrl) {
             $.tableServingUrl = tableServingUrl;
             return this;
         }
 
+        /**
+         * @param tableServingUrl Data serving REST API URL for this table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableServingUrl(String tableServingUrl) {
             return tableServingUrl(Output.of(tableServingUrl));
         }

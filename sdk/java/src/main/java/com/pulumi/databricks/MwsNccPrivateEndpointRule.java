@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * &gt; Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
  * 
- * &gt; **Note** This feature is only available in Azure.
+ * &gt; This feature is only available in Azure.
  * 
  * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
  * 

@@ -19,6 +19,11 @@ public final class SqlTableColumn {
      */
     private @Nullable String comment;
     /**
+     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
+    private @Nullable String identity;
+    /**
      * @return User-visible name of column
      * 
      */
@@ -33,6 +38,7 @@ public final class SqlTableColumn {
      * 
      */
     private @Nullable String type;
+    private @Nullable String typeJson;
 
     private SqlTableColumn() {}
     /**
@@ -41,6 +47,13 @@ public final class SqlTableColumn {
      */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
+    }
+    /**
+     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
+    public Optional<String> identity() {
+        return Optional.ofNullable(this.identity);
     }
     /**
      * @return User-visible name of column
@@ -63,6 +76,9 @@ public final class SqlTableColumn {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    public Optional<String> typeJson() {
+        return Optional.ofNullable(this.typeJson);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,22 +90,32 @@ public final class SqlTableColumn {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
+        private @Nullable String identity;
         private String name;
         private @Nullable Boolean nullable;
         private @Nullable String type;
+        private @Nullable String typeJson;
         public Builder() {}
         public Builder(SqlTableColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
+    	      this.identity = defaults.identity;
     	      this.name = defaults.name;
     	      this.nullable = defaults.nullable;
     	      this.type = defaults.type;
+    	      this.typeJson = defaults.typeJson;
         }
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
 
             this.comment = comment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identity(@Nullable String identity) {
+
+            this.identity = identity;
             return this;
         }
         @CustomType.Setter
@@ -112,12 +138,20 @@ public final class SqlTableColumn {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder typeJson(@Nullable String typeJson) {
+
+            this.typeJson = typeJson;
+            return this;
+        }
         public SqlTableColumn build() {
             final var _resultValue = new SqlTableColumn();
             _resultValue.comment = comment;
+            _resultValue.identity = identity;
             _resultValue.name = name;
             _resultValue.nullable = nullable;
             _resultValue.type = type;
+            _resultValue.typeJson = typeJson;
             return _resultValue;
         }
     }

@@ -8,6 +8,7 @@ import typing
 from .access_control_rule_set import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
+from .budget import *
 from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
@@ -49,6 +50,7 @@ from .get_metastore import *
 from .get_metastores import *
 from .get_mlflow_experiment import *
 from .get_mlflow_model import *
+from .get_mlflow_models import *
 from .get_mws_credentials import *
 from .get_mws_workspaces import *
 from .get_node_type import *
@@ -186,6 +188,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": "AutomaticClusterUpdateWorkspaceSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/budget",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/budget:Budget": "Budget"
   }
  },
  {

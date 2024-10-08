@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource can only be used with an account-level provider.
+ * &gt; This resource can only be used with an account-level provider.
  * 
  * With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
  * 

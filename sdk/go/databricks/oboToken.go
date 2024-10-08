@@ -18,7 +18,7 @@ import (
 //
 // Creating a token for a narrowly-scoped service principal, that would be the only one (besides admins) allowed to use PAT token in this given workspace, keeping your automated deployment highly secure.
 //
-// > **Note** A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `accessControl` blocks in the Pulumi configuration file.
+// > A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `accessControl` blocks in the Pulumi configuration file.
 //
 // ```go
 // package main
@@ -137,7 +137,7 @@ import (
 //
 // ## Import
 //
-// -> **Note** Importing this resource is not currently supported.
+// !> Importing this resource is not currently supported.
 type OboToken struct {
 	pulumi.CustomResourceState
 

@@ -523,7 +523,7 @@ class Metastore(pulumi.CustomResource):
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource can be used with an account or workspace-level provider.
+        > This resource can be used with an account or workspace-level provider.
 
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 
@@ -580,7 +580,7 @@ class Metastore(pulumi.CustomResource):
                  args: Optional[MetastoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can be used with an account or workspace-level provider.
+        > This resource can be used with an account or workspace-level provider.
 
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 

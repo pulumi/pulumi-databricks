@@ -16,7 +16,7 @@ public final class JobTaskForEachTaskTaskPipelineTask {
     /**
      * @return (Bool) Specifies if there should be full refresh of the pipeline.
      * 
-     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * &gt; The following configuration blocks are only supported inside a `task` block
      * 
      */
     private @Nullable Boolean fullRefresh;
@@ -30,7 +30,7 @@ public final class JobTaskForEachTaskTaskPipelineTask {
     /**
      * @return (Bool) Specifies if there should be full refresh of the pipeline.
      * 
-     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * &gt; The following configuration blocks are only supported inside a `task` block
      * 
      */
     public Optional<Boolean> fullRefresh() {

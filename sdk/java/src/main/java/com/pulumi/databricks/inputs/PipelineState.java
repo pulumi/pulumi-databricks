@@ -43,6 +43,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowDuplicateNames);
     }
 
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      * 
@@ -308,6 +315,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runAsUserName);
     }
 
+    @Import(name="schema")
+    private @Nullable Output<String> schema;
+
+    public Optional<Output<String>> schema() {
+        return Optional.ofNullable(this.schema);
+    }
+
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      * 
@@ -386,6 +400,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     private PipelineState(PipelineState $) {
         this.allowDuplicateNames = $.allowDuplicateNames;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.catalog = $.catalog;
         this.cause = $.cause;
         this.channel = $.channel;
@@ -409,6 +424,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.photon = $.photon;
         this.runAsUserName = $.runAsUserName;
+        this.schema = $.schema;
         this.serverless = $.serverless;
         this.state = $.state;
         this.storage = $.storage;
@@ -454,6 +470,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowDuplicateNames(Boolean allowDuplicateNames) {
             return allowDuplicateNames(Output.of(allowDuplicateNames));
+        }
+
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**
@@ -845,6 +870,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         public Builder runAsUserName(String runAsUserName) {
             return runAsUserName(Output.of(runAsUserName));
+        }
+
+        public Builder schema(@Nullable Output<String> schema) {
+            $.schema = schema;
+            return this;
+        }
+
+        public Builder schema(String schema) {
+            return schema(Output.of(schema));
         }
 
         /**

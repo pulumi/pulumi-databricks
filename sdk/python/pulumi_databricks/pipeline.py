@@ -17,6 +17,7 @@ __all__ = ['PipelineArgs', 'Pipeline']
 class PipelineArgs:
     def __init__(__self__, *,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  cause: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class PipelineArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -69,6 +71,8 @@ class PipelineArgs:
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
         if cause is not None:
@@ -115,6 +119,8 @@ class PipelineArgs:
             pulumi.set(__self__, "photon", photon)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if state is not None:
@@ -139,6 +145,15 @@ class PipelineArgs:
     @allow_duplicate_names.setter
     def allow_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -385,6 +400,15 @@ class PipelineArgs:
     @run_as_user_name.setter
     def run_as_user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "run_as_user_name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
 
     @property
     @pulumi.getter
@@ -457,6 +481,7 @@ class PipelineArgs:
 class _PipelineState:
     def __init__(__self__, *,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  cause: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
@@ -480,6 +505,7 @@ class _PipelineState:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -509,6 +535,8 @@ class _PipelineState:
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
         if cause is not None:
@@ -555,6 +583,8 @@ class _PipelineState:
             pulumi.set(__self__, "photon", photon)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if state is not None:
@@ -579,6 +609,15 @@ class _PipelineState:
     @allow_duplicate_names.setter
     def allow_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -825,6 +864,15 @@ class _PipelineState:
     @run_as_user_name.setter
     def run_as_user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "run_as_user_name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
 
     @property
     @pulumi.getter
@@ -899,6 +947,7 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  cause: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
@@ -922,6 +971,7 @@ class Pipeline(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -1134,6 +1184,7 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  cause: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
@@ -1157,6 +1208,7 @@ class Pipeline(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -1173,6 +1225,7 @@ class Pipeline(pulumi.CustomResource):
             __props__ = PipelineArgs.__new__(PipelineArgs)
 
             __props__.__dict__["allow_duplicate_names"] = allow_duplicate_names
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
             __props__.__dict__["catalog"] = catalog
             __props__.__dict__["cause"] = cause
             __props__.__dict__["channel"] = channel
@@ -1196,6 +1249,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["photon"] = photon
             __props__.__dict__["run_as_user_name"] = run_as_user_name
+            __props__.__dict__["schema"] = schema
             __props__.__dict__["serverless"] = serverless
             __props__.__dict__["state"] = state
             __props__.__dict__["storage"] = storage
@@ -1213,6 +1267,7 @@ class Pipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+            budget_policy_id: Optional[pulumi.Input[str]] = None,
             catalog: Optional[pulumi.Input[str]] = None,
             cause: Optional[pulumi.Input[str]] = None,
             channel: Optional[pulumi.Input[str]] = None,
@@ -1236,6 +1291,7 @@ class Pipeline(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
             photon: Optional[pulumi.Input[bool]] = None,
             run_as_user_name: Optional[pulumi.Input[str]] = None,
+            schema: Optional[pulumi.Input[str]] = None,
             serverless: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             storage: Optional[pulumi.Input[str]] = None,
@@ -1273,6 +1329,7 @@ class Pipeline(pulumi.CustomResource):
         __props__ = _PipelineState.__new__(_PipelineState)
 
         __props__.__dict__["allow_duplicate_names"] = allow_duplicate_names
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["catalog"] = catalog
         __props__.__dict__["cause"] = cause
         __props__.__dict__["channel"] = channel
@@ -1296,6 +1353,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["photon"] = photon
         __props__.__dict__["run_as_user_name"] = run_as_user_name
+        __props__.__dict__["schema"] = schema
         __props__.__dict__["serverless"] = serverless
         __props__.__dict__["state"] = state
         __props__.__dict__["storage"] = storage
@@ -1311,6 +1369,11 @@ class Pipeline(pulumi.CustomResource):
         Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         """
         return pulumi.get(self, "allow_duplicate_names")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter
@@ -1465,6 +1528,11 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "run_as_user_name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter

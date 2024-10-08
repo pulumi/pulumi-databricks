@@ -392,7 +392,7 @@ class MwsLogDelivery(pulumi.CustomResource):
                  workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
         This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
 
@@ -449,7 +449,7 @@ class MwsLogDelivery(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -472,7 +472,7 @@ class MwsLogDelivery(pulumi.CustomResource):
                  args: MwsLogDeliveryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
         This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
 
@@ -529,7 +529,7 @@ class MwsLogDelivery(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        !> Importing this resource is not currently supported.
 
         :param str resource_name: The name of the resource.
         :param MwsLogDeliveryArgs args: The arguments to use to populate this resource's properties.

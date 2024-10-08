@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
  *
- * **Note** If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ * > If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
  *
  * ## Example Usage
  *
@@ -106,6 +106,7 @@ export class ModelServing extends pulumi.CustomResource {
         return obj['__pulumiType'] === ModelServing.__pulumiType;
     }
 
+    public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
     /**
      * The model serving endpoint configuration.
      */
@@ -144,6 +145,7 @@ export class ModelServing extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ModelServingState | undefined;
+            resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
@@ -155,6 +157,7 @@ export class ModelServing extends pulumi.CustomResource {
             if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
+            resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
@@ -171,6 +174,7 @@ export class ModelServing extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ModelServing resources.
  */
 export interface ModelServingState {
+    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
      * The model serving endpoint configuration.
      */
@@ -201,6 +205,7 @@ export interface ModelServingState {
  * The set of arguments for constructing a ModelServing resource.
  */
 export interface ModelServingArgs {
+    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
      * The model serving endpoint configuration.
      */

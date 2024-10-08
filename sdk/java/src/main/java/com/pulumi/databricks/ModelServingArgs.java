@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingArgs Empty = new ModelServingArgs();
+
+    @Import(name="aiGateway")
+    private @Nullable Output<ModelServingAiGatewayArgs> aiGateway;
+
+    public Optional<Output<ModelServingAiGatewayArgs>> aiGateway() {
+        return Optional.ofNullable(this.aiGateway);
+    }
 
     /**
      * The model serving endpoint configuration.
@@ -99,6 +107,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     private ModelServingArgs() {}
 
     private ModelServingArgs(ModelServingArgs $) {
+        this.aiGateway = $.aiGateway;
         this.config = $.config;
         this.name = $.name;
         this.rateLimits = $.rateLimits;
@@ -122,6 +131,15 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ModelServingArgs defaults) {
             $ = new ModelServingArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aiGateway(@Nullable Output<ModelServingAiGatewayArgs> aiGateway) {
+            $.aiGateway = aiGateway;
+            return this;
+        }
+
+        public Builder aiGateway(ModelServingAiGatewayArgs aiGateway) {
+            return aiGateway(Output.of(aiGateway));
         }
 
         /**

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This resource can only be used with a workspace-level provider!
+ * > This resource can only be used with a workspace-level provider!
  *
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
  *

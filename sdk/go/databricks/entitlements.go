@@ -13,7 +13,7 @@ import (
 
 // This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
 //
-// > **Note** You must define entitlements of a principal using either `Entitlements` or directly within one of databricks_users, Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
+// > You must define entitlements of a principal using either `Entitlements` or directly within one of databricks_users, Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
 //
 // ## Example Usage
 //

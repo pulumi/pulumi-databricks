@@ -230,7 +230,7 @@ class RegisteredModel(pulumi.CustomResource):
                  storage_location: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 
@@ -285,7 +285,7 @@ class RegisteredModel(pulumi.CustomResource):
                  args: RegisteredModelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource can only be used with a workspace-level provider!
+        > This resource can only be used with a workspace-level provider!
 
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 
