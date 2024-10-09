@@ -75,7 +75,7 @@ import (
 //				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
 //				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name),
 //				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
-//				Snapshot:         nil,
+//				Snapshot:         &databricks.LakehouseMonitorSnapshotArgs{},
 //			})
 //			if err != nil {
 //				return err

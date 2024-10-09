@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetMlflowModels(ctx, nil, nil)
+//			this, err := databricks.GetMlflowModels(ctx, &databricks.GetMlflowModelsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

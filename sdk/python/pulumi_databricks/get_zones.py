@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -102,9 +107,6 @@ def get_zones(default_zone: Optional[str] = None,
         default_zone=pulumi.get(__ret__, 'default_zone'),
         id=pulumi.get(__ret__, 'id'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
                      id: Optional[pulumi.Input[Optional[str]]] = None,
                      zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -128,4 +130,13 @@ def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The id for the zone object.
     :param Sequence[str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
-    ...
+    __args__ = dict()
+    __args__['defaultZone'] = default_zone
+    __args__['id'] = id
+    __args__['zones'] = zones
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        default_zone=pulumi.get(__response__, 'default_zone'),
+        id=pulumi.get(__response__, 'id'),
+        zones=pulumi.get(__response__, 'zones')))

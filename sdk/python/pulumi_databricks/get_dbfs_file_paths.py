@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -119,9 +124,6 @@ def get_dbfs_file_paths(path: Optional[str] = None,
         path=pulumi.get(__ret__, 'path'),
         path_lists=pulumi.get(__ret__, 'path_lists'),
         recursive=pulumi.get(__ret__, 'recursive'))
-
-
-@_utilities.lift_output_func(get_dbfs_file_paths)
 def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[bool]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
@@ -155,4 +157,13 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
     :param str path: Path on DBFS for the file to perform listing
     :param bool recursive: Either or not recursively list all files
     """
-    ...
+    __args__ = dict()
+    __args__['path'] = path
+    __args__['recursive'] = recursive
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFilePaths:getDbfsFilePaths', __args__, opts=opts, typ=GetDbfsFilePathsResult)
+    return __ret__.apply(lambda __response__: GetDbfsFilePathsResult(
+        id=pulumi.get(__response__, 'id'),
+        path=pulumi.get(__response__, 'path'),
+        path_lists=pulumi.get(__response__, 'path_lists'),
+        recursive=pulumi.get(__response__, 'recursive')))

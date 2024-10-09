@@ -73,7 +73,7 @@ import (
 //				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
 //				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_quality_monitoring/%v", myTestTable.Name),
 //				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
-//				Snapshot:         nil,
+//				Snapshot:         &databricks.QualityMonitorSnapshotArgs{},
 //			})
 //			if err != nil {
 //				return err

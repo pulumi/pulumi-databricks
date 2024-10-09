@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -175,9 +180,6 @@ def get_mlflow_experiment(artifact_location: Optional[str] = None,
         lifecycle_stage=pulumi.get(__ret__, 'lifecycle_stage'),
         name=pulumi.get(__ret__, 'name'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_mlflow_experiment)
 def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Optional[str]]] = None,
                                  creation_time: Optional[pulumi.Input[Optional[int]]] = None,
                                  experiment_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -202,4 +204,23 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
     :param str name: Path to experiment.
     :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
-    ...
+    __args__ = dict()
+    __args__['artifactLocation'] = artifact_location
+    __args__['creationTime'] = creation_time
+    __args__['experimentId'] = experiment_id
+    __args__['id'] = id
+    __args__['lastUpdateTime'] = last_update_time
+    __args__['lifecycleStage'] = lifecycle_stage
+    __args__['name'] = name
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult)
+    return __ret__.apply(lambda __response__: GetMlflowExperimentResult(
+        artifact_location=pulumi.get(__response__, 'artifact_location'),
+        creation_time=pulumi.get(__response__, 'creation_time'),
+        experiment_id=pulumi.get(__response__, 'experiment_id'),
+        id=pulumi.get(__response__, 'id'),
+        last_update_time=pulumi.get(__response__, 'last_update_time'),
+        lifecycle_stage=pulumi.get(__response__, 'lifecycle_stage'),
+        name=pulumi.get(__response__, 'name'),
+        tags=pulumi.get(__response__, 'tags')))

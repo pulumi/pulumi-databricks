@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -148,9 +153,6 @@ def get_metastore(id: Optional[str] = None,
         metastore_info=pulumi.get(__ret__, 'metastore_info'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_metastore)
 def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          metastore_id: Optional[pulumi.Input[Optional[str]]] = None,
                          metastore_info: Optional[pulumi.Input[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']]]] = None,
@@ -196,4 +198,17 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: Name of the metastore
     :param str region: Region of the metastore
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['metastoreId'] = metastore_id
+    __args__['metastoreInfo'] = metastore_info
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getMetastore:getMetastore', __args__, opts=opts, typ=GetMetastoreResult)
+    return __ret__.apply(lambda __response__: GetMetastoreResult(
+        id=pulumi.get(__response__, 'id'),
+        metastore_id=pulumi.get(__response__, 'metastore_id'),
+        metastore_info=pulumi.get(__response__, 'metastore_info'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region')))

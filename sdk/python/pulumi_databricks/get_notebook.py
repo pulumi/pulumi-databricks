@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -168,9 +173,6 @@ def get_notebook(format: Optional[str] = None,
         object_type=pulumi.get(__ret__, 'object_type'),
         path=pulumi.get(__ret__, 'path'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
-
-
-@_utilities.lift_output_func(get_notebook)
 def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
                         language: Optional[pulumi.Input[Optional[str]]] = None,
                         object_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -199,4 +201,20 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
     :param str object_type: notebook object type
     :param str path: Notebook path on the workspace
     """
-    ...
+    __args__ = dict()
+    __args__['format'] = format
+    __args__['language'] = language
+    __args__['objectId'] = object_id
+    __args__['objectType'] = object_type
+    __args__['path'] = path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotebook:getNotebook', __args__, opts=opts, typ=GetNotebookResult)
+    return __ret__.apply(lambda __response__: GetNotebookResult(
+        content=pulumi.get(__response__, 'content'),
+        format=pulumi.get(__response__, 'format'),
+        id=pulumi.get(__response__, 'id'),
+        language=pulumi.get(__response__, 'language'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        object_type=pulumi.get(__response__, 'object_type'),
+        path=pulumi.get(__response__, 'path'),
+        workspace_path=pulumi.get(__response__, 'workspace_path')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -291,9 +296,6 @@ def get_group(acl_principal_id: Optional[str] = None,
         service_principals=pulumi.get(__ret__, 'service_principals'),
         users=pulumi.get(__ret__, 'users'),
         workspace_access=pulumi.get(__ret__, 'workspace_access'))
-
-
-@_utilities.lift_output_func(get_group)
 def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = None,
                      allow_cluster_create: Optional[pulumi.Input[Optional[bool]]] = None,
                      allow_instance_pool_create: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -353,4 +355,36 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
     :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
-    ...
+    __args__ = dict()
+    __args__['aclPrincipalId'] = acl_principal_id
+    __args__['allowClusterCreate'] = allow_cluster_create
+    __args__['allowInstancePoolCreate'] = allow_instance_pool_create
+    __args__['childGroups'] = child_groups
+    __args__['databricksSqlAccess'] = databricks_sql_access
+    __args__['displayName'] = display_name
+    __args__['externalId'] = external_id
+    __args__['groups'] = groups
+    __args__['instanceProfiles'] = instance_profiles
+    __args__['members'] = members
+    __args__['recursive'] = recursive
+    __args__['servicePrincipals'] = service_principals
+    __args__['users'] = users
+    __args__['workspaceAccess'] = workspace_access
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
+    return __ret__.apply(lambda __response__: GetGroupResult(
+        acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),
+        allow_cluster_create=pulumi.get(__response__, 'allow_cluster_create'),
+        allow_instance_pool_create=pulumi.get(__response__, 'allow_instance_pool_create'),
+        child_groups=pulumi.get(__response__, 'child_groups'),
+        databricks_sql_access=pulumi.get(__response__, 'databricks_sql_access'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        instance_profiles=pulumi.get(__response__, 'instance_profiles'),
+        members=pulumi.get(__response__, 'members'),
+        recursive=pulumi.get(__response__, 'recursive'),
+        service_principals=pulumi.get(__response__, 'service_principals'),
+        users=pulumi.get(__response__, 'users'),
+        workspace_access=pulumi.get(__response__, 'workspace_access')))
