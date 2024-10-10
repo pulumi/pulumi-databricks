@@ -36,7 +36,7 @@ import (
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			this, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			this, err := databricks.GetAwsCrossAccountPolicy(ctx, &databricks.GetAwsCrossAccountPolicyArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

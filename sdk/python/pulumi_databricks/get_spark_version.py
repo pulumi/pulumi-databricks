@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -228,9 +233,6 @@ def get_spark_version(beta: Optional[bool] = None,
         photon=pulumi.get(__ret__, 'photon'),
         scala=pulumi.get(__ret__, 'scala'),
         spark_version=pulumi.get(__ret__, 'spark_version'))
-
-
-@_utilities.lift_output_func(get_spark_version)
 def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None,
                              genomics: Optional[pulumi.Input[Optional[bool]]] = None,
                              gpu: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -296,4 +298,29 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
     :param str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
     :param str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
-    ...
+    __args__ = dict()
+    __args__['beta'] = beta
+    __args__['genomics'] = genomics
+    __args__['gpu'] = gpu
+    __args__['graviton'] = graviton
+    __args__['id'] = id
+    __args__['latest'] = latest
+    __args__['longTermSupport'] = long_term_support
+    __args__['ml'] = ml
+    __args__['photon'] = photon
+    __args__['scala'] = scala
+    __args__['sparkVersion'] = spark_version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getSparkVersion:getSparkVersion', __args__, opts=opts, typ=GetSparkVersionResult)
+    return __ret__.apply(lambda __response__: GetSparkVersionResult(
+        beta=pulumi.get(__response__, 'beta'),
+        genomics=pulumi.get(__response__, 'genomics'),
+        gpu=pulumi.get(__response__, 'gpu'),
+        graviton=pulumi.get(__response__, 'graviton'),
+        id=pulumi.get(__response__, 'id'),
+        latest=pulumi.get(__response__, 'latest'),
+        long_term_support=pulumi.get(__response__, 'long_term_support'),
+        ml=pulumi.get(__response__, 'ml'),
+        photon=pulumi.get(__response__, 'photon'),
+        scala=pulumi.get(__response__, 'scala'),
+        spark_version=pulumi.get(__response__, 'spark_version')))

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetClusters(ctx, nil, nil)
+//			all, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

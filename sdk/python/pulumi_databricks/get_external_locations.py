@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -93,9 +98,6 @@ def get_external_locations(names: Optional[Sequence[str]] = None,
     return AwaitableGetExternalLocationsResult(
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
-
-
-@_utilities.lift_output_func(get_external_locations)
 def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationsResult]:
     """
@@ -125,4 +127,10 @@ def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence
 
     :param Sequence[str] names: List of names of ExternalLocation in the metastore
     """
-    ...
+    __args__ = dict()
+    __args__['names'] = names
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalLocations:getExternalLocations', __args__, opts=opts, typ=GetExternalLocationsResult)
+    return __ret__.apply(lambda __response__: GetExternalLocationsResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names')))

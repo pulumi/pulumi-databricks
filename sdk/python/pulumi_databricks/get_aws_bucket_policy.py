@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -120,9 +125,6 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
         full_access_role=pulumi.get(__ret__, 'full_access_role'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'))
-
-
-@_utilities.lift_output_func(get_aws_bucket_policy)
 def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  databricks_e2_account_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -136,4 +138,17 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param str full_access_role: Data access role that can have full access for this bucket
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['databricksAccountId'] = databricks_account_id
+    __args__['databricksE2AccountId'] = databricks_e2_account_id
+    __args__['fullAccessRole'] = full_access_role
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsBucketPolicy:getAwsBucketPolicy', __args__, opts=opts, typ=GetAwsBucketPolicyResult)
+    return __ret__.apply(lambda __response__: GetAwsBucketPolicyResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        databricks_account_id=pulumi.get(__response__, 'databricks_account_id'),
+        databricks_e2_account_id=pulumi.get(__response__, 'databricks_e2_account_id'),
+        full_access_role=pulumi.get(__response__, 'full_access_role'),
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json')))

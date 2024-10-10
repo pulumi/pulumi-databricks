@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -132,9 +137,6 @@ def get_cluster(cluster_id: Optional[str] = None,
         cluster_info=pulumi.get(__ret__, 'cluster_info'),
         cluster_name=pulumi.get(__ret__, 'cluster_name'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_cluster)
 def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                        cluster_info: Optional[pulumi.Input[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
                        cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -175,4 +177,15 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str cluster_name: The exact name of the cluster to search
     :param str id: cluster ID
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['clusterInfo'] = cluster_info
+    __args__['clusterName'] = cluster_name
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    return __ret__.apply(lambda __response__: GetClusterResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        cluster_info=pulumi.get(__response__, 'cluster_info'),
+        cluster_name=pulumi.get(__response__, 'cluster_name'),
+        id=pulumi.get(__response__, 'id')))

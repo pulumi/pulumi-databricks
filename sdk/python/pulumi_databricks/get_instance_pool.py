@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -101,9 +106,6 @@ def get_instance_pool(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         pool_info=pulumi.get(__ret__, 'pool_info'))
-
-
-@_utilities.lift_output_func(get_instance_pool)
 def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
                              pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
@@ -128,4 +130,12 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
     :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['poolInfo'] = pool_info
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getInstancePool:getInstancePool', __args__, opts=opts, typ=GetInstancePoolResult)
+    return __ret__.apply(lambda __response__: GetInstancePoolResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        pool_info=pulumi.get(__response__, 'pool_info')))

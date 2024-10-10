@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -111,9 +116,6 @@ def get_storage_credential(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         storage_credential_info=pulumi.get(__ret__, 'storage_credential_info'))
-
-
-@_utilities.lift_output_func(get_storage_credential)
 def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
                                   storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
@@ -147,4 +149,13 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = No
     :param str name: The name of the storage credential
     :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['storageCredentialInfo'] = storage_credential_info
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getStorageCredential:getStorageCredential', __args__, opts=opts, typ=GetStorageCredentialResult)
+    return __ret__.apply(lambda __response__: GetStorageCredentialResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        storage_credential_info=pulumi.get(__response__, 'storage_credential_info')))

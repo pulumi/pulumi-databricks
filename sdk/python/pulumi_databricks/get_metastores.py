@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -96,9 +101,6 @@ def get_metastores(ids: Optional[Mapping[str, str]] = None,
     return AwaitableGetMetastoresResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-
-
-@_utilities.lift_output_func(get_metastores)
 def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoresResult]:
     """
@@ -131,4 +133,10 @@ def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]
 
     :param Mapping[str, str] ids: Mapping of name to id of databricks_metastore
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getMetastores:getMetastores', __args__, opts=opts, typ=GetMetastoresResult)
+    return __ret__.apply(lambda __response__: GetMetastoresResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids')))

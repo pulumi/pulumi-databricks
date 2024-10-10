@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -129,9 +134,6 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         pipeline_name=pulumi.get(__ret__, 'pipeline_name'))
-
-
-@_utilities.lift_output_func(get_pipelines)
 def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          pipeline_name: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelinesResult]:
@@ -186,4 +188,12 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
     :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['pipelineName'] = pipeline_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getPipelines:getPipelines', __args__, opts=opts, typ=GetPipelinesResult)
+    return __ret__.apply(lambda __response__: GetPipelinesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        pipeline_name=pulumi.get(__response__, 'pipeline_name')))

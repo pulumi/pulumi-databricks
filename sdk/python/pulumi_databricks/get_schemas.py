@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -108,9 +113,6 @@ def get_schemas(catalog_name: Optional[str] = None,
         catalog_name=pulumi.get(__ret__, 'catalog_name'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-
-
-@_utilities.lift_output_func(get_schemas)
 def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
@@ -144,4 +146,12 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
     :param str catalog_name: Name of databricks_catalog
     :param Sequence[str] ids: set of Schema full names: *`catalog`.`schema`*
     """
-    ...
+    __args__ = dict()
+    __args__['catalogName'] = catalog_name
+    __args__['ids'] = ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult)
+    return __ret__.apply(lambda __response__: GetSchemasResult(
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids')))

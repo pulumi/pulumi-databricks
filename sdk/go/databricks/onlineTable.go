@@ -36,7 +36,7 @@ import (
 //					PrimaryKeyColumns: pulumi.StringArray{
 //						pulumi.String("id"),
 //					},
-//					RunTriggered: nil,
+//					RunTriggered: &databricks.OnlineTableSpecRunTriggeredArgs{},
 //				},
 //			})
 //			if err != nil {

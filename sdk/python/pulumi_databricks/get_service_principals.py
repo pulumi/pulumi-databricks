@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -87,9 +92,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         application_ids=pulumi.get(__ret__, 'application_ids'),
         display_name_contains=pulumi.get(__ret__, 'display_name_contains'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_service_principals)
 def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   display_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalsResult]:
@@ -102,4 +104,12 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     :param Sequence[str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
     :param str display_name_contains: Only return ServicePrincipal display name that match the given name string
     """
-    ...
+    __args__ = dict()
+    __args__['applicationIds'] = application_ids
+    __args__['displayNameContains'] = display_name_contains
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
+    return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
+        application_ids=pulumi.get(__response__, 'application_ids'),
+        display_name_contains=pulumi.get(__response__, 'display_name_contains'),
+        id=pulumi.get(__response__, 'id')))

@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			current, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			current, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
