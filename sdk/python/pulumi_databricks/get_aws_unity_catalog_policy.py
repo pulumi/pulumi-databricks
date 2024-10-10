@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -146,9 +151,6 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
         json=pulumi.get(__ret__, 'json'),
         kms_name=pulumi.get(__ret__, 'kms_name'),
         role_name=pulumi.get(__ret__, 'role_name'))
-
-
-@_utilities.lift_output_func(get_aws_unity_catalog_policy)
 def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
                                         bucket_name: Optional[pulumi.Input[str]] = None,
                                         kms_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -188,4 +190,17 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
-    ...
+    __args__ = dict()
+    __args__['awsAccountId'] = aws_account_id
+    __args__['bucketName'] = bucket_name
+    __args__['kmsName'] = kms_name
+    __args__['roleName'] = role_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy', __args__, opts=opts, typ=GetAwsUnityCatalogPolicyResult)
+    return __ret__.apply(lambda __response__: GetAwsUnityCatalogPolicyResult(
+        aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        bucket_name=pulumi.get(__response__, 'bucket_name'),
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json'),
+        kms_name=pulumi.get(__response__, 'kms_name'),
+        role_name=pulumi.get(__response__, 'role_name')))

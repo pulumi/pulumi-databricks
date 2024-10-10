@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetInstanceProfiles(ctx, nil, nil)
+//			all, err := databricks.GetInstanceProfiles(ctx, &databricks.GetInstanceProfilesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

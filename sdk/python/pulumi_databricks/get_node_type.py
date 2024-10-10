@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -272,9 +277,6 @@ def get_node_type(category: Optional[str] = None,
         photon_driver_capable=pulumi.get(__ret__, 'photon_driver_capable'),
         photon_worker_capable=pulumi.get(__ret__, 'photon_worker_capable'),
         support_port_forwarding=pulumi.get(__ret__, 'support_port_forwarding'))
-
-
-@_utilities.lift_output_func(get_node_type)
 def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          fleet: Optional[pulumi.Input[Optional[bool]]] = None,
                          gb_per_core: Optional[pulumi.Input[Optional[int]]] = None,
@@ -353,4 +355,35 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
     :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['fleet'] = fleet
+    __args__['gbPerCore'] = gb_per_core
+    __args__['graviton'] = graviton
+    __args__['id'] = id
+    __args__['isIoCacheEnabled'] = is_io_cache_enabled
+    __args__['localDisk'] = local_disk
+    __args__['localDiskMinSize'] = local_disk_min_size
+    __args__['minCores'] = min_cores
+    __args__['minGpus'] = min_gpus
+    __args__['minMemoryGb'] = min_memory_gb
+    __args__['photonDriverCapable'] = photon_driver_capable
+    __args__['photonWorkerCapable'] = photon_worker_capable
+    __args__['supportPortForwarding'] = support_port_forwarding
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult)
+    return __ret__.apply(lambda __response__: GetNodeTypeResult(
+        category=pulumi.get(__response__, 'category'),
+        fleet=pulumi.get(__response__, 'fleet'),
+        gb_per_core=pulumi.get(__response__, 'gb_per_core'),
+        graviton=pulumi.get(__response__, 'graviton'),
+        id=pulumi.get(__response__, 'id'),
+        is_io_cache_enabled=pulumi.get(__response__, 'is_io_cache_enabled'),
+        local_disk=pulumi.get(__response__, 'local_disk'),
+        local_disk_min_size=pulumi.get(__response__, 'local_disk_min_size'),
+        min_cores=pulumi.get(__response__, 'min_cores'),
+        min_gpus=pulumi.get(__response__, 'min_gpus'),
+        min_memory_gb=pulumi.get(__response__, 'min_memory_gb'),
+        photon_driver_capable=pulumi.get(__response__, 'photon_driver_capable'),
+        photon_worker_capable=pulumi.get(__response__, 'photon_worker_capable'),
+        support_port_forwarding=pulumi.get(__response__, 'support_port_forwarding')))

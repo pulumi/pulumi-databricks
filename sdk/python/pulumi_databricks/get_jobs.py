@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -111,9 +116,6 @@ def get_jobs(ids: Optional[Mapping[str, str]] = None,
     return AwaitableGetJobsResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-
-
-@_utilities.lift_output_func(get_jobs)
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobsResult]:
     """
@@ -161,4 +163,10 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = N
 
     :param Mapping[str, str] ids: map of Job names to ids
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult)
+    return __ret__.apply(lambda __response__: GetJobsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids')))

@@ -40,7 +40,8 @@ import (
 // cfg := config.New(ctx, "")
 // // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 // databricksAccountId := cfg.RequireObject("databricksAccountId")
-// current, err := aws.GetCallerIdentity(ctx, nil, nil);
+// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

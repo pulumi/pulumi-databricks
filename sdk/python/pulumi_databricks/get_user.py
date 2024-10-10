@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -217,9 +222,6 @@ def get_user(user_id: Optional[str] = None,
         repos=pulumi.get(__ret__, 'repos'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
@@ -261,4 +263,20 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str user_id: ID of the user.
     :param str user_name: User name of the user. The user must exist before this resource can be planned.
     """
-    ...
+    __args__ = dict()
+    __args__['userId'] = user_id
+    __args__['userName'] = user_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),
+        active=pulumi.get(__response__, 'active'),
+        alphanumeric=pulumi.get(__response__, 'alphanumeric'),
+        application_id=pulumi.get(__response__, 'application_id'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        home=pulumi.get(__response__, 'home'),
+        id=pulumi.get(__response__, 'id'),
+        repos=pulumi.get(__response__, 'repos'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_name=pulumi.get(__response__, 'user_name')))

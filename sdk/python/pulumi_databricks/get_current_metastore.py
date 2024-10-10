@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -102,9 +107,6 @@ def get_current_metastore(id: Optional[str] = None,
     return AwaitableGetCurrentMetastoreResult(
         id=pulumi.get(__ret__, 'id'),
         metastore_info=pulumi.get(__ret__, 'metastore_info'))
-
-
-@_utilities.lift_output_func(get_current_metastore)
 def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                  metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
@@ -140,4 +142,11 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
     :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['metastoreInfo'] = metastore_info
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentMetastore:getCurrentMetastore', __args__, opts=opts, typ=GetCurrentMetastoreResult)
+    return __ret__.apply(lambda __response__: GetCurrentMetastoreResult(
+        id=pulumi.get(__response__, 'id'),
+        metastore_info=pulumi.get(__response__, 'metastore_info')))

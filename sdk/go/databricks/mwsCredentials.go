@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, &databricks.GetAwsCrossAccountPolicyArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

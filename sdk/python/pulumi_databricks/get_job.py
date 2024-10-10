@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -138,9 +143,6 @@ def get_job(id: Optional[str] = None,
         job_name=pulumi.get(__ret__, 'job_name'),
         job_settings=pulumi.get(__ret__, 'job_settings'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_job)
 def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -176,4 +178,17 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
     :param str name: the job name of Job if the resource was matched by id.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['jobId'] = job_id
+    __args__['jobName'] = job_name
+    __args__['jobSettings'] = job_settings
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult)
+    return __ret__.apply(lambda __response__: GetJobResult(
+        id=pulumi.get(__response__, 'id'),
+        job_id=pulumi.get(__response__, 'job_id'),
+        job_name=pulumi.get(__response__, 'job_name'),
+        job_settings=pulumi.get(__response__, 'job_settings'),
+        name=pulumi.get(__response__, 'name')))

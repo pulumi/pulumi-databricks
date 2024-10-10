@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -117,9 +122,6 @@ def get_sql_warehouses(ids: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         warehouse_name_contains=pulumi.get(__ret__, 'warehouse_name_contains'))
-
-
-@_utilities.lift_output_func(get_sql_warehouses)
 def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               warehouse_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSqlWarehousesResult]:
@@ -162,4 +164,12 @@ def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param Sequence[str] ids: list of SqlEndpoint ids
     :param str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['warehouseNameContains'] = warehouse_name_contains
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getSqlWarehouses:getSqlWarehouses', __args__, opts=opts, typ=GetSqlWarehousesResult)
+    return __ret__.apply(lambda __response__: GetSqlWarehousesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        warehouse_name_contains=pulumi.get(__response__, 'warehouse_name_contains')))

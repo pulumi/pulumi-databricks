@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -410,9 +415,6 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'),
         warehouse_type=pulumi.get(__ret__, 'warehouse_type'))
-
-
-@_utilities.lift_output_func(get_sql_warehouse)
 def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]]] = None,
                              channel: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict']]]] = None,
                              cluster_size: Optional[pulumi.Input[Optional[str]]] = None,
@@ -493,4 +495,49 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
     :param str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
     """
-    ...
+    __args__ = dict()
+    __args__['autoStopMins'] = auto_stop_mins
+    __args__['channel'] = channel
+    __args__['clusterSize'] = cluster_size
+    __args__['creatorName'] = creator_name
+    __args__['dataSourceId'] = data_source_id
+    __args__['enablePhoton'] = enable_photon
+    __args__['enableServerlessCompute'] = enable_serverless_compute
+    __args__['health'] = health
+    __args__['id'] = id
+    __args__['instanceProfileArn'] = instance_profile_arn
+    __args__['jdbcUrl'] = jdbc_url
+    __args__['maxNumClusters'] = max_num_clusters
+    __args__['minNumClusters'] = min_num_clusters
+    __args__['name'] = name
+    __args__['numActiveSessions'] = num_active_sessions
+    __args__['numClusters'] = num_clusters
+    __args__['odbcParams'] = odbc_params
+    __args__['spotInstancePolicy'] = spot_instance_policy
+    __args__['state'] = state
+    __args__['tags'] = tags
+    __args__['warehouseType'] = warehouse_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getSqlWarehouse:getSqlWarehouse', __args__, opts=opts, typ=GetSqlWarehouseResult)
+    return __ret__.apply(lambda __response__: GetSqlWarehouseResult(
+        auto_stop_mins=pulumi.get(__response__, 'auto_stop_mins'),
+        channel=pulumi.get(__response__, 'channel'),
+        cluster_size=pulumi.get(__response__, 'cluster_size'),
+        creator_name=pulumi.get(__response__, 'creator_name'),
+        data_source_id=pulumi.get(__response__, 'data_source_id'),
+        enable_photon=pulumi.get(__response__, 'enable_photon'),
+        enable_serverless_compute=pulumi.get(__response__, 'enable_serverless_compute'),
+        health=pulumi.get(__response__, 'health'),
+        id=pulumi.get(__response__, 'id'),
+        instance_profile_arn=pulumi.get(__response__, 'instance_profile_arn'),
+        jdbc_url=pulumi.get(__response__, 'jdbc_url'),
+        max_num_clusters=pulumi.get(__response__, 'max_num_clusters'),
+        min_num_clusters=pulumi.get(__response__, 'min_num_clusters'),
+        name=pulumi.get(__response__, 'name'),
+        num_active_sessions=pulumi.get(__response__, 'num_active_sessions'),
+        num_clusters=pulumi.get(__response__, 'num_clusters'),
+        odbc_params=pulumi.get(__response__, 'odbc_params'),
+        spot_instance_policy=pulumi.get(__response__, 'spot_instance_policy'),
+        state=pulumi.get(__response__, 'state'),
+        tags=pulumi.get(__response__, 'tags'),
+        warehouse_type=pulumi.get(__response__, 'warehouse_type')))
