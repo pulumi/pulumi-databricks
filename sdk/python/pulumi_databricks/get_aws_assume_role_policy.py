@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -146,9 +151,6 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
         for_log_delivery=pulumi.get(__ret__, 'for_log_delivery'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'))
-
-
-@_utilities.lift_output_func(get_aws_assume_role_policy)
 def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       external_id: Optional[pulumi.Input[str]] = None,
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -199,4 +201,15 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
-    ...
+    __args__ = dict()
+    __args__['databricksAccountId'] = databricks_account_id
+    __args__['externalId'] = external_id
+    __args__['forLogDelivery'] = for_log_delivery
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult)
+    return __ret__.apply(lambda __response__: GetAwsAssumeRolePolicyResult(
+        databricks_account_id=pulumi.get(__response__, 'databricks_account_id'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        for_log_delivery=pulumi.get(__response__, 'for_log_delivery'),
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json')))

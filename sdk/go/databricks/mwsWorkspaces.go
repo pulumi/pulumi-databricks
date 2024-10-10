@@ -82,7 +82,7 @@ import (
 //				CredentialsId:          this.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
 //				NetworkId:              thisMwsNetworks.NetworkId,
-//				Token:                  nil,
+//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -146,7 +146,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, &databricks.GetAwsCrossAccountPolicyArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -237,7 +237,7 @@ import (
 //				AwsRegion:              pulumi.String("us-east-1"),
 //				CredentialsId:          thisMwsCredentials.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
-//				Token:                  nil,
+//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
 //				CustomTags: pulumi.StringMap{
 //					"SoldToCode": pulumi.String("1234"),
 //				},
@@ -313,7 +313,7 @@ import (
 //					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
 //					MasterIpRange:    pulumi.String("10.3.0.0/28"),
 //				},
-//				Token: nil,
+//				Token: &databricks.MwsWorkspacesTokenArgs{},
 //			})
 //			if err != nil {
 //				return err

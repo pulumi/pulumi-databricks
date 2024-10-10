@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -133,9 +138,6 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
         filter_by=pulumi.get(__ret__, 'filter_by'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-
-
-@_utilities.lift_output_func(get_clusters)
 def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                         filter_by: Optional[pulumi.Input[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -183,4 +185,15 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
     :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[str] ids: list of Cluster ids
     """
-    ...
+    __args__ = dict()
+    __args__['clusterNameContains'] = cluster_name_contains
+    __args__['filterBy'] = filter_by
+    __args__['id'] = id
+    __args__['ids'] = ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
+    return __ret__.apply(lambda __response__: GetClustersResult(
+        cluster_name_contains=pulumi.get(__response__, 'cluster_name_contains'),
+        filter_by=pulumi.get(__response__, 'filter_by'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids')))

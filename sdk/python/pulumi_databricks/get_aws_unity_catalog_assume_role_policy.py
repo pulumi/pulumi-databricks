@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -143,9 +148,6 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
         json=pulumi.get(__ret__, 'json'),
         role_name=pulumi.get(__ret__, 'role_name'),
         unity_catalog_iam_arn=pulumi.get(__ret__, 'unity_catalog_iam_arn'))
-
-
-@_utilities.lift_output_func(get_aws_unity_catalog_assume_role_policy)
 def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
                                                     external_id: Optional[pulumi.Input[str]] = None,
                                                     role_name: Optional[pulumi.Input[str]] = None,
@@ -185,4 +187,17 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
     :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
     :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
     """
-    ...
+    __args__ = dict()
+    __args__['awsAccountId'] = aws_account_id
+    __args__['externalId'] = external_id
+    __args__['roleName'] = role_name
+    __args__['unityCatalogIamArn'] = unity_catalog_iam_arn
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy', __args__, opts=opts, typ=GetAwsUnityCatalogAssumeRolePolicyResult)
+    return __ret__.apply(lambda __response__: GetAwsUnityCatalogAssumeRolePolicyResult(
+        aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json'),
+        role_name=pulumi.get(__response__, 'role_name'),
+        unity_catalog_iam_arn=pulumi.get(__response__, 'unity_catalog_iam_arn')))

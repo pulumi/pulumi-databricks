@@ -4,784 +4,1582 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AccessControlRuleSetGrantRuleArgs',
+    'AccessControlRuleSetGrantRuleArgsDict',
     'ArtifactAllowlistArtifactMatcherArgs',
+    'ArtifactAllowlistArtifactMatcherArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
+    'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
     'BudgetAlertConfigurationArgs',
+    'BudgetAlertConfigurationArgsDict',
     'BudgetAlertConfigurationActionConfigurationArgs',
+    'BudgetAlertConfigurationActionConfigurationArgsDict',
     'BudgetFilterArgs',
+    'BudgetFilterArgsDict',
     'BudgetFilterTagArgs',
+    'BudgetFilterTagArgsDict',
     'BudgetFilterTagValueArgs',
+    'BudgetFilterTagValueArgsDict',
     'BudgetFilterWorkspaceIdArgs',
+    'BudgetFilterWorkspaceIdArgsDict',
     'ClusterAutoscaleArgs',
+    'ClusterAutoscaleArgsDict',
     'ClusterAwsAttributesArgs',
+    'ClusterAwsAttributesArgsDict',
     'ClusterAzureAttributesArgs',
+    'ClusterAzureAttributesArgsDict',
     'ClusterAzureAttributesLogAnalyticsInfoArgs',
+    'ClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'ClusterClusterLogConfArgs',
+    'ClusterClusterLogConfArgsDict',
     'ClusterClusterLogConfDbfsArgs',
+    'ClusterClusterLogConfDbfsArgsDict',
     'ClusterClusterLogConfS3Args',
+    'ClusterClusterLogConfS3ArgsDict',
     'ClusterClusterMountInfoArgs',
+    'ClusterClusterMountInfoArgsDict',
     'ClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'ClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'ClusterDockerImageArgs',
+    'ClusterDockerImageArgsDict',
     'ClusterDockerImageBasicAuthArgs',
+    'ClusterDockerImageBasicAuthArgsDict',
     'ClusterGcpAttributesArgs',
+    'ClusterGcpAttributesArgsDict',
     'ClusterInitScriptArgs',
+    'ClusterInitScriptArgsDict',
     'ClusterInitScriptAbfssArgs',
+    'ClusterInitScriptAbfssArgsDict',
     'ClusterInitScriptDbfsArgs',
+    'ClusterInitScriptDbfsArgsDict',
     'ClusterInitScriptFileArgs',
+    'ClusterInitScriptFileArgsDict',
     'ClusterInitScriptGcsArgs',
+    'ClusterInitScriptGcsArgsDict',
     'ClusterInitScriptS3Args',
+    'ClusterInitScriptS3ArgsDict',
     'ClusterInitScriptVolumesArgs',
+    'ClusterInitScriptVolumesArgsDict',
     'ClusterInitScriptWorkspaceArgs',
+    'ClusterInitScriptWorkspaceArgsDict',
     'ClusterLibraryArgs',
+    'ClusterLibraryArgsDict',
     'ClusterLibraryCranArgs',
+    'ClusterLibraryCranArgsDict',
     'ClusterLibraryMavenArgs',
+    'ClusterLibraryMavenArgsDict',
     'ClusterLibraryPypiArgs',
+    'ClusterLibraryPypiArgsDict',
     'ClusterPolicyLibraryArgs',
+    'ClusterPolicyLibraryArgsDict',
     'ClusterPolicyLibraryCranArgs',
+    'ClusterPolicyLibraryCranArgsDict',
     'ClusterPolicyLibraryMavenArgs',
+    'ClusterPolicyLibraryMavenArgsDict',
     'ClusterPolicyLibraryPypiArgs',
+    'ClusterPolicyLibraryPypiArgsDict',
     'ClusterWorkloadTypeArgs',
+    'ClusterWorkloadTypeArgsDict',
     'ClusterWorkloadTypeClientsArgs',
+    'ClusterWorkloadTypeClientsArgsDict',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs',
+    'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict',
     'DefaultNamespaceSettingNamespaceArgs',
+    'DefaultNamespaceSettingNamespaceArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
+    'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict',
     'ExternalLocationEncryptionDetailsArgs',
+    'ExternalLocationEncryptionDetailsArgsDict',
     'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs',
+    'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict',
     'GrantsGrantArgs',
+    'GrantsGrantArgsDict',
     'InstancePoolAwsAttributesArgs',
+    'InstancePoolAwsAttributesArgsDict',
     'InstancePoolAzureAttributesArgs',
+    'InstancePoolAzureAttributesArgsDict',
     'InstancePoolDiskSpecArgs',
+    'InstancePoolDiskSpecArgsDict',
     'InstancePoolDiskSpecDiskTypeArgs',
+    'InstancePoolDiskSpecDiskTypeArgsDict',
     'InstancePoolGcpAttributesArgs',
+    'InstancePoolGcpAttributesArgsDict',
     'InstancePoolInstancePoolFleetAttributesArgs',
+    'InstancePoolInstancePoolFleetAttributesArgsDict',
     'InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs',
+    'InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgsDict',
     'InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs',
+    'InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgsDict',
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs',
+    'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgsDict',
     'InstancePoolPreloadedDockerImageArgs',
+    'InstancePoolPreloadedDockerImageArgsDict',
     'InstancePoolPreloadedDockerImageBasicAuthArgs',
+    'InstancePoolPreloadedDockerImageBasicAuthArgsDict',
     'JobContinuousArgs',
+    'JobContinuousArgsDict',
     'JobDbtTaskArgs',
+    'JobDbtTaskArgsDict',
     'JobDeploymentArgs',
+    'JobDeploymentArgsDict',
     'JobEmailNotificationsArgs',
+    'JobEmailNotificationsArgsDict',
     'JobEnvironmentArgs',
+    'JobEnvironmentArgsDict',
     'JobEnvironmentSpecArgs',
+    'JobEnvironmentSpecArgsDict',
     'JobGitSourceArgs',
+    'JobGitSourceArgsDict',
     'JobGitSourceGitSnapshotArgs',
+    'JobGitSourceGitSnapshotArgsDict',
     'JobGitSourceJobSourceArgs',
+    'JobGitSourceJobSourceArgsDict',
     'JobHealthArgs',
+    'JobHealthArgsDict',
     'JobHealthRuleArgs',
+    'JobHealthRuleArgsDict',
     'JobJobClusterArgs',
+    'JobJobClusterArgsDict',
     'JobJobClusterNewClusterArgs',
+    'JobJobClusterNewClusterArgsDict',
     'JobJobClusterNewClusterAutoscaleArgs',
+    'JobJobClusterNewClusterAutoscaleArgsDict',
     'JobJobClusterNewClusterAwsAttributesArgs',
+    'JobJobClusterNewClusterAwsAttributesArgsDict',
     'JobJobClusterNewClusterAzureAttributesArgs',
+    'JobJobClusterNewClusterAzureAttributesArgsDict',
     'JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'JobJobClusterNewClusterClusterLogConfArgs',
+    'JobJobClusterNewClusterClusterLogConfArgsDict',
     'JobJobClusterNewClusterClusterLogConfDbfsArgs',
+    'JobJobClusterNewClusterClusterLogConfDbfsArgsDict',
     'JobJobClusterNewClusterClusterLogConfS3Args',
+    'JobJobClusterNewClusterClusterLogConfS3ArgsDict',
     'JobJobClusterNewClusterClusterMountInfoArgs',
+    'JobJobClusterNewClusterClusterMountInfoArgsDict',
     'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'JobJobClusterNewClusterDockerImageArgs',
+    'JobJobClusterNewClusterDockerImageArgsDict',
     'JobJobClusterNewClusterDockerImageBasicAuthArgs',
+    'JobJobClusterNewClusterDockerImageBasicAuthArgsDict',
     'JobJobClusterNewClusterGcpAttributesArgs',
+    'JobJobClusterNewClusterGcpAttributesArgsDict',
     'JobJobClusterNewClusterInitScriptArgs',
+    'JobJobClusterNewClusterInitScriptArgsDict',
     'JobJobClusterNewClusterInitScriptAbfssArgs',
+    'JobJobClusterNewClusterInitScriptAbfssArgsDict',
     'JobJobClusterNewClusterInitScriptDbfsArgs',
+    'JobJobClusterNewClusterInitScriptDbfsArgsDict',
     'JobJobClusterNewClusterInitScriptFileArgs',
+    'JobJobClusterNewClusterInitScriptFileArgsDict',
     'JobJobClusterNewClusterInitScriptGcsArgs',
+    'JobJobClusterNewClusterInitScriptGcsArgsDict',
     'JobJobClusterNewClusterInitScriptS3Args',
+    'JobJobClusterNewClusterInitScriptS3ArgsDict',
     'JobJobClusterNewClusterInitScriptVolumesArgs',
+    'JobJobClusterNewClusterInitScriptVolumesArgsDict',
     'JobJobClusterNewClusterInitScriptWorkspaceArgs',
+    'JobJobClusterNewClusterInitScriptWorkspaceArgsDict',
     'JobJobClusterNewClusterLibraryArgs',
+    'JobJobClusterNewClusterLibraryArgsDict',
     'JobJobClusterNewClusterLibraryCranArgs',
+    'JobJobClusterNewClusterLibraryCranArgsDict',
     'JobJobClusterNewClusterLibraryMavenArgs',
+    'JobJobClusterNewClusterLibraryMavenArgsDict',
     'JobJobClusterNewClusterLibraryPypiArgs',
+    'JobJobClusterNewClusterLibraryPypiArgsDict',
     'JobJobClusterNewClusterWorkloadTypeArgs',
+    'JobJobClusterNewClusterWorkloadTypeArgsDict',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
+    'JobJobClusterNewClusterWorkloadTypeClientsArgsDict',
     'JobLibraryArgs',
+    'JobLibraryArgsDict',
     'JobLibraryCranArgs',
+    'JobLibraryCranArgsDict',
     'JobLibraryMavenArgs',
+    'JobLibraryMavenArgsDict',
     'JobLibraryPypiArgs',
+    'JobLibraryPypiArgsDict',
     'JobNewClusterArgs',
+    'JobNewClusterArgsDict',
     'JobNewClusterAutoscaleArgs',
+    'JobNewClusterAutoscaleArgsDict',
     'JobNewClusterAwsAttributesArgs',
+    'JobNewClusterAwsAttributesArgsDict',
     'JobNewClusterAzureAttributesArgs',
+    'JobNewClusterAzureAttributesArgsDict',
     'JobNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobNewClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'JobNewClusterClusterLogConfArgs',
+    'JobNewClusterClusterLogConfArgsDict',
     'JobNewClusterClusterLogConfDbfsArgs',
+    'JobNewClusterClusterLogConfDbfsArgsDict',
     'JobNewClusterClusterLogConfS3Args',
+    'JobNewClusterClusterLogConfS3ArgsDict',
     'JobNewClusterClusterMountInfoArgs',
+    'JobNewClusterClusterMountInfoArgsDict',
     'JobNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'JobNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'JobNewClusterDockerImageArgs',
+    'JobNewClusterDockerImageArgsDict',
     'JobNewClusterDockerImageBasicAuthArgs',
+    'JobNewClusterDockerImageBasicAuthArgsDict',
     'JobNewClusterGcpAttributesArgs',
+    'JobNewClusterGcpAttributesArgsDict',
     'JobNewClusterInitScriptArgs',
+    'JobNewClusterInitScriptArgsDict',
     'JobNewClusterInitScriptAbfssArgs',
+    'JobNewClusterInitScriptAbfssArgsDict',
     'JobNewClusterInitScriptDbfsArgs',
+    'JobNewClusterInitScriptDbfsArgsDict',
     'JobNewClusterInitScriptFileArgs',
+    'JobNewClusterInitScriptFileArgsDict',
     'JobNewClusterInitScriptGcsArgs',
+    'JobNewClusterInitScriptGcsArgsDict',
     'JobNewClusterInitScriptS3Args',
+    'JobNewClusterInitScriptS3ArgsDict',
     'JobNewClusterInitScriptVolumesArgs',
+    'JobNewClusterInitScriptVolumesArgsDict',
     'JobNewClusterInitScriptWorkspaceArgs',
+    'JobNewClusterInitScriptWorkspaceArgsDict',
     'JobNewClusterLibraryArgs',
+    'JobNewClusterLibraryArgsDict',
     'JobNewClusterLibraryCranArgs',
+    'JobNewClusterLibraryCranArgsDict',
     'JobNewClusterLibraryMavenArgs',
+    'JobNewClusterLibraryMavenArgsDict',
     'JobNewClusterLibraryPypiArgs',
+    'JobNewClusterLibraryPypiArgsDict',
     'JobNewClusterWorkloadTypeArgs',
+    'JobNewClusterWorkloadTypeArgsDict',
     'JobNewClusterWorkloadTypeClientsArgs',
+    'JobNewClusterWorkloadTypeClientsArgsDict',
     'JobNotebookTaskArgs',
+    'JobNotebookTaskArgsDict',
     'JobNotificationSettingsArgs',
+    'JobNotificationSettingsArgsDict',
     'JobParameterArgs',
+    'JobParameterArgsDict',
     'JobPipelineTaskArgs',
+    'JobPipelineTaskArgsDict',
     'JobPythonWheelTaskArgs',
+    'JobPythonWheelTaskArgsDict',
     'JobQueueArgs',
+    'JobQueueArgsDict',
     'JobRunAsArgs',
+    'JobRunAsArgsDict',
     'JobRunJobTaskArgs',
+    'JobRunJobTaskArgsDict',
     'JobScheduleArgs',
+    'JobScheduleArgsDict',
     'JobSparkJarTaskArgs',
+    'JobSparkJarTaskArgsDict',
     'JobSparkPythonTaskArgs',
+    'JobSparkPythonTaskArgsDict',
     'JobSparkSubmitTaskArgs',
+    'JobSparkSubmitTaskArgsDict',
     'JobTaskArgs',
+    'JobTaskArgsDict',
     'JobTaskConditionTaskArgs',
+    'JobTaskConditionTaskArgsDict',
     'JobTaskDbtTaskArgs',
+    'JobTaskDbtTaskArgsDict',
     'JobTaskDependsOnArgs',
+    'JobTaskDependsOnArgsDict',
     'JobTaskEmailNotificationsArgs',
+    'JobTaskEmailNotificationsArgsDict',
     'JobTaskForEachTaskArgs',
+    'JobTaskForEachTaskArgsDict',
     'JobTaskForEachTaskTaskArgs',
+    'JobTaskForEachTaskTaskArgsDict',
     'JobTaskForEachTaskTaskConditionTaskArgs',
+    'JobTaskForEachTaskTaskConditionTaskArgsDict',
     'JobTaskForEachTaskTaskDbtTaskArgs',
+    'JobTaskForEachTaskTaskDbtTaskArgsDict',
     'JobTaskForEachTaskTaskDependsOnArgs',
+    'JobTaskForEachTaskTaskDependsOnArgsDict',
     'JobTaskForEachTaskTaskEmailNotificationsArgs',
+    'JobTaskForEachTaskTaskEmailNotificationsArgsDict',
     'JobTaskForEachTaskTaskHealthArgs',
+    'JobTaskForEachTaskTaskHealthArgsDict',
     'JobTaskForEachTaskTaskHealthRuleArgs',
+    'JobTaskForEachTaskTaskHealthRuleArgsDict',
     'JobTaskForEachTaskTaskLibraryArgs',
+    'JobTaskForEachTaskTaskLibraryArgsDict',
     'JobTaskForEachTaskTaskLibraryCranArgs',
+    'JobTaskForEachTaskTaskLibraryCranArgsDict',
     'JobTaskForEachTaskTaskLibraryMavenArgs',
+    'JobTaskForEachTaskTaskLibraryMavenArgsDict',
     'JobTaskForEachTaskTaskLibraryPypiArgs',
+    'JobTaskForEachTaskTaskLibraryPypiArgsDict',
     'JobTaskForEachTaskTaskNewClusterArgs',
+    'JobTaskForEachTaskTaskNewClusterArgsDict',
     'JobTaskForEachTaskTaskNewClusterAutoscaleArgs',
+    'JobTaskForEachTaskTaskNewClusterAutoscaleArgsDict',
     'JobTaskForEachTaskTaskNewClusterAwsAttributesArgs',
+    'JobTaskForEachTaskTaskNewClusterAwsAttributesArgsDict',
     'JobTaskForEachTaskTaskNewClusterAzureAttributesArgs',
+    'JobTaskForEachTaskTaskNewClusterAzureAttributesArgsDict',
     'JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfArgs',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs',
+    'JobTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'JobTaskForEachTaskTaskNewClusterDockerImageArgs',
+    'JobTaskForEachTaskTaskNewClusterDockerImageArgsDict',
     'JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs',
+    'JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict',
     'JobTaskForEachTaskTaskNewClusterGcpAttributesArgs',
+    'JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptFileArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptFileArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptGcsArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptS3Args',
+    'JobTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs',
+    'JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryCranArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryCranArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryMavenArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryPypiArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs',
+    'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs',
+    'JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict',
     'JobTaskForEachTaskTaskNotebookTaskArgs',
+    'JobTaskForEachTaskTaskNotebookTaskArgsDict',
     'JobTaskForEachTaskTaskNotificationSettingsArgs',
+    'JobTaskForEachTaskTaskNotificationSettingsArgsDict',
     'JobTaskForEachTaskTaskPipelineTaskArgs',
+    'JobTaskForEachTaskTaskPipelineTaskArgsDict',
     'JobTaskForEachTaskTaskPythonWheelTaskArgs',
+    'JobTaskForEachTaskTaskPythonWheelTaskArgsDict',
     'JobTaskForEachTaskTaskRunJobTaskArgs',
+    'JobTaskForEachTaskTaskRunJobTaskArgsDict',
     'JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs',
+    'JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgsDict',
     'JobTaskForEachTaskTaskSparkJarTaskArgs',
+    'JobTaskForEachTaskTaskSparkJarTaskArgsDict',
     'JobTaskForEachTaskTaskSparkPythonTaskArgs',
+    'JobTaskForEachTaskTaskSparkPythonTaskArgsDict',
     'JobTaskForEachTaskTaskSparkSubmitTaskArgs',
+    'JobTaskForEachTaskTaskSparkSubmitTaskArgsDict',
     'JobTaskForEachTaskTaskSqlTaskArgs',
+    'JobTaskForEachTaskTaskSqlTaskArgsDict',
     'JobTaskForEachTaskTaskSqlTaskAlertArgs',
+    'JobTaskForEachTaskTaskSqlTaskAlertArgsDict',
     'JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs',
+    'JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict',
     'JobTaskForEachTaskTaskSqlTaskDashboardArgs',
+    'JobTaskForEachTaskTaskSqlTaskDashboardArgsDict',
     'JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs',
+    'JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict',
     'JobTaskForEachTaskTaskSqlTaskFileArgs',
+    'JobTaskForEachTaskTaskSqlTaskFileArgsDict',
     'JobTaskForEachTaskTaskSqlTaskQueryArgs',
+    'JobTaskForEachTaskTaskSqlTaskQueryArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs',
+    'JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict',
     'JobTaskHealthArgs',
+    'JobTaskHealthArgsDict',
     'JobTaskHealthRuleArgs',
+    'JobTaskHealthRuleArgsDict',
     'JobTaskLibraryArgs',
+    'JobTaskLibraryArgsDict',
     'JobTaskLibraryCranArgs',
+    'JobTaskLibraryCranArgsDict',
     'JobTaskLibraryMavenArgs',
+    'JobTaskLibraryMavenArgsDict',
     'JobTaskLibraryPypiArgs',
+    'JobTaskLibraryPypiArgsDict',
     'JobTaskNewClusterArgs',
+    'JobTaskNewClusterArgsDict',
     'JobTaskNewClusterAutoscaleArgs',
+    'JobTaskNewClusterAutoscaleArgsDict',
     'JobTaskNewClusterAwsAttributesArgs',
+    'JobTaskNewClusterAwsAttributesArgsDict',
     'JobTaskNewClusterAzureAttributesArgs',
+    'JobTaskNewClusterAzureAttributesArgsDict',
     'JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs',
+    'JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'JobTaskNewClusterClusterLogConfArgs',
+    'JobTaskNewClusterClusterLogConfArgsDict',
     'JobTaskNewClusterClusterLogConfDbfsArgs',
+    'JobTaskNewClusterClusterLogConfDbfsArgsDict',
     'JobTaskNewClusterClusterLogConfS3Args',
+    'JobTaskNewClusterClusterLogConfS3ArgsDict',
     'JobTaskNewClusterClusterMountInfoArgs',
+    'JobTaskNewClusterClusterMountInfoArgsDict',
     'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'JobTaskNewClusterDockerImageArgs',
+    'JobTaskNewClusterDockerImageArgsDict',
     'JobTaskNewClusterDockerImageBasicAuthArgs',
+    'JobTaskNewClusterDockerImageBasicAuthArgsDict',
     'JobTaskNewClusterGcpAttributesArgs',
+    'JobTaskNewClusterGcpAttributesArgsDict',
     'JobTaskNewClusterInitScriptArgs',
+    'JobTaskNewClusterInitScriptArgsDict',
     'JobTaskNewClusterInitScriptAbfssArgs',
+    'JobTaskNewClusterInitScriptAbfssArgsDict',
     'JobTaskNewClusterInitScriptDbfsArgs',
+    'JobTaskNewClusterInitScriptDbfsArgsDict',
     'JobTaskNewClusterInitScriptFileArgs',
+    'JobTaskNewClusterInitScriptFileArgsDict',
     'JobTaskNewClusterInitScriptGcsArgs',
+    'JobTaskNewClusterInitScriptGcsArgsDict',
     'JobTaskNewClusterInitScriptS3Args',
+    'JobTaskNewClusterInitScriptS3ArgsDict',
     'JobTaskNewClusterInitScriptVolumesArgs',
+    'JobTaskNewClusterInitScriptVolumesArgsDict',
     'JobTaskNewClusterInitScriptWorkspaceArgs',
+    'JobTaskNewClusterInitScriptWorkspaceArgsDict',
     'JobTaskNewClusterLibraryArgs',
+    'JobTaskNewClusterLibraryArgsDict',
     'JobTaskNewClusterLibraryCranArgs',
+    'JobTaskNewClusterLibraryCranArgsDict',
     'JobTaskNewClusterLibraryMavenArgs',
+    'JobTaskNewClusterLibraryMavenArgsDict',
     'JobTaskNewClusterLibraryPypiArgs',
+    'JobTaskNewClusterLibraryPypiArgsDict',
     'JobTaskNewClusterWorkloadTypeArgs',
+    'JobTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
+    'JobTaskNewClusterWorkloadTypeClientsArgsDict',
     'JobTaskNotebookTaskArgs',
+    'JobTaskNotebookTaskArgsDict',
     'JobTaskNotificationSettingsArgs',
+    'JobTaskNotificationSettingsArgsDict',
     'JobTaskPipelineTaskArgs',
+    'JobTaskPipelineTaskArgsDict',
     'JobTaskPythonWheelTaskArgs',
+    'JobTaskPythonWheelTaskArgsDict',
     'JobTaskRunJobTaskArgs',
+    'JobTaskRunJobTaskArgsDict',
     'JobTaskRunJobTaskPipelineParamsArgs',
+    'JobTaskRunJobTaskPipelineParamsArgsDict',
     'JobTaskSparkJarTaskArgs',
+    'JobTaskSparkJarTaskArgsDict',
     'JobTaskSparkPythonTaskArgs',
+    'JobTaskSparkPythonTaskArgsDict',
     'JobTaskSparkSubmitTaskArgs',
+    'JobTaskSparkSubmitTaskArgsDict',
     'JobTaskSqlTaskArgs',
+    'JobTaskSqlTaskArgsDict',
     'JobTaskSqlTaskAlertArgs',
+    'JobTaskSqlTaskAlertArgsDict',
     'JobTaskSqlTaskAlertSubscriptionArgs',
+    'JobTaskSqlTaskAlertSubscriptionArgsDict',
     'JobTaskSqlTaskDashboardArgs',
+    'JobTaskSqlTaskDashboardArgsDict',
     'JobTaskSqlTaskDashboardSubscriptionArgs',
+    'JobTaskSqlTaskDashboardSubscriptionArgsDict',
     'JobTaskSqlTaskFileArgs',
+    'JobTaskSqlTaskFileArgsDict',
     'JobTaskSqlTaskQueryArgs',
+    'JobTaskSqlTaskQueryArgsDict',
     'JobTaskWebhookNotificationsArgs',
+    'JobTaskWebhookNotificationsArgsDict',
     'JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'JobTaskWebhookNotificationsOnFailureArgs',
+    'JobTaskWebhookNotificationsOnFailureArgsDict',
     'JobTaskWebhookNotificationsOnStartArgs',
+    'JobTaskWebhookNotificationsOnStartArgsDict',
     'JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'JobTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'JobTaskWebhookNotificationsOnSuccessArgs',
+    'JobTaskWebhookNotificationsOnSuccessArgsDict',
     'JobTriggerArgs',
+    'JobTriggerArgsDict',
     'JobTriggerFileArrivalArgs',
+    'JobTriggerFileArrivalArgsDict',
     'JobTriggerPeriodicArgs',
+    'JobTriggerPeriodicArgsDict',
     'JobTriggerTableArgs',
+    'JobTriggerTableArgsDict',
     'JobTriggerTableUpdateArgs',
+    'JobTriggerTableUpdateArgsDict',
     'JobWebhookNotificationsArgs',
+    'JobWebhookNotificationsArgsDict',
     'JobWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'JobWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'JobWebhookNotificationsOnFailureArgs',
+    'JobWebhookNotificationsOnFailureArgsDict',
     'JobWebhookNotificationsOnStartArgs',
+    'JobWebhookNotificationsOnStartArgsDict',
     'JobWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'JobWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'JobWebhookNotificationsOnSuccessArgs',
+    'JobWebhookNotificationsOnSuccessArgsDict',
     'LakehouseMonitorCustomMetricArgs',
+    'LakehouseMonitorCustomMetricArgsDict',
     'LakehouseMonitorDataClassificationConfigArgs',
+    'LakehouseMonitorDataClassificationConfigArgsDict',
     'LakehouseMonitorInferenceLogArgs',
+    'LakehouseMonitorInferenceLogArgsDict',
     'LakehouseMonitorNotificationsArgs',
+    'LakehouseMonitorNotificationsArgsDict',
     'LakehouseMonitorNotificationsOnFailureArgs',
+    'LakehouseMonitorNotificationsOnFailureArgsDict',
     'LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs',
+    'LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgsDict',
     'LakehouseMonitorScheduleArgs',
+    'LakehouseMonitorScheduleArgsDict',
     'LakehouseMonitorSnapshotArgs',
+    'LakehouseMonitorSnapshotArgsDict',
     'LakehouseMonitorTimeSeriesArgs',
+    'LakehouseMonitorTimeSeriesArgsDict',
     'LibraryCranArgs',
+    'LibraryCranArgsDict',
     'LibraryMavenArgs',
+    'LibraryMavenArgsDict',
     'LibraryPypiArgs',
+    'LibraryPypiArgsDict',
     'MetastoreDataAccessAwsIamRoleArgs',
+    'MetastoreDataAccessAwsIamRoleArgsDict',
     'MetastoreDataAccessAzureManagedIdentityArgs',
+    'MetastoreDataAccessAzureManagedIdentityArgsDict',
     'MetastoreDataAccessAzureServicePrincipalArgs',
+    'MetastoreDataAccessAzureServicePrincipalArgsDict',
     'MetastoreDataAccessCloudflareApiTokenArgs',
+    'MetastoreDataAccessCloudflareApiTokenArgsDict',
     'MetastoreDataAccessDatabricksGcpServiceAccountArgs',
+    'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict',
     'MetastoreDataAccessGcpServiceAccountKeyArgs',
+    'MetastoreDataAccessGcpServiceAccountKeyArgsDict',
     'MlflowModelTagArgs',
+    'MlflowModelTagArgsDict',
     'MlflowWebhookHttpUrlSpecArgs',
+    'MlflowWebhookHttpUrlSpecArgsDict',
     'MlflowWebhookJobSpecArgs',
+    'MlflowWebhookJobSpecArgsDict',
     'ModelServingAiGatewayArgs',
+    'ModelServingAiGatewayArgsDict',
     'ModelServingAiGatewayGuardrailsArgs',
+    'ModelServingAiGatewayGuardrailsArgsDict',
     'ModelServingAiGatewayGuardrailsInputArgs',
+    'ModelServingAiGatewayGuardrailsInputArgsDict',
     'ModelServingAiGatewayGuardrailsInputPiiArgs',
+    'ModelServingAiGatewayGuardrailsInputPiiArgsDict',
     'ModelServingAiGatewayGuardrailsOutputArgs',
+    'ModelServingAiGatewayGuardrailsOutputArgsDict',
     'ModelServingAiGatewayGuardrailsOutputPiiArgs',
+    'ModelServingAiGatewayGuardrailsOutputPiiArgsDict',
     'ModelServingAiGatewayInferenceTableConfigArgs',
+    'ModelServingAiGatewayInferenceTableConfigArgsDict',
     'ModelServingAiGatewayRateLimitArgs',
+    'ModelServingAiGatewayRateLimitArgsDict',
     'ModelServingAiGatewayUsageTrackingConfigArgs',
+    'ModelServingAiGatewayUsageTrackingConfigArgsDict',
     'ModelServingConfigArgs',
+    'ModelServingConfigArgsDict',
     'ModelServingConfigAutoCaptureConfigArgs',
+    'ModelServingConfigAutoCaptureConfigArgsDict',
     'ModelServingConfigServedEntityArgs',
+    'ModelServingConfigServedEntityArgsDict',
     'ModelServingConfigServedEntityExternalModelArgs',
+    'ModelServingConfigServedEntityExternalModelArgsDict',
     'ModelServingConfigServedEntityExternalModelAi21labsConfigArgs',
+    'ModelServingConfigServedEntityExternalModelAi21labsConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs',
+    'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs',
+    'ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelCohereConfigArgs',
+    'ModelServingConfigServedEntityExternalModelCohereConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs',
+    'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs',
+    'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs',
+    'ModelServingConfigServedEntityExternalModelOpenaiConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelPalmConfigArgs',
+    'ModelServingConfigServedEntityExternalModelPalmConfigArgsDict',
     'ModelServingConfigServedModelArgs',
+    'ModelServingConfigServedModelArgsDict',
     'ModelServingConfigTrafficConfigArgs',
+    'ModelServingConfigTrafficConfigArgsDict',
     'ModelServingConfigTrafficConfigRouteArgs',
+    'ModelServingConfigTrafficConfigRouteArgsDict',
     'ModelServingRateLimitArgs',
+    'ModelServingRateLimitArgsDict',
     'ModelServingTagArgs',
+    'ModelServingTagArgsDict',
     'MountAbfsArgs',
+    'MountAbfsArgsDict',
     'MountAdlArgs',
+    'MountAdlArgsDict',
     'MountGsArgs',
+    'MountGsArgsDict',
     'MountS3Args',
+    'MountS3ArgsDict',
     'MountWasbArgs',
+    'MountWasbArgsDict',
     'MwsCustomerManagedKeysAwsKeyInfoArgs',
+    'MwsCustomerManagedKeysAwsKeyInfoArgsDict',
     'MwsCustomerManagedKeysGcpKeyInfoArgs',
+    'MwsCustomerManagedKeysGcpKeyInfoArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigArgs',
+    'MwsNetworkConnectivityConfigEgressConfigArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs',
+    'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs',
+    'MwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict',
     'MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs',
+    'MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict',
     'MwsNetworksErrorMessageArgs',
+    'MwsNetworksErrorMessageArgsDict',
     'MwsNetworksGcpNetworkInfoArgs',
+    'MwsNetworksGcpNetworkInfoArgsDict',
     'MwsNetworksVpcEndpointsArgs',
+    'MwsNetworksVpcEndpointsArgsDict',
     'MwsVpcEndpointGcpVpcEndpointInfoArgs',
+    'MwsVpcEndpointGcpVpcEndpointInfoArgsDict',
     'MwsWorkspacesCloudResourceContainerArgs',
+    'MwsWorkspacesCloudResourceContainerArgsDict',
     'MwsWorkspacesCloudResourceContainerGcpArgs',
+    'MwsWorkspacesCloudResourceContainerGcpArgsDict',
     'MwsWorkspacesExternalCustomerInfoArgs',
+    'MwsWorkspacesExternalCustomerInfoArgsDict',
     'MwsWorkspacesGcpManagedNetworkConfigArgs',
+    'MwsWorkspacesGcpManagedNetworkConfigArgsDict',
     'MwsWorkspacesGkeConfigArgs',
+    'MwsWorkspacesGkeConfigArgsDict',
     'MwsWorkspacesTokenArgs',
+    'MwsWorkspacesTokenArgsDict',
     'NotificationDestinationConfigArgs',
+    'NotificationDestinationConfigArgsDict',
     'NotificationDestinationConfigEmailArgs',
+    'NotificationDestinationConfigEmailArgsDict',
     'NotificationDestinationConfigGenericWebhookArgs',
+    'NotificationDestinationConfigGenericWebhookArgsDict',
     'NotificationDestinationConfigMicrosoftTeamsArgs',
+    'NotificationDestinationConfigMicrosoftTeamsArgsDict',
     'NotificationDestinationConfigPagerdutyArgs',
+    'NotificationDestinationConfigPagerdutyArgsDict',
     'NotificationDestinationConfigSlackArgs',
+    'NotificationDestinationConfigSlackArgsDict',
     'OnlineTableSpecArgs',
+    'OnlineTableSpecArgsDict',
     'OnlineTableSpecRunContinuouslyArgs',
+    'OnlineTableSpecRunContinuouslyArgsDict',
     'OnlineTableSpecRunTriggeredArgs',
+    'OnlineTableSpecRunTriggeredArgsDict',
     'OnlineTableStatusArgs',
+    'OnlineTableStatusArgsDict',
     'OnlineTableStatusContinuousUpdateStatusArgs',
+    'OnlineTableStatusContinuousUpdateStatusArgsDict',
     'OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs',
+    'OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgsDict',
     'OnlineTableStatusFailedStatusArgs',
+    'OnlineTableStatusFailedStatusArgsDict',
     'OnlineTableStatusProvisioningStatusArgs',
+    'OnlineTableStatusProvisioningStatusArgsDict',
     'OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs',
+    'OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgsDict',
     'OnlineTableStatusTriggeredUpdateStatusArgs',
+    'OnlineTableStatusTriggeredUpdateStatusArgsDict',
     'OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs',
+    'OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgsDict',
     'PermissionsAccessControlArgs',
+    'PermissionsAccessControlArgsDict',
     'PipelineClusterArgs',
+    'PipelineClusterArgsDict',
     'PipelineClusterAutoscaleArgs',
+    'PipelineClusterAutoscaleArgsDict',
     'PipelineClusterAwsAttributesArgs',
+    'PipelineClusterAwsAttributesArgsDict',
     'PipelineClusterAzureAttributesArgs',
+    'PipelineClusterAzureAttributesArgsDict',
     'PipelineClusterAzureAttributesLogAnalyticsInfoArgs',
+    'PipelineClusterAzureAttributesLogAnalyticsInfoArgsDict',
     'PipelineClusterClusterLogConfArgs',
+    'PipelineClusterClusterLogConfArgsDict',
     'PipelineClusterClusterLogConfDbfsArgs',
+    'PipelineClusterClusterLogConfDbfsArgsDict',
     'PipelineClusterClusterLogConfS3Args',
+    'PipelineClusterClusterLogConfS3ArgsDict',
     'PipelineClusterGcpAttributesArgs',
+    'PipelineClusterGcpAttributesArgsDict',
     'PipelineClusterInitScriptArgs',
+    'PipelineClusterInitScriptArgsDict',
     'PipelineClusterInitScriptAbfssArgs',
+    'PipelineClusterInitScriptAbfssArgsDict',
     'PipelineClusterInitScriptDbfsArgs',
+    'PipelineClusterInitScriptDbfsArgsDict',
     'PipelineClusterInitScriptFileArgs',
+    'PipelineClusterInitScriptFileArgsDict',
     'PipelineClusterInitScriptGcsArgs',
+    'PipelineClusterInitScriptGcsArgsDict',
     'PipelineClusterInitScriptS3Args',
+    'PipelineClusterInitScriptS3ArgsDict',
     'PipelineClusterInitScriptVolumesArgs',
+    'PipelineClusterInitScriptVolumesArgsDict',
     'PipelineClusterInitScriptWorkspaceArgs',
+    'PipelineClusterInitScriptWorkspaceArgsDict',
     'PipelineDeploymentArgs',
+    'PipelineDeploymentArgsDict',
     'PipelineFiltersArgs',
+    'PipelineFiltersArgsDict',
     'PipelineGatewayDefinitionArgs',
+    'PipelineGatewayDefinitionArgsDict',
     'PipelineIngestionDefinitionArgs',
+    'PipelineIngestionDefinitionArgsDict',
     'PipelineIngestionDefinitionObjectArgs',
+    'PipelineIngestionDefinitionObjectArgsDict',
     'PipelineIngestionDefinitionObjectSchemaArgs',
+    'PipelineIngestionDefinitionObjectSchemaArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict',
     'PipelineIngestionDefinitionObjectTableArgs',
+    'PipelineIngestionDefinitionObjectTableArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationArgs',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict',
     'PipelineIngestionDefinitionTableConfigurationArgs',
+    'PipelineIngestionDefinitionTableConfigurationArgsDict',
     'PipelineLatestUpdateArgs',
+    'PipelineLatestUpdateArgsDict',
     'PipelineLibraryArgs',
+    'PipelineLibraryArgsDict',
     'PipelineLibraryFileArgs',
+    'PipelineLibraryFileArgsDict',
     'PipelineLibraryMavenArgs',
+    'PipelineLibraryMavenArgsDict',
     'PipelineLibraryNotebookArgs',
+    'PipelineLibraryNotebookArgsDict',
     'PipelineNotificationArgs',
+    'PipelineNotificationArgsDict',
     'PipelineTriggerArgs',
+    'PipelineTriggerArgsDict',
     'PipelineTriggerCronArgs',
+    'PipelineTriggerCronArgsDict',
     'PipelineTriggerManualArgs',
+    'PipelineTriggerManualArgsDict',
     'QualityMonitorCustomMetricArgs',
+    'QualityMonitorCustomMetricArgsDict',
     'QualityMonitorDataClassificationConfigArgs',
+    'QualityMonitorDataClassificationConfigArgsDict',
     'QualityMonitorInferenceLogArgs',
+    'QualityMonitorInferenceLogArgsDict',
     'QualityMonitorNotificationsArgs',
+    'QualityMonitorNotificationsArgsDict',
     'QualityMonitorNotificationsOnFailureArgs',
+    'QualityMonitorNotificationsOnFailureArgsDict',
     'QualityMonitorNotificationsOnNewClassificationTagDetectedArgs',
+    'QualityMonitorNotificationsOnNewClassificationTagDetectedArgsDict',
     'QualityMonitorScheduleArgs',
+    'QualityMonitorScheduleArgsDict',
     'QualityMonitorSnapshotArgs',
+    'QualityMonitorSnapshotArgsDict',
     'QualityMonitorTimeSeriesArgs',
+    'QualityMonitorTimeSeriesArgsDict',
     'RecipientIpAccessListArgs',
+    'RecipientIpAccessListArgsDict',
     'RecipientPropertiesKvpairsArgs',
+    'RecipientPropertiesKvpairsArgsDict',
     'RecipientTokenArgs',
+    'RecipientTokenArgsDict',
     'RepoSparseCheckoutArgs',
+    'RepoSparseCheckoutArgsDict',
     'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs',
+    'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict',
     'SecretScopeKeyvaultMetadataArgs',
+    'SecretScopeKeyvaultMetadataArgsDict',
     'ShareObjectArgs',
+    'ShareObjectArgsDict',
     'ShareObjectPartitionArgs',
+    'ShareObjectPartitionArgsDict',
     'ShareObjectPartitionValueArgs',
+    'ShareObjectPartitionValueArgsDict',
     'SqlAlertOptionsArgs',
+    'SqlAlertOptionsArgsDict',
     'SqlEndpointChannelArgs',
+    'SqlEndpointChannelArgsDict',
     'SqlEndpointHealthArgs',
+    'SqlEndpointHealthArgsDict',
     'SqlEndpointHealthFailureReasonArgs',
+    'SqlEndpointHealthFailureReasonArgsDict',
     'SqlEndpointOdbcParamsArgs',
+    'SqlEndpointOdbcParamsArgsDict',
     'SqlEndpointTagsArgs',
+    'SqlEndpointTagsArgsDict',
     'SqlEndpointTagsCustomTagArgs',
+    'SqlEndpointTagsCustomTagArgsDict',
     'SqlPermissionsPrivilegeAssignmentArgs',
+    'SqlPermissionsPrivilegeAssignmentArgsDict',
     'SqlQueryParameterArgs',
+    'SqlQueryParameterArgsDict',
     'SqlQueryParameterDateArgs',
+    'SqlQueryParameterDateArgsDict',
     'SqlQueryParameterDateRangeArgs',
+    'SqlQueryParameterDateRangeArgsDict',
     'SqlQueryParameterDateRangeRangeArgs',
+    'SqlQueryParameterDateRangeRangeArgsDict',
     'SqlQueryParameterDatetimeArgs',
+    'SqlQueryParameterDatetimeArgsDict',
     'SqlQueryParameterDatetimeRangeArgs',
+    'SqlQueryParameterDatetimeRangeArgsDict',
     'SqlQueryParameterDatetimeRangeRangeArgs',
+    'SqlQueryParameterDatetimeRangeRangeArgsDict',
     'SqlQueryParameterDatetimesecArgs',
+    'SqlQueryParameterDatetimesecArgsDict',
     'SqlQueryParameterDatetimesecRangeArgs',
+    'SqlQueryParameterDatetimesecRangeArgsDict',
     'SqlQueryParameterDatetimesecRangeRangeArgs',
+    'SqlQueryParameterDatetimesecRangeRangeArgsDict',
     'SqlQueryParameterEnumArgs',
+    'SqlQueryParameterEnumArgsDict',
     'SqlQueryParameterEnumMultipleArgs',
+    'SqlQueryParameterEnumMultipleArgsDict',
     'SqlQueryParameterNumberArgs',
+    'SqlQueryParameterNumberArgsDict',
     'SqlQueryParameterQueryArgs',
+    'SqlQueryParameterQueryArgsDict',
     'SqlQueryParameterQueryMultipleArgs',
+    'SqlQueryParameterQueryMultipleArgsDict',
     'SqlQueryParameterTextArgs',
+    'SqlQueryParameterTextArgsDict',
     'SqlQueryScheduleArgs',
+    'SqlQueryScheduleArgsDict',
     'SqlQueryScheduleContinuousArgs',
+    'SqlQueryScheduleContinuousArgsDict',
     'SqlQueryScheduleDailyArgs',
+    'SqlQueryScheduleDailyArgsDict',
     'SqlQueryScheduleWeeklyArgs',
+    'SqlQueryScheduleWeeklyArgsDict',
     'SqlTableColumnArgs',
+    'SqlTableColumnArgsDict',
     'SqlWidgetParameterArgs',
+    'SqlWidgetParameterArgsDict',
     'SqlWidgetPositionArgs',
+    'SqlWidgetPositionArgsDict',
     'StorageCredentialAwsIamRoleArgs',
+    'StorageCredentialAwsIamRoleArgsDict',
     'StorageCredentialAzureManagedIdentityArgs',
+    'StorageCredentialAzureManagedIdentityArgsDict',
     'StorageCredentialAzureServicePrincipalArgs',
+    'StorageCredentialAzureServicePrincipalArgsDict',
     'StorageCredentialCloudflareApiTokenArgs',
+    'StorageCredentialCloudflareApiTokenArgsDict',
     'StorageCredentialDatabricksGcpServiceAccountArgs',
+    'StorageCredentialDatabricksGcpServiceAccountArgsDict',
     'StorageCredentialGcpServiceAccountKeyArgs',
+    'StorageCredentialGcpServiceAccountKeyArgsDict',
     'TableColumnArgs',
+    'TableColumnArgsDict',
     'VectorSearchEndpointEndpointStatusArgs',
+    'VectorSearchEndpointEndpointStatusArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict',
     'VectorSearchIndexDirectAccessIndexSpecArgs',
+    'VectorSearchIndexDirectAccessIndexSpecArgsDict',
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs',
+    'VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict',
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs',
+    'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict',
     'VectorSearchIndexStatusArgs',
+    'VectorSearchIndexStatusArgsDict',
     'GetCatalogCatalogInfoArgs',
+    'GetCatalogCatalogInfoArgsDict',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs',
+    'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetCatalogCatalogInfoProvisioningInfoArgs',
+    'GetCatalogCatalogInfoProvisioningInfoArgsDict',
     'GetClusterClusterInfoArgs',
+    'GetClusterClusterInfoArgsDict',
     'GetClusterClusterInfoAutoscaleArgs',
+    'GetClusterClusterInfoAutoscaleArgsDict',
     'GetClusterClusterInfoAwsAttributesArgs',
+    'GetClusterClusterInfoAwsAttributesArgsDict',
     'GetClusterClusterInfoAzureAttributesArgs',
+    'GetClusterClusterInfoAzureAttributesArgsDict',
     'GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs',
+    'GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgsDict',
     'GetClusterClusterInfoClusterLogConfArgs',
+    'GetClusterClusterInfoClusterLogConfArgsDict',
     'GetClusterClusterInfoClusterLogConfDbfsArgs',
+    'GetClusterClusterInfoClusterLogConfDbfsArgsDict',
     'GetClusterClusterInfoClusterLogConfS3Args',
+    'GetClusterClusterInfoClusterLogConfS3ArgsDict',
     'GetClusterClusterInfoClusterLogStatusArgs',
+    'GetClusterClusterInfoClusterLogStatusArgsDict',
     'GetClusterClusterInfoDockerImageArgs',
+    'GetClusterClusterInfoDockerImageArgsDict',
     'GetClusterClusterInfoDockerImageBasicAuthArgs',
+    'GetClusterClusterInfoDockerImageBasicAuthArgsDict',
     'GetClusterClusterInfoDriverArgs',
+    'GetClusterClusterInfoDriverArgsDict',
     'GetClusterClusterInfoDriverNodeAwsAttributesArgs',
+    'GetClusterClusterInfoDriverNodeAwsAttributesArgsDict',
     'GetClusterClusterInfoExecutorArgs',
+    'GetClusterClusterInfoExecutorArgsDict',
     'GetClusterClusterInfoExecutorNodeAwsAttributesArgs',
+    'GetClusterClusterInfoExecutorNodeAwsAttributesArgsDict',
     'GetClusterClusterInfoGcpAttributesArgs',
+    'GetClusterClusterInfoGcpAttributesArgsDict',
     'GetClusterClusterInfoInitScriptArgs',
+    'GetClusterClusterInfoInitScriptArgsDict',
     'GetClusterClusterInfoInitScriptAbfssArgs',
+    'GetClusterClusterInfoInitScriptAbfssArgsDict',
     'GetClusterClusterInfoInitScriptDbfsArgs',
+    'GetClusterClusterInfoInitScriptDbfsArgsDict',
     'GetClusterClusterInfoInitScriptFileArgs',
+    'GetClusterClusterInfoInitScriptFileArgsDict',
     'GetClusterClusterInfoInitScriptGcsArgs',
+    'GetClusterClusterInfoInitScriptGcsArgsDict',
     'GetClusterClusterInfoInitScriptS3Args',
+    'GetClusterClusterInfoInitScriptS3ArgsDict',
     'GetClusterClusterInfoInitScriptVolumesArgs',
+    'GetClusterClusterInfoInitScriptVolumesArgsDict',
     'GetClusterClusterInfoInitScriptWorkspaceArgs',
+    'GetClusterClusterInfoInitScriptWorkspaceArgsDict',
     'GetClusterClusterInfoSpecArgs',
+    'GetClusterClusterInfoSpecArgsDict',
     'GetClusterClusterInfoSpecAutoscaleArgs',
+    'GetClusterClusterInfoSpecAutoscaleArgsDict',
     'GetClusterClusterInfoSpecAwsAttributesArgs',
+    'GetClusterClusterInfoSpecAwsAttributesArgsDict',
     'GetClusterClusterInfoSpecAzureAttributesArgs',
+    'GetClusterClusterInfoSpecAzureAttributesArgsDict',
     'GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs',
+    'GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgsDict',
     'GetClusterClusterInfoSpecClusterLogConfArgs',
+    'GetClusterClusterInfoSpecClusterLogConfArgsDict',
     'GetClusterClusterInfoSpecClusterLogConfDbfsArgs',
+    'GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict',
     'GetClusterClusterInfoSpecClusterLogConfS3Args',
+    'GetClusterClusterInfoSpecClusterLogConfS3ArgsDict',
     'GetClusterClusterInfoSpecClusterMountInfoArgs',
+    'GetClusterClusterInfoSpecClusterMountInfoArgsDict',
     'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgsDict',
     'GetClusterClusterInfoSpecDockerImageArgs',
+    'GetClusterClusterInfoSpecDockerImageArgsDict',
     'GetClusterClusterInfoSpecDockerImageBasicAuthArgs',
+    'GetClusterClusterInfoSpecDockerImageBasicAuthArgsDict',
     'GetClusterClusterInfoSpecGcpAttributesArgs',
+    'GetClusterClusterInfoSpecGcpAttributesArgsDict',
     'GetClusterClusterInfoSpecInitScriptArgs',
+    'GetClusterClusterInfoSpecInitScriptArgsDict',
     'GetClusterClusterInfoSpecInitScriptAbfssArgs',
+    'GetClusterClusterInfoSpecInitScriptAbfssArgsDict',
     'GetClusterClusterInfoSpecInitScriptDbfsArgs',
+    'GetClusterClusterInfoSpecInitScriptDbfsArgsDict',
     'GetClusterClusterInfoSpecInitScriptFileArgs',
+    'GetClusterClusterInfoSpecInitScriptFileArgsDict',
     'GetClusterClusterInfoSpecInitScriptGcsArgs',
+    'GetClusterClusterInfoSpecInitScriptGcsArgsDict',
     'GetClusterClusterInfoSpecInitScriptS3Args',
+    'GetClusterClusterInfoSpecInitScriptS3ArgsDict',
     'GetClusterClusterInfoSpecInitScriptVolumesArgs',
+    'GetClusterClusterInfoSpecInitScriptVolumesArgsDict',
     'GetClusterClusterInfoSpecInitScriptWorkspaceArgs',
+    'GetClusterClusterInfoSpecInitScriptWorkspaceArgsDict',
     'GetClusterClusterInfoSpecLibraryArgs',
+    'GetClusterClusterInfoSpecLibraryArgsDict',
     'GetClusterClusterInfoSpecLibraryCranArgs',
+    'GetClusterClusterInfoSpecLibraryCranArgsDict',
     'GetClusterClusterInfoSpecLibraryMavenArgs',
+    'GetClusterClusterInfoSpecLibraryMavenArgsDict',
     'GetClusterClusterInfoSpecLibraryPypiArgs',
+    'GetClusterClusterInfoSpecLibraryPypiArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeArgs',
+    'GetClusterClusterInfoSpecWorkloadTypeArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeClientsArgs',
+    'GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict',
     'GetClusterClusterInfoTerminationReasonArgs',
+    'GetClusterClusterInfoTerminationReasonArgsDict',
     'GetClusterClusterInfoWorkloadTypeArgs',
+    'GetClusterClusterInfoWorkloadTypeArgsDict',
     'GetClusterClusterInfoWorkloadTypeClientsArgs',
+    'GetClusterClusterInfoWorkloadTypeClientsArgsDict',
     'GetClustersFilterByArgs',
+    'GetClustersFilterByArgsDict',
     'GetCurrentMetastoreMetastoreInfoArgs',
+    'GetCurrentMetastoreMetastoreInfoArgsDict',
     'GetExternalLocationExternalLocationInfoArgs',
+    'GetExternalLocationExternalLocationInfoArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs',
+    'GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs',
+    'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
     'GetInstancePoolPoolInfoArgs',
+    'GetInstancePoolPoolInfoArgsDict',
     'GetInstancePoolPoolInfoAwsAttributesArgs',
+    'GetInstancePoolPoolInfoAwsAttributesArgsDict',
     'GetInstancePoolPoolInfoAzureAttributesArgs',
+    'GetInstancePoolPoolInfoAzureAttributesArgsDict',
     'GetInstancePoolPoolInfoDiskSpecArgs',
+    'GetInstancePoolPoolInfoDiskSpecArgsDict',
     'GetInstancePoolPoolInfoDiskSpecDiskTypeArgs',
+    'GetInstancePoolPoolInfoDiskSpecDiskTypeArgsDict',
     'GetInstancePoolPoolInfoGcpAttributesArgs',
+    'GetInstancePoolPoolInfoGcpAttributesArgsDict',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeArgsDict',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgsDict',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgsDict',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgsDict',
     'GetInstancePoolPoolInfoPreloadedDockerImageArgs',
+    'GetInstancePoolPoolInfoPreloadedDockerImageArgsDict',
     'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs',
+    'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgsDict',
     'GetInstancePoolPoolInfoStatsArgs',
+    'GetInstancePoolPoolInfoStatsArgsDict',
     'GetInstanceProfilesInstanceProfileArgs',
+    'GetInstanceProfilesInstanceProfileArgsDict',
     'GetJobJobSettingsArgs',
+    'GetJobJobSettingsArgsDict',
     'GetJobJobSettingsSettingsArgs',
+    'GetJobJobSettingsSettingsArgsDict',
     'GetJobJobSettingsSettingsContinuousArgs',
+    'GetJobJobSettingsSettingsContinuousArgsDict',
     'GetJobJobSettingsSettingsDbtTaskArgs',
+    'GetJobJobSettingsSettingsDbtTaskArgsDict',
     'GetJobJobSettingsSettingsDeploymentArgs',
+    'GetJobJobSettingsSettingsDeploymentArgsDict',
     'GetJobJobSettingsSettingsEmailNotificationsArgs',
+    'GetJobJobSettingsSettingsEmailNotificationsArgsDict',
     'GetJobJobSettingsSettingsEnvironmentArgs',
+    'GetJobJobSettingsSettingsEnvironmentArgsDict',
     'GetJobJobSettingsSettingsEnvironmentSpecArgs',
+    'GetJobJobSettingsSettingsEnvironmentSpecArgsDict',
     'GetJobJobSettingsSettingsGitSourceArgs',
+    'GetJobJobSettingsSettingsGitSourceArgsDict',
     'GetJobJobSettingsSettingsGitSourceJobSourceArgs',
+    'GetJobJobSettingsSettingsGitSourceJobSourceArgsDict',
     'GetJobJobSettingsSettingsHealthArgs',
+    'GetJobJobSettingsSettingsHealthArgsDict',
     'GetJobJobSettingsSettingsHealthRuleArgs',
+    'GetJobJobSettingsSettingsHealthRuleArgsDict',
     'GetJobJobSettingsSettingsJobClusterArgs',
+    'GetJobJobSettingsSettingsJobClusterArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3ArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3ArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgsDict',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs',
+    'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgsDict',
     'GetJobJobSettingsSettingsLibraryArgs',
+    'GetJobJobSettingsSettingsLibraryArgsDict',
     'GetJobJobSettingsSettingsLibraryCranArgs',
+    'GetJobJobSettingsSettingsLibraryCranArgsDict',
     'GetJobJobSettingsSettingsLibraryMavenArgs',
+    'GetJobJobSettingsSettingsLibraryMavenArgsDict',
     'GetJobJobSettingsSettingsLibraryPypiArgs',
+    'GetJobJobSettingsSettingsLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsNewClusterArgs',
+    'GetJobJobSettingsSettingsNewClusterArgsDict',
     'GetJobJobSettingsSettingsNewClusterAutoscaleArgs',
+    'GetJobJobSettingsSettingsNewClusterAutoscaleArgsDict',
     'GetJobJobSettingsSettingsNewClusterAwsAttributesArgs',
+    'GetJobJobSettingsSettingsNewClusterAwsAttributesArgsDict',
     'GetJobJobSettingsSettingsNewClusterAzureAttributesArgs',
+    'GetJobJobSettingsSettingsNewClusterAzureAttributesArgsDict',
     'GetJobJobSettingsSettingsNewClusterClusterLogConfArgs',
+    'GetJobJobSettingsSettingsNewClusterClusterLogConfArgsDict',
     'GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs',
+    'GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgsDict',
     'GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args',
+    'GetJobJobSettingsSettingsNewClusterClusterLogConfS3ArgsDict',
     'GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs',
+    'GetJobJobSettingsSettingsNewClusterClusterMountInfoArgsDict',
     'GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'GetJobJobSettingsSettingsNewClusterDockerImageArgs',
+    'GetJobJobSettingsSettingsNewClusterDockerImageArgsDict',
     'GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs',
+    'GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgsDict',
     'GetJobJobSettingsSettingsNewClusterGcpAttributesArgs',
+    'GetJobJobSettingsSettingsNewClusterGcpAttributesArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptFileArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptFileArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptGcsArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsNewClusterInitScriptS3ArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgsDict',
     'GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs',
+    'GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgsDict',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs',
+    'GetJobJobSettingsSettingsNewClusterWorkloadTypeArgsDict',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs',
+    'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgsDict',
     'GetJobJobSettingsSettingsNotebookTaskArgs',
+    'GetJobJobSettingsSettingsNotebookTaskArgsDict',
     'GetJobJobSettingsSettingsNotificationSettingsArgs',
+    'GetJobJobSettingsSettingsNotificationSettingsArgsDict',
     'GetJobJobSettingsSettingsParameterArgs',
+    'GetJobJobSettingsSettingsParameterArgsDict',
     'GetJobJobSettingsSettingsPipelineTaskArgs',
+    'GetJobJobSettingsSettingsPipelineTaskArgsDict',
     'GetJobJobSettingsSettingsPythonWheelTaskArgs',
+    'GetJobJobSettingsSettingsPythonWheelTaskArgsDict',
     'GetJobJobSettingsSettingsQueueArgs',
+    'GetJobJobSettingsSettingsQueueArgsDict',
     'GetJobJobSettingsSettingsRunAsArgs',
+    'GetJobJobSettingsSettingsRunAsArgsDict',
     'GetJobJobSettingsSettingsRunJobTaskArgs',
+    'GetJobJobSettingsSettingsRunJobTaskArgsDict',
     'GetJobJobSettingsSettingsScheduleArgs',
+    'GetJobJobSettingsSettingsScheduleArgsDict',
     'GetJobJobSettingsSettingsSparkJarTaskArgs',
+    'GetJobJobSettingsSettingsSparkJarTaskArgsDict',
     'GetJobJobSettingsSettingsSparkPythonTaskArgs',
+    'GetJobJobSettingsSettingsSparkPythonTaskArgsDict',
     'GetJobJobSettingsSettingsSparkSubmitTaskArgs',
+    'GetJobJobSettingsSettingsSparkSubmitTaskArgsDict',
     'GetJobJobSettingsSettingsTaskArgs',
+    'GetJobJobSettingsSettingsTaskArgsDict',
     'GetJobJobSettingsSettingsTaskConditionTaskArgs',
+    'GetJobJobSettingsSettingsTaskConditionTaskArgsDict',
     'GetJobJobSettingsSettingsTaskDbtTaskArgs',
+    'GetJobJobSettingsSettingsTaskDbtTaskArgsDict',
     'GetJobJobSettingsSettingsTaskDependsOnArgs',
+    'GetJobJobSettingsSettingsTaskDependsOnArgsDict',
     'GetJobJobSettingsSettingsTaskEmailNotificationsArgs',
+    'GetJobJobSettingsSettingsTaskEmailNotificationsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict',
     'GetJobJobSettingsSettingsTaskHealthArgs',
+    'GetJobJobSettingsSettingsTaskHealthArgsDict',
     'GetJobJobSettingsSettingsTaskHealthRuleArgs',
+    'GetJobJobSettingsSettingsTaskHealthRuleArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryArgs',
+    'GetJobJobSettingsSettingsTaskLibraryArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryCranArgs',
+    'GetJobJobSettingsSettingsTaskLibraryCranArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryMavenArgs',
+    'GetJobJobSettingsSettingsTaskLibraryMavenArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryPypiArgs',
+    'GetJobJobSettingsSettingsTaskLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3ArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterDockerImageArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptS3ArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs',
+    'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgsDict',
     'GetJobJobSettingsSettingsTaskNotebookTaskArgs',
+    'GetJobJobSettingsSettingsTaskNotebookTaskArgsDict',
     'GetJobJobSettingsSettingsTaskNotificationSettingsArgs',
+    'GetJobJobSettingsSettingsTaskNotificationSettingsArgsDict',
     'GetJobJobSettingsSettingsTaskPipelineTaskArgs',
+    'GetJobJobSettingsSettingsTaskPipelineTaskArgsDict',
     'GetJobJobSettingsSettingsTaskPythonWheelTaskArgs',
+    'GetJobJobSettingsSettingsTaskPythonWheelTaskArgsDict',
     'GetJobJobSettingsSettingsTaskRunJobTaskArgs',
+    'GetJobJobSettingsSettingsTaskRunJobTaskArgsDict',
     'GetJobJobSettingsSettingsTaskSparkJarTaskArgs',
+    'GetJobJobSettingsSettingsTaskSparkJarTaskArgsDict',
     'GetJobJobSettingsSettingsTaskSparkPythonTaskArgs',
+    'GetJobJobSettingsSettingsTaskSparkPythonTaskArgsDict',
     'GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs',
+    'GetJobJobSettingsSettingsTaskSparkSubmitTaskArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskAlertArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskAlertArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskFileArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskFileArgsDict',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskQueryArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgsDict',
     'GetJobJobSettingsSettingsTriggerArgs',
+    'GetJobJobSettingsSettingsTriggerArgsDict',
     'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
+    'GetJobJobSettingsSettingsTriggerFileArrivalArgsDict',
     'GetJobJobSettingsSettingsTriggerPeriodicArgs',
+    'GetJobJobSettingsSettingsTriggerPeriodicArgsDict',
     'GetJobJobSettingsSettingsTriggerTableUpdateArgs',
+    'GetJobJobSettingsSettingsTriggerTableUpdateArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict',
     'GetMetastoreMetastoreInfoArgs',
+    'GetMetastoreMetastoreInfoArgsDict',
     'GetMlflowExperimentTagArgs',
+    'GetMlflowExperimentTagArgsDict',
     'GetMlflowModelLatestVersionArgs',
+    'GetMlflowModelLatestVersionArgsDict',
     'GetMlflowModelLatestVersionTagArgs',
+    'GetMlflowModelLatestVersionTagArgsDict',
     'GetMlflowModelTagArgs',
+    'GetMlflowModelTagArgsDict',
     'GetSchemaSchemaInfoArgs',
+    'GetSchemaSchemaInfoArgsDict',
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs',
+    'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetShareObjectArgs',
+    'GetShareObjectArgsDict',
     'GetShareObjectPartitionArgs',
+    'GetShareObjectPartitionArgsDict',
     'GetShareObjectPartitionValueArgs',
+    'GetShareObjectPartitionValueArgsDict',
     'GetSqlWarehouseChannelArgs',
+    'GetSqlWarehouseChannelArgsDict',
     'GetSqlWarehouseHealthArgs',
+    'GetSqlWarehouseHealthArgsDict',
     'GetSqlWarehouseHealthFailureReasonArgs',
+    'GetSqlWarehouseHealthFailureReasonArgsDict',
     'GetSqlWarehouseOdbcParamsArgs',
+    'GetSqlWarehouseOdbcParamsArgsDict',
     'GetSqlWarehouseTagsArgs',
+    'GetSqlWarehouseTagsArgsDict',
     'GetSqlWarehouseTagsCustomTagArgs',
+    'GetSqlWarehouseTagsCustomTagArgsDict',
     'GetStorageCredentialStorageCredentialInfoArgs',
+    'GetStorageCredentialStorageCredentialInfoArgsDict',
     'GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs',
+    'GetStorageCredentialStorageCredentialInfoAwsIamRoleArgsDict',
     'GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs',
+    'GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgsDict',
     'GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs',
+    'GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgsDict',
     'GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs',
+    'GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgsDict',
     'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs',
+    'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgsDict',
     'GetTableTableInfoArgs',
+    'GetTableTableInfoArgsDict',
     'GetTableTableInfoColumnArgs',
+    'GetTableTableInfoColumnArgsDict',
     'GetTableTableInfoColumnMaskArgs',
+    'GetTableTableInfoColumnMaskArgsDict',
     'GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs',
+    'GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict',
     'GetTableTableInfoEffectivePredictiveOptimizationFlagArgs',
+    'GetTableTableInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetTableTableInfoEncryptionDetailsArgs',
+    'GetTableTableInfoEncryptionDetailsArgsDict',
     'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs',
+    'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
     'GetTableTableInfoRowFilterArgs',
+    'GetTableTableInfoRowFilterArgsDict',
     'GetTableTableInfoTableConstraintArgs',
+    'GetTableTableInfoTableConstraintArgsDict',
     'GetTableTableInfoTableConstraintForeignKeyConstraintArgs',
+    'GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict',
     'GetTableTableInfoTableConstraintNamedTableConstraintArgs',
+    'GetTableTableInfoTableConstraintNamedTableConstraintArgsDict',
     'GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs',
+    'GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict',
     'GetTableTableInfoViewDependenciesArgs',
+    'GetTableTableInfoViewDependenciesArgsDict',
     'GetTableTableInfoViewDependenciesDependencyArgs',
+    'GetTableTableInfoViewDependenciesDependencyArgsDict',
     'GetTableTableInfoViewDependenciesDependencyFunctionArgs',
+    'GetTableTableInfoViewDependenciesDependencyFunctionArgsDict',
     'GetTableTableInfoViewDependenciesDependencyTableArgs',
+    'GetTableTableInfoViewDependenciesDependencyTableArgsDict',
     'GetVolumeVolumeInfoArgs',
+    'GetVolumeVolumeInfoArgsDict',
     'GetVolumeVolumeInfoEncryptionDetailsArgs',
+    'GetVolumeVolumeInfoEncryptionDetailsArgsDict',
     'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs',
+    'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessControlRuleSetGrantRuleArgsDict(TypedDict):
+        role: pulumi.Input[str]
+        """
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+        * `roles/servicePrincipal.manager` - Manager of a service principal.
+        * `roles/servicePrincipal.user` - User of a service principal.
+        * `roles/group.manager` - Manager of a group.
+        * `roles/marketplace.admin` - Admin of marketplace.
+        """
+        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        a list of principals who are granted a role. The following format is supported:
+        * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
+        * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
+        * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
+        """
+elif False:
+    AccessControlRuleSetGrantRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessControlRuleSetGrantRuleArgs:
@@ -835,6 +1633,19 @@ class AccessControlRuleSetGrantRuleArgs:
         pulumi.set(self, "principals", value)
 
 
+if not MYPY:
+    class ArtifactAllowlistArtifactMatcherArgsDict(TypedDict):
+        artifact: pulumi.Input[str]
+        """
+        The artifact path or maven coordinate.
+        """
+        match_type: pulumi.Input[str]
+        """
+        The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+        """
+elif False:
+    ArtifactAllowlistArtifactMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ArtifactAllowlistArtifactMatcherArgs:
     def __init__(__self__, *,
@@ -871,6 +1682,16 @@ class ArtifactAllowlistArtifactMatcherArgs:
     def match_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "match_type", value)
 
+
+if not MYPY:
+    class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        can_toggle: NotRequired[pulumi.Input[bool]]
+        enablement_details: NotRequired[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict']]
+        maintenance_window: NotRequired[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict']]
+        restart_even_if_no_updates_available: NotRequired[pulumi.Input[bool]]
+elif False:
+    AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs:
@@ -936,6 +1757,14 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs:
         pulumi.set(self, "restart_even_if_no_updates_available", value)
 
 
+if not MYPY:
+    class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict(TypedDict):
+        forced_for_compliance_mode: NotRequired[pulumi.Input[bool]]
+        unavailable_for_disabled_entitlement: NotRequired[pulumi.Input[bool]]
+        unavailable_for_non_enterprise_tier: NotRequired[pulumi.Input[bool]]
+elif False:
+    AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
     def __init__(__self__, *,
@@ -977,6 +1806,12 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnabl
         pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
 
 
+if not MYPY:
+    class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict(TypedDict):
+        week_day_based_schedule: NotRequired[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict']]
+elif False:
+    AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
     def __init__(__self__, *,
@@ -993,6 +1828,14 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
     def week_day_based_schedule(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']]):
         pulumi.set(self, "week_day_based_schedule", value)
 
+
+if not MYPY:
+    class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        frequency: pulumi.Input[str]
+        window_start_time: NotRequired[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']]
+elif False:
+    AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
@@ -1033,6 +1876,13 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
         pulumi.set(self, "window_start_time", value)
 
 
+if not MYPY:
+    class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict(TypedDict):
+        hours: pulumi.Input[int]
+        minutes: pulumi.Input[int]
+elif False:
+    AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
     def __init__(__self__, *,
@@ -1059,6 +1909,32 @@ class AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaint
     def minutes(self, value: pulumi.Input[int]):
         pulumi.set(self, "minutes", value)
 
+
+if not MYPY:
+    class BudgetAlertConfigurationArgsDict(TypedDict):
+        action_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationActionConfigurationArgsDict']]]]
+        """
+        List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+        """
+        alert_configuration_id: NotRequired[pulumi.Input[str]]
+        quantity_threshold: NotRequired[pulumi.Input[str]]
+        """
+        The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+        """
+        quantity_type: NotRequired[pulumi.Input[str]]
+        """
+        The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+        """
+        time_period: NotRequired[pulumi.Input[str]]
+        """
+        The time window of usage data for the budget. (Enum: `MONTH`)
+        """
+        trigger_type: NotRequired[pulumi.Input[str]]
+        """
+        The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+        """
+elif False:
+    BudgetAlertConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BudgetAlertConfigurationArgs:
@@ -1159,6 +2035,20 @@ class BudgetAlertConfigurationArgs:
         pulumi.set(self, "trigger_type", value)
 
 
+if not MYPY:
+    class BudgetAlertConfigurationActionConfigurationArgsDict(TypedDict):
+        action_configuration_id: NotRequired[pulumi.Input[str]]
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+        """
+elif False:
+    BudgetAlertConfigurationActionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BudgetAlertConfigurationActionConfigurationArgs:
     def __init__(__self__, *,
@@ -1210,6 +2100,19 @@ class BudgetAlertConfigurationActionConfigurationArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class BudgetFilterArgsDict(TypedDict):
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['BudgetFilterTagArgsDict']]]]
+        """
+        List of tags to filter by. Consists of the following fields:
+        """
+        workspace_id: NotRequired[pulumi.Input['BudgetFilterWorkspaceIdArgsDict']]
+        """
+        Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+        """
+elif False:
+    BudgetFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BudgetFilterArgs:
     def __init__(__self__, *,
@@ -1248,6 +2151,19 @@ class BudgetFilterArgs:
     def workspace_id(self, value: Optional[pulumi.Input['BudgetFilterWorkspaceIdArgs']]):
         pulumi.set(self, "workspace_id", value)
 
+
+if not MYPY:
+    class BudgetFilterTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the tag.
+        """
+        value: NotRequired[pulumi.Input['BudgetFilterTagValueArgsDict']]
+        """
+        Consists of the following fields:
+        """
+elif False:
+    BudgetFilterTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BudgetFilterTagArgs:
@@ -1288,6 +2204,19 @@ class BudgetFilterTagArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BudgetFilterTagValueArgsDict(TypedDict):
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator to use for the filter. (Enum: `IN`)
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values to filter by.
+        """
+elif False:
+    BudgetFilterTagValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BudgetFilterTagValueArgs:
     def __init__(__self__, *,
@@ -1327,6 +2256,19 @@ class BudgetFilterTagValueArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class BudgetFilterWorkspaceIdArgsDict(TypedDict):
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator to use for the filter. (Enum: `IN`)
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        The values to filter by.
+        """
+elif False:
+    BudgetFilterWorkspaceIdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BudgetFilterWorkspaceIdArgs:
     def __init__(__self__, *,
@@ -1365,6 +2307,50 @@ class BudgetFilterWorkspaceIdArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class ClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+
+        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+
+        * `spark.master` must have prefix `local`, like `local[*]`
+        * `spark.databricks.cluster.profile` must have value `singleNode`
+
+        and also `custom_tag` entry:
+
+        * `"ResourceClass" = "SingleNode"`
+
+        The following example demonstrates how to create an single node cluster:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        single_node = databricks.Cluster("single_node",
+            cluster_name="Single Node",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            spark_conf={
+                "spark.databricks.cluster.profile": "singleNode",
+                "spark.master": "local[*]",
+            },
+            custom_tags={
+                "ResourceClass": "SingleNode",
+            })
+        ```
+        """
+        min_workers: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+        """
+elif False:
+    ClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterAutoscaleArgs:
@@ -1466,6 +2452,45 @@ class ClusterAutoscaleArgs:
     def min_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class ClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        """
+        Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+        """
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+        """
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        """
+        The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+        """
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+        """
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        """
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        """
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        """
+        Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+        """
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        """
+        The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+        """
+elif False:
+    ClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterAwsAttributesArgs:
@@ -1626,6 +2651,24 @@ class ClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class ClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        """
+        Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
+        """
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        """
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+        """
+        log_analytics_info: NotRequired[pulumi.Input['ClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+        """
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
+        """
+elif False:
+    ClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -1693,6 +2736,13 @@ class ClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class ClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -1721,6 +2771,13 @@ class ClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class ClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['ClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['ClusterClusterLogConfS3ArgsDict']]
+elif False:
+    ClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterClusterLogConfArgs:
@@ -1751,6 +2808,15 @@ class ClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class ClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -1772,6 +2838,39 @@ class ClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class ClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        canned_acl: NotRequired[pulumi.Input[str]]
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Enable server-side encryption, false by default.
+        """
+        encryption_type: NotRequired[pulumi.Input[str]]
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
+elif False:
+    ClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterClusterLogConfS3Args:
@@ -1891,6 +2990,41 @@ class ClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: pulumi.Input[str]
+        """
+        path inside the Spark container.
+
+        For example, you can mount Azure Data Lake Storage container using the following code:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        storage_account = "ewfw3ggwegwg"
+        storage_container = "test"
+        with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[{
+            "network_filesystem_info": {
+                "server_address": f"{storage_account}.blob.core.windows.net",
+                "mount_options": "sec=sys,vers=3,nolock,proto=tcp",
+            },
+            "remote_mount_dir_path": f"{storage_account}/{storage_container}",
+            "local_mount_dir_path": "/mnt/nfs-test",
+        }])
+        ```
+        """
+        network_filesystem_info: pulumi.Input['ClusterClusterMountInfoNetworkFilesystemInfoArgsDict']
+        """
+        block specifying connection. It consists of:
+        """
+        remote_mount_dir_path: NotRequired[pulumi.Input[str]]
+        """
+        string specifying path to mount on the remote service.
+        """
+elif False:
+    ClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -1980,6 +3114,19 @@ class ClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class ClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: pulumi.Input[str]
+        """
+        host name.
+        """
+        mount_options: NotRequired[pulumi.Input[str]]
+        """
+        string that will be passed as options passed to the `mount` command.
+        """
+elif False:
+    ClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -2017,6 +3164,38 @@ class ClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class ClusterDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL for the Docker image
+        """
+        basic_auth: NotRequired[pulumi.Input['ClusterDockerImageBasicAuthArgsDict']]
+        """
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        this = docker.index.RegistryImage("this",
+            build=[{}],
+            name=f{this_azurerm_container_registry.login_server}/sample:latest)
+        this_cluster = databricks.Cluster("this", docker_image={
+            "url": this["name"],
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        })
+        ```
+        """
+elif False:
+    ClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterDockerImageArgs:
@@ -2094,6 +3273,13 @@ class ClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class ClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    ClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -2120,6 +3306,38 @@ class ClusterDockerImageBasicAuthArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class ClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        """
+        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        """
+        boot_disk_size: NotRequired[pulumi.Input[int]]
+        """
+        Boot disk size in GB
+        """
+        google_service_account: NotRequired[pulumi.Input[str]]
+        """
+        Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
+        """
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        """
+        use_preemptible_executors: NotRequired[pulumi.Input[bool]]
+        """
+        if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
+        * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
+        * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
+        """
+elif False:
+    ClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGcpAttributesArgs:
@@ -2230,6 +3448,18 @@ class ClusterGcpAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class ClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['ClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['ClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['ClusterInitScriptFileArgsDict']]
+        gcs: NotRequired[pulumi.Input['ClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['ClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['ClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['ClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    ClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptArgs:
     def __init__(__self__, *,
@@ -2323,6 +3553,15 @@ class ClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class ClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -2344,6 +3583,15 @@ class ClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class ClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterInitScriptDbfsArgs:
@@ -2367,6 +3615,15 @@ class ClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class ClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -2389,6 +3646,15 @@ class ClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class ClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -2410,6 +3676,39 @@ class ClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class ClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        canned_acl: NotRequired[pulumi.Input[str]]
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Enable server-side encryption, false by default.
+        """
+        encryption_type: NotRequired[pulumi.Input[str]]
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
+elif False:
+    ClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterInitScriptS3Args:
@@ -2529,6 +3828,15 @@ class ClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -2551,6 +3859,15 @@ class ClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class ClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -2572,6 +3889,18 @@ class ClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class ClusterLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['ClusterLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['ClusterLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['ClusterLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterLibraryArgs:
@@ -2662,6 +3991,13 @@ class ClusterLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class ClusterLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterLibraryCranArgs:
     def __init__(__self__, *,
@@ -2689,6 +4025,14 @@ class ClusterLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class ClusterLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterLibraryMavenArgs:
@@ -2730,6 +4074,13 @@ class ClusterLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class ClusterLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterLibraryPypiArgs:
     def __init__(__self__, *,
@@ -2757,6 +4108,18 @@ class ClusterLibraryPypiArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class ClusterPolicyLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['ClusterPolicyLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['ClusterPolicyLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['ClusterPolicyLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterPolicyLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPolicyLibraryArgs:
@@ -2847,6 +4210,13 @@ class ClusterPolicyLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class ClusterPolicyLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterPolicyLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterPolicyLibraryCranArgs:
     def __init__(__self__, *,
@@ -2874,6 +4244,14 @@ class ClusterPolicyLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class ClusterPolicyLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterPolicyLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPolicyLibraryMavenArgs:
@@ -2915,6 +4293,13 @@ class ClusterPolicyLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class ClusterPolicyLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterPolicyLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterPolicyLibraryPypiArgs:
     def __init__(__self__, *,
@@ -2943,6 +4328,12 @@ class ClusterPolicyLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class ClusterWorkloadTypeArgsDict(TypedDict):
+        clients: pulumi.Input['ClusterWorkloadTypeClientsArgsDict']
+elif False:
+    ClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -2958,6 +4349,31 @@ class ClusterWorkloadTypeArgs:
     def clients(self, value: pulumi.Input['ClusterWorkloadTypeClientsArgs']):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class ClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[pulumi.Input[bool]]
+        """
+        boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_nfs = databricks.Cluster("with_nfs", workload_type={
+            "clients": {
+                "jobs": False,
+                "notebooks": True,
+            },
+        })
+        ```
+        """
+        notebooks: NotRequired[pulumi.Input[bool]]
+        """
+        boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+        """
+elif False:
+    ClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterWorkloadTypeClientsArgs:
@@ -3022,6 +4438,13 @@ class ClusterWorkloadTypeClientsArgs:
         pulumi.set(self, "notebooks", value)
 
 
+if not MYPY:
+    class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict(TypedDict):
+        compliance_standards: pulumi.Input[Sequence[pulumi.Input[str]]]
+        is_enabled: pulumi.Input[bool]
+elif False:
+    ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs:
     def __init__(__self__, *,
@@ -3049,6 +4472,15 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
         pulumi.set(self, "is_enabled", value)
 
 
+if not MYPY:
+    class DefaultNamespaceSettingNamespaceArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value for the setting.
+        """
+elif False:
+    DefaultNamespaceSettingNamespaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DefaultNamespaceSettingNamespaceArgs:
     def __init__(__self__, *,
@@ -3072,6 +4504,12 @@ class DefaultNamespaceSettingNamespaceArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict(TypedDict):
+        is_enabled: pulumi.Input[bool]
+elif False:
+    EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs:
     def __init__(__self__, *,
@@ -3087,6 +4525,12 @@ class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorksp
     def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class ExternalLocationEncryptionDetailsArgsDict(TypedDict):
+        sse_encryption_details: NotRequired[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict']]
+elif False:
+    ExternalLocationEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ExternalLocationEncryptionDetailsArgs:
@@ -3104,6 +4548,13 @@ class ExternalLocationEncryptionDetailsArgs:
     def sse_encryption_details(self, value: Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']]):
         pulumi.set(self, "sse_encryption_details", value)
 
+
+if not MYPY:
+    class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[str]]
+        aws_kms_key_arn: NotRequired[pulumi.Input[str]]
+elif False:
+    ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
@@ -3134,6 +4585,13 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
         pulumi.set(self, "aws_kms_key_arn", value)
 
 
+if not MYPY:
+    class GrantsGrantArgsDict(TypedDict):
+        principal: pulumi.Input[str]
+        privileges: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    GrantsGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GrantsGrantArgs:
     def __init__(__self__, *,
@@ -3160,6 +4618,23 @@ class GrantsGrantArgs:
     def privileges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "privileges", value)
 
+
+if not MYPY:
+    class InstancePoolAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        """
+        (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
+        """
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        """
+elif False:
+    InstancePoolAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolAwsAttributesArgs:
@@ -3216,6 +4691,19 @@ class InstancePoolAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class InstancePoolAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        """
+        Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
+        """
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+        """
+        The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
+        """
+elif False:
+    InstancePoolAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolAzureAttributesArgs:
     def __init__(__self__, *,
@@ -3254,6 +4742,20 @@ class InstancePoolAzureAttributesArgs:
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
 
+
+if not MYPY:
+    class InstancePoolDiskSpecArgsDict(TypedDict):
+        disk_count: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+        """
+        disk_size: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) The size of each disk (in GiB) to attach.
+        """
+        disk_type: NotRequired[pulumi.Input['InstancePoolDiskSpecDiskTypeArgsDict']]
+elif False:
+    InstancePoolDiskSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolDiskSpecArgs:
@@ -3306,6 +4808,13 @@ class InstancePoolDiskSpecArgs:
         pulumi.set(self, "disk_type", value)
 
 
+if not MYPY:
+    class InstancePoolDiskSpecDiskTypeArgsDict(TypedDict):
+        azure_disk_volume_type: NotRequired[pulumi.Input[str]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+elif False:
+    InstancePoolDiskSpecDiskTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolDiskSpecDiskTypeArgs:
     def __init__(__self__, *,
@@ -3334,6 +4843,23 @@ class InstancePoolDiskSpecDiskTypeArgs:
     def ebs_volume_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ebs_volume_type", value)
 
+
+if not MYPY:
+    class InstancePoolGcpAttributesArgsDict(TypedDict):
+        gcp_availability: NotRequired[pulumi.Input[str]]
+        """
+        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        """
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+        """
+elif False:
+    InstancePoolGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolGcpAttributesArgs:
@@ -3390,6 +4916,14 @@ class InstancePoolGcpAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class InstancePoolInstancePoolFleetAttributesArgsDict(TypedDict):
+        launch_template_overrides: pulumi.Input[Sequence[pulumi.Input['InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgsDict']]]
+        fleet_on_demand_option: NotRequired[pulumi.Input['InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgsDict']]
+        fleet_spot_option: NotRequired[pulumi.Input['InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgsDict']]
+elif False:
+    InstancePoolInstancePoolFleetAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolInstancePoolFleetAttributesArgs:
     def __init__(__self__, *,
@@ -3430,6 +4964,13 @@ class InstancePoolInstancePoolFleetAttributesArgs:
         pulumi.set(self, "fleet_spot_option", value)
 
 
+if not MYPY:
+    class InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgsDict(TypedDict):
+        allocation_strategy: pulumi.Input[str]
+        instance_pools_to_use_count: NotRequired[pulumi.Input[int]]
+elif False:
+    InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs:
     def __init__(__self__, *,
@@ -3457,6 +4998,13 @@ class InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs:
     def instance_pools_to_use_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_pools_to_use_count", value)
 
+
+if not MYPY:
+    class InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgsDict(TypedDict):
+        allocation_strategy: pulumi.Input[str]
+        instance_pools_to_use_count: NotRequired[pulumi.Input[int]]
+elif False:
+    InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs:
@@ -3486,6 +5034,13 @@ class InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs:
         pulumi.set(self, "instance_pools_to_use_count", value)
 
 
+if not MYPY:
+    class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgsDict(TypedDict):
+        availability_zone: pulumi.Input[str]
+        instance_type: pulumi.Input[str]
+elif False:
+    InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs:
     def __init__(__self__, *,
@@ -3512,6 +5067,38 @@ class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs:
     def instance_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_type", value)
 
+
+if not MYPY:
+    class InstancePoolPreloadedDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL for the Docker image
+        """
+        basic_auth: NotRequired[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgsDict']]
+        """
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        this = docker.index.RegistryImage("this",
+            build=[{}],
+            name=f{this_azurerm_container_registry.login_server}/sample:latest)
+        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
+            "url": this["name"],
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        }])
+        ```
+        """
+elif False:
+    InstancePoolPreloadedDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolPreloadedDockerImageArgs:
@@ -3589,6 +5176,13 @@ class InstancePoolPreloadedDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class InstancePoolPreloadedDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    InstancePoolPreloadedDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstancePoolPreloadedDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -3616,6 +5210,15 @@ class InstancePoolPreloadedDockerImageBasicAuthArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class JobContinuousArgsDict(TypedDict):
+        pause_status: NotRequired[pulumi.Input[str]]
+        """
+        Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        """
+elif False:
+    JobContinuousArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobContinuousArgs:
     def __init__(__self__, *,
@@ -3638,6 +5241,43 @@ class JobContinuousArgs:
     def pause_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pause_status", value)
 
+
+if not MYPY:
+    class JobDbtTaskArgsDict(TypedDict):
+        commands: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        """
+        catalog: NotRequired[pulumi.Input[str]]
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        profiles_directory: NotRequired[pulumi.Input[str]]
+        """
+        The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        """
+        project_directory: NotRequired[pulumi.Input[str]]
+        """
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+        * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
+        * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the SQL warehouse that dbt should execute against.
+
+        You also need to include a `git_source` block to configure the repository that contains the dbt project.
+        """
+elif False:
+    JobDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobDbtTaskArgs:
@@ -3765,6 +5405,13 @@ class JobDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobDeploymentArgsDict(TypedDict):
+        kind: pulumi.Input[str]
+        metadata_file_path: NotRequired[pulumi.Input[str]]
+elif False:
+    JobDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobDeploymentArgs:
     def __init__(__self__, *,
@@ -3792,6 +5439,34 @@ class JobDeploymentArgs:
     def metadata_file_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata_file_path", value)
 
+
+if not MYPY:
+    class JobEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run fails.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run starts.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
+elif False:
+    JobEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobEmailNotificationsArgs:
@@ -3896,6 +5571,19 @@ class JobEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobEnvironmentArgsDict(TypedDict):
+        environment_key: pulumi.Input[str]
+        """
+        an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+        """
+        spec: NotRequired[pulumi.Input['JobEnvironmentSpecArgsDict']]
+        """
+        block describing the Environment. Consists of following attributes:
+        """
+elif False:
+    JobEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobEnvironmentArgs:
     def __init__(__self__, *,
@@ -3934,6 +5622,19 @@ class JobEnvironmentArgs:
         pulumi.set(self, "spec", value)
 
 
+if not MYPY:
+    class JobEnvironmentSpecArgsDict(TypedDict):
+        client: pulumi.Input[str]
+        """
+        client version used by the environment.
+        """
+        dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+        """
+elif False:
+    JobEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobEnvironmentSpecArgs:
     def __init__(__self__, *,
@@ -3971,6 +5672,33 @@ class JobEnvironmentSpecArgs:
     def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dependencies", value)
 
+
+if not MYPY:
+    class JobGitSourceArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL of the Git repository to use.
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        name of the Git branch to use. Conflicts with `tag` and `commit`.
+        """
+        commit: NotRequired[pulumi.Input[str]]
+        """
+        hash of Git commit to use. Conflicts with `branch` and `tag`.
+        """
+        git_snapshot: NotRequired[pulumi.Input['JobGitSourceGitSnapshotArgsDict']]
+        job_source: NotRequired[pulumi.Input['JobGitSourceJobSourceArgsDict']]
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        name of the Git branch to use. Conflicts with `branch` and `commit`.
+        """
+elif False:
+    JobGitSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobGitSourceArgs:
@@ -4082,6 +5810,12 @@ class JobGitSourceArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class JobGitSourceGitSnapshotArgsDict(TypedDict):
+        used_commit: NotRequired[pulumi.Input[str]]
+elif False:
+    JobGitSourceGitSnapshotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobGitSourceGitSnapshotArgs:
     def __init__(__self__, *,
@@ -4098,6 +5832,14 @@ class JobGitSourceGitSnapshotArgs:
     def used_commit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "used_commit", value)
 
+
+if not MYPY:
+    class JobGitSourceJobSourceArgsDict(TypedDict):
+        import_from_git_branch: pulumi.Input[str]
+        job_config_path: pulumi.Input[str]
+        dirty_state: NotRequired[pulumi.Input[str]]
+elif False:
+    JobGitSourceJobSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobGitSourceJobSourceArgs:
@@ -4138,6 +5880,15 @@ class JobGitSourceJobSourceArgs:
         pulumi.set(self, "dirty_state", value)
 
 
+if not MYPY:
+    class JobHealthArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgsDict']]]
+        """
+        list of rules that are represented as objects with the following attributes:
+        """
+elif False:
+    JobHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobHealthArgs:
     def __init__(__self__, *,
@@ -4159,6 +5910,23 @@ class JobHealthArgs:
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class JobHealthRuleArgsDict(TypedDict):
+        metric: pulumi.Input[str]
+        """
+        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        """
+        op: pulumi.Input[str]
+        """
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        """
+        value: pulumi.Input[int]
+        """
+        integer value used to compare to the given metric.
+        """
+elif False:
+    JobHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobHealthRuleArgs:
@@ -4212,6 +5980,19 @@ class JobHealthRuleArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class JobJobClusterArgsDict(TypedDict):
+        job_cluster_key: pulumi.Input[str]
+        """
+        Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+        """
+        new_cluster: pulumi.Input['JobJobClusterNewClusterArgsDict']
+        """
+        Block with almost the same set of parameters as for Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
+        """
+elif False:
+    JobJobClusterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterArgs:
     def __init__(__self__, *,
@@ -4248,6 +6029,47 @@ class JobJobClusterArgs:
     def new_cluster(self, value: pulumi.Input['JobJobClusterNewClusterArgs']):
         pulumi.set(self, "new_cluster", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterArgsDict(TypedDict):
+        spark_version: pulumi.Input[str]
+        apply_policy_default_values: NotRequired[pulumi.Input[bool]]
+        autoscale: NotRequired[pulumi.Input['JobJobClusterNewClusterAutoscaleArgsDict']]
+        aws_attributes: NotRequired[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgsDict']]
+        azure_attributes: NotRequired[pulumi.Input['JobJobClusterNewClusterAzureAttributesArgsDict']]
+        cluster_id: NotRequired[pulumi.Input[str]]
+        cluster_log_conf: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfArgsDict']]
+        cluster_mount_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterClusterMountInfoArgsDict']]]]
+        cluster_name: NotRequired[pulumi.Input[str]]
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        data_security_mode: NotRequired[pulumi.Input[str]]
+        docker_image: NotRequired[pulumi.Input['JobJobClusterNewClusterDockerImageArgsDict']]
+        driver_instance_pool_id: NotRequired[pulumi.Input[str]]
+        driver_node_type_id: NotRequired[pulumi.Input[str]]
+        enable_elastic_disk: NotRequired[pulumi.Input[bool]]
+        enable_local_disk_encryption: NotRequired[pulumi.Input[bool]]
+        gcp_attributes: NotRequired[pulumi.Input['JobJobClusterNewClusterGcpAttributesArgsDict']]
+        idempotency_token: NotRequired[pulumi.Input[str]]
+        init_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterInitScriptArgsDict']]]]
+        instance_pool_id: NotRequired[pulumi.Input[str]]
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgsDict']]]]
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
+        node_type_id: NotRequired[pulumi.Input[str]]
+        num_workers: NotRequired[pulumi.Input[int]]
+        policy_id: NotRequired[pulumi.Input[str]]
+        runtime_engine: NotRequired[pulumi.Input[str]]
+        single_user_name: NotRequired[pulumi.Input[str]]
+        spark_conf: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        spark_env_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        workload_type: NotRequired[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgsDict']]
+        """
+        isn't supported
+        """
+elif False:
+    JobJobClusterNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterArgs:
@@ -4623,6 +6445,13 @@ class JobJobClusterNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[pulumi.Input[int]]
+        min_workers: NotRequired[pulumi.Input[int]]
+elif False:
+    JobJobClusterNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -4651,6 +6480,21 @@ class JobJobClusterNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterAwsAttributesArgs:
@@ -4777,6 +6621,15 @@ class JobJobClusterNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        log_analytics_info: NotRequired[pulumi.Input['JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+elif False:
+    JobJobClusterNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -4830,6 +6683,13 @@ class JobJobClusterNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -4858,6 +6718,13 @@ class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfS3ArgsDict']]
+elif False:
+    JobJobClusterNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterClusterLogConfArgs:
@@ -4888,6 +6755,12 @@ class JobJobClusterNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -4903,6 +6776,18 @@ class JobJobClusterNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterClusterLogConfS3Args:
@@ -4992,6 +6877,14 @@ class JobJobClusterNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: pulumi.Input[str]
+        network_filesystem_info: pulumi.Input['JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict']
+        remote_mount_dir_path: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -5031,6 +6924,13 @@ class JobJobClusterNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: pulumi.Input[str]
+        mount_options: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -5058,6 +6958,16 @@ class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL of the job on the given workspace
+        """
+        basic_auth: NotRequired[pulumi.Input['JobJobClusterNewClusterDockerImageBasicAuthArgsDict']]
+elif False:
+    JobJobClusterNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterDockerImageArgs:
@@ -5093,6 +7003,13 @@ class JobJobClusterNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -5119,6 +7036,17 @@ class JobJobClusterNewClusterDockerImageBasicAuthArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        boot_disk_size: NotRequired[pulumi.Input[int]]
+        google_service_account: NotRequired[pulumi.Input[str]]
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        use_preemptible_executors: NotRequired[pulumi.Input[bool]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterGcpAttributesArgs:
@@ -5196,6 +7124,21 @@ class JobJobClusterNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        gcs: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['JobJobClusterNewClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    JobJobClusterNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptArgs:
@@ -5296,6 +7239,12 @@ class JobJobClusterNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -5311,6 +7260,12 @@ class JobJobClusterNewClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptDbfsArgs:
@@ -5328,6 +7283,12 @@ class JobJobClusterNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -5344,6 +7305,12 @@ class JobJobClusterNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -5359,6 +7326,18 @@ class JobJobClusterNewClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptS3Args:
@@ -5448,6 +7427,12 @@ class JobJobClusterNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -5464,6 +7449,12 @@ class JobJobClusterNewClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -5479,6 +7470,18 @@ class JobJobClusterNewClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterLibraryArgs:
@@ -5569,6 +7572,13 @@ class JobJobClusterNewClusterLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterLibraryCranArgs:
     def __init__(__self__, *,
@@ -5596,6 +7606,14 @@ class JobJobClusterNewClusterLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterLibraryMavenArgs:
@@ -5637,6 +7655,13 @@ class JobJobClusterNewClusterLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobJobClusterNewClusterLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterLibraryPypiArgs:
     def __init__(__self__, *,
@@ -5665,6 +7690,12 @@ class JobJobClusterNewClusterLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobJobClusterNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: pulumi.Input['JobJobClusterNewClusterWorkloadTypeClientsArgsDict']
+elif False:
+    JobJobClusterNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobJobClusterNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -5680,6 +7711,13 @@ class JobJobClusterNewClusterWorkloadTypeArgs:
     def clients(self, value: pulumi.Input['JobJobClusterNewClusterWorkloadTypeClientsArgs']):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class JobJobClusterNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[pulumi.Input[bool]]
+        notebooks: NotRequired[pulumi.Input[bool]]
+elif False:
+    JobJobClusterNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobJobClusterNewClusterWorkloadTypeClientsArgs:
@@ -5709,6 +7747,18 @@ class JobJobClusterNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class JobLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobLibraryArgs:
@@ -5799,6 +7849,13 @@ class JobLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobLibraryCranArgs:
     def __init__(__self__, *,
@@ -5826,6 +7883,14 @@ class JobLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobLibraryMavenArgs:
@@ -5867,6 +7932,13 @@ class JobLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobLibraryPypiArgs:
     def __init__(__self__, *,
@@ -5894,6 +7966,47 @@ class JobLibraryPypiArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobNewClusterArgsDict(TypedDict):
+        spark_version: pulumi.Input[str]
+        apply_policy_default_values: NotRequired[pulumi.Input[bool]]
+        autoscale: NotRequired[pulumi.Input['JobNewClusterAutoscaleArgsDict']]
+        aws_attributes: NotRequired[pulumi.Input['JobNewClusterAwsAttributesArgsDict']]
+        azure_attributes: NotRequired[pulumi.Input['JobNewClusterAzureAttributesArgsDict']]
+        cluster_id: NotRequired[pulumi.Input[str]]
+        cluster_log_conf: NotRequired[pulumi.Input['JobNewClusterClusterLogConfArgsDict']]
+        cluster_mount_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobNewClusterClusterMountInfoArgsDict']]]]
+        cluster_name: NotRequired[pulumi.Input[str]]
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        data_security_mode: NotRequired[pulumi.Input[str]]
+        docker_image: NotRequired[pulumi.Input['JobNewClusterDockerImageArgsDict']]
+        driver_instance_pool_id: NotRequired[pulumi.Input[str]]
+        driver_node_type_id: NotRequired[pulumi.Input[str]]
+        enable_elastic_disk: NotRequired[pulumi.Input[bool]]
+        enable_local_disk_encryption: NotRequired[pulumi.Input[bool]]
+        gcp_attributes: NotRequired[pulumi.Input['JobNewClusterGcpAttributesArgsDict']]
+        idempotency_token: NotRequired[pulumi.Input[str]]
+        init_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobNewClusterInitScriptArgsDict']]]]
+        instance_pool_id: NotRequired[pulumi.Input[str]]
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgsDict']]]]
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
+        node_type_id: NotRequired[pulumi.Input[str]]
+        num_workers: NotRequired[pulumi.Input[int]]
+        policy_id: NotRequired[pulumi.Input[str]]
+        runtime_engine: NotRequired[pulumi.Input[str]]
+        single_user_name: NotRequired[pulumi.Input[str]]
+        spark_conf: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        spark_env_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        workload_type: NotRequired[pulumi.Input['JobNewClusterWorkloadTypeArgsDict']]
+        """
+        isn't supported
+        """
+elif False:
+    JobNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterArgs:
@@ -6269,6 +8382,13 @@ class JobNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class JobNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[pulumi.Input[int]]
+        min_workers: NotRequired[pulumi.Input[int]]
+elif False:
+    JobNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -6297,6 +8417,21 @@ class JobNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class JobNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterAwsAttributesArgs:
@@ -6423,6 +8558,15 @@ class JobNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class JobNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        log_analytics_info: NotRequired[pulumi.Input['JobNewClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+elif False:
+    JobNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -6476,6 +8620,13 @@ class JobNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class JobNewClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -6504,6 +8655,13 @@ class JobNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class JobNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['JobNewClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobNewClusterClusterLogConfS3ArgsDict']]
+elif False:
+    JobNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterClusterLogConfArgs:
@@ -6534,6 +8692,12 @@ class JobNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class JobNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -6549,6 +8713,18 @@ class JobNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterClusterLogConfS3Args:
@@ -6638,6 +8814,14 @@ class JobNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: pulumi.Input[str]
+        network_filesystem_info: pulumi.Input['JobNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict']
+        remote_mount_dir_path: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -6677,6 +8861,13 @@ class JobNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class JobNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: pulumi.Input[str]
+        mount_options: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -6704,6 +8895,16 @@ class JobNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class JobNewClusterDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL of the job on the given workspace
+        """
+        basic_auth: NotRequired[pulumi.Input['JobNewClusterDockerImageBasicAuthArgsDict']]
+elif False:
+    JobNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterDockerImageArgs:
@@ -6739,6 +8940,13 @@ class JobNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class JobNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    JobNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -6765,6 +8973,17 @@ class JobNewClusterDockerImageBasicAuthArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class JobNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        boot_disk_size: NotRequired[pulumi.Input[int]]
+        google_service_account: NotRequired[pulumi.Input[str]]
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        use_preemptible_executors: NotRequired[pulumi.Input[bool]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterGcpAttributesArgs:
@@ -6842,6 +9061,21 @@ class JobNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class JobNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['JobNewClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['JobNewClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['JobNewClusterInitScriptFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        gcs: NotRequired[pulumi.Input['JobNewClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobNewClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobNewClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['JobNewClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    JobNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterInitScriptArgs:
@@ -6942,6 +9176,12 @@ class JobNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class JobNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -6957,6 +9197,12 @@ class JobNewClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterInitScriptDbfsArgs:
@@ -6974,6 +9220,12 @@ class JobNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -6990,6 +9242,12 @@ class JobNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -7005,6 +9263,18 @@ class JobNewClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterInitScriptS3Args:
@@ -7094,6 +9364,12 @@ class JobNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -7110,6 +9386,12 @@ class JobNewClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -7125,6 +9407,18 @@ class JobNewClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobNewClusterLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobNewClusterLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobNewClusterLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobNewClusterLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterLibraryArgs:
@@ -7215,6 +9509,13 @@ class JobNewClusterLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobNewClusterLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterLibraryCranArgs:
     def __init__(__self__, *,
@@ -7242,6 +9543,14 @@ class JobNewClusterLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobNewClusterLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterLibraryMavenArgs:
@@ -7283,6 +9592,13 @@ class JobNewClusterLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobNewClusterLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobNewClusterLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterLibraryPypiArgs:
     def __init__(__self__, *,
@@ -7311,6 +9627,12 @@ class JobNewClusterLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: pulumi.Input['JobNewClusterWorkloadTypeClientsArgsDict']
+elif False:
+    JobNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -7326,6 +9648,13 @@ class JobNewClusterWorkloadTypeArgs:
     def clients(self, value: pulumi.Input['JobNewClusterWorkloadTypeClientsArgs']):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class JobNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[pulumi.Input[bool]]
+        notebooks: NotRequired[pulumi.Input[bool]]
+elif False:
+    JobNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNewClusterWorkloadTypeClientsArgs:
@@ -7355,6 +9684,27 @@ class JobNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class JobNotebookTaskArgsDict(TypedDict):
+        notebook_path: pulumi.Input[str]
+        """
+        The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
+        """
+        base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+elif False:
+    JobNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobNotebookTaskArgs:
@@ -7426,6 +9776,21 @@ class JobNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobNotificationSettingsArgsDict(TypedDict):
+        no_alert_for_canceled_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
+        """
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs.
+        """
+elif False:
+    JobNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -7469,6 +9834,21 @@ class JobNotificationSettingsArgs:
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
+if not MYPY:
+    class JobParameterArgsDict(TypedDict):
+        default: pulumi.Input[str]
+        """
+        Default value of the parameter.
+
+        *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
+        """
+elif False:
+    JobParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobParameterArgs:
     def __init__(__self__, *,
@@ -7509,6 +9889,21 @@ class JobParameterArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class JobPipelineTaskArgsDict(TypedDict):
+        pipeline_id: pulumi.Input[str]
+        """
+        The pipeline's unique ID.
+        """
+        full_refresh: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > The following configuration blocks are only supported inside a `task` block
+        """
+elif False:
+    JobPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobPipelineTaskArgs:
@@ -7551,6 +9946,27 @@ class JobPipelineTaskArgs:
     def full_refresh(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class JobPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[pulumi.Input[str]]
+        """
+        Python function as entry point for the task
+        """
+        named_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Named parameters for the task
+        """
+        package_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of Python package
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Parameters for the task
+        """
+elif False:
+    JobPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobPythonWheelTaskArgs:
@@ -7623,6 +10039,15 @@ class JobPythonWheelTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class JobQueueArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        If true, enable queueing for the job.
+        """
+elif False:
+    JobQueueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobQueueArgs:
     def __init__(__self__, *,
@@ -7644,6 +10069,30 @@ class JobQueueArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class JobRunAsArgsDict(TypedDict):
+        service_principal_name: NotRequired[pulumi.Input[str]]
+        """
+        The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Job("this", run_as={
+            "service_principal_name": "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+        })
+        ```
+        """
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobRunAsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobRunAsArgs:
@@ -7706,6 +10155,19 @@ class JobRunAsArgs:
         pulumi.set(self, "user_name", value)
 
 
+if not MYPY:
+    class JobRunJobTaskArgsDict(TypedDict):
+        job_id: pulumi.Input[int]
+        """
+        (String) ID of the job
+        """
+        job_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Job parameters for the task
+        """
+elif False:
+    JobRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobRunJobTaskArgs:
     def __init__(__self__, *,
@@ -7743,6 +10205,23 @@ class JobRunJobTaskArgs:
     def job_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "job_parameters", value)
 
+
+if not MYPY:
+    class JobScheduleArgsDict(TypedDict):
+        quartz_cron_expression: pulumi.Input[str]
+        """
+        A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
+        """
+        timezone_id: pulumi.Input[str]
+        """
+        A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
+        """
+        pause_status: NotRequired[pulumi.Input[str]]
+        """
+        Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        """
+elif False:
+    JobScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobScheduleArgs:
@@ -7797,6 +10276,20 @@ class JobScheduleArgs:
         pulumi.set(self, "pause_status", value)
 
 
+if not MYPY:
+    class JobSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[pulumi.Input[str]]
+        main_class_name: NotRequired[pulumi.Input[str]]
+        """
+        The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Parameters passed to the main method.
+        """
+elif False:
+    JobSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobSparkJarTaskArgs:
     def __init__(__self__, *,
@@ -7847,6 +10340,23 @@ class JobSparkJarTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobSparkPythonTaskArgsDict(TypedDict):
+        python_file: pulumi.Input[str]
+        """
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command line parameters passed to the Python file.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        """
+elif False:
+    JobSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobSparkPythonTaskArgs:
@@ -7902,6 +10412,15 @@ class JobSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class JobSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command-line parameters passed to spark submit.
+        """
+elif False:
+    JobSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -7924,6 +10443,97 @@ class JobSparkSubmitTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskArgsDict(TypedDict):
+        task_key: pulumi.Input[str]
+        """
+        string specifying an unique key for a given task.
+        * `*_task` - (Required) one of the specific task blocks described below:
+        """
+        condition_task: NotRequired[pulumi.Input['JobTaskConditionTaskArgsDict']]
+        dbt_task: NotRequired[pulumi.Input['JobTaskDbtTaskArgsDict']]
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgsDict']]]]
+        """
+        block specifying dependency(-ies) for a given task.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        description for this task.
+        """
+        disable_auto_optimization: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
+        email_notifications: NotRequired[pulumi.Input['JobTaskEmailNotificationsArgsDict']]
+        """
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
+        """
+        environment_key: NotRequired[pulumi.Input[str]]
+        """
+        identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        """
+        existing_cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        """
+        for_each_task: NotRequired[pulumi.Input['JobTaskForEachTaskArgsDict']]
+        health: NotRequired[pulumi.Input['JobTaskHealthArgsDict']]
+        """
+        block described below that specifies health conditions for a given task.
+        """
+        job_cluster_key: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Job cluster specified in the `job_cluster` block.
+        """
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgsDict']]]]
+        """
+        (Set) An optional list of libraries to be installed on the cluster that will execute the job.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+        """
+        min_retry_interval_millis: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        """
+        new_cluster: NotRequired[pulumi.Input['JobTaskNewClusterArgsDict']]
+        """
+        Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
+        """
+        notebook_task: NotRequired[pulumi.Input['JobTaskNotebookTaskArgsDict']]
+        notification_settings: NotRequired[pulumi.Input['JobTaskNotificationSettingsArgsDict']]
+        """
+        An optional block controlling the notification settings on the job level documented below.
+        """
+        pipeline_task: NotRequired[pulumi.Input['JobTaskPipelineTaskArgsDict']]
+        python_wheel_task: NotRequired[pulumi.Input['JobTaskPythonWheelTaskArgsDict']]
+        retry_on_timeout: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+        """
+        run_if: NotRequired[pulumi.Input[str]]
+        """
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
+        """
+        run_job_task: NotRequired[pulumi.Input['JobTaskRunJobTaskArgsDict']]
+        spark_jar_task: NotRequired[pulumi.Input['JobTaskSparkJarTaskArgsDict']]
+        spark_python_task: NotRequired[pulumi.Input['JobTaskSparkPythonTaskArgsDict']]
+        spark_submit_task: NotRequired[pulumi.Input['JobTaskSparkSubmitTaskArgsDict']]
+        sql_task: NotRequired[pulumi.Input['JobTaskSqlTaskArgsDict']]
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        """
+        webhook_notifications: NotRequired[pulumi.Input['JobTaskWebhookNotificationsArgsDict']]
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        """
+elif False:
+    JobTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskArgs:
@@ -8357,6 +10967,25 @@ class JobTaskArgs:
         pulumi.set(self, "webhook_notifications", value)
 
 
+if not MYPY:
+    class JobTaskConditionTaskArgsDict(TypedDict):
+        left: pulumi.Input[str]
+        """
+        The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+        """
+        op: pulumi.Input[str]
+        """
+        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+
+        This task does not require a cluster to execute and does not support retries or notifications.
+        """
+        right: pulumi.Input[str]
+        """
+        The right operand of the condition task. It could be a string value, job state, or parameter reference.
+        """
+elif False:
+    JobTaskConditionTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskConditionTaskArgs:
     def __init__(__self__, *,
@@ -8412,6 +11041,43 @@ class JobTaskConditionTaskArgs:
     def right(self, value: pulumi.Input[str]):
         pulumi.set(self, "right", value)
 
+
+if not MYPY:
+    class JobTaskDbtTaskArgsDict(TypedDict):
+        commands: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        """
+        catalog: NotRequired[pulumi.Input[str]]
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        profiles_directory: NotRequired[pulumi.Input[str]]
+        """
+        The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        """
+        project_directory: NotRequired[pulumi.Input[str]]
+        """
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+        * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
+        * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the SQL warehouse that dbt should execute against.
+
+        You also need to include a `git_source` block to configure the repository that contains the dbt project.
+        """
+elif False:
+    JobTaskDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskDbtTaskArgs:
@@ -8539,6 +11205,21 @@ class JobTaskDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobTaskDependsOnArgsDict(TypedDict):
+        task_key: pulumi.Input[str]
+        """
+        The name of the task this task depends on.
+        """
+        outcome: NotRequired[pulumi.Input[str]]
+        """
+        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+
+        > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        """
+elif False:
+    JobTaskDependsOnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskDependsOnArgs:
     def __init__(__self__, *,
@@ -8580,6 +11261,34 @@ class JobTaskDependsOnArgs:
     def outcome(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "outcome", value)
 
+
+if not MYPY:
+    class JobTaskEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run fails.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run starts.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
+elif False:
+    JobTaskEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskEmailNotificationsArgs:
@@ -8684,6 +11393,23 @@ class JobTaskEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskArgsDict(TypedDict):
+        inputs: pulumi.Input[str]
+        """
+        (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+        """
+        task: pulumi.Input['JobTaskForEachTaskTaskArgsDict']
+        """
+        Task to run against the `inputs` list.
+        """
+        concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+        """
+elif False:
+    JobTaskForEachTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskArgs:
     def __init__(__self__, *,
@@ -8736,6 +11462,96 @@ class JobTaskForEachTaskArgs:
     def concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "concurrency", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskArgsDict(TypedDict):
+        task_key: pulumi.Input[str]
+        """
+        string specifying an unique key for a given task.
+        * `*_task` - (Required) one of the specific task blocks described below:
+        """
+        condition_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgsDict']]
+        dbt_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDbtTaskArgsDict']]
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgsDict']]]]
+        """
+        block specifying dependency(-ies) for a given task.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        description for this task.
+        """
+        disable_auto_optimization: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to disable auto optimization in serverless tasks.
+        """
+        email_notifications: NotRequired[pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgsDict']]
+        """
+        An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
+        """
+        environment_key: NotRequired[pulumi.Input[str]]
+        """
+        identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        """
+        existing_cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
+        """
+        health: NotRequired[pulumi.Input['JobTaskForEachTaskTaskHealthArgsDict']]
+        """
+        block described below that specifies health conditions for a given task.
+        """
+        job_cluster_key: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Job cluster specified in the `job_cluster` block.
+        """
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgsDict']]]]
+        """
+        (Set) An optional list of libraries to be installed on the cluster that will execute the job.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+        """
+        min_retry_interval_millis: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        """
+        new_cluster: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterArgsDict']]
+        """
+        Task will run on a dedicated cluster.  See Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
+        """
+        notebook_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNotebookTaskArgsDict']]
+        notification_settings: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNotificationSettingsArgsDict']]
+        """
+        An optional block controlling the notification settings on the job level documented below.
+        """
+        pipeline_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPipelineTaskArgsDict']]
+        python_wheel_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPythonWheelTaskArgsDict']]
+        retry_on_timeout: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+        """
+        run_if: NotRequired[pulumi.Input[str]]
+        """
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
+        """
+        run_job_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskArgsDict']]
+        spark_jar_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSparkJarTaskArgsDict']]
+        spark_python_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSparkPythonTaskArgsDict']]
+        spark_submit_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSparkSubmitTaskArgsDict']]
+        sql_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskArgsDict']]
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        """
+        webhook_notifications: NotRequired[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsArgsDict']]
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+
+        > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        """
+elif False:
+    JobTaskForEachTaskTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskArgs:
@@ -9157,6 +11973,25 @@ class JobTaskForEachTaskTaskArgs:
         pulumi.set(self, "webhook_notifications", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskConditionTaskArgsDict(TypedDict):
+        left: pulumi.Input[str]
+        """
+        The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+        """
+        op: pulumi.Input[str]
+        """
+        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+
+        This task does not require a cluster to execute and does not support retries or notifications.
+        """
+        right: pulumi.Input[str]
+        """
+        The right operand of the condition task. It could be a string value, job state, or parameter reference.
+        """
+elif False:
+    JobTaskForEachTaskTaskConditionTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskConditionTaskArgs:
     def __init__(__self__, *,
@@ -9212,6 +12047,43 @@ class JobTaskForEachTaskTaskConditionTaskArgs:
     def right(self, value: pulumi.Input[str]):
         pulumi.set(self, "right", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskDbtTaskArgsDict(TypedDict):
+        commands: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        """
+        catalog: NotRequired[pulumi.Input[str]]
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        profiles_directory: NotRequired[pulumi.Input[str]]
+        """
+        The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        """
+        project_directory: NotRequired[pulumi.Input[str]]
+        """
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+        * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
+        * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the SQL warehouse that dbt should execute against.
+
+        You also need to include a `git_source` block to configure the repository that contains the dbt project.
+        """
+elif False:
+    JobTaskForEachTaskTaskDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskDbtTaskArgs:
@@ -9339,6 +12211,21 @@ class JobTaskForEachTaskTaskDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskDependsOnArgsDict(TypedDict):
+        task_key: pulumi.Input[str]
+        """
+        The name of the task this task depends on.
+        """
+        outcome: NotRequired[pulumi.Input[str]]
+        """
+        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+
+        > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
+        """
+elif False:
+    JobTaskForEachTaskTaskDependsOnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskDependsOnArgs:
     def __init__(__self__, *,
@@ -9380,6 +12267,34 @@ class JobTaskForEachTaskTaskDependsOnArgs:
     def outcome(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "outcome", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        The following parameter is only available for the job level configuration.
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run fails.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run starts.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) list of emails to notify when the run completes successfully.
+        """
+elif False:
+    JobTaskForEachTaskTaskEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskEmailNotificationsArgs:
@@ -9484,6 +12399,15 @@ class JobTaskForEachTaskTaskEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskHealthArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskHealthRuleArgsDict']]]
+        """
+        list of rules that are represented as objects with the following attributes:
+        """
+elif False:
+    JobTaskForEachTaskTaskHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskHealthArgs:
     def __init__(__self__, *,
@@ -9505,6 +12429,23 @@ class JobTaskForEachTaskTaskHealthArgs:
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskHealthRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskHealthRuleArgsDict(TypedDict):
+        metric: pulumi.Input[str]
+        """
+        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        """
+        op: pulumi.Input[str]
+        """
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        """
+        value: pulumi.Input[int]
+        """
+        integer value used to compare to the given metric.
+        """
+elif False:
+    JobTaskForEachTaskTaskHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskHealthRuleArgs:
@@ -9557,6 +12498,18 @@ class JobTaskForEachTaskTaskHealthRuleArgs:
     def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskLibraryArgs:
@@ -9647,6 +12600,13 @@ class JobTaskForEachTaskTaskLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskLibraryCranArgs:
     def __init__(__self__, *,
@@ -9674,6 +12634,14 @@ class JobTaskForEachTaskTaskLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskLibraryMavenArgs:
@@ -9715,6 +12683,13 @@ class JobTaskForEachTaskTaskLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskLibraryPypiArgs:
     def __init__(__self__, *,
@@ -9742,6 +12717,47 @@ class JobTaskForEachTaskTaskLibraryPypiArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterArgsDict(TypedDict):
+        spark_version: pulumi.Input[str]
+        apply_policy_default_values: NotRequired[pulumi.Input[bool]]
+        autoscale: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterAutoscaleArgsDict']]
+        aws_attributes: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterAwsAttributesArgsDict']]
+        azure_attributes: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesArgsDict']]
+        cluster_id: NotRequired[pulumi.Input[str]]
+        cluster_log_conf: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict']]
+        cluster_mount_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict']]]]
+        cluster_name: NotRequired[pulumi.Input[str]]
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        data_security_mode: NotRequired[pulumi.Input[str]]
+        docker_image: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterDockerImageArgsDict']]
+        driver_instance_pool_id: NotRequired[pulumi.Input[str]]
+        driver_node_type_id: NotRequired[pulumi.Input[str]]
+        enable_elastic_disk: NotRequired[pulumi.Input[bool]]
+        enable_local_disk_encryption: NotRequired[pulumi.Input[bool]]
+        gcp_attributes: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict']]
+        idempotency_token: NotRequired[pulumi.Input[str]]
+        init_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptArgsDict']]]]
+        instance_pool_id: NotRequired[pulumi.Input[str]]
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgsDict']]]]
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
+        node_type_id: NotRequired[pulumi.Input[str]]
+        num_workers: NotRequired[pulumi.Input[int]]
+        policy_id: NotRequired[pulumi.Input[str]]
+        runtime_engine: NotRequired[pulumi.Input[str]]
+        single_user_name: NotRequired[pulumi.Input[str]]
+        spark_conf: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        spark_env_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        workload_type: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict']]
+        """
+        isn't supported
+        """
+elif False:
+    JobTaskForEachTaskTaskNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterArgs:
@@ -10117,6 +13133,13 @@ class JobTaskForEachTaskTaskNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[pulumi.Input[int]]
+        min_workers: NotRequired[pulumi.Input[int]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -10145,6 +13168,21 @@ class JobTaskForEachTaskTaskNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
@@ -10271,6 +13309,15 @@ class JobTaskForEachTaskTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        log_analytics_info: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -10324,6 +13371,13 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -10352,6 +13406,13 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict']]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterClusterLogConfArgs:
@@ -10382,6 +13443,12 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -10397,6 +13464,18 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args:
@@ -10486,6 +13565,14 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: pulumi.Input[str]
+        network_filesystem_info: pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict']
+        remote_mount_dir_path: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -10525,6 +13612,13 @@ class JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: pulumi.Input[str]
+        mount_options: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -10552,6 +13646,16 @@ class JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL of the job on the given workspace
+        """
+        basic_auth: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict']]
+elif False:
+    JobTaskForEachTaskTaskNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterDockerImageArgs:
@@ -10587,6 +13691,13 @@ class JobTaskForEachTaskTaskNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -10613,6 +13724,17 @@ class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        boot_disk_size: NotRequired[pulumi.Input[int]]
+        google_service_account: NotRequired[pulumi.Input[str]]
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        use_preemptible_executors: NotRequired[pulumi.Input[bool]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterGcpAttributesArgs:
@@ -10690,6 +13812,21 @@ class JobTaskForEachTaskTaskNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        gcs: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptArgs:
@@ -10790,6 +13927,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -10805,6 +13948,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs:
@@ -10822,6 +13971,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -10838,6 +13993,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -10853,6 +14014,18 @@ class JobTaskForEachTaskTaskNewClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptS3Args:
@@ -10942,6 +14115,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -10958,6 +14137,12 @@ class JobTaskForEachTaskTaskNewClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -10973,6 +14158,18 @@ class JobTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterLibraryArgs:
@@ -11063,6 +14260,13 @@ class JobTaskForEachTaskTaskNewClusterLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterLibraryCranArgs:
     def __init__(__self__, *,
@@ -11090,6 +14294,14 @@ class JobTaskForEachTaskTaskNewClusterLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterLibraryMavenArgs:
@@ -11131,6 +14343,13 @@ class JobTaskForEachTaskTaskNewClusterLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterLibraryPypiArgs:
     def __init__(__self__, *,
@@ -11159,6 +14378,12 @@ class JobTaskForEachTaskTaskNewClusterLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict']
+elif False:
+    JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -11174,6 +14399,13 @@ class JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs:
     def clients(self, value: pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs']):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[pulumi.Input[bool]]
+        notebooks: NotRequired[pulumi.Input[bool]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs:
@@ -11203,6 +14435,27 @@ class JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNotebookTaskArgsDict(TypedDict):
+        notebook_path: pulumi.Input[str]
+        """
+        The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
+        """
+        base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+elif False:
+    JobTaskForEachTaskTaskNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskNotebookTaskArgs:
@@ -11274,6 +14527,25 @@ class JobTaskForEachTaskTaskNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskNotificationSettingsArgsDict(TypedDict):
+        alert_on_last_attempt: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+        """
+        no_alert_for_canceled_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
+        """
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs.
+        """
+elif False:
+    JobTaskForEachTaskTaskNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -11333,6 +14605,21 @@ class JobTaskForEachTaskTaskNotificationSettingsArgs:
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskPipelineTaskArgsDict(TypedDict):
+        pipeline_id: pulumi.Input[str]
+        """
+        The pipeline's unique ID.
+        """
+        full_refresh: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > The following configuration blocks are only supported inside a `task` block
+        """
+elif False:
+    JobTaskForEachTaskTaskPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskPipelineTaskArgs:
     def __init__(__self__, *,
@@ -11374,6 +14661,27 @@ class JobTaskForEachTaskTaskPipelineTaskArgs:
     def full_refresh(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[pulumi.Input[str]]
+        """
+        Python function as entry point for the task
+        """
+        named_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Named parameters for the task
+        """
+        package_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of Python package
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Parameters for the task
+        """
+elif False:
+    JobTaskForEachTaskTaskPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskPythonWheelTaskArgs:
@@ -11445,6 +14753,27 @@ class JobTaskForEachTaskTaskPythonWheelTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskRunJobTaskArgsDict(TypedDict):
+        job_id: pulumi.Input[int]
+        """
+        (String) ID of the job
+        """
+        dbt_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        jar_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        job_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Job parameters for the task
+        """
+        notebook_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        pipeline_params: NotRequired[pulumi.Input['JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgsDict']]
+        python_named_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        python_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        spark_submit_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        sql_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    JobTaskForEachTaskTaskRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskRunJobTaskArgs:
@@ -11580,6 +14909,17 @@ class JobTaskForEachTaskTaskRunJobTaskArgs:
         pulumi.set(self, "sql_params", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgsDict(TypedDict):
+        full_refresh: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > The following configuration blocks are only supported inside a `task` block
+        """
+elif False:
+    JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs:
     def __init__(__self__, *,
@@ -11606,6 +14946,20 @@ class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs:
     def full_refresh(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[pulumi.Input[str]]
+        main_class_name: NotRequired[pulumi.Input[str]]
+        """
+        The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Parameters passed to the main method.
+        """
+elif False:
+    JobTaskForEachTaskTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskSparkJarTaskArgs:
@@ -11657,6 +15011,23 @@ class JobTaskForEachTaskTaskSparkJarTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskSparkPythonTaskArgsDict(TypedDict):
+        python_file: pulumi.Input[str]
+        """
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command line parameters passed to the Python file.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        """
+elif False:
+    JobTaskForEachTaskTaskSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskSparkPythonTaskArgs:
@@ -11712,6 +15083,15 @@ class JobTaskForEachTaskTaskSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command-line parameters passed to spark submit.
+        """
+elif False:
+    JobTaskForEachTaskTaskSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -11734,6 +15114,35 @@ class JobTaskForEachTaskTaskSparkSubmitTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskArgsDict(TypedDict):
+        warehouse_id: pulumi.Input[str]
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+        """
+        alert: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertArgsDict']]
+        """
+        block consisting of following fields:
+        """
+        dashboard: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgsDict']]
+        """
+        block consisting of following fields:
+        """
+        file: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        """
+        query: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgsDict']]
+        """
+        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskArgs:
@@ -11837,6 +15246,23 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskAlertArgsDict(TypedDict):
+        alert_id: pulumi.Input[str]
+        """
+        (String) identifier of the Databricks SQL Alert.
+        """
+        pause_subscriptions: NotRequired[pulumi.Input[bool]]
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict']]]]
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
@@ -11891,6 +15317,16 @@ class JobTaskForEachTaskTaskSqlTaskAlertArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[str]]
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs:
     def __init__(__self__, *,
@@ -11925,6 +15361,27 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskDashboardArgsDict(TypedDict):
+        dashboard_id: pulumi.Input[str]
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        custom_subject: NotRequired[pulumi.Input[str]]
+        """
+        string specifying a custom subject of email sent.
+        """
+        pause_subscriptions: NotRequired[pulumi.Input[bool]]
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict']]]]
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskDashboardArgs:
@@ -11996,6 +15453,16 @@ class JobTaskForEachTaskTaskSqlTaskDashboardArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[str]]
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs:
     def __init__(__self__, *,
@@ -12030,6 +15497,64 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskFileArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sql_aggregation_job",
+            name="Example SQL Job",
+            tasks=[
+                {
+                    "task_key": "run_agg_query",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "query": {
+                            "query_id": agg_query["id"],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_dashboard",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "dashboard": {
+                            "dashboard_id": dash["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_alert",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "alert": {
+                            "alert_id": alert["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+            ])
+        ```
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.
+        """
+elif False:
+    JobTaskForEachTaskTaskSqlTaskFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskFileArgs:
@@ -12159,6 +15684,12 @@ class JobTaskForEachTaskTaskSqlTaskFileArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskSqlTaskQueryArgsDict(TypedDict):
+        query_id: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskSqlTaskQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskSqlTaskQueryArgs:
     def __init__(__self__, *,
@@ -12174,6 +15705,32 @@ class JobTaskForEachTaskTaskSqlTaskQueryArgs:
     def query_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "query_id", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict']]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsArgs:
@@ -12266,6 +15823,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -12287,6 +15853,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceed
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
@@ -12310,6 +15885,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -12331,6 +15915,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -12354,6 +15947,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -12376,6 +15978,15 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobTaskHealthArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgsDict']]]
+        """
+        list of rules that are represented as objects with the following attributes:
+        """
+elif False:
+    JobTaskHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskHealthArgs:
     def __init__(__self__, *,
@@ -12397,6 +16008,23 @@ class JobTaskHealthArgs:
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class JobTaskHealthRuleArgsDict(TypedDict):
+        metric: pulumi.Input[str]
+        """
+        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        """
+        op: pulumi.Input[str]
+        """
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        """
+        value: pulumi.Input[int]
+        """
+        integer value used to compare to the given metric.
+        """
+elif False:
+    JobTaskHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskHealthRuleArgs:
@@ -12449,6 +16077,18 @@ class JobTaskHealthRuleArgs:
     def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class JobTaskLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobTaskLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobTaskLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobTaskLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskLibraryArgs:
@@ -12539,6 +16179,13 @@ class JobTaskLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobTaskLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskLibraryCranArgs:
     def __init__(__self__, *,
@@ -12566,6 +16213,14 @@ class JobTaskLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskLibraryMavenArgs:
@@ -12607,6 +16262,13 @@ class JobTaskLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskLibraryPypiArgs:
     def __init__(__self__, *,
@@ -12634,6 +16296,47 @@ class JobTaskLibraryPypiArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterArgsDict(TypedDict):
+        spark_version: pulumi.Input[str]
+        apply_policy_default_values: NotRequired[pulumi.Input[bool]]
+        autoscale: NotRequired[pulumi.Input['JobTaskNewClusterAutoscaleArgsDict']]
+        aws_attributes: NotRequired[pulumi.Input['JobTaskNewClusterAwsAttributesArgsDict']]
+        azure_attributes: NotRequired[pulumi.Input['JobTaskNewClusterAzureAttributesArgsDict']]
+        cluster_id: NotRequired[pulumi.Input[str]]
+        cluster_log_conf: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfArgsDict']]
+        cluster_mount_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterClusterMountInfoArgsDict']]]]
+        cluster_name: NotRequired[pulumi.Input[str]]
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        data_security_mode: NotRequired[pulumi.Input[str]]
+        docker_image: NotRequired[pulumi.Input['JobTaskNewClusterDockerImageArgsDict']]
+        driver_instance_pool_id: NotRequired[pulumi.Input[str]]
+        driver_node_type_id: NotRequired[pulumi.Input[str]]
+        enable_elastic_disk: NotRequired[pulumi.Input[bool]]
+        enable_local_disk_encryption: NotRequired[pulumi.Input[bool]]
+        gcp_attributes: NotRequired[pulumi.Input['JobTaskNewClusterGcpAttributesArgsDict']]
+        idempotency_token: NotRequired[pulumi.Input[str]]
+        init_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterInitScriptArgsDict']]]]
+        instance_pool_id: NotRequired[pulumi.Input[str]]
+        libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgsDict']]]]
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
+        node_type_id: NotRequired[pulumi.Input[str]]
+        num_workers: NotRequired[pulumi.Input[int]]
+        policy_id: NotRequired[pulumi.Input[str]]
+        runtime_engine: NotRequired[pulumi.Input[str]]
+        single_user_name: NotRequired[pulumi.Input[str]]
+        spark_conf: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        spark_env_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        workload_type: NotRequired[pulumi.Input['JobTaskNewClusterWorkloadTypeArgsDict']]
+        """
+        isn't supported
+        """
+elif False:
+    JobTaskNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterArgs:
@@ -13009,6 +16712,13 @@ class JobTaskNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[pulumi.Input[int]]
+        min_workers: NotRequired[pulumi.Input[int]]
+elif False:
+    JobTaskNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -13037,6 +16747,21 @@ class JobTaskNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterAwsAttributesArgs:
@@ -13163,6 +16888,15 @@ class JobTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        log_analytics_info: NotRequired[pulumi.Input['JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+elif False:
+    JobTaskNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -13216,6 +16950,13 @@ class JobTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -13244,6 +16985,13 @@ class JobTaskNewClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfS3ArgsDict']]
+elif False:
+    JobTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterClusterLogConfArgs:
@@ -13274,6 +17022,12 @@ class JobTaskNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -13289,6 +17043,18 @@ class JobTaskNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterClusterLogConfS3Args:
@@ -13378,6 +17144,14 @@ class JobTaskNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: pulumi.Input[str]
+        network_filesystem_info: pulumi.Input['JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict']
+        remote_mount_dir_path: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -13417,6 +17191,13 @@ class JobTaskNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: pulumi.Input[str]
+        mount_options: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -13444,6 +17225,16 @@ class JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterDockerImageArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL of the job on the given workspace
+        """
+        basic_auth: NotRequired[pulumi.Input['JobTaskNewClusterDockerImageBasicAuthArgsDict']]
+elif False:
+    JobTaskNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterDockerImageArgs:
@@ -13479,6 +17270,13 @@ class JobTaskNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -13505,6 +17303,17 @@ class JobTaskNewClusterDockerImageBasicAuthArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        boot_disk_size: NotRequired[pulumi.Input[int]]
+        google_service_account: NotRequired[pulumi.Input[str]]
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        use_preemptible_executors: NotRequired[pulumi.Input[bool]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterGcpAttributesArgs:
@@ -13582,6 +17391,21 @@ class JobTaskNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        gcs: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['JobTaskNewClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    JobTaskNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterInitScriptArgs:
@@ -13682,6 +17506,12 @@ class JobTaskNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -13697,6 +17527,12 @@ class JobTaskNewClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterInitScriptDbfsArgs:
@@ -13714,6 +17550,12 @@ class JobTaskNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -13730,6 +17572,12 @@ class JobTaskNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -13745,6 +17593,18 @@ class JobTaskNewClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterInitScriptS3Args:
@@ -13834,6 +17694,12 @@ class JobTaskNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -13850,6 +17716,12 @@ class JobTaskNewClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -13865,6 +17737,18 @@ class JobTaskNewClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterLibraryArgsDict(TypedDict):
+        cran: NotRequired[pulumi.Input['JobTaskNewClusterLibraryCranArgsDict']]
+        egg: NotRequired[pulumi.Input[str]]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['JobTaskNewClusterLibraryMavenArgsDict']]
+        pypi: NotRequired[pulumi.Input['JobTaskNewClusterLibraryPypiArgsDict']]
+        requirements: NotRequired[pulumi.Input[str]]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterLibraryArgs:
@@ -13955,6 +17839,13 @@ class JobTaskNewClusterLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterLibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterLibraryCranArgs:
     def __init__(__self__, *,
@@ -13982,6 +17873,14 @@ class JobTaskNewClusterLibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterLibraryMavenArgs:
@@ -14023,6 +17922,13 @@ class JobTaskNewClusterLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterLibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    JobTaskNewClusterLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterLibraryPypiArgs:
     def __init__(__self__, *,
@@ -14051,6 +17957,12 @@ class JobTaskNewClusterLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class JobTaskNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: pulumi.Input['JobTaskNewClusterWorkloadTypeClientsArgsDict']
+elif False:
+    JobTaskNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -14066,6 +17978,13 @@ class JobTaskNewClusterWorkloadTypeArgs:
     def clients(self, value: pulumi.Input['JobTaskNewClusterWorkloadTypeClientsArgs']):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class JobTaskNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[pulumi.Input[bool]]
+        notebooks: NotRequired[pulumi.Input[bool]]
+elif False:
+    JobTaskNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNewClusterWorkloadTypeClientsArgs:
@@ -14095,6 +18014,27 @@ class JobTaskNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class JobTaskNotebookTaskArgsDict(TypedDict):
+        notebook_path: pulumi.Input[str]
+        """
+        The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
+        """
+        base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        """
+        warehouse_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+elif False:
+    JobTaskNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskNotebookTaskArgs:
@@ -14166,6 +18106,25 @@ class JobTaskNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class JobTaskNotificationSettingsArgsDict(TypedDict):
+        alert_on_last_attempt: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+        """
+        no_alert_for_canceled_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for cancelled runs.
+
+        The following parameter is only available on task level.
+        """
+        no_alert_for_skipped_runs: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) don't send alert for skipped runs.
+        """
+elif False:
+    JobTaskNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -14225,6 +18184,21 @@ class JobTaskNotificationSettingsArgs:
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
+if not MYPY:
+    class JobTaskPipelineTaskArgsDict(TypedDict):
+        pipeline_id: pulumi.Input[str]
+        """
+        The pipeline's unique ID.
+        """
+        full_refresh: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > The following configuration blocks are only supported inside a `task` block
+        """
+elif False:
+    JobTaskPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskPipelineTaskArgs:
     def __init__(__self__, *,
@@ -14266,6 +18240,27 @@ class JobTaskPipelineTaskArgs:
     def full_refresh(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class JobTaskPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[pulumi.Input[str]]
+        """
+        Python function as entry point for the task
+        """
+        named_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Named parameters for the task
+        """
+        package_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of Python package
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Parameters for the task
+        """
+elif False:
+    JobTaskPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskPythonWheelTaskArgs:
@@ -14337,6 +18332,27 @@ class JobTaskPythonWheelTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskRunJobTaskArgsDict(TypedDict):
+        job_id: pulumi.Input[int]
+        """
+        (String) ID of the job
+        """
+        dbt_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        jar_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        job_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) Job parameters for the task
+        """
+        notebook_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        pipeline_params: NotRequired[pulumi.Input['JobTaskRunJobTaskPipelineParamsArgsDict']]
+        python_named_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        python_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        spark_submit_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        sql_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    JobTaskRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskRunJobTaskArgs:
@@ -14472,6 +18488,17 @@ class JobTaskRunJobTaskArgs:
         pulumi.set(self, "sql_params", value)
 
 
+if not MYPY:
+    class JobTaskRunJobTaskPipelineParamsArgsDict(TypedDict):
+        full_refresh: NotRequired[pulumi.Input[bool]]
+        """
+        (Bool) Specifies if there should be full refresh of the pipeline.
+
+        > The following configuration blocks are only supported inside a `task` block
+        """
+elif False:
+    JobTaskRunJobTaskPipelineParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskRunJobTaskPipelineParamsArgs:
     def __init__(__self__, *,
@@ -14498,6 +18525,20 @@ class JobTaskRunJobTaskPipelineParamsArgs:
     def full_refresh(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class JobTaskSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[pulumi.Input[str]]
+        main_class_name: NotRequired[pulumi.Input[str]]
+        """
+        The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Parameters passed to the main method.
+        """
+elif False:
+    JobTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskSparkJarTaskArgs:
@@ -14549,6 +18590,23 @@ class JobTaskSparkJarTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskSparkPythonTaskArgsDict(TypedDict):
+        python_file: pulumi.Input[str]
+        """
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command line parameters passed to the Python file.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        """
+elif False:
+    JobTaskSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskSparkPythonTaskArgs:
@@ -14604,6 +18662,15 @@ class JobTaskSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class JobTaskSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (List) Command-line parameters passed to spark submit.
+        """
+elif False:
+    JobTaskSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -14626,6 +18693,35 @@ class JobTaskSparkSubmitTaskArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class JobTaskSqlTaskArgsDict(TypedDict):
+        warehouse_id: pulumi.Input[str]
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+        """
+        alert: NotRequired[pulumi.Input['JobTaskSqlTaskAlertArgsDict']]
+        """
+        block consisting of following fields:
+        """
+        dashboard: NotRequired[pulumi.Input['JobTaskSqlTaskDashboardArgsDict']]
+        """
+        block consisting of following fields:
+        """
+        file: NotRequired[pulumi.Input['JobTaskSqlTaskFileArgsDict']]
+        """
+        block consisting of single string fields:
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        """
+        query: NotRequired[pulumi.Input['JobTaskSqlTaskQueryArgsDict']]
+        """
+        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        """
+elif False:
+    JobTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskSqlTaskArgs:
@@ -14729,6 +18825,23 @@ class JobTaskSqlTaskArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class JobTaskSqlTaskAlertArgsDict(TypedDict):
+        alert_id: pulumi.Input[str]
+        """
+        (String) identifier of the Databricks SQL Alert.
+        """
+        pause_subscriptions: NotRequired[pulumi.Input[bool]]
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgsDict']]]]
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+elif False:
+    JobTaskSqlTaskAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
@@ -14783,6 +18896,16 @@ class JobTaskSqlTaskAlertArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class JobTaskSqlTaskAlertSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[str]]
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskSqlTaskAlertSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskSqlTaskAlertSubscriptionArgs:
     def __init__(__self__, *,
@@ -14817,6 +18940,27 @@ class JobTaskSqlTaskAlertSubscriptionArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class JobTaskSqlTaskDashboardArgsDict(TypedDict):
+        dashboard_id: pulumi.Input[str]
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        custom_subject: NotRequired[pulumi.Input[str]]
+        """
+        string specifying a custom subject of email sent.
+        """
+        pause_subscriptions: NotRequired[pulumi.Input[bool]]
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskDashboardSubscriptionArgsDict']]]]
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+elif False:
+    JobTaskSqlTaskDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskSqlTaskDashboardArgs:
@@ -14888,6 +19032,16 @@ class JobTaskSqlTaskDashboardArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class JobTaskSqlTaskDashboardSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[str]]
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskSqlTaskDashboardSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskSqlTaskDashboardSubscriptionArgs:
     def __init__(__self__, *,
@@ -14922,6 +19076,64 @@ class JobTaskSqlTaskDashboardSubscriptionArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class JobTaskSqlTaskFileArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sql_aggregation_job",
+            name="Example SQL Job",
+            tasks=[
+                {
+                    "task_key": "run_agg_query",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "query": {
+                            "query_id": agg_query["id"],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_dashboard",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "dashboard": {
+                            "dashboard_id": dash["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+                {
+                    "task_key": "run_alert",
+                    "sql_task": {
+                        "warehouse_id": sql_job_warehouse["id"],
+                        "alert": {
+                            "alert_id": alert["id"],
+                            "subscriptions": [{
+                                "user_name": "user@domain.com",
+                            }],
+                        },
+                    },
+                },
+            ])
+        ```
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.
+        """
+elif False:
+    JobTaskSqlTaskFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskSqlTaskFileArgs:
@@ -15051,6 +19263,12 @@ class JobTaskSqlTaskFileArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class JobTaskSqlTaskQueryArgsDict(TypedDict):
+        query_id: pulumi.Input[str]
+elif False:
+    JobTaskSqlTaskQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskSqlTaskQueryArgs:
     def __init__(__self__, *,
@@ -15066,6 +19284,32 @@ class JobTaskSqlTaskQueryArgs:
     def query_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "query_id", value)
 
+
+if not MYPY:
+    class JobTaskWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnFailureArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStartArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict']]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskWebhookNotificationsOnSuccessArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        """
+elif False:
+    JobTaskWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsArgs:
@@ -15158,6 +19402,15 @@ class JobTaskWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -15179,6 +19432,15 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobTaskWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnFailureArgs:
@@ -15202,6 +19464,15 @@ class JobTaskWebhookNotificationsOnFailureArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobTaskWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -15223,6 +19494,15 @@ class JobTaskWebhookNotificationsOnStartArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -15246,6 +19526,15 @@ class JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobTaskWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobTaskWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -15267,6 +19556,25 @@ class JobTaskWebhookNotificationsOnSuccessArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobTriggerArgsDict(TypedDict):
+        file_arrival: NotRequired[pulumi.Input['JobTriggerFileArrivalArgsDict']]
+        """
+        configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+        """
+        pause_status: NotRequired[pulumi.Input[str]]
+        """
+        Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        """
+        periodic: NotRequired[pulumi.Input['JobTriggerPeriodicArgsDict']]
+        """
+        configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+        """
+        table: NotRequired[pulumi.Input['JobTriggerTableArgsDict']]
+        table_update: NotRequired[pulumi.Input['JobTriggerTableUpdateArgsDict']]
+elif False:
+    JobTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTriggerArgs:
@@ -15347,6 +19655,23 @@ class JobTriggerArgs:
         pulumi.set(self, "table_update", value)
 
 
+if not MYPY:
+    class JobTriggerFileArrivalArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+        """
+        min_time_between_triggers_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
+        wait_after_last_change_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+elif False:
+    JobTriggerFileArrivalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTriggerFileArrivalArgs:
     def __init__(__self__, *,
@@ -15401,6 +19726,19 @@ class JobTriggerFileArrivalArgs:
         pulumi.set(self, "wait_after_last_change_seconds", value)
 
 
+if not MYPY:
+    class JobTriggerPeriodicArgsDict(TypedDict):
+        interval: pulumi.Input[int]
+        """
+        Specifies the interval at which the job should run. This value is required.
+        """
+        unit: pulumi.Input[str]
+        """
+        Options are {"DAYS", "HOURS", "WEEKS"}.
+        """
+elif False:
+    JobTriggerPeriodicArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTriggerPeriodicArgs:
     def __init__(__self__, *,
@@ -15437,6 +19775,21 @@ class JobTriggerPeriodicArgs:
     def unit(self, value: pulumi.Input[str]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class JobTriggerTableArgsDict(TypedDict):
+        condition: NotRequired[pulumi.Input[str]]
+        min_time_between_triggers_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
+        table_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        wait_after_last_change_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+elif False:
+    JobTriggerTableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTriggerTableArgs:
@@ -15501,6 +19854,21 @@ class JobTriggerTableArgs:
         pulumi.set(self, "wait_after_last_change_seconds", value)
 
 
+if not MYPY:
+    class JobTriggerTableUpdateArgsDict(TypedDict):
+        table_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        condition: NotRequired[pulumi.Input[str]]
+        min_time_between_triggers_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
+        wait_after_last_change_seconds: NotRequired[pulumi.Input[int]]
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+elif False:
+    JobTriggerTableUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTriggerTableUpdateArgs:
     def __init__(__self__, *,
@@ -15562,6 +19930,32 @@ class JobTriggerTableUpdateArgs:
     def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_after_last_change_seconds", value)
 
+
+if not MYPY:
+    class JobWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
+        on_failures: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        """
+        on_starts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        """
+        on_streaming_backlog_exceededs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStreamingBacklogExceededArgsDict']]]]
+        on_successes: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgsDict']]]]
+        """
+        (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        """
+elif False:
+    JobWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobWebhookNotificationsArgs:
@@ -15654,6 +20048,15 @@ class JobWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class JobWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -15675,6 +20078,15 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobWebhookNotificationsOnFailureArgs:
@@ -15698,6 +20110,15 @@ class JobWebhookNotificationsOnFailureArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -15719,6 +20140,15 @@ class JobWebhookNotificationsOnStartArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class JobWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -15742,6 +20172,15 @@ class JobWebhookNotificationsOnStreamingBacklogExceededArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class JobWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the job
+        """
+elif False:
+    JobWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -15763,6 +20202,31 @@ class JobWebhookNotificationsOnSuccessArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class LakehouseMonitorCustomMetricArgsDict(TypedDict):
+        definition: pulumi.Input[str]
+        """
+        [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        """
+        input_columns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Columns on the monitored table to apply the custom metrics to.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the custom metric.
+        """
+        output_data_type: pulumi.Input[str]
+        """
+        The output type of the custom metric.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the custom metric.
+        """
+elif False:
+    LakehouseMonitorCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakehouseMonitorCustomMetricArgs:
@@ -15846,6 +20310,12 @@ class LakehouseMonitorCustomMetricArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class LakehouseMonitorDataClassificationConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    LakehouseMonitorDataClassificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakehouseMonitorDataClassificationConfigArgs:
     def __init__(__self__, *,
@@ -15862,6 +20332,39 @@ class LakehouseMonitorDataClassificationConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class LakehouseMonitorInferenceLogArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        model_id_col: pulumi.Input[str]
+        """
+        Column of the model id or version
+        """
+        prediction_col: pulumi.Input[str]
+        """
+        Column of the model prediction
+        """
+        problem_type: pulumi.Input[str]
+        """
+        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        """
+        timestamp_col: pulumi.Input[str]
+        """
+        Column of the timestamp of predictions
+        """
+        label_col: NotRequired[pulumi.Input[str]]
+        """
+        Column of the model label
+        """
+        prediction_proba_col: NotRequired[pulumi.Input[str]]
+        """
+        Column of the model prediction probabilities
+        """
+elif False:
+    LakehouseMonitorInferenceLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakehouseMonitorInferenceLogArgs:
@@ -15977,6 +20480,19 @@ class LakehouseMonitorInferenceLogArgs:
         pulumi.set(self, "prediction_proba_col", value)
 
 
+if not MYPY:
+    class LakehouseMonitorNotificationsArgsDict(TypedDict):
+        on_failure: NotRequired[pulumi.Input['LakehouseMonitorNotificationsOnFailureArgsDict']]
+        """
+        who to send notifications to on monitor failure.
+        """
+        on_new_classification_tag_detected: NotRequired[pulumi.Input['LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgsDict']]
+        """
+        Who to send notifications to when new data classification tags are detected.
+        """
+elif False:
+    LakehouseMonitorNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakehouseMonitorNotificationsArgs:
     def __init__(__self__, *,
@@ -16016,6 +20532,12 @@ class LakehouseMonitorNotificationsArgs:
         pulumi.set(self, "on_new_classification_tag_detected", value)
 
 
+if not MYPY:
+    class LakehouseMonitorNotificationsOnFailureArgsDict(TypedDict):
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    LakehouseMonitorNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakehouseMonitorNotificationsOnFailureArgs:
     def __init__(__self__, *,
@@ -16033,6 +20555,12 @@ class LakehouseMonitorNotificationsOnFailureArgs:
         pulumi.set(self, "email_addresses", value)
 
 
+if not MYPY:
+    class LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgsDict(TypedDict):
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs:
     def __init__(__self__, *,
@@ -16049,6 +20577,23 @@ class LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs:
     def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_addresses", value)
 
+
+if not MYPY:
+    class LakehouseMonitorScheduleArgsDict(TypedDict):
+        quartz_cron_expression: pulumi.Input[str]
+        """
+        string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        """
+        timezone_id: pulumi.Input[str]
+        """
+        string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        """
+        pause_status: NotRequired[pulumi.Input[str]]
+        """
+        optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        """
+elif False:
+    LakehouseMonitorScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakehouseMonitorScheduleArgs:
@@ -16103,11 +20648,30 @@ class LakehouseMonitorScheduleArgs:
         pulumi.set(self, "pause_status", value)
 
 
+if not MYPY:
+    class LakehouseMonitorSnapshotArgsDict(TypedDict):
+        pass
+elif False:
+    LakehouseMonitorSnapshotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakehouseMonitorSnapshotArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class LakehouseMonitorTimeSeriesArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        timestamp_col: pulumi.Input[str]
+        """
+        Column of the timestamp of predictions
+        """
+elif False:
+    LakehouseMonitorTimeSeriesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakehouseMonitorTimeSeriesArgs:
@@ -16146,6 +20710,13 @@ class LakehouseMonitorTimeSeriesArgs:
         pulumi.set(self, "timestamp_col", value)
 
 
+if not MYPY:
+    class LibraryCranArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    LibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LibraryCranArgs:
     def __init__(__self__, *,
@@ -16173,6 +20744,14 @@ class LibraryCranArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class LibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    LibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LibraryMavenArgs:
@@ -16214,6 +20793,13 @@ class LibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class LibraryPypiArgsDict(TypedDict):
+        package: pulumi.Input[str]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    LibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LibraryPypiArgs:
     def __init__(__self__, *,
@@ -16241,6 +20827,14 @@ class LibraryPypiArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class MetastoreDataAccessAwsIamRoleArgsDict(TypedDict):
+        role_arn: pulumi.Input[str]
+        external_id: NotRequired[pulumi.Input[str]]
+        unity_catalog_iam_arn: NotRequired[pulumi.Input[str]]
+elif False:
+    MetastoreDataAccessAwsIamRoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetastoreDataAccessAwsIamRoleArgs:
@@ -16282,6 +20876,14 @@ class MetastoreDataAccessAwsIamRoleArgs:
         pulumi.set(self, "unity_catalog_iam_arn", value)
 
 
+if not MYPY:
+    class MetastoreDataAccessAzureManagedIdentityArgsDict(TypedDict):
+        access_connector_id: pulumi.Input[str]
+        credential_id: NotRequired[pulumi.Input[str]]
+        managed_identity_id: NotRequired[pulumi.Input[str]]
+elif False:
+    MetastoreDataAccessAzureManagedIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetastoreDataAccessAzureManagedIdentityArgs:
     def __init__(__self__, *,
@@ -16322,6 +20924,14 @@ class MetastoreDataAccessAzureManagedIdentityArgs:
         pulumi.set(self, "managed_identity_id", value)
 
 
+if not MYPY:
+    class MetastoreDataAccessAzureServicePrincipalArgsDict(TypedDict):
+        application_id: pulumi.Input[str]
+        client_secret: pulumi.Input[str]
+        directory_id: pulumi.Input[str]
+elif False:
+    MetastoreDataAccessAzureServicePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetastoreDataAccessAzureServicePrincipalArgs:
     def __init__(__self__, *,
@@ -16359,6 +20969,14 @@ class MetastoreDataAccessAzureServicePrincipalArgs:
     def directory_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "directory_id", value)
 
+
+if not MYPY:
+    class MetastoreDataAccessCloudflareApiTokenArgsDict(TypedDict):
+        access_key_id: pulumi.Input[str]
+        account_id: pulumi.Input[str]
+        secret_access_key: pulumi.Input[str]
+elif False:
+    MetastoreDataAccessCloudflareApiTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetastoreDataAccessCloudflareApiTokenArgs:
@@ -16398,6 +21016,13 @@ class MetastoreDataAccessCloudflareApiTokenArgs:
         pulumi.set(self, "secret_access_key", value)
 
 
+if not MYPY:
+    class MetastoreDataAccessDatabricksGcpServiceAccountArgsDict(TypedDict):
+        credential_id: NotRequired[pulumi.Input[str]]
+        email: NotRequired[pulumi.Input[str]]
+elif False:
+    MetastoreDataAccessDatabricksGcpServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
@@ -16426,6 +21051,14 @@ class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class MetastoreDataAccessGcpServiceAccountKeyArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        private_key: pulumi.Input[str]
+        private_key_id: pulumi.Input[str]
+elif False:
+    MetastoreDataAccessGcpServiceAccountKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetastoreDataAccessGcpServiceAccountKeyArgs:
@@ -16465,6 +21098,13 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
         pulumi.set(self, "private_key_id", value)
 
 
+if not MYPY:
+    class MlflowModelTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    MlflowModelTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MlflowModelTagArgs:
     def __init__(__self__, *,
@@ -16493,6 +21133,27 @@ class MlflowModelTagArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class MlflowWebhookHttpUrlSpecArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
+        """
+        authorization: NotRequired[pulumi.Input[str]]
+        """
+        Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
+        """
+        enable_ssl_verification: NotRequired[pulumi.Input[bool]]
+        """
+        Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+        """
+        secret: NotRequired[pulumi.Input[str]]
+        """
+        Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+        """
+elif False:
+    MlflowWebhookHttpUrlSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MlflowWebhookHttpUrlSpecArgs:
@@ -16564,6 +21225,23 @@ class MlflowWebhookHttpUrlSpecArgs:
         pulumi.set(self, "secret", value)
 
 
+if not MYPY:
+    class MlflowWebhookJobSpecArgsDict(TypedDict):
+        access_token: pulumi.Input[str]
+        """
+        The personal access token used to authorize webhook's job runs.
+        """
+        job_id: pulumi.Input[str]
+        """
+        ID of the Databricks job that the webhook runs.
+        """
+        workspace_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
+        """
+elif False:
+    MlflowWebhookJobSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MlflowWebhookJobSpecArgs:
     def __init__(__self__, *,
@@ -16616,6 +21294,18 @@ class MlflowWebhookJobSpecArgs:
     def workspace_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workspace_url", value)
 
+
+if not MYPY:
+    class ModelServingAiGatewayArgsDict(TypedDict):
+        guardrails: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsArgsDict']]
+        inference_table_config: NotRequired[pulumi.Input['ModelServingAiGatewayInferenceTableConfigArgsDict']]
+        rate_limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingAiGatewayRateLimitArgsDict']]]]
+        """
+        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
+        usage_tracking_config: NotRequired[pulumi.Input['ModelServingAiGatewayUsageTrackingConfigArgsDict']]
+elif False:
+    ModelServingAiGatewayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingAiGatewayArgs:
@@ -16676,6 +21366,13 @@ class ModelServingAiGatewayArgs:
         pulumi.set(self, "usage_tracking_config", value)
 
 
+if not MYPY:
+    class ModelServingAiGatewayGuardrailsArgsDict(TypedDict):
+        input: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsInputArgsDict']]
+        output: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsOutputArgsDict']]
+elif False:
+    ModelServingAiGatewayGuardrailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsArgs:
     def __init__(__self__, *,
@@ -16704,6 +21401,15 @@ class ModelServingAiGatewayGuardrailsArgs:
     def output(self, value: Optional[pulumi.Input['ModelServingAiGatewayGuardrailsOutputArgs']]):
         pulumi.set(self, "output", value)
 
+
+if not MYPY:
+    class ModelServingAiGatewayGuardrailsInputArgsDict(TypedDict):
+        invalid_keywords: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        pii: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsInputPiiArgsDict']]
+        safety: NotRequired[pulumi.Input[bool]]
+        valid_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ModelServingAiGatewayGuardrailsInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsInputArgs:
@@ -16758,6 +21464,12 @@ class ModelServingAiGatewayGuardrailsInputArgs:
         pulumi.set(self, "valid_topics", value)
 
 
+if not MYPY:
+    class ModelServingAiGatewayGuardrailsInputPiiArgsDict(TypedDict):
+        behavior: pulumi.Input[str]
+elif False:
+    ModelServingAiGatewayGuardrailsInputPiiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsInputPiiArgs:
     def __init__(__self__, *,
@@ -16773,6 +21485,15 @@ class ModelServingAiGatewayGuardrailsInputPiiArgs:
     def behavior(self, value: pulumi.Input[str]):
         pulumi.set(self, "behavior", value)
 
+
+if not MYPY:
+    class ModelServingAiGatewayGuardrailsOutputArgsDict(TypedDict):
+        invalid_keywords: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        pii: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsOutputPiiArgsDict']]
+        safety: NotRequired[pulumi.Input[bool]]
+        valid_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ModelServingAiGatewayGuardrailsOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsOutputArgs:
@@ -16827,6 +21548,12 @@ class ModelServingAiGatewayGuardrailsOutputArgs:
         pulumi.set(self, "valid_topics", value)
 
 
+if not MYPY:
+    class ModelServingAiGatewayGuardrailsOutputPiiArgsDict(TypedDict):
+        behavior: pulumi.Input[str]
+elif False:
+    ModelServingAiGatewayGuardrailsOutputPiiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsOutputPiiArgs:
     def __init__(__self__, *,
@@ -16842,6 +21569,27 @@ class ModelServingAiGatewayGuardrailsOutputPiiArgs:
     def behavior(self, value: pulumi.Input[str]):
         pulumi.set(self, "behavior", value)
 
+
+if not MYPY:
+    class ModelServingAiGatewayInferenceTableConfigArgsDict(TypedDict):
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+        schema_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        """
+        table_name_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
+elif False:
+    ModelServingAiGatewayInferenceTableConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingAiGatewayInferenceTableConfigArgs:
@@ -16914,6 +21662,23 @@ class ModelServingAiGatewayInferenceTableConfigArgs:
         pulumi.set(self, "table_name_prefix", value)
 
 
+if not MYPY:
+    class ModelServingAiGatewayRateLimitArgsDict(TypedDict):
+        calls: pulumi.Input[int]
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        renewal_period: pulumi.Input[str]
+        """
+        Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
+elif False:
+    ModelServingAiGatewayRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingAiGatewayRateLimitArgs:
     def __init__(__self__, *,
@@ -16967,6 +21732,15 @@ class ModelServingAiGatewayRateLimitArgs:
         pulumi.set(self, "key", value)
 
 
+if not MYPY:
+    class ModelServingAiGatewayUsageTrackingConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+elif False:
+    ModelServingAiGatewayUsageTrackingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingAiGatewayUsageTrackingConfigArgs:
     def __init__(__self__, *,
@@ -16989,6 +21763,27 @@ class ModelServingAiGatewayUsageTrackingConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ModelServingConfigArgsDict(TypedDict):
+        auto_capture_config: NotRequired[pulumi.Input['ModelServingConfigAutoCaptureConfigArgsDict']]
+        """
+        Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+        """
+        served_entities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedEntityArgsDict']]]]
+        """
+        A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+        """
+        served_models: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgsDict']]]]
+        """
+        Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+        """
+        traffic_config: NotRequired[pulumi.Input['ModelServingConfigTrafficConfigArgsDict']]
+        """
+        A single block represents the traffic split configuration amongst the served models.
+        """
+elif False:
+    ModelServingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigArgs:
@@ -17065,6 +21860,27 @@ class ModelServingConfigArgs:
         pulumi.set(self, "traffic_config", value)
 
 
+if not MYPY:
+    class ModelServingConfigAutoCaptureConfigArgsDict(TypedDict):
+        catalog_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
+        schema_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        """
+        table_name_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
+elif False:
+    ModelServingConfigAutoCaptureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigAutoCaptureConfigArgs:
     def __init__(__self__, *,
@@ -17135,6 +21951,55 @@ class ModelServingConfigAutoCaptureConfigArgs:
     def table_name_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_name_prefix", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityArgsDict(TypedDict):
+        entity_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
+        """
+        entity_version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
+        """
+        environment_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        """
+        external_model: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelArgsDict']]
+        """
+        The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        """
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        """
+        ARN of the instance profile that the served entity uses to access AWS resources.
+        """
+        max_provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        The maximum tokens per second that the endpoint can scale up to.
+        """
+        min_provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        The minimum tokens per second that the endpoint can scale down to.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
+        """
+        scale_to_zero_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the compute resources for the served entity should scale down to zero.
+        """
+        workload_size: NotRequired[pulumi.Input[str]]
+        """
+        The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        """
+        workload_type: NotRequired[pulumi.Input[str]]
+        """
+        The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
+        """
+elif False:
+    ModelServingConfigServedEntityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityArgs:
@@ -17319,6 +22184,52 @@ class ModelServingConfigServedEntityArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the external model.
+        """
+        provider: pulumi.Input[str]
+        """
+        The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        """
+        task: pulumi.Input[str]
+        """
+        The task type of the external model.
+        """
+        ai21labs_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgsDict']]
+        """
+        AI21Labs Config
+        """
+        amazon_bedrock_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgsDict']]
+        """
+        Amazon Bedrock Config
+        """
+        anthropic_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict']]
+        """
+        Anthropic Config
+        """
+        cohere_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgsDict']]
+        """
+        Cohere Config
+        """
+        databricks_model_serving_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict']]
+        """
+        Databricks Model Serving Config
+        """
+        google_cloud_vertex_ai_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict']]
+        openai_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgsDict']]
+        """
+        OpenAI Config
+        """
+        palm_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgsDict']]
+        """
+        PaLM Config
+        """
+elif False:
+    ModelServingConfigServedEntityExternalModelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelArgs:
     def __init__(__self__, *,
@@ -17495,6 +22406,16 @@ class ModelServingConfigServedEntityExternalModelArgs:
         pulumi.set(self, "palm_config", value)
 
 
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelAi21labsConfigArgsDict(TypedDict):
+        ai21labs_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for an AI21Labs API key.
+        """
+        ai21labs_api_key_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelAi21labsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs:
     def __init__(__self__, *,
@@ -17529,6 +22450,29 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs:
     def ai21labs_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ai21labs_api_key_plaintext", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgsDict(TypedDict):
+        aws_region: pulumi.Input[str]
+        """
+        The AWS region to use. Bedrock has to be enabled there.
+        """
+        bedrock_provider: pulumi.Input[str]
+        """
+        The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        """
+        aws_access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        """
+        aws_access_key_id_plaintext: NotRequired[pulumi.Input[str]]
+        aws_secret_access_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        """
+        aws_secret_access_key_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
@@ -17623,6 +22567,17 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
         pulumi.set(self, "aws_secret_access_key_plaintext", value)
 
 
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict(TypedDict):
+        anthropic_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for an Anthropic API key.
+        The Databricks secret key reference for an Anthropic API key.
+        """
+        anthropic_api_key_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs:
     def __init__(__self__, *,
@@ -17659,6 +22614,17 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs:
     def anthropic_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "anthropic_api_key_plaintext", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelCohereConfigArgsDict(TypedDict):
+        cohere_api_base: NotRequired[pulumi.Input[str]]
+        cohere_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for a Cohere API key.
+        """
+        cohere_api_key_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelCohereConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
@@ -17706,6 +22672,20 @@ class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
     def cohere_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cohere_api_key_plaintext", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict(TypedDict):
+        databricks_workspace_url: pulumi.Input[str]
+        """
+        The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        """
+        databricks_api_token: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        """
+        databricks_api_token_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs:
@@ -17756,6 +22736,15 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArg
     def databricks_api_token_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "databricks_api_token_plaintext", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict(TypedDict):
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_plaintext: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
@@ -17809,6 +22798,40 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelOpenaiConfigArgsDict(TypedDict):
+        microsoft_entra_client_id: NotRequired[pulumi.Input[str]]
+        microsoft_entra_client_secret: NotRequired[pulumi.Input[str]]
+        microsoft_entra_client_secret_plaintext: NotRequired[pulumi.Input[str]]
+        microsoft_entra_tenant_id: NotRequired[pulumi.Input[str]]
+        openai_api_base: NotRequired[pulumi.Input[str]]
+        """
+        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        """
+        openai_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+        """
+        openai_api_key_plaintext: NotRequired[pulumi.Input[str]]
+        openai_api_type: NotRequired[pulumi.Input[str]]
+        """
+        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        """
+        openai_api_version: NotRequired[pulumi.Input[str]]
+        """
+        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        """
+        openai_deployment_name: NotRequired[pulumi.Input[str]]
+        """
+        This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+        """
+        openai_organization: NotRequired[pulumi.Input[str]]
+        """
+        This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+        """
+elif False:
+    ModelServingConfigServedEntityExternalModelOpenaiConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
@@ -17973,6 +22996,16 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
         pulumi.set(self, "openai_organization", value)
 
 
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelPalmConfigArgsDict(TypedDict):
+        palm_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Databricks secret key reference for a PaLM API key.
+        """
+        palm_api_key_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelPalmConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelPalmConfigArgs:
     def __init__(__self__, *,
@@ -18007,6 +23040,51 @@ class ModelServingConfigServedEntityExternalModelPalmConfigArgs:
     def palm_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "palm_api_key_plaintext", value)
 
+
+if not MYPY:
+    class ModelServingConfigServedModelArgsDict(TypedDict):
+        model_name: pulumi.Input[str]
+        """
+        The name of the model in Databricks Model Registry to be served.
+        """
+        model_version: pulumi.Input[str]
+        """
+        The version of the model in Databricks Model Registry to be served.
+        """
+        environment_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        """
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        """
+        ARN of the instance profile that the served model will use to access AWS resources.
+        """
+        max_provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        The maximum tokens per second that the endpoint can scale up to.
+        """
+        min_provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        The minimum tokens per second that the endpoint can scale down to.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+        """
+        scale_to_zero_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        """
+        workload_size: NotRequired[pulumi.Input[str]]
+        """
+        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
+        """
+        workload_type: NotRequired[pulumi.Input[str]]
+        """
+        The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        """
+elif False:
+    ModelServingConfigServedModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedModelArgs:
@@ -18173,6 +23251,15 @@ class ModelServingConfigServedModelArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class ModelServingConfigTrafficConfigArgsDict(TypedDict):
+        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgsDict']]]]
+        """
+        Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+        """
+elif False:
+    ModelServingConfigTrafficConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingConfigTrafficConfigArgs:
     def __init__(__self__, *,
@@ -18195,6 +23282,16 @@ class ModelServingConfigTrafficConfigArgs:
     def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
+
+if not MYPY:
+    class ModelServingConfigTrafficConfigRouteArgsDict(TypedDict):
+        served_model_name: pulumi.Input[str]
+        traffic_percentage: pulumi.Input[int]
+        """
+        The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+elif False:
+    ModelServingConfigTrafficConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigTrafficConfigRouteArgs:
@@ -18228,6 +23325,23 @@ class ModelServingConfigTrafficConfigRouteArgs:
     def traffic_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "traffic_percentage", value)
 
+
+if not MYPY:
+    class ModelServingRateLimitArgsDict(TypedDict):
+        calls: pulumi.Input[int]
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        renewal_period: pulumi.Input[str]
+        """
+        Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
+elif False:
+    ModelServingRateLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingRateLimitArgs:
@@ -18282,6 +23396,19 @@ class ModelServingRateLimitArgs:
         pulumi.set(self, "key", value)
 
 
+if not MYPY:
+    class ModelServingTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key field for a tag.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value field for a tag.
+        """
+elif False:
+    ModelServingTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ModelServingTagArgs:
     def __init__(__self__, *,
@@ -18319,6 +23446,19 @@ class ModelServingTagArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class MountAbfsArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        client_secret_key: pulumi.Input[str]
+        client_secret_scope: pulumi.Input[str]
+        initialize_file_system: pulumi.Input[bool]
+        container_name: NotRequired[pulumi.Input[str]]
+        directory: NotRequired[pulumi.Input[str]]
+        storage_account_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
+elif False:
+    MountAbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MountAbfsArgs:
@@ -18417,6 +23557,18 @@ class MountAbfsArgs:
         pulumi.set(self, "tenant_id", value)
 
 
+if not MYPY:
+    class MountAdlArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        client_secret_key: pulumi.Input[str]
+        client_secret_scope: pulumi.Input[str]
+        directory: NotRequired[pulumi.Input[str]]
+        spark_conf_prefix: NotRequired[pulumi.Input[str]]
+        storage_resource_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
+elif False:
+    MountAdlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MountAdlArgs:
     def __init__(__self__, *,
@@ -18503,6 +23655,13 @@ class MountAdlArgs:
         pulumi.set(self, "tenant_id", value)
 
 
+if not MYPY:
+    class MountGsArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        service_account: NotRequired[pulumi.Input[str]]
+elif False:
+    MountGsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MountGsArgs:
     def __init__(__self__, *,
@@ -18531,6 +23690,13 @@ class MountGsArgs:
         pulumi.set(self, "service_account", value)
 
 
+if not MYPY:
+    class MountS3ArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        instance_profile: NotRequired[pulumi.Input[str]]
+elif False:
+    MountS3ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MountS3Args:
     def __init__(__self__, *,
@@ -18558,6 +23724,17 @@ class MountS3Args:
     def instance_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_profile", value)
 
+
+if not MYPY:
+    class MountWasbArgsDict(TypedDict):
+        auth_type: pulumi.Input[str]
+        token_secret_key: pulumi.Input[str]
+        token_secret_scope: pulumi.Input[str]
+        container_name: NotRequired[pulumi.Input[str]]
+        directory: NotRequired[pulumi.Input[str]]
+        storage_account_name: NotRequired[pulumi.Input[str]]
+elif False:
+    MountWasbArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MountWasbArgs:
@@ -18633,6 +23810,23 @@ class MountWasbArgs:
         pulumi.set(self, "storage_account_name", value)
 
 
+if not MYPY:
+    class MwsCustomerManagedKeysAwsKeyInfoArgsDict(TypedDict):
+        key_arn: pulumi.Input[str]
+        """
+        The AWS KMS key's Amazon Resource Name (ARN).
+        """
+        key_alias: NotRequired[pulumi.Input[str]]
+        """
+        The AWS KMS key alias.
+        """
+        key_region: NotRequired[pulumi.Input[str]]
+        """
+        (Computed) The AWS region in which KMS key is deployed to. This is not required.
+        """
+elif False:
+    MwsCustomerManagedKeysAwsKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsCustomerManagedKeysAwsKeyInfoArgs:
     def __init__(__self__, *,
@@ -18687,6 +23881,15 @@ class MwsCustomerManagedKeysAwsKeyInfoArgs:
         pulumi.set(self, "key_region", value)
 
 
+if not MYPY:
+    class MwsCustomerManagedKeysGcpKeyInfoArgsDict(TypedDict):
+        kms_key_id: pulumi.Input[str]
+        """
+        The GCP KMS key's resource name.
+        """
+elif False:
+    MwsCustomerManagedKeysGcpKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsCustomerManagedKeysGcpKeyInfoArgs:
     def __init__(__self__, *,
@@ -18708,6 +23911,19 @@ class MwsCustomerManagedKeysGcpKeyInfoArgs:
     def kms_key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_id", value)
 
+
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigArgsDict(TypedDict):
+        default_rules: NotRequired[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgsDict']]
+        """
+        block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
+        """
+        target_rules: NotRequired[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict']]
+        """
+        block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
+        """
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigArgs:
@@ -18748,6 +23964,19 @@ class MwsNetworkConnectivityConfigEgressConfigArgs:
         pulumi.set(self, "target_rules", value)
 
 
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgsDict(TypedDict):
+        aws_stable_ip_rule: NotRequired[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgsDict']]
+        """
+        (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
+        """
+        azure_service_endpoint_rule: NotRequired[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgsDict']]
+        """
+        (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
+        """
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
     def __init__(__self__, *,
@@ -18787,6 +24016,15 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs:
         pulumi.set(self, "azure_service_endpoint_rule", value)
 
 
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgsDict(TypedDict):
+        cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of IP CIDR blocks.
+        """
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs:
     def __init__(__self__, *,
@@ -18809,6 +24047,23 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs:
     def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "cidr_blocks", value)
 
+
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgsDict(TypedDict):
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+        """
+        target_region: NotRequired[pulumi.Input[str]]
+        """
+        the Azure region in which this service endpoint rule applies.
+        """
+        target_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        the Azure services to which this service endpoint rule applies to.
+        """
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs:
@@ -18865,6 +24120,15 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
         pulumi.set(self, "target_services", value)
 
 
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict(TypedDict):
+        azure_private_endpoint_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict']]]]
+        """
+        (Azure only) - list containing information about configure Azure Private Endpoints.
+        """
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs:
     def __init__(__self__, *,
@@ -18887,6 +24151,24 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs:
     def azure_private_endpoint_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]]]):
         pulumi.set(self, "azure_private_endpoint_rules", value)
 
+
+if not MYPY:
+    class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict(TypedDict):
+        connection_state: NotRequired[pulumi.Input[str]]
+        creation_time: NotRequired[pulumi.Input[int]]
+        deactivated: NotRequired[pulumi.Input[bool]]
+        deactivated_at: NotRequired[pulumi.Input[int]]
+        endpoint_name: NotRequired[pulumi.Input[str]]
+        group_id: NotRequired[pulumi.Input[str]]
+        network_connectivity_config_id: NotRequired[pulumi.Input[str]]
+        """
+        Canonical unique identifier of Network Connectivity Config in Databricks Account
+        """
+        resource_id: NotRequired[pulumi.Input[str]]
+        rule_id: NotRequired[pulumi.Input[str]]
+        updated_time: NotRequired[pulumi.Input[int]]
+elif False:
+    MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs:
@@ -19019,6 +24301,13 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
         pulumi.set(self, "updated_time", value)
 
 
+if not MYPY:
+    class MwsNetworksErrorMessageArgsDict(TypedDict):
+        error_message: NotRequired[pulumi.Input[str]]
+        error_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MwsNetworksErrorMessageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsNetworksErrorMessageArgs:
     def __init__(__self__, *,
@@ -19047,6 +24336,35 @@ class MwsNetworksErrorMessageArgs:
     def error_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_type", value)
 
+
+if not MYPY:
+    class MwsNetworksGcpNetworkInfoArgsDict(TypedDict):
+        network_project_id: pulumi.Input[str]
+        """
+        The Google Cloud project ID of the VPC network.
+        """
+        pod_ip_range_name: pulumi.Input[str]
+        """
+        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        """
+        service_ip_range_name: pulumi.Input[str]
+        """
+        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+        """
+        subnet_id: pulumi.Input[str]
+        """
+        The ID of the subnet associated with this network.
+        """
+        subnet_region: pulumi.Input[str]
+        """
+        The Google Cloud region of the workspace data plane. For example, `us-east4`.
+        """
+        vpc_id: pulumi.Input[str]
+        """
+        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
+elif False:
+    MwsNetworksGcpNetworkInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsNetworksGcpNetworkInfoArgs:
@@ -19145,6 +24463,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(self, "vpc_id", value)
 
 
+if not MYPY:
+    class MwsNetworksVpcEndpointsArgsDict(TypedDict):
+        dataplane_relays: pulumi.Input[Sequence[pulumi.Input[str]]]
+        rest_apis: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    MwsNetworksVpcEndpointsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsNetworksVpcEndpointsArgs:
     def __init__(__self__, *,
@@ -19171,6 +24496,31 @@ class MwsNetworksVpcEndpointsArgs:
     def rest_apis(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "rest_apis", value)
 
+
+if not MYPY:
+    class MwsVpcEndpointGcpVpcEndpointInfoArgsDict(TypedDict):
+        endpoint_region: pulumi.Input[str]
+        """
+        Region of the PSC endpoint.
+        """
+        project_id: pulumi.Input[str]
+        """
+        The Google Cloud project ID of the VPC network where the PSC connection resides.
+        """
+        psc_endpoint_name: pulumi.Input[str]
+        """
+        The name of the PSC endpoint in the Google Cloud project.
+        """
+        psc_connection_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique ID of this PSC connection.
+        """
+        service_attachment_id: NotRequired[pulumi.Input[str]]
+        """
+        The service attachment this PSC connection connects to.
+        """
+elif False:
+    MwsVpcEndpointGcpVpcEndpointInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsVpcEndpointGcpVpcEndpointInfoArgs:
@@ -19256,6 +24606,15 @@ class MwsVpcEndpointGcpVpcEndpointInfoArgs:
         pulumi.set(self, "service_attachment_id", value)
 
 
+if not MYPY:
+    class MwsWorkspacesCloudResourceContainerArgsDict(TypedDict):
+        gcp: pulumi.Input['MwsWorkspacesCloudResourceContainerGcpArgsDict']
+        """
+        A block that consists of the following field:
+        """
+elif False:
+    MwsWorkspacesCloudResourceContainerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsWorkspacesCloudResourceContainerArgs:
     def __init__(__self__, *,
@@ -19278,6 +24637,15 @@ class MwsWorkspacesCloudResourceContainerArgs:
         pulumi.set(self, "gcp", value)
 
 
+if not MYPY:
+    class MwsWorkspacesCloudResourceContainerGcpArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+        """
+elif False:
+    MwsWorkspacesCloudResourceContainerGcpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsWorkspacesCloudResourceContainerGcpArgs:
     def __init__(__self__, *,
@@ -19299,6 +24667,14 @@ class MwsWorkspacesCloudResourceContainerGcpArgs:
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class MwsWorkspacesExternalCustomerInfoArgsDict(TypedDict):
+        authoritative_user_email: pulumi.Input[str]
+        authoritative_user_full_name: pulumi.Input[str]
+        customer_name: pulumi.Input[str]
+elif False:
+    MwsWorkspacesExternalCustomerInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsWorkspacesExternalCustomerInfoArgs:
@@ -19338,6 +24714,14 @@ class MwsWorkspacesExternalCustomerInfoArgs:
         pulumi.set(self, "customer_name", value)
 
 
+if not MYPY:
+    class MwsWorkspacesGcpManagedNetworkConfigArgsDict(TypedDict):
+        gke_cluster_pod_ip_range: pulumi.Input[str]
+        gke_cluster_service_ip_range: pulumi.Input[str]
+        subnet_cidr: pulumi.Input[str]
+elif False:
+    MwsWorkspacesGcpManagedNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsWorkspacesGcpManagedNetworkConfigArgs:
     def __init__(__self__, *,
@@ -19376,6 +24760,19 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
         pulumi.set(self, "subnet_cidr", value)
 
 
+if not MYPY:
+    class MwsWorkspacesGkeConfigArgsDict(TypedDict):
+        connectivity_type: pulumi.Input[str]
+        """
+        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
+        """
+        master_ip_range: pulumi.Input[str]
+        """
+        The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+        """
+elif False:
+    MwsWorkspacesGkeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MwsWorkspacesGkeConfigArgs:
     def __init__(__self__, *,
@@ -19412,6 +24809,21 @@ class MwsWorkspacesGkeConfigArgs:
     def master_ip_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "master_ip_range", value)
 
+
+if not MYPY:
+    class MwsWorkspacesTokenArgsDict(TypedDict):
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
+        """
+        lifetime_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Token expiry lifetime. By default its 2592000 (30 days).
+        """
+        token_id: NotRequired[pulumi.Input[str]]
+        token_value: NotRequired[pulumi.Input[str]]
+elif False:
+    MwsWorkspacesTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsWorkspacesTokenArgs:
@@ -19475,6 +24887,31 @@ class MwsWorkspacesTokenArgs:
     def token_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_value", value)
 
+
+if not MYPY:
+    class NotificationDestinationConfigArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input['NotificationDestinationConfigEmailArgsDict']]
+        """
+        The email configuration of the Notification Destination. It must contain the following:
+        """
+        generic_webhook: NotRequired[pulumi.Input['NotificationDestinationConfigGenericWebhookArgsDict']]
+        """
+        The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        """
+        microsoft_teams: NotRequired[pulumi.Input['NotificationDestinationConfigMicrosoftTeamsArgsDict']]
+        """
+        The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        """
+        pagerduty: NotRequired[pulumi.Input['NotificationDestinationConfigPagerdutyArgsDict']]
+        """
+        The PagerDuty configuration of the Notification Destination. It must contain the following:
+        """
+        slack: NotRequired[pulumi.Input['NotificationDestinationConfigSlackArgsDict']]
+        """
+        The Slack configuration of the Notification Destination. It must contain the following:
+        """
+elif False:
+    NotificationDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationDestinationConfigArgs:
@@ -19563,6 +25000,15 @@ class NotificationDestinationConfigArgs:
         pulumi.set(self, "slack", value)
 
 
+if not MYPY:
+    class NotificationDestinationConfigEmailArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of email addresses to send notifications to.
+        """
+elif False:
+    NotificationDestinationConfigEmailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationDestinationConfigEmailArgs:
     def __init__(__self__, *,
@@ -19585,6 +25031,28 @@ class NotificationDestinationConfigEmailArgs:
     def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "addresses", value)
 
+
+if not MYPY:
+    class NotificationDestinationConfigGenericWebhookArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password for basic authentication.
+
+        > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        """
+        password_set: NotRequired[pulumi.Input[bool]]
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The Generic Webhook URL.
+        """
+        url_set: NotRequired[pulumi.Input[bool]]
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username for basic authentication.
+        """
+        username_set: NotRequired[pulumi.Input[bool]]
+elif False:
+    NotificationDestinationConfigGenericWebhookArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationDestinationConfigGenericWebhookArgs:
@@ -19681,6 +25149,16 @@ class NotificationDestinationConfigGenericWebhookArgs:
         pulumi.set(self, "username_set", value)
 
 
+if not MYPY:
+    class NotificationDestinationConfigMicrosoftTeamsArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The Microsoft Teams webhook URL.
+        """
+        url_set: NotRequired[pulumi.Input[bool]]
+elif False:
+    NotificationDestinationConfigMicrosoftTeamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationDestinationConfigMicrosoftTeamsArgs:
     def __init__(__self__, *,
@@ -19715,6 +25193,16 @@ class NotificationDestinationConfigMicrosoftTeamsArgs:
     def url_set(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "url_set", value)
 
+
+if not MYPY:
+    class NotificationDestinationConfigPagerdutyArgsDict(TypedDict):
+        integration_key: NotRequired[pulumi.Input[str]]
+        """
+        The PagerDuty integration key.
+        """
+        integration_key_set: NotRequired[pulumi.Input[bool]]
+elif False:
+    NotificationDestinationConfigPagerdutyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationDestinationConfigPagerdutyArgs:
@@ -19751,6 +25239,16 @@ class NotificationDestinationConfigPagerdutyArgs:
         pulumi.set(self, "integration_key_set", value)
 
 
+if not MYPY:
+    class NotificationDestinationConfigSlackArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The Slack webhook URL.
+        """
+        url_set: NotRequired[pulumi.Input[bool]]
+elif False:
+    NotificationDestinationConfigSlackArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationDestinationConfigSlackArgs:
     def __init__(__self__, *,
@@ -19785,6 +25283,39 @@ class NotificationDestinationConfigSlackArgs:
     def url_set(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "url_set", value)
 
+
+if not MYPY:
+    class OnlineTableSpecArgsDict(TypedDict):
+        perform_full_copy: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+        """
+        pipeline_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the associated Delta Live Table pipeline.
+        """
+        primary_key_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of the columns comprising the primary key.
+        """
+        run_continuously: NotRequired[pulumi.Input['OnlineTableSpecRunContinuouslyArgsDict']]
+        """
+        empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        """
+        run_triggered: NotRequired[pulumi.Input['OnlineTableSpecRunTriggeredArgsDict']]
+        """
+        empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+        """
+        source_table_full_name: NotRequired[pulumi.Input[str]]
+        """
+        full name of the source table.
+        """
+        timeseries_key: NotRequired[pulumi.Input[str]]
+        """
+        Time series key to deduplicate (tie-break) rows with the same primary key.
+        """
+elif False:
+    OnlineTableSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OnlineTableSpecArgs:
@@ -19905,17 +25436,46 @@ class OnlineTableSpecArgs:
         pulumi.set(self, "timeseries_key", value)
 
 
+if not MYPY:
+    class OnlineTableSpecRunContinuouslyArgsDict(TypedDict):
+        pass
+elif False:
+    OnlineTableSpecRunContinuouslyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableSpecRunContinuouslyArgs:
     def __init__(__self__):
         pass
 
 
+if not MYPY:
+    class OnlineTableSpecRunTriggeredArgsDict(TypedDict):
+        pass
+elif False:
+    OnlineTableSpecRunTriggeredArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableSpecRunTriggeredArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class OnlineTableStatusArgsDict(TypedDict):
+        continuous_update_status: NotRequired[pulumi.Input['OnlineTableStatusContinuousUpdateStatusArgsDict']]
+        detailed_state: NotRequired[pulumi.Input[str]]
+        """
+        The state of the online table.
+        """
+        failed_status: NotRequired[pulumi.Input['OnlineTableStatusFailedStatusArgsDict']]
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A text description of the current state of the online table.
+        """
+        provisioning_status: NotRequired[pulumi.Input['OnlineTableStatusProvisioningStatusArgsDict']]
+        triggered_update_status: NotRequired[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusArgsDict']]
+elif False:
+    OnlineTableStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OnlineTableStatusArgs:
@@ -20004,6 +25564,14 @@ class OnlineTableStatusArgs:
         pulumi.set(self, "triggered_update_status", value)
 
 
+if not MYPY:
+    class OnlineTableStatusContinuousUpdateStatusArgsDict(TypedDict):
+        initial_pipeline_sync_progress: NotRequired[pulumi.Input['OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgsDict']]
+        last_processed_commit_version: NotRequired[pulumi.Input[int]]
+        timestamp: NotRequired[pulumi.Input[str]]
+elif False:
+    OnlineTableStatusContinuousUpdateStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableStatusContinuousUpdateStatusArgs:
     def __init__(__self__, *,
@@ -20044,6 +25612,16 @@ class OnlineTableStatusContinuousUpdateStatusArgs:
     def timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timestamp", value)
 
+
+if not MYPY:
+    class OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgsDict(TypedDict):
+        estimated_completion_time_seconds: NotRequired[pulumi.Input[float]]
+        latest_version_currently_processing: NotRequired[pulumi.Input[int]]
+        sync_progress_completion: NotRequired[pulumi.Input[float]]
+        synced_row_count: NotRequired[pulumi.Input[int]]
+        total_row_count: NotRequired[pulumi.Input[int]]
+elif False:
+    OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs:
@@ -20110,6 +25688,13 @@ class OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs:
         pulumi.set(self, "total_row_count", value)
 
 
+if not MYPY:
+    class OnlineTableStatusFailedStatusArgsDict(TypedDict):
+        last_processed_commit_version: NotRequired[pulumi.Input[int]]
+        timestamp: NotRequired[pulumi.Input[str]]
+elif False:
+    OnlineTableStatusFailedStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableStatusFailedStatusArgs:
     def __init__(__self__, *,
@@ -20139,6 +25724,12 @@ class OnlineTableStatusFailedStatusArgs:
         pulumi.set(self, "timestamp", value)
 
 
+if not MYPY:
+    class OnlineTableStatusProvisioningStatusArgsDict(TypedDict):
+        initial_pipeline_sync_progress: NotRequired[pulumi.Input['OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgsDict']]
+elif False:
+    OnlineTableStatusProvisioningStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableStatusProvisioningStatusArgs:
     def __init__(__self__, *,
@@ -20155,6 +25746,16 @@ class OnlineTableStatusProvisioningStatusArgs:
     def initial_pipeline_sync_progress(self, value: Optional[pulumi.Input['OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs']]):
         pulumi.set(self, "initial_pipeline_sync_progress", value)
 
+
+if not MYPY:
+    class OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgsDict(TypedDict):
+        estimated_completion_time_seconds: NotRequired[pulumi.Input[float]]
+        latest_version_currently_processing: NotRequired[pulumi.Input[int]]
+        sync_progress_completion: NotRequired[pulumi.Input[float]]
+        synced_row_count: NotRequired[pulumi.Input[int]]
+        total_row_count: NotRequired[pulumi.Input[int]]
+elif False:
+    OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs:
@@ -20221,6 +25822,14 @@ class OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs:
         pulumi.set(self, "total_row_count", value)
 
 
+if not MYPY:
+    class OnlineTableStatusTriggeredUpdateStatusArgsDict(TypedDict):
+        last_processed_commit_version: NotRequired[pulumi.Input[int]]
+        timestamp: NotRequired[pulumi.Input[str]]
+        triggered_update_progress: NotRequired[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgsDict']]
+elif False:
+    OnlineTableStatusTriggeredUpdateStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OnlineTableStatusTriggeredUpdateStatusArgs:
     def __init__(__self__, *,
@@ -20261,6 +25870,16 @@ class OnlineTableStatusTriggeredUpdateStatusArgs:
     def triggered_update_progress(self, value: Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs']]):
         pulumi.set(self, "triggered_update_progress", value)
 
+
+if not MYPY:
+    class OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgsDict(TypedDict):
+        estimated_completion_time_seconds: NotRequired[pulumi.Input[float]]
+        latest_version_currently_processing: NotRequired[pulumi.Input[int]]
+        sync_progress_completion: NotRequired[pulumi.Input[float]]
+        synced_row_count: NotRequired[pulumi.Input[int]]
+        total_row_count: NotRequired[pulumi.Input[int]]
+elif False:
+    OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs:
@@ -20326,6 +25945,29 @@ class OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs:
     def total_row_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "total_row_count", value)
 
+
+if not MYPY:
+    class PermissionsAccessControlArgsDict(TypedDict):
+        group_name: NotRequired[pulumi.Input[str]]
+        """
+        name of the group. We recommend setting permissions on groups.
+        """
+        permission_level: NotRequired[pulumi.Input[str]]
+        """
+        permission level according to specific resource. See examples above for the reference.
+
+        Exactly one of the below arguments is required:
+        """
+        service_principal_name: NotRequired[pulumi.Input[str]]
+        """
+        Application ID of the service_principal.
+        """
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        name of the user.
+        """
+elif False:
+    PermissionsAccessControlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PermissionsAccessControlArgs:
@@ -20401,6 +26043,30 @@ class PermissionsAccessControlArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class PipelineClusterArgsDict(TypedDict):
+        apply_policy_default_values: NotRequired[pulumi.Input[bool]]
+        autoscale: NotRequired[pulumi.Input['PipelineClusterAutoscaleArgsDict']]
+        aws_attributes: NotRequired[pulumi.Input['PipelineClusterAwsAttributesArgsDict']]
+        azure_attributes: NotRequired[pulumi.Input['PipelineClusterAzureAttributesArgsDict']]
+        cluster_log_conf: NotRequired[pulumi.Input['PipelineClusterClusterLogConfArgsDict']]
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        driver_instance_pool_id: NotRequired[pulumi.Input[str]]
+        driver_node_type_id: NotRequired[pulumi.Input[str]]
+        enable_local_disk_encryption: NotRequired[pulumi.Input[bool]]
+        gcp_attributes: NotRequired[pulumi.Input['PipelineClusterGcpAttributesArgsDict']]
+        init_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineClusterInitScriptArgsDict']]]]
+        instance_pool_id: NotRequired[pulumi.Input[str]]
+        label: NotRequired[pulumi.Input[str]]
+        node_type_id: NotRequired[pulumi.Input[str]]
+        num_workers: NotRequired[pulumi.Input[int]]
+        policy_id: NotRequired[pulumi.Input[str]]
+        spark_conf: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        spark_env_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    PipelineClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterArgs:
@@ -20635,6 +26301,14 @@ class PipelineClusterArgs:
         pulumi.set(self, "ssh_public_keys", value)
 
 
+if not MYPY:
+    class PipelineClusterAutoscaleArgsDict(TypedDict):
+        max_workers: pulumi.Input[int]
+        min_workers: pulumi.Input[int]
+        mode: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -20673,6 +26347,21 @@ class PipelineClusterAutoscaleArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class PipelineClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        ebs_volume_count: NotRequired[pulumi.Input[int]]
+        ebs_volume_iops: NotRequired[pulumi.Input[int]]
+        ebs_volume_size: NotRequired[pulumi.Input[int]]
+        ebs_volume_throughput: NotRequired[pulumi.Input[int]]
+        ebs_volume_type: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        instance_profile_arn: NotRequired[pulumi.Input[str]]
+        spot_bid_price_percent: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterAwsAttributesArgs:
@@ -20799,6 +26488,15 @@ class PipelineClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class PipelineClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        first_on_demand: NotRequired[pulumi.Input[int]]
+        log_analytics_info: NotRequired[pulumi.Input['PipelineClusterAzureAttributesLogAnalyticsInfoArgsDict']]
+        spot_bid_max_price: NotRequired[pulumi.Input[float]]
+elif False:
+    PipelineClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -20852,6 +26550,13 @@ class PipelineClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class PipelineClusterAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[pulumi.Input[str]]
+        log_analytics_workspace_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -20880,6 +26585,13 @@ class PipelineClusterAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class PipelineClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired[pulumi.Input['PipelineClusterClusterLogConfDbfsArgsDict']]
+        s3: NotRequired[pulumi.Input['PipelineClusterClusterLogConfS3ArgsDict']]
+elif False:
+    PipelineClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterClusterLogConfArgs:
@@ -20910,6 +26622,12 @@ class PipelineClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class PipelineClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -20925,6 +26643,18 @@ class PipelineClusterClusterLogConfDbfsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class PipelineClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterClusterLogConfS3Args:
@@ -21014,6 +26744,15 @@ class PipelineClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class PipelineClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[pulumi.Input[str]]
+        google_service_account: NotRequired[pulumi.Input[str]]
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterGcpAttributesArgs:
     def __init__(__self__, *,
@@ -21066,6 +26805,18 @@ class PipelineClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class PipelineClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired[pulumi.Input['PipelineClusterInitScriptAbfssArgsDict']]
+        dbfs: NotRequired[pulumi.Input['PipelineClusterInitScriptDbfsArgsDict']]
+        file: NotRequired[pulumi.Input['PipelineClusterInitScriptFileArgsDict']]
+        gcs: NotRequired[pulumi.Input['PipelineClusterInitScriptGcsArgsDict']]
+        s3: NotRequired[pulumi.Input['PipelineClusterInitScriptS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['PipelineClusterInitScriptVolumesArgsDict']]
+        workspace: NotRequired[pulumi.Input['PipelineClusterInitScriptWorkspaceArgsDict']]
+elif False:
+    PipelineClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterInitScriptArgs:
@@ -21160,6 +26911,12 @@ class PipelineClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class PipelineClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -21175,6 +26932,12 @@ class PipelineClusterInitScriptAbfssArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class PipelineClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterInitScriptDbfsArgs:
@@ -21192,6 +26955,12 @@ class PipelineClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class PipelineClusterInitScriptFileArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -21208,6 +26977,12 @@ class PipelineClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class PipelineClusterInitScriptGcsArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -21223,6 +26998,18 @@ class PipelineClusterInitScriptGcsArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class PipelineClusterInitScriptS3ArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        canned_acl: NotRequired[pulumi.Input[str]]
+        enable_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_type: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        kms_key: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineClusterInitScriptS3Args:
@@ -21312,6 +27099,12 @@ class PipelineClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class PipelineClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -21328,6 +27121,12 @@ class PipelineClusterInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class PipelineClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -21343,6 +27142,19 @@ class PipelineClusterInitScriptWorkspaceArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class PipelineDeploymentArgsDict(TypedDict):
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        The deployment method that manages the pipeline.
+        """
+        metadata_file_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the file containing metadata about the deployment.
+        """
+elif False:
+    PipelineDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineDeploymentArgs:
@@ -21383,6 +27195,19 @@ class PipelineDeploymentArgs:
         pulumi.set(self, "metadata_file_path", value)
 
 
+if not MYPY:
+    class PipelineFiltersArgsDict(TypedDict):
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Paths to exclude.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Paths to include.
+        """
+elif False:
+    PipelineFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineFiltersArgs:
     def __init__(__self__, *,
@@ -21421,6 +27246,27 @@ class PipelineFiltersArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class PipelineGatewayDefinitionArgsDict(TypedDict):
+        connection_id: NotRequired[pulumi.Input[str]]
+        """
+        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        """
+        gateway_storage_catalog: NotRequired[pulumi.Input[str]]
+        """
+        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        """
+        gateway_storage_name: NotRequired[pulumi.Input[str]]
+        """
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        """
+        gateway_storage_schema: NotRequired[pulumi.Input[str]]
+        """
+        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+elif False:
+    PipelineGatewayDefinitionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineGatewayDefinitionArgs:
@@ -21493,6 +27339,15 @@ class PipelineGatewayDefinitionArgs:
         pulumi.set(self, "gateway_storage_schema", value)
 
 
+if not MYPY:
+    class PipelineIngestionDefinitionArgsDict(TypedDict):
+        connection_name: NotRequired[pulumi.Input[str]]
+        ingestion_gateway_id: NotRequired[pulumi.Input[str]]
+        objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgsDict']]]]
+        table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgsDict']]
+elif False:
+    PipelineIngestionDefinitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineIngestionDefinitionArgs:
     def __init__(__self__, *,
@@ -21546,6 +27401,13 @@ class PipelineIngestionDefinitionArgs:
         pulumi.set(self, "table_configuration", value)
 
 
+if not MYPY:
+    class PipelineIngestionDefinitionObjectArgsDict(TypedDict):
+        schema: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgsDict']]
+        table: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableArgsDict']]
+elif False:
+    PipelineIngestionDefinitionObjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectArgs:
     def __init__(__self__, *,
@@ -21574,6 +27436,16 @@ class PipelineIngestionDefinitionObjectArgs:
     def table(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableArgs']]):
         pulumi.set(self, "table", value)
 
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectSchemaArgsDict(TypedDict):
+        destination_catalog: NotRequired[pulumi.Input[str]]
+        destination_schema: NotRequired[pulumi.Input[str]]
+        source_catalog: NotRequired[pulumi.Input[str]]
+        source_schema: NotRequired[pulumi.Input[str]]
+        table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict']]
+elif False:
+    PipelineIngestionDefinitionObjectSchemaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaArgs:
@@ -21640,6 +27512,14 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
         pulumi.set(self, "table_configuration", value)
 
 
+if not MYPY:
+    class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict(TypedDict):
+        primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        salesforce_include_formula_fields: NotRequired[pulumi.Input[bool]]
+        scd_type: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     def __init__(__self__, *,
@@ -21680,6 +27560,18 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     def scd_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scd_type", value)
 
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectTableArgsDict(TypedDict):
+        destination_catalog: NotRequired[pulumi.Input[str]]
+        destination_schema: NotRequired[pulumi.Input[str]]
+        destination_table: NotRequired[pulumi.Input[str]]
+        source_catalog: NotRequired[pulumi.Input[str]]
+        source_schema: NotRequired[pulumi.Input[str]]
+        source_table: NotRequired[pulumi.Input[str]]
+        table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict']]
+elif False:
+    PipelineIngestionDefinitionObjectTableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableArgs:
@@ -21770,6 +27662,14 @@ class PipelineIngestionDefinitionObjectTableArgs:
         pulumi.set(self, "table_configuration", value)
 
 
+if not MYPY:
+    class PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict(TypedDict):
+        primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        salesforce_include_formula_fields: NotRequired[pulumi.Input[bool]]
+        scd_type: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     def __init__(__self__, *,
@@ -21810,6 +27710,14 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     def scd_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scd_type", value)
 
+
+if not MYPY:
+    class PipelineIngestionDefinitionTableConfigurationArgsDict(TypedDict):
+        primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        salesforce_include_formula_fields: NotRequired[pulumi.Input[bool]]
+        scd_type: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineIngestionDefinitionTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineIngestionDefinitionTableConfigurationArgs:
@@ -21852,6 +27760,14 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
         pulumi.set(self, "scd_type", value)
 
 
+if not MYPY:
+    class PipelineLatestUpdateArgsDict(TypedDict):
+        creation_time: NotRequired[pulumi.Input[str]]
+        state: NotRequired[pulumi.Input[str]]
+        update_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineLatestUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineLatestUpdateArgs:
     def __init__(__self__, *,
@@ -21892,6 +27808,16 @@ class PipelineLatestUpdateArgs:
     def update_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_id", value)
 
+
+if not MYPY:
+    class PipelineLibraryArgsDict(TypedDict):
+        file: NotRequired[pulumi.Input['PipelineLibraryFileArgsDict']]
+        jar: NotRequired[pulumi.Input[str]]
+        maven: NotRequired[pulumi.Input['PipelineLibraryMavenArgsDict']]
+        notebook: NotRequired[pulumi.Input['PipelineLibraryNotebookArgsDict']]
+        whl: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineLibraryArgs:
@@ -21962,6 +27888,12 @@ class PipelineLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class PipelineLibraryFileArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineLibraryFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineLibraryFileArgs:
     def __init__(__self__, *,
@@ -21978,6 +27910,14 @@ class PipelineLibraryFileArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class PipelineLibraryMavenArgsDict(TypedDict):
+        coordinates: pulumi.Input[str]
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        repo: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineLibraryMavenArgs:
@@ -22019,6 +27959,12 @@ class PipelineLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class PipelineLibraryNotebookArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineLibraryNotebookArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineLibraryNotebookArgs:
     def __init__(__self__, *,
@@ -22035,6 +27981,23 @@ class PipelineLibraryNotebookArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class PipelineNotificationArgsDict(TypedDict):
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+        * `on-update-success` - a pipeline update completes successfully.
+        * `on-update-failure` - a pipeline update fails with a retryable error.
+        * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+        * `on-flow-failure` - a single data flow fails.
+        """
+        email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        non-empty list of emails to notify.
+        """
+elif False:
+    PipelineNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineNotificationArgs:
@@ -22083,6 +28046,13 @@ class PipelineNotificationArgs:
         pulumi.set(self, "email_recipients", value)
 
 
+if not MYPY:
+    class PipelineTriggerArgsDict(TypedDict):
+        cron: NotRequired[pulumi.Input['PipelineTriggerCronArgsDict']]
+        manual: NotRequired[pulumi.Input['PipelineTriggerManualArgsDict']]
+elif False:
+    PipelineTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineTriggerArgs:
     def __init__(__self__, *,
@@ -22111,6 +28081,13 @@ class PipelineTriggerArgs:
     def manual(self, value: Optional[pulumi.Input['PipelineTriggerManualArgs']]):
         pulumi.set(self, "manual", value)
 
+
+if not MYPY:
+    class PipelineTriggerCronArgsDict(TypedDict):
+        quartz_cron_schedule: NotRequired[pulumi.Input[str]]
+        timezone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineTriggerCronArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineTriggerCronArgs:
@@ -22141,11 +28118,42 @@ class PipelineTriggerCronArgs:
         pulumi.set(self, "timezone_id", value)
 
 
+if not MYPY:
+    class PipelineTriggerManualArgsDict(TypedDict):
+        pass
+elif False:
+    PipelineTriggerManualArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineTriggerManualArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class QualityMonitorCustomMetricArgsDict(TypedDict):
+        definition: pulumi.Input[str]
+        """
+        [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        """
+        input_columns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Columns on the monitored table to apply the custom metrics to.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the custom metric.
+        """
+        output_data_type: pulumi.Input[str]
+        """
+        The output type of the custom metric.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the custom metric.
+        """
+elif False:
+    QualityMonitorCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QualityMonitorCustomMetricArgs:
@@ -22229,6 +28237,12 @@ class QualityMonitorCustomMetricArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class QualityMonitorDataClassificationConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    QualityMonitorDataClassificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QualityMonitorDataClassificationConfigArgs:
     def __init__(__self__, *,
@@ -22245,6 +28259,39 @@ class QualityMonitorDataClassificationConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class QualityMonitorInferenceLogArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        model_id_col: pulumi.Input[str]
+        """
+        Column of the model id or version
+        """
+        prediction_col: pulumi.Input[str]
+        """
+        Column of the model prediction
+        """
+        problem_type: pulumi.Input[str]
+        """
+        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        """
+        timestamp_col: pulumi.Input[str]
+        """
+        Column of the timestamp of predictions
+        """
+        label_col: NotRequired[pulumi.Input[str]]
+        """
+        Column of the model label
+        """
+        prediction_proba_col: NotRequired[pulumi.Input[str]]
+        """
+        Column of the model prediction probabilities
+        """
+elif False:
+    QualityMonitorInferenceLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QualityMonitorInferenceLogArgs:
@@ -22360,6 +28407,19 @@ class QualityMonitorInferenceLogArgs:
         pulumi.set(self, "prediction_proba_col", value)
 
 
+if not MYPY:
+    class QualityMonitorNotificationsArgsDict(TypedDict):
+        on_failure: NotRequired[pulumi.Input['QualityMonitorNotificationsOnFailureArgsDict']]
+        """
+        who to send notifications to on monitor failure.
+        """
+        on_new_classification_tag_detected: NotRequired[pulumi.Input['QualityMonitorNotificationsOnNewClassificationTagDetectedArgsDict']]
+        """
+        Who to send notifications to when new data classification tags are detected.
+        """
+elif False:
+    QualityMonitorNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QualityMonitorNotificationsArgs:
     def __init__(__self__, *,
@@ -22399,6 +28459,12 @@ class QualityMonitorNotificationsArgs:
         pulumi.set(self, "on_new_classification_tag_detected", value)
 
 
+if not MYPY:
+    class QualityMonitorNotificationsOnFailureArgsDict(TypedDict):
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    QualityMonitorNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QualityMonitorNotificationsOnFailureArgs:
     def __init__(__self__, *,
@@ -22416,6 +28482,12 @@ class QualityMonitorNotificationsOnFailureArgs:
         pulumi.set(self, "email_addresses", value)
 
 
+if not MYPY:
+    class QualityMonitorNotificationsOnNewClassificationTagDetectedArgsDict(TypedDict):
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    QualityMonitorNotificationsOnNewClassificationTagDetectedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QualityMonitorNotificationsOnNewClassificationTagDetectedArgs:
     def __init__(__self__, *,
@@ -22432,6 +28504,20 @@ class QualityMonitorNotificationsOnNewClassificationTagDetectedArgs:
     def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_addresses", value)
 
+
+if not MYPY:
+    class QualityMonitorScheduleArgsDict(TypedDict):
+        quartz_cron_expression: pulumi.Input[str]
+        """
+        string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        """
+        timezone_id: pulumi.Input[str]
+        """
+        string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        """
+        pause_status: NotRequired[pulumi.Input[str]]
+elif False:
+    QualityMonitorScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QualityMonitorScheduleArgs:
@@ -22482,11 +28568,30 @@ class QualityMonitorScheduleArgs:
         pulumi.set(self, "pause_status", value)
 
 
+if not MYPY:
+    class QualityMonitorSnapshotArgsDict(TypedDict):
+        pass
+elif False:
+    QualityMonitorSnapshotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QualityMonitorSnapshotArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class QualityMonitorTimeSeriesArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        timestamp_col: pulumi.Input[str]
+        """
+        Column of the timestamp of predictions
+        """
+elif False:
+    QualityMonitorTimeSeriesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QualityMonitorTimeSeriesArgs:
@@ -22525,6 +28630,15 @@ class QualityMonitorTimeSeriesArgs:
         pulumi.set(self, "timestamp_col", value)
 
 
+if not MYPY:
+    class RecipientIpAccessListArgsDict(TypedDict):
+        allowed_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed IP Addresses in CIDR notation. Limit of 100.
+        """
+elif False:
+    RecipientIpAccessListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RecipientIpAccessListArgs:
     def __init__(__self__, *,
@@ -22548,6 +28662,15 @@ class RecipientIpAccessListArgs:
         pulumi.set(self, "allowed_ip_addresses", value)
 
 
+if not MYPY:
+    class RecipientPropertiesKvpairsArgsDict(TypedDict):
+        properties: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+        """
+elif False:
+    RecipientPropertiesKvpairsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RecipientPropertiesKvpairsArgs:
     def __init__(__self__, *,
@@ -22569,6 +28692,39 @@ class RecipientPropertiesKvpairsArgs:
     def properties(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class RecipientTokenArgsDict(TypedDict):
+        activation_url: NotRequired[pulumi.Input[str]]
+        """
+        Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+        """
+        created_at: NotRequired[pulumi.Input[int]]
+        """
+        Time at which this recipient was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        Username of recipient creator.
+        """
+        expiration_time: NotRequired[pulumi.Input[int]]
+        """
+        Expiration timestamp of the token in epoch milliseconds.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique ID of the recipient token.
+        """
+        updated_at: NotRequired[pulumi.Input[int]]
+        """
+        Time at which this recipient was updated, in epoch milliseconds.
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        Username of recipient Token updater.
+        """
+elif False:
+    RecipientTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RecipientTokenArgs:
@@ -22689,6 +28845,17 @@ class RecipientTokenArgs:
         pulumi.set(self, "updated_by", value)
 
 
+if not MYPY:
+    class RepoSparseCheckoutArgsDict(TypedDict):
+        patterns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+
+        Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
+        """
+elif False:
+    RepoSparseCheckoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepoSparseCheckoutArgs:
     def __init__(__self__, *,
@@ -22715,6 +28882,15 @@ class RepoSparseCheckoutArgs:
         pulumi.set(self, "patterns", value)
 
 
+if not MYPY:
+    class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        """
+        The restrict workspace admins status for the workspace.
+        """
+elif False:
+    RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs:
     def __init__(__self__, *,
@@ -22736,6 +28912,13 @@ class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs:
     def status(self, value: pulumi.Input[str]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class SecretScopeKeyvaultMetadataArgsDict(TypedDict):
+        dns_name: pulumi.Input[str]
+        resource_id: pulumi.Input[str]
+elif False:
+    SecretScopeKeyvaultMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretScopeKeyvaultMetadataArgs:
@@ -22763,6 +28946,50 @@ class SecretScopeKeyvaultMetadataArgs:
     def resource_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_id", value)
 
+
+if not MYPY:
+    class ShareObjectArgsDict(TypedDict):
+        data_object_type: pulumi.Input[str]
+        """
+        Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        """
+        name: pulumi.Input[str]
+        """
+        Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+        """
+        added_at: NotRequired[pulumi.Input[int]]
+        added_by: NotRequired[pulumi.Input[str]]
+        cdf_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Description about the object.
+        """
+        content: NotRequired[pulumi.Input[str]]
+        history_data_sharing_status: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+
+        To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
+        """
+        partitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgsDict']]]]
+        shared_as: NotRequired[pulumi.Input[str]]
+        """
+        A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+        """
+        start_version: NotRequired[pulumi.Input[int]]
+        """
+        The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+        """
+        string_shared_as: NotRequired[pulumi.Input[str]]
+elif False:
+    ShareObjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ShareObjectArgs:
@@ -22961,6 +29188,15 @@ class ShareObjectArgs:
         pulumi.set(self, "string_shared_as", value)
 
 
+if not MYPY:
+    class ShareObjectPartitionArgsDict(TypedDict):
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgsDict']]]]
+        """
+        The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
+elif False:
+    ShareObjectPartitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ShareObjectPartitionArgs:
     def __init__(__self__, *,
@@ -22983,6 +29219,27 @@ class ShareObjectPartitionArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class ShareObjectPartitionValueArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the partition column.
+        """
+        op: pulumi.Input[str]
+        """
+        The operator to apply for the value, one of: `EQUAL`, `LIKE`
+        """
+        recipient_property_key: NotRequired[pulumi.Input[str]]
+        """
+        The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
+elif False:
+    ShareObjectPartitionValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ShareObjectPartitionValueArgs:
@@ -23052,6 +29309,39 @@ class ShareObjectPartitionValueArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlAlertOptionsArgsDict(TypedDict):
+        column: pulumi.Input[str]
+        """
+        Name of column in the query result to compare in alert evaluation.
+        """
+        op: pulumi.Input[str]
+        """
+        Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+        """
+        value: pulumi.Input[str]
+        """
+        Value used to compare in alert evaluation.
+        """
+        custom_body: NotRequired[pulumi.Input[str]]
+        """
+        Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        """
+        custom_subject: NotRequired[pulumi.Input[str]]
+        """
+        Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        """
+        empty_result_state: NotRequired[pulumi.Input[str]]
+        """
+        State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        """
+        muted: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+        """
+elif False:
+    SqlAlertOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlAlertOptionsArgs:
@@ -23169,6 +29459,16 @@ class SqlAlertOptionsArgs:
         pulumi.set(self, "muted", value)
 
 
+if not MYPY:
+    class SqlEndpointChannelArgsDict(TypedDict):
+        dbsql_version: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        """
+elif False:
+    SqlEndpointChannelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlEndpointChannelArgs:
     def __init__(__self__, *,
@@ -23203,6 +29503,16 @@ class SqlEndpointChannelArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class SqlEndpointHealthArgsDict(TypedDict):
+        details: NotRequired[pulumi.Input[str]]
+        failure_reason: NotRequired[pulumi.Input['SqlEndpointHealthFailureReasonArgsDict']]
+        message: NotRequired[pulumi.Input[str]]
+        status: NotRequired[pulumi.Input[str]]
+        summary: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlEndpointHealthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlEndpointHealthArgs:
@@ -23269,6 +29579,14 @@ class SqlEndpointHealthArgs:
         pulumi.set(self, "summary", value)
 
 
+if not MYPY:
+    class SqlEndpointHealthFailureReasonArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlEndpointHealthFailureReasonArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlEndpointHealthFailureReasonArgs:
     def __init__(__self__, *,
@@ -23309,6 +29627,15 @@ class SqlEndpointHealthFailureReasonArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class SqlEndpointOdbcParamsArgsDict(TypedDict):
+        hostname: NotRequired[pulumi.Input[str]]
+        path: NotRequired[pulumi.Input[str]]
+        port: NotRequired[pulumi.Input[int]]
+        protocol: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlEndpointOdbcParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlEndpointOdbcParamsArgs:
@@ -23363,6 +29690,12 @@ class SqlEndpointOdbcParamsArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class SqlEndpointTagsArgsDict(TypedDict):
+        custom_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['SqlEndpointTagsCustomTagArgsDict']]]]
+elif False:
+    SqlEndpointTagsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlEndpointTagsArgs:
     def __init__(__self__, *,
@@ -23379,6 +29712,13 @@ class SqlEndpointTagsArgs:
     def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlEndpointTagsCustomTagArgs']]]]):
         pulumi.set(self, "custom_tags", value)
 
+
+if not MYPY:
+    class SqlEndpointTagsCustomTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    SqlEndpointTagsCustomTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlEndpointTagsCustomTagArgs:
@@ -23406,6 +29746,16 @@ class SqlEndpointTagsCustomTagArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlPermissionsPrivilegeAssignmentArgsDict(TypedDict):
+        principal: pulumi.Input[str]
+        """
+        `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
+        """
+        privileges: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    SqlPermissionsPrivilegeAssignmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlPermissionsPrivilegeAssignmentArgs:
@@ -23439,6 +29789,35 @@ class SqlPermissionsPrivilegeAssignmentArgs:
     def privileges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "privileges", value)
 
+
+if not MYPY:
+    class SqlQueryParameterArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The literal parameter marker that appears between double curly braces in the query text.
+        Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+
+        For `text`, `number`, `date`, `datetime`, `datetimesec` block
+        """
+        date: NotRequired[pulumi.Input['SqlQueryParameterDateArgsDict']]
+        date_range: NotRequired[pulumi.Input['SqlQueryParameterDateRangeArgsDict']]
+        datetime: NotRequired[pulumi.Input['SqlQueryParameterDatetimeArgsDict']]
+        datetime_range: NotRequired[pulumi.Input['SqlQueryParameterDatetimeRangeArgsDict']]
+        datetimesec: NotRequired[pulumi.Input['SqlQueryParameterDatetimesecArgsDict']]
+        datetimesec_range: NotRequired[pulumi.Input['SqlQueryParameterDatetimesecRangeArgsDict']]
+        enum: NotRequired[pulumi.Input['SqlQueryParameterEnumArgsDict']]
+        number: NotRequired[pulumi.Input['SqlQueryParameterNumberArgsDict']]
+        query: NotRequired[pulumi.Input['SqlQueryParameterQueryArgsDict']]
+        """
+        The text of the query to be run.
+        """
+        text: NotRequired[pulumi.Input['SqlQueryParameterTextArgsDict']]
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The text displayed in a parameter picking widget.
+        """
+elif False:
+    SqlQueryParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterArgs:
@@ -23608,6 +29987,15 @@ class SqlQueryParameterArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDateArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDateArgs:
     def __init__(__self__, *,
@@ -23629,6 +30017,16 @@ class SqlQueryParameterDateArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlQueryParameterDateRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input['SqlQueryParameterDateRangeRangeArgsDict']]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDateRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterDateRangeArgs:
@@ -23665,6 +30063,13 @@ class SqlQueryParameterDateRangeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDateRangeRangeArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        start: pulumi.Input[str]
+elif False:
+    SqlQueryParameterDateRangeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDateRangeRangeArgs:
     def __init__(__self__, *,
@@ -23692,6 +30097,15 @@ class SqlQueryParameterDateRangeRangeArgs:
         pulumi.set(self, "start", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDatetimeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDatetimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDatetimeArgs:
     def __init__(__self__, *,
@@ -23713,6 +30127,16 @@ class SqlQueryParameterDatetimeArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlQueryParameterDatetimeRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input['SqlQueryParameterDatetimeRangeRangeArgsDict']]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDatetimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterDatetimeRangeArgs:
@@ -23749,6 +30173,13 @@ class SqlQueryParameterDatetimeRangeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDatetimeRangeRangeArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        start: pulumi.Input[str]
+elif False:
+    SqlQueryParameterDatetimeRangeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDatetimeRangeRangeArgs:
     def __init__(__self__, *,
@@ -23776,6 +30207,15 @@ class SqlQueryParameterDatetimeRangeRangeArgs:
         pulumi.set(self, "start", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDatetimesecArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDatetimesecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDatetimesecArgs:
     def __init__(__self__, *,
@@ -23797,6 +30237,16 @@ class SqlQueryParameterDatetimesecArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlQueryParameterDatetimesecRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input['SqlQueryParameterDatetimesecRangeRangeArgsDict']]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterDatetimesecRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterDatetimesecRangeArgs:
@@ -23833,6 +30283,13 @@ class SqlQueryParameterDatetimesecRangeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class SqlQueryParameterDatetimesecRangeRangeArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        start: pulumi.Input[str]
+elif False:
+    SqlQueryParameterDatetimesecRangeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterDatetimesecRangeRangeArgs:
     def __init__(__self__, *,
@@ -23859,6 +30316,18 @@ class SqlQueryParameterDatetimesecRangeRangeArgs:
     def start(self, value: pulumi.Input[str]):
         pulumi.set(self, "start", value)
 
+
+if not MYPY:
+    class SqlQueryParameterEnumArgsDict(TypedDict):
+        options: pulumi.Input[Sequence[pulumi.Input[str]]]
+        multiple: NotRequired[pulumi.Input['SqlQueryParameterEnumMultipleArgsDict']]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The default value for this parameter.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    SqlQueryParameterEnumArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterEnumArgs:
@@ -23918,6 +30387,14 @@ class SqlQueryParameterEnumArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class SqlQueryParameterEnumMultipleArgsDict(TypedDict):
+        separator: pulumi.Input[str]
+        prefix: NotRequired[pulumi.Input[str]]
+        suffix: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlQueryParameterEnumMultipleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterEnumMultipleArgs:
     def __init__(__self__, *,
@@ -23958,6 +30435,15 @@ class SqlQueryParameterEnumMultipleArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class SqlQueryParameterNumberArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterNumberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterNumberArgs:
     def __init__(__self__, *,
@@ -23979,6 +30465,18 @@ class SqlQueryParameterNumberArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlQueryParameterQueryArgsDict(TypedDict):
+        query_id: pulumi.Input[str]
+        multiple: NotRequired[pulumi.Input['SqlQueryParameterQueryMultipleArgsDict']]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The default value for this parameter.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    SqlQueryParameterQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryParameterQueryArgs:
@@ -24038,6 +30536,14 @@ class SqlQueryParameterQueryArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class SqlQueryParameterQueryMultipleArgsDict(TypedDict):
+        separator: pulumi.Input[str]
+        prefix: NotRequired[pulumi.Input[str]]
+        suffix: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlQueryParameterQueryMultipleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterQueryMultipleArgs:
     def __init__(__self__, *,
@@ -24078,6 +30584,15 @@ class SqlQueryParameterQueryMultipleArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class SqlQueryParameterTextArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        The default value for this parameter.
+        """
+elif False:
+    SqlQueryParameterTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryParameterTextArgs:
     def __init__(__self__, *,
@@ -24099,6 +30614,14 @@ class SqlQueryParameterTextArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SqlQueryScheduleArgsDict(TypedDict):
+        continuous: NotRequired[pulumi.Input['SqlQueryScheduleContinuousArgsDict']]
+        daily: NotRequired[pulumi.Input['SqlQueryScheduleDailyArgsDict']]
+        weekly: NotRequired[pulumi.Input['SqlQueryScheduleWeeklyArgsDict']]
+elif False:
+    SqlQueryScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryScheduleArgs:
@@ -24141,6 +30664,13 @@ class SqlQueryScheduleArgs:
         pulumi.set(self, "weekly", value)
 
 
+if not MYPY:
+    class SqlQueryScheduleContinuousArgsDict(TypedDict):
+        interval_seconds: pulumi.Input[int]
+        until_date: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlQueryScheduleContinuousArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlQueryScheduleContinuousArgs:
     def __init__(__self__, *,
@@ -24168,6 +30698,14 @@ class SqlQueryScheduleContinuousArgs:
     def until_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "until_date", value)
 
+
+if not MYPY:
+    class SqlQueryScheduleDailyArgsDict(TypedDict):
+        interval_days: pulumi.Input[int]
+        time_of_day: pulumi.Input[str]
+        until_date: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlQueryScheduleDailyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryScheduleDailyArgs:
@@ -24207,6 +30745,15 @@ class SqlQueryScheduleDailyArgs:
     def until_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "until_date", value)
 
+
+if not MYPY:
+    class SqlQueryScheduleWeeklyArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        interval_weeks: pulumi.Input[int]
+        time_of_day: pulumi.Input[str]
+        until_date: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlQueryScheduleWeeklyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlQueryScheduleWeeklyArgs:
@@ -24257,6 +30804,32 @@ class SqlQueryScheduleWeeklyArgs:
     def until_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "until_date", value)
 
+
+if not MYPY:
+    class SqlTableColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        User-visible name of column
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        User-supplied free-form text.
+        """
+        identity: NotRequired[pulumi.Input[str]]
+        """
+        Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        """
+        nullable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether field is nullable (Default: `true`)
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+        """
+        type_json: NotRequired[pulumi.Input[str]]
+elif False:
+    SqlTableColumnArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SqlTableColumnArgs:
@@ -24356,6 +30929,17 @@ class SqlTableColumnArgs:
         pulumi.set(self, "type_json", value)
 
 
+if not MYPY:
+    class SqlWidgetParameterArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        map_to: NotRequired[pulumi.Input[str]]
+        title: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    SqlWidgetParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlWidgetParameterArgs:
     def __init__(__self__, *,
@@ -24431,6 +31015,16 @@ class SqlWidgetParameterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class SqlWidgetPositionArgsDict(TypedDict):
+        size_x: pulumi.Input[int]
+        size_y: pulumi.Input[int]
+        auto_height: NotRequired[pulumi.Input[bool]]
+        pos_x: NotRequired[pulumi.Input[int]]
+        pos_y: NotRequired[pulumi.Input[int]]
+elif False:
+    SqlWidgetPositionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SqlWidgetPositionArgs:
     def __init__(__self__, *,
@@ -24494,6 +31088,19 @@ class SqlWidgetPositionArgs:
         pulumi.set(self, "pos_y", value)
 
 
+if not MYPY:
+    class StorageCredentialAwsIamRoleArgsDict(TypedDict):
+        role_arn: pulumi.Input[str]
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+        """
+        external_id: NotRequired[pulumi.Input[str]]
+        unity_catalog_iam_arn: NotRequired[pulumi.Input[str]]
+elif False:
+    StorageCredentialAwsIamRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StorageCredentialAwsIamRoleArgs:
     def __init__(__self__, *,
@@ -24543,6 +31150,22 @@ class StorageCredentialAwsIamRoleArgs:
     def unity_catalog_iam_arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unity_catalog_iam_arn", value)
 
+
+if not MYPY:
+    class StorageCredentialAzureManagedIdentityArgsDict(TypedDict):
+        access_connector_id: pulumi.Input[str]
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        """
+        credential_id: NotRequired[pulumi.Input[str]]
+        managed_identity_id: NotRequired[pulumi.Input[str]]
+        """
+        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
+        """
+elif False:
+    StorageCredentialAzureManagedIdentityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StorageCredentialAzureManagedIdentityArgs:
@@ -24598,6 +31221,23 @@ class StorageCredentialAzureManagedIdentityArgs:
         pulumi.set(self, "managed_identity_id", value)
 
 
+if not MYPY:
+    class StorageCredentialAzureServicePrincipalArgsDict(TypedDict):
+        application_id: pulumi.Input[str]
+        """
+        The application ID of the application registration within the referenced AAD tenant
+        """
+        client_secret: pulumi.Input[str]
+        """
+        The client secret generated for the above app ID in AAD. **This field is redacted on output**
+        """
+        directory_id: pulumi.Input[str]
+        """
+        The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        """
+elif False:
+    StorageCredentialAzureServicePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StorageCredentialAzureServicePrincipalArgs:
     def __init__(__self__, *,
@@ -24649,6 +31289,25 @@ class StorageCredentialAzureServicePrincipalArgs:
     def directory_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "directory_id", value)
 
+
+if not MYPY:
+    class StorageCredentialCloudflareApiTokenArgsDict(TypedDict):
+        access_key_id: pulumi.Input[str]
+        """
+        R2 API token access key ID
+        """
+        account_id: pulumi.Input[str]
+        """
+        R2 account ID
+        """
+        secret_access_key: pulumi.Input[str]
+        """
+        R2 API token secret access key
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        """
+elif False:
+    StorageCredentialCloudflareApiTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StorageCredentialCloudflareApiTokenArgs:
@@ -24706,6 +31365,18 @@ class StorageCredentialCloudflareApiTokenArgs:
         pulumi.set(self, "secret_access_key", value)
 
 
+if not MYPY:
+    class StorageCredentialDatabricksGcpServiceAccountArgsDict(TypedDict):
+        credential_id: NotRequired[pulumi.Input[str]]
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+        """
+elif False:
+    StorageCredentialDatabricksGcpServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StorageCredentialDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
@@ -24744,6 +31415,19 @@ class StorageCredentialDatabricksGcpServiceAccountArgs:
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class StorageCredentialGcpServiceAccountKeyArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+        """
+        private_key: pulumi.Input[str]
+        private_key_id: pulumi.Input[str]
+elif False:
+    StorageCredentialGcpServiceAccountKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StorageCredentialGcpServiceAccountKeyArgs:
@@ -24792,6 +31476,22 @@ class StorageCredentialGcpServiceAccountKeyArgs:
     def private_key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_key_id", value)
 
+
+if not MYPY:
+    class TableColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        position: pulumi.Input[int]
+        type_name: pulumi.Input[str]
+        type_text: pulumi.Input[str]
+        comment: NotRequired[pulumi.Input[str]]
+        nullable: NotRequired[pulumi.Input[bool]]
+        partition_index: NotRequired[pulumi.Input[int]]
+        type_interval_type: NotRequired[pulumi.Input[str]]
+        type_json: NotRequired[pulumi.Input[str]]
+        type_precision: NotRequired[pulumi.Input[int]]
+        type_scale: NotRequired[pulumi.Input[int]]
+elif False:
+    TableColumnArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableColumnArgs:
@@ -24926,6 +31626,19 @@ class TableColumnArgs:
         pulumi.set(self, "type_scale", value)
 
 
+if not MYPY:
+    class VectorSearchEndpointEndpointStatusArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Additional status message.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+        """
+elif False:
+    VectorSearchEndpointEndpointStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VectorSearchEndpointEndpointStatusArgs:
     def __init__(__self__, *,
@@ -24964,6 +31677,31 @@ class VectorSearchEndpointEndpointStatusArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class VectorSearchIndexDeltaSyncIndexSpecArgsDict(TypedDict):
+        embedding_source_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict']]]]
+        """
+        array of objects representing columns that contain the embedding source.  Each entry consists of:
+        """
+        embedding_vector_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict']]]]
+        embedding_writeback_table: NotRequired[pulumi.Input[str]]
+        pipeline_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the associated Delta Live Table pipeline.
+        """
+        pipeline_type: NotRequired[pulumi.Input[str]]
+        """
+        Pipeline execution mode. Possible values are:
+        * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+        * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+        """
+        source_table: NotRequired[pulumi.Input[str]]
+        """
+        The name of the source table.
+        """
+elif False:
+    VectorSearchIndexDeltaSyncIndexSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VectorSearchIndexDeltaSyncIndexSpecArgs:
@@ -25064,6 +31802,16 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
         pulumi.set(self, "source_table", value)
 
 
+if not MYPY:
+    class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict(TypedDict):
+        embedding_model_endpoint_name: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
+elif False:
+    VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     def __init__(__self__, *,
@@ -25099,6 +31847,16 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict(TypedDict):
+        embedding_dimension: NotRequired[pulumi.Input[int]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
+elif False:
+    VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     def __init__(__self__, *,
@@ -25133,6 +31891,20 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class VectorSearchIndexDirectAccessIndexSpecArgsDict(TypedDict):
+        embedding_source_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict']]]]
+        """
+        array of objects representing columns that contain the embedding source.  Each entry consists of:
+        """
+        embedding_vector_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict']]]]
+        schema_json: NotRequired[pulumi.Input[str]]
+        """
+        The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+        """
+elif False:
+    VectorSearchIndexDirectAccessIndexSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VectorSearchIndexDirectAccessIndexSpecArgs:
@@ -25185,6 +31957,16 @@ class VectorSearchIndexDirectAccessIndexSpecArgs:
         pulumi.set(self, "schema_json", value)
 
 
+if not MYPY:
+    class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict(TypedDict):
+        embedding_model_endpoint_name: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
+elif False:
+    VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     def __init__(__self__, *,
@@ -25220,6 +32002,16 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict(TypedDict):
+        embedding_dimension: NotRequired[pulumi.Input[int]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
+elif False:
+    VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     def __init__(__self__, *,
@@ -25254,6 +32046,27 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class VectorSearchIndexStatusArgsDict(TypedDict):
+        index_url: NotRequired[pulumi.Input[str]]
+        """
+        Index API Url to be used to perform operations on the index
+        """
+        indexed_row_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of rows indexed
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Message associated with the index status
+        """
+        ready: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the index is ready for search
+        """
+elif False:
+    VectorSearchIndexStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VectorSearchIndexStatusArgs:
@@ -25325,6 +32138,101 @@ class VectorSearchIndexStatusArgs:
     def ready(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ready", value)
 
+
+if not MYPY:
+    class GetCatalogCatalogInfoArgsDict(TypedDict):
+        browse_only: NotRequired[bool]
+        catalog_type: NotRequired[str]
+        """
+        Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+        """
+        comment: NotRequired[str]
+        """
+        Free-form text description
+        """
+        connection_name: NotRequired[str]
+        """
+        The name of the connection to an external data source.
+        """
+        created_at: NotRequired[int]
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[str]
+        """
+        Username of catalog creator.
+        """
+        effective_predictive_optimization_flag: NotRequired['GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict']
+        """
+        object describing applied predictive optimization flag.
+        """
+        enable_predictive_optimization: NotRequired[str]
+        """
+        Whether predictive optimization should be enabled for this object and objects under it.
+        """
+        full_name: NotRequired[str]
+        """
+        The full name of the catalog. Corresponds with the name field.
+        """
+        isolation_mode: NotRequired[str]
+        """
+        Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+        """
+        metastore_id: NotRequired[str]
+        """
+        Unique identifier of parent metastore.
+        """
+        name: NotRequired[str]
+        """
+        name of the catalog
+        """
+        options: NotRequired[Mapping[str, str]]
+        """
+        A map of key-value properties attached to the securable.
+        """
+        owner: NotRequired[str]
+        """
+        Current owner of the catalog
+        """
+        properties: NotRequired[Mapping[str, str]]
+        """
+        A map of key-value properties attached to the securable.
+        """
+        provider_name: NotRequired[str]
+        """
+        The name of delta sharing provider.
+        """
+        provisioning_info: NotRequired['GetCatalogCatalogInfoProvisioningInfoArgsDict']
+        securable_kind: NotRequired[str]
+        """
+        Kind of catalog securable.
+        """
+        securable_type: NotRequired[str]
+        """
+        Securable type.
+        """
+        share_name: NotRequired[str]
+        """
+        The name of the share under the share provider.
+        """
+        storage_location: NotRequired[str]
+        """
+        Storage Location URL (full path) for managed tables within catalog.
+        """
+        storage_root: NotRequired[str]
+        """
+        Storage root URL for managed tables within catalog.
+        """
+        updated_at: NotRequired[int]
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
+        updated_by: NotRequired[str]
+        """
+        Username of user who last modified catalog.
+        """
+elif False:
+    GetCatalogCatalogInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetCatalogCatalogInfoArgs:
@@ -25709,6 +32617,14 @@ class GetCatalogCatalogInfoArgs:
         pulumi.set(self, "updated_by", value)
 
 
+if not MYPY:
+    class GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict(TypedDict):
+        value: str
+        inherited_from_name: NotRequired[str]
+        inherited_from_type: NotRequired[str]
+elif False:
+    GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs:
     def __init__(__self__, *,
@@ -25749,6 +32665,12 @@ class GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs:
         pulumi.set(self, "inherited_from_type", value)
 
 
+if not MYPY:
+    class GetCatalogCatalogInfoProvisioningInfoArgsDict(TypedDict):
+        state: NotRequired[str]
+elif False:
+    GetCatalogCatalogInfoProvisioningInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCatalogCatalogInfoProvisioningInfoArgs:
     def __init__(__self__, *,
@@ -25765,6 +32687,110 @@ class GetCatalogCatalogInfoProvisioningInfoArgs:
     def state(self, value: Optional[str]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoArgsDict(TypedDict):
+        autoscale: NotRequired['GetClusterClusterInfoAutoscaleArgsDict']
+        autotermination_minutes: NotRequired[int]
+        """
+        Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+        """
+        aws_attributes: NotRequired['GetClusterClusterInfoAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetClusterClusterInfoAzureAttributesArgsDict']
+        cluster_cores: NotRequired[float]
+        cluster_id: NotRequired[str]
+        """
+        The id of the cluster
+        """
+        cluster_log_conf: NotRequired['GetClusterClusterInfoClusterLogConfArgsDict']
+        cluster_log_status: NotRequired['GetClusterClusterInfoClusterLogStatusArgsDict']
+        cluster_memory_mb: NotRequired[int]
+        cluster_name: NotRequired[str]
+        """
+        The exact name of the cluster to search
+        """
+        cluster_source: NotRequired[str]
+        creator_user_name: NotRequired[str]
+        custom_tags: NotRequired[Mapping[str, str]]
+        """
+        Additional tags for cluster resources.
+        """
+        data_security_mode: NotRequired[str]
+        """
+        Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        """
+        default_tags: NotRequired[Mapping[str, str]]
+        docker_image: NotRequired['GetClusterClusterInfoDockerImageArgsDict']
+        driver: NotRequired['GetClusterClusterInfoDriverArgsDict']
+        driver_instance_pool_id: NotRequired[str]
+        """
+        similar to `instance_pool_id`, but for driver node.
+        """
+        driver_node_type_id: NotRequired[str]
+        """
+        The node type of the Spark driver.
+        """
+        enable_elastic_disk: NotRequired[bool]
+        """
+        Use autoscaling local storage.
+        """
+        enable_local_disk_encryption: NotRequired[bool]
+        """
+        Enable local disk encryption.
+        """
+        executors: NotRequired[Sequence['GetClusterClusterInfoExecutorArgsDict']]
+        gcp_attributes: NotRequired['GetClusterClusterInfoGcpAttributesArgsDict']
+        init_scripts: NotRequired[Sequence['GetClusterClusterInfoInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        """
+        The pool of idle instances the cluster is attached to.
+        """
+        jdbc_port: NotRequired[int]
+        last_restarted_time: NotRequired[int]
+        last_state_loss_time: NotRequired[int]
+        node_type_id: NotRequired[str]
+        """
+        Any supported get_node_type id.
+        """
+        num_workers: NotRequired[int]
+        policy_id: NotRequired[str]
+        """
+        Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        """
+        runtime_engine: NotRequired[str]
+        """
+        The type of runtime of the cluster
+        """
+        single_user_name: NotRequired[str]
+        """
+        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        """
+        spark_conf: NotRequired[Mapping[str, str]]
+        """
+        Map with key-value pairs to fine-tune Spark clusters.
+        """
+        spark_context_id: NotRequired[int]
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        """
+        Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        """
+        spark_version: NotRequired[str]
+        """
+        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        """
+        spec: NotRequired['GetClusterClusterInfoSpecArgsDict']
+        ssh_public_keys: NotRequired[Sequence[str]]
+        """
+        SSH public key contents that will be added to each Spark node in this cluster.
+        """
+        start_time: NotRequired[int]
+        state: NotRequired[str]
+        state_message: NotRequired[str]
+        terminated_time: NotRequired[int]
+        termination_reason: NotRequired['GetClusterClusterInfoTerminationReasonArgsDict']
+        workload_type: NotRequired['GetClusterClusterInfoWorkloadTypeArgsDict']
+elif False:
+    GetClusterClusterInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoArgs:
@@ -26385,6 +33411,13 @@ class GetClusterClusterInfoArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetClusterClusterInfoAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoAutoscaleArgs:
     def __init__(__self__, *,
@@ -26413,6 +33446,21 @@ class GetClusterClusterInfoAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_iops: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_throughput: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoAwsAttributesArgs:
@@ -26539,6 +33587,15 @@ class GetClusterClusterInfoAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        log_analytics_info: NotRequired['GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgsDict']
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetClusterClusterInfoAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoAzureAttributesArgs:
     def __init__(__self__, *,
@@ -26592,6 +33649,13 @@ class GetClusterClusterInfoAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[str]
+        log_analytics_workspace_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -26620,6 +33684,13 @@ class GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[str]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetClusterClusterInfoClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetClusterClusterInfoClusterLogConfS3ArgsDict']
+elif False:
+    GetClusterClusterInfoClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoClusterLogConfArgs:
@@ -26650,6 +33721,12 @@ class GetClusterClusterInfoClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -26665,6 +33742,18 @@ class GetClusterClusterInfoClusterLogConfDbfsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetClusterClusterInfoClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoClusterLogConfS3Args:
@@ -26754,6 +33843,13 @@ class GetClusterClusterInfoClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoClusterLogStatusArgsDict(TypedDict):
+        last_attempted: NotRequired[int]
+        last_exception: NotRequired[str]
+elif False:
+    GetClusterClusterInfoClusterLogStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoClusterLogStatusArgs:
     def __init__(__self__, *,
@@ -26782,6 +33878,13 @@ class GetClusterClusterInfoClusterLogStatusArgs:
     def last_exception(self, value: Optional[str]):
         pulumi.set(self, "last_exception", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoDockerImageArgsDict(TypedDict):
+        basic_auth: NotRequired['GetClusterClusterInfoDockerImageBasicAuthArgsDict']
+        url: NotRequired[str]
+elif False:
+    GetClusterClusterInfoDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoDockerImageArgs:
@@ -26812,6 +33915,13 @@ class GetClusterClusterInfoDockerImageArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoDockerImageBasicAuthArgsDict(TypedDict):
+        password: NotRequired[str]
+        username: NotRequired[str]
+elif False:
+    GetClusterClusterInfoDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -26840,6 +33950,18 @@ class GetClusterClusterInfoDockerImageBasicAuthArgs:
     def username(self, value: Optional[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoDriverArgsDict(TypedDict):
+        host_private_ip: NotRequired[str]
+        instance_id: NotRequired[str]
+        node_aws_attributes: NotRequired['GetClusterClusterInfoDriverNodeAwsAttributesArgsDict']
+        node_id: NotRequired[str]
+        private_ip: NotRequired[str]
+        public_dns: NotRequired[str]
+        start_timestamp: NotRequired[int]
+elif False:
+    GetClusterClusterInfoDriverArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoDriverArgs:
@@ -26930,6 +34052,12 @@ class GetClusterClusterInfoDriverArgs:
         pulumi.set(self, "start_timestamp", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoDriverNodeAwsAttributesArgsDict(TypedDict):
+        is_spot: NotRequired[bool]
+elif False:
+    GetClusterClusterInfoDriverNodeAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoDriverNodeAwsAttributesArgs:
     def __init__(__self__, *,
@@ -26946,6 +34074,18 @@ class GetClusterClusterInfoDriverNodeAwsAttributesArgs:
     def is_spot(self, value: Optional[bool]):
         pulumi.set(self, "is_spot", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoExecutorArgsDict(TypedDict):
+        host_private_ip: NotRequired[str]
+        instance_id: NotRequired[str]
+        node_aws_attributes: NotRequired['GetClusterClusterInfoExecutorNodeAwsAttributesArgsDict']
+        node_id: NotRequired[str]
+        private_ip: NotRequired[str]
+        public_dns: NotRequired[str]
+        start_timestamp: NotRequired[int]
+elif False:
+    GetClusterClusterInfoExecutorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoExecutorArgs:
@@ -27036,6 +34176,12 @@ class GetClusterClusterInfoExecutorArgs:
         pulumi.set(self, "start_timestamp", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoExecutorNodeAwsAttributesArgsDict(TypedDict):
+        is_spot: NotRequired[bool]
+elif False:
+    GetClusterClusterInfoExecutorNodeAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoExecutorNodeAwsAttributesArgs:
     def __init__(__self__, *,
@@ -27052,6 +34198,17 @@ class GetClusterClusterInfoExecutorNodeAwsAttributesArgs:
     def is_spot(self, value: Optional[bool]):
         pulumi.set(self, "is_spot", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoGcpAttributesArgs:
@@ -27129,6 +34286,18 @@ class GetClusterClusterInfoGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetClusterClusterInfoInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetClusterClusterInfoInitScriptDbfsArgsDict']
+        file: NotRequired['GetClusterClusterInfoInitScriptFileArgsDict']
+        gcs: NotRequired['GetClusterClusterInfoInitScriptGcsArgsDict']
+        s3: NotRequired['GetClusterClusterInfoInitScriptS3ArgsDict']
+        volumes: NotRequired['GetClusterClusterInfoInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetClusterClusterInfoInitScriptWorkspaceArgsDict']
+elif False:
+    GetClusterClusterInfoInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptArgs:
@@ -27219,6 +34388,12 @@ class GetClusterClusterInfoInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -27234,6 +34409,12 @@ class GetClusterClusterInfoInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptDbfsArgs:
@@ -27251,6 +34432,12 @@ class GetClusterClusterInfoInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptFileArgs:
     def __init__(__self__, *,
@@ -27267,6 +34454,12 @@ class GetClusterClusterInfoInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -27282,6 +34475,18 @@ class GetClusterClusterInfoInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetClusterClusterInfoInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptS3Args:
@@ -27371,6 +34576,12 @@ class GetClusterClusterInfoInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -27387,6 +34598,12 @@ class GetClusterClusterInfoInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -27402,6 +34619,95 @@ class GetClusterClusterInfoInitScriptWorkspaceArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecArgsDict(TypedDict):
+        cluster_id: str
+        """
+        The id of the cluster
+        """
+        driver_instance_pool_id: str
+        """
+        similar to `instance_pool_id`, but for driver node.
+        """
+        driver_node_type_id: str
+        """
+        The node type of the Spark driver.
+        """
+        enable_elastic_disk: bool
+        """
+        Use autoscaling local storage.
+        """
+        enable_local_disk_encryption: bool
+        """
+        Enable local disk encryption.
+        """
+        node_type_id: str
+        """
+        Any supported get_node_type id.
+        """
+        spark_version: str
+        """
+        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        """
+        apply_policy_default_values: NotRequired[bool]
+        autoscale: NotRequired['GetClusterClusterInfoSpecAutoscaleArgsDict']
+        aws_attributes: NotRequired['GetClusterClusterInfoSpecAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetClusterClusterInfoSpecAzureAttributesArgsDict']
+        cluster_log_conf: NotRequired['GetClusterClusterInfoSpecClusterLogConfArgsDict']
+        cluster_mount_infos: NotRequired[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgsDict']]
+        cluster_name: NotRequired[str]
+        """
+        The exact name of the cluster to search
+        """
+        custom_tags: NotRequired[Mapping[str, str]]
+        """
+        Additional tags for cluster resources.
+        """
+        data_security_mode: NotRequired[str]
+        """
+        Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        """
+        docker_image: NotRequired['GetClusterClusterInfoSpecDockerImageArgsDict']
+        gcp_attributes: NotRequired['GetClusterClusterInfoSpecGcpAttributesArgsDict']
+        idempotency_token: NotRequired[str]
+        """
+        An optional token to guarantee the idempotency of cluster creation requests.
+        """
+        init_scripts: NotRequired[Sequence['GetClusterClusterInfoSpecInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        """
+        The pool of idle instances the cluster is attached to.
+        """
+        libraries: NotRequired[Sequence['GetClusterClusterInfoSpecLibraryArgsDict']]
+        num_workers: NotRequired[int]
+        policy_id: NotRequired[str]
+        """
+        Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        """
+        runtime_engine: NotRequired[str]
+        """
+        The type of runtime of the cluster
+        """
+        single_user_name: NotRequired[str]
+        """
+        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        """
+        spark_conf: NotRequired[Mapping[str, str]]
+        """
+        Map with key-value pairs to fine-tune Spark clusters.
+        """
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        """
+        Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        """
+        ssh_public_keys: NotRequired[Sequence[str]]
+        """
+        SSH public key contents that will be added to each Spark node in this cluster.
+        """
+        workload_type: NotRequired['GetClusterClusterInfoSpecWorkloadTypeArgsDict']
+elif False:
+    GetClusterClusterInfoSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecArgs:
@@ -27835,6 +35141,13 @@ class GetClusterClusterInfoSpecArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetClusterClusterInfoSpecAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecAutoscaleArgs:
     def __init__(__self__, *,
@@ -27863,6 +35176,21 @@ class GetClusterClusterInfoSpecAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_iops: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_throughput: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecAwsAttributesArgs:
@@ -27989,6 +35317,15 @@ class GetClusterClusterInfoSpecAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        log_analytics_info: NotRequired['GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgsDict']
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetClusterClusterInfoSpecAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecAzureAttributesArgs:
     def __init__(__self__, *,
@@ -28042,6 +35379,13 @@ class GetClusterClusterInfoSpecAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgsDict(TypedDict):
+        log_analytics_primary_key: NotRequired[str]
+        log_analytics_workspace_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs:
     def __init__(__self__, *,
@@ -28070,6 +35414,13 @@ class GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs:
     def log_analytics_workspace_id(self, value: Optional[str]):
         pulumi.set(self, "log_analytics_workspace_id", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetClusterClusterInfoSpecClusterLogConfS3ArgsDict']
+elif False:
+    GetClusterClusterInfoSpecClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecClusterLogConfArgs:
@@ -28100,6 +35451,12 @@ class GetClusterClusterInfoSpecClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -28115,6 +35472,18 @@ class GetClusterClusterInfoSpecClusterLogConfDbfsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecClusterLogConfS3Args:
@@ -28204,6 +35573,14 @@ class GetClusterClusterInfoSpecClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: str
+        network_filesystem_info: 'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgsDict'
+        remote_mount_dir_path: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -28243,6 +35620,13 @@ class GetClusterClusterInfoSpecClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: str
+        mount_options: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -28270,6 +35654,13 @@ class GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs:
     def mount_options(self, value: Optional[str]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetClusterClusterInfoSpecDockerImageBasicAuthArgsDict']
+elif False:
+    GetClusterClusterInfoSpecDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecDockerImageArgs:
@@ -28299,6 +35690,13 @@ class GetClusterClusterInfoSpecDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetClusterClusterInfoSpecDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -28325,6 +35723,17 @@ class GetClusterClusterInfoSpecDockerImageBasicAuthArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecGcpAttributesArgs:
@@ -28402,6 +35811,18 @@ class GetClusterClusterInfoSpecGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetClusterClusterInfoSpecInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetClusterClusterInfoSpecInitScriptDbfsArgsDict']
+        file: NotRequired['GetClusterClusterInfoSpecInitScriptFileArgsDict']
+        gcs: NotRequired['GetClusterClusterInfoSpecInitScriptGcsArgsDict']
+        s3: NotRequired['GetClusterClusterInfoSpecInitScriptS3ArgsDict']
+        volumes: NotRequired['GetClusterClusterInfoSpecInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetClusterClusterInfoSpecInitScriptWorkspaceArgsDict']
+elif False:
+    GetClusterClusterInfoSpecInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptArgs:
@@ -28496,6 +35917,12 @@ class GetClusterClusterInfoSpecInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -28511,6 +35938,12 @@ class GetClusterClusterInfoSpecInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptDbfsArgs:
@@ -28528,6 +35961,12 @@ class GetClusterClusterInfoSpecInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptFileArgs:
     def __init__(__self__, *,
@@ -28544,6 +35983,12 @@ class GetClusterClusterInfoSpecInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -28559,6 +36004,18 @@ class GetClusterClusterInfoSpecInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptS3Args:
@@ -28648,6 +36105,12 @@ class GetClusterClusterInfoSpecInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -28664,6 +36127,12 @@ class GetClusterClusterInfoSpecInitScriptVolumesArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecInitScriptWorkspaceArgs:
     def __init__(__self__, *,
@@ -28679,6 +36148,18 @@ class GetClusterClusterInfoSpecInitScriptWorkspaceArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecLibraryArgsDict(TypedDict):
+        cran: NotRequired['GetClusterClusterInfoSpecLibraryCranArgsDict']
+        egg: NotRequired[str]
+        jar: NotRequired[str]
+        maven: NotRequired['GetClusterClusterInfoSpecLibraryMavenArgsDict']
+        pypi: NotRequired['GetClusterClusterInfoSpecLibraryPypiArgsDict']
+        requirements: NotRequired[str]
+        whl: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecLibraryArgs:
@@ -28769,6 +36250,13 @@ class GetClusterClusterInfoSpecLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecLibraryCranArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecLibraryCranArgs:
     def __init__(__self__, *,
@@ -28796,6 +36284,14 @@ class GetClusterClusterInfoSpecLibraryCranArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecLibraryMavenArgsDict(TypedDict):
+        coordinates: str
+        exclusions: NotRequired[Sequence[str]]
+        repo: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecLibraryMavenArgs:
@@ -28837,6 +36333,13 @@ class GetClusterClusterInfoSpecLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecLibraryPypiArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetClusterClusterInfoSpecLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecLibraryPypiArgs:
     def __init__(__self__, *,
@@ -28865,6 +36368,12 @@ class GetClusterClusterInfoSpecLibraryPypiArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoSpecWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict'
+elif False:
+    GetClusterClusterInfoSpecWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoSpecWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -28880,6 +36389,13 @@ class GetClusterClusterInfoSpecWorkloadTypeArgs:
     def clients(self, value: 'GetClusterClusterInfoSpecWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoSpecWorkloadTypeClientsArgs:
@@ -28909,6 +36425,14 @@ class GetClusterClusterInfoSpecWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoTerminationReasonArgsDict(TypedDict):
+        code: NotRequired[str]
+        parameters: NotRequired[Mapping[str, str]]
+        type: NotRequired[str]
+elif False:
+    GetClusterClusterInfoTerminationReasonArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoTerminationReasonArgs:
@@ -28951,6 +36475,12 @@ class GetClusterClusterInfoTerminationReasonArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GetClusterClusterInfoWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetClusterClusterInfoWorkloadTypeClientsArgsDict'
+elif False:
+    GetClusterClusterInfoWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetClusterClusterInfoWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -28966,6 +36496,13 @@ class GetClusterClusterInfoWorkloadTypeArgs:
     def clients(self, value: 'GetClusterClusterInfoWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetClusterClusterInfoWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetClusterClusterInfoWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClusterClusterInfoWorkloadTypeClientsArgs:
@@ -28995,6 +36532,27 @@ class GetClusterClusterInfoWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetClustersFilterByArgsDict(TypedDict):
+        cluster_sources: NotRequired[Sequence[str]]
+        """
+        List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+        """
+        cluster_states: NotRequired[Sequence[str]]
+        """
+        List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+        """
+        is_pinned: NotRequired[bool]
+        """
+        Whether to filter by pinned clusters.
+        """
+        policy_id: NotRequired[str]
+        """
+        Filter by ClusterPolicy id.
+        """
+elif False:
+    GetClustersFilterByArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetClustersFilterByArgs:
@@ -29066,6 +36624,81 @@ class GetClustersFilterByArgs:
     def policy_id(self, value: Optional[str]):
         pulumi.set(self, "policy_id", value)
 
+
+if not MYPY:
+    class GetCurrentMetastoreMetastoreInfoArgsDict(TypedDict):
+        cloud: NotRequired[str]
+        created_at: NotRequired[int]
+        """
+        Timestamp (in milliseconds) when the current metastore was created.
+        """
+        created_by: NotRequired[str]
+        """
+        the ID of the identity that created the current metastore.
+        """
+        default_data_access_config_id: NotRequired[str]
+        """
+        the ID of the default data access configuration.
+        """
+        delta_sharing_organization_name: NotRequired[str]
+        """
+        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        """
+        delta_sharing_recipient_token_lifetime_in_seconds: NotRequired[int]
+        """
+        the expiration duration in seconds on recipient data access tokens.
+        """
+        delta_sharing_scope: NotRequired[str]
+        """
+        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        """
+        external_access_enabled: NotRequired[bool]
+        global_metastore_id: NotRequired[str]
+        """
+        Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+        """
+        metastore_id: NotRequired[str]
+        """
+        Metastore ID.
+        """
+        name: NotRequired[str]
+        """
+        Name of metastore.
+        """
+        owner: NotRequired[str]
+        """
+        Username/group name/sp application_id of the metastore owner.
+        """
+        privilege_model_version: NotRequired[str]
+        """
+        the version of the privilege model used by the metastore.
+        """
+        region: NotRequired[str]
+        """
+        (Mandatory for account-level) The region of the metastore.
+        """
+        storage_root: NotRequired[str]
+        """
+        Path on cloud storage account, where managed `Table` are stored.
+        """
+        storage_root_credential_id: NotRequired[str]
+        """
+        ID of a storage credential used for the `storage_root`.
+        """
+        storage_root_credential_name: NotRequired[str]
+        """
+        Name of a storage credential used for the `storage_root`.
+        """
+        updated_at: NotRequired[int]
+        """
+        Timestamp (in milliseconds) when the current metastore was updated.
+        """
+        updated_by: NotRequired[str]
+        """
+        the ID of the identity that updated the current metastore.
+        """
+elif False:
+    GetCurrentMetastoreMetastoreInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetCurrentMetastoreMetastoreInfoArgs:
@@ -29370,6 +37003,70 @@ class GetCurrentMetastoreMetastoreInfoArgs:
         pulumi.set(self, "updated_by", value)
 
 
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoArgsDict(TypedDict):
+        access_point: NotRequired[str]
+        """
+        The ARN of the s3 access point to use with the external location (AWS).
+        """
+        browse_only: NotRequired[bool]
+        comment: NotRequired[str]
+        """
+        User-supplied comment.
+        """
+        created_at: NotRequired[int]
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[str]
+        """
+        Username of catalog creator.
+        """
+        credential_id: NotRequired[str]
+        """
+        Unique ID of storage credential.
+        """
+        credential_name: NotRequired[str]
+        """
+        Name of the StorageCredential to use with this external location.
+        """
+        encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict']
+        """
+        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        """
+        fallback: NotRequired[bool]
+        isolation_mode: NotRequired[str]
+        metastore_id: NotRequired[str]
+        """
+        Unique identifier of the parent Metastore.
+        """
+        name: NotRequired[str]
+        """
+        The name of the external location
+        """
+        owner: NotRequired[str]
+        """
+        Username/groupname/sp application_id of the external location owner.
+        """
+        read_only: NotRequired[bool]
+        """
+        Indicates whether the external location is read-only.
+        """
+        updated_at: NotRequired[int]
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
+        updated_by: NotRequired[str]
+        """
+        Username of user who last modified catalog.
+        """
+        url: NotRequired[str]
+        """
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        """
+elif False:
+    GetExternalLocationExternalLocationInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetExternalLocationExternalLocationInfoArgs:
     def __init__(__self__, *,
@@ -29637,6 +37334,12 @@ class GetExternalLocationExternalLocationInfoArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict(TypedDict):
+        sse_encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict']
+elif False:
+    GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs:
     def __init__(__self__, *,
@@ -29653,6 +37356,13 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs:
     def sse_encryption_details(self, value: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs']):
         pulumi.set(self, "sse_encryption_details", value)
 
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
+        algorithm: NotRequired[str]
+        aws_kms_key_arn: NotRequired[str]
+elif False:
+    GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs:
@@ -29682,6 +37392,29 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     def aws_kms_key_arn(self, value: Optional[str]):
         pulumi.set(self, "aws_kms_key_arn", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoArgsDict(TypedDict):
+        default_tags: Mapping[str, str]
+        idle_instance_autotermination_minutes: int
+        instance_pool_id: str
+        instance_pool_name: str
+        aws_attributes: NotRequired['GetInstancePoolPoolInfoAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetInstancePoolPoolInfoAzureAttributesArgsDict']
+        custom_tags: NotRequired[Mapping[str, str]]
+        disk_spec: NotRequired['GetInstancePoolPoolInfoDiskSpecArgsDict']
+        enable_elastic_disk: NotRequired[bool]
+        gcp_attributes: NotRequired['GetInstancePoolPoolInfoGcpAttributesArgsDict']
+        instance_pool_fleet_attributes: NotRequired[Sequence['GetInstancePoolPoolInfoInstancePoolFleetAttributeArgsDict']]
+        max_capacity: NotRequired[int]
+        min_idle_instances: NotRequired[int]
+        node_type_id: NotRequired[str]
+        preloaded_docker_images: NotRequired[Sequence['GetInstancePoolPoolInfoPreloadedDockerImageArgsDict']]
+        preloaded_spark_versions: NotRequired[Sequence[str]]
+        state: NotRequired[str]
+        stats: NotRequired['GetInstancePoolPoolInfoStatsArgsDict']
+elif False:
+    GetInstancePoolPoolInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoArgs:
@@ -29900,6 +37633,14 @@ class GetInstancePoolPoolInfoArgs:
         pulumi.set(self, "stats", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoAwsAttributesArgsDict(TypedDict):
+        zone_id: str
+        availability: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+elif False:
+    GetInstancePoolPoolInfoAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoAwsAttributesArgs:
     def __init__(__self__, *,
@@ -29940,6 +37681,13 @@ class GetInstancePoolPoolInfoAwsAttributesArgs:
         pulumi.set(self, "spot_bid_price_percent", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetInstancePoolPoolInfoAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoAzureAttributesArgs:
     def __init__(__self__, *,
@@ -29968,6 +37716,14 @@ class GetInstancePoolPoolInfoAzureAttributesArgs:
     def spot_bid_max_price(self, value: Optional[float]):
         pulumi.set(self, "spot_bid_max_price", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoDiskSpecArgsDict(TypedDict):
+        disk_count: NotRequired[int]
+        disk_size: NotRequired[int]
+        disk_type: NotRequired['GetInstancePoolPoolInfoDiskSpecDiskTypeArgsDict']
+elif False:
+    GetInstancePoolPoolInfoDiskSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoDiskSpecArgs:
@@ -30010,6 +37766,13 @@ class GetInstancePoolPoolInfoDiskSpecArgs:
         pulumi.set(self, "disk_type", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoDiskSpecDiskTypeArgsDict(TypedDict):
+        azure_disk_volume_type: NotRequired[str]
+        ebs_volume_type: NotRequired[str]
+elif False:
+    GetInstancePoolPoolInfoDiskSpecDiskTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoDiskSpecDiskTypeArgs:
     def __init__(__self__, *,
@@ -30038,6 +37801,14 @@ class GetInstancePoolPoolInfoDiskSpecDiskTypeArgs:
     def ebs_volume_type(self, value: Optional[str]):
         pulumi.set(self, "ebs_volume_type", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoGcpAttributesArgsDict(TypedDict):
+        local_ssd_count: int
+        zone_id: str
+        gcp_availability: NotRequired[str]
+elif False:
+    GetInstancePoolPoolInfoGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoGcpAttributesArgs:
@@ -30077,6 +37848,14 @@ class GetInstancePoolPoolInfoGcpAttributesArgs:
     def gcp_availability(self, value: Optional[str]):
         pulumi.set(self, "gcp_availability", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoInstancePoolFleetAttributeArgsDict(TypedDict):
+        launch_template_overrides: Sequence['GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgsDict']
+        fleet_on_demand_option: NotRequired['GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgsDict']
+        fleet_spot_option: NotRequired['GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgsDict']
+elif False:
+    GetInstancePoolPoolInfoInstancePoolFleetAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs:
@@ -30118,6 +37897,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs:
         pulumi.set(self, "fleet_spot_option", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgsDict(TypedDict):
+        allocation_strategy: str
+        instance_pools_to_use_count: NotRequired[int]
+elif False:
+    GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs:
     def __init__(__self__, *,
@@ -30145,6 +37931,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs:
     def instance_pools_to_use_count(self, value: Optional[int]):
         pulumi.set(self, "instance_pools_to_use_count", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgsDict(TypedDict):
+        allocation_strategy: str
+        instance_pools_to_use_count: NotRequired[int]
+elif False:
+    GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs:
@@ -30174,6 +37967,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs:
         pulumi.set(self, "instance_pools_to_use_count", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgsDict(TypedDict):
+        availability_zone: str
+        instance_type: str
+elif False:
+    GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs:
     def __init__(__self__, *,
@@ -30200,6 +38000,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArg
     def instance_type(self, value: str):
         pulumi.set(self, "instance_type", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoPreloadedDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgsDict']
+elif False:
+    GetInstancePoolPoolInfoPreloadedDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoPreloadedDockerImageArgs:
@@ -30229,6 +38036,13 @@ class GetInstancePoolPoolInfoPreloadedDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -30255,6 +38069,15 @@ class GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetInstancePoolPoolInfoStatsArgsDict(TypedDict):
+        idle_count: NotRequired[int]
+        pending_idle_count: NotRequired[int]
+        pending_used_count: NotRequired[int]
+        used_count: NotRequired[int]
+elif False:
+    GetInstancePoolPoolInfoStatsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancePoolPoolInfoStatsArgs:
@@ -30308,6 +38131,27 @@ class GetInstancePoolPoolInfoStatsArgs:
     def used_count(self, value: Optional[int]):
         pulumi.set(self, "used_count", value)
 
+
+if not MYPY:
+    class GetInstanceProfilesInstanceProfileArgsDict(TypedDict):
+        arn: str
+        """
+        ARN of the instance profile.
+        """
+        is_meta: bool
+        """
+        Whether the instance profile is a meta instance profile or not.
+        """
+        name: str
+        """
+        Name of the instance profile.
+        """
+        role_arn: str
+        """
+        ARN of the role attached to the instance profile.
+        """
+elif False:
+    GetInstanceProfilesInstanceProfileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceProfilesInstanceProfileArgs:
@@ -30376,6 +38220,16 @@ class GetInstanceProfilesInstanceProfileArgs:
         pulumi.set(self, "role_arn", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsArgsDict(TypedDict):
+        run_as_user_name: str
+        created_time: NotRequired[int]
+        creator_user_name: NotRequired[str]
+        job_id: NotRequired[int]
+        settings: NotRequired['GetJobJobSettingsSettingsArgsDict']
+elif False:
+    GetJobJobSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsArgs:
     def __init__(__self__, *,
@@ -30439,6 +38293,50 @@ class GetJobJobSettingsArgs:
     def settings(self, value: Optional['GetJobJobSettingsSettingsArgs']):
         pulumi.set(self, "settings", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsArgsDict(TypedDict):
+        format: str
+        run_as: 'GetJobJobSettingsSettingsRunAsArgsDict'
+        continuous: NotRequired['GetJobJobSettingsSettingsContinuousArgsDict']
+        dbt_task: NotRequired['GetJobJobSettingsSettingsDbtTaskArgsDict']
+        deployment: NotRequired['GetJobJobSettingsSettingsDeploymentArgsDict']
+        description: NotRequired[str]
+        edit_mode: NotRequired[str]
+        email_notifications: NotRequired['GetJobJobSettingsSettingsEmailNotificationsArgsDict']
+        environments: NotRequired[Sequence['GetJobJobSettingsSettingsEnvironmentArgsDict']]
+        existing_cluster_id: NotRequired[str]
+        git_source: NotRequired['GetJobJobSettingsSettingsGitSourceArgsDict']
+        health: NotRequired['GetJobJobSettingsSettingsHealthArgsDict']
+        job_clusters: NotRequired[Sequence['GetJobJobSettingsSettingsJobClusterArgsDict']]
+        libraries: NotRequired[Sequence['GetJobJobSettingsSettingsLibraryArgsDict']]
+        max_concurrent_runs: NotRequired[int]
+        max_retries: NotRequired[int]
+        min_retry_interval_millis: NotRequired[int]
+        name: NotRequired[str]
+        """
+        the job name of Job if the resource was matched by id.
+        """
+        new_cluster: NotRequired['GetJobJobSettingsSettingsNewClusterArgsDict']
+        notebook_task: NotRequired['GetJobJobSettingsSettingsNotebookTaskArgsDict']
+        notification_settings: NotRequired['GetJobJobSettingsSettingsNotificationSettingsArgsDict']
+        parameters: NotRequired[Sequence['GetJobJobSettingsSettingsParameterArgsDict']]
+        pipeline_task: NotRequired['GetJobJobSettingsSettingsPipelineTaskArgsDict']
+        python_wheel_task: NotRequired['GetJobJobSettingsSettingsPythonWheelTaskArgsDict']
+        queue: NotRequired['GetJobJobSettingsSettingsQueueArgsDict']
+        retry_on_timeout: NotRequired[bool]
+        run_job_task: NotRequired['GetJobJobSettingsSettingsRunJobTaskArgsDict']
+        schedule: NotRequired['GetJobJobSettingsSettingsScheduleArgsDict']
+        spark_jar_task: NotRequired['GetJobJobSettingsSettingsSparkJarTaskArgsDict']
+        spark_python_task: NotRequired['GetJobJobSettingsSettingsSparkPythonTaskArgsDict']
+        spark_submit_task: NotRequired['GetJobJobSettingsSettingsSparkSubmitTaskArgsDict']
+        tags: NotRequired[Mapping[str, str]]
+        tasks: NotRequired[Sequence['GetJobJobSettingsSettingsTaskArgsDict']]
+        timeout_seconds: NotRequired[int]
+        trigger: NotRequired['GetJobJobSettingsSettingsTriggerArgsDict']
+        webhook_notifications: NotRequired['GetJobJobSettingsSettingsWebhookNotificationsArgsDict']
+elif False:
+    GetJobJobSettingsSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsArgs:
@@ -30881,6 +38779,12 @@ class GetJobJobSettingsSettingsArgs:
         pulumi.set(self, "webhook_notifications", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsContinuousArgsDict(TypedDict):
+        pause_status: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsContinuousArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsContinuousArgs:
     def __init__(__self__, *,
@@ -30897,6 +38801,18 @@ class GetJobJobSettingsSettingsContinuousArgs:
     def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsDbtTaskArgsDict(TypedDict):
+        commands: Sequence[str]
+        catalog: NotRequired[str]
+        profiles_directory: NotRequired[str]
+        project_directory: NotRequired[str]
+        schema: NotRequired[str]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsDbtTaskArgs:
@@ -30986,6 +38902,13 @@ class GetJobJobSettingsSettingsDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsDeploymentArgsDict(TypedDict):
+        kind: str
+        metadata_file_path: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsDeploymentArgs:
     def __init__(__self__, *,
@@ -31013,6 +38936,17 @@ class GetJobJobSettingsSettingsDeploymentArgs:
     def metadata_file_path(self, value: Optional[str]):
         pulumi.set(self, "metadata_file_path", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[bool]
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence[str]]
+        on_failures: NotRequired[Sequence[str]]
+        on_starts: NotRequired[Sequence[str]]
+        on_streaming_backlog_exceededs: NotRequired[Sequence[str]]
+        on_successes: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsEmailNotificationsArgs:
@@ -31091,6 +39025,13 @@ class GetJobJobSettingsSettingsEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsEnvironmentArgsDict(TypedDict):
+        environment_key: str
+        spec: NotRequired['GetJobJobSettingsSettingsEnvironmentSpecArgsDict']
+elif False:
+    GetJobJobSettingsSettingsEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsEnvironmentArgs:
     def __init__(__self__, *,
@@ -31119,6 +39060,13 @@ class GetJobJobSettingsSettingsEnvironmentArgs:
         pulumi.set(self, "spec", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsEnvironmentSpecArgsDict(TypedDict):
+        client: str
+        dependencies: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     def __init__(__self__, *,
@@ -31146,6 +39094,17 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     def dependencies(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "dependencies", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsGitSourceArgsDict(TypedDict):
+        url: str
+        branch: NotRequired[str]
+        commit: NotRequired[str]
+        job_source: NotRequired['GetJobJobSettingsSettingsGitSourceJobSourceArgsDict']
+        provider: NotRequired[str]
+        tag: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsGitSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsGitSourceArgs:
@@ -31223,6 +39182,14 @@ class GetJobJobSettingsSettingsGitSourceArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsGitSourceJobSourceArgsDict(TypedDict):
+        import_from_git_branch: str
+        job_config_path: str
+        dirty_state: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsGitSourceJobSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsGitSourceJobSourceArgs:
     def __init__(__self__, *,
@@ -31262,6 +39229,12 @@ class GetJobJobSettingsSettingsGitSourceJobSourceArgs:
         pulumi.set(self, "dirty_state", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsHealthArgsDict(TypedDict):
+        rules: Sequence['GetJobJobSettingsSettingsHealthRuleArgsDict']
+elif False:
+    GetJobJobSettingsSettingsHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsHealthArgs:
     def __init__(__self__, *,
@@ -31277,6 +39250,14 @@ class GetJobJobSettingsSettingsHealthArgs:
     def rules(self, value: Sequence['GetJobJobSettingsSettingsHealthRuleArgs']):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsHealthRuleArgsDict(TypedDict):
+        metric: str
+        op: str
+        value: int
+elif False:
+    GetJobJobSettingsSettingsHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsHealthRuleArgs:
@@ -31316,6 +39297,13 @@ class GetJobJobSettingsSettingsHealthRuleArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterArgsDict(TypedDict):
+        job_cluster_key: str
+        new_cluster: 'GetJobJobSettingsSettingsJobClusterNewClusterArgsDict'
+elif False:
+    GetJobJobSettingsSettingsJobClusterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterArgs:
     def __init__(__self__, *,
@@ -31342,6 +39330,41 @@ class GetJobJobSettingsSettingsJobClusterArgs:
     def new_cluster(self, value: 'GetJobJobSettingsSettingsJobClusterNewClusterArgs'):
         pulumi.set(self, "new_cluster", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterArgsDict(TypedDict):
+        driver_instance_pool_id: str
+        driver_node_type_id: str
+        enable_elastic_disk: bool
+        enable_local_disk_encryption: bool
+        node_type_id: str
+        num_workers: int
+        spark_version: str
+        apply_policy_default_values: NotRequired[bool]
+        autoscale: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgsDict']
+        autotermination_minutes: NotRequired[int]
+        aws_attributes: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgsDict']
+        cluster_id: NotRequired[str]
+        cluster_log_conf: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgsDict']
+        cluster_mount_infos: NotRequired[Sequence['GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgsDict']]
+        cluster_name: NotRequired[str]
+        custom_tags: NotRequired[Mapping[str, str]]
+        data_security_mode: NotRequired[str]
+        docker_image: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgsDict']
+        gcp_attributes: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgsDict']
+        idempotency_token: NotRequired[str]
+        init_scripts: NotRequired[Sequence['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        policy_id: NotRequired[str]
+        runtime_engine: NotRequired[str]
+        single_user_name: NotRequired[str]
+        spark_conf: NotRequired[Mapping[str, str]]
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        ssh_public_keys: NotRequired[Sequence[str]]
+        workload_type: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgsDict']
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
@@ -31701,6 +39724,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -31729,6 +39759,19 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs:
@@ -31831,6 +39874,14 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -31872,6 +39923,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3ArgsDict']
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
@@ -31901,6 +39959,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -31916,6 +39980,18 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args:
@@ -32005,6 +40081,14 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: str
+        network_filesystem_info: 'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict'
+        remote_mount_dir_path: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -32044,6 +40128,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: str
+        mount_options: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -32071,6 +40162,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesy
     def mount_options(self, value: Optional[str]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgsDict']
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs:
@@ -32100,6 +40198,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -32126,6 +40231,17 @@ class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs:
@@ -32203,6 +40319,18 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgsDict']
+        gcs: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3ArgsDict']
+        volumes: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgsDict']
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
@@ -32293,6 +40421,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -32308,6 +40442,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs:
@@ -32325,6 +40465,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -32341,6 +40487,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -32356,6 +40508,18 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args:
@@ -32445,6 +40609,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -32460,6 +40630,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs:
@@ -32477,6 +40653,12 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgsDict'
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -32492,6 +40674,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs:
     def clients(self, value: 'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs:
@@ -32521,6 +40710,18 @@ class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsLibraryArgsDict(TypedDict):
+        cran: NotRequired['GetJobJobSettingsSettingsLibraryCranArgsDict']
+        egg: NotRequired[str]
+        jar: NotRequired[str]
+        maven: NotRequired['GetJobJobSettingsSettingsLibraryMavenArgsDict']
+        pypi: NotRequired['GetJobJobSettingsSettingsLibraryPypiArgsDict']
+        requirements: NotRequired[str]
+        whl: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsLibraryArgs:
@@ -32611,6 +40812,13 @@ class GetJobJobSettingsSettingsLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsLibraryCranArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsLibraryCranArgs:
     def __init__(__self__, *,
@@ -32638,6 +40846,14 @@ class GetJobJobSettingsSettingsLibraryCranArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsLibraryMavenArgsDict(TypedDict):
+        coordinates: str
+        exclusions: NotRequired[Sequence[str]]
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsLibraryMavenArgs:
@@ -32679,6 +40895,13 @@ class GetJobJobSettingsSettingsLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsLibraryPypiArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsLibraryPypiArgs:
     def __init__(__self__, *,
@@ -32706,6 +40929,41 @@ class GetJobJobSettingsSettingsLibraryPypiArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterArgsDict(TypedDict):
+        driver_instance_pool_id: str
+        driver_node_type_id: str
+        enable_elastic_disk: bool
+        enable_local_disk_encryption: bool
+        node_type_id: str
+        num_workers: int
+        spark_version: str
+        apply_policy_default_values: NotRequired[bool]
+        autoscale: NotRequired['GetJobJobSettingsSettingsNewClusterAutoscaleArgsDict']
+        autotermination_minutes: NotRequired[int]
+        aws_attributes: NotRequired['GetJobJobSettingsSettingsNewClusterAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetJobJobSettingsSettingsNewClusterAzureAttributesArgsDict']
+        cluster_id: NotRequired[str]
+        cluster_log_conf: NotRequired['GetJobJobSettingsSettingsNewClusterClusterLogConfArgsDict']
+        cluster_mount_infos: NotRequired[Sequence['GetJobJobSettingsSettingsNewClusterClusterMountInfoArgsDict']]
+        cluster_name: NotRequired[str]
+        custom_tags: NotRequired[Mapping[str, str]]
+        data_security_mode: NotRequired[str]
+        docker_image: NotRequired['GetJobJobSettingsSettingsNewClusterDockerImageArgsDict']
+        gcp_attributes: NotRequired['GetJobJobSettingsSettingsNewClusterGcpAttributesArgsDict']
+        idempotency_token: NotRequired[str]
+        init_scripts: NotRequired[Sequence['GetJobJobSettingsSettingsNewClusterInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        policy_id: NotRequired[str]
+        runtime_engine: NotRequired[str]
+        single_user_name: NotRequired[str]
+        spark_conf: NotRequired[Mapping[str, str]]
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        ssh_public_keys: NotRequired[Sequence[str]]
+        workload_type: NotRequired['GetJobJobSettingsSettingsNewClusterWorkloadTypeArgsDict']
+elif False:
+    GetJobJobSettingsSettingsNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterArgs:
@@ -33065,6 +41323,13 @@ class GetJobJobSettingsSettingsNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -33093,6 +41358,19 @@ class GetJobJobSettingsSettingsNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterAwsAttributesArgs:
@@ -33195,6 +41473,14 @@ class GetJobJobSettingsSettingsNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetJobJobSettingsSettingsNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -33236,6 +41522,13 @@ class GetJobJobSettingsSettingsNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsNewClusterClusterLogConfS3ArgsDict']
+elif False:
+    GetJobJobSettingsSettingsNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
@@ -33265,6 +41558,12 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -33280,6 +41579,18 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args:
@@ -33369,6 +41680,14 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: str
+        network_filesystem_info: 'GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict'
+        remote_mount_dir_path: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -33408,6 +41727,13 @@ class GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: str
+        mount_options: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -33435,6 +41761,13 @@ class GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoAr
     def mount_options(self, value: Optional[str]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgsDict']
+elif False:
+    GetJobJobSettingsSettingsNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterDockerImageArgs:
@@ -33464,6 +41797,13 @@ class GetJobJobSettingsSettingsNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -33490,6 +41830,17 @@ class GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterGcpAttributesArgs:
@@ -33567,6 +41918,18 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptFileArgsDict']
+        gcs: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptGcsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptS3ArgsDict']
+        volumes: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgsDict']
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
@@ -33657,6 +42020,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -33672,6 +42041,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs:
@@ -33689,6 +42064,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -33705,6 +42086,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -33720,6 +42107,18 @@ class GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptS3Args:
@@ -33809,6 +42208,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -33824,6 +42229,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs:
@@ -33841,6 +42252,12 @@ class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgsDict'
+elif False:
+    GetJobJobSettingsSettingsNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -33856,6 +42273,13 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs:
     def clients(self, value: 'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs:
@@ -33885,6 +42309,15 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsNotebookTaskArgsDict(TypedDict):
+        notebook_path: str
+        base_parameters: NotRequired[Mapping[str, str]]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNotebookTaskArgs:
@@ -33938,6 +42371,13 @@ class GetJobJobSettingsSettingsNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsNotificationSettingsArgsDict(TypedDict):
+        no_alert_for_canceled_runs: NotRequired[bool]
+        no_alert_for_skipped_runs: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -33966,6 +42406,16 @@ class GetJobJobSettingsSettingsNotificationSettingsArgs:
     def no_alert_for_skipped_runs(self, value: Optional[bool]):
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsParameterArgsDict(TypedDict):
+        default: str
+        name: str
+        """
+        the job name of Job if the resource was matched by id.
+        """
+elif False:
+    GetJobJobSettingsSettingsParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsParameterArgs:
@@ -34000,6 +42450,13 @@ class GetJobJobSettingsSettingsParameterArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsPipelineTaskArgsDict(TypedDict):
+        pipeline_id: str
+        full_refresh: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsPipelineTaskArgs:
     def __init__(__self__, *,
@@ -34027,6 +42484,15 @@ class GetJobJobSettingsSettingsPipelineTaskArgs:
     def full_refresh(self, value: Optional[bool]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[str]
+        named_parameters: NotRequired[Mapping[str, str]]
+        package_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsPythonWheelTaskArgs:
@@ -34081,6 +42547,12 @@ class GetJobJobSettingsSettingsPythonWheelTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsQueueArgsDict(TypedDict):
+        enabled: bool
+elif False:
+    GetJobJobSettingsSettingsQueueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsQueueArgs:
     def __init__(__self__, *,
@@ -34096,6 +42568,13 @@ class GetJobJobSettingsSettingsQueueArgs:
     def enabled(self, value: bool):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsRunAsArgsDict(TypedDict):
+        service_principal_name: NotRequired[str]
+        user_name: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsRunAsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsRunAsArgs:
@@ -34126,6 +42605,13 @@ class GetJobJobSettingsSettingsRunAsArgs:
         pulumi.set(self, "user_name", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsRunJobTaskArgsDict(TypedDict):
+        job_id: int
+        job_parameters: NotRequired[Mapping[str, str]]
+elif False:
+    GetJobJobSettingsSettingsRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsRunJobTaskArgs:
     def __init__(__self__, *,
@@ -34153,6 +42639,14 @@ class GetJobJobSettingsSettingsRunJobTaskArgs:
     def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsScheduleArgsDict(TypedDict):
+        quartz_cron_expression: str
+        timezone_id: str
+        pause_status: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsScheduleArgs:
@@ -34192,6 +42686,14 @@ class GetJobJobSettingsSettingsScheduleArgs:
     def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[str]
+        main_class_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsSparkJarTaskArgs:
@@ -34234,6 +42736,14 @@ class GetJobJobSettingsSettingsSparkJarTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsSparkPythonTaskArgsDict(TypedDict):
+        python_file: str
+        parameters: NotRequired[Sequence[str]]
+        source: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsSparkPythonTaskArgs:
     def __init__(__self__, *,
@@ -34274,6 +42784,12 @@ class GetJobJobSettingsSettingsSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -34290,6 +42806,39 @@ class GetJobJobSettingsSettingsSparkSubmitTaskArgs:
     def parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskArgsDict(TypedDict):
+        retry_on_timeout: bool
+        task_key: str
+        condition_task: NotRequired['GetJobJobSettingsSettingsTaskConditionTaskArgsDict']
+        dbt_task: NotRequired['GetJobJobSettingsSettingsTaskDbtTaskArgsDict']
+        depends_ons: NotRequired[Sequence['GetJobJobSettingsSettingsTaskDependsOnArgsDict']]
+        description: NotRequired[str]
+        email_notifications: NotRequired['GetJobJobSettingsSettingsTaskEmailNotificationsArgsDict']
+        environment_key: NotRequired[str]
+        existing_cluster_id: NotRequired[str]
+        for_each_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskArgsDict']
+        health: NotRequired['GetJobJobSettingsSettingsTaskHealthArgsDict']
+        job_cluster_key: NotRequired[str]
+        libraries: NotRequired[Sequence['GetJobJobSettingsSettingsTaskLibraryArgsDict']]
+        max_retries: NotRequired[int]
+        min_retry_interval_millis: NotRequired[int]
+        new_cluster: NotRequired['GetJobJobSettingsSettingsTaskNewClusterArgsDict']
+        notebook_task: NotRequired['GetJobJobSettingsSettingsTaskNotebookTaskArgsDict']
+        notification_settings: NotRequired['GetJobJobSettingsSettingsTaskNotificationSettingsArgsDict']
+        pipeline_task: NotRequired['GetJobJobSettingsSettingsTaskPipelineTaskArgsDict']
+        python_wheel_task: NotRequired['GetJobJobSettingsSettingsTaskPythonWheelTaskArgsDict']
+        run_if: NotRequired[str]
+        run_job_task: NotRequired['GetJobJobSettingsSettingsTaskRunJobTaskArgsDict']
+        spark_jar_task: NotRequired['GetJobJobSettingsSettingsTaskSparkJarTaskArgsDict']
+        spark_python_task: NotRequired['GetJobJobSettingsSettingsTaskSparkPythonTaskArgsDict']
+        spark_submit_task: NotRequired['GetJobJobSettingsSettingsTaskSparkSubmitTaskArgsDict']
+        sql_task: NotRequired['GetJobJobSettingsSettingsTaskSqlTaskArgsDict']
+        timeout_seconds: NotRequired[int]
+        webhook_notifications: NotRequired['GetJobJobSettingsSettingsTaskWebhookNotificationsArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskArgs:
@@ -34630,6 +43179,14 @@ class GetJobJobSettingsSettingsTaskArgs:
         pulumi.set(self, "webhook_notifications", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskConditionTaskArgsDict(TypedDict):
+        left: str
+        op: str
+        right: str
+elif False:
+    GetJobJobSettingsSettingsTaskConditionTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskConditionTaskArgs:
     def __init__(__self__, *,
@@ -34667,6 +43224,18 @@ class GetJobJobSettingsSettingsTaskConditionTaskArgs:
     def right(self, value: str):
         pulumi.set(self, "right", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskDbtTaskArgsDict(TypedDict):
+        commands: Sequence[str]
+        catalog: NotRequired[str]
+        profiles_directory: NotRequired[str]
+        project_directory: NotRequired[str]
+        schema: NotRequired[str]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskDbtTaskArgs:
@@ -34756,6 +43325,13 @@ class GetJobJobSettingsSettingsTaskDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskDependsOnArgsDict(TypedDict):
+        task_key: str
+        outcome: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskDependsOnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskDependsOnArgs:
     def __init__(__self__, *,
@@ -34783,6 +43359,17 @@ class GetJobJobSettingsSettingsTaskDependsOnArgs:
     def outcome(self, value: Optional[str]):
         pulumi.set(self, "outcome", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[bool]
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence[str]]
+        on_failures: NotRequired[Sequence[str]]
+        on_starts: NotRequired[Sequence[str]]
+        on_streaming_backlog_exceededs: NotRequired[Sequence[str]]
+        on_successes: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
@@ -34861,6 +43448,14 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskArgsDict(TypedDict):
+        inputs: str
+        task: 'GetJobJobSettingsSettingsTaskForEachTaskTaskArgsDict'
+        concurrency: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskArgs:
     def __init__(__self__, *,
@@ -34899,6 +43494,38 @@ class GetJobJobSettingsSettingsTaskForEachTaskArgs:
     def concurrency(self, value: Optional[int]):
         pulumi.set(self, "concurrency", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskArgsDict(TypedDict):
+        retry_on_timeout: bool
+        task_key: str
+        condition_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgsDict']
+        dbt_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgsDict']
+        depends_ons: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgsDict']]
+        description: NotRequired[str]
+        email_notifications: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgsDict']
+        environment_key: NotRequired[str]
+        existing_cluster_id: NotRequired[str]
+        health: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgsDict']
+        job_cluster_key: NotRequired[str]
+        libraries: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgsDict']]
+        max_retries: NotRequired[int]
+        min_retry_interval_millis: NotRequired[int]
+        new_cluster: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgsDict']
+        notebook_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgsDict']
+        notification_settings: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgsDict']
+        pipeline_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgsDict']
+        python_wheel_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgsDict']
+        run_if: NotRequired[str]
+        run_job_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgsDict']
+        spark_jar_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgsDict']
+        spark_python_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgsDict']
+        spark_submit_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgsDict']
+        sql_task: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgsDict']
+        timeout_seconds: NotRequired[int]
+        webhook_notifications: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
@@ -35227,6 +43854,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
         pulumi.set(self, "webhook_notifications", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgsDict(TypedDict):
+        left: str
+        op: str
+        right: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs:
     def __init__(__self__, *,
@@ -35264,6 +43899,18 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs:
     def right(self, value: str):
         pulumi.set(self, "right", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgsDict(TypedDict):
+        commands: Sequence[str]
+        catalog: NotRequired[str]
+        profiles_directory: NotRequired[str]
+        project_directory: NotRequired[str]
+        schema: NotRequired[str]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs:
@@ -35353,6 +44000,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgsDict(TypedDict):
+        task_key: str
+        outcome: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs:
     def __init__(__self__, *,
@@ -35380,6 +44034,17 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs:
     def outcome(self, value: Optional[str]):
         pulumi.set(self, "outcome", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgsDict(TypedDict):
+        no_alert_for_skipped_runs: NotRequired[bool]
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence[str]]
+        on_failures: NotRequired[Sequence[str]]
+        on_starts: NotRequired[Sequence[str]]
+        on_streaming_backlog_exceededs: NotRequired[Sequence[str]]
+        on_successes: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
@@ -35458,6 +44123,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgsDict(TypedDict):
+        rules: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs:
     def __init__(__self__, *,
@@ -35473,6 +44144,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs:
     def rules(self, value: Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs']):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgsDict(TypedDict):
+        metric: str
+        op: str
+        value: int
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs:
@@ -35511,6 +44190,18 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs:
     def value(self, value: int):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgsDict(TypedDict):
+        cran: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgsDict']
+        egg: NotRequired[str]
+        jar: NotRequired[str]
+        maven: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict']
+        pypi: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict']
+        requirements: NotRequired[str]
+        whl: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
@@ -35601,6 +44292,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs:
     def __init__(__self__, *,
@@ -35628,6 +44326,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict(TypedDict):
+        coordinates: str
+        exclusions: NotRequired[Sequence[str]]
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs:
@@ -35669,6 +44375,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs:
     def __init__(__self__, *,
@@ -35696,6 +44409,41 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgsDict(TypedDict):
+        driver_instance_pool_id: str
+        driver_node_type_id: str
+        enable_elastic_disk: bool
+        enable_local_disk_encryption: bool
+        node_type_id: str
+        num_workers: int
+        spark_version: str
+        apply_policy_default_values: NotRequired[bool]
+        autoscale: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgsDict']
+        autotermination_minutes: NotRequired[int]
+        aws_attributes: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgsDict']
+        cluster_id: NotRequired[str]
+        cluster_log_conf: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgsDict']
+        cluster_mount_infos: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict']]
+        cluster_name: NotRequired[str]
+        custom_tags: NotRequired[Mapping[str, str]]
+        data_security_mode: NotRequired[str]
+        docker_image: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgsDict']
+        gcp_attributes: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgsDict']
+        idempotency_token: NotRequired[str]
+        init_scripts: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        policy_id: NotRequired[str]
+        runtime_engine: NotRequired[str]
+        single_user_name: NotRequired[str]
+        spark_conf: NotRequired[Mapping[str, str]]
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        ssh_public_keys: NotRequired[Sequence[str]]
+        workload_type: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
@@ -36055,6 +44803,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -36083,6 +44838,19 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs:
@@ -36185,6 +44953,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -36226,6 +45002,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
@@ -36255,6 +45038,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -36270,6 +45059,18 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsAr
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args:
@@ -36359,6 +45160,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: str
+        network_filesystem_info: 'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict'
+        remote_mount_dir_path: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -36398,6 +45207,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: str
+        mount_options: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -36425,6 +45241,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetw
     def mount_options(self, value: Optional[str]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs:
@@ -36454,6 +45277,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -36480,6 +45310,17 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuth
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs:
@@ -36557,6 +45398,18 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgsDict']
+        gcs: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict']
+        volumes: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs:
@@ -36647,6 +45500,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -36662,6 +45521,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs:
@@ -36679,6 +45544,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -36695,6 +45566,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -36710,6 +45587,18 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args:
@@ -36799,6 +45688,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -36814,6 +45709,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArg
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs:
@@ -36831,6 +45732,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceA
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict'
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -36846,6 +45753,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs:
     def clients(self, value: 'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs:
@@ -36875,6 +45789,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsA
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgsDict(TypedDict):
+        notebook_path: str
+        base_parameters: NotRequired[Mapping[str, str]]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs:
@@ -36928,6 +45851,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgsDict(TypedDict):
+        alert_on_last_attempt: NotRequired[bool]
+        no_alert_for_canceled_runs: NotRequired[bool]
+        no_alert_for_skipped_runs: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -36969,6 +45900,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs:
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgsDict(TypedDict):
+        pipeline_id: str
+        full_refresh: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs:
     def __init__(__self__, *,
@@ -36996,6 +45934,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs:
     def full_refresh(self, value: Optional[bool]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[str]
+        named_parameters: NotRequired[Mapping[str, str]]
+        package_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs:
@@ -37050,6 +45997,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgsDict(TypedDict):
+        job_id: int
+        job_parameters: NotRequired[Mapping[str, str]]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs:
     def __init__(__self__, *,
@@ -37077,6 +46031,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs:
     def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[str]
+        main_class_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs:
@@ -37119,6 +46081,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgsDict(TypedDict):
+        python_file: str
+        parameters: NotRequired[Sequence[str]]
+        source: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs:
     def __init__(__self__, *,
@@ -37159,6 +46129,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -37175,6 +46151,17 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs:
     def parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgsDict(TypedDict):
+        warehouse_id: str
+        alert: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgsDict']
+        dashboard: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgsDict']
+        parameters: NotRequired[Mapping[str, str]]
+        query: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
@@ -37252,6 +46239,14 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgsDict(TypedDict):
+        alert_id: str
+        pause_subscriptions: NotRequired[bool]
+        subscriptions: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
@@ -37292,6 +46287,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[str]
+        user_name: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs:
     def __init__(__self__, *,
@@ -37320,6 +46322,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs:
     def user_name(self, value: Optional[str]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgsDict(TypedDict):
+        dashboard_id: str
+        custom_subject: NotRequired[str]
+        pause_subscriptions: NotRequired[bool]
+        subscriptions: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs:
@@ -37373,6 +46384,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[str]
+        user_name: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs:
     def __init__(__self__, *,
@@ -37402,6 +46420,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionAr
         pulumi.set(self, "user_name", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgsDict(TypedDict):
+        path: str
+        source: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs:
     def __init__(__self__, *,
@@ -37430,6 +46455,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgsDict(TypedDict):
+        query_id: str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs:
     def __init__(__self__, *,
@@ -37445,6 +46476,16 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs:
     def query_id(self, value: str):
         pulumi.set(self, "query_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]
+        on_failures: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict']]
+        on_starts: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict']]
+        on_streaming_backlog_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict']]
+        on_successes: NotRequired[Sequence['GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
@@ -37511,6 +46552,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -37532,6 +46582,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDuration
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
@@ -37555,6 +46614,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureA
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -37576,6 +46644,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArg
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -37599,6 +46676,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamin
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -37621,6 +46707,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessA
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskHealthArgsDict(TypedDict):
+        rules: Sequence['GetJobJobSettingsSettingsTaskHealthRuleArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskHealthArgs:
     def __init__(__self__, *,
@@ -37636,6 +46728,14 @@ class GetJobJobSettingsSettingsTaskHealthArgs:
     def rules(self, value: Sequence['GetJobJobSettingsSettingsTaskHealthRuleArgs']):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskHealthRuleArgsDict(TypedDict):
+        metric: str
+        op: str
+        value: int
+elif False:
+    GetJobJobSettingsSettingsTaskHealthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskHealthRuleArgs:
@@ -37674,6 +46774,18 @@ class GetJobJobSettingsSettingsTaskHealthRuleArgs:
     def value(self, value: int):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskLibraryArgsDict(TypedDict):
+        cran: NotRequired['GetJobJobSettingsSettingsTaskLibraryCranArgsDict']
+        egg: NotRequired[str]
+        jar: NotRequired[str]
+        maven: NotRequired['GetJobJobSettingsSettingsTaskLibraryMavenArgsDict']
+        pypi: NotRequired['GetJobJobSettingsSettingsTaskLibraryPypiArgsDict']
+        requirements: NotRequired[str]
+        whl: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskLibraryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskLibraryArgs:
@@ -37764,6 +46876,13 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
         pulumi.set(self, "whl", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskLibraryCranArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskLibraryCranArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskLibraryCranArgs:
     def __init__(__self__, *,
@@ -37791,6 +46910,14 @@ class GetJobJobSettingsSettingsTaskLibraryCranArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskLibraryMavenArgsDict(TypedDict):
+        coordinates: str
+        exclusions: NotRequired[Sequence[str]]
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskLibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskLibraryMavenArgs:
@@ -37832,6 +46959,13 @@ class GetJobJobSettingsSettingsTaskLibraryMavenArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskLibraryPypiArgsDict(TypedDict):
+        package: str
+        repo: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskLibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskLibraryPypiArgs:
     def __init__(__self__, *,
@@ -37859,6 +46993,41 @@ class GetJobJobSettingsSettingsTaskLibraryPypiArgs:
     def repo(self, value: Optional[str]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterArgsDict(TypedDict):
+        driver_instance_pool_id: str
+        driver_node_type_id: str
+        enable_elastic_disk: bool
+        enable_local_disk_encryption: bool
+        node_type_id: str
+        num_workers: int
+        spark_version: str
+        apply_policy_default_values: NotRequired[bool]
+        autoscale: NotRequired['GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgsDict']
+        autotermination_minutes: NotRequired[int]
+        aws_attributes: NotRequired['GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgsDict']
+        azure_attributes: NotRequired['GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgsDict']
+        cluster_id: NotRequired[str]
+        cluster_log_conf: NotRequired['GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgsDict']
+        cluster_mount_infos: NotRequired[Sequence['GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgsDict']]
+        cluster_name: NotRequired[str]
+        custom_tags: NotRequired[Mapping[str, str]]
+        data_security_mode: NotRequired[str]
+        docker_image: NotRequired['GetJobJobSettingsSettingsTaskNewClusterDockerImageArgsDict']
+        gcp_attributes: NotRequired['GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgsDict']
+        idempotency_token: NotRequired[str]
+        init_scripts: NotRequired[Sequence['GetJobJobSettingsSettingsTaskNewClusterInitScriptArgsDict']]
+        instance_pool_id: NotRequired[str]
+        policy_id: NotRequired[str]
+        runtime_engine: NotRequired[str]
+        single_user_name: NotRequired[str]
+        spark_conf: NotRequired[Mapping[str, str]]
+        spark_env_vars: NotRequired[Mapping[str, str]]
+        ssh_public_keys: NotRequired[Sequence[str]]
+        workload_type: NotRequired['GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterArgs:
@@ -38218,6 +47387,13 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
         pulumi.set(self, "workload_type", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgsDict(TypedDict):
+        max_workers: NotRequired[int]
+        min_workers: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs:
     def __init__(__self__, *,
@@ -38246,6 +47422,19 @@ class GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs:
     def min_workers(self, value: Optional[int]):
         pulumi.set(self, "min_workers", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        ebs_volume_count: NotRequired[int]
+        ebs_volume_size: NotRequired[int]
+        ebs_volume_type: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        instance_profile_arn: NotRequired[str]
+        spot_bid_price_percent: NotRequired[int]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs:
@@ -38348,6 +47537,14 @@ class GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs:
         pulumi.set(self, "zone_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        first_on_demand: NotRequired[int]
+        spot_bid_max_price: NotRequired[float]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs:
     def __init__(__self__, *,
@@ -38389,6 +47586,13 @@ class GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs:
         pulumi.set(self, "spot_bid_max_price", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgsDict(TypedDict):
+        dbfs: NotRequired['GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3ArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
@@ -38418,6 +47622,12 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs:
         pulumi.set(self, "s3", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
@@ -38433,6 +47643,18 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args:
@@ -38522,6 +47744,14 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgsDict(TypedDict):
+        local_mount_dir_path: str
+        network_filesystem_info: 'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict'
+        remote_mount_dir_path: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs:
     def __init__(__self__, *,
@@ -38561,6 +47791,13 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs:
         pulumi.set(self, "remote_mount_dir_path", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict(TypedDict):
+        server_address: str
+        mount_options: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
@@ -38588,6 +47825,13 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemIn
     def mount_options(self, value: Optional[str]):
         pulumi.set(self, "mount_options", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterDockerImageArgsDict(TypedDict):
+        url: str
+        basic_auth: NotRequired['GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs:
@@ -38617,6 +47861,13 @@ class GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs:
         pulumi.set(self, "basic_auth", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgsDict(TypedDict):
+        password: str
+        username: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs:
     def __init__(__self__, *,
@@ -38643,6 +47894,17 @@ class GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgsDict(TypedDict):
+        availability: NotRequired[str]
+        boot_disk_size: NotRequired[int]
+        google_service_account: NotRequired[str]
+        local_ssd_count: NotRequired[int]
+        use_preemptible_executors: NotRequired[bool]
+        zone_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs:
@@ -38720,6 +47982,18 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs:
     def zone_id(self, value: Optional[str]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgsDict(TypedDict):
+        abfss: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgsDict']
+        dbfs: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgsDict']
+        gcs: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgsDict']
+        s3: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3ArgsDict']
+        volumes: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgsDict']
+        workspace: NotRequired['GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
@@ -38810,6 +48084,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
         pulumi.set(self, "workspace", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
@@ -38825,6 +48105,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs:
@@ -38842,6 +48128,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
@@ -38858,6 +48150,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
@@ -38873,6 +48171,18 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3ArgsDict(TypedDict):
+        destination: str
+        canned_acl: NotRequired[str]
+        enable_encryption: NotRequired[bool]
+        encryption_type: NotRequired[str]
+        endpoint: NotRequired[str]
+        kms_key: NotRequired[str]
+        region: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args:
@@ -38962,6 +48272,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
@@ -38977,6 +48293,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs:
     def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs:
@@ -38994,6 +48316,12 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgsDict(TypedDict):
+        clients: 'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgsDict'
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs:
     def __init__(__self__, *,
@@ -39009,6 +48337,13 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs:
     def clients(self, value: 'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs'):
         pulumi.set(self, "clients", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgsDict(TypedDict):
+        jobs: NotRequired[bool]
+        notebooks: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs:
@@ -39038,6 +48373,15 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs:
     def notebooks(self, value: Optional[bool]):
         pulumi.set(self, "notebooks", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNotebookTaskArgsDict(TypedDict):
+        notebook_path: str
+        base_parameters: NotRequired[Mapping[str, str]]
+        source: NotRequired[str]
+        warehouse_id: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNotebookTaskArgs:
@@ -39091,6 +48435,14 @@ class GetJobJobSettingsSettingsTaskNotebookTaskArgs:
         pulumi.set(self, "warehouse_id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskNotificationSettingsArgsDict(TypedDict):
+        alert_on_last_attempt: NotRequired[bool]
+        no_alert_for_canceled_runs: NotRequired[bool]
+        no_alert_for_skipped_runs: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -39132,6 +48484,13 @@ class GetJobJobSettingsSettingsTaskNotificationSettingsArgs:
         pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskPipelineTaskArgsDict(TypedDict):
+        pipeline_id: str
+        full_refresh: NotRequired[bool]
+elif False:
+    GetJobJobSettingsSettingsTaskPipelineTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskPipelineTaskArgs:
     def __init__(__self__, *,
@@ -39159,6 +48518,15 @@ class GetJobJobSettingsSettingsTaskPipelineTaskArgs:
     def full_refresh(self, value: Optional[bool]):
         pulumi.set(self, "full_refresh", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskPythonWheelTaskArgsDict(TypedDict):
+        entry_point: NotRequired[str]
+        named_parameters: NotRequired[Mapping[str, str]]
+        package_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskPythonWheelTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
@@ -39213,6 +48581,13 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskRunJobTaskArgsDict(TypedDict):
+        job_id: int
+        job_parameters: NotRequired[Mapping[str, str]]
+elif False:
+    GetJobJobSettingsSettingsTaskRunJobTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
     def __init__(__self__, *,
@@ -39240,6 +48615,14 @@ class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
     def job_parameters(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "job_parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSparkJarTaskArgsDict(TypedDict):
+        jar_uri: NotRequired[str]
+        main_class_name: NotRequired[str]
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSparkJarTaskArgs:
@@ -39282,6 +48665,14 @@ class GetJobJobSettingsSettingsTaskSparkJarTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSparkPythonTaskArgsDict(TypedDict):
+        python_file: str
+        parameters: NotRequired[Sequence[str]]
+        source: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskSparkPythonTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSparkPythonTaskArgs:
     def __init__(__self__, *,
@@ -39322,6 +48713,12 @@ class GetJobJobSettingsSettingsTaskSparkPythonTaskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSparkSubmitTaskArgsDict(TypedDict):
+        parameters: NotRequired[Sequence[str]]
+elif False:
+    GetJobJobSettingsSettingsTaskSparkSubmitTaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs:
     def __init__(__self__, *,
@@ -39338,6 +48735,17 @@ class GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs:
     def parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskArgsDict(TypedDict):
+        warehouse_id: str
+        alert: NotRequired['GetJobJobSettingsSettingsTaskSqlTaskAlertArgsDict']
+        dashboard: NotRequired['GetJobJobSettingsSettingsTaskSqlTaskDashboardArgsDict']
+        file: NotRequired['GetJobJobSettingsSettingsTaskSqlTaskFileArgsDict']
+        parameters: NotRequired[Mapping[str, str]]
+        query: NotRequired['GetJobJobSettingsSettingsTaskSqlTaskQueryArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskArgs:
@@ -39415,6 +48823,14 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskAlertArgsDict(TypedDict):
+        alert_id: str
+        pause_subscriptions: NotRequired[bool]
+        subscriptions: NotRequired[Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
@@ -39455,6 +48871,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[str]
+        user_name: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs:
     def __init__(__self__, *,
@@ -39483,6 +48906,15 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs:
     def user_name(self, value: Optional[str]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgsDict(TypedDict):
+        dashboard_id: str
+        custom_subject: NotRequired[str]
+        pause_subscriptions: NotRequired[bool]
+        subscriptions: NotRequired[Sequence['GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs:
@@ -39536,6 +48968,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs:
         pulumi.set(self, "subscriptions", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[str]
+        user_name: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs:
     def __init__(__self__, *,
@@ -39565,6 +49004,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs:
         pulumi.set(self, "user_name", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskFileArgsDict(TypedDict):
+        path: str
+        source: NotRequired[str]
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskFileArgs:
     def __init__(__self__, *,
@@ -39593,6 +49039,12 @@ class GetJobJobSettingsSettingsTaskSqlTaskFileArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskSqlTaskQueryArgsDict(TypedDict):
+        query_id: str
+elif False:
+    GetJobJobSettingsSettingsTaskSqlTaskQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskQueryArgs:
     def __init__(__self__, *,
@@ -39608,6 +49060,16 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryArgs:
     def query_id(self, value: str):
         pulumi.set(self, "query_id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]
+        on_failures: NotRequired[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgsDict']]
+        on_starts: NotRequired[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgsDict']]
+        on_streaming_backlog_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict']]
+        on_successes: NotRequired[Sequence['GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
@@ -39674,6 +49136,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -39695,6 +49166,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThreshol
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs:
@@ -39718,6 +49198,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -39739,6 +49228,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs:
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -39762,6 +49260,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceede
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -39783,6 +49290,15 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs:
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTriggerArgsDict(TypedDict):
+        file_arrival: NotRequired['GetJobJobSettingsSettingsTriggerFileArrivalArgsDict']
+        pause_status: NotRequired[str]
+        periodic: NotRequired['GetJobJobSettingsSettingsTriggerPeriodicArgsDict']
+        table_update: NotRequired['GetJobJobSettingsSettingsTriggerTableUpdateArgsDict']
+elif False:
+    GetJobJobSettingsSettingsTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTriggerArgs:
@@ -39837,6 +49353,14 @@ class GetJobJobSettingsSettingsTriggerArgs:
         pulumi.set(self, "table_update", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTriggerFileArrivalArgsDict(TypedDict):
+        url: str
+        min_time_between_triggers_seconds: NotRequired[int]
+        wait_after_last_change_seconds: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsTriggerFileArrivalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
     def __init__(__self__, *,
@@ -39877,6 +49401,13 @@ class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
         pulumi.set(self, "wait_after_last_change_seconds", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsTriggerPeriodicArgsDict(TypedDict):
+        interval: int
+        unit: str
+elif False:
+    GetJobJobSettingsSettingsTriggerPeriodicArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsTriggerPeriodicArgs:
     def __init__(__self__, *,
@@ -39903,6 +49434,15 @@ class GetJobJobSettingsSettingsTriggerPeriodicArgs:
     def unit(self, value: str):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTriggerTableUpdateArgsDict(TypedDict):
+        table_names: Sequence[str]
+        condition: NotRequired[str]
+        min_time_between_triggers_seconds: NotRequired[int]
+        wait_after_last_change_seconds: NotRequired[int]
+elif False:
+    GetJobJobSettingsSettingsTriggerTableUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTriggerTableUpdateArgs:
@@ -39955,6 +49495,16 @@ class GetJobJobSettingsSettingsTriggerTableUpdateArgs:
     def wait_after_last_change_seconds(self, value: Optional[int]):
         pulumi.set(self, "wait_after_last_change_seconds", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsArgsDict(TypedDict):
+        on_duration_warning_threshold_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgsDict']]
+        on_failures: NotRequired[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgsDict']]
+        on_starts: NotRequired[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgsDict']]
+        on_streaming_backlog_exceededs: NotRequired[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict']]
+        on_successes: NotRequired[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict']]
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsArgs:
@@ -40021,6 +49571,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsArgs:
         pulumi.set(self, "on_successes", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
@@ -40042,6 +49601,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExc
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs:
@@ -40065,6 +49633,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsOnStartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
@@ -40086,6 +49663,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs:
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs:
@@ -40109,6 +49695,15 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArg
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict(TypedDict):
+        id: str
+        """
+        the id of Job if the resource was matched by name.
+        """
+elif False:
+    GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
@@ -40130,6 +49725,54 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
     def id(self, value: str):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetMetastoreMetastoreInfoArgsDict(TypedDict):
+        cloud: NotRequired[str]
+        created_at: NotRequired[int]
+        created_by: NotRequired[str]
+        default_data_access_config_id: NotRequired[str]
+        delta_sharing_organization_name: NotRequired[str]
+        """
+        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        """
+        delta_sharing_recipient_token_lifetime_in_seconds: NotRequired[int]
+        """
+        Used to set expiration duration in seconds on recipient data access tokens.
+        """
+        delta_sharing_scope: NotRequired[str]
+        """
+        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        """
+        external_access_enabled: NotRequired[bool]
+        global_metastore_id: NotRequired[str]
+        metastore_id: NotRequired[str]
+        """
+        ID of the metastore
+        """
+        name: NotRequired[str]
+        """
+        Name of the metastore
+        """
+        owner: NotRequired[str]
+        """
+        Username/groupname/sp application_id of the metastore owner.
+        """
+        privilege_model_version: NotRequired[str]
+        region: NotRequired[str]
+        """
+        Region of the metastore
+        """
+        storage_root: NotRequired[str]
+        """
+        Path on cloud storage account, where managed `Table` are stored.
+        """
+        storage_root_credential_id: NotRequired[str]
+        storage_root_credential_name: NotRequired[str]
+        updated_at: NotRequired[int]
+        updated_by: NotRequired[str]
+elif False:
+    GetMetastoreMetastoreInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetMetastoreMetastoreInfoArgs:
@@ -40398,6 +50041,13 @@ class GetMetastoreMetastoreInfoArgs:
         pulumi.set(self, "updated_by", value)
 
 
+if not MYPY:
+    class GetMlflowExperimentTagArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetMlflowExperimentTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetMlflowExperimentTagArgs:
     def __init__(__self__, *,
@@ -40426,6 +50076,36 @@ class GetMlflowExperimentTagArgs:
     def value(self, value: Optional[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetMlflowModelLatestVersionArgsDict(TypedDict):
+        creation_timestamp: NotRequired[int]
+        current_stage: NotRequired[str]
+        description: NotRequired[str]
+        """
+        User-specified description for the object.
+        """
+        last_updated_timestamp: NotRequired[int]
+        name: NotRequired[str]
+        """
+        Name of the registered model.
+        """
+        run_id: NotRequired[str]
+        run_link: NotRequired[str]
+        source: NotRequired[str]
+        status: NotRequired[str]
+        status_message: NotRequired[str]
+        tags: NotRequired[Sequence['GetMlflowModelLatestVersionTagArgsDict']]
+        """
+        Array of tags associated with the model.
+        """
+        user_id: NotRequired[str]
+        """
+        The username of the user that created the object.
+        """
+        version: NotRequired[str]
+elif False:
+    GetMlflowModelLatestVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetMlflowModelLatestVersionArgs:
@@ -40606,6 +50286,13 @@ class GetMlflowModelLatestVersionArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class GetMlflowModelLatestVersionTagArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetMlflowModelLatestVersionTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetMlflowModelLatestVersionTagArgs:
     def __init__(__self__, *,
@@ -40635,6 +50322,13 @@ class GetMlflowModelLatestVersionTagArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetMlflowModelTagArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetMlflowModelTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetMlflowModelTagArgs:
     def __init__(__self__, *,
@@ -40663,6 +50357,83 @@ class GetMlflowModelTagArgs:
     def value(self, value: Optional[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetSchemaSchemaInfoArgsDict(TypedDict):
+        browse_only: NotRequired[bool]
+        """
+        indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+        """
+        catalog_name: NotRequired[str]
+        """
+        the name of the catalog where the schema is.
+        """
+        catalog_type: NotRequired[str]
+        """
+        the type of the parent catalog.
+        """
+        comment: NotRequired[str]
+        """
+        the comment attached to the volume
+        """
+        created_at: NotRequired[int]
+        """
+        time at which this schema was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[str]
+        """
+        username of schema creator.
+        """
+        effective_predictive_optimization_flag: NotRequired['GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict']
+        """
+        information about actual state of predictive optimization.
+        """
+        enable_predictive_optimization: NotRequired[str]
+        """
+        whether predictive optimization should be enabled for this object and objects under it.
+        """
+        full_name: NotRequired[str]
+        """
+        the two-level (fully qualified) name of the schema
+        """
+        metastore_id: NotRequired[str]
+        """
+        the unique identifier of the metastore
+        """
+        name: NotRequired[str]
+        """
+        a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        """
+        owner: NotRequired[str]
+        """
+        the identifier of the user who owns the schema
+        """
+        properties: NotRequired[Mapping[str, str]]
+        """
+        map of properties set on the schema
+        """
+        schema_id: NotRequired[str]
+        """
+        the unique identifier of the volume
+        """
+        storage_location: NotRequired[str]
+        """
+        the storage location on the cloud.
+        """
+        storage_root: NotRequired[str]
+        """
+        storage root URL for managed tables within schema.
+        """
+        updated_at: NotRequired[int]
+        """
+        the timestamp of the last time changes were made to the schema
+        """
+        updated_by: NotRequired[str]
+        """
+        the identifier of the user who updated the schema last time
+        """
+elif False:
+    GetSchemaSchemaInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSchemaSchemaInfoArgs:
@@ -40959,6 +50730,14 @@ class GetSchemaSchemaInfoArgs:
         pulumi.set(self, "updated_by", value)
 
 
+if not MYPY:
+    class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict(TypedDict):
+        value: str
+        inherited_from_name: NotRequired[str]
+        inherited_from_type: NotRequired[str]
+elif False:
+    GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs:
     def __init__(__self__, *,
@@ -40998,6 +50777,33 @@ class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs:
     def inherited_from_type(self, value: Optional[str]):
         pulumi.set(self, "inherited_from_type", value)
 
+
+if not MYPY:
+    class GetShareObjectArgsDict(TypedDict):
+        added_at: int
+        added_by: str
+        data_object_type: str
+        """
+        Type of the object.
+        """
+        name: str
+        """
+        The name of the share
+        """
+        status: str
+        cdf_enabled: NotRequired[bool]
+        comment: NotRequired[str]
+        """
+        Description about the object.
+        """
+        content: NotRequired[str]
+        history_data_sharing_status: NotRequired[str]
+        partitions: NotRequired[Sequence['GetShareObjectPartitionArgsDict']]
+        shared_as: NotRequired[str]
+        start_version: NotRequired[int]
+        string_shared_as: NotRequired[str]
+elif False:
+    GetShareObjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetShareObjectArgs:
@@ -41169,6 +50975,12 @@ class GetShareObjectArgs:
         pulumi.set(self, "string_shared_as", value)
 
 
+if not MYPY:
+    class GetShareObjectPartitionArgsDict(TypedDict):
+        values: NotRequired[Sequence['GetShareObjectPartitionValueArgsDict']]
+elif False:
+    GetShareObjectPartitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetShareObjectPartitionArgs:
     def __init__(__self__, *,
@@ -41185,6 +50997,18 @@ class GetShareObjectPartitionArgs:
     def values(self, value: Optional[Sequence['GetShareObjectPartitionValueArgs']]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetShareObjectPartitionValueArgsDict(TypedDict):
+        name: str
+        """
+        The name of the share
+        """
+        op: str
+        recipient_property_key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetShareObjectPartitionValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetShareObjectPartitionValueArgs:
@@ -41243,6 +51067,16 @@ class GetShareObjectPartitionValueArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetSqlWarehouseChannelArgsDict(TypedDict):
+        dbsql_version: NotRequired[str]
+        name: NotRequired[str]
+        """
+        Name of the SQL warehouse to search (case-sensitive).
+        """
+elif False:
+    GetSqlWarehouseChannelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSqlWarehouseChannelArgs:
     def __init__(__self__, *,
@@ -41277,6 +51111,16 @@ class GetSqlWarehouseChannelArgs:
     def name(self, value: Optional[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetSqlWarehouseHealthArgsDict(TypedDict):
+        details: NotRequired[str]
+        failure_reason: NotRequired['GetSqlWarehouseHealthFailureReasonArgsDict']
+        message: NotRequired[str]
+        status: NotRequired[str]
+        summary: NotRequired[str]
+elif False:
+    GetSqlWarehouseHealthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSqlWarehouseHealthArgs:
@@ -41343,6 +51187,14 @@ class GetSqlWarehouseHealthArgs:
         pulumi.set(self, "summary", value)
 
 
+if not MYPY:
+    class GetSqlWarehouseHealthFailureReasonArgsDict(TypedDict):
+        code: NotRequired[str]
+        parameters: NotRequired[Mapping[str, str]]
+        type: NotRequired[str]
+elif False:
+    GetSqlWarehouseHealthFailureReasonArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSqlWarehouseHealthFailureReasonArgs:
     def __init__(__self__, *,
@@ -41383,6 +51235,15 @@ class GetSqlWarehouseHealthFailureReasonArgs:
     def type(self, value: Optional[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class GetSqlWarehouseOdbcParamsArgsDict(TypedDict):
+        hostname: NotRequired[str]
+        path: NotRequired[str]
+        port: NotRequired[int]
+        protocol: NotRequired[str]
+elif False:
+    GetSqlWarehouseOdbcParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSqlWarehouseOdbcParamsArgs:
@@ -41437,6 +51298,12 @@ class GetSqlWarehouseOdbcParamsArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class GetSqlWarehouseTagsArgsDict(TypedDict):
+        custom_tags: NotRequired[Sequence['GetSqlWarehouseTagsCustomTagArgsDict']]
+elif False:
+    GetSqlWarehouseTagsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSqlWarehouseTagsArgs:
     def __init__(__self__, *,
@@ -41453,6 +51320,13 @@ class GetSqlWarehouseTagsArgs:
     def custom_tags(self, value: Optional[Sequence['GetSqlWarehouseTagsCustomTagArgs']]):
         pulumi.set(self, "custom_tags", value)
 
+
+if not MYPY:
+    class GetSqlWarehouseTagsCustomTagArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetSqlWarehouseTagsCustomTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSqlWarehouseTagsCustomTagArgs:
@@ -41482,6 +51356,67 @@ class GetSqlWarehouseTagsCustomTagArgs:
     def value(self, value: Optional[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoArgsDict(TypedDict):
+        aws_iam_role: NotRequired['GetStorageCredentialStorageCredentialInfoAwsIamRoleArgsDict']
+        """
+        credential details for AWS:
+        """
+        azure_managed_identity: NotRequired['GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgsDict']
+        """
+        managed identity credential details for Azure
+        """
+        azure_service_principal: NotRequired['GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgsDict']
+        """
+        service principal credential details for Azure:
+        """
+        cloudflare_api_token: NotRequired['GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgsDict']
+        comment: NotRequired[str]
+        created_at: NotRequired[int]
+        """
+        Time at which this catalog was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[str]
+        """
+        Username of catalog creator.
+        """
+        databricks_gcp_service_account: NotRequired['GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgsDict']
+        """
+        credential details for GCP:
+        """
+        id: NotRequired[str]
+        """
+        Unique ID of storage credential.
+        """
+        isolation_mode: NotRequired[str]
+        metastore_id: NotRequired[str]
+        """
+        Unique identifier of the parent Metastore.
+        """
+        name: NotRequired[str]
+        """
+        The name of the storage credential
+        """
+        owner: NotRequired[str]
+        """
+        Username/groupname/sp application_id of the storage credential owner.
+        """
+        read_only: NotRequired[bool]
+        """
+        Indicates whether the storage credential is only usable for read operations.
+        """
+        updated_at: NotRequired[int]
+        """
+        Time at which this catalog was last modified, in epoch milliseconds.
+        """
+        updated_by: NotRequired[str]
+        """
+        Username of user who last modified catalog.
+        """
+        used_for_managed_storage: NotRequired[bool]
+elif False:
+    GetStorageCredentialStorageCredentialInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoArgs:
@@ -41746,6 +51681,23 @@ class GetStorageCredentialStorageCredentialInfoArgs:
         pulumi.set(self, "used_for_managed_storage", value)
 
 
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoAwsIamRoleArgsDict(TypedDict):
+        role_arn: str
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        """
+        external_id: NotRequired[str]
+        """
+        (output only) - The external ID used in role assumption to prevent confused deputy problem.
+        """
+        unity_catalog_iam_arn: NotRequired[str]
+        """
+        (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+        """
+elif False:
+    GetStorageCredentialStorageCredentialInfoAwsIamRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs:
     def __init__(__self__, *,
@@ -41800,6 +51752,20 @@ class GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs:
         pulumi.set(self, "unity_catalog_iam_arn", value)
 
 
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgsDict(TypedDict):
+        access_connector_id: str
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        """
+        credential_id: NotRequired[str]
+        managed_identity_id: NotRequired[str]
+        """
+        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+        """
+elif False:
+    GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs:
     def __init__(__self__, *,
@@ -41850,6 +51816,20 @@ class GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs:
         pulumi.set(self, "managed_identity_id", value)
 
 
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgsDict(TypedDict):
+        application_id: str
+        """
+        The application ID of the application registration within the referenced AAD tenant
+        """
+        client_secret: str
+        directory_id: str
+        """
+        The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        """
+elif False:
+    GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs:
     def __init__(__self__, *,
@@ -41898,6 +51878,14 @@ class GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs:
         pulumi.set(self, "directory_id", value)
 
 
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgsDict(TypedDict):
+        access_key_id: str
+        account_id: str
+        secret_access_key: str
+elif False:
+    GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs:
     def __init__(__self__, *,
@@ -41936,6 +51924,16 @@ class GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs:
         pulumi.set(self, "secret_access_key", value)
 
 
+if not MYPY:
+    class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgsDict(TypedDict):
+        credential_id: NotRequired[str]
+        email: NotRequired[str]
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+elif False:
+    GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
@@ -41970,6 +51968,73 @@ class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs:
     def email(self, value: Optional[str]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class GetTableTableInfoArgsDict(TypedDict):
+        access_point: NotRequired[str]
+        browse_only: NotRequired[bool]
+        catalog_name: NotRequired[str]
+        """
+        Name of parent catalog.
+        """
+        columns: NotRequired[Sequence['GetTableTableInfoColumnArgsDict']]
+        """
+        Array of ColumnInfo objects of the table's columns
+        """
+        comment: NotRequired[str]
+        """
+        Free-form text description
+        """
+        created_at: NotRequired[int]
+        created_by: NotRequired[str]
+        data_access_configuration_id: NotRequired[str]
+        data_source_format: NotRequired[str]
+        """
+        Table format, e.g. DELTA, CSV, JSON
+        """
+        deleted_at: NotRequired[int]
+        delta_runtime_properties_kvpairs: NotRequired['GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict']
+        effective_predictive_optimization_flag: NotRequired['GetTableTableInfoEffectivePredictiveOptimizationFlagArgsDict']
+        enable_predictive_optimization: NotRequired[str]
+        encryption_details: NotRequired['GetTableTableInfoEncryptionDetailsArgsDict']
+        full_name: NotRequired[str]
+        metastore_id: NotRequired[str]
+        name: NotRequired[str]
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        owner: NotRequired[str]
+        """
+        Current owner of the table
+        """
+        pipeline_id: NotRequired[str]
+        properties: NotRequired[Mapping[str, str]]
+        row_filter: NotRequired['GetTableTableInfoRowFilterArgsDict']
+        schema_name: NotRequired[str]
+        """
+        Name of parent schema relative to its parent catalog.
+        """
+        sql_path: NotRequired[str]
+        storage_credential_name: NotRequired[str]
+        storage_location: NotRequired[str]
+        table_constraints: NotRequired[Sequence['GetTableTableInfoTableConstraintArgsDict']]
+        table_id: NotRequired[str]
+        table_type: NotRequired[str]
+        """
+        Table type, e.g. MANAGED, EXTERNAL, VIEW
+        """
+        updated_at: NotRequired[int]
+        updated_by: NotRequired[str]
+        view_definition: NotRequired[str]
+        """
+        View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+        """
+        view_dependencies: NotRequired['GetTableTableInfoViewDependenciesArgsDict']
+        """
+        View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+        """
+elif False:
+    GetTableTableInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoArgs:
@@ -42402,6 +52467,29 @@ class GetTableTableInfoArgs:
         pulumi.set(self, "view_dependencies", value)
 
 
+if not MYPY:
+    class GetTableTableInfoColumnArgsDict(TypedDict):
+        comment: NotRequired[str]
+        """
+        Free-form text description
+        """
+        mask: NotRequired['GetTableTableInfoColumnMaskArgsDict']
+        name: NotRequired[str]
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        nullable: NotRequired[bool]
+        partition_index: NotRequired[int]
+        position: NotRequired[int]
+        type_interval_type: NotRequired[str]
+        type_json: NotRequired[str]
+        type_name: NotRequired[str]
+        type_precision: NotRequired[int]
+        type_scale: NotRequired[int]
+        type_text: NotRequired[str]
+elif False:
+    GetTableTableInfoColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoColumnArgs:
     def __init__(__self__, *,
@@ -42561,6 +52649,13 @@ class GetTableTableInfoColumnArgs:
         pulumi.set(self, "type_text", value)
 
 
+if not MYPY:
+    class GetTableTableInfoColumnMaskArgsDict(TypedDict):
+        function_name: NotRequired[str]
+        using_column_names: NotRequired[Sequence[str]]
+elif False:
+    GetTableTableInfoColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoColumnMaskArgs:
     def __init__(__self__, *,
@@ -42590,6 +52685,12 @@ class GetTableTableInfoColumnMaskArgs:
         pulumi.set(self, "using_column_names", value)
 
 
+if not MYPY:
+    class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict(TypedDict):
+        delta_runtime_properties: Mapping[str, str]
+elif False:
+    GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs:
     def __init__(__self__, *,
@@ -42605,6 +52706,14 @@ class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs:
     def delta_runtime_properties(self, value: Mapping[str, str]):
         pulumi.set(self, "delta_runtime_properties", value)
 
+
+if not MYPY:
+    class GetTableTableInfoEffectivePredictiveOptimizationFlagArgsDict(TypedDict):
+        value: str
+        inherited_from_name: NotRequired[str]
+        inherited_from_type: NotRequired[str]
+elif False:
+    GetTableTableInfoEffectivePredictiveOptimizationFlagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoEffectivePredictiveOptimizationFlagArgs:
@@ -42646,6 +52755,12 @@ class GetTableTableInfoEffectivePredictiveOptimizationFlagArgs:
         pulumi.set(self, "inherited_from_type", value)
 
 
+if not MYPY:
+    class GetTableTableInfoEncryptionDetailsArgsDict(TypedDict):
+        sse_encryption_details: NotRequired['GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict']
+elif False:
+    GetTableTableInfoEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoEncryptionDetailsArgs:
     def __init__(__self__, *,
@@ -42662,6 +52777,13 @@ class GetTableTableInfoEncryptionDetailsArgs:
     def sse_encryption_details(self, value: Optional['GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs']):
         pulumi.set(self, "sse_encryption_details", value)
 
+
+if not MYPY:
+    class GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
+        algorithm: NotRequired[str]
+        aws_kms_key_arn: NotRequired[str]
+elif False:
+    GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs:
@@ -42692,6 +52814,13 @@ class GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs:
         pulumi.set(self, "aws_kms_key_arn", value)
 
 
+if not MYPY:
+    class GetTableTableInfoRowFilterArgsDict(TypedDict):
+        function_name: str
+        input_column_names: Sequence[str]
+elif False:
+    GetTableTableInfoRowFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoRowFilterArgs:
     def __init__(__self__, *,
@@ -42718,6 +52847,14 @@ class GetTableTableInfoRowFilterArgs:
     def input_column_names(self, value: Sequence[str]):
         pulumi.set(self, "input_column_names", value)
 
+
+if not MYPY:
+    class GetTableTableInfoTableConstraintArgsDict(TypedDict):
+        foreign_key_constraint: NotRequired['GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict']
+        named_table_constraint: NotRequired['GetTableTableInfoTableConstraintNamedTableConstraintArgsDict']
+        primary_key_constraint: NotRequired['GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict']
+elif False:
+    GetTableTableInfoTableConstraintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoTableConstraintArgs:
@@ -42759,6 +52896,18 @@ class GetTableTableInfoTableConstraintArgs:
     def primary_key_constraint(self, value: Optional['GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs']):
         pulumi.set(self, "primary_key_constraint", value)
 
+
+if not MYPY:
+    class GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict(TypedDict):
+        child_columns: Sequence[str]
+        name: str
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        parent_columns: Sequence[str]
+        parent_table: str
+elif False:
+    GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
@@ -42815,6 +52964,15 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
         pulumi.set(self, "parent_table", value)
 
 
+if not MYPY:
+    class GetTableTableInfoTableConstraintNamedTableConstraintArgsDict(TypedDict):
+        name: str
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+elif False:
+    GetTableTableInfoTableConstraintNamedTableConstraintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoTableConstraintNamedTableConstraintArgs:
     def __init__(__self__, *,
@@ -42836,6 +52994,16 @@ class GetTableTableInfoTableConstraintNamedTableConstraintArgs:
     def name(self, value: str):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict(TypedDict):
+        child_columns: Sequence[str]
+        name: str
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+elif False:
+    GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
@@ -42870,6 +53038,12 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class GetTableTableInfoViewDependenciesArgsDict(TypedDict):
+        dependencies: NotRequired[Sequence['GetTableTableInfoViewDependenciesDependencyArgsDict']]
+elif False:
+    GetTableTableInfoViewDependenciesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoViewDependenciesArgs:
     def __init__(__self__, *,
@@ -42886,6 +53060,13 @@ class GetTableTableInfoViewDependenciesArgs:
     def dependencies(self, value: Optional[Sequence['GetTableTableInfoViewDependenciesDependencyArgs']]):
         pulumi.set(self, "dependencies", value)
 
+
+if not MYPY:
+    class GetTableTableInfoViewDependenciesDependencyArgsDict(TypedDict):
+        function: NotRequired['GetTableTableInfoViewDependenciesDependencyFunctionArgsDict']
+        table: NotRequired['GetTableTableInfoViewDependenciesDependencyTableArgsDict']
+elif False:
+    GetTableTableInfoViewDependenciesDependencyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTableTableInfoViewDependenciesDependencyArgs:
@@ -42916,6 +53097,12 @@ class GetTableTableInfoViewDependenciesDependencyArgs:
         pulumi.set(self, "table", value)
 
 
+if not MYPY:
+    class GetTableTableInfoViewDependenciesDependencyFunctionArgsDict(TypedDict):
+        function_full_name: str
+elif False:
+    GetTableTableInfoViewDependenciesDependencyFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoViewDependenciesDependencyFunctionArgs:
     def __init__(__self__, *,
@@ -42932,6 +53119,12 @@ class GetTableTableInfoViewDependenciesDependencyFunctionArgs:
         pulumi.set(self, "function_full_name", value)
 
 
+if not MYPY:
+    class GetTableTableInfoViewDependenciesDependencyTableArgsDict(TypedDict):
+        table_full_name: str
+elif False:
+    GetTableTableInfoViewDependenciesDependencyTableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetTableTableInfoViewDependenciesDependencyTableArgs:
     def __init__(__self__, *,
@@ -42947,6 +53140,79 @@ class GetTableTableInfoViewDependenciesDependencyTableArgs:
     def table_full_name(self, value: str):
         pulumi.set(self, "table_full_name", value)
 
+
+if not MYPY:
+    class GetVolumeVolumeInfoArgsDict(TypedDict):
+        access_point: NotRequired[str]
+        """
+        the AWS access point to use when accessing s3 bucket for this volume's external location
+        """
+        browse_only: NotRequired[bool]
+        """
+        indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+        """
+        catalog_name: NotRequired[str]
+        """
+        the name of the catalog where the schema and the volume are
+        """
+        comment: NotRequired[str]
+        """
+        the comment attached to the volume
+        """
+        created_at: NotRequired[int]
+        """
+        the Unix timestamp at the volume's creation
+        """
+        created_by: NotRequired[str]
+        """
+        the identifier of the user who created the volume
+        """
+        encryption_details: NotRequired['GetVolumeVolumeInfoEncryptionDetailsArgsDict']
+        """
+        encryption options that apply to clients connecting to cloud storage
+        """
+        full_name: NotRequired[str]
+        """
+        the three-level (fully qualified) name of the volume
+        """
+        metastore_id: NotRequired[str]
+        """
+        the unique identifier of the metastore
+        """
+        name: NotRequired[str]
+        """
+        a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        """
+        owner: NotRequired[str]
+        """
+        the identifier of the user who owns the volume
+        """
+        schema_name: NotRequired[str]
+        """
+        the name of the schema where the volume is
+        """
+        storage_location: NotRequired[str]
+        """
+        the storage location on the cloud
+        """
+        updated_at: NotRequired[int]
+        """
+        the timestamp of the last time changes were made to the volume
+        """
+        updated_by: NotRequired[str]
+        """
+        the identifier of the user who updated the volume last time
+        """
+        volume_id: NotRequired[str]
+        """
+        the unique identifier of the volume
+        """
+        volume_type: NotRequired[str]
+        """
+        whether the volume is `MANAGED` or `EXTERNAL`
+        """
+elif False:
+    GetVolumeVolumeInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVolumeVolumeInfoArgs:
@@ -43227,6 +53493,12 @@ class GetVolumeVolumeInfoArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class GetVolumeVolumeInfoEncryptionDetailsArgsDict(TypedDict):
+        sse_encryption_details: NotRequired['GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgsDict']
+elif False:
+    GetVolumeVolumeInfoEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVolumeVolumeInfoEncryptionDetailsArgs:
     def __init__(__self__, *,
@@ -43243,6 +53515,13 @@ class GetVolumeVolumeInfoEncryptionDetailsArgs:
     def sse_encryption_details(self, value: Optional['GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs']):
         pulumi.set(self, "sse_encryption_details", value)
 
+
+if not MYPY:
+    class GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
+        algorithm: NotRequired[str]
+        aws_kms_key_arn: NotRequired[str]
+elif False:
+    GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs:

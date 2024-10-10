@@ -124,7 +124,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
 //				Name:                        pulumi.String("the-creds"),
-//				DatabricksGcpServiceAccount: nil,
+//				DatabricksGcpServiceAccount: &databricks.StorageCredentialDatabricksGcpServiceAccountArgs{},
 //			})
 //			if err != nil {
 //				return err

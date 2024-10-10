@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetCurrentMetastore(ctx, nil, nil)
+//			this, err := databricks.GetCurrentMetastore(ctx, &databricks.GetCurrentMetastoreArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

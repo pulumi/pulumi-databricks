@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetJobs(ctx, nil, nil)
+//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -75,7 +75,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetJobs(ctx, nil, nil)
+//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

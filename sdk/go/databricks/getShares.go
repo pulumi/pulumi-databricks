@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetShares(ctx, nil, nil)
+//			this, err := databricks.GetShares(ctx, &databricks.GetSharesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

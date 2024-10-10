@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -100,9 +105,6 @@ def get_views(catalog_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
-
-
-@_utilities.lift_output_func(get_views)
 def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      schema_name: Optional[pulumi.Input[str]] = None,
@@ -117,4 +119,14 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
     :param str schema_name: Name of databricks_schema
     """
-    ...
+    __args__ = dict()
+    __args__['catalogName'] = catalog_name
+    __args__['ids'] = ids
+    __args__['schemaName'] = schema_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getViews:getViews', __args__, opts=opts, typ=GetViewsResult)
+    return __ret__.apply(lambda __response__: GetViewsResult(
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        schema_name=pulumi.get(__response__, 'schema_name')))

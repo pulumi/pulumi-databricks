@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetExternalLocations(ctx, nil, nil)
+//			all, err := databricks.GetExternalLocations(ctx, &databricks.GetExternalLocationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

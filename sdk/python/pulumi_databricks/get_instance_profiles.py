@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -86,9 +91,6 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
     return AwaitableGetInstanceProfilesResult(
         id=pulumi.get(__ret__, 'id'),
         instance_profiles=pulumi.get(__ret__, 'instance_profiles'))
-
-
-@_utilities.lift_output_func(get_instance_profiles)
 def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
@@ -109,4 +111,10 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
 
     :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
     """
-    ...
+    __args__ = dict()
+    __args__['instanceProfiles'] = instance_profiles
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getInstanceProfiles:getInstanceProfiles', __args__, opts=opts, typ=GetInstanceProfilesResult)
+    return __ret__.apply(lambda __response__: GetInstanceProfilesResult(
+        id=pulumi.get(__response__, 'id'),
+        instance_profiles=pulumi.get(__response__, 'instance_profiles')))

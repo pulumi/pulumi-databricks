@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -129,9 +134,6 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
         id=pulumi.get(__ret__, 'id'),
         limit_file_size=pulumi.get(__ret__, 'limit_file_size'),
         path=pulumi.get(__ret__, 'path'))
-
-
-@_utilities.lift_output_func(get_dbfs_file)
 def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
                          path: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbfsFileResult]:
@@ -163,4 +165,14 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
     :param bool limit_file_size: Do not load content for files larger than 4MB.
     :param str path: Path on DBFS for the file from which to get content.
     """
-    ...
+    __args__ = dict()
+    __args__['limitFileSize'] = limit_file_size
+    __args__['path'] = path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFile:getDbfsFile', __args__, opts=opts, typ=GetDbfsFileResult)
+    return __ret__.apply(lambda __response__: GetDbfsFileResult(
+        content=pulumi.get(__response__, 'content'),
+        file_size=pulumi.get(__response__, 'file_size'),
+        id=pulumi.get(__response__, 'id'),
+        limit_file_size=pulumi.get(__response__, 'limit_file_size'),
+        path=pulumi.get(__response__, 'path')))
