@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			smallest, err := databricks.GetNodeType(ctx, nil, nil)
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

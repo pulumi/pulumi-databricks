@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -93,9 +98,6 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
     return AwaitableGetStorageCredentialsResult(
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
-
-
-@_utilities.lift_output_func(get_storage_credentials)
 def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialsResult]:
     """
@@ -125,4 +127,10 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
 
     :param Sequence[str] names: List of names of StorageCredential in the metastore
     """
-    ...
+    __args__ = dict()
+    __args__['names'] = names
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getStorageCredentials:getStorageCredentials', __args__, opts=opts, typ=GetStorageCredentialsResult)
+    return __ret__.apply(lambda __response__: GetStorageCredentialsResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names')))

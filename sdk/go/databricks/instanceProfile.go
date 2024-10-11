@@ -105,7 +105,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			latest, err := databricks.GetSparkVersion(ctx, nil, nil)
+//			latest, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

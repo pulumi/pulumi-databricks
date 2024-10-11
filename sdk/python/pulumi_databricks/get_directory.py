@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -111,9 +116,6 @@ def get_directory(id: Optional[str] = None,
         object_id=pulumi.get(__ret__, 'object_id'),
         path=pulumi.get(__ret__, 'path'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
-
-
-@_utilities.lift_output_func(get_directory)
 def get_directory_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          object_id: Optional[pulumi.Input[Optional[int]]] = None,
                          path: Optional[pulumi.Input[str]] = None,
@@ -138,4 +140,15 @@ def get_directory_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str path: Path to a directory in the workspace
     :param str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['objectId'] = object_id
+    __args__['path'] = path
+    __args__['workspacePath'] = workspace_path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getDirectory:getDirectory', __args__, opts=opts, typ=GetDirectoryResult)
+    return __ret__.apply(lambda __response__: GetDirectoryResult(
+        id=pulumi.get(__response__, 'id'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        path=pulumi.get(__response__, 'path'),
+        workspace_path=pulumi.get(__response__, 'workspace_path')))

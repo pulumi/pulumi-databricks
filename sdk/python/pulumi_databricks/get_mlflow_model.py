@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -197,9 +202,6 @@ def get_mlflow_model(description: Optional[str] = None,
         permission_level=pulumi.get(__ret__, 'permission_level'),
         tags=pulumi.get(__ret__, 'tags'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_mlflow_model)
 def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                             latest_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
@@ -261,4 +263,20 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
     :param str user_id: The username of the user that created the object.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['latestVersions'] = latest_versions
+    __args__['name'] = name
+    __args__['permissionLevel'] = permission_level
+    __args__['tags'] = tags
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowModel:getMlflowModel', __args__, opts=opts, typ=GetMlflowModelResult)
+    return __ret__.apply(lambda __response__: GetMlflowModelResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        latest_versions=pulumi.get(__response__, 'latest_versions'),
+        name=pulumi.get(__response__, 'name'),
+        permission_level=pulumi.get(__response__, 'permission_level'),
+        tags=pulumi.get(__response__, 'tags'),
+        user_id=pulumi.get(__response__, 'user_id')))

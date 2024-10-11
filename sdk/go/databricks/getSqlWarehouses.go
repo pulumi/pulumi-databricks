@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetSqlWarehouses(ctx, nil, nil)
+//			_, err := databricks.GetSqlWarehouses(ctx, &databricks.GetSqlWarehousesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
