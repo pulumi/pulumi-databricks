@@ -76,7 +76,7 @@ plugins:
       path: "`+binPath+`"
 `), 0600))
 	test := pulumitest.NewPulumiTest(t, dir)
-	result := test.Preview()
+	result := test.Preview(t)
 	for _, msg := range []string{"[DEBUG]", "[TRACE]"} {
 		assert.NotContains(t, result.StdErr, msg)
 		assert.NotContains(t, result.StdOut, msg)
